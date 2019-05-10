@@ -82,6 +82,12 @@
             <div class="content">
                 <div class="title m-b-md">
                     Laravel
+                    <br>
+
+                    {{ $carbon->adddays(2)->format('Y/m h') }}
+                    <br>
+{{ \DB::table('blogs')->where('title', 'first blog')->first()->id }}
+{{ \DB::table('blogs')->where('title', 'first blog')->first()->title }}
                 </div>
 
                 <div class="links">

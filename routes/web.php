@@ -12,5 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	$navid = array('sine');
+	$carbon = new Carbon\Carbon();
+	\DB::table('blogs')->insert([
+		'title' => 'first blog',
+		'content' => 'first blog content first blog content ',
+	]);
+	// dd(1);
+    return view('welcome', compact('carbon'));
 });

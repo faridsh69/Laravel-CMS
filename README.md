@@ -4,7 +4,7 @@ structure:
 	+ zoodtar das be code sho
 	- use docker
 	+ init laravel
-	use codestyle
+	+ use codestyle
 	write unit tests
 	create migration with model
 		in matn o be englisi convert kon vase eric
