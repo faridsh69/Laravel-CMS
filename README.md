@@ -1,12 +1,13 @@
 structure:
-	github
-	v-host o system 32 o tosh bezan cms.new o cms.old
-	in matn o be englisi convert kon vase eric
-	zoodtar das be code sho
-	use docker
+	+ github
+	+ v-host o system 32 o tosh bezan cms.new o cms.old
+	+ zoodtar das be code sho
+	- use docker
+	+ init laravel
 	use codestyle
 	write unit tests
 	create migration with model
+		in matn o be englisi convert kon vase eric
 models:
 migrations:
 factory:
