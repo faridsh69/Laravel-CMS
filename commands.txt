@@ -1,6 +1,0 @@
-php php-cs-fixer.phar fix /
-vendor/bin/ecs check /routes/web.php --fix
-
-vendor/bin/ecs check / --config vendor/symplify/easy-coding-standard/config/clean-code.yml
-
-./vendor/bin/phpunit

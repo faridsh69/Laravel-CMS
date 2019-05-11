@@ -2,13 +2,27 @@ structure:
 	+ github
 	+ v-host o system 32 o tosh bezan cms.new o cms.old
 	+ zoodtar das be code sho
-	- use docker
 	+ init laravel
 	+ use codestyle
-	write unit tests
-	create migration with model
+	+ write unit tests
+	+ migration, 
+	+ model,
+	+ faker, 
+	+ seeder, 
+	+ route, 
+	+ controller, 
+	+ cdn structure,
+	+ trottle 
+	theme admin,
+	table, 
+	view, 
+	validation,
+	form,
 		in matn o be englisi convert kon vase eric
+	- use docker
+	- use data in models to create migrations
 models:
+	blog: title, content, short_content, creator_id, editor_id, status, url, seo_id
 migrations:
 factory:
 seeders:
@@ -16,6 +30,7 @@ validation:
 authorizations:
 routes:
 controllers:
+exceptions:
 views:
 	return view ba block o widgets
 	layout:
@@ -33,17 +48,18 @@ Css:
 Js:
 
 packages:
-	module maker:
-	page and blog view:
-	admin theme: drag and drop, calendar, notification,
+	admin theme: drag and drop, calendar, notification, upload image, chart, forms
+		kinshines/metronic
 	form builder:
+		yajra/laravel-datatables-oracle
 	tables: sort, filter, paginate, status activation
-	ckeditor:
+		datatables.net
+	HTML editor:
+		ckeditor
 	file manager:
 	image: crop, resize, ye url base dashte bashe kolle system, alt axesh
 	add tags: for blog
 	comment o rate o share in social networks:
-	backup:
 	log:
 	api document:
 	role&permission:
@@ -53,6 +69,10 @@ packages:
 	print layout:
 	validation phone:
 	country o city:
+	activity user log ,page and blog view:
+	module maker:
+	backup:
+		spatie/laravel-backup
 
 Features:
 	CMS ADMIN PANEL:

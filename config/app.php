@@ -2,29 +2,13 @@
 
 return [
 
-    /*
-    |--------------------------------------------------------------------------
-    | Application Name
-    |--------------------------------------------------------------------------
-    |
-    | This value is the name of your application. This value is used when the
-    | framework needs to place the application's name in a notification or
-    | any other location as required by the application or its packages.
-    |
-    */
+    'cdn' => [
+        'url' => 'cdn-eric.com',
+        'format' => 'css|js|eot|woff|ttf|jpg|jpeg|png|gif|svg',
+    ],
+
 
     'name' => env('APP_NAME', 'Laravel'),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Application Environment
-    |--------------------------------------------------------------------------
-    |
-    | This value determines the "environment" your application is currently
-    | running in. This may determine how you prefer to configure various
-    | services the application utilizes. Set this in your ".env" file.
-    |
-    */
 
     'env' => env('APP_ENV', 'production'),
 
@@ -175,6 +159,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Yajra\DataTables\DataTablesServiceProvider::class,
     ],
 
     /*
@@ -226,6 +211,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class, 
+
+        'Cdn' => App\Services\CdnService::class,
     ],
 
 ];
