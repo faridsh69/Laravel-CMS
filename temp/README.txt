@@ -20,6 +20,7 @@ structure:
 		+ meta -> package import kon
 		+ breadcrumb -> package import kon
 		+ sidebar items -> item hae menu ha ro beriz inja 
+		+ horizontal-menu -> linkae morede niaz
 		toolbar -> profile o ina ro ok kon nesfe 
 		header-tools -> export excel - print o ina ro bezar ...
 		footer
@@ -32,6 +33,7 @@ structure:
 		in matn o be englisi convert kon vase eric
 	- use docker
 	- use data in models to create migrations
+	login page complete
 models:
 	blog: title, content, short_content, creator_id, editor_id, status, url, seo_id
 migrations:

@@ -1,11 +1,9 @@
 <?php
 
-Route::group(['namespace' => 'Admin', 'middleware' => 'throttle:20,0.2', 'as' => 'admin.'], function () {
-	Route::get('', function() {
-		return redirect()->route('admin.dashboard.index');
-	});
+Route::group(['namespace' => 'Admin', 'middleware' => ['throttle:20,0.2', 'auth'], 'as' => 'admin.'], function () {
 	Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'as' => 'dashboard.'], function () {
 		Route::get('', 'DashboardController@index')->name('index');
+		Route::get('profile', 'DashboardController@getProfile')->name('profile');
 	});
 	Route::group(['prefix' => 'setting', 'namespace' => 'Setting', 'as' => 'setting.'], function () {
 		Route::get('general', 'SettingController@getGeneral')->name('general');
@@ -65,22 +63,9 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'throttle:20,0.2', 'as' =>
 });	
 
 
-// Route::get('/', function () {
-// 	$navid = array('sine');
-// 	$carbon = new Carbon\Carbon();
-// 	// App\Models\Blog::insert([
-// 	// 	'title' => 'first blog ' . rand(1,10) ,
-// 	// 	'content' => 'first blog content first blog content ',
-// 	// ]);
-// 	// dd(1);
-//     return view('welcome', compact('carbon'));
-// });
+Auth::routes();
 
-// Route::post('/', function(Illuminate\Http\Request $request){
-// 	App\Models\Blog::insert([
-// 		'title' => $request->input('title'),
-// 		'content' => $request->input('content'),
-// 	]);
-
-// 	return redirect('/');
-// });
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('admin', function() {
+	return redirect()->route('admin.dashboard.index');
+});
