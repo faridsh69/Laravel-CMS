@@ -1,0 +1,1 @@
+var BootstrapTouchspin=function(){var n=function(){};return{init:function(){n()}}}();jQuery(document).ready(function(){BootstrapTouchspin.init()});

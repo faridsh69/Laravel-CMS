@@ -11,7 +11,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<!--begin::Web font -->
-		<script src="{{ Cdn::asset('webfontloader.js') }}"></script>
+		<script src="{{ Cdn::asset('js/webfontloader.js') }}"></script>
 		<script>
           	WebFont.load({
 	            google: {"families":["Poppins:300,400,500,600,700","Roboto:300,400,500,600,700"]},
@@ -53,14 +53,14 @@
 			}
 			.c-error-1-row{
 				flex: 1;
-				background-image: url("{{ Cdn::asset('error.jpg') }}");
+				background-image: url("{{ Cdn::asset('images/error.jpg') }}");
 				background-position: center;
 			    background-repeat: no-repeat;
 			    background-attachment: fixed;
 			    background-size: cover;
 			}
 		</style>
-		<link rel="shortcut icon" href="favicon.ico" />
+		<link rel="shortcut icon" href="{{ Cdn::asset('upload/images/favicon.png') }}" />
 	</head>
 	<!-- end::Head -->
     <!-- end::Body -->

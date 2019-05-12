@@ -1,7 +1,7 @@
 <?php
 
 Route::group(['namespace' => 'Admin', 'middleware' => 'throttle:10,0.1'], function () {
-	Route::resource('blog', 'BlogController');
+	Route::resource('admin/home/blog', 'BlogController');
 });
 
 

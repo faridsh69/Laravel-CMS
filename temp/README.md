@@ -13,7 +13,17 @@ structure:
 	+ controller, 
 	+ cdn structure,
 	+ trottle 
-	theme admin,
+	+ theme admin,
+		+ header
+		+ script o ham ezafe kon
+		+ meta -> package import kon
+		breadcrumb -> package import kon
+		sidebar items -> item hae menu ha ro beriz inja
+		toolbar -> profile o ina ro ok kon nesfe 
+		header-tools -> export excel - print o ina ro bezar ...
+		footer
+		- quick-sidebar
+		- quick-navbar
 	table, 
 	view, 
 	validation,
@@ -73,6 +83,15 @@ packages:
 	module maker:
 	backup:
 		spatie/laravel-backup
+	breadcrumb
+	meta
+		myself
+	seo
+		myself
+	cdn
+		myself
+	lazy 
+		myself 
 
 Features:
 	CMS ADMIN PANEL:

@@ -1,0 +1,1 @@
+var jVectorMap=function(){var n=function(){};return{init:function(){n()}}}();jQuery(document).ready(function(){jVectorMap.init()});
