@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\User;
+namespace App\Http\Controllers\Admin\Media;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

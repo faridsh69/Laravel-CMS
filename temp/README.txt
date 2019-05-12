@@ -106,28 +106,28 @@ Features:
 			change password
 			dashboard contents
 				neshon bede chand ta page darim, user, blog, image, ...
-		1-page
+		+ 1-page
 			title, url, status, (block), (seo)
 		+ 2-blog
 			title, url, status, short_desc, long_desc, image, commentable, ratable, (block), (seo)
-		3-category 
+		+ 3-category 
 			title, order, page-or-blog
-		4-file manager
+		+ 4-file manager
 			file manager with full feature crop image, resize, ...
-		5-comment o rate
+		+ 5-comment o rate
 			status for show or hide or delete
 		6-form builder
 			fields ( field maker ) title, type, parent, default, required or not,
-		7-menu
+		+ 7-menu
 			select urls, sort urls
-		8-theme
+		+ 8-theme
 			list of themes -> we will start with 3 different themes
-		9-block
+		+ 9-block
 			each page has its block structure
 			blocks uses widgets
 			url, status,
 			3 column, 2 colomn - right and middle, 2 colomnt - left and middle, 1 column
-		10-widgets
+		+ 10-widgets
 		+ 11-seo
 			Setting:
 				google no index
@@ -151,19 +151,17 @@ Features:
 				clear server cache, migrate o config cache, cache clear, route lists, ...
 			Logs:
 				show logs
-				
-
-		14-notifications
+		+ 14-notifications
 			log sms ha o email ha beriz to ye table
-		15-backupgiri
-		16-log
-		17-forum
-		18-tickets&messaging
-		19-sliders
-		20-partners
-		21-reports
-		22-news
-		23-events
+		+ 15-backupgiri
+		+ 16-log
+		? 17-forum
+		? 18-tickets&messaging
+		? 19-sliders
+		? 20-partners
+		+ 21-reports
+		? 22-news
+		? 23-events
 	Frontend
 		0-structure:
 			breadcrumb

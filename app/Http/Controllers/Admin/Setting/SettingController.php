@@ -21,6 +21,11 @@ class SettingController extends Controller
 	{
 		return view('layout.admin');
 	}
+
+	public function getBackup()
+	{
+		return view('layout.admin');
+	}	 
 	
 	public function getDeveloperOptionsBasic()
 	{

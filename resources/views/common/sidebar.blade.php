@@ -11,6 +11,122 @@
 			],
 		],
 		[
+			'title' => 'Content',
+			'type' => 'section',
+		],
+		[
+			'title' => 'Blog',
+			'route' => 'blog',
+			'type' => 'submenu',
+			'icon' => 'flaticon-list-3',
+			'children' => [	
+				[
+					'title' => 'Blog list',
+					'route' => 'admin.blog.list.index',
+				],
+			],
+		],
+		[
+			'title' => 'Page',
+			'route' => 'page',
+			'type' => 'submenu',
+			'icon' => 'flaticon-web',
+			'children' => [	
+				[
+					'title' => 'Page list',
+					'route' => 'admin.page.list.index',
+				],
+			],
+		],
+		[
+			'title' => 'Category',
+			'route' => 'category',
+			'type' => 'submenu',
+			'icon' => 'flaticon-map',
+			'children' => [	
+				[
+					'title' => 'Category list',
+					'route' => 'admin.category.list.index',
+				],
+			],
+		],
+		[
+			'title' => 'Media',
+			'route' => 'media',
+			'type' => 'submenu',
+			'icon' => 'flaticon-open-box',
+			'children' => [	
+				[
+					'title' => 'Media list',
+					'route' => 'admin.media.list.index',
+				],
+			],
+		],
+		[
+			'title' => 'Comment',
+			'route' => 'comment',
+			'type' => 'submenu',
+			'icon' => 'flaticon-comment',
+			'children' => [	
+				[
+					'title' => 'Comment list',
+					'route' => 'admin.comment.list.index',
+				],
+			],
+		],
+		[
+			'title' => 'THEME',
+			'type' => 'section',
+		],
+		[
+			'title' => 'Theme',
+			'route' => 'theme',
+			'type' => 'submenu',
+			'icon' => 'flaticon-visible',
+			'children' => [	
+				[
+					'title' => 'Theme list',
+					'route' => 'admin.theme.list.index',
+				],
+			],
+		],
+		[
+			'title' => 'Block',
+			'route' => 'block',
+			'type' => 'submenu',
+			'icon' => 'flaticon-app',
+			'children' => [	
+				[
+					'title' => 'Block list',
+					'route' => 'admin.block.list.index',
+				],
+			],
+		],
+		[
+			'title' => 'Widget',
+			'route' => 'widget',
+			'type' => 'submenu',
+			'icon' => 'flaticon-imac',
+			'children' => [	
+				[
+					'title' => 'Widget list',
+					'route' => 'admin.widget.list.index',
+				],
+			],
+		],
+		[
+			'title' => 'Menu',
+			'route' => 'menu',
+			'type' => 'submenu',
+			'icon' => 'flaticon-grid-menu',
+			'children' => [	
+				[
+					'title' => 'Menu list',
+					'route' => 'admin.menu.list.index',
+				],
+			],
+		],
+		[
 			'title' => 'Management',
 			'type' => 'section',
 		],
@@ -18,7 +134,7 @@
 			'title' => 'Setting',
 			'route' => 'setting',
 			'type' => 'submenu',
-			'icon' => 'flaticon-interface-3',
+			'icon' => 'flaticon-cogwheel',
 			'children' => [	
 				[
 					'title' => 'General',
@@ -31,6 +147,10 @@
 				[
 					'title' => 'Logs',
 					'route' => 'admin.setting.log',
+				],
+				[
+					'title' => 'Backup',
+					'route' => 'admin.setting.backup',
 				],
 				[
 					'title' => 'Developer Options',
@@ -94,38 +214,41 @@
 			],
 		],
 		[
-			'title' => 'Content And Media',
-			'type' => 'section',
-		],
-		[
-			'title' => 'Blog',
-			'route' => 'blog',
+			'title' => 'Form',
+			'route' => 'form',
 			'type' => 'submenu',
-			'icon' => 'flaticon-multimedia-1',
+			'icon' => 'flaticon-interface',
 			'children' => [	
 				[
-					'title' => 'Blog list',
-					'route' => 'admin.blog.list.index',
+					'title' => 'Form list',
+					'route' => 'admin.form.list.index',
 				],
 			],
 		],
 		[
-			'title' => 'Blog',
-			'route' => 'blog',
+			'title' => 'Report',
+			'route' => 'report',
 			'type' => 'submenu',
-			'icon' => 'flaticon-multimedia-1',
+			'icon' => 'flaticon-graphic-2',
 			'children' => [	
 				[
-					'title' => 'Blog list',
-					'route' => 'admin.blog.list.index',
+					'title' => 'Report list',
+					'route' => 'admin.report.list.index',
 				],
 			],
 		],
-
-
-		
-		
-
+		[
+			'title' => 'Notification',
+			'route' => 'notification',
+			'type' => 'submenu',
+			'icon' => 'flaticon-notes',
+			'children' => [	
+				[
+					'title' => 'Notification list',
+					'route' => 'admin.notification.list.index',
+				],
+			],
+		],
 	];
 @endphp
 
