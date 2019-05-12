@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Blog;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 
-class BlogController extends Controller
+class ResourceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::get();
-
-        return view('admin.blog', compact('blogs'));
+        return view('admin.blog');
     }
 
     /**

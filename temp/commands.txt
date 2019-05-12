@@ -20,3 +20,4 @@ php artisan make:controller PhotoController --resourse
 @TODO
 http://eric.com/
 http://cdn-eric.com
+http://eric-old.com

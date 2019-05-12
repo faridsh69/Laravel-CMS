@@ -13,12 +13,13 @@ structure:
 	+ controller, 
 	+ cdn structure,
 	+ trottle 
+	+ route ha ba name bashan hamegi
 	+ theme admin,
 		+ header
 		+ script o ham ezafe kon
 		+ meta -> package import kon
-		breadcrumb -> package import kon
-		sidebar items -> item hae menu ha ro beriz inja
+		+ breadcrumb -> package import kon
+		+ sidebar items -> item hae menu ha ro beriz inja 
 		toolbar -> profile o ina ro ok kon nesfe 
 		header-tools -> export excel - print o ina ro bezar ...
 		footer
@@ -83,7 +84,8 @@ packages:
 	module maker:
 	backup:
 		spatie/laravel-backup
-	breadcrumb
+	+ breadcrumb
+		myself
 	meta
 		myself
 	seo
@@ -95,7 +97,7 @@ packages:
 
 Features:
 	CMS ADMIN PANEL:
-		0-structure
+		+ 0-dashboard
 			login 
 				chandbar eshteba zad natone dge request bezane 1 min ban she
 				code captcha bashe barash
@@ -106,7 +108,7 @@ Features:
 				neshon bede chand ta page darim, user, blog, image, ...
 		1-page
 			title, url, status, (block), (seo)
-		2-blog
+		+ 2-blog
 			title, url, status, short_desc, long_desc, image, commentable, ratable, (block), (seo)
 		3-category 
 			title, order, page-or-blog
@@ -126,19 +128,31 @@ Features:
 			url, status,
 			3 column, 2 colomn - right and middle, 2 colomnt - left and middle, 1 column
 		10-widgets
-		11-seo custome principles
-			h1 finder, h2 h3, full metas, canonical link, ... it crowl on all of the blog and pages ...
-		12-user manager
+		+ 11-seo
+			Setting:
+				google no index
+			Content Rules: 
+				h1 finder, h2 h3, full metas, canonical link, ... it crowl on all of the blog and pages ... seo principles
+			lazy loading -> default lazy loading image
+		+ 12-user manager
 			first name, last name, phone, password, birthday, country, male, profile, address	
 			role and permission: name, title, address ha ham bezar barash
-		13-setting
-			email, phone, address, favicon, logo, social networks, login page status, register status
-			login fields: phone, password, automatice activation or not,
-			clear server cache - debug mode off - on - show logs - truttle number, google no index, seo principles, favicon,
-			to pageinate size age code dorosti hast in o custome konam ?! na vali adadesh o ye ja bezar vase bad
-			message hae admin o ham ye ja bezar, cdn vase axa beshe gozasht
-			migrate o config cache, cache clear, route lists, ...
-			crisp o google analytics betone add kone
+			settings:
+				login fields: phone, password, automatice activation or not,
+				login page status, register status	
+		+ 13-setting
+			General: 
+				site name, default meta description, favicon, logo, paginations numbers, crisp o google analytics betone add kone, default user profile image, user login email? sms?
+			Contact Info: 
+				email, phone, mobile, fax, address, social networks, 
+			Developer Options:
+				debug mode off - on, truttle number, google no index, cdn vase axa, email sender, sms sender,
+			Advance Developer Options:
+				clear server cache, migrate o config cache, cache clear, route lists, ...
+			Logs:
+				show logs
+				
+
 		14-notifications
 			log sms ha o email ha beriz to ye table
 		15-backupgiri

@@ -1,0 +1,171 @@
+Hello Eric,
+
+This is the details of the cms that I think about it and I think I see all good features in it.
+
+CMS Technologies:
+	Server Side: 
+		Laravel 5.8, PHP 7.1, Mysql 5, Git (used for control version), Redis for cache, Passport for api authority, ...
+	FrontEnd:
+		Bootstrap 4, JQuery, Vue2, FontAwsome, Webpack, laravel elexir, ...
+
+Development Start Time:
+	04/17/2019
+
+Development End Time:
+	06/17/2019
+
+For every day that I delay in developing this cms after end time I should return 20$.
+
+License: 
+	I will give all the codes to you. You have right to give it to anyone, or sell it to any person or company. I will help you to setup it ;)
+
+Support:
+	I will fix any bugs if you find in 5 years.
+
+	Any other changes that you want is free for 1 year, If your change is a big change and it is an unusuale change I have to develope it for you with a low price 5$/hour. 
+
+	You can ask me to add a widget exactly look like a widget that you see in web for 2 month it is free, and I will add it for you and I will add all css for be responsive in all devices, desktop, table, mobile.
+
+Features:
+	CMS ADMIN PANEL: (brief description)
+		1-page
+			title, url, status, (block), (seo)
+		2-blog
+			title, url, status, short_desc, long_desc, image, commentable, ratable, (block), (seo)
+		3-category 
+			title, order, page-or-blog
+		4-file manager
+			file manager with full feature crop image, resize, ...
+		5-comment o rate
+			status for show or hide or delete
+		6-form builder
+			fields ( field maker ) title, type, parent, default, required or not,
+		7-menu
+			select urls, sort urls
+		8-theme
+			list of themes -> we will start with 3 different themes
+		9-block
+			each page has its block structure
+			blocks uses widgets
+			url, status,
+			3 column, 2 colomn - right and middle, 2 colomnt - left and middle, 1 column
+		10-widgets
+		11-seo custome principles
+			h1 finder, h2 h3, full metas, canonical link, ... it crowl on all of the blog and pages ...
+		12-user manager
+			first name, last name, phone, password, birthday, country, male, profile, address	
+			role and permission: name, title
+		13-setting
+			email, phone, address, favicon, logo, social networks, login page status, register status
+			login fields: phone, password, automatice activation or not,
+			clear server cache
+			debug mode off - on,
+			show logs
+
+		BLOCKS: 
+			I am developing an structure for this website that allow you to define blocks in all part of page, 
+			you have 3 columns in every pages, you can drag and drop each blocks to each columns and sort it, 
+			If a column is empty the column will hide in page, you can deactive any blocks, 
+			this block base feature give to you access to a lot of changes in structure of all pages, 
+				home, blogs, contact us, about us, all pages... 
+			So in continue I will explain you how you can change UI in core of this blocks. with widgets ...
+
+		WIDGETS: Blocks created from a lot of widgets, this is the widgets category:
+			Slider,
+			Show you business features,
+			Partners,
+			Countings -> for show how many users, project done, etc
+			google map,
+			show your site statistics,
+			form
+			social media icons,
+			counting down for time to start your events,
+			customers review,
+			contact us,
+			custome media like video,
+			search,
+			menu,
+			login panel,
+			custome HTML CSS JS widget, Ifram, etc
+
+	I find a lot of good ui in all of the big companies websites for this widget categories, and I will add it to cms: 
+		1-slider, 2-Show you business features widget, 3-Partners, 4-Countings, 5-show your site statistics, 6-social media icons, 7-counting down, 8-customers review, 9-contact us, 10-menu, 11-google map, 12-form, 13-custome media like video , 14-search, 15-login panel
+
+		1-Slider:
+			1-http://www.prosez.com/
+			2-https://smartslider3.com/static/
+			3-https://smartslider3.com/product-showcase-page-mobile-app/
+		2-Show you business features:
+			1-https://boostedboards.com/
+			2-https://theenvironmentalpartnership.org/what-were-doing/
+			3-http://www.prosez.com/#Industry
+		3-Partners,
+			0-https://anetwork.ir/en/
+			1-https://theenvironmentalpartnership.org/who-we-are/
+			2-https://www.futurelearn.com/partners
+			3-https://www.gv.com/portfolio/
+		4-Countings -> for show how many users, project done, etc
+			1-https://anetwork.ir/en/
+			2-https://www.smartsheet.com/s/manage-projects?s=1&c=3&m=3001&a=278853859107&k=project%20management&mtp=b&adp=1t1&net=g&dev=c&devm=&plc=&gclid=CjwKCAjw8LTmBRBCEiwAbhh-6KNxqcXFg6_JR9netPBaI771-T51MAAHpife55dA2xMnU9BJkEpoEhoC18IQAvD_BwE
+			3-https://boostedboards.com/
+		5-show your site statistics:
+			1-https://i.pinimg.com/originals/4e/71/69/4e7169d67e3821d7c7c39d204ab73fe6.png
+			2-https://qvdesign.wordpress.com/2012/03/07/beautiful-design-chart-innovations-from-qliktech-and-the-elephant-in-the-dashboard/
+			3-https://dribbble.com/shots/1885376-LPCloud-Dashboard
+		6-social media icons:
+			1-https://www.vandelaydesign.com/free-social-media-icons/
+			2-http://gdj.graphicdesignjunction.com/wp-content/uploads/2013/02/flaticons-socialmediaicons.jpg
+			3-https://elements.envato.com/social-media-icons-R8X6EX
+			4-https://elements.envato.com/social-media-icons-6DLSCG
+		7-counting down for time to start your events:
+			1-https://i.pinimg.com/originals/19/10/98/1910986e27a2295713444a99ce9a7511.jpg
+			2-https://dribbble.com/shots/6265423-Daily-UI-Challenge-014-Countdown-Timer
+			3-https://dribbble.com/shots/2369565-Daily-UI-14-Countdown-Timer
+			4-https://dribbble.com/shots/6430318-Countdown-Timer-UI-Design-Dark-Version
+		8-customers review:
+			0-http://cafetarah.ir/Saadatrent/index.html
+			1-https://www.socialmediatoday.com/social-business/social-media-customer-service-statistics-and-trends-infographic
+			2-https://get.chownow.com/testimonials-reviews
+			3-https://www.booker.com/customers
+			4-https://blog.hubspot.com/service/customer-journey-map
+		9-contact us,
+			1-https://anetwork.ir/en/
+			2-https://www.google.com/contact/
+			3-https://www.multichoice.com/contact-us/
+		10-menu,
+			1-https://www.google.com/analytics/tag-manager/use-policy/
+			2-https://www.multichoice.com/contact-us/
+			3-
+		11-google map:
+			1-https://dribbble.com/shots/3096959-Directions-Module-UI-Challenge -> I try to add them
+			2-https://dribbble.com/shots/2443129-Dark-UI-Map-Dashboard?1452178107 -> I try to add them
+			3-https://dribbble.com/shots/3078960-Topvet-Desktop-Web-App-Search -> I try to add them
+		12-form:
+			0-https://wpforms.com/beautiful-contact-form-designs-you-can-steal/
+			1-https://dribbble.com/shots/2804008-Sign-Up-for-form-creation?webdesign=7998002518
+			2-https://dribbble.com/shots/2057830-Ceek-Landing-Page
+			3-https://cdn-images-1.medium.com/max/1600/1*ZOsCR_CVPlelrS4dnNivpw.png
+		13-custome media like video:
+			1-https://burnishcreative.com/
+			2-https://spot.film/
+			3-https://www.awwwards.com/websites/video/
+		14-search:
+			1-search result like google ui
+		15-login panel:
+			1-https://colorlib.com/wp/wp-content/uploads/sites/2/login-form-v1.jpg
+			2-https://colorlib.com/wp/wp-content/uploads/sites/2/login-form-v3.jpg
+			3-https://colorlib.com/wp/wp-content/uploads/sites/2/login-form-v7.jpg
+
+There is 13 modules in Admin panel and 15 widgets in FrontEnd.
+
+CMS price: 1,700$
+
+Milestone 1: Develope Base Of CMS: 300$,
+Milestone 2: 7 modules in admin panel: 400$
+Milestone 3: 6 rest of modules in admin panel: 400$
+Milestone 4: 8 widgets in FrontEnd: 300$
+Milestone 5: 7 extra widgets in FrontEnd: 300$
+
+
+
+

@@ -1,11 +1,11 @@
 @extends('layout.admin')
 
-@section('title', __('Admin Panel'))
+@section('title', __('Blog Manager'))
 @section('description', __('Admin Panel Page For Best Cms In The World'))
 @section('image', Cdn::asset('upload/images/logo.png'))
 
 @push('style')
-<link href="{{ Cdn::asset('css/data-local.css') }}" rel="stylesheet" type="text/css" />
+<!-- <link href="{{ Cdn::asset('css/data-local.css') }}" rel="stylesheet" type="text/css" /> -->
 @endpush
 
 @push('script')
