@@ -3,7 +3,7 @@
 return [
 
     'cdn' => [
-        'url' => 'cdn-eric.com',
+        'url' => env('CDN_URL', 'cdn-eric.com'),
         'format' => 'css|js|eot|woff|ttf|jpg|jpeg|png|gif|svg',
     ],
 
