@@ -21,16 +21,23 @@ structure:
 		+ breadcrumb -> package import kon
 		+ sidebar items -> item hae menu ha ro beriz inja 
 		+ horizontal-menu -> linkae morede niaz
-		toolbar -> profile o ina ro ok kon nesfe 
-		header-tools -> export excel - print o ina ro bezar ...
-		footer
+		+ toolbar -> profile o ina ro ok kon nesfe 
+		+ header-tools -> export excel - print o ina ro bezar ...
+		+ footer
 		- quick-sidebar
 		- quick-navbar
-	table, 
-	view, 
-	validation,
+	? table
+		sort, 
+		filter, 
+		paginate, 
+		status activation
+		edit
+		delete
+		image showing
 	form,
 		in matn o be englisi convert kon vase eric
+	view, 
+	validation,
 	- use docker
 	- use data in models to create migrations
 	login page complete

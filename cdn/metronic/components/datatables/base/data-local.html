@@ -10,21 +10,21 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<!--begin::Web font -->
-		<script src="cddn/webfontloader.js"></script>
+		<script src=" {{ Cdn::asset('webfontloader.js') }}"></script>
 		<script>
-			WebFont.load({
-				google: {"families":["Poppins:300,400,500,600,700","Roboto:300,400,500,600,700"]},
-				active: function() {
-					sessionStorage.fonts = true;
-				}
-			});
+          WebFont.load({
+            google: {"families":["Poppins:300,400,500,600,700","Roboto:300,400,500,600,700"]},
+            active: function() {
+                sessionStorage.fonts = true;
+            }
+          });
 		</script>
 		<!--end::Web font -->
         <!--begin::Base Styles -->
-		<link href="cddn/vendors.bundle.css" rel="stylesheet" type="text/css" />
-		<link href="cddn/style.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="../../../assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="../../../assets/demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
 		<!--end::Base Styles -->
-		<link rel="shortcut icon" href="cddn/upload/favicon.png" />
+		<link rel="shortcut icon" href="../../../assets/demo/default/media/img/logo/favicon.ico" />
 	</head>
 	<!-- end::Head -->
     <!-- end::Body -->
@@ -45,11 +45,12 @@
 								</div>
 								<div class="m-stack__item m-stack__item--middle m-brand__tools">
 									<!-- BEGIN: Left Aside Minimize Toggle -->
-									<a href="javascript:;" id="m_aside_left_minimize_toggle" class="m-brand__icon m-brand__toggler m-brand__toggler--left m--visible-desktop-inline-block  ">
+									<a href="javascript:;" id="m_aside_left_minimize_toggle" class="m-brand__icon m-brand__toggler m-brand__toggler--left m--visible-desktop-inline-block 
+					 ">
 										<span></span>
 									</a>
 									<!-- END -->
-								<!-- BEGIN: Responsive Aside Left Menu Toggler -->
+							<!-- BEGIN: Responsive Aside Left Menu Toggler -->
 									<a href="javascript:;" id="m_aside_left_offcanvas_toggle" class="m-brand__icon m-brand__toggler m-brand__toggler--left m--visible-tablet-and-mobile-inline-block">
 										<span></span>
 									</a>
@@ -59,7 +60,7 @@
 										<span></span>
 									</a>
 									<!-- END -->
-				<!-- BEGIN: Topbar Toggler -->
+			<!-- BEGIN: Topbar Toggler -->
 									<a id="m_aside_header_topbar_mobile_toggle" href="javascript:;" class="m-brand__icon m--visible-tablet-and-mobile-inline-block">
 										<i class="flaticon-more"></i>
 									</a>
@@ -3842,11 +3843,11 @@
 		</ul>
 		<!-- begin::Quick Nav -->	
     	<!--begin::Base Scripts -->
-		<script src="cddn/vendors.bundle.js" type="text/javascript"></script>
-		<script src="cddn/scripts.bundle.js" type="text/javascript"></script>
+		<script src="../../../assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
+		<script src="../../../assets/demo/default/base/scripts.bundle.js" type="text/javascript"></script>
 		<!--end::Base Scripts -->   
         <!--begin::Page Resources -->
-		<script src="cddn/js/table/data-local.js" type="text/javascript"></script>
+		<script src="../../../assets/demo/default/custom/components/datatables/base/data-local.js" type="text/javascript"></script>
 		<!--end::Page Resources -->
 	</body>
 	<!-- end::Body -->

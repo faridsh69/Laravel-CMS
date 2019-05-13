@@ -18,6 +18,21 @@ class ResourceController extends Controller
         return view('admin.blog');
     }
 
+    public function getDatatable()
+    {
+        return datatables()->of(Blog::query())->toJson();
+        return datatables()->of(DB::table('Blogs'))->toJson();
+        return datatables()->of(Blog::all())->toJson();
+
+        return datatables()->eloquent(Blog::query())->toJson();
+        return datatables()->query(DB::table('Blogs'))->toJson();
+        return datatables()->collection(Blog::all())->toJson();
+
+        return datatables(Blog::query())->toJson();
+        return datatables(DB::table('Blogs'))->toJson();
+        return datatables(Blog::all())->toJson();
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -25,7 +40,7 @@ class ResourceController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.blog.list.create');
     }
 
     /**

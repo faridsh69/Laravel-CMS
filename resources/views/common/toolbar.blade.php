@@ -8,7 +8,7 @@
 						<i class="flaticon-music-2"></i>
 					</span>
 				</a>
-				<div class="m-dropdown__wrapper">
+				<div class="m-dropdown__wrapper" style="width: 300px;">
 					<span class="m-dropdown__arrow m-dropdown__arrow--center"></span>
 					<div class="m-dropdown__inner">
 						<div class="m-dropdown__header m--align-center" style="background: url(
@@ -167,17 +167,8 @@
 									<li class="m-nav__item">
 										<a href="{{ route('admin.dashboard.profile') }}" class="m-nav__link">
 											<i class="m-nav__link-icon flaticon-profile-1"></i>
-											<span class="m-nav__link-title">
-												<span class="m-nav__link-wrap">
-													<span class="m-nav__link-text">
-														My Profile
-													</span>
-													<span class="m-nav__link-badge">
-														<span class="m-badge m-badge--success">
-															2
-														</span>
-													</span>
-												</span>
+											<span class="m-nav__link-text">
+												My Profile
 											</span>
 										</a>
 									</li>
@@ -192,17 +183,34 @@
 									<li class="m-nav__item">
 										<a href="{{ route('admin.dashboard.profile') }}" class="m-nav__link">
 											<i class="m-nav__link-icon flaticon-chat-1"></i>
-											<span class="m-nav__link-text">
-												Messages
+											
+											<span class="m-nav__link-title">
+												<span class="m-nav__link-wrap">
+													<span class="m-nav__link-text">
+														Messages
+													</span>
+													<span class="m-nav__link-badge">
+														<span class="m-badge m-badge--success">
+															0
+														</span>
+													</span>
+												</span>
 											</span>
 										</a>
 									</li>
 									<li class="m-nav__separator m-nav__separator--fit"></li>
 									<li class="m-nav__item">
-										<a href="../../../snippets/pages/user/login-1.html" class="btn m-btn--pill    btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">
-											Logout
-										</a>
+										<a href="{{ route('logout') }}" 
+											class="btn m-btn--pill    btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder"
+											onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                        	{{ __('Logout') }}
+                                    	</a>
 									</li>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+
 								</ul>
 							</div>
 						</div>

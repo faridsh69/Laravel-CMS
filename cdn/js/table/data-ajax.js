@@ -1,10 +1,10 @@
 var DatatableRemoteAjaxDemo=function() {
     var t=function() {
-        var t=$(".m_datatable").mDatatable( {
+        var t=$(".m_datatable").datatable( {
             data: {
                 type:"remote", source: {
                     read: {
-                        method: "GET", url: "/default.php"
+                        method: "GET", url: "/blog/datatable"
                     }
                 }
                 , pageSize:10, saveState: {
@@ -125,7 +125,7 @@ var DatatableRemoteAjaxDemo=function() {
 
 ();
 jQuery(document).ready(function() {
-    DatatableRemoteAjaxDemo.init()
+    // DatatableRemoteAjaxDemo.init()
 }
 
 );

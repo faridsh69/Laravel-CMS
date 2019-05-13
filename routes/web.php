@@ -29,6 +29,7 @@ Route::group(['namespace' => 'Admin', 'middleware' => ['throttle:20,0.2', 'auth'
 	});
 	Route::group(['prefix' => 'blog', 'namespace' => 'Blog', 'as' => 'blog.'], function () {
 		Route::resource('list', 'ResourceController');
+		Route::get('datatable', 'ResourceController@getDatatable');
 	});
 	Route::group(['prefix' => 'page', 'namespace' => 'Page', 'as' => 'page.'], function () {
 		Route::resource('list', 'ResourceController');
@@ -66,6 +67,6 @@ Route::group(['namespace' => 'Admin', 'middleware' => ['throttle:20,0.2', 'auth'
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('admin', function() {
+Route::get('', function() {
 	return redirect()->route('admin.dashboard.index');
 });

@@ -24,7 +24,7 @@
 						</a>
 					</li>
 					<li class="m-menu__item "  aria-haspopup="true">
-						<a  href="{{ route('admin.blog.list.create') }}" class="m-menu__link ">
+						<a  href="{{ route('admin.setting.general') }}" class="m-menu__link ">
 							<i class="m-menu__link-icon flaticon-cogwheel"></i>
 							<span class="m-menu__link-text">
 								Edit General Setting
@@ -32,7 +32,7 @@
 						</a>
 					</li>
 					<li class="m-menu__item "  data-redirect="true" aria-haspopup="true">
-						<a  href="../../../header/actions.html" class="m-menu__link ">
+						<a  href="{{ route('admin.user.list.index') }}" class="m-menu__link ">
 							<i class="m-menu__link-icon flaticon-users"></i>
 							<span class="m-menu__link-text">
 								Register Member
