@@ -75,15 +75,19 @@
 				<tr>
 					<td>{{ $blog->id }}</td>
 					<td>{{ $blog->title }}</td>
-					<td>{{ $blog->content }}</td>
-					<td><a href="{{ route('admin.blog.list.edit', $blog) }}">edit</a></td>
+					<td width="400px">{{ $blog->content }}</td>
+					<td><a href="{{ route('admin.blog.list.edit', $blog) }}">edit | </a></td>
+					<td>
+						<form action="{{ route('admin.blog.list.destroy', $blog) }}" id="delete-form" method="POST">
+							@csrf
+							@method('DELETE')
+							<input type="submit" value="Delete">
+						</form>
+					</td>
 				</tr>
 				@endforeach
 			</tbody>
 		</table>
-		
-				
-			</small>
 		
 		<!-- <div class="m_datatable">
 			<table id="example">

@@ -7,13 +7,16 @@ use Faker\Generator as Faker;
 
 $factory->define(Blog::class, function (Faker $faker) {
     return [
-        'title' => $faker->name,
-        'url' => $faker->unique()->name,
+        'title' => $faker->unique()->name,
+        'url' => $faker->uuid,
         'short_content' => $faker->address,
         'content' => $faker->text,
-        'creator_id' => 1,
-        'editor_id' => 1,
-        'seo_id' => 1,
-        'status' => App\Models\Blog::STATUS_ACTIVE,
+        'meta_description' => $faker->address,
+        'keywords' => $faker->address,
+        'meta_image' => $faker->address,
+        'published' => true,
+        'google_index' => true,
+        // 'creator_id' => 1,
+        // 'editor_id' => 1,
     ];
 });

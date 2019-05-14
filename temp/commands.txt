@@ -24,3 +24,5 @@ http://cdn-eric.com
 http://eric-old.com
 
 php artisan make:form Forms/BlogForm --fields="title:text, url:text, short_content:textarea, content:textarea, status:checkbox"
+
+php artisan make:rule SeoHeading

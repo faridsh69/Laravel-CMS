@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Validator::extend('seo_header', '\App\Rules\SeoHeading@passes');
+
+        // Validator::extend('seo_header', function ($attribute, $value, $parameters, $validator) {
+        //     return true';
+        // });
     }
 }

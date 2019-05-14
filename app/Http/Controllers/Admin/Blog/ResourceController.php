@@ -64,13 +64,8 @@ class ResourceController extends Controller
         if (!$form->isValid()) {
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
-        $data = $form->getFieldValues();
-        dd($data);
-        
-        // Do saving and other things...
-        $data['creator_id'] = \Auth::id();
-        $data['editor_id'] = \Auth::id();
-        Blog::create($data);
+
+        Blog::create($form->getFieldValues());
 
         return redirect()->route('admin.blog.list.index');
     }
@@ -83,7 +78,7 @@ class ResourceController extends Controller
      */
     public function show($id)
     {
-        $blog = Blog::find($id);
+        $blog = Blog::findOrFail($id);
 
         dd($blog->getAttributes());
     }
@@ -94,15 +89,17 @@ class ResourceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, FormBuilder $formBuilder)
     {
-        $blog = Blog::find($id);
+        $blog = Blog::findOrFail($id);
 
         $form = $formBuilder->create(BlogForm::class, [
-            'model' => $blog
+            'model' => $blog,
+            'method' => 'PUT',
+            'url' => route('admin.blog.list.update', $blog)
         ]);
 
-        return view('admin.blog.list.create', compact('blog'));
+        return view('admin.blog.list.create', compact('form'));
     }
 
     /**
@@ -112,9 +109,21 @@ class ResourceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, FormBuilder $formBuilder)
     {
-        //
+        $blog = Blog::findOrFail($id);
+
+        $form = $formBuilder->create(BlogForm::class, [
+            'model' => $blog,
+        ]);
+
+        if (!$form->isValid()) {
+            return redirect()->back()->withErrors($form->getErrors())->withInput();
+        }
+        
+        $blog->update($form->getFieldValues());
+
+        return redirect()->route('admin.blog.list.index');
     }
 
     /**
@@ -125,6 +134,10 @@ class ResourceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $blog = Blog::findOrFail($id);
+
+        $blog->delete();
+
+        return redirect()->route('admin.blog.list.index');
     }
 }

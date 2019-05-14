@@ -29,14 +29,14 @@ structure:
 	form:
 		logic:
 			+ form create
-			validate form
-			save data to database
-			edit
-			delete
+			+ validate form
+			+ save data to database
+			+ edit
+			+ delete
 		ux:
-			old values
-			good validation error
-			show hints
+			+ old values
+			+ good validation error
+			+ show hints
 		ui:
 			all metronic theme
 			input 
@@ -56,6 +56,9 @@ structure:
 			page o daghighan copy blog bezan bebin kojahash fargh dare ba ham
 	subdomains
 	admin subdomain
+	seo: 
+		find h1 and h2 in page
+	notification after save and edit
 	? table
 		sort, 
 		filter, 
