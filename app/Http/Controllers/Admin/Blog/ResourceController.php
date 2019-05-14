@@ -64,9 +64,10 @@ class ResourceController extends Controller
         if (!$form->isValid()) {
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
-
-        // Do saving and other things...
         $data = $form->getFieldValues();
+        dd($data);
+        
+        // Do saving and other things...
         $data['creator_id'] = \Auth::id();
         $data['editor_id'] = \Auth::id();
         Blog::create($data);
@@ -82,7 +83,9 @@ class ResourceController extends Controller
      */
     public function show($id)
     {
-        //
+        $blog = Blog::find($id);
+
+        dd($blog->getAttributes());
     }
 
     /**
@@ -93,7 +96,13 @@ class ResourceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $blog = Blog::find($id);
+
+        $form = $formBuilder->create(BlogForm::class, [
+            'model' => $blog
+        ]);
+
+        return view('admin.blog.list.create', compact('blog'));
     }
 
     /**

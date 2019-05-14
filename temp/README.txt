@@ -26,13 +26,34 @@ structure:
 		+ footer
 		- quick-sidebar
 		- quick-navbar	
-	form,
-		form view, 
-		save in controller
-		add tags
-		upload image
-		validation,
+	form:
+		logic:
+			+ form create
+			validate form
+			save data to database
+			edit
+			delete
+		ux:
+			old values
+			good validation error
+			show hints
+		ui:
+			all metronic theme
+			input 
+			textarea
+			switch
+	ckeditor
+	upload image
 	file manager
+	add tags
+	form:
+		structure:
+			to route blog bede na id
+			ye sakhtar khob vase create form
+			ye sakhtare khob vase validation
+			validation o form o hame ina ro betonim az dakhele model generate konim
+			ye kari konam har chi to model hast o ham migration kone ham to form o ina azash estefade kone
+			page o daghighan copy blog bezan bebin kojahash fargh dare ba ham
 	subdomains
 	admin subdomain
 	? table
@@ -44,7 +65,6 @@ structure:
 		delete
 		image showing
 	login page complete
-	seo structure
 	settings o bezarim to .env ya config ya az database bekhone
 	change log show in dashboard
 	theme 
@@ -156,9 +176,21 @@ Features:
 		+ 11-seo
 			Setting:
 				google no index
+				site map
 			Content Rules: 
 				h1 finder, h2 h3, full metas, canonical link, ... it crowl on all of the blog and pages ... seo principles
+				blog - article:
+				+ url required|min:10|max:80|lowercase|alphabetic, 
+				+ title required|unique:posts,post_title|min:10|max:60, 
+				+ description required|min:70|max:300, 
+				+ content h1 required|count:1|!=title
+
 			lazy loading -> default lazy loading image
+
+			bade ha ye package minevisam ke tahlil kone chandta kalame to in blog hast o in dastana
+			bad miad mige ke in url che DA dare o che PA dare
+			ye seri link hae dakheli be toe safahat midim to site
+
 		+ 12-user manager
 			first name, last name, phone, password, birthday, country, male, profile, address	
 			role and permission: name, title, address ha ham bezar barash

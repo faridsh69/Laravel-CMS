@@ -16,10 +16,15 @@ class BlogForm extends Form
             ->add('short_content', 'textarea')
             ->add('content', 'textarea')
             ->add('status', 'checkbox')
-            ->add('roles', 'choice', [
-                'choices' => ['admin' => 'Admin', 'manager' => 'Manager']
-            ])
             ->add('submit', 'submit', ['label' => 'Save form'])
             ;
+
+	        'title' => 'required|max:190',
+	        'content' => 'required',
+	        'meta_title' => 'max:190',
+	        'meta_description' => 'max:190',
+	        'category_id' => 'nullable|exists:categories,id',
+	    ];
+
     }
 }
