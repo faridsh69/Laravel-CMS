@@ -21,28 +21,28 @@
 
 </script> -->
 <script>
-	var data = [
-	    [
-	        "Tiger Nixon",
-	        "System Architect",
-	        "Edinburgh",
-	        "5421",
-	        "2011/04/25",
-	        "$3,120"
-	    ],
-	    [
-	        "Garrett Winters",
-	        "Director",
-	        "Edinburgh",
-	        "8422",
-	        "2011/07/25",
-	        "$5,300"
-	    ]
-	];
+	// var data = [
+	//     [
+	//         "Tiger Nixon",
+	//         "System Architect",
+	//         "Edinburgh",
+	//         "5421",
+	//         "2011/04/25",
+	//         "$3,120"
+	//     ],
+	//     [
+	//         "Garrett Winters",
+	//         "Director",
+	//         "Edinburgh",
+	//         "8422",
+	//         "2011/07/25",
+	//         "$5,300"
+	//     ]
+	// ];
 
-	$('#example').DataTable( {
-	    data: data
-	} );
+	// $('#example').DataTable( {
+	//     data: data
+	// } );
 </script>
 @endpush
 
@@ -71,11 +71,12 @@
 				</tr>
 			</thead>
 			<tbody>
-				@foreach(\App\Models\Blog::get() as $blog)
+				@foreach(\App\Models\Blog::orderBy('updated_at', 'desc')->get() as $blog)
 				<tr>
 					<td>{{ $blog->id }}</td>
 					<td>{{ $blog->title }}</td>
 					<td>{{ $blog->content }}</td>
+					<td><a href="{{ route('admin.blog.list.edit', $blog) }}">edit</a></td>
 				</tr>
 				@endforeach
 			</tbody>

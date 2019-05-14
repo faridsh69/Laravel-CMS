@@ -149,6 +149,8 @@ return [
         /*
          * Package Service Providers...
          */
+        Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -158,8 +160,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
-        Yajra\DataTables\DataTablesServiceProvider::class,
     ],
 
     /*
@@ -211,9 +211,12 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        /*
+         * Package Aliases
+         */
         'DataTables' => Yajra\DataTables\Facades\DataTables::class, 
-
         'Cdn' => App\Services\CdnService::class,
+        'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
     ],
 
 ];

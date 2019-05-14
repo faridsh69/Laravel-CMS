@@ -25,7 +25,16 @@ structure:
 		+ header-tools -> export excel - print o ina ro bezar ...
 		+ footer
 		- quick-sidebar
-		- quick-navbar
+		- quick-navbar	
+	form,
+		form view, 
+		save in controller
+		add tags
+		upload image
+		validation,
+	file manager
+	subdomains
+	admin subdomain
 	? table
 		sort, 
 		filter, 
@@ -34,13 +43,20 @@ structure:
 		edit
 		delete
 		image showing
-	form,
-		in matn o be englisi convert kon vase eric
-	view, 
-	validation,
+	login page complete
+	seo structure
+	settings o bezarim to .env ya config ya az database bekhone
+	change log show in dashboard
+	theme 
+	block
+	widgets
+	notification email o sms
+	webpack for compile css js files
+	cache forms and sidebar
+	check php load time in front views after developing them
 	- use docker
 	- use data in models to create migrations
-	login page complete
+
 models:
 	blog: title, content, short_content, creator_id, editor_id, status, url, seo_id
 migrations:

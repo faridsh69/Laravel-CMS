@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin\Blog;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Kris\LaravelFormBuilder\FormBuilder;
+
 use App\Models\Blog;
+use App\Forms\BlogForm;
 
 class ResourceController extends Controller
 {
@@ -15,7 +18,7 @@ class ResourceController extends Controller
      */
     public function index()
     {
-        return view('admin.blog');
+        return view('admin.blog.list.index');
     }
 
     public function getDatatable()
@@ -38,9 +41,14 @@ class ResourceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(FormBuilder $formBuilder)
     {
-        return view('admin.blog.list.create');
+        $form = $formBuilder->create(BlogForm::class, [
+            'method' => 'POST',
+            'url' => route('admin.blog.list.store')
+        ]);
+
+        return view('admin.blog.list.create', compact('form'));
     }
 
     /**
@@ -49,9 +57,21 @@ class ResourceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FormBuilder $formBuilder)
     {
-        //
+        $form = $formBuilder->create(BlogForm::class);
+
+        if (!$form->isValid()) {
+            return redirect()->back()->withErrors($form->getErrors())->withInput();
+        }
+
+        // Do saving and other things...
+        $data = $form->getFieldValues();
+        $data['creator_id'] = \Auth::id();
+        $data['editor_id'] = \Auth::id();
+        Blog::create($data);
+
+        return redirect()->route('admin.blog.list.index');
     }
 
     /**
