@@ -37,86 +37,22 @@ class Blog extends Model
     // ];
 
     public $fields = [
-        [
-            'name' => 'id',
-            'type' => 'increments',
-            'rule' => 'required',
-        ],
-        [
-            'name' => 'title',
-            'type' => 'string',
-            'rule' => 'required|unique:blogs,title|min:10|max:60',
-        ],
-        [
-            'name' => 'url',
-            'type' => 'string',
-            'rule' => 'required|max:80|lowercase|alphabetic',
-        ],
-        [
-            'name' => 'short_content',
-            'type' => 'string',
-            'rule' => 'nullable|max:191',
-        ],
-        [
-            'name' => 'content',
-            'type' => 'text',
-            'rule' => 'required', // find h1 1 done va != title , find h2
-        ],
-        [
-            'name' => 'creator_id',
-            'type' => 'integer',
-            'rule' => 'required',
-        ],
-        [
-            'name' => 'editor_id',
-            'type' => 'integer',
-            'rule' => 'required',
-        ],
-        [
-            'name' => 'published',
-            'type' => 'boolean',
-            'rule' => 'required',
-        ],
-        [
-            'name' => 'google_index',
-            'type' => 'boolean',
-            'rule' => 'required',
-        ],
-        [
-            'name' => 'meta_description',
-            'type' => 'string',
-            'rule' => 'required|min:70|max:191',
-        ],
-        [
-            'name' => 'keywords',
-            'type' => 'string',
-            'rule' => 'nullable|max:191',
-        ],
-        [
-            'name' => 'meta_image',
-            'type' => 'string',
-            'rule' => 'nullable|max:191|url',
-        ],
-        [
-            'name' => 'canonical_url',
-            'type' => 'string',
-            'rule' => 'nullable|max:191|url',
-        ],
-        [
-            'name' => 'created_at',
-            'type' => 'datetime',
-            'rule' => 'required',
-        ],
-        [
-            'name' => 'updated_at',
-            'type' => 'datetime',
-            'rule' => 'required',
-        ],
-        [
-            'name' => 'deleted_at',
-            'type' => 'datetime',
-            'rule' => 'nullable',
-        ],
+        ['name' => 'id', 'type' => 'increments', 'rule' => 'required'],
+        ['name' => 'url', 'type' => 'string', 'rule' => 'required|max:80|lowercase|alphabetic'],
+        ['name' => 'title', 'type' => 'string', 'rule' => 'required|unique:blogs,title|min:10|max:60'],
+        ['name' => 'short_content', 'type' => 'string', 'rule' => 'nullable|max:191'],
+        ['name' => 'content', 'type' => 'text', 'rule' => 'required|find h1 1i, != title,find h2'],
+        ['name' => 'meta_description', 'type' => 'string', 'rule' => 'required|min:70|max:191'],
+        ['name' => 'keywords', 'type' => 'string', 'rule' => 'nullable|max:191'],
+        ['name' => 'meta_image', 'type' => 'string', 'rule' => 'nullable|max:191|url'],
+        ['name' => 'published', 'type' => 'boolean', 'rule' => 'required'],
+        ['name' => 'google_index', 'type' => 'boolean', 'rule' => 'required'],
+        ['name' => 'canonical_url', 'type' => 'string', 'rule' => 'nullable|max:191|url'],
+        ['name' => 'creator_id', 'type' => 'integer', 'rule' => 'required'],
+        ['name' => 'editor_id', 'type' => 'integer', 'rule' => 'required'],
+        ['name' => 'created_at', 'type' => 'datetime', 'rule' => 'required'],
+        ['name' => 'updated_at', 'type' => 'datetime', 'rule' => 'required'],
+        ['name' => 'deleted_at', 'type' => 'datetime', 'rule' => 'nullable'],
     ];
 
     public function editor()
