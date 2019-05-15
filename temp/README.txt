@@ -128,10 +128,10 @@ packages:
 		yajra/laravel-datatables-oracle
 	tables: sort, filter, paginate, status activation
 		datatables.net
-	HTML editor:
+	+ HTML editor:
 		ckeditor
-	file manager:
-	image: crop, resize, ye url base dashte bashe kolle system, alt axesh
+	+ file manager:
+	+ image: crop, resize, ye url base dashte bashe kolle system, alt axesh
 	add tags: for blog
 	comment o rate o share in social networks:
 	log:

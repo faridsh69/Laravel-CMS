@@ -9,16 +9,16 @@ class UserController extends Controller
 {
 	public function getRole()
 	{
-		return view('layout.admin');
+		return view('admin.blog');
 	}
 
 	public function getPermission()
 	{
-		return view('layout.admin');
+		return view('admin.blog');
 	}
 
 	public function getRegistrationSetting()
 	{
-		return view('layout.admin');
+		return view('admin.blog');
 	}
 }

@@ -9,16 +9,16 @@ class SeoController extends Controller
 {
 	public function getSetting()
 	{
-		return view('layout.admin');
+		return view('admin.blog');
 	}
 
 	public function getContentRules()
 	{
-		return view('layout.admin');
+		return view('admin.blog');
 	}
 
 	public function getLazyLoading ()
 	{
-		return view('layout.admin');
+		return view('admin.blog');
 	}
 }

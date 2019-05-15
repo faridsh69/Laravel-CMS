@@ -12,3 +12,5 @@ yarn-error.log
 *.zip
 *.tar
 *.rar
+/stats
+/logs

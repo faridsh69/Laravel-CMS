@@ -9,31 +9,31 @@ class SettingController extends Controller
 {
 	public function getGeneral()
 	{
-		return view('layout.admin');
+		return view('admin.blog');
 	}
 
 	public function getContact()
 	{
-		return view('layout.admin');
+		return view('admin.blog');
 	}
 
 	public function getLog()
 	{
-		return view('layout.admin');
+		return view('admin.blog');
 	}
 
 	public function getBackup()
 	{
-		return view('layout.admin');
+		return view('admin.blog');
 	}	 
 	
 	public function getDeveloperOptionsBasic()
 	{
-		return view('layout.admin');
+		return view('admin.blog');
 	} 
 
 	public function getDeveloperOptionsAdvance()
 	{
-		return view('layout.admin');
+		return view('admin.blog');
 	} 	  
 }
