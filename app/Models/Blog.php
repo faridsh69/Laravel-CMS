@@ -92,11 +92,15 @@ class Blog extends Model
         parent::boot();
 
         self::creating(function($model){
+            $model->published = $model->published ? 1 : 0;
+            $model->google_index = $model->google_index ? 1 : 0;
             $model->creator_id = Auth::id() ? Auth::id() : 1;
             $model->editor_id = Auth::id() ? Auth::id() : 1;
         });
 
         self::updating(function($model){
+            $model->published = $model->published ? 1 : 0;
+            $model->google_index = $model->google_index ? 1 : 0;
             $model->creator_id = Auth::id() ? Auth::id() : 1;
             $model->editor_id = Auth::id() ? Auth::id() : 1;
         });

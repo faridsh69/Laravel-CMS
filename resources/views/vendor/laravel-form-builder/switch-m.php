@@ -11,7 +11,7 @@
     <?php endif; ?>
     
     <div class="col-1">
-        <span class="m-switch m-switch--outline m-switch--icon m-switch--primary m-switch--sm">
+        <span class="m-switch m-switch--outline m-switch--icon m-switch--success m-switch--sm">
             <label>
                 <?= Form::checkbox($name, $options['value'], $options['checked'], $options['attr']) ?>
                 <span></span>

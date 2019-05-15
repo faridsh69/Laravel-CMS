@@ -6,7 +6,7 @@
 
 <?php if ($showField): ?>
     <div class="m-checkbox-list">
-        <label class="m-checkbox m-checkbox--solid m-checkbox--primary">
+        <label class="m-checkbox m-checkbox--solid m-checkbox--danger">
             <?= Form::checkbox($name, $options['value'], $options['checked'], $options['attr']) ?>
             <?= $options['label']; ?>
 

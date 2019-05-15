@@ -43,14 +43,9 @@ class BlogForm extends Form
                 'property' => 'id',
                 'attr' => ['multiple' => 'true', 'class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker', 'data-live-search' => 'true']
             ])
-
             ->add('published', 'switch-m', [
-                'checked' => true,
-                'value' => 1,
             ])
             ->add('google_index', 'checkbox-m', [
-                'checked' => true,
-                'value' => 1,
                 'help_block' => [
                     'text' => 'Google will index this page.',
                 ],

@@ -33,6 +33,7 @@ structure:
 			+ save data to database
 			+ edit
 			+ delete
+			+ checkbox
 		ux:
 			+ old values
 			+ good validation error
@@ -48,14 +49,19 @@ structure:
 			+ multiselect
 			+ button
 			+ help blocl
-			validations
-			- icon
-	ckeditor
-	upload image
-	file manager
+			+ validations
+			icon
+	notification after save and edit
 	add tags
 	add category_id
 	add some related blogs
+	ckeditor
+	upload image
+	file manager
+	sakhtare tree vase category
+	drag kardane page
+	subdomains
+	admin subdomain
 	form:
 		structure:
 			to route blog bede na id
@@ -64,11 +70,8 @@ structure:
 			validation o form o hame ina ro betonim az dakhele model generate konim
 			ye kari konam har chi to model hast o ham migration kone ham to form o ina azash estefade kone
 			page o daghighan copy blog bezan bebin kojahash fargh dare ba ham
-	subdomains
-	admin subdomain
 	seo: 
 		find h1 and h2 in page
-	notification after save and edit
 	? table
 		sort, 
 		filter, 
@@ -79,10 +82,11 @@ structure:
 		image showing
 	login page complete
 	settings o bezarim to .env ya config ya az database bekhone
-	change log show in dashboard
-	theme 
-	block
-	widgets
+	changelog show in dashboard vase eric benevis
+	front
+		theme 
+		block
+		widgets
 	notification email o sms
 	webpack for compile css js files
 	cache forms and sidebar
@@ -144,11 +148,11 @@ packages:
 		spatie/laravel-backup
 	+ breadcrumb
 		myself
-	meta
+	+ meta
 		myself
-	seo
+	+ seo
 		myself
-	cdn
+	+ cdn
 		myself
 	lazy 
 		myself 

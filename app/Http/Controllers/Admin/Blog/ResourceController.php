@@ -65,7 +65,7 @@ class ResourceController extends Controller
             'method' => 'POST',
             'url' => route('admin.blog.list.store'),
             'class' => 'm-form m-form--fit m-form--state m-form--label-align-right',
-            'id' => 'blog_form'
+            'id' => 'blog_form',
         ]);
 
         return view('admin.blog.list.create', compact('form', 'meta'));
@@ -116,13 +116,24 @@ class ResourceController extends Controller
     {
         $blog = Blog::findOrFail($id);
 
+        $meta = [
+            'title' => __('Edit Blog'),
+            'description' => __('Admin Panel Page For Best Cms In The World'),
+            'image' => \Cdn::asset('upload/images/logo.png'),
+            'alert' => 'This is a full feature form that can create seo based blog in website.',
+            'link_route' => route('admin.blog.list.index'),
+            'link_name' => __('Blog Manager'),
+        ];
+            
         $form = $formBuilder->create(BlogForm::class, [
-            'model' => $blog,
             'method' => 'PUT',
-            'url' => route('admin.blog.list.update', $blog)
+            'url' => route('admin.blog.list.update', $blog),
+            'class' => 'm-form m-form--fit m-form--state m-form--label-align-right',
+            'id' => 'blog_form',
+            'model' => $blog,
         ]);
 
-        return view('admin.blog.list.create', compact('form'));
+        return view('admin.blog.list.create', compact('form', 'meta'));
     }
 
     /**
@@ -144,7 +155,10 @@ class ResourceController extends Controller
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
         
-        $blog->update($form->getFieldValues());
+        $data = $form->getFieldValues();
+        unset($data['languages']);
+
+        $blog->update($data);
 
         return redirect()->route('admin.blog.list.index');
     }
