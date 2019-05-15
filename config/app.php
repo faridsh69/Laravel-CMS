@@ -151,6 +151,8 @@ return [
          */
         Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -217,6 +219,7 @@ return [
         'DataTables' => Yajra\DataTables\Facades\DataTables::class, 
         'Cdn' => App\Services\CdnService::class,
         'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
+        'Image' => Intervention\Image\Facades\Image::class,
     ],
 
 ];

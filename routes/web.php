@@ -1,6 +1,10 @@
 <?php
 
 Route::group(['namespace' => 'Admin', 'middleware' => ['throttle:20,0.2', 'auth'], 'as' => 'admin.'], function () {
+	    
+    Route::get('/laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show');
+    Route::post('/laravel-filemanager/upload', '\UniSharp\LaravelFilemanager\Controllers\UploadController@upload');
+
 	Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'as' => 'dashboard.'], function () {
 		Route::get('', 'DashboardController@index')->name('index');
 		Route::get('profile', 'DashboardController@getProfile')->name('profile');
