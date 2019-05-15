@@ -51,13 +51,14 @@ structure:
 			+ help blocl
 			+ validations
 			+ icon
+			+ ckeditor
+	+ upload image
+	file manager
+	sync file manager with cdn
 	notification after save and edit
 	add tags
 	add category_id
 	add some related blogs
-	ckeditor
-	upload image
-	file manager
 	sakhtare tree vase category
 	drag kardane page
 	subdomains

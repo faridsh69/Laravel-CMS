@@ -29,10 +29,10 @@ class BlogForm extends Form
 			    ],
                 'attr' => ['rows' => '2'],
             ])
-            ->add('content', 'textarea', [ 
+            ->add('content', 'ckeditor', [ 
                 'rules' => 'required|seo_header',
             ])
-            ->add('meta_description', 'text', [
+            ->add('meta_description', 'text-m', [
                 'rules' => 'required|min:70|max:191',
                 'help_block' => [
 			        'text' => 'Meta description should have minimum 70 and maximum 191 characters.',

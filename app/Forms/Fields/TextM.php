@@ -36,7 +36,10 @@ class TextM extends FormField
                 break;
             case 'canonical_url':
                 $options['left_icon'] = 'la-globe';
-                break;                
+                break; 
+            case 'meta_description':
+                $options['left_icon'] = 'la-bookmark';
+                break;                     
         }
 
 

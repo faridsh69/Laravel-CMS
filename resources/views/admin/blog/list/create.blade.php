@@ -5,15 +5,21 @@
 @section('image', $meta['image'])
 
 @push('script')
-<script src="{{ Cdn::asset('/metronic/assets/demo/default/custom/components/forms/widgets/bootstrap-maxlength.js') }}"></script>
-
-<script src="{{ Cdn::asset('/metronic/assets/demo/default/custom/components/forms/widgets/bootstrap-switch.js') }}"></script>
-
-<script src="{{ Cdn::asset('/metronic/assets/demo/default/custom/components/forms/widgets/bootstrap-select.js') }}"></script>
-
-<!-- <script src="{{ Cdn::asset('/metronic/assets/demo/default/custom/components/forms/widgets/dropzone.js') }}"></script> -->
-
-<script src="{{ Cdn::asset('/metronic/assets/demo/default/custom/components/forms/validation/form-controls.js') }}"></script>
+<script src="{{ Cdn::asset('js/form/bootstrap-maxlength.js') }}"></script>
+<script src="{{ Cdn::asset('js/form/bootstrap-switch.js') }}"></script>
+<script src="{{ Cdn::asset('js/form/bootstrap-select.js') }}"></script>
+<script src="{{ Cdn::asset('js/form/form-controls.js') }}"></script>
+<script src="{{ Cdn::asset('js/form/ckeditor4/ckeditor.js') }}"></script>
+<script>
+    CKEDITOR.replace('content', {
+        // toolbar: 'admin_mode',
+        filebrowserBrowseUrl: 'admin',
+        // skin: 'moonocolor,skins/moono/',
+        // skin: 'moonocolor,skins/moono-lisa/',
+        skin: 'moonocolor,skins/kama/',
+        // language: 'en',
+    });
+</script>
 @endpush
 
 @section('content')	
