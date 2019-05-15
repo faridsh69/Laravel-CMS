@@ -38,10 +38,16 @@ structure:
 			+ good validation error
 			+ show hints
 		ui:
-			all metronic theme
-			input 
-			textarea
-			switch
+			+ all metronic theme
+			+ input 
+			+ textarea
+			+ checkbox
+			+ switch1
+			+ switch2
+			+ maxlength
+			icon
+			multiselect
+			validations
 	ckeditor
 	upload image
 	file manager

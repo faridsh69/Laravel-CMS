@@ -11,11 +11,11 @@
 
 <script src="{{ Cdn::asset('/metronic/assets/demo/default/custom/components/forms/widgets/bootstrap-select.js') }}"></script>
 
-<script src="{{ Cdn::asset('/metronic/assets/demo/default/custom/components/forms/widgets/summernote.js') }}"></script>
+<!-- <script src="{{ Cdn::asset('/metronic/assets/demo/default/custom/components/forms/widgets/summernote.js') }}"></script> -->
 
-<script src="{{ Cdn::asset('/metronic/assets/demo/default/custom/components/forms/widgets/autosize.js') }}"></script>
+<!-- <script src="{{ Cdn::asset('/metronic/assets/demo/default/custom/components/forms/widgets/autosize.js') }}"></script> -->
 
-<script src="{{ Cdn::asset('/metronic/assets/demo/default/custom/components/forms/widgets/dropzone.js') }}"></script>
+<!-- <script src="{{ Cdn::asset('/metronic/assets/demo/default/custom/components/forms/widgets/dropzone.js') }}"></script> -->
 
 <script src="{{ Cdn::asset('/metronic/assets/demo/default/custom/components/forms/validation/form-controls.js') }}"></script>
 
@@ -24,9 +24,12 @@
 @section('content')
 <div class="m-portlet m-portlet--mobile">
 	{!! form($form) !!}
+
+
+
 <form class="m-form m-form--fit m-form--state m-form--label-align-right">
 	<div class="m-portlet__body">
-		<div class="form-group m-form__group">
+		<!-- <div class="form-group m-form__group">
 			<label for="exampleInputEmail1">
 				Email address
 			</label>
@@ -34,9 +37,9 @@
 			<span class="m-form__help">
 				We'll never share your email with anyone else.
 			</span>
-		</div>
+		</div> -->
 
-		<div class="form-group m-form__group">
+		<!-- <div class="form-group m-form__group">
 			<label for="exampleInputEmail1">
 				Email address
 			</label>
@@ -44,25 +47,25 @@
 			<span class="m-form__help">
 				We'll never share your email with anyone else.
 			</span>
-		</div>
+		</div> -->
 
-		<div class="form-group m-form__group">
+		<!-- <div class="form-group m-form__group">
 			<label for="exampleTextarea">
 				Example textarea
 			</label>
 			<textarea class="form-control m-input" id="exampleTextarea" rows="3"></textarea>
-		</div>
+		</div> -->
 
-		<div class="form-group m-form__group row">
+		<!-- <div class="form-group m-form__group row">
 			<label class="col-form-label col-lg-3 col-sm-12">
 				Basic Demo
 			</label>
 			<div class="col-lg-4 col-md-9 col-sm-12">
 				<textarea class="form-control" id="m_autosize_1" rows="3"></textarea>
 			</div>
-		</div>
+		</div> -->
 
-		<div class="form-group m-form__group">
+		<!-- <div class="form-group m-form__group">
 			<label>
 				Multiple File Upload
 			</label>
@@ -87,8 +90,9 @@
 				<input type="file" id="file2" class="custom-file-input">
 				<span class="custom-file-control"></span>
 			</label>
-		</div>
-		<div class="m-form__group form-group">
+		</div> -->
+
+		<!-- <div class="m-form__group form-group">
 			<label>
 				checkboxes
 			</label>
@@ -99,7 +103,8 @@
 					<span></span>
 				</label>
 			</div>
-		</div>
+		</div> -->
+		<!-- 
 		<div class="m-form__group form-group">
 			<label>
 				radios
@@ -111,9 +116,9 @@
 					<span></span>
 				</label>
 			</div>
-		</div>
+		</div> -->
 
-		<div class="m-form__group form-group row">
+		<!-- <div class="m-form__group form-group row">
 			<label class="col-1 col-form-label">
 				Success
 			</label>
@@ -126,7 +131,7 @@
 				</span>
 			</div>
 		</div>
-
+ -->
 		<div class="form-group m-form__group">
 			<label>
 				Pill & Air Style Input
@@ -158,7 +163,7 @@
 			</div>
 		</div>
 
-		- data-size="small" - data-on-color="success" - m-bootstrap-switch--air - m-bootstrap-switch--pill
+		<!-- - data-size="small" - data-on-color="success" - m-bootstrap-switch--air - m-bootstrap-switch--pill
 		<div class="form-group m-form__group row">
 			<label class="col-form-label col-lg-3 col-sm-12">
 				Sizing 
@@ -169,7 +174,7 @@
 				</span>
 
 			</div>
-		</div>
+		</div> -->
 		pill - Multiple Select - search dar - ba air - Select/deselect all options
 		<div class="form-group m-form__group row">
 			<label class="col-form-label col-lg-3 col-sm-12">

@@ -45,7 +45,8 @@ class ResourceController extends Controller
     {
         $form = $formBuilder->create(BlogForm::class, [
             'method' => 'POST',
-            'url' => route('admin.blog.list.store')
+            'url' => route('admin.blog.list.store'),
+            'class' => 'm-form m-form--fit m-form--state m-form--label-align-right',
         ]);
 
         return view('admin.blog.list.create', compact('form'));

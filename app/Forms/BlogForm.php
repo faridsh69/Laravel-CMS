@@ -17,7 +17,7 @@ class BlogForm extends Form
 			    ],
             ])
             ->add('title', 'text', [
-                'rules' => 'required|min:10|max:70|unique:blogs,title,' . $id,
+                'rules' => 'required|min:10|max:60|unique:blogs,title,' . $id,
                 'help_block' => [
 			        'text' => 'Title should be unique, minimum 10 and maximum 60 characters.',
 			    ],
@@ -27,6 +27,7 @@ class BlogForm extends Form
                 'help_block' => [
 			        'text' => 'Short content will show in lists instead of content.',
 			    ],
+                'attr' => ['rows' => '2'],
             ])
             ->add('content', 'textarea', [ 
                 'rules' => 'required|seo_header',
@@ -43,11 +44,15 @@ class BlogForm extends Form
             ->add('meta_image', 'text', [
                 'rules' => 'nullable|max:191|url',
             ])
-            ->add('published', 'checkbox', [
+            ->add('published', 'switch-m', [
                 'checked' => true,
                 'value' => 1,
             ])
-            ->add('google_index', 'checkbox', [
+            // ->add('published2', 'switch-bootstrap-m', [
+            //     'checked' => true,
+            //     'value' => 1,
+            // ])
+            ->add('google_index', 'checkbox-m', [
                 'checked' => true,
                 'value' => 1,
                 'help_block' => [

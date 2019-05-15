@@ -2,12 +2,12 @@
 
 return [
     'defaults'      => [
-        'wrapper_class'       => 'form-group',
+        'wrapper_class'       => 'form-group m-form__group',
         'wrapper_error_class' => 'has-error',
-        'label_class'         => 'control-label',
-        'field_class'         => 'form-control',
+        'label_class'         => '',
+        'field_class'         => 'form-control m-input m-input--air m-input--pill',
         'field_error_class'   => '',
-        'help_block_class'    => 'help-block',
+        'help_block_class'    => 'm-form__help',
         'error_class'         => 'text-danger',
         'required_class'      => 'required'
 
@@ -45,6 +45,8 @@ return [
     'default_namespace' => '',
 
     'custom_fields' => [
-//        'datetime' => App\Forms\Fields\Datetime::class
+        'switch-m'   => 'App\Forms\Fields\SwitchM',
+        'checkbox-m' => '\App\Forms\Fields\CheckboxM',
+        'switch-bootstrap-m' => '\App\Forms\Fields\SwitchBootstrapM',
     ]
 ];
