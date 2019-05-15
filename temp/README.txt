@@ -50,7 +50,7 @@ structure:
 			+ button
 			+ help blocl
 			+ validations
-			icon
+			+ icon
 	notification after save and edit
 	add tags
 	add category_id

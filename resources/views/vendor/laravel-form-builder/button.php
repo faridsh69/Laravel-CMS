@@ -12,7 +12,7 @@
 <div class="m-portlet__foot m-portlet__foot--fit">
 	<div class="m-form__actions m-form__actions">
 		<div class="row">
-			<div class="col-lg-9 ml-lg-auto">
+			<div class="col-lg-12 ml-lg-auto">
 				<button type="submit" class="btn btn-primary">
 					<?= $options['label'] ?>
 				</button>

@@ -10,13 +10,13 @@ class BlogForm extends Form
     {
     	$id = $this->model ? $this->model->id : 0;
         $this
-            ->add('url', 'text', [
+            ->add('url', 'text-m', [
             	'rules' => 'required|max:80|regex:/[a-z0-9-]/|unique:blogs,url,' . $id,
             	'help_block' => [
 			        'text' => 'Url should be unique, contain lowercase characters and numbers and -',
 			    ],
             ])
-            ->add('title', 'text', [
+            ->add('title', 'text-m', [
                 'rules' => 'required|min:10|max:60|unique:blogs,title,' . $id,
                 'help_block' => [
 			        'text' => 'Title should be unique, minimum 10 and maximum 60 characters.',
@@ -50,15 +50,15 @@ class BlogForm extends Form
                     'text' => 'Google will index this page.',
                 ],
             ])
-            ->add('keywords', 'text', [
+            ->add('keywords', 'text-m', [
                 'rules' => 'nullable|max:191',
                 'attr' => ['placeholder' => 'Its not important for google anymore'],
             ])
-            ->add('meta_image', 'text', [
+            ->add('meta_image', 'text-m', [
                 'rules' => 'nullable|max:191|url',
                 'attr' => ['placeholder' => 'Meta image shows when this page is shared in social networks.'],
             ])
-            ->add('canonical_url', 'text', [
+            ->add('canonical_url', 'text-m', [
                 'rules' => 'nullable|max:191|url',
                 'help_block' => [
 			        'text' => 'Canonical url just used for seo redirect duplicate contents.',

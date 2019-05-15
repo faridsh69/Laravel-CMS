@@ -48,5 +48,6 @@ return [
         'switch-m'   => 'App\Forms\Fields\SwitchM',
         'checkbox-m' => '\App\Forms\Fields\CheckboxM',
         'switch-bootstrap-m' => '\App\Forms\Fields\SwitchBootstrapM',
+        'text-m' => '\App\Forms\Fields\TextM',
     ]
 ];

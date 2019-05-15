@@ -106,10 +106,7 @@
 				</div>
 			</div>
 	 -->
-			<!-- <div class="form-group m-form__group">
-				<label>
-					Pill & Air Style Input
-				</label>
+
 				<div class="m-input-icon m-input-icon--left m-input-icon--right">
 					<input type="text" class="form-control m-input m-input--pill m-input--air" placeholder="Amount">
 					<span class="m-input-icon__icon m-input-icon__icon--left">
@@ -123,7 +120,10 @@
 						</span>
 					</span>
 				</div>
-			</div> -->
+
+				<input type="email" class="form-control m-input m-input--air m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+			
+
 
 			<!-- <div class="form-group m-form__group row">
 				<label class="col-form-label col-lg-3 col-sm-12">
