@@ -38,32 +38,41 @@ class BlogForm extends Form
 			        'text' => 'Meta description should have minimum 70 and maximum 191 characters.',
 			    ],
             ])
-            ->add('keywords', 'text', [
-                'rules' => 'nullable|max:191',
+            ->add('languages', 'entity', [
+                'class' => 'App\Models\Blog',
+                'property' => 'id',
+                'attr' => [
+                    'data-live-search' => 'true',
+                    'mutiple' => '',
+                    'class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker',
+                ],
             ])
-            ->add('meta_image', 'text', [
-                'rules' => 'nullable|max:191|url',
-            ])
+
             ->add('published', 'switch-m', [
                 'checked' => true,
                 'value' => 1,
             ])
-            // ->add('published2', 'switch-bootstrap-m', [
-            //     'checked' => true,
-            //     'value' => 1,
-            // ])
             ->add('google_index', 'checkbox-m', [
                 'checked' => true,
                 'value' => 1,
                 'help_block' => [
-			        'text' => 'Google will index this page.',
-			    ],
+                    'text' => 'Google will index this page.',
+                ],
+            ])
+            ->add('keywords', 'text', [
+                'rules' => 'nullable|max:191',
+                'attr' => ['placeholder' => 'Its not important for google anymore'],
+            ])
+            ->add('meta_image', 'text', [
+                'rules' => 'nullable|max:191|url',
+                'attr' => ['placeholder' => 'Meta image shows when this page is shared in social networks.'],
             ])
             ->add('canonical_url', 'text', [
                 'rules' => 'nullable|max:191|url',
                 'help_block' => [
 			        'text' => 'Canonical url just used for seo redirect duplicate contents.',
 			    ],
+                'attr' => ['placeholder' => 'Leave it empty if you dont need any google redirection.'],
             ])
             ->add('submit', 'submit')
             ;

@@ -45,9 +45,11 @@ structure:
 			+ switch1
 			+ switch2
 			+ maxlength
-			icon
+			- icon
 			multiselect
 			validations
+			+ button
+			+ help blocl
 	ckeditor
 	upload image
 	file manager
@@ -165,6 +167,7 @@ Features:
 		+ 2-blog
 			title, url, status, short_desc, long_desc, image, commentable, ratable, (block), (seo)
 		+ 3-category 
+			manage tags
 			title, order, page-or-blog
 		+ 4-file manager
 			file manager with full feature crop image, resize, ...

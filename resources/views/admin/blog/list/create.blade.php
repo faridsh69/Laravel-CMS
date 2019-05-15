@@ -132,7 +132,7 @@
 			</div>
 		</div>
  -->
-		<div class="form-group m-form__group">
+		<!-- <div class="form-group m-form__group">
 			<label>
 				Pill & Air Style Input
 			</label>
@@ -145,13 +145,13 @@
 				</span>
 				<span class="m-input-icon__icon m-input-icon__icon--right">
 					<span>
-						<i class="la la-pencil"></i>
+						<i class="la la-check"></i>
 					</span>
 				</span>
 			</div>
-		</div>
+		</div> -->
 
-		<div class="form-group m-form__group row">
+		<!-- <div class="form-group m-form__group row">
 			<label class="col-form-label col-lg-3 col-sm-12">
 				Always Show
 			</label>
@@ -161,7 +161,7 @@
 					Show the counter on input focus
 				</span>
 			</div>
-		</div>
+		</div> -->
 
 		<!-- - data-size="small" - data-on-color="success" - m-bootstrap-switch--air - m-bootstrap-switch--pill
 		<div class="form-group m-form__group row">
