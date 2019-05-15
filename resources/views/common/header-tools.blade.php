@@ -20,7 +20,7 @@
 										<a href="" class="m-nav__link">
 											<i class="m-nav__link-icon flaticon-share"></i>
 											<span class="m-nav__link-text">
-												Create Post
+												Create Blog
 											</span>
 										</a>
 									</li>
@@ -28,7 +28,7 @@
 										<a href="" class="m-nav__link">
 											<i class="m-nav__link-icon flaticon-chat-1"></i>
 											<span class="m-nav__link-text">
-												Send Messages
+												Blog List
 											</span>
 										</a>
 									</li>
@@ -36,28 +36,7 @@
 										<a href="" class="m-nav__link">
 											<i class="m-nav__link-icon flaticon-multimedia-2"></i>
 											<span class="m-nav__link-text">
-												Upload File
-											</span>
-										</a>
-									</li>
-									<li class="m-nav__section">
-										<span class="m-nav__section-text">
-											Useful Links
-										</span>
-									</li>
-									<li class="m-nav__item">
-										<a href="" class="m-nav__link">
-											<i class="m-nav__link-icon flaticon-info"></i>
-											<span class="m-nav__link-text">
-												FAQ
-											</span>
-										</a>
-									</li>
-									<li class="m-nav__item">
-										<a href="" class="m-nav__link">
-											<i class="m-nav__link-icon flaticon-lifebuoy"></i>
-											<span class="m-nav__link-text">
-												Support
+												Settings
 											</span>
 										</a>
 									</li>

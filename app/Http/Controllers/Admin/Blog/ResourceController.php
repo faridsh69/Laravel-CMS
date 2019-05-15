@@ -18,7 +18,16 @@ class ResourceController extends Controller
      */
     public function index()
     {
-        return view('admin.blog.list.index');
+        $meta = [
+            'title' => __('Blog Manager'),
+            'description' => __('Admin Panel Page For Best Cms In The World'),
+            'image' => \Cdn::asset('upload/images/logo.png'),
+            'alert' => 'This is a table of blogs with sort and filter and paginate.',
+            'link_route' => route('admin.blog.list.create'),
+            'link_name' => __('Create New Blog'),
+        ];
+
+        return view('admin.blog.list.index', compact('meta'));
     }
 
     public function getDatatable()
@@ -43,13 +52,23 @@ class ResourceController extends Controller
      */
     public function create(FormBuilder $formBuilder)
     {
+        $meta = [
+            'title' => __('Create New Blog'),
+            'description' => __('Admin Panel Page For Best Cms In The World'),
+            'image' => \Cdn::asset('upload/images/logo.png'),
+            'alert' => 'This is a full feature form that can create seo based blog in website.',
+            'link_route' => route('admin.blog.list.index'),
+            'link_name' => __('Blog Manager'),
+        ];
+
         $form = $formBuilder->create(BlogForm::class, [
             'method' => 'POST',
             'url' => route('admin.blog.list.store'),
             'class' => 'm-form m-form--fit m-form--state m-form--label-align-right',
+            'id' => 'blog_form'
         ]);
 
-        return view('admin.blog.list.create', compact('form'));
+        return view('admin.blog.list.create', compact('form', 'meta'));
     }
 
     /**
@@ -66,7 +85,10 @@ class ResourceController extends Controller
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
 
-        Blog::create($form->getFieldValues());
+        $data = $form->getFieldValues();
+        unset($data['languages']);
+
+        Blog::create($data);
 
         return redirect()->route('admin.blog.list.index');
     }

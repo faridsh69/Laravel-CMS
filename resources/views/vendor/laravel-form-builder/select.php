@@ -11,9 +11,6 @@
 
 <?php if ($showField): ?>
 
-   <!--  <select class="form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker" data-live-search="true" multiple>
-    </select> -->
-
     <?php $emptyVal = $options['empty_value'] ? ['' => $options['empty_value']] : null; ?>
     <?= Form::select($name, (array)$emptyVal + $options['choices'], $options['selected'], $options['attr']) ?>
     <?php include 'help_block.php' ?>
@@ -26,7 +23,3 @@
     </div>
     <?php endif; ?>
 <?php endif; ?>
-
-<div class="form-group m-form__group row">
-    
-</div>

@@ -41,11 +41,7 @@ class BlogForm extends Form
             ->add('languages', 'entity', [
                 'class' => 'App\Models\Blog',
                 'property' => 'id',
-                'attr' => [
-                    'data-live-search' => 'true',
-                    'mutiple' => '',
-                    'class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker',
-                ],
+                'attr' => ['multiple' => 'true', 'class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker', 'data-live-search' => 'true']
             ])
 
             ->add('published', 'switch-m', [

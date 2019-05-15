@@ -1,8 +1,8 @@
 @extends('layout.admin')
 
-@section('title', __('Blog Manager'))
-@section('description', __('Admin Panel Page For Best Cms In The World'))
-@section('image', Cdn::asset('upload/images/logo.png'))
+@section('title', $meta['title'])
+@section('description', $meta['description'])
+@section('image', $meta['image'])
 
 @push('style')
 <link href="{{ Cdn::asset('css/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
@@ -47,47 +47,32 @@
 @endpush
 
 @section('content')
-<div class="m-portlet m-portlet--mobile">
-	<div class="m-portlet__head">
-		<div class="m-portlet__head-caption">
-			<div class="m-portlet__head-title">
-				<h3 class="m-portlet__head-text">
-					<small>
-					</small>
-				</h3>
-				@if(true) @include('common.table-search') @endif
-			</div>
-		</div>
-		@if(false) @include('common.header-tools') @endif
-	</div>
-	<div class="m-portlet__body">
-		<a href="{{ route('admin.blog.list.create') }}"> Create New Blog </a>
-		<table>
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Title</th>
-					<th>Short Content</th>
-				</tr>
-			</thead>
-			<tbody>
-				@foreach(\App\Models\Blog::orderBy('updated_at', 'desc')->get() as $blog)
-				<tr>
-					<td>{{ $blog->id }}</td>
-					<td>{{ $blog->title }}</td>
-					<td width="400px">{{ $blog->content }}</td>
-					<td><a href="{{ route('admin.blog.list.edit', $blog) }}">edit | </a></td>
-					<td>
-						<form action="{{ route('admin.blog.list.destroy', $blog) }}" id="delete-form" method="POST">
-							@csrf
-							@method('DELETE')
-							<input type="submit" value="Delete">
-						</form>
-					</td>
-				</tr>
-				@endforeach
-			</tbody>
-		</table>
+<table>
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Title</th>
+			<th>Short Content</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach(\App\Models\Blog::orderBy('updated_at', 'desc')->get() as $blog)
+		<tr>
+			<td>{{ $blog->id }}</td>
+			<td>{{ $blog->title }}</td>
+			<td width="400px">{{ $blog->content }}</td>
+			<td><a href="{{ route('admin.blog.list.edit', $blog) }}">edit | </a></td>
+			<td>
+				<form action="{{ route('admin.blog.list.destroy', $blog) }}" id="delete-form" method="POST">
+					@csrf
+					@method('DELETE')
+					<input type="submit" value="Delete">
+				</form>
+			</td>
+		</tr>
+		@endforeach
+	</tbody>
+</table>
 		
 		<!-- <div class="m_datatable">
 			<table id="example">
@@ -102,7 +87,4 @@
 			</table>
 		</div> -->
 		<!-- <div class="m_datatable" id="1"></div> -->
-	</div>
-</div>
-
 @endsection

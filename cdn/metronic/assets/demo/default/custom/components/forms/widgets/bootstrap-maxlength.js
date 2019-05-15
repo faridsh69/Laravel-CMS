@@ -1,13 +1,13 @@
 var BootstrapMaxlength=function() {
     var e=function() {
     	$("#url").maxlength( {
-            threshold: 80, separator: " of ", preText: "You have ", postText: " chars remaining.", warningClass: "m-badge m-badge--warning m-badge--rounded m-badge--wide", limitReachedClass: "m-badge m-badge--success m-badge--rounded m-badge--wide"
+            threshold: 80, separator: " of ", preText: "You have ", postText: " chars remaining.", warningClass: "m-badge m-badge--info m-badge--rounded m-badge--wide", limitReachedClass: "m-badge m-badge--success m-badge--rounded m-badge--wide"
         }),
         $("#title").maxlength( {
-            threshold: 60, separator: " of ", preText: "You have ", postText: " chars remaining.", warningClass: "m-badge m-badge--warning m-badge--rounded m-badge--wide", limitReachedClass: "m-badge m-badge--success m-badge--rounded m-badge--wide"
+            threshold: 60, separator: " of ", preText: "You have ", postText: " chars remaining.", warningClass: "m-badge m-badge--info m-badge--rounded m-badge--wide", limitReachedClass: "m-badge m-badge--success m-badge--rounded m-badge--wide"
         }),
         $("#meta_description").maxlength( {
-            threshold: 191, separator: " of ", preText: "You have ", postText: " chars remaining.", warningClass: "m-badge m-badge--warning m-badge--rounded m-badge--wide", limitReachedClass: "m-badge m-badge--success m-badge--rounded m-badge--wide"
+            threshold: 191, separator: " of ", preText: "You have ", postText: " chars remaining.", warningClass: "m-badge m-badge--info m-badge--rounded m-badge--wide", limitReachedClass: "m-badge m-badge--success m-badge--rounded m-badge--wide"
         })
         // $("#m_maxlength_1").maxlength( {
         //     alwaysShow: true, separator: " of ", preText: "You have ", postText: " chars remaining.", warningClass: "m-badge m-badge--warning m-badge--rounded m-badge--wide", limitReachedClass: "m-badge m-badge--success m-badge--rounded m-badge--wide"

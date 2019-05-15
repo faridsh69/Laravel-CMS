@@ -24,8 +24,13 @@
 				<div class="m-grid__item m-grid__item--fluid m-wrapper">
 					@include('common.breadcrumb')
 					<div class="m-content">
-						@if(false) @include('common.page-alert') @endif
-						@yield('content')
+						@if( isset($meta['alert']) ) @include('common.page-alert') @endif
+						<div class="m-portlet m-portlet--mobile">
+							@include('common.card-header')
+							<div class="m-portlet m-portlet--mobile">
+								@yield('content')
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

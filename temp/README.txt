@@ -45,15 +45,17 @@ structure:
 			+ switch1
 			+ switch2
 			+ maxlength
-			- icon
-			multiselect
-			validations
+			+ multiselect
 			+ button
 			+ help blocl
+			validations
+			- icon
 	ckeditor
 	upload image
 	file manager
 	add tags
+	add category_id
+	add some related blogs
 	form:
 		structure:
 			to route blog bede na id
