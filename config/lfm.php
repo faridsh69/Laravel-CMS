@@ -26,9 +26,9 @@ return [
     |--------------------------------------------------------------------------
      */
 
-    'allow_multi_user'         => true,
+    'allow_multi_user'         => false, // true
 
-    'allow_share_folder'       => true,
+    'allow_share_folder'       => false, // true
 
     /*
     |--------------------------------------------------------------------------

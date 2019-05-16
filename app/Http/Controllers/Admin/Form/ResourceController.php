@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Media;
+namespace App\Http\Controllers\Admin\Form;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,7 +14,6 @@ class ResourceController extends Controller
      */
     public function index()
     {
-        return redirect()->route('unisharp.lfm.show');
         return view('admin.blog');
     }
 
