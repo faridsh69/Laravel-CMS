@@ -26,19 +26,20 @@ structure:
 		+ footer
 		- quick-sidebar
 		- quick-navbar	
-	form:
-		logic:
+	+ form:
+		+ logic:
 			+ form create
 			+ validate form
 			+ save data to database
 			+ edit
 			+ delete
 			+ checkbox
-		ux:
+			+ regex validation for url
+		+ ux:
 			+ old values
 			+ good validation error
 			+ show hints
-		ui:
+		+ ui:
 			+ all metronic theme
 			+ input 
 			+ textarea
@@ -52,17 +53,28 @@ structure:
 			+ validations
 			+ icon
 			+ ckeditor
-	+ upload image
-	file manager
-	sync file manager with cdn
-	notification after save and edit
-	add tags
-	add category_id
-	add some related blogs
-	sakhtare tree vase category
-	drag kardane page
-	subdomains
-	admin subdomain
+			+ upload image
+			+ file manager
+			+ sync file manager with cdn
+		extra:
+			notification after save and edit
+			add tags
+			add category_id
+			add some related blogs
+			sakhtare tree vase category
+			drag kardane page vase block
+			add user activity log
+			export excel
+			pdf
+			import with csv
+	table
+		sort, 
+		filter, 
+		paginate, 
+		status activation
+		edit
+		delete
+		image showing
 	form:
 		structure:
 			to route blog bede na id
@@ -71,24 +83,20 @@ structure:
 			validation o form o hame ina ro betonim az dakhele model generate konim
 			ye kari konam har chi to model hast o ham migration kone ham to form o ina azash estefade kone
 			page o daghighan copy blog bezan bebin kojahash fargh dare ba ham
-	seo: 
-		find h1 and h2 in page
-	? table
-		sort, 
-		filter, 
-		paginate, 
-		status activation
-		edit
-		delete
-		image showing
 	login page complete
 	settings o bezarim to .env ya config ya az database bekhone
+	log o neshon bede
+	notification email o sms
+	backup giri o bezar to proje
 	changelog show in dashboard vase eric benevis
 	front
 		theme 
 		block
 		widgets
-	notification email o sms
+	subdomains
+	admin subdomain
+	seo: 
+		find h1 and h2 in page
 	webpack for compile css js files
 	cache forms and sidebar
 	check php load time in front views after developing them
@@ -122,19 +130,24 @@ Css:
 Js:
 
 packages:
-	admin theme: drag and drop, calendar, notification, upload image, chart, forms
-		kinshines/metronic
-	form builder:
-		yajra/laravel-datatables-oracle
+	+ admin theme: drag and drop, calendar, notification, upload image, chart, forms
+		+ kinshines/metronic
+	+ form builder:
+		+ "kris/laravel-form-builder": "^1.20",
 	tables: sort, filter, paginate, status activation
+		"yajra/laravel-datatables-oracle": "~9.0"
 		datatables.net
 	+ HTML editor:
-		ckeditor
+		+ ckeditor4
 	+ file manager:
+		+ "unisharp/laravel-filemanager": "dev-master",
 	+ image: crop, resize, ye url base dashte bashe kolle system, alt axesh
-	add tags: for blog
+		+ "unisharp/laravel-filemanager": "dev-master",
+	+ add tags: for blog
+		"spatie/laravel-tags": "^2.4",
 	comment o rate o share in social networks:
-	log:
+	+ log:
+		"rap2hpoutre/laravel-log-viewer": "^1.1",
 	api document:
 	role&permission:
 	export excel:
@@ -143,12 +156,13 @@ packages:
 	print layout:
 	validation phone:
 	country o city:
-	activity user log ,page and blog view:
+	+ activity user log ,page and blog view:
+		"spatie/laravel-activitylog": "^3.5",
 	module maker:
 	backup:
 		spatie/laravel-backup
 	+ breadcrumb
-		myself
+		+ myself
 	+ meta
 		myself
 	+ seo

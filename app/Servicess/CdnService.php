@@ -10,7 +10,7 @@ class CdnService
 {
 	public static function asset($url)
 	{
-		return "//" . rtrim(Config::get('app.cdn.url'), "/") . "/" . ltrim( $url, "/");
+		return rtrim(Config::get('app.cdn.url'), "/") . "/" . ltrim( $url, "/");
 	}
 
 	// public function cdnUrl()

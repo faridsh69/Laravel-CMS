@@ -15,7 +15,6 @@ class ResourceController extends Controller
     public function index()
     {
         return redirect()->route('unisharp.lfm.show');
-        return view('admin.blog');
     }
 
     /**

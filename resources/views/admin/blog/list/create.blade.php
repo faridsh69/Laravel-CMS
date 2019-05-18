@@ -15,20 +15,11 @@
 		filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
 		filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
 		filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-		filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+		filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token=',
+		skin: 'moonocolor,skins/kama/',
+		language: 'en',
 	};
-</script>
-
-<script>
 	CKEDITOR.replace('content', options);
-    // CKEDITOR.replace('content', {
-        // toolbar: 'admin_mode',
-        // filebrowserBrowseUrl: 'admin',
-        // skin: 'moonocolor,skins/moono/',
-        // skin: 'moonocolor,skins/moono-lisa/',
-        // skin: 'moonocolor,skins/kama/',
-        // language: 'en',
-    // });
 </script>
 @endpush
 

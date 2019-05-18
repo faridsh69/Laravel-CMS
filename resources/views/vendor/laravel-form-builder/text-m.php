@@ -11,7 +11,7 @@
 <?php if ($showField): ?>
 
 	<div class="m-input-icon m-input-icon--left m-input-icon--right">
-		<?= Form::input($type, $name, $options['value'], $options['attr']) ?>
+		<?= Form::input('text', $name, $options['value'], $options['attr']) ?>
 		<span class="m-input-icon__icon m-input-icon__icon--left">
 			<span>
 				<i class="la <?= $options['left_icon'] ?> "></i>

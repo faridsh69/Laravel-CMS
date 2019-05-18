@@ -156,6 +156,7 @@ class ResourceController extends Controller
         }
         
         $data = $form->getFieldValues();
+
         unset($data['languages']);
 
         $blog->update($data);

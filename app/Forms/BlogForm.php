@@ -11,7 +11,7 @@ class BlogForm extends Form
     	$id = $this->model ? $this->model->id : 0;
         $this
             ->add('url', 'text-m', [
-            	'rules' => 'required|max:80|regex:/[a-z0-9-]/|unique:blogs,url,' . $id,
+            	'rules' => 'required|max:80|regex:/^[a-z0-9-_]+$/|unique:blogs,url,' . $id,
             	'help_block' => [
 			        'text' => 'Url should be unique, contain lowercase characters and numbers and -',
 			    ],

@@ -26,3 +26,15 @@ http://eric-old.com
 php artisan make:form Forms/BlogForm --fields="title:text, url:text, short_content:textarea, content:textarea, status:checkbox"
 
 php artisan make:rule SeoHeading
+
+ln -s /public_html/storage storage/app/public
+ln -s /home/public_html/storage/app/public /home/dev5/public_html/public/storage
+
+mklink
+MKLINK ./storage ../storage/app/public
+mklink d:\link-name c:\original-file
+
+mklink /D C:\xampp\htdocs\cms-new\public_html\cdn\storage C:\xampp\htdocs\cms-new\storage\app\public
+
+
+
