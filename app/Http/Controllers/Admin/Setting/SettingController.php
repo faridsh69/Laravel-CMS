@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin\Setting;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use \Rap2hpoutre\LaravelLogViewer\LogViewerController;
+
 class SettingController extends Controller
 {
 	public function getGeneral()
@@ -17,9 +19,9 @@ class SettingController extends Controller
 		return view('admin.blog');
 	}
 
-	public function getLog()
+	public function getLog(LogViewerController $LogViewerController)
 	{
-		return view('admin.blog');
+		return $LogViewerController->index();
 	}
 
 	public function getBackup()

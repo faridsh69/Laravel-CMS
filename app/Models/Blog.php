@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Auth;
+use Conner\Tagging\Taggable;
 
 class Blog extends Model
 {
 	use SoftDeletes;
+    use Taggable;
 
     public $guarded = [];
 
@@ -72,6 +74,11 @@ class Blog extends Model
         return $this->belongsTo('App\Models\User', 'creator_id', 'id');
     }
 
+    // public function category()
+    // {
+    //     return $this->belongsTo('App\Models\Category', 'category_id', 'id');
+    // }
+
     public function scopeActive($query)
     {
         return $query->where('published', true);
@@ -80,6 +87,11 @@ class Blog extends Model
     public function scopeMine($query)
     {
         return $query->where('editor_id', \Auth::id());
+    }
+
+    public function scopeFindTag($tags)
+    {
+        return $this->withAnyTags(['tag 1', 'tag 2'])->get();
     }
 
     public static function getFillables()
@@ -101,7 +113,6 @@ class Blog extends Model
         self::updating(function($model){
             $model->published = $model->published ? 1 : 0;
             $model->google_index = $model->google_index ? 1 : 0;
-            $model->creator_id = Auth::id() ? Auth::id() : 1;
             $model->editor_id = Auth::id() ? Auth::id() : 1;
         });
     }

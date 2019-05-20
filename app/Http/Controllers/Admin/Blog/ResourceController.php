@@ -5,9 +5,14 @@ namespace App\Http\Controllers\Admin\Blog;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Kris\LaravelFormBuilder\FormBuilder;
+use Auth;
+use Conner\Tagging\Model\Tag;
+use App\Models\Category;
+use Maatwebsite\Excel\Facades\Excel;
 
 use App\Models\Blog;
 use App\Forms\BlogForm;
+use App\Exports\BlogsExport;
 
 class ResourceController extends Controller
 {
@@ -28,6 +33,13 @@ class ResourceController extends Controller
         ];
 
         return view('admin.blog.list.index', compact('meta'));
+    }
+
+    public function getExport()
+    {
+        return Excel::download(new BlogsExport, 'blogs.xlsx');
+        // (new InvoicesExport)->download('invoices.xlsx', \Maatwebsite\Excel\Excel::XLSX);
+        // return (new InvoicesExport)->download('invoices.xlsx');
     }
 
     public function getDatatable()
@@ -86,9 +98,19 @@ class ResourceController extends Controller
         }
 
         $data = $form->getFieldValues();
-        unset($data['languages']);
 
-        Blog::create($data);
+        $tag_names = Tag::whereIn('id', $data['tags'])->pluck('name')->toArray();
+        unset($data['tags']);
+
+        $blog = Blog::create($data);
+        $blog->retag($tag_names); 
+
+        activity('Blog')
+           ->performedOn($blog)
+           ->causedBy(Auth::user())
+           ->log('Blog Created');
+
+        $request->session()->flash('alert-success', 'alert');
 
         return redirect()->route('admin.blog.list.index');
     }
@@ -124,7 +146,7 @@ class ResourceController extends Controller
             'link_route' => route('admin.blog.list.index'),
             'link_name' => __('Blog Manager'),
         ];
-            
+        
         $form = $formBuilder->create(BlogForm::class, [
             'method' => 'PUT',
             'url' => route('admin.blog.list.update', $blog),
@@ -156,10 +178,24 @@ class ResourceController extends Controller
         }
         
         $data = $form->getFieldValues();
+        
+        // $tag_names = Tag::whereIn('id', $data['tags'])->pluck('name')->toArray();
+        // $blog->retag($tag_names); 
 
-        unset($data['languages']);
+        unset($data['related_blogs']);
+
+        $tag_names = Tag::whereIn('id', $data['tags'])->pluck('name')->toArray();
+        $blog->retag($tag_names); 
+        unset($data['tags']);
 
         $blog->update($data);
+
+        activity('Blog')
+           ->performedOn($blog)
+           ->causedBy(Auth::user())
+           ->log('Blog Updated');
+
+        $request->session()->flash('alert-success', 'alert');
 
         return redirect()->route('admin.blog.list.index');
     }

@@ -5,11 +5,28 @@
 @section('image', $meta['image'])
 
 @push('style')
-<link href="{{ Cdn::asset('css/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
+<!-- <link href="{{ Cdn::asset('css/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" /> -->
 @endpush
 
 @push('script')
-<script src="{{ Cdn::asset('js/table/jquery.dataTables.min.js') }}" type="text/javascript"></script>
+
+<!-- @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+    @if(Session::has('alert-' . $msg))
+    <div class="alert alert-{{ $msg }} alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <ul class="list-unstyled">
+            <li>{{ Session::get('alert-' . $msg) }}</li>
+        </ul>
+    </div>
+    @endif
+@endforeach -->
+
+@if(Session::has('alert-success'))
+<script src="{{ Cdn::asset('js/form/bootstrap-notify.js') }}"></script>
+@endif
+<!-- <script src="{{ Cdn::asset('js/table/jquery.dataTables.min.js') }}" type="text/javascript"></script> -->
 <!-- <script src="{{ Cdn::asset('js/table/data-ajax.js') }}" type="text/javascript"></script>
 <script type="text/javascript">
 	$(".m_datatable").dataTable( {

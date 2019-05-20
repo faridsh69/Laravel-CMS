@@ -38,11 +38,24 @@ class BlogForm extends Form
 			        'text' => 'Meta description should have minimum 70 and maximum 191 characters.',
 			    ],
             ])
-            ->add('languages', 'entity', [
-                'class' => 'App\Models\Blog',
-                'property' => 'id',
+            // ->add('category', 'entity', [
+            //     'class' => 'App\Models\Category',
+            //     'property' => 'name',
+            //     'property_key' => 'id',
+            //     'attr' => ['class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker', 'data-live-search' => 'true']
+            // ])
+            ->add('tags', 'entity', [
+                'class' => 'Conner\Tagging\Model\Tag',
+                'property' => 'name',
+                'property_key' => 'id',
                 'attr' => ['multiple' => 'true', 'class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker', 'data-live-search' => 'true']
             ])
+            // ->add('related_blogs', 'entity', [
+            //     'class' => 'App\Models\Blog',
+            //     'property' => 'title',
+            //     'property_key' => 'id',
+            //     'attr' => ['multiple' => 'true', 'class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker', 'data-live-search' => 'true']
+            // ])
             ->add('published', 'switch-m', [
             ])
             ->add('google_index', 'checkbox-m', [

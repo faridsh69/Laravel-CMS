@@ -57,17 +57,11 @@ structure:
 			+ file manager
 			+ sync file manager with cdn
 		extra:
-			notification after save and edit
-			add tags
-			add category_id
-			add some related blogs
-			sakhtare tree vase category
-			drag kardane page vase block
-			add user activity log
-			export excel
-			pdf
-			import with csv
+			+ notification after save and edit
+			+ add tags
+			+ add user activity log
 	table
+		+ export excel
 		sort, 
 		filter, 
 		paginate, 
@@ -75,36 +69,56 @@ structure:
 		edit
 		delete
 		image showing
+		pdf
+		import with csv
 	form:
 		structure:
+			meta ha ro bego ke az ye ja bekhone
+			function hae toe controller ha ro az ye function bekhon
+			view ha ham bayad az ye sakhtar biad o moshtarak taresh konam
+			form ha ro bebinam mishe az ye sakhtaresh kard ya na
+			bebin mishe ye model benevisam ke bad form az rosh sakhte beshe
 			to route blog bede na id
 			ye sakhtar khob vase create form
 			ye sakhtare khob vase validation
 			validation o form o hame ina ro betonim az dakhele model generate konim
 			ye kari konam har chi to model hast o ham migration kone ham to form o ina azash estefade kone
 			page o daghighan copy blog bezan bebin kojahash fargh dare ba ham
-	login page complete
+				add some related blogs
+				add category_id
+				sakhtare tree vase category
+				drag kardane page vase block
+			- route o ke nemishe dastesh zad
+			- controller khode  ha ham bayad bashe ba function hash
+			- validation ha ke kollan to forme o kollan nadarim
+			- migration bayad az roe model sakhte beshe 
+			- factory ham bayad dasti sakhte beshe 
+			- seeder ham bayad dasti vared beshe 
 	settings o bezarim to .env ya config ya az database bekhone
-	log o neshon bede
-	notification email o sms
+	+ log o neshon bede
 	backup giri o bezar to proje
 	changelog show in dashboard vase eric benevis
+	subdomains
+	admin subdomain
 	front
 		theme 
 		block
 		widgets
-	subdomains
-	admin subdomain
-	seo: 
+	seo rule: 
 		find h1 and h2 in page
 	webpack for compile css js files
-	cache forms and sidebar
-	check php load time in front views after developing them
-	- use docker
+	- cache forms and sidebar
+	- notification email o sms
+	- check php load time in front views after developing them
+	- login page complete
+	- unit test benevisam 
+	- excel export and import 
+	- laravel code style
 	- use data in models to create migrations
+	-- use docker
 
 models:
-	blog: title, content, short_content, creator_id, editor_id, status, url, seo_id
+	+ blog: title, content, short_content, creator_id, editor_id, status, url, seo_id
 migrations:
 factory:
 seeders:
@@ -124,7 +138,6 @@ storage:
 services:
 	handle all subdomains
 	different status in database
-exceptions:
 elexir:
 Css:
 Js:
@@ -144,10 +157,10 @@ packages:
 	+ image: crop, resize, ye url base dashte bashe kolle system, alt axesh
 		+ "unisharp/laravel-filemanager": "dev-master",
 	+ add tags: for blog
-		"spatie/laravel-tags": "^2.4",
+		rtconner/laravel-tagging
 	comment o rate o share in social networks:
 	+ log:
-		"rap2hpoutre/laravel-log-viewer": "^1.1",
+		+ "rap2hpoutre/laravel-log-viewer": "^1.1",
 	api document:
 	role&permission:
 	export excel:
@@ -184,7 +197,7 @@ Features:
 			dashboard contents
 				neshon bede chand ta page darim, user, blog, image, ...
 		+ 1-page
-			title, url, status, (block), (seo)
+			+ title, url, status, (block), (seo)
 		+ 2-blog
 			title, url, status, short_desc, long_desc, image, commentable, ratable, (block), (seo)
 		+ 3-category 

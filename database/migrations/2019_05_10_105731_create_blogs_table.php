@@ -25,6 +25,10 @@ class CreateBlogsTable extends Migration
             $table->boolean('published')->default(true);
             $table->boolean('google_index')->default(true);
             $table->string('canonical_url')->nullable();
+            // $table->string('related_blogs')->nullable();
+            
+            // $table->integer('category_id')->unsigned();
+            // $table->foreign('category_id')->references('id')->on('categories');
             $table->integer('creator_id')->unsigned();
             $table->foreign('creator_id')->references('id')->on('users');
             $table->integer('editor_id')->unsigned();

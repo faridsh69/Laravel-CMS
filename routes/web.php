@@ -34,6 +34,8 @@ Route::group(['namespace' => 'Admin', 'middleware' => ['throttle:20,0.2', 'auth'
 	Route::group(['prefix' => 'blog', 'namespace' => 'Blog', 'as' => 'blog.'], function () {
 		Route::resource('list', 'ResourceController');
 		Route::get('datatable', 'ResourceController@getDatatable');
+		Route::get('export', 'ResourceController@getExport');
+		Route::redirect('/', 'blog/list');
 	});
 	Route::group(['prefix' => 'page', 'namespace' => 'Page', 'as' => 'page.'], function () {
 		Route::resource('list', 'ResourceController');
