@@ -329,4 +329,7 @@ Extra features:
 	have company in github social network
 
 
+BUGS:
+	unable to send email
+	unable to create backup
 

@@ -46,3 +46,8 @@ mklink /D C:\xampp\htdocs\cms-new\public_html\cdn\storage C:\xampp\htdocs\cms-ne
 
 
 git update-index --assume-unchanged public_html/vendor/
+
+/usr/local/bin/mysqldump
+
+find / -name 'mysqldump'
+
