@@ -45,4 +45,4 @@ mklink d:\link-name c:\original-file
 mklink /D C:\xampp\htdocs\cms-new\public_html\cdn\storage C:\xampp\htdocs\cms-new\storage\app\public
 
 
-
+git update-index --assume-unchanged public_html/vendor/
