@@ -56,46 +56,33 @@ var DatatableJsonRemoteDemo=function() {
 	            {field:"editor", title:"Editor"},
 	            {field: "updated_at", title: "Updated At"},
 	            {field:"Actions", 
-	            	width: 90, 
+	            	width: 70, 
 	            	title: "Actions", 
 	            	sortable: false, 
 	            	overflow: "visible", 
 	            	template:function(row) {
 var output = 
-'<a class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" href="' + 
-row.edit_url + ' "> <i class="la la-edit"></i></a>'+
-'<form action=" ' + row.delete_url + ' " id="delete-form" method="POST">'+		
-'<input class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill"' +
-'type="submit" value="d"> <i class="la la-delete"></i></form>';
+'<a class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"' + 
+'href="' + row.edit_url + '"> <i class="la la-edit"></i></a>' +
+'<form action="' + row.delete_url + '" method="POST" style="display:inline-block">' + 
+'<input type="hidden" name="_method" value="DELETE">' +
+'<input type="hidden" name="_token" value="' + $('meta[name="csrf-token"]').attr('content') + '">' +
+
+'<button class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill">' +
+'<i class="la la-trash"></i> </button> </form>';
 						return output;
 	                }
 	            }
             ]
-        }
-        )
-        // ,
-        // e=t.getDataSourceQuery();
-        // $("#m_form_status").on("change", function() {
-        //     t.search($(this).val(), "Status")
-        // }
-        // ).val(void 0!==e.Status?e.Status:""),
-        // $("#m_form_type").on("change", function() {
-        //     t.search($(this).val(), "Type")
-        // }
-        // ).val(void 0!==e.Type?e.Type:""),
-        // $("#m_form_status, #m_form_type").selectpicker()
-    }
-    ;
+        })
+    };
     return {
         init:function() {
             t()
         }
     }
 }
-
 ();
 jQuery(document).ready(function() {
-    DatatableJsonRemoteDemo.init()
-}
-
-);
+	DatatableJsonRemoteDemo.init()
+});

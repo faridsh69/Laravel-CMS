@@ -72,12 +72,13 @@ structure:
 		+ filter, 
 		+ class khob besh bedim,
 		+ paginate, 
-		edit
-		delete
+		+ edit
+		+ delete
 		status activation
 		status checkbox
 		pdf
 		import with csv
+		export with csv
 		- class new 
 		- image showing
 	form:

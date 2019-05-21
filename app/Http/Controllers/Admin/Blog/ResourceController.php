@@ -57,15 +57,11 @@ class ResourceController extends Controller
             ->addColumn('edit_url', function($blog) {
                 return route("admin.blog.list.edit", $blog);
             })
-            ->addColumn('edit_url', function($blog) {
+            ->addColumn('delete_url', function($blog) {
                 return route('admin.blog.list.destroy', $blog);
-            })
-
-            
-            
+            })            
             // @csrf
             // @method('DELETE')
-
             ->rawColumns(['id'])
             ->toJson();
     }
