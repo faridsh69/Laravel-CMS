@@ -67,11 +67,8 @@ Route::group(['namespace' => 'Admin', 'middleware' => ['throttle:15,0.2', 'auth'
 		Route::resource('list', 'ResourceController');
 	});
 });	
-
-
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'Front\HomeController@index')->name('home');
 Route::get('', function() {
 	return redirect()->route('admin.dashboard.index');
 });

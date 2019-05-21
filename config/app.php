@@ -70,7 +70,8 @@ return [
         Nestable\NestableServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
-
+        Propaganistas\LaravelPhone\PhoneServiceProvider::class,
+        
         /*
          * Application Service Providers...
          */

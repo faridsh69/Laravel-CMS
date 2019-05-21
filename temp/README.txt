@@ -153,9 +153,9 @@ packages:
 		+ kinshines/metronic
 	+ form builder:
 		+ "kris/laravel-form-builder": "^1.20",
-	tables: sort, filter, paginate, status activation
-		"yajra/laravel-datatables-oracle": "~9.0"
-		datatables.net
+	+ tables: sort, filter, paginate, status activation
+		+ "yajra/laravel-datatables-oracle": "~9.0"
+		+ datatables.net
 	+ HTML editor:
 		+ ckeditor4
 	+ file manager:
@@ -163,33 +163,49 @@ packages:
 	+ image: crop, resize, ye url base dashte bashe kolle system, alt axesh
 		+ "unisharp/laravel-filemanager": "dev-master",
 	+ add tags: for blog
-		rtconner/laravel-tagging
-	comment o rate o share in social networks:
+		+ rtconner/laravel-tagging
 	+ log:
 		+ "rap2hpoutre/laravel-log-viewer": "^1.1",
-	api document:
-	role&permission:
-	export excel:
-	pdf:
-	import with csv:
-	print layout:
-	validation phone:
-	country o city:
+	+ export excel:
+		+ Maatwebsite/Laravel-Excel
+	+ import with csv:
+		+ Maatwebsite/Laravel-Excel
+	+ backup:
+		+ spatie/laravel-backup
 	+ activity user log ,page and blog view:
-		"spatie/laravel-activitylog": "^3.5",
+		+ "spatie/laravel-activitylog": "^3.5",
+	+ validation phone:
+		Propaganistas/Laravel-Phone
+	+ api document:
+		+ mpociot/laravel-apidoc-generator
+	+ country o city:
+		+ antonioribeiro/countries
+	+ pdf:
+		barryvdh/laravel-dompdf
+	comment o rate o share in social networks:
+	role&permission:
 	module maker:
-	backup:
-		spatie/laravel-backup
-	+ breadcrumb
+	+ breadcrumb:
 		+ myself
-	+ meta
+	+ meta:
 		myself
-	+ seo
+	+ seo:
 		myself
-	+ cdn
+	+ cdn:
 		myself
-	lazy 
+	print layout:
+		myself
+	lazy :
 		myself 
+	- tracker
+		antonioribeiro/tracker
+	- health
+		antonioribeiro/health
+	- firewall
+		antonioribeiro/firewall
+	code style
+		squizlabs/PHP_CodeSniffer
+		FriendsOfPHP/PHP-CS-Fixer
 
 Features:
 	CMS ADMIN PANEL:
