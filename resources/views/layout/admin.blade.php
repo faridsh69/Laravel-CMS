@@ -27,7 +27,7 @@
 						@if( isset($meta['alert']) ) @include('common.page-alert') @endif
 						<div class="m-portlet m-portlet--mobile">
 							@include('common.card-header')
-							<div class="m-portlet m-portlet--mobile">
+							<div class="m-portlet__body">
 								@yield('content')
 							</div>
 						</div>

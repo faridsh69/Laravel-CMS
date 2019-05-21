@@ -2,7 +2,7 @@
 	<div class="m-portlet__head-caption">
 		<div class="m-portlet__head-title">
 			<h3 class="m-portlet__head-text">
-					{{ $meta['title'] }}
+				{{ $meta['title'] }}
 				<small>
 				</small>
 				<a href="{{ $meta['link_route'] }}" class="btn btn-info btn-sm m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
@@ -16,5 +16,6 @@
 			</h3>
 		</div>
 	</div>
+	@if(true) @include('common.table-search') @endif
 	@if(true) @include('common.header-tools') @endif
 </div>

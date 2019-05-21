@@ -4,10 +4,12 @@ php artisan make:migration create_blogs_table
 php artisan make:model Models/Blog
 php artisan make:factory BlogFactory
 php artisan make:seeder BlogsTableSeeder
-php artisan make:controller PhotoController --resource
+php artisan make:controller Admin/Setting/Backup/ResourceController --resource
 php artisan make:export BlogsExport --model=Blog
 php artisan make:mail UserRegistered
 
+Miladmallak10@gmail.com
+987654321hiclash
 
 php php-cs-fixer.phar fix /
 vendor/bin/ecs check /routes/web.php --fix
@@ -17,6 +19,9 @@ vendor/bin/ecs check / --config vendor/symplify/easy-coding-standard/config/clea
 ./vendor/bin/phpunit
 
 @TODO
+
+        // Mail::to(Auth::user())->send(new UserRegistered());
+
 
 http://eric.com/
 http://cdn-eric.com

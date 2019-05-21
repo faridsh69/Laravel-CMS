@@ -1,10 +1,6 @@
 <?php
 Route::get('test', 'Front\TestController@index');
-// Route::group(['middleware' => ['auth'], 'prefix' => 'laravel-filemanager'], function () {
-// 	Route::get('1', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show');
-//     Route::post('upload', '\UniSharp\LaravelFilemanager\Controllers\UploadController@upload');
-// });
-Route::group(['namespace' => 'Admin', 'middleware' => ['throttle:20,0.2', 'auth'], 'as' => 'admin.'], function () {
+Route::group(['namespace' => 'Admin', 'middleware' => ['throttle:15,0.2', 'auth'], 'as' => 'admin.'], function () {
 	Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'as' => 'dashboard.'], function () {
 		Route::get('', 'DashboardController@index')->name('index');
 		Route::get('profile', 'DashboardController@getProfile')->name('profile');
@@ -13,7 +9,10 @@ Route::group(['namespace' => 'Admin', 'middleware' => ['throttle:20,0.2', 'auth'
 		Route::get('general', 'SettingController@getGeneral')->name('general');
 		Route::get('contact', 'SettingController@getContact')->name('contact');
 		Route::get('log', 'SettingController@getLog')->name('log');
-		Route::get('backup', 'SettingController@getBackup')->name('backup');
+		Route::group(['prefix' => 'backup', 'namespace' => 'Backup', 'as' => 'backup.'], function () {
+			Route::resource('list', 'ResourceController');
+			Route::redirect('/', route('admin.setting.backup.list.index'));
+		});
 		Route::get('developer-options/basic', 'SettingController@getDeveloperOptionsBasic')->name('developer-options.basic');
 		Route::get('developer-options/advance', 'SettingController@getDeveloperOptionsAdvance')->name('developer-options.advance');
 	});
@@ -35,7 +34,7 @@ Route::group(['namespace' => 'Admin', 'middleware' => ['throttle:20,0.2', 'auth'
 		Route::resource('list', 'ResourceController');
 		Route::get('datatable', 'ResourceController@getDatatable');
 		Route::get('export', 'ResourceController@getExport');
-		Route::redirect('/', 'blog/list');
+		Route::redirect('/', route('admin.blog.list.index'));
 	});
 	Route::group(['prefix' => 'page', 'namespace' => 'Page', 'as' => 'page.'], function () {
 		Route::resource('list', 'ResourceController');

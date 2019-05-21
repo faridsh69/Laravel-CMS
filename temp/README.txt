@@ -49,7 +49,7 @@ structure:
 			+ maxlength
 			+ multiselect
 			+ button
-			+ help blocl
+			+ help block
 			+ validations
 			+ icon
 			+ ckeditor
@@ -60,17 +60,26 @@ structure:
 			+ notification after save and edit
 			+ add tags
 			+ add user activity log
+			+ activity log bezanam bade pak o update o create
 	table
+		+ created_at
+		+ user_id
+		+ render html
 		+ export excel
-		sort, 
-		filter, 
-		paginate, 
-		status activation
+		+ height table
+		+ height each column
+		+ sort,
+		+ filter, 
+		+ class khob besh bedim,
+		+ paginate, 
 		edit
 		delete
-		image showing
+		status activation
+		status checkbox
 		pdf
 		import with csv
+		- class new 
+		- image showing
 	form:
 		structure:
 			meta ha ro bego ke az ye ja bekhone
@@ -84,6 +93,11 @@ structure:
 			validation o form o hame ina ro betonim az dakhele model generate konim
 			ye kari konam har chi to model hast o ham migration kone ham to form o ina azash estefade kone
 			page o daghighan copy blog bezan bebin kojahash fargh dare ba ham
+			structure meta ha ro ina ro fix kon kollan az ye ja bekhone
+			sakhtare notification o ok kon to kolle safahat
+			activity log o ok kon ke ye sakhtare sabet dashte bashe
+			breadcrumb o fixesh kon
+			ye fekri kon ke chia bayad to hidden bashan chia na
 				add some related blogs
 				add category_id
 				sakhtare tree vase category
@@ -96,10 +110,11 @@ structure:
 			- seeder ham bayad dasti vared beshe 
 	settings o bezarim to .env ya config ya az database bekhone
 	+ log o neshon bede
-	backup giri o bezar to proje
-	changelog show in dashboard vase eric benevis
+	+ backup giri o bezar to proje
+	+ changelog show in dashboard vase eric benevis
 	subdomains
 	admin subdomain
+	change log read me o bezar avvale proje
 	front
 		theme 
 		block
@@ -107,16 +122,6 @@ structure:
 	seo rule: 
 		find h1 and h2 in page
 	webpack for compile css js files
-	- cache forms and sidebar
-	- notification email o sms
-	- check php load time in front views after developing them
-	- login page complete
-	- unit test benevisam 
-	- excel export and import 
-	- laravel code style
-	- use data in models to create migrations
-	-- use docker
-
 models:
 	+ blog: title, content, short_content, creator_id, editor_id, status, url, seo_id
 migrations:
@@ -292,8 +297,19 @@ Features:
 		custome HTML CSS JS widget, Ifram, etc
 
 
-
-
+Extra features:
+	- cache forms and sidebar
+	- notification email o sms
+	- check php load time in front views after developing them
+	- login page complete
+	- unit test benevisam 
+	- excel export and import 
+	- laravel code style
+	- use data in models to create migrations
+	-- use docker
+	-- two step verification
+	create a learning videos
+	have company in github social network
 
 
 

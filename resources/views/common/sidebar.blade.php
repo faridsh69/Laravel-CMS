@@ -150,7 +150,7 @@
 				],
 				[
 					'title' => 'Backup',
-					'route' => 'admin.setting.backup',
+					'route' => 'admin.setting.backup.list.index',
 				],
 				[
 					'title' => 'Developer Options',

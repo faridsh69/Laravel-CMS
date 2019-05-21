@@ -18,6 +18,6 @@ class DashboardController extends Controller
             'link_name' => __('Create New Blog'),
         ];
 
-		return view('layout.admin', compact('meta'));
+		return view('admin.dashboard', compact('meta'));
 	}
 }

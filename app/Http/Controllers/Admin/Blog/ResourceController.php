@@ -9,6 +9,8 @@ use Auth;
 use Conner\Tagging\Model\Tag;
 use App\Models\Category;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\UserRegistered;
 
 use App\Models\Blog;
 use App\Forms\BlogForm;
@@ -22,7 +24,7 @@ class ResourceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    { 
         $meta = [
             'title' => __('Blog Manager'),
             'description' => __('Admin Panel Page For Best Cms In The World'),
@@ -38,23 +40,34 @@ class ResourceController extends Controller
     public function getExport()
     {
         return Excel::download(new BlogsExport, 'blogs.xlsx');
-        // (new InvoicesExport)->download('invoices.xlsx', \Maatwebsite\Excel\Excel::XLSX);
-        // return (new InvoicesExport)->download('invoices.xlsx');
     }
 
     public function getDatatable()
     {
-        return datatables()->of(Blog::query())->toJson();
-        return datatables()->of(DB::table('Blogs'))->toJson();
-        return datatables()->of(Blog::all())->toJson();
+        $blogs = Blog::orderBy('updated_at', 'desc')->get();
 
-        return datatables()->eloquent(Blog::query())->toJson();
-        return datatables()->query(DB::table('Blogs'))->toJson();
-        return datatables()->collection(Blog::all())->toJson();
+        return datatables()
+            ->of($blogs)
+            ->addColumn('editor', function($blog) {
+                return $blog->editor->name;
+            })
+            ->addColumn('editor', function($blog) {
+                return $blog->editor->name;
+            })
+            ->addColumn('edit_url', function($blog) {
+                return route("admin.blog.list.edit", $blog);
+            })
+            ->addColumn('edit_url', function($blog) {
+                return route('admin.blog.list.destroy', $blog);
+            })
 
-        return datatables(Blog::query())->toJson();
-        return datatables(DB::table('Blogs'))->toJson();
-        return datatables(Blog::all())->toJson();
+            
+            
+            // @csrf
+            // @method('DELETE')
+
+            ->rawColumns(['id'])
+            ->toJson();
     }
 
     /**
@@ -89,7 +102,7 @@ class ResourceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(FormBuilder $formBuilder)
+    public function store(FormBuilder $formBuilder, Request $request)
     {
         $form = $formBuilder->create(BlogForm::class);
 
@@ -110,7 +123,7 @@ class ResourceController extends Controller
            ->causedBy(Auth::user())
            ->log('Blog Created');
 
-        $request->session()->flash('alert-success', 'alert');
+        $request->session()->flash('alert-success', 'Blog Created');
 
         return redirect()->route('admin.blog.list.index');
     }
@@ -195,7 +208,7 @@ class ResourceController extends Controller
            ->causedBy(Auth::user())
            ->log('Blog Updated');
 
-        $request->session()->flash('alert-success', 'alert');
+        $request->session()->flash('alert-success', 'Blog Updated');
 
         return redirect()->route('admin.blog.list.index');
     }
@@ -206,11 +219,13 @@ class ResourceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
         $blog = Blog::findOrFail($id);
 
         $blog->delete();
+
+        $request->session()->flash('alert-success', 'Blog Deleted');
 
         return redirect()->route('admin.blog.list.index');
     }
