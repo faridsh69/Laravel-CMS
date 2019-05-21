@@ -21,9 +21,19 @@
 <script src="{{ Cdn::asset('js/form/bootstrap-notify.js') }}"></script>
 @endif
 <script src="{{ Cdn::asset('js/table/data-json.js') }}"></script>
+<script>
+	function changeStatus(id){
+		console.log(id);
+		$.ajax({
+			url: "/blog/change-status/" + id
+		}).done(function() {
+			// $(this).addClass( "done" );
+		});
+	}
+</script>
 @endpush
 
 @section('content')
-<i class="la la-print"></i> 
+<!-- <i class="la la-print"></i>  -->
 	<div class="m_datatable" id="ajax_data"></div>
 @endsection

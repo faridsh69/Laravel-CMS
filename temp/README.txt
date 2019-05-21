@@ -24,8 +24,6 @@ structure:
 		+ toolbar -> profile o ina ro ok kon nesfe 
 		+ header-tools -> export excel - print o ina ro bezar ...
 		+ footer
-		- quick-sidebar
-		- quick-navbar	
 	+ form:
 		+ logic:
 			+ form create
@@ -56,12 +54,12 @@ structure:
 			+ upload image
 			+ file manager
 			+ sync file manager with cdn
-		extra:
+		+ extra:
 			+ notification after save and edit
 			+ add tags
 			+ add user activity log
 			+ activity log bezanam bade pak o update o create
-	table
+	+ table
 		+ created_at
 		+ user_id
 		+ render html
@@ -74,13 +72,10 @@ structure:
 		+ paginate, 
 		+ edit
 		+ delete
-		status activation
-		status checkbox
-		pdf
-		import with csv
-		export with csv
-		- class new 
-		- image showing
+		+ status checkbox
+		+ status activation
+		+ export with csv
+		+ import with csv
 	form:
 		structure:
 			meta ha ro bego ke az ye ja bekhone
@@ -109,13 +104,13 @@ structure:
 			- migration bayad az roe model sakhte beshe 
 			- factory ham bayad dasti sakhte beshe 
 			- seeder ham bayad dasti vared beshe 
-	settings o bezarim to .env ya config ya az database bekhone
 	+ log o neshon bede
 	+ backup giri o bezar to proje
 	+ changelog show in dashboard vase eric benevis
 	subdomains
 	admin subdomain
 	change log read me o bezar avvale proje
+	settings o bezarim to .env ya config ya az database bekhone
 	front
 		theme 
 		block
@@ -124,20 +119,81 @@ structure:
 		find h1 and h2 in page
 	webpack for compile css js files
 models:
-	+ blog: title, content, short_content, creator_id, editor_id, status, url, seo_id
+	+ blog: 
+		fields:
+			name:				type:		rule:		help: 		relation: table name -> users
+			id, 				increments	-Automatic
+			url, 				string		required|max:80|regex:/^[a-z0-9-_]+$/|unique:blogs,url,0
+			title, 				string		required|max:60|min:10|unique:blogs,title,0
+			short_content, 		string		nullable|max:191
+			content, 			text 		required|seo_header
+			meta_description, 	string		required|max:191|min:70
+			keywords, 			string		nullable|max:191
+			meta_image, 		string		nullable|max:191|url
+			published, 			boolean		
+			google_index, 		boolean		
+			canonical_url, 		string		nullable|max:191|url
+			creator_id, 		foreign		-Automatic
+			editor_id, 			foreign		-Automatic
+			created_at, 		datetime	-Automatic
+			updated_at, 		datetime	-Automatic
+			deleted_at			datetime	-Automatic
 migrations:
+	Schema::create('blogs {{table_name}} ', function (Blueprint $table) {
+        $table->increments {{type}} ('id' {{name}} );
+        $table->string {{type}} ('url' {{name}} )->unique() {{unique exist in rule}}
+        $table->string {{type}} ('title' {{name}} )->unique()  {{unique exist in rule}}
+        $table->string {{type}} ('short_content' {{name}} )->nullable(); {{nullable exist in rule}}
+        $table->text {{type}} ('content' {{name}} );
+        $table->string {{type}} ('meta_description' {{name}} );
+        $table->string {{type}} ('keywords' {{name}} )->nullable(); {{nullable exist in rule}}
+        $table->string {{type}} ('meta_image' {{name}} )->nullable(); {{nullable exist in rule}}
+        $table->boolean {{type}} ('published' {{name}} )->default(true); {{az roe type bayad default true beshe}}
+        $table->boolean {{type}} ('google_index' {{name}}  )->default(true); {{az ro type}}
+        $table->string {{type}} ('canonical_url' {{name}} )->nullable();  {{nullable exist in rule}}
+        
+        // $table->string('related_blogs')->nullable();
+        // $table->integer('category_id')->unsigned();
+        // $table->foreign('category_id')->references('id')->on('categories');
+
+        $table->integer {{type}} ('creator_id' {{name}} )->unsigned(); {{ type???? }}
+        $table->foreign {{ type???? }} ('creator_id' {{name}} )->references('id')->on('users'); {{ relation???? }}
+        $table->integer('editor_id')->unsigned();
+        $table->foreign('editor_id')->references('id')->on('users');
+
+        $table->timestamps();
+        $table->softDeletes();
+    });
+
 factory:
+	return [
+		{{ required ha inja hastan faghat }}
+        'url' => $faker->uuid, {{ unique -> uuid }}
+        'title' => $faker->uuid, {{ unique -> uuid }}
+        'short_content' => $faker->address, {{ type:string -> text(100) }}
+        'content' => $faker->text, {{ type:text -> text }}
+        'meta_description' => {{ type:string -> text(100) }}
+        'keywords' => {{ type:string -> text(100) }}
+    ];
 seeders:
-validation:
-authorizations:
+	factory(Blog::class, 5)->create();
+validation: 
 routes:
 controllers:
+add tags:
+activity log:
+excel:
 exceptions:
 views:
+	breadcrumb
+	meta ha
 	return view ba block o widgets
 	layout:
 	meta ha:
 	print layout:
+form:
+table:
+unit test:
 notifications:
 	email layout:
 storage:
@@ -147,6 +203,8 @@ services:
 elexir:
 Css:
 Js:
+authorizations:
+
 
 packages:
 	+ admin theme: drag and drop, calendar, notification, upload image, chart, forms
@@ -175,16 +233,13 @@ packages:
 	+ activity user log ,page and blog view:
 		+ "spatie/laravel-activitylog": "^3.5",
 	+ validation phone:
-		Propaganistas/Laravel-Phone
+		+ Propaganistas/Laravel-Phone
 	+ api document:
 		+ mpociot/laravel-apidoc-generator
 	+ country o city:
 		+ antonioribeiro/countries
 	+ pdf:
 		barryvdh/laravel-dompdf
-	comment o rate o share in social networks:
-	role&permission:
-	module maker:
 	+ breadcrumb:
 		+ myself
 	+ meta:
@@ -193,7 +248,7 @@ packages:
 		myself
 	+ cdn:
 		myself
-	print layout:
+	+ print layout:
 		myself
 	lazy :
 		myself 
@@ -206,6 +261,9 @@ packages:
 	code style
 		squizlabs/PHP_CodeSniffer
 		FriendsOfPHP/PHP-CS-Fixer
+	comment o rate o share in social networks:
+	role&permission:
+	module maker:
 
 Features:
 	CMS ADMIN PANEL:
@@ -326,8 +384,13 @@ Extra features:
 	-- use docker
 	-- two step verification
 	create a learning videos
-	have company in github social network
-
+	have company in github social network and answer questions
+	- class new for table
+	- image showing in table
+	- pdf
+	- print
+	- quick-sidebar
+	- quick-navbar	
 
 BUGS:
 	unable to send email

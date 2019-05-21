@@ -8,6 +8,7 @@ php artisan make:factory BlogFactory
 php artisan make:seeder BlogsTableSeeder
 php artisan make:controller Api/GeneralController
 php artisan make:export BlogsExport --model=Blog
+php artisan make:import BlogsImport --model=Blog
 php artisan make:mail UserRegistered
 php artisan backup:run
 php artisan apidoc:generate

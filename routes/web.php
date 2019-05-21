@@ -31,10 +31,18 @@ Route::group(['namespace' => 'Admin', 'middleware' => ['throttle:15,0.2', 'auth'
 		Route::resource('list', 'ResourceController');
 	});
 	Route::group(['prefix' => 'blog', 'namespace' => 'Blog', 'as' => 'blog.'], function () {
-		Route::resource('list', 'ResourceController');
-		Route::get('datatable', 'ResourceController@getDatatable');
-		Route::get('export', 'ResourceController@getExport');
+
+		if(1 == 1){
+			$var = 'list';
+			$controller = 'ResourceController';
+			Route::resource($var , $controller);
+		}
+		Route::get('datatable', 'ResourceController@getDatatable')->name('datatable');
+		Route::get('export', 'ResourceController@getExport')->name('export');
+		Route::get('import', 'ResourceController@getImport')->name('import');
+		Route::get('change-status/{id}', 'ResourceController@getChangeStatus')->name('change-status');
 		Route::redirect('/', route('admin.blog.list.index'));
+		Route::get('pdf', 'ResourceController@getPdf')->name('pdf');
 	});
 	Route::group(['prefix' => 'page', 'namespace' => 'Page', 'as' => 'page.'], function () {
 		Route::resource('list', 'ResourceController');

@@ -46,15 +46,25 @@ var DatatableJsonRemoteDemo=function() {
 					// }
 	            }, 
 	            {field: "title", title: "Title"}, 
-	            // {field:"url", title:"Url"},
 	            {field: "short_content", title: "Short Content",
 	            	template: function (row) {
 						return '<small>' + row.short_content + '</small>';
 					}
 	        	},
-	            {field:"published", title:"published"},
 	            {field:"editor", title:"Editor"},
 	            {field: "updated_at", title: "Updated At"},
+	            {field:"published", title:"published", 
+	            	template: function (row) {
+var output = 
+'<span class="m-switch m-switch--outline m-switch--icon m-switch--brand m-switch--sm"><label>' +
+'<input type="checkbox" onclick="changeStatus(' + row.id + ')"';
+if(row.published == 1){
+	output += 'checked="true"' 
+} 
+output += '/><span></span></label></span>';
+	            		return output;
+	            	},
+	        	},
 	            {field:"Actions", 
 	            	width: 70, 
 	            	title: "Actions", 
@@ -67,7 +77,6 @@ var output =
 '<form action="' + row.delete_url + '" method="POST" style="display:inline-block">' + 
 '<input type="hidden" name="_method" value="DELETE">' +
 '<input type="hidden" name="_token" value="' + $('meta[name="csrf-token"]').attr('content') + '">' +
-
 '<button class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill">' +
 '<i class="la la-trash"></i> </button> </form>';
 						return output;

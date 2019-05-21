@@ -2,7 +2,7 @@
 	<ul class="m-portlet__nav">
 		<li class="m-portlet__nav-item">
 			<div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" data-dropdown-toggle="hover" aria-expanded="true">
-				<a href="#" class="m-portlet__nav-link btn btn-lg btn-secondary  m-btn m-btn--icon m-btn--icon-only m-btn--pill  m-dropdown__toggle">
+				<a href="javascript:void(0)" class="m-portlet__nav-link btn btn-lg btn-secondary  m-btn m-btn--icon m-btn--icon-only m-btn--pill  m-dropdown__toggle">
 					<i class="la la-ellipsis-h m--font-brand"></i>
 				</a>
 				<div class="m-dropdown__wrapper">
@@ -17,7 +17,7 @@
 										</span>
 									</li>
 									<li class="m-nav__item">
-										<a href="" class="m-nav__link">
+										<a href="{{ route('admin.blog.list.create') }}" class="m-nav__link">
 											<i class="m-nav__link-icon flaticon-share"></i>
 											<span class="m-nav__link-text">
 												Create Blog
@@ -25,25 +25,19 @@
 										</a>
 									</li>
 									<li class="m-nav__item">
-										<a href="" class="m-nav__link">
-											<i class="m-nav__link-icon flaticon-chat-1"></i>
+										<a href="{{ route('admin.blog.export') }}" class="m-nav__link">
+											<i class="m-nav__link-icon flaticon-download"></i>
 											<span class="m-nav__link-text">
-												Blog List
+												Export Excel
 											</span>
 										</a>
 									</li>
 									<li class="m-nav__item">
-										<a href="" class="m-nav__link">
-											<i class="m-nav__link-icon flaticon-multimedia-2"></i>
+										<a href="{{ route('admin.blog.import') }}" class="m-nav__link">
+											<i class="m-nav__link-icon flaticon-up-arrow"></i>
 											<span class="m-nav__link-text">
-												Settings
+												Import Excel
 											</span>
-										</a>
-									</li>
-									<li class="m-nav__separator m-nav__separator--fit m--hide"></li>
-									<li class="m-nav__item m--hide">
-										<a href="#" class="btn btn-outline-danger m-btn m-btn--pill m-btn--wide btn-sm">
-											Submit
 										</a>
 									</li>
 								</ul>

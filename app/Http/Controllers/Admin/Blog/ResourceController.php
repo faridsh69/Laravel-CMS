@@ -7,14 +7,14 @@ use App\Http\Controllers\Controller;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Auth;
 use Conner\Tagging\Model\Tag;
-use App\Models\Category;
+// use App\Models\Category;
 use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\UserRegistered;
+use PDF;
 
 use App\Models\Blog;
 use App\Forms\BlogForm;
 use App\Exports\BlogsExport;
+use App\Imports\BlogsImport;
 
 class ResourceController extends Controller
 {
@@ -34,36 +34,9 @@ class ResourceController extends Controller
             'link_name' => __('Create New Blog'),
         ];
 
+        
+
         return view('admin.blog.list.index', compact('meta'));
-    }
-
-    public function getExport()
-    {
-        return Excel::download(new BlogsExport, 'blogs.xlsx');
-    }
-
-    public function getDatatable()
-    {
-        $blogs = Blog::orderBy('updated_at', 'desc')->get();
-
-        return datatables()
-            ->of($blogs)
-            ->addColumn('editor', function($blog) {
-                return $blog->editor->name;
-            })
-            ->addColumn('editor', function($blog) {
-                return $blog->editor->name;
-            })
-            ->addColumn('edit_url', function($blog) {
-                return route("admin.blog.list.edit", $blog);
-            })
-            ->addColumn('delete_url', function($blog) {
-                return route('admin.blog.list.destroy', $blog);
-            })            
-            // @csrf
-            // @method('DELETE')
-            ->rawColumns(['id'])
-            ->toJson();
     }
 
     /**
@@ -224,5 +197,58 @@ class ResourceController extends Controller
         $request->session()->flash('alert-success', 'Blog Deleted');
 
         return redirect()->route('admin.blog.list.index');
+    }
+
+    public function getPdf()
+    {
+        $list = Blog::all();
+
+        // return view('layout.print', compact('list'));
+        $pdf = PDF::loadView('layout.print', compact('list'));
+
+        return $pdf->download('blogs.pdf');
+    }
+
+    public function getExport()
+    {
+        return Excel::download(new BlogsExport, 'blogs.xlsx');
+    }
+
+    public function getImport()
+    {
+        Excel::import(new BlogsImport,  storage_path('upload/import.xlsx'));
+
+        return redirect()->route('admin.blog.list.index');
+    }
+
+    public function getDatatable()
+    {
+        $blogs = Blog::orderBy('updated_at', 'desc')->get();
+
+        return datatables()
+            ->of($blogs)
+            ->addColumn('editor', function($blog) {
+                return $blog->editor->name;
+            })
+            ->addColumn('edit_url', function($blog) {
+                return route("admin.blog.list.edit", $blog);
+            })
+            ->addColumn('delete_url', function($blog) {
+                return route('admin.blog.list.destroy', $blog);
+            })            
+            ->rawColumns(['id'])
+            ->toJson();
+    }
+
+    public function getChangeStatus($id)
+    {
+        $blog = Blog::findOrFail($id);
+
+        $blog->published = !$blog->published;
+        $blog->update();
+
+        return response()->json([
+            'data' => $blog->published,
+        ]);
     }
 }

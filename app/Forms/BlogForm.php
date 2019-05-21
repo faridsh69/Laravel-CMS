@@ -17,7 +17,7 @@ class BlogForm extends Form
 			    ],
             ])
             ->add('title', 'text-m', [
-                'rules' => 'required|min:10|max:60|unique:blogs,title,' . $id,
+                'rules' => 'required|max:60|min:10|unique:blogs,title,' . $id,
                 'help_block' => [
 			        'text' => 'Title should be unique, minimum 10 and maximum 60 characters.',
 			    ],
@@ -32,11 +32,11 @@ class BlogForm extends Form
             ->add('content', 'ckeditor', [ 
                 'rules' => 'required|seo_header',
             ])
-            ->add('meta_description', 'text-m', [
-                'rules' => 'required|min:70|max:191',
-                'help_block' => [
-			        'text' => 'Meta description should have minimum 70 and maximum 191 characters.',
-			    ],
+            ->add('tags', 'entity', [
+                'class' => 'Conner\Tagging\Model\Tag',
+                'property' => 'name',
+                'property_key' => 'id',
+                'attr' => ['multiple' => 'true', 'class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker', 'data-live-search' => 'true']
             ])
             // ->add('category', 'entity', [
             //     'class' => 'App\Models\Category',
@@ -44,24 +44,17 @@ class BlogForm extends Form
             //     'property_key' => 'id',
             //     'attr' => ['class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker', 'data-live-search' => 'true']
             // ])
-            ->add('tags', 'entity', [
-                'class' => 'Conner\Tagging\Model\Tag',
-                'property' => 'name',
-                'property_key' => 'id',
-                'attr' => ['multiple' => 'true', 'class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker', 'data-live-search' => 'true']
-            ])
             // ->add('related_blogs', 'entity', [
             //     'class' => 'App\Models\Blog',
             //     'property' => 'title',
             //     'property_key' => 'id',
             //     'attr' => ['multiple' => 'true', 'class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker', 'data-live-search' => 'true']
             // ])
-            ->add('published', 'switch-m', [
-            ])
-            ->add('google_index', 'checkbox-m', [
+            ->add('meta_description', 'text-m', [
+                'rules' => 'required|max:191|min:70',
                 'help_block' => [
-                    'text' => 'Google will index this page.',
-                ],
+			        'text' => 'Meta description should have minimum 70 and maximum 191 characters.',
+			    ],
             ])
             ->add('keywords', 'text-m', [
                 'rules' => 'nullable|max:191',
@@ -70,6 +63,13 @@ class BlogForm extends Form
             ->add('meta_image', 'text-m', [
                 'rules' => 'nullable|max:191|url',
                 'attr' => ['placeholder' => 'Meta image shows when this page is shared in social networks.'],
+            ])
+            ->add('published', 'switch-m', [
+            ])
+            ->add('google_index', 'checkbox-m', [
+                'help_block' => [
+                    'text' => 'Google will index this page.',
+                ],
             ])
             ->add('canonical_url', 'text-m', [
                 'rules' => 'nullable|max:191|url',
