@@ -59,6 +59,7 @@ structure:
 			+ add tags
 			+ add user activity log
 			+ activity log bezanam bade pak o update o create
+			code style
 			add category id 
 			add related blogs
 			notification after delete ...
@@ -67,7 +68,6 @@ structure:
 			sakhtare tree vase category
 			drag kardane page vase block
 			unit test
-			code style
 	+ table
 		+ created_at
 		+ user_id
@@ -287,9 +287,10 @@ packages:
 		antonioribeiro/health
 	- firewall
 		antonioribeiro/firewall
-	code style
-		squizlabs/PHP_CodeSniffer
-		FriendsOfPHP/PHP-CS-Fixer
+	+ code style
+		+ symplify/easy-coding-standard
+		- squizlabs/PHP_CodeSniffer
+		- FriendsOfPHP/PHP-CS-Fixer
 	comment o rate o share in social networks:
 	role&permission:
 	module maker:

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Setting\Backup;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Artisan;
-use Storage;
-use Spatie\Backup\BackupDestination\BackupCollection;
 use Auth;
+use Illuminate\Http\Request;
+use Spatie\Backup\BackupDestination\BackupCollection;
+use Storage;
 
 class ResourceController extends Controller
 {
@@ -32,7 +32,7 @@ class ResourceController extends Controller
 
         $backups = [];
         // make an array of backup files, with their filesize and creation date
-        foreach ($files as $k => $f) {
+        foreach ($files as $f) {
             // only take the zip files into account
             if (substr($f, -4) == '.zip' && $disk->exists($f)) {
                 $backups[] = [
@@ -86,7 +86,7 @@ class ResourceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $backup_item_name
      * @return \Illuminate\Http\Response
      */
     public function show($backup_item_name)
@@ -114,7 +114,7 @@ class ResourceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $backup_item_name
      * @return \Illuminate\Http\Response
      */
     public function edit($backup_item_name, Request $request)
