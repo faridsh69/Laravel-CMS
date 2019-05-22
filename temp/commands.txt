@@ -12,21 +12,20 @@ php artisan make:import BlogsImport --model=Blog
 php artisan make:mail UserRegistered
 php artisan backup:run
 php artisan apidoc:generate
+php artisan make:test BlogTest --unit
+
+vendor/bin/ecs check app
+vendor/bin/ecs check /routes/web.php --fix
+vendor/bin/phpunit
+
+@TODO
 
 Miladmallak10@gmail.com
 987654321hiclash
 
-php php-cs-fixer.phar fix /
-vendor/bin/ecs check /routes/web.php --fix
-
-vendor/bin/ecs check / --config vendor/symplify/easy-coding-standard/config/clean-code.yml
+// Mail::to(Auth::user())->send(new UserRegistered());
 
 ./vendor/bin/phpunit
-
-@TODO
-
-        // Mail::to(Auth::user())->send(new UserRegistered());
-
 
 http://eric.com/
 http://cdn-eric.com
@@ -52,3 +51,4 @@ git update-index --assume-unchanged public_html/vendor/
 
 find / -name 'mysqldump'
 
+-- php php-cs-fixer.phar fix /

@@ -3,8 +3,11 @@
 @section('content')
 <pre>
 
-		CHANGELOG: Version 0.3.16
+		CHANGELOG: Version 0.4.6
 
+		Important changes: 
+			Structure for form and table completed
+			Code style run on all codes
 
 		structure:
 			+ github

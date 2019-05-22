@@ -59,15 +59,13 @@ structure:
 			+ add tags
 			+ add user activity log
 			+ activity log bezanam bade pak o update o create
-			code style
+			+ code style
+			+ unit test
+			+ notification after delete ...
 			add category id 
 			add related blogs
-			notification after delete ...
-			add some related blogs
-			add category_id
 			sakhtare tree vase category
 			drag kardane page vase block
-			unit test
 	+ table
 		+ created_at
 		+ user_id
@@ -403,24 +401,24 @@ Features:
 
 
 Extra features:
-	- cache forms and sidebar
-	- notification email o sms
-	- check php load time in front views after developing them
-	- login page complete
-	- unit test benevisam 
-	- excel export and import 
-	- laravel code style
-	- use data in models to create migrations
-	-- use docker
-	-- two step verification
-	create a learning videos
-	have company in github social network and answer questions
+	+ laravel code style
+	use data in models to create migrations
+	excel export and import 
+	unit test benevisam 
+	login page complete
+	check php load time in front views after developing them
+	notification email o sms
+	- create a learning videos
+	- have company in github social network and answer questions
 	- class new for table
 	- image showing in table
 	- pdf
 	- print
-	- quick-sidebar
-	- quick-navbar	
+	-- quick-sidebar
+	-- quick-navbar	
+	-- cache forms and sidebar
+	-- use docker
+	-- two step verification
 
 BUGS:
 	server unable to send email

@@ -5,7 +5,7 @@ var DatatableJsonRemoteDemo=function() {
                 type:"remote", 
                 source: {
                 	read: {
-                		url: "/blog/datatable",
+                		url: "datatable",
 		                method: 'GET',
 		                timeout: 30000,
                 	},
