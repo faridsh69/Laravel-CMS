@@ -31,12 +31,7 @@ Route::group(['namespace' => 'Admin', 'middleware' => ['throttle:15,0.2', 'auth'
 		Route::resource('list', 'ResourceController');
 	});
 	Route::group(['prefix' => 'blog', 'namespace' => 'Blog', 'as' => 'blog.'], function () {
-
-		if(1 == 1){
-			$var = 'list';
-			$controller = 'ResourceController';
-			Route::resource($var , $controller);
-		}
+		Route::resource('list', 'ResourceController');
 		Route::get('datatable', 'ResourceController@getDatatable')->name('datatable');
 		Route::get('export', 'ResourceController@getExport')->name('export');
 		Route::get('import', 'ResourceController@getImport')->name('import');

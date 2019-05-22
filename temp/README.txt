@@ -59,6 +59,15 @@ structure:
 			+ add tags
 			+ add user activity log
 			+ activity log bezanam bade pak o update o create
+			add category id 
+			add related blogs
+			notification after delete ...
+			add some related blogs
+			add category_id
+			sakhtare tree vase category
+			drag kardane page vase block
+			unit test
+			code style
 	+ table
 		+ created_at
 		+ user_id
@@ -76,8 +85,18 @@ structure:
 		+ status activation
 		+ export with csv
 		+ import with csv
-	form:
-		structure:
+	structure:
+		meta to controller ha ro fix kon sakhtaresh o to view ham
+		admin layout o sakhtaresh o fix kon kollan vase table o form
+		constructor toe controller o bezan o chizae tosh o tamiz kon
+		vase sidebar o route ha ye array khob besaz
+		be route ha id nade balke khode blog o bede biad biron
+		migration o vasash ye sakhtar bezan ke az to model bekhone khodesh
+		hame chizae toe factory o bego az ye ja bekhone
+		hame chizae toe seeder ham yekparche kon
+		hame function hae index to controller o baghie o ye shekl kon
+		hame chizae to function ha ro daghighan mese ham kon
+		activity log
 			meta ha ro bego ke az ye ja bekhone
 			function hae toe controller ha ro az ye function bekhon
 			view ha ham bayad az ye sakhtar biad o moshtarak taresh konam
@@ -94,16 +113,6 @@ structure:
 			activity log o ok kon ke ye sakhtare sabet dashte bashe
 			breadcrumb o fixesh kon
 			ye fekri kon ke chia bayad to hidden bashan chia na
-				add some related blogs
-				add category_id
-				sakhtare tree vase category
-				drag kardane page vase block
-			- route o ke nemishe dastesh zad
-			- controller khode  ha ham bayad bashe ba function hash
-			- validation ha ke kollan to forme o kollan nadarim
-			- migration bayad az roe model sakhte beshe 
-			- factory ham bayad dasti sakhte beshe 
-			- seeder ham bayad dasti vared beshe 
 	+ log o neshon bede
 	+ backup giri o bezar to proje
 	+ changelog show in dashboard vase eric benevis
@@ -118,8 +127,11 @@ structure:
 	seo rule: 
 		find h1 and h2 in page
 	webpack for compile css js files
-models:
-	+ blog: 
+	login page complete
+	notification email o sms
+	check php load time in front views after developing them
+models: multiple
+	blog: 
 		fields:
 			name:				type:		rule:		help: 		relation: table name -> users
 			id, 				increments	-Automatic
@@ -138,7 +150,7 @@ models:
 			created_at, 		datetime	-Automatic
 			updated_at, 		datetime	-Automatic
 			deleted_at			datetime	-Automatic
-migrations:
+migrations: multiple automatic
 	Schema::create('blogs {{table_name}} ', function (Blueprint $table) {
         $table->increments {{type}} ('id' {{name}} );
         $table->string {{type}} ('url' {{name}} )->unique() {{unique exist in rule}}
@@ -165,7 +177,7 @@ migrations:
         $table->softDeletes();
     });
 
-factory:
+factory: single or multi
 	return [
 		{{ required ha inja hastan faghat }}
         'url' => $faker->uuid, {{ unique -> uuid }}
@@ -175,35 +187,52 @@ factory:
         'meta_description' => {{ type:string -> text(100) }}
         'keywords' => {{ type:string -> text(100) }}
     ];
-seeders:
+
+seeders: single with one array
 	factory(Blog::class, 5)->create();
+
 validation: 
-routes:
-controllers:
-add tags:
-activity log:
-excel:
-exceptions:
+
+routes: single with one array
+	$model_name = 'blog';
+	$resource_controller = 'ResourceController';
+
+	Route::group(['prefix' => 'blog' {{$model_name}} , 'namespace' => 'Blog' {{ bigname $model_name}}, 'as' => 'blog.' {{$model_name.}}], function () {
+		Route::resource('list' {{static}} , 'ResourceController' {{static}} );
+		Route::get('datatable' {{static}} , 'ResourceController@getDatatable' {{static}} )->name('datatable' {{static}} );
+		Route::get('export' {{static}} , 'ResourceController@getExport' {{static}} )->name('export' {{static}} );
+		Route::get('import' {{static}} , 'ResourceController@getImport' {{static}} )->name('import');
+		Route::get('change-status/{id} {{static}} ', 'ResourceController@getChangeStatus' {{static}} )->name('change-status' {{static}} );
+		Route::get('pdf' {{static}} , 'ResourceController@getPdf' {{static}} )->name('pdf' {{static}} );
+		Route::redirect('/', route('admin.blog.list.index' {{model_name}} ));
+	});
+
+controllers: multiple automatic
+
+add tags: single automatic
+activity log: single automatic
+excel: single automatic
+exceptions: single
 views:
-	breadcrumb
-	meta ha
-	return view ba block o widgets
-	layout:
-	meta ha:
-	print layout:
-form:
-table:
-unit test:
-notifications:
-	email layout:
-storage:
-services:
+	breadcrumb: single automatic
+	meta ha: single automatic
+	layout: single automatic
+	print layout: single automatic
+form: ???????
+table: ????????
+unit test: ??????
+Export: ?????
+Import: ??????
+notifications: single automatic
+	email layout: single automatic
+storage: single automatic
+services: 
 	handle all subdomains
-	different status in database
+return view ba block o widgets -> ??????
 elexir:
 Css:
 Js:
-authorizations:
+authorizations: ??????
 
 
 packages:
@@ -393,6 +422,6 @@ Extra features:
 	- quick-navbar	
 
 BUGS:
-	unable to send email
-	unable to create backup
+	server unable to send email
+	server unable to create backup
 
