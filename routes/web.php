@@ -69,7 +69,7 @@ Route::group(['namespace' => 'Admin', 'middleware' => ['throttle:15,0.2', 'auth'
 	Route::group(['prefix' => 'notification', 'namespace' => 'Notification', 'as' => 'notification.'], function () {
 		Route::resource('list', 'ResourceController');
 	});
-});	
+});
 Auth::routes();
 Route::get('/home', 'Front\HomeController@index')->name('home');
 Route::get('', function() {
