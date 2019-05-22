@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers\Admin\Blog;
 
-use Illuminate\Http\Request;
+use App\Exports\BlogsExport;
+use App\Forms\BlogForm;
 use App\Http\Controllers\Controller;
-use Kris\LaravelFormBuilder\FormBuilder;
+use App\Imports\BlogsImport;
+use App\Models\Blog;
 use Auth;
 use Conner\Tagging\Model\Tag;
-// use App\Models\Category;
+use Illuminate\Http\Request;
+use Kris\LaravelFormBuilder\FormBuilder;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 
-use App\Models\Blog;
-use App\Forms\BlogForm;
-use App\Exports\BlogsExport;
-use App\Imports\BlogsImport;
+// use App\Models\Category;
 
-class ResourceController extends Controller
+class ResourceController1 extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +24,7 @@ class ResourceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { 
+    {
         $meta = [
             'title' => __('Blog Manager'),
             'description' => __('Admin Panel Page For Best Cms In The World'),
@@ -33,8 +33,6 @@ class ResourceController extends Controller
             'link_route' => route('admin.blog.list.create'),
             'link_name' => __('Create New Blog'),
         ];
-
-        
 
         return view('admin.blog.list.index', compact('meta'));
     }
@@ -75,7 +73,7 @@ class ResourceController extends Controller
     {
         $form = $formBuilder->create(BlogForm::class);
 
-        if (!$form->isValid()) {
+        if (! $form->isValid()) {
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
 
@@ -85,12 +83,12 @@ class ResourceController extends Controller
         unset($data['tags']);
 
         $blog = Blog::create($data);
-        $blog->retag($tag_names); 
+        $blog->retag($tag_names);
 
         activity('Blog')
-           ->performedOn($blog)
-           ->causedBy(Auth::user())
-           ->log('Blog Created');
+            ->performedOn($blog)
+            ->causedBy(Auth::user())
+            ->log('Blog Created');
 
         $request->session()->flash('alert-success', 'Blog Created');
 
@@ -128,7 +126,7 @@ class ResourceController extends Controller
             'link_route' => route('admin.blog.list.index'),
             'link_name' => __('Blog Manager'),
         ];
-        
+
         $form = $formBuilder->create(BlogForm::class, [
             'method' => 'PUT',
             'url' => route('admin.blog.list.update', $blog),
@@ -155,27 +153,24 @@ class ResourceController extends Controller
             'model' => $blog,
         ]);
 
-        if (!$form->isValid()) {
+        if (! $form->isValid()) {
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
-        
+
         $data = $form->getFieldValues();
-        
-        // $tag_names = Tag::whereIn('id', $data['tags'])->pluck('name')->toArray();
-        // $blog->retag($tag_names); 
 
         unset($data['related_blogs']);
 
         $tag_names = Tag::whereIn('id', $data['tags'])->pluck('name')->toArray();
-        $blog->retag($tag_names); 
+        $blog->retag($tag_names);
         unset($data['tags']);
 
         $blog->update($data);
 
         activity('Blog')
-           ->performedOn($blog)
-           ->causedBy(Auth::user())
-           ->log('Blog Updated');
+            ->performedOn($blog)
+            ->causedBy(Auth::user())
+            ->log('Blog Updated');
 
         $request->session()->flash('alert-success', 'Blog Updated');
 
@@ -209,14 +204,14 @@ class ResourceController extends Controller
         return $pdf->download('blogs.pdf');
     }
 
-    public function getExport()
+    public function getExport(BlogsExport $blog_export)
     {
-        return Excel::download(new BlogsExport, 'blogs.xlsx');
+        return Excel::download($blog_export, 'blogs.xlsx');
     }
 
-    public function getImport()
+    public function getImport(BlogsImport $blog_import)
     {
-        Excel::import(new BlogsImport,  storage_path('upload/import.xlsx'));
+        Excel::import($blog_import, storage_path('upload/import.xlsx'));
 
         return redirect()->route('admin.blog.list.index');
     }
@@ -231,11 +226,11 @@ class ResourceController extends Controller
                 return $blog->editor->name;
             })
             ->addColumn('edit_url', function($blog) {
-                return route("admin.blog.list.edit", $blog);
+                return route('admin.blog.list.edit', $blog);
             })
             ->addColumn('delete_url', function($blog) {
                 return route('admin.blog.list.destroy', $blog);
-            })            
+            })
             ->rawColumns(['id'])
             ->toJson();
     }
@@ -244,7 +239,7 @@ class ResourceController extends Controller
     {
         $blog = Blog::findOrFail($id);
 
-        $blog->published = !$blog->published;
+        $blog->published = ! $blog->published;
         $blog->update();
 
         return response()->json([

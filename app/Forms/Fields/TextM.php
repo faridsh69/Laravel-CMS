@@ -4,13 +4,8 @@ namespace App\Forms\Fields;
 
 use Kris\LaravelFormBuilder\Fields\FormField;
 
-class TextM extends FormField 
+class TextM extends FormField
 {
-    protected function getTemplate()
-    {
-        return 'vendor.laravel-form-builder.text-m';
-    }
-
     public function getDefaults()
     {
         return [
@@ -36,14 +31,17 @@ class TextM extends FormField
                 break;
             case 'canonical_url':
                 $options['left_icon'] = 'la-globe';
-                break; 
+                break;
             case 'meta_description':
                 $options['left_icon'] = 'la-bookmark';
-                break;                     
+                break;
         }
-
 
         return parent::render($options, $showLabel, $showField, $showError);
     }
-}
 
+    protected function getTemplate()
+    {
+        return 'vendor.laravel-form-builder.text-m';
+    }
+}

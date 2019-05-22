@@ -4,13 +4,8 @@ namespace App\Forms\Fields;
 
 use Kris\LaravelFormBuilder\Fields\FormField;
 
-class CheckboxM extends FormField 
+class CheckboxM extends FormField
 {
-    protected function getTemplate()
-    {
-        return 'vendor.laravel-form-builder.checkbox-m';
-    }
-
     /**
      * @inheritdoc
      */
@@ -19,7 +14,7 @@ class CheckboxM extends FormField
         return [
             'attr' => ['class' => null, 'id' => $this->getName()],
             'value' => 1,
-            'checked' => true
+            'checked' => true,
         ];
     }
 
@@ -36,5 +31,9 @@ class CheckboxM extends FormField
 
         return parent::render($options, $showLabel, $showField, $showError);
     }
-}
 
+    protected function getTemplate()
+    {
+        return 'vendor.laravel-form-builder.checkbox-m';
+    }
+}

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use PragmaRX\Countries\Package\Countries;
+
+// use Illuminate\Http\Request;
 
 class GeneralController extends Controller
 {
@@ -12,8 +13,10 @@ class GeneralController extends Controller
     {
     	$countries = Countries::pluck('name')->all();
 
-    	return response()->json([
-		    'data' => $countries,
-		]);
+    	$output = [
+    	    'data' => $countries,
+    	];
+
+    	return response()->json($output);
     }
 }

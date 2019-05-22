@@ -4,13 +4,8 @@ namespace App\Forms\Fields;
 
 use Kris\LaravelFormBuilder\Fields\FormField;
 
-class SwitchM extends FormField 
+class SwitchM extends FormField
 {
-    protected function getTemplate()
-    {
-        return 'vendor.laravel-form-builder.switch-m';
-    }
-
     /**
      * @inheritdoc
      */
@@ -19,7 +14,7 @@ class SwitchM extends FormField
         return [
             'attr' => ['class' => null, 'id' => $this->getName()],
             'value' => 1,
-            'checked' => true
+            'checked' => true,
         ];
     }
 
@@ -35,5 +30,10 @@ class SwitchM extends FormField
         }
 
         return parent::render($options, $showLabel, $showField, $showError);
+    }
+
+    protected function getTemplate()
+    {
+        return 'vendor.laravel-form-builder.switch-m';
     }
 }

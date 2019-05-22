@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Admin\Comment;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Blog;
+use Illuminate\Http\Request;
 
 class ResourceController extends Controller
 {
@@ -25,7 +24,6 @@ class ResourceController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -36,7 +34,6 @@ class ResourceController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
@@ -47,7 +44,6 @@ class ResourceController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -58,7 +54,6 @@ class ResourceController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -70,7 +65,6 @@ class ResourceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**
@@ -81,6 +75,5 @@ class ResourceController extends Controller
      */
     public function destroy($id)
     {
-        //
     }
 }

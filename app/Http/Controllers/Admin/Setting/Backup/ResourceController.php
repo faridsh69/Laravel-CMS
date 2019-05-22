@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Artisan;
 use Auth;
 use Illuminate\Http\Request;
-use Spatie\Backup\BackupDestination\BackupCollection;
 use Storage;
 
 class ResourceController extends Controller
@@ -20,6 +19,7 @@ class ResourceController extends Controller
         $this->disk_name = config('backup.backup.destination.disks')[0];
         $this->backup_name = config('backup.backup.name');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -34,7 +34,7 @@ class ResourceController extends Controller
         // make an array of backup files, with their filesize and creation date
         foreach ($files as $f) {
             // only take the zip files into account
-            if (substr($f, -4) == '.zip' && $disk->exists($f)) {
+            if (substr($f, -4) === '.zip' && $disk->exists($f)) {
                 $backups[] = [
                     'file_path' => $f,
                     'file_name' => str_replace($this->backup_name . '/', '', $f),
@@ -49,7 +49,7 @@ class ResourceController extends Controller
         $meta = [
             'title' => 'Manage Backups',
             'link_route' => '/setting/backup/list/create',
-            'link_name' => 'Create New Backup', 
+            'link_name' => 'Create New Backup',
         ];
 
         return view('admin.setting.backup.index', compact('backups', 'meta'));
@@ -80,7 +80,6 @@ class ResourceController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
@@ -102,9 +101,9 @@ class ResourceController extends Controller
             return \Response::stream(function () use ($stream) {
                 fpassthru($stream);
             }, 200, [
-                "Content-Type" => $fs->getMimetype($file),
-                "Content-Length" => $fs->getSize($file),
-                "Content-disposition" => "attachment; filename=\"" . basename($file) . "\"",
+                'Content-Type' => $fs->getMimetype($file),
+                'Content-Length' => $fs->getSize($file),
+                'Content-disposition' => 'attachment; filename=\"' . basename($file) . '\"',
             ]);
         } else {
             abort(404, "The backup file doesn't exist.");
@@ -143,7 +142,6 @@ class ResourceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**
@@ -154,6 +152,5 @@ class ResourceController extends Controller
      */
     public function destroy($id)
     {
-        // 
     }
 }

@@ -63,7 +63,7 @@ services:
     # [1,2]
     PhpCsFixer\Fixer\ArrayNotation\WhitespaceAfterCommaInArrayFixer:
 
-    PhpCsFixer\Fixer\Whitespace\ArrayIndentationFixer:
+    # PhpCsFixer\Fixer\Whitespace\ArrayIndentationFixer:
 
     # check for forgotten "git merge" conflicts
     PHP_CodeSniffer\Standards\Generic\Sniffs\VersionControl\GitMergeConflictSniff: ~
