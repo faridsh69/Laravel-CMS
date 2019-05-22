@@ -8,12 +8,9 @@ class SeoHeading implements Rule
 {
     /**
      * Create a new rule instance.
-     *
-     * @return void
      */
     public function __construct()
     {
-        //
     }
 
     /**
@@ -30,7 +27,6 @@ class SeoHeading implements Rule
 
     /**
      * Get the validation error message.
-     *
      * @return string
      */
     public function message()

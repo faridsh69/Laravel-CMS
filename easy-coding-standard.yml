@@ -226,7 +226,7 @@ services:
     PhpCsFixer\Fixer\Whitespace\NoSpacesAroundOffsetFixer: ~
 
     # \n    \n
-    PhpCsFixer\Fixer\Whitespace\NoWhitespaceInBlankLineFixer: ~
+    # PhpCsFixer\Fixer\Whitespace\NoWhitespaceInBlankLineFixer: ~
 
     # someMethod()    :    Type
     PhpCsFixer\Fixer\FunctionNotation\ReturnTypeDeclarationFixer: ~
@@ -262,6 +262,8 @@ services:
     PHP_CodeSniffer\Standards\PSR2\Sniffs\Namespaces\UseDeclarationSniff:
     PHP_CodeSniffer\Standards\PSR2\Sniffs\Classes\ClassDeclarationSniff:
     PHP_CodeSniffer\Standards\PSR2\Sniffs\Classes\PropertyDeclarationSniff:
+
+    # end of all php files should be empty line  
     PHP_CodeSniffer\Standards\PSR2\Sniffs\Files\EndFileNewlineSniff:
     PHP_CodeSniffer\Standards\PSR2\Sniffs\Files\ClosingTagSniff:
     PHP_CodeSniffer\Standards\PSR2\Sniffs\ControlStructures\ControlStructureSpacingSniff:

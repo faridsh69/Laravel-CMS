@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Auth;
 use Conner\Tagging\Taggable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Blog extends Model
 {
@@ -14,26 +14,20 @@ class Blog extends Model
 
     public $guarded = [];
 
-    protected $hidden = [
-    	'created_at',
-    	// 'updated_at',
-        'deleted_at',
-    ];
-
     public $fillable = [
-        'id', // integer - required - 
+        'id', // integer - required -
         'title', // string - required - unique:blogs,title - min:10|max:60
         'url', // string - required - max:80 - lowercase - alphabetic
-        'short_content', // string - nullable - 
-        'content', // text - required - find h1 1 done va != title - h2 - 
+        'short_content', // string - nullable -
+        'content', // text - required - find h1 1 done va != title - h2 -
         'creator_id', // integer - required
         'editor_id', // integer - required
-        'published', // boolean - default true - 
+        'published', // boolean - default true -
         'google_index', // boolean - default true -
         'meta_description', // string - required - min:70|max:320
         'keywords', // string - nullable
-        'meta_image', // string - nullable ?!?! 
-        'canonical_url', // string - nullable - url bashe 
+        'meta_image', // string - nullable ?!?!
+        'canonical_url', // string - nullable - url bashe
         'created_at',
         'updated_at',
         'deleted_at',
@@ -55,13 +49,19 @@ class Blog extends Model
         ['name' => 'published', 'type' => 'boolean', 'rule' => ''],
         // Google will index this page
         ['name' => 'google_index', 'type' => 'boolean', 'rule' => ''],
-        // Canonical url just used for duplicate contents, they should have same canonical url 
+        // Canonical url just used for duplicate contents, they should have same canonical url
         ['name' => 'canonical_url', 'type' => 'string', 'rule' => 'nullable|max:191|url'],
         ['name' => 'creator_id', 'type' => 'integer', 'rule' => 'required'],
         ['name' => 'editor_id', 'type' => 'integer', 'rule' => 'required'],
         ['name' => 'created_at', 'type' => 'datetime', 'rule' => 'required'],
         ['name' => 'updated_at', 'type' => 'datetime', 'rule' => 'required'],
         ['name' => 'deleted_at', 'type' => 'datetime', 'rule' => 'nullable'],
+    ];
+
+    protected $hidden = [
+        'created_at',
+        // 'updated_at',
+        'deleted_at',
     ];
 
     public function editor()
@@ -96,7 +96,7 @@ class Blog extends Model
 
     public static function getFillables()
     {
-    	return (new self)->fillable;
+    	return (new self())->fillable;
     }
 
     public static function boot()
@@ -106,14 +106,14 @@ class Blog extends Model
         self::creating(function($model){
             $model->published = $model->published ? 1 : 0;
             $model->google_index = $model->google_index ? 1 : 0;
-            $model->creator_id = Auth::id() ? Auth::id() : 1;
-            $model->editor_id = Auth::id() ? Auth::id() : 1;
+            $model->creator_id = Auth::id() ?: 1;
+            $model->editor_id = Auth::id() ?: 1;
         });
 
         self::updating(function($model){
             $model->published = $model->published ? 1 : 0;
             $model->google_index = $model->google_index ? 1 : 0;
-            $model->editor_id = Auth::id() ? Auth::id() : 1;
+            $model->editor_id = Auth::id() ?: 1;
         });
     }
 }
