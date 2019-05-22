@@ -203,9 +203,9 @@ services:
     PhpCsFixer\Fixer\CastNotation\CastSpacesFixer: ~
 
     # $value   +  =   5;
-    PhpCsFixer\Fixer\Operator\BinaryOperatorSpacesFixer:
-        align_double_arrow: false
-        align_equals: false
+    # PhpCsFixer\Fixer\Operator\BinaryOperatorSpacesFixer:
+    #    align_double_arrow: false
+    #    align_equals: false
 
     # someMethod(  string   $value)
     PhpCsFixer\Fixer\FunctionNotation\FunctionTypehintSpaceFixer: ~

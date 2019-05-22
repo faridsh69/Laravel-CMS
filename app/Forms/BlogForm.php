@@ -29,26 +29,26 @@ class BlogForm extends Form
 			    ],
                 'attr' => ['rows' => '2'],
             ])
-            ->add('content', 'ckeditor', [ 
+            ->add('content', 'ckeditor', [
                 'rules' => 'required|seo_header',
             ])
             ->add('tags', 'entity', [
                 'class' => 'Conner\Tagging\Model\Tag',
                 'property' => 'name',
                 'property_key' => 'id',
-                'attr' => ['multiple' => 'true', 'class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker', 'data-live-search' => 'true']
+                'attr' => ['multiple' => 'true', 'class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker', 'data-live-search' => 'true'],
             ])
             // ->add('category', 'entity', [
             //     'class' => 'App\Models\Category',
             //     'property' => 'name',
             //     'property_key' => 'id',
-            //     'attr' => ['class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker', 'data-live-search' => 'true']
+            //     'attr' => ['class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker', 'data-live-search' => 'true'],
             // ])
             // ->add('related_blogs', 'entity', [
             //     'class' => 'App\Models\Blog',
             //     'property' => 'title',
             //     'property_key' => 'id',
-            //     'attr' => ['multiple' => 'true', 'class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker', 'data-live-search' => 'true']
+            //     'attr' => ['multiple' => 'true', 'class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker', 'data-live-search' => 'true'],
             // ])
             ->add('meta_description', 'text-m', [
                 'rules' => 'required|max:191|min:70',
@@ -78,7 +78,6 @@ class BlogForm extends Form
 			    ],
                 'attr' => ['placeholder' => 'Leave it empty if you dont need any google redirection.'],
             ])
-            ->add('submit', 'submit')
-            ;
+            ->add('submit', 'submit');
     }
 }

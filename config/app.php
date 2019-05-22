@@ -7,7 +7,6 @@ return [
         'format' => 'css|js|eot|woff|ttf|jpg|jpeg|png|gif|svg',
     ],
 
-
     'name' => env('APP_NAME', 'Laravel'),
 
     'env' => env('APP_ENV', 'production'),
@@ -29,7 +28,6 @@ return [
     'key' => env('APP_KEY'),
 
     'cipher' => 'AES-256-CBC',
-
 
     'providers' => [
 
@@ -71,7 +69,6 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         Propaganistas\LaravelPhone\PhoneServiceProvider::class,
-        
         /*
          * Application Service Providers...
          */
@@ -134,7 +131,7 @@ return [
         /*
          * Package Aliases
          */
-        'DataTables' => Yajra\DataTables\Facades\DataTables::class, 
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'Cdn' => App\Services\CdnService::class,
         'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
         'Image' => Intervention\Image\Facades\Image::class,
@@ -142,5 +139,4 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
-
 ];

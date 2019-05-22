@@ -9,7 +9,7 @@ return [
         'field_error_class'   => '',
         'help_block_class'    => 'm-form__help',
         'error_class'         => 'text-danger',
-        'required_class'      => 'required'
+        'required_class'      => 'required',
 
         // Override a class from a field.
         //'text'                => [
@@ -50,6 +50,5 @@ return [
         'switch-bootstrap-m' => '\App\Forms\Fields\SwitchBootstrapM',
         'text-m' => '\App\Forms\Fields\TextM',
         'ckeditor' => '\App\Forms\Fields\Ckeditor',
-
-    ]
+    ],
 ];

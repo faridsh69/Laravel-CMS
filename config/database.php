@@ -67,9 +67,8 @@ return [
                 // 'use_single_transaction',
                 // 'timeout' => 60 * 5, // 5 minute timeout
                 // 'exclude_tables' => ['table1', 'table2'],
-                // 'add_extra_option' => '--optionname=optionvalue', 
-            ]  
-
+                // 'add_extra_option' => '--optionname=optionvalue',
+            ],
         ],
 
         'pgsql' => [
@@ -132,7 +131,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'predis'),
-            'prefix' => Str::slug(env('APP_NAME', 'laravel'), '_').'_database_',
+            'prefix' => Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_',
         ],
 
         'default' => [

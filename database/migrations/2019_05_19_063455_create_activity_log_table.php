@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateActivityLogTable extends Migration
 {
@@ -11,7 +10,7 @@ class CreateActivityLogTable extends Migration
      */
     public function up()
     {
-        Schema::defaultStringLength(191); 
+        Schema::defaultStringLength(191);
         Schema::create(config('activitylog.table_name'), function (Blueprint $table) {
             $table->increments('id');
             $table->string('log_name')->nullable();

@@ -2,25 +2,26 @@
 
 namespace App\Exports;
 
-use Maatwebsite\Excel\Concerns\FromCollection;
 use App\Models\Blog;
+use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
 class BlogsExport implements FromCollection, WithHeadings
 {
 	public $fields = [
         'id',
-        'title', 
-        'url', 'short_content', 
-        'content', 
-        'meta_description', 
+        'title',
+        'url',
+        'short_content',
+        'content',
+        'meta_description',
         'editor_id',
         'updated_at',
 	];
-	
+
     /**
-    * @return \Illuminate\Support\Collection
-    */
+     * @return \Illuminate\Support\Collection
+     */
     public function collection()
     {
         return Blog::select($this->fields)->get();
@@ -30,5 +31,4 @@ class BlogsExport implements FromCollection, WithHeadings
     {
         return [$this->fields];
     }
-
 }

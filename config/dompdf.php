@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -13,7 +13,7 @@ return array(
     */
     'show_warnings' => false,   // Throw an Exception on warnings from dompdf
     'orientation' => 'portrait',
-    'defines' => array(
+    'defines' => [
         /**
          * The location of the DOMPDF font directory
          *
@@ -24,7 +24,7 @@ return array(
          * Notes regarding fonts:
          * Additional .afm font metrics can be added by executing load_font.php from command line.
          *
-         * Only the original "Base 14 fonts" are present on all pdf viewers. Additional fonts must
+         * Only the original 'Base 14 fonts' are present on all pdf viewers. Additional fonts must
          * be embedded in the pdf file or the PDF may not display correctly. This can significantly
          * increase file size unless font subsetting is enabled. Before embedding a font please
          * review your rights under the font license.
@@ -32,13 +32,13 @@ return array(
          * Any font specification in the source HTML is translated to the closest font available
          * in the font directory.
          *
-         * The pdf standard "Base 14 fonts" are:
+         * The pdf standard 'Base 14 fonts' are:
          * Courier, Courier-Bold, Courier-BoldOblique, Courier-Oblique,
          * Helvetica, Helvetica-Bold, Helvetica-BoldOblique, Helvetica-Oblique,
          * Times-Roman, Times-Bold, Times-BoldItalic, Times-Italic,
          * Symbol, ZapfDingbats.
          */
-        "font_dir" => storage_path('fonts/'), // advised by dompdf (https://github.com/dompdf/dompdf/pull/782)
+        'font_dir' => storage_path('fonts/'), // advised by dompdf (https://github.com/dompdf/dompdf/pull/782)
 
         /**
          * The location of the DOMPDF font cache directory
@@ -48,7 +48,7 @@ return array(
          *
          * Note: This directory must exist and be writable by the webserver process.
          */
-        "font_cache" => storage_path('fonts/'),
+        'font_cache' => storage_path('fonts/'),
 
         /**
          * The location of a temporary directory.
@@ -57,12 +57,12 @@ return array(
          * The temporary directory is required to download remote images and when
          * using the PFDLib back end.
          */
-        "temp_dir" => sys_get_temp_dir(),
+        'temp_dir' => sys_get_temp_dir(),
 
         /**
          * ==== IMPORTANT ====
          *
-         * dompdf's "chroot": Prevents dompdf from accessing system files or other
+         * dompdf's 'chroot': Prevents dompdf from accessing system files or other
          * files on the webserver.  All local files opened by dompdf must be in a
          * subdirectory of this directory.  DO NOT set it to '/' since this could
          * allow an attacker to use dompdf to read any files on the server.  This
@@ -71,12 +71,12 @@ return array(
          * direct class use like:
          * $dompdf = new DOMPDF();	$dompdf->load_html($htmldata); $dompdf->render(); $pdfdata = $dompdf->output();
          */
-        "chroot" => realpath(base_path()),
+        'chroot' => realpath(base_path()),
 
         /**
          * Whether to enable font subsetting or not.
          */
-        "enable_font_subsetting" => false,
+        'enable_font_subsetting' => false,
 
         /**
          * The PDF rendering backend to use
@@ -106,7 +106,7 @@ return array(
          * @link http://www.ros.co.nz/pdf
          * @link http://www.php.net/image
          */
-        "pdf_backend" => "CPDF",
+        'pdf_backend' => 'CPDF',
 
         /**
          * PDFlib license key
@@ -120,7 +120,7 @@ return array(
          * If pdflib present in web server and auto or selected explicitely above,
          * a real license code must exist!
          */
-        //"DOMPDF_PDFLIB_LICENSE" => "your license key here",
+        //'DOMPDF_PDFLIB_LICENSE' => 'your license key here',
 
         /**
          * html target media view which should be rendered into pdf.
@@ -132,16 +132,16 @@ return array(
          * the desired content might be different (e.g. screen or projection view of html file).
          * Therefore allow specification of content here.
          */
-        "default_media_type" => "screen",
+        'default_media_type' => 'screen',
 
         /**
          * The default paper size.
          *
-         * North America standard is "letter"; other countries generally "a4"
+         * North America standard is 'letter'; other countries generally 'a4'
          *
          * @see CPDF_Adapter::PAPER_SIZES for valid sizes ('letter', 'legal', 'A4', etc.)
          */
-        "default_paper_size" => "a4",
+        'default_paper_size' => 'a4',
 
         /**
          * The default font family
@@ -149,7 +149,7 @@ return array(
          * Used if no suitable fonts can be found. This must exist in the font folder.
          * @var string
          */
-        "default_font" => "serif",
+        'default_font' => 'serif',
 
         /**
          * Image DPI setting
@@ -184,13 +184,13 @@ return array(
          *
          * @var int
          */
-        "dpi" => 96,
+        'dpi' => 96,
 
         /**
          * Enable inline PHP
          *
          * If this setting is set to true then DOMPDF will automatically evaluate
-         * inline PHP contained within <script type="text/php"> ... </script> tags.
+         * inline PHP contained within <script type='text/php'> ... </script> tags.
          *
          * Enabling this for documents you do not trust (e.g. arbitrary remote html
          * pages) is a security risk.  Set this option to false if you wish to process
@@ -198,17 +198,17 @@ return array(
          *
          * @var bool
          */
-        "enable_php" => false,
+        'enable_php' => false,
 
         /**
          * Enable inline Javascript
          *
          * If this setting is set to true then DOMPDF will automatically insert
-         * JavaScript code contained within <script type="text/javascript"> ... </script> tags.
+         * JavaScript code contained within <script type='text/javascript'> ... </script> tags.
          *
          * @var bool
          */
-        "enable_javascript" => true,
+        'enable_javascript' => true,
 
         /**
          * Enable remote file access
@@ -227,18 +227,16 @@ return array(
          *
          * @var bool
          */
-        "enable_remote" => true,
+        'enable_remote' => true,
 
         /**
          * A ratio applied to the fonts height to be more like browsers' line height
          */
-        "font_height_ratio" => 1.1,
+        'font_height_ratio' => 1.1,
 
         /**
          * Use the more-than-experimental HTML5 Lib parser
          */
-        "enable_html5_parser" => false,
-    ),
-
-
-);
+        'enable_html5_parser' => false,
+    ],
+];
