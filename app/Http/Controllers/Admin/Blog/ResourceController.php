@@ -89,15 +89,15 @@ class ResourceController extends Controller
 
         $data_tags = $data['tags'];
         unset($data['tags']);
-        $created_model = $this->repository->create($data);
+        $model = $this->repository->create($data);
 
         if($data_tags){
             $tag_names = Tag::whereIn('id', $data_tags)->pluck('name')->toArray();
-            $created_model->retag($tag_names);
+            $model->retag($tag_names);
         }
 
         activity($this->model)
-            ->performedOn($created_model)
+            ->performedOn($model)
             ->causedBy(Auth::user())
             ->log($this->model . ' Created');
 
@@ -114,12 +114,13 @@ class ResourceController extends Controller
      */
     public function show($id)
     {
-        $blog = $this->repository->findOrFail($id);
-
-        $data = json_encode($blog->getAttributes());
+        $model = $this->repository->findOrFail($id);
+        $data = $model->getAttributes();
 
         $this->meta['title'] = __($this->model . ' Show');
         $this->meta['alert'] = 'Simple view of a model !';
+        $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.edit', $model);
+        $this->meta['link_name'] = __($this->model . ' Edit Form');
 
         return view('admin.list.show', ['data' => $data, 'meta' => $this->meta]); 
     }
@@ -132,16 +133,16 @@ class ResourceController extends Controller
      */
     public function edit($id, FormBuilder $formBuilder)
     {
-        $blog = Blog::findOrFail($id);
+        $model = $this->repository->findOrFail($id);
 
-        $this->meta['title'] = __('Edit ' . $this->model);
+        $this->meta['title'] = __('Edit ' . $this->model . ' ' . $id);
 
         $form = $formBuilder->create($this->model_form, [
             'method' => 'PUT',
-            'url' => route('admin.blog.list.update', $blog),
-            'class' => 'm-form m-form--fit m-form--state m-form--label-align-right',
-            'id' => 'blog_form',
-            'model' => $blog,
+            'url' => route('admin.' . $this->model_sm . '.list.update', $model),
+            'class' => 'm-form m-form--state',
+            'id' => 'admin_form',
+            'model' => $model,
         ]);
 
         return view('admin.list.form', ['form' => $form, 'meta' => $this->meta]);
@@ -154,12 +155,12 @@ class ResourceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, FormBuilder $formBuilder)
+    public function update($id, FormBuilder $formBuilder, Request $request)
     {
-        $blog = Blog::findOrFail($id);
+        $model = $this->repository->findOrFail($id);
 
         $form = $formBuilder->create($this->model_form, [
-            'model' => $blog,
+            'model' => $model,
         ]);
 
         if (! $form->isValid()) {
@@ -167,23 +168,23 @@ class ResourceController extends Controller
         }
 
         $data = $form->getFieldValues();
-
-        unset($data['related_blogs']);
-
-        $tag_names = Tag::whereIn('id', $data['tags'])->pluck('name')->toArray();
-        $blog->retag($tag_names);
+        $data_tags = $data['tags'];
         unset($data['tags']);
+        $model->update($data);
 
-        $blog->update($data);
+        if($data_tags){
+            $tag_names = Tag::whereIn('id', $data_tags)->pluck('name')->toArray();
+            $model->retag($tag_names);
+        }
 
-        activity('Blog')
-            ->performedOn($blog)
+        activity($this->model)
+            ->performedOn($model)
             ->causedBy(Auth::user())
-            ->log('Blog Updated');
+            ->log($this->model . ' Updated');
 
-        $request->session()->flash('alert-success', 'Blog Updated Successfully!');
+        $request->session()->flash('alert-success', $this->model . ' Updated Successfully!');
 
-        return redirect()->route('admin.blog.list.index');
+        return redirect()->route('admin.' . $this->model_sm . '.list.index');
     }
 
     /**
@@ -205,16 +206,18 @@ class ResourceController extends Controller
 
     public function getPdf()
     {
-        $list = Blog::all();
+        $list = $this->repository->all();
 
         // return view('layout.print', compact('list'));
         $pdf = PDF::loadView('layout.print', compact('list'));
 
-        return $pdf->download('blogs.pdf');
+        return $pdf->download($this->model . '.pdf');
     }
 
     public function getExport(BlogsExport $blog_export)
     {
+        // $class_name = 'App\\Models\\' . $this->model;
+        // $this->repository = new $class_name;
         return Excel::download($blog_export, 'blogs.xlsx');
     }
 
