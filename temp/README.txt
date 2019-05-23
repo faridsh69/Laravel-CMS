@@ -479,6 +479,7 @@ Milestone 1: (finished)
 	43 add tags to all blogs and other models
 	44 add user activity log for record all user activity in admin panel
 Milestone 2: 7 modules in admin panel: (working)
+	0 dashboard
 	+ 1 blog (finished)
 	2 page 
 	3 category
@@ -506,6 +507,8 @@ Milestone 3: 8 rest of modules in admin panel:
 	20 events (future developments for free)
 Milestone 4: 8 widgets in FrontEnd:
 	create awsome ui with full seo base and fast and responsive
+	http://cafetarah.ir/Saadatrent/index.html
+	http://cafetarah.ir/Saadatrent/about-us.html
 Milestone 5: 7 extra widgets in FrontEnd:
 	create awsome ui with full seo base and fast and responsive
 

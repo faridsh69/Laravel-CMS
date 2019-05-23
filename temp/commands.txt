@@ -16,7 +16,7 @@ php artisan make:test BlogTest --unit
 
 vendor/bin/ecs check app
 vendor/bin/ecs check /routes/web.php --fix
-vendor/bin/phpunit
+./vendor/bin/phpunit
 
 @TODO
 
@@ -35,8 +35,9 @@ php artisan make:form Forms/BlogForm --fields="title:text, url:text, short_conte
 
 php artisan make:rule SeoHeading
 
-ln -s /public_html/storage storage/app/public
-ln -s /home/public_html/storage/app/public /home/dev5/public_html/public/storage
+ln -s /home/faridsh/domains/faridtest.ir/storage/app/public public_html/cdn/storage 
+
+ln -s end -> first 
 
 mklink
 MKLINK ./storage ../storage/app/public

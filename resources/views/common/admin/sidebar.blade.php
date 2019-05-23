@@ -1,6 +1,7 @@
 @php
 	$sidebar = [
 		[
+			'id' => 0,
 			'title' => 'Dashboard',
 			'type' => 'item',
 			'route' => 'admin.dashboard.index',
@@ -15,6 +16,7 @@
 			'type' => 'section',
 		],
 		[
+			'id' => 1,
 			'title' => 'Blog',
 			'route' => 'blog',
 			'type' => 'submenu',
@@ -31,6 +33,7 @@
 			],
 		],
 		[
+			'id' => 2,
 			'title' => 'Page',
 			'route' => 'page',
 			'type' => 'submenu',
@@ -43,6 +46,7 @@
 			],
 		],
 		[
+			'id' => 3,
 			'title' => 'Category',
 			'route' => 'category',
 			'type' => 'submenu',
@@ -52,9 +56,15 @@
 					'title' => 'Category list',
 					'route' => 'admin.category.list.index',
 				],
+				[
+					'id' => 4,
+					'title' => 'Tags list',
+					'route' => 'admin.tag.list.index',
+				],
 			],
 		],
 		[
+			'id' => 5,
 			'title' => 'Media',
 			'route' => 'media',
 			'type' => 'submenu',
@@ -67,6 +77,7 @@
 			],
 		],
 		[
+			'id' => 6,
 			'title' => 'Comment',
 			'route' => 'comment',
 			'type' => 'submenu',
@@ -78,34 +89,39 @@
 				],
 			],
 		],
-		
 		[
 			'title' => 'Management',
 			'type' => 'section',
 		],
 		[
+			'id' => 7,
 			'title' => 'Setting',
 			'route' => 'setting',
 			'type' => 'submenu',
 			'icon' => 'flaticon-cogwheel',
 			'children' => [	
 				[
+					'id' => 7-1,
 					'title' => 'General',
 					'route' => 'admin.setting.general',
 				],
 				[
+					'id' => 7-2,
 					'title' => 'Contact Info',
 					'route' => 'admin.setting.contact',
 				],
 				[
+					'id' => 7-3,
 					'title' => 'Logs',
 					'route' => 'admin.setting.log',
 				],
 				[
+					'id' => 7-4,
 					'title' => 'Backup',
 					'route' => 'admin.setting.backup.list.index',
 				],
 				[
+					'id' => 7-5,
 					'title' => 'Developer Options',
 					'type' => 'submenu',
 					'route' => 'developer-options',
@@ -123,6 +139,7 @@
 			],
 		],
 		[
+			'id' => 8,
 			'title' => 'User',
 			'route' => 'user',
 			'type' => 'submenu',
@@ -147,6 +164,7 @@
 			],
 		],
 		[
+			'id' => 12,
 			'title' => 'Seo',
 			'route' => 'seo',
 			'type' => 'submenu',
@@ -167,6 +185,7 @@
 			],
 		],
 		[
+			'id' => 13,
 			'title' => 'Form',
 			'route' => 'form',
 			'type' => 'submenu',
@@ -179,6 +198,7 @@
 			],
 		],
 		[
+			'id' => 14,
 			'title' => 'Report',
 			'route' => 'report',
 			'type' => 'submenu',
@@ -191,6 +211,7 @@
 			],
 		],
 		[
+			'id' => 15,
 			'title' => 'Notification',
 			'route' => 'notification',
 			'type' => 'submenu',
@@ -207,6 +228,7 @@
 			'type' => 'section',
 		],
 		[
+			'id' => 9,
 			'title' => 'Theme',
 			'route' => 'theme',
 			'type' => 'submenu',
@@ -219,6 +241,7 @@
 			],
 		],
 		[
+			'id' => 10,
 			'title' => 'Block',
 			'route' => 'block',
 			'type' => 'submenu',
@@ -231,6 +254,7 @@
 			],
 		],
 		[
+			'id' => 11,
 			'title' => 'Widget',
 			'route' => 'widget',
 			'type' => 'submenu',
@@ -243,6 +267,7 @@
 			],
 		],
 		[
+			'id' => 16,
 			'title' => 'Menu',
 			'route' => 'menu',
 			'type' => 'submenu',

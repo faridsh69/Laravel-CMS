@@ -46,6 +46,9 @@ Route::group(['namespace' => 'Admin', 'middleware' => ['throttle:15,0.2', 'auth'
 	Route::group(['prefix' => 'category', 'namespace' => 'Category', 'as' => 'category.'], function () {
 		Route::resource('list', 'ResourceController');
 	});
+	Route::group(['prefix' => 'tag', 'namespace' => 'Tag', 'as' => 'tag.'], function () {
+		Route::resource('list', 'ResourceController');
+	});
 	Route::group(['prefix' => 'media', 'namespace' => 'Media', 'as' => 'media.'], function () {
 		Route::resource('list', 'ResourceController');
 	});
