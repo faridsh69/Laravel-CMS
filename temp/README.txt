@@ -411,6 +411,7 @@ Extra features:
 	login page complete
 	check php load time in front views after developing them
 	notification email o sms
+	https base 
 	- create a learning videos
 	- have company in github social network and answer questions
 	- class new for table
