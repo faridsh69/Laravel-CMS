@@ -1,3 +1,6 @@
 .display-none{
 	display: none !important;
 }
+*{
+	font-family: 'Roboto', sans-serif;
+}

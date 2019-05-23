@@ -16,43 +16,35 @@
 								</span>
 							</li>
 							<li class="m-nav__item">
-								<a href="" class="m-nav__link">
+								<a href="{{ route('admin.blog.list.create') }}" class="m-nav__link">
 									<i class="m-nav__link-icon flaticon-share"></i>
 									<span class="m-nav__link-text">
-										Activity
+										Create Blog
 									</span>
 								</a>
 							</li>
 							<li class="m-nav__item">
-								<a href="" class="m-nav__link">
-									<i class="m-nav__link-icon flaticon-chat-1"></i>
+								<a href="{{ route('admin.blog.export') }}" class="m-nav__link">
+									<i class="m-nav__link-icon flaticon-download"></i>
 									<span class="m-nav__link-text">
-										Messages
+										Export Excel
 									</span>
 								</a>
 							</li>
 							<li class="m-nav__item">
-								<a href="" class="m-nav__link">
-									<i class="m-nav__link-icon flaticon-info"></i>
+								<a href="{{ route('admin.blog.import') }}" class="m-nav__link">
+									<i class="m-nav__link-icon flaticon-up-arrow"></i>
 									<span class="m-nav__link-text">
-										FAQ
+										Import Excel
 									</span>
 								</a>
 							</li>
-							<li class="m-nav__item">
-								<a href="" class="m-nav__link">
-									<i class="m-nav__link-icon flaticon-lifebuoy"></i>
-									<span class="m-nav__link-text">
-										Support
-									</span>
-								</a>
-							</li>
-							<li class="m-nav__separator m-nav__separator--fit"></li>
-							<li class="m-nav__item">
+							<!-- <li class="m-nav__separator m-nav__separator--fit"></li> -->
+							<!-- <li class="m-nav__item">
 								<a href="#" class="btn btn-outline-danger m-btn m-btn--pill m-btn--wide btn-sm">
 									Submit
 								</a>
-							</li>
+							</li> -->
 						</ul>
 					</div>
 				</div>

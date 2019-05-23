@@ -1,3 +1,3 @@
 jQuery(document).ready(function() {
-    $("#blog_form").validate({});
+    $("#admin_form").validate({});
 });

@@ -84,8 +84,8 @@ structure:
 		+ export with csv
 		+ import with csv
 	structure:
-		meta to controller ha ro fix kon sakhtaresh o to view ham
-		admin layout o sakhtaresh o fix kon kollan vase table o form
+		+ meta to controller ha ro fix kon sakhtaresh o to view ham
+		+ admin layout o sakhtaresh o fix kon kollan vase table o form
 		constructor toe controller o bezan o chizae tosh o tamiz kon
 		vase sidebar o route ha ye array khob besaz
 		be route ha id nade balke khode blog o bede biad biron

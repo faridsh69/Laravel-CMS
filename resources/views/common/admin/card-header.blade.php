@@ -16,6 +16,7 @@
 			</h3>
 		</div>
 	</div>
-	@if(true) @include('common.table-search') @endif
-	@if(true) @include('common.header-tools') @endif
+	@if($meta['search'])
+		@include('common.admin.table-search')
+	@endif
 </div>

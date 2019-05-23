@@ -2,7 +2,7 @@
 	<div class="d-flex align-items-center">
 		<div class="mr-auto">
 			<h3 class="m-subheader__title m-subheader__title--separator">
-				@yield('title')
+				{{ $meta['title'] }}
 			</h3>
 			<ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
 				<li class="m-nav__item m-nav__item--home">
@@ -11,12 +11,13 @@
 					</a>
 				</li>
 				@foreach(Request::segments() as $key => $segment)
-					@php
-						if(!isset($url))
-							$url = '';
+				@php
+					if(!isset($url)){
+						$url = '';
+					}
 
-						$url .= $segment . '/';
-					@endphp
+					$url .= $segment . '/';
+				@endphp
 				<li class="m-nav__separator">
 					-
 				</li>
@@ -30,6 +31,6 @@
 				@endforeach
 			</ul>
 		</div>
-		@if(false) @include('common.circle-menu') @endif
+		@include('common.admin.circle-menu')
 	</div>
 </div>

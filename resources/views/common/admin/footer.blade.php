@@ -37,6 +37,9 @@
 		</div>
 	</div>
 </footer>
+<div class="m-scroll-top m-scroll-top--skin-top" data-toggle="m-scroll-top" data-scroll-offset="500" data-scroll-speed="300">
+	<i class="la la-arrow-up"></i>
+</div>
 <!--begin::Modal-->
 <div class="modal fade" id="m_modal_1_2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
@@ -71,3 +74,5 @@
 	</div>
 </div>
 <!--end::Modal-->
+<script src="{{ Cdn::asset('js/vendors.bundle.js') }}" type="text/javascript"></script>
+<script src="{{ Cdn::asset('js/scripts.bundle.js') }}" type="text/javascript"></script>

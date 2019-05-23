@@ -2,22 +2,41 @@
 
 namespace App\Http\Controllers\Admin\Blog;
 
-use App\Exports\BlogsExport;
-use App\Forms\BlogForm;
 use App\Http\Controllers\Controller;
-use App\Imports\BlogsImport;
-use App\Models\Blog;
 use Auth;
 use Conner\Tagging\Model\Tag;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
-
+use View;
 // use App\Models\Category;
 
 class ResourceController extends Controller
 {
+    public $model = 'Blog';
+    public $model_sm = 'blog';
+    public $model_form = '\App\Forms\BlogForm';
+    public $repository;
+    public $meta = [
+        'title' => 'Admin Panel',
+        'description' => 'Admin Panel Page For Best Cms In The World',
+        'keywords' => '',
+        'image' => '',
+        'alert' => 'Advanced form with validation, ckeditor, multiselect, swith... !',
+        'link_route' => '/',
+        'link_name' => 'Dashboard',
+        'search' => 0,
+    ];
+
+    public function __construct()
+    {
+        $class_name = 'App\\Models\\' . $this->model;
+        $this->repository = new $class_name;
+        $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.index');
+        $this->meta['link_name'] = __($this->model . ' Manager');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,16 +44,13 @@ class ResourceController extends Controller
      */
     public function index()
     {
-        $meta = [
-            'title' => __('Blog Manager'),
-            'description' => __('Admin Panel Page For Best Cms In The World'),
-            'image' => \Cdn::asset('upload/images/logo.png'),
-            'alert' => 'This is a table of blogs with sort and filter and paginate.',
-            'link_route' => route('admin.blog.list.create'),
-            'link_name' => __('Create New Blog'),
-        ];
+        $this->meta['title'] = __($this->model . ' Manager');
+        $this->meta['alert'] = 'Advanced table with sort, search, paginate and status changing!';
+        $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.create');
+        $this->meta['link_name'] = __('Create New ' . $this->model);
+        $this->meta['search'] = 1;
 
-        return view('admin.blog.list.index', compact('meta'));
+        return view('admin.list.table', ['meta' => $this->meta]);
     }
 
     /**
@@ -44,23 +60,16 @@ class ResourceController extends Controller
      */
     public function create(FormBuilder $formBuilder)
     {
-        $meta = [
-            'title' => __('Create New Blog'),
-            'description' => __('Admin Panel Page For Best Cms In The World'),
-            'image' => \Cdn::asset('upload/images/logo.png'),
-            'alert' => 'This is a full feature form that can create seo based blog in website.',
-            'link_route' => route('admin.blog.list.index'),
-            'link_name' => __('Blog Manager'),
-        ];
+        $this->meta['title'] = __('Create New ' . $this->model);
 
-        $form = $formBuilder->create(BlogForm::class, [
+        $form = $formBuilder->create($this->model_form, [
             'method' => 'POST',
-            'url' => route('admin.blog.list.store'),
-            'class' => 'm-form m-form--fit m-form--state m-form--label-align-right',
-            'id' => 'blog_form',
+            'url' => route('admin.' . $this->model_sm . '.list.store'),
+            'class' => 'm-form m-form--state',
+            'id' =>  'admin_form',
         ]);
 
-        return view('admin.blog.list.create', compact('form', 'meta'));
+        return view('admin.list.form', ['form' => $form, 'meta' => $this->meta]);
     }
 
     /**
@@ -71,7 +80,7 @@ class ResourceController extends Controller
      */
     public function store(FormBuilder $formBuilder, Request $request)
     {
-        $form = $formBuilder->create(BlogForm::class);
+        $form = $formBuilder->create($this->model_form);
 
         if (! $form->isValid()) {
             return redirect()->back()->withErrors($form->getErrors())->withInput();
@@ -80,21 +89,21 @@ class ResourceController extends Controller
 
         $data_tags = $data['tags'];
         unset($data['tags']);
-        $blog = Blog::create($data);
+        $created_model = $this->repository->create($data);
 
         if($data_tags){
             $tag_names = Tag::whereIn('id', $data_tags)->pluck('name')->toArray();
-            $blog->retag($tag_names);
+            $created_model->retag($tag_names);
         }
 
-        activity('Blog')
-            ->performedOn($blog)
+        activity($this->model)
+            ->performedOn($created_model)
             ->causedBy(Auth::user())
-            ->log('Blog Created');
+            ->log($this->model . ' Created');
 
-        $request->session()->flash('alert-success', 'Blog Created Successfully!');
+        $request->session()->flash('alert-success', $this->model . ' Created Successfully!');
 
-        return redirect()->route('admin.blog.list.index');
+        return redirect()->route('admin.' . $this->model_sm . '.list.index');
     }
 
     /**
@@ -105,9 +114,14 @@ class ResourceController extends Controller
      */
     public function show($id)
     {
-        $blog = Blog::findOrFail($id);
+        $blog = $this->repository->findOrFail($id);
 
-        echo json_encode($blog->getAttributes());
+        $data = json_encode($blog->getAttributes());
+
+        $this->meta['title'] = __($this->model . ' Show');
+        $this->meta['alert'] = 'Simple view of a model !';
+
+        return view('admin.list.show', ['data' => $data, 'meta' => $this->meta]); 
     }
 
     /**
@@ -120,16 +134,9 @@ class ResourceController extends Controller
     {
         $blog = Blog::findOrFail($id);
 
-        $meta = [
-            'title' => __('Edit Blog'),
-            'description' => __('Admin Panel Page For Best Cms In The World'),
-            'image' => \Cdn::asset('upload/images/logo.png'),
-            'alert' => 'This is a full feature form that can create seo based blog in website.',
-            'link_route' => route('admin.blog.list.index'),
-            'link_name' => __('Blog Manager'),
-        ];
+        $this->meta['title'] = __('Edit ' . $this->model);
 
-        $form = $formBuilder->create(BlogForm::class, [
+        $form = $formBuilder->create($this->model_form, [
             'method' => 'PUT',
             'url' => route('admin.blog.list.update', $blog),
             'class' => 'm-form m-form--fit m-form--state m-form--label-align-right',
@@ -137,7 +144,7 @@ class ResourceController extends Controller
             'model' => $blog,
         ]);
 
-        return view('admin.blog.list.create', compact('form', 'meta'));
+        return view('admin.list.form', ['form' => $form, 'meta' => $this->meta]);
     }
 
     /**
@@ -151,7 +158,7 @@ class ResourceController extends Controller
     {
         $blog = Blog::findOrFail($id);
 
-        $form = $formBuilder->create(BlogForm::class, [
+        $form = $formBuilder->create($this->model_form, [
             'model' => $blog,
         ]);
 
@@ -220,12 +227,15 @@ class ResourceController extends Controller
 
     public function getDatatable()
     {
-        $blogs = Blog::orderBy('updated_at', 'desc')->get();
+        $blogs = $this->repository->orderBy('updated_at', 'desc')->get();
 
         return datatables()
             ->of($blogs)
             ->addColumn('editor', function($blog) {
                 return $blog->editor->name;
+            })
+            ->addColumn('show_url', function($blog) {
+                return route('admin.blog.list.show', $blog);
             })
             ->addColumn('edit_url', function($blog) {
                 return route('admin.blog.list.edit', $blog);
@@ -239,7 +249,7 @@ class ResourceController extends Controller
 
     public function getChangeStatus($id)
     {
-        $blog = Blog::findOrFail($id);
+        $blog = $this->repository->findOrFail($id);
 
         $blog->published = ! $blog->published;
         $blog->update();

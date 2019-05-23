@@ -1,10 +1,8 @@
 @extends('layout.admin')
 
-@section('title', $meta['title'])
-@section('description', $meta['description'])
-@section('image', $meta['image'])
-
 @push('script')
+<script src="{{ Cdn::asset('js/table/table-data.js') }}"></script>
+<script src="{{ Cdn::asset('js/table/change-status.js') }}"></script>
 @if(Session::has('alert-success'))
 <script>
     jQuery(document).ready(function() {
@@ -12,8 +10,6 @@
     });
 </script>
 @endif
-<script src="{{ Cdn::asset('js/table/table-data.js') }}"></script>
-<script src="{{ Cdn::asset('js/table/change-status.js') }}"></script>
 @endpush
 
 @section('content')
