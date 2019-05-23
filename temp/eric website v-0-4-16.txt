@@ -1,9 +1,4 @@
-@extends('layout.admin')
-
-@section('content')
-<pre>
-
-		CHANGELOG: Version 0.4.16
+CHANGELOG: Version 0.4.16
 
 Milestone 1: (finished)
 	1 init laravel
@@ -80,9 +75,3 @@ Milestone 4: 8 widgets in FrontEnd:
 	create awsome ui with full seo base and fast and responsive
 Milestone 5: 7 extra widgets in FrontEnd:
 	create awsome ui with full seo base and fast and responsive
-
-
-
-</pre>
-@endsection
-
