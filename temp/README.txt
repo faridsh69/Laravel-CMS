@@ -86,7 +86,7 @@ structure:
 	structure:
 		+ meta to controller ha ro fix kon sakhtaresh o to view ham
 		+ admin layout o sakhtaresh o fix kon kollan vase table o form
-		constructor toe controller o bezan o chizae tosh o tamiz kon
+		+ constructor toe controller o bezan o chizae tosh o tamiz kon
 		vase sidebar o route ha ye array khob besaz
 		be route ha id nade balke khode blog o bede biad biron
 		migration o vasash ye sakhtar bezan ke az to model bekhone khodesh
@@ -114,6 +114,7 @@ structure:
 	+ log o neshon bede
 	+ backup giri o bezar to proje
 	+ changelog show in dashboard vase eric benevis
+	ye fekri kon vase circle card header 
 	subdomains
 	admin subdomain
 	change log read me o bezar avvale proje
@@ -295,7 +296,7 @@ packages:
 
 Features:
 	CMS ADMIN PANEL:
-		+ 0-dashboard
+		0-dashboard
 			login 
 				chandbar eshteba zad natone dge request bezane 1 min ban she
 				code captcha bashe barash
@@ -304,40 +305,42 @@ Features:
 			change password
 			dashboard contents
 				neshon bede chand ta page darim, user, blog, image, ...
-		+ 1-page
-			+ title, url, status, (block), (seo)
+		1-page
+			list
+			create
 		+ 2-blog
-			title, url, status, short_desc, long_desc, image, commentable, ratable, (block), (seo)
-		+ 3-category 
+			+ list
+			+ create
+		3-category 
 			manage tags
 			title, order, page-or-blog
 		+ 4-file manager
-			file manager with full feature crop image, resize, ...
-		+ 5-comment o rate
+			+ file manager with full feature crop image, resize, ...
+		5-comment o rate
 			status for show or hide or delete
 		6-form builder
 			fields ( field maker ) title, type, parent, default, required or not,
-		+ 7-menu
+		7-menu
 			select urls, sort urls
-		+ 8-theme
+		8-theme
 			list of themes -> we will start with 3 different themes
-		+ 9-block
+		9-block
 			each page has its block structure
 			blocks uses widgets
 			url, status,
 			3 column, 2 colomn - right and middle, 2 colomnt - left and middle, 1 column
-		+ 10-widgets
-		+ 11-seo
+		10-widgets
+		11-seo
 			Setting:
 				google no index
 				site map
 			Content Rules: 
 				h1 finder, h2 h3, full metas, canonical link, ... it crowl on all of the blog and pages ... seo principles
 				blog - article:
-				+ url required|min:10|max:80|lowercase|alphabetic, 
-				+ title required|unique:posts,post_title|min:10|max:60, 
-				+ description required|min:70|max:300, 
-				+ content h1 required|count:1|!=title
+				url required|min:10|max:80|lowercase|alphabetic, 
+				title required|unique:posts,post_title|min:10|max:60, 
+				description required|min:70|max:300, 
+				content h1 required|count:1|!=title
 
 			lazy loading -> default lazy loading image
 
@@ -345,13 +348,13 @@ Features:
 			bad miad mige ke in url che DA dare o che PA dare
 			ye seri link hae dakheli be toe safahat midim to site
 
-		+ 12-user manager
+		12-user manager
 			first name, last name, phone, password, birthday, country, male, profile, address	
 			role and permission: name, title, address ha ham bezar barash
 			settings:
 				login fields: phone, password, automatice activation or not,
 				login page status, register status	
-		+ 13-setting
+		13-setting
 			General: 
 				site name, default meta description, favicon, logo, paginations numbers, crisp o google analytics betone add kone, default user profile image, user login email? sms?
 			Contact Info: 
@@ -360,17 +363,17 @@ Features:
 				debug mode off - on, truttle number, google no index, cdn vase axa, email sender, sms sender,
 			Advance Developer Options:
 				clear server cache, migrate o config cache, cache clear, route lists, ...
-			Logs:
-				show logs
-		+ 14-notifications
+			+ Logs:
+				+ show logs
+		14-notifications
 			log sms ha o email ha beriz to ye table
 		+ 15-backupgiri
-		+ 16-log
+		16-log
 		? 17-forum
 		? 18-tickets&messaging
 		? 19-sliders
 		? 20-partners
-		+ 21-reports
+		21-reports
 		? 22-news
 		? 23-events
 	Frontend

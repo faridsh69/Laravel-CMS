@@ -7,20 +7,5 @@
         <title>Laravel</title>
     </head>
     <body>
-        <form action="/" method="post">
-            {{ csrf_field() }}
-            <input name="title" placeholder="title">
-            <input name="content" placeholder="content">
-            <button> Submit </button>
-        </form>
-        <table>
-            @foreach(App\Models\Blog::orderBy('id', 'desc')->get() as $blog)
-            <tr>
-                <td> {{ $blog->id }} </td>
-                <td style="font-weight: bold;"> {{ $blog->title }} </td>
-                <td> {{ $blog->content }} </td>
-            </tr>
-            @endforeach
-        </table>
     </body>
 </html>

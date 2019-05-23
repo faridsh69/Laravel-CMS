@@ -5,7 +5,7 @@
 				{{ $meta['title'] }}
 				<small>
 				</small>
-				<a href="{{ $meta['link_route'] }}" class="btn btn-info btn-sm m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
+				<a href="{{ $meta['link_route'] }}" class="btn btn-brand btn-sm m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
 					<span>
 						<i class="la la-hand-o-right"></i>
 						<span>

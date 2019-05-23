@@ -2,21 +2,18 @@
 
 namespace App\Http\Controllers\Admin\Dashboard;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Base\AdminController;
 
-class DashboardController extends Controller
+class DashboardController extends AdminController
 {
-	public function index()
-	{
-		$meta = [
-            'title' => __('Dashboard'),
-            'description' => __('Admin Panel Page For Best Cms In The World'),
-            'image' => \Cdn::asset('upload/images/logo.png'),
-            'alert' => 'Dashboard show a lot of chart and etc.',
-            'link_route' => route('admin.blog.list.create'),
-            'link_name' => __('Create New Blog'),
-        ];
+    public $model = 'Dashboard';
+    public $model_sm = 'dashboard';
 
-		return view('admin.dashboard', compact('meta'));
-	}
+    public function index()
+    {
+        $this->meta['title'] = __($this->model . '');
+        $this->meta['alert'] = 'Admin Panel Dashboard For Best Cms In The World With LARAVEL!';
+
+        return view('admin.dashboard', ['meta' => $this->meta]);
+    }
 }

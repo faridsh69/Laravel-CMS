@@ -10,9 +10,9 @@ var DatatableJsonRemoteDemo=function() {
 		                timeout: 30000,
                 	},
                 },
-                pageSize:5, 
+                pageSize:6, 
                 saveState: {
-                    cookie: true,
+                    cookie: false,
                     webstorage: true,
                 },
                 serverSorting: true,
@@ -56,7 +56,7 @@ var DatatableJsonRemoteDemo=function() {
 	            {field:"published", title:"published", 
 	            	template: function (row) {
 var output = 
-'<span class="m-switch m-switch--outline m-switch--icon m-switch--brand m-switch--sm"><label>' +
+'<span class="m-switch m-switch--outline m-switch--icon m-switch--success m-switch--sm"><label>' +
 '<input type="checkbox" onclick="changeStatus(' + row.id + ')"';
 if(row.published == 1){
 	output += 'checked="true"' 

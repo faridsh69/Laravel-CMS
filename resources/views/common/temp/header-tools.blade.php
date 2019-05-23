@@ -17,26 +17,10 @@
 										</span>
 									</li>
 									<li class="m-nav__item">
-										<a href="{{ route('admin.blog.list.create') }}" class="m-nav__link">
+										<a href="{{ route('admin.dashboard.index') }}" class="m-nav__link">
 											<i class="m-nav__link-icon flaticon-share"></i>
 											<span class="m-nav__link-text">
-												Create Blog
-											</span>
-										</a>
-									</li>
-									<li class="m-nav__item">
-										<a href="{{ route('admin.blog.export') }}" class="m-nav__link">
-											<i class="m-nav__link-icon flaticon-download"></i>
-											<span class="m-nav__link-text">
-												Export Excel
-											</span>
-										</a>
-									</li>
-									<li class="m-nav__item">
-										<a href="{{ route('admin.blog.import') }}" class="m-nav__link">
-											<i class="m-nav__link-icon flaticon-up-arrow"></i>
-											<span class="m-nav__link-text">
-												Import Excel
+												Dashboard
 											</span>
 										</a>
 									</li>

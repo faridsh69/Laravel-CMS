@@ -24,6 +24,10 @@
 					'title' => 'Blog list',
 					'route' => 'admin.blog.list.index',
 				],
+				[
+					'title' => 'Create New Blog',
+					'route' => 'admin.blog.list.create',
+				],
 			],
 		],
 		[
@@ -74,58 +78,7 @@
 				],
 			],
 		],
-		[
-			'title' => 'THEME',
-			'type' => 'section',
-		],
-		[
-			'title' => 'Theme',
-			'route' => 'theme',
-			'type' => 'submenu',
-			'icon' => 'flaticon-visible',
-			'children' => [	
-				[
-					'title' => 'Theme list',
-					'route' => 'admin.theme.list.index',
-				],
-			],
-		],
-		[
-			'title' => 'Block',
-			'route' => 'block',
-			'type' => 'submenu',
-			'icon' => 'flaticon-app',
-			'children' => [	
-				[
-					'title' => 'Block list',
-					'route' => 'admin.block.list.index',
-				],
-			],
-		],
-		[
-			'title' => 'Widget',
-			'route' => 'widget',
-			'type' => 'submenu',
-			'icon' => 'flaticon-imac',
-			'children' => [	
-				[
-					'title' => 'Widget list',
-					'route' => 'admin.widget.list.index',
-				],
-			],
-		],
-		[
-			'title' => 'Menu',
-			'route' => 'menu',
-			'type' => 'submenu',
-			'icon' => 'flaticon-grid-menu',
-			'children' => [	
-				[
-					'title' => 'Menu list',
-					'route' => 'admin.menu.list.index',
-				],
-			],
-		],
+		
 		[
 			'title' => 'Management',
 			'type' => 'section',
@@ -246,6 +199,58 @@
 				[
 					'title' => 'Notification list',
 					'route' => 'admin.notification.list.index',
+				],
+			],
+		],
+		[
+			'title' => 'THEME',
+			'type' => 'section',
+		],
+		[
+			'title' => 'Theme',
+			'route' => 'theme',
+			'type' => 'submenu',
+			'icon' => 'flaticon-visible',
+			'children' => [	
+				[
+					'title' => 'Theme list',
+					'route' => 'admin.theme.list.index',
+				],
+			],
+		],
+		[
+			'title' => 'Block',
+			'route' => 'block',
+			'type' => 'submenu',
+			'icon' => 'flaticon-app',
+			'children' => [	
+				[
+					'title' => 'Block list',
+					'route' => 'admin.block.list.index',
+				],
+			],
+		],
+		[
+			'title' => 'Widget',
+			'route' => 'widget',
+			'type' => 'submenu',
+			'icon' => 'flaticon-imac',
+			'children' => [	
+				[
+					'title' => 'Widget list',
+					'route' => 'admin.widget.list.index',
+				],
+			],
+		],
+		[
+			'title' => 'Menu',
+			'route' => 'menu',
+			'type' => 'submenu',
+			'icon' => 'flaticon-grid-menu',
+			'children' => [	
+				[
+					'title' => 'Menu list',
+					'route' => 'admin.menu.list.index',
 				],
 			],
 		],

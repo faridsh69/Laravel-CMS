@@ -47,7 +47,7 @@
 													<div class="m-list-timeline__item">
 														<span class="m-list-timeline__badge -m-list-timeline__badge--state-success"></span>
 														<span class="m-list-timeline__text">
-															2 new users registered
+															2 new users registered @todo
 														</span>
 														<span class="m-list-timeline__time">
 															
@@ -56,7 +56,7 @@
 													<div class="m-list-timeline__item">
 														<span class="m-list-timeline__badge"></span>
 														<span class="m-list-timeline__text">
-															4 new blogs created
+															4 new created @todo
 														</span>
 														<span class="m-list-timeline__time">
 															
@@ -65,7 +65,7 @@
 													<div class="m-list-timeline__item">
 														<span class="m-list-timeline__badge"></span>
 														<span class="m-list-timeline__text">
-															1 new page created
+															1 new created @todo
 														</span>
 														<span class="m-list-timeline__time">
 															
@@ -82,7 +82,7 @@
 													<div class="m-list-timeline__item">
 														<span class="m-list-timeline__badge m-list-timeline__badge--state1-success"></span>
 														<a href="" class="m-list-timeline__text">
-															Hi, I love this blog
+															Hi, I love this @todo
 														</a>
 														<span class="m-list-timeline__time">
 															Just now
@@ -91,7 +91,7 @@
 													<div class="m-list-timeline__item">
 														<span class="m-list-timeline__badge m-list-timeline__badge--state1-danger"></span>
 														<a href="" class="m-list-timeline__text">
-															Hi, I love this blog too
+															Hi, I love this too @todo
 														</a>
 														<span class="m-list-timeline__time">
 															20 mins
@@ -100,7 +100,7 @@
 													<div class="m-list-timeline__item">
 														<span class="m-list-timeline__badge m-list-timeline__badge--state1-success"></span>
 														<a href="" class="m-list-timeline__text">
-															Hi, I love this blog also
+															Hi, I love this also @todo
 														</a>
 														<span class="m-list-timeline__time">
 															5 hrs
@@ -116,7 +116,7 @@
 												<span class="">
 													All caught up!
 													<br>
-													No new logs.
+													No new logs. @todo
 												</span>
 											</div>
 										</div>
