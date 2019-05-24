@@ -58,6 +58,11 @@ class Blog extends Model
         ['name' => 'deleted_at', 'type' => 'datetime', 'rule' => 'nullable'],
     ];
 
+    public function getColumns()
+    {
+        return $this->columns;
+    }
+
     public $columns = [
         [
             'name' => 'title', 
@@ -117,11 +122,8 @@ class Blog extends Model
         ],
     ];
 
-
     protected $hidden = [
-        'created_at',
-        // 'updated_at',
-        'deleted_at',
+        // 'deleted_at',
     ];
 
     public function editor()

@@ -94,7 +94,7 @@ structure:
 		+ migration o vasash ye sakhtar bezan ke az to model bekhone khodesh
 		+ hame chizae toe factory o bego az ye ja bekhone
 		+ hame chizae toe seeder ham yekparche kon
-		export import ha ro mese form o table bezan ke yejori zood sakhte beshe
+		+ export import ha ro mese form o table bezan ke yejori zood sakhte beshe
 		form ha ro bebinam mishe az ye sakhtaresh kard ya na
 		table o bezar ye codi ke dorost kar kone
 		page o daghighan copy blog bezan bebin kojahash fargh dare ba ham

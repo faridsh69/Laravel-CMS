@@ -223,18 +223,20 @@ class ListController extends Controller
 
     public function getExport()
     {
-        $class_name = 'App\\Exports\\' . $this->model . 'sExport';
-        $model_export = new $class_name;
+        $class_name = 'App\Exports\BaseExport';
+        $base_export = new $class_name;
+        $base_export->setModel($this->model);
 
-        return Excel::download($model_export, $this->model . '.xlsx');
+        return Excel::download($base_export, $this->model . '.xlsx');
     }
 
     public function getImport()
     {
-        $class_name = 'App\\Impports\\' . $this->model . 'sImport';
-        $model_importatn = new $class_name;
+        $class_name = 'App\Imports\BaseImport';
+        $base_import = new $class_name;
+        $base_import->setModel($this->model);
 
-        Excel::import($model_importatn, storage_path('upload/import.xlsx'));
+        Excel::import($base_import, storage_path('app/public/import.xlsx'));
 
         return redirect()->route('admin.' . $this->model_sm . '.list.index');
     }
