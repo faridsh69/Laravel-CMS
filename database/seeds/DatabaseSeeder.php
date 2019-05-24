@@ -13,7 +13,6 @@ class DatabaseSeeder extends Seeder
         // $this->call(CategoriesTableSeeder::class);
         // $this->call(TagsTableSeeder::class);
 
-        // $this->call(BlogsTableSeeder::class);
         $models = [
             'Blog', 'Page',
         ];

@@ -22,7 +22,7 @@ foreach($models as $model)
                 $output[$name] = $faker->text(100);
             }elseif($type == 'text'){
                 $output[$name] = $faker->text;
-            }elseif($type == ''){
+            }elseif($type == '' || $type == 'boolean'){
                 $output[$name] = 1;
             }
         }
