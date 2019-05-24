@@ -69,6 +69,7 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         Propaganistas\LaravelPhone\PhoneServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
         /*
          * Application Service Providers...
          */
