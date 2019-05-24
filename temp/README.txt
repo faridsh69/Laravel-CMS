@@ -87,37 +87,40 @@ structure:
 		+ meta to controller ha ro fix kon sakhtaresh o to view ham
 		+ admin layout o sakhtaresh o fix kon kollan vase table o form
 		+ constructor toe controller o bezan o chizae tosh o tamiz kon
-		vase sidebar o route ha ye array khob besaz
-		be route ha id nade balke khode blog o bede biad biron
+		+ vase sidebar o route ha ye array khob besaz
+		+ route ha ro beriz to chandta file jodagoone
+		+ be route ha id nade balke khode blog o bede biad biron
+		ye fekri kon ke chia bayad to hidden bashan chia na
 		migration o vasash ye sakhtar bezan ke az to model bekhone khodesh
 		hame chizae toe factory o bego az ye ja bekhone
 		hame chizae toe seeder ham yekparche kon
-		hame function hae index to controller o baghie o ye shekl kon
-		hame chizae to function ha ro daghighan mese ham kon
-		activity log
-			meta ha ro bego ke az ye ja bekhone
-			function hae toe controller ha ro az ye function bekhon
-			view ha ham bayad az ye sakhtar biad o moshtarak taresh konam
-			form ha ro bebinam mishe az ye sakhtaresh kard ya na
-			bebin mishe ye model benevisam ke bad form az rosh sakhte beshe
-			to route blog bede na id
-			ye sakhtar khob vase create form
-			ye sakhtare khob vase validation
-			validation o form o hame ina ro betonim az dakhele model generate konim
-			ye kari konam har chi to model hast o ham migration kone ham to form o ina azash estefade kone
-			page o daghighan copy blog bezan bebin kojahash fargh dare ba ham
-			structure meta ha ro ina ro fix kon kollan az ye ja bekhone
-			sakhtare notification o ok kon to kolle safahat
-			activity log o ok kon ke ye sakhtare sabet dashte bashe
-			breadcrumb o fixesh kon
-			ye fekri kon ke chia bayad to hidden bashan chia na
+		form ha ro bebinam mishe az ye sakhtaresh kard ya na
+		ye kari konam har chi to model hast o ham migration kone ham to form o ina azash estefade kone
+		page o daghighan copy blog bezan bebin kojahash fargh dare ba ham
+		export import ha ro mese form o table bezan ke yejori zood sakhte beshe
+		sakhtare model ha ro kollan felan benevis ta bad
+		table o bezar ye codi ke dorost kar kone
+		+ validation o form o hame ina ro betonim az dakhele model generate konim
+		+ structure meta ha ro ina ro fix kon kollan az ye ja bekhone
+		+ sakhtare notification o ok kon to kolle safahat
+		+ activity log o ok kon ke ye sakhtare sabet dashte bashe
+		+ breadcrumb o fixesh kon
+		+ hame function hae index to controller o baghie o ye shekl kon
+		+ hame chizae to function ha ro daghighan mese ham kon
+		+ activity log
+		+ meta ha ro bego ke az ye ja bekhone
+		+ function hae toe controller ha ro az ye function bekhon
+		+ view ha ham bayad az ye sakhtar biad o moshtarak taresh konam
+		+ to route blog bede na id
+		+ ye sakhtar khob vase create form
+		+ ye sakhtare khob vase validation
 	+ log o neshon bede
 	+ backup giri o bezar to proje
 	+ changelog show in dashboard vase eric benevis
-	ye fekri kon vase circle card header 
+	+ change log read me o bezar avvale proje
+	ye fekri kon vase circle card header automatic beshe
 	subdomains
 	admin subdomain
-	change log read me o bezar avvale proje
 	settings o bezarim to .env ya config ya az database bekhone
 	front
 		theme 
@@ -316,7 +319,7 @@ Features:
 			title, order, page-or-blog
 		+ 4-file manager
 			+ file manager with full feature crop image, resize, ...
-		5-comment o rate
+		5-comment o like o share 
 			status for show or hide or delete
 		6-form builder
 			fields ( field maker ) title, type, parent, default, required or not,

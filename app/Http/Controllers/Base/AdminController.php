@@ -261,6 +261,11 @@ class AdminController extends Controller
         $model->published = ! $model->published;
         $model->update();
 
+        activity($this->model)
+            ->performedOn($model)
+            ->causedBy(Auth::user())
+            ->log($this->model . ' Status changed to ' . $model->published);
+
         return response()->json([
             'data' => $model->published,
         ]);
