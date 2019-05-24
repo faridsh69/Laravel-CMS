@@ -18,7 +18,7 @@ class ListController extends Controller
     // public $model_sm = 'blog';
     public $model_sm;
     // public $model_form = '\App\Forms\BlogForm';
-    public $model_form = 'App\Forms\BaseForm';
+    public $model_form;
     public $repository;
     public $request;
     public $form_builder;
@@ -36,6 +36,7 @@ class ListController extends Controller
     public function __construct(Request $request, FormBuilder $form_builder)
     {
         $this->model_sm = lcfirst($this->model);
+        $this->model_form = 'App\\Forms\\' . $this->model . 'Form';
         $class_name = 'App\\Models\\' . $this->model;
         $this->repository = new $class_name;
         $this->request = $request;

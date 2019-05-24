@@ -33,6 +33,24 @@ class Blog extends Model
         'deleted_at',
     ];
 
+            // name:               type:       rule:       help:       relation: table name -> users
+            // id,                 increments  -Automatic
+            // url,                string      required|max:80|regex:/^[a-z0-9-_]+$/|unique:blogs,url,0
+            // title,              string      required|max:60|min:10|unique:blogs,title,0
+            // short_content,      string      nullable|max:191
+            // content,            text        required|seo_header
+            // meta_description,   string      required|max:191|min:70
+            // keywords,           string      nullable|max:191
+            // meta_image,         string      nullable|max:191|url
+            // published,          boolean     
+            // google_index,       boolean     
+            // canonical_url,      string      nullable|max:191|url
+            // creator_id,         foreign     -Automatic
+            // editor_id,          foreign     -Automatic
+            // created_at,         datetime    -Automatic
+            // updated_at,         datetime    -Automatic
+            // deleted_at          datetime    -Automatic
+
     public $fields = [
         ['name' => 'id', 'type' => 'increments', 'rule' => 'required'],
         // Url should be unique, contain lowercase characters and numbers and -
@@ -68,34 +86,47 @@ class Blog extends Model
             'name' => 'title', 
             'type' => 'string',
             'rule' => 'unique',
+            'validation' => 'required|max:60|min:10|unique:blogs,title,',
+            'help' => 'Title should be unique, minimum 10 and maximum 60 characters.',
         ],
         [
             'name' => 'url', 
             'type' => 'string',
             'rule' => 'unique',
+            'validation' => 'required|max:80|regex:/^[a-z0-9-_]+$/|unique:blogs,url,',
+            'help' => 'Url should be unique, contain lowercase characters and numbers and -',
         ],
         [
             'name' => 'short_content', 
             'type' => 'string',
             'rule' => 'nullable',
+            'validation' => 'nullable|max:191',
+            'help' => 'Short content will show in lists instead of content.',
         ],
         [
             'name' => 'content', 
             'type' => 'text',
+            'validation' => 'required|seo_header',
         ],
         [
             'name' => 'meta_description', 
             'type' => 'string',
+            'validation' => 'required|max:191|min:70',
+            'help' => 'Meta description should have minimum 70 and maximum 191 characters.',
         ],
         [
             'name' => 'keywords', 
             'type' => 'string',
             'rule' => 'nullable',
+            'validation' => 'nullable|max:191',
+            'help' => 'Its not important for google anymore'
         ],
         [
             'name' => 'meta_image', 
             'type' => 'string',
             'rule' => 'nullable',
+            'validation' => 'nullable|max:191|url',
+            'help' => 'Meta image shows when this page is shared in social networks.',
         ],
         [
             'name' => 'published', 
@@ -106,11 +137,14 @@ class Blog extends Model
             'name' => 'google_index', 
             'type' => 'boolean',
             'rule' => 'default',
+            'help' => 'Google will index this page.',
         ],
         [
             'name' => 'canonical_url', 
             'type' => 'string',
             'rule' => 'nullable',
+            'rule' => 'nullable|max:191|url',
+            'help' => 'Canonical url just used for seo redirect duplicate contents.',
         ],
         [
             'name' => 'creator_id', 
