@@ -19,7 +19,7 @@
 				<div class="m-grid__item m-grid__item--fluid m-wrapper">
 					@include('common.admin.breadcrumb')
 					<div class="m-content">
-						@include('common.admin.page-alert')
+						@if(false) @include('common.admin.page-alert') @endif
 						<div class="m-portlet m-portlet--mobile">
 							@include('common.admin.card-header')
 							<div class="m-portlet__body">
