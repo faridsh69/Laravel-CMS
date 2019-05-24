@@ -17,7 +17,7 @@ use Kris\LaravelFormBuilder\FormBuilder;
 // use App\Exports\BlogsExport;
 // use App\Imports\BlogsImport;
 
-class ResourceController extends AdminController
+class ResourceControllerNew extends AdminController
 {
 	public $model = 'blog';
 
