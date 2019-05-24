@@ -1,1 +1,0 @@
-var ClipboardDemo=function(){var n=function(){new Clipboard("[data-clipboard=true]").on("success",function(n){n.clearSelection(),alert("Copied!")})};return{init:function(){n()}}}();jQuery(document).ready(function(){ClipboardDemo.init()});
