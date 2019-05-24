@@ -12,15 +12,13 @@ class TagsTableSeeder extends Seeder
     {
         $tags = [
         	[
-	        	'name' => 'tag 1',
+	        	'name' => 'Energy',
         	],
         	[
-	        	'name' => 'tag 2',
-	        	'slug' => 'tagg2',
+	        	'name' => 'Solar',
         	],
         	[
-	        	'name' => 'tag 3',
-	        	'slug' => 'tagg3',
+	        	'name' => 'Electric',
         	],
         ];
 

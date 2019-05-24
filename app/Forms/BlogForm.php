@@ -8,6 +8,7 @@ class BlogForm extends Form
 {
     public function buildForm()
     {
+        dd(1);
     	$id = $this->model ? $this->model->id : 0;
         $this
             ->add('url', 'text-m', [
