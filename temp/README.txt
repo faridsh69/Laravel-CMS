@@ -90,16 +90,16 @@ structure:
 		+ vase sidebar o route ha ye array khob besaz
 		+ route ha ro beriz to chandta file jodagoone
 		+ be route ha id nade balke khode blog o bede biad biron
-		ye fekri kon ke chia bayad to hidden bashan chia na
-		migration o vasash ye sakhtar bezan ke az to model bekhone khodesh
-		hame chizae toe factory o bego az ye ja bekhone
-		hame chizae toe seeder ham yekparche kon
-		form ha ro bebinam mishe az ye sakhtaresh kard ya na
-		ye kari konam har chi to model hast o ham migration kone ham to form o ina azash estefade kone
-		page o daghighan copy blog bezan bebin kojahash fargh dare ba ham
+		+ ye fekri kon ke chia bayad to hidden bashan chia na
+		+ migration o vasash ye sakhtar bezan ke az to model bekhone khodesh
+		+ hame chizae toe factory o bego az ye ja bekhone
+		+ hame chizae toe seeder ham yekparche kon
 		export import ha ro mese form o table bezan ke yejori zood sakhte beshe
-		sakhtare model ha ro kollan felan benevis ta bad
+		form ha ro bebinam mishe az ye sakhtaresh kard ya na
 		table o bezar ye codi ke dorost kar kone
+		page o daghighan copy blog bezan bebin kojahash fargh dare ba ham
+		sakhtare model ha ro kollan felan benevis ta bad
+		vase model kholase shodan ye fekri kon
 		+ validation o form o hame ina ro betonim az dakhele model generate konim
 		+ structure meta ha ro ina ro fix kon kollan az ye ja bekhone
 		+ sakhtare notification o ok kon to kolle safahat
@@ -152,34 +152,9 @@ models: multiple
 			created_at, 		datetime	-Automatic
 			updated_at, 		datetime	-Automatic
 			deleted_at			datetime	-Automatic
-migrations: multiple automatic
-	Schema::create('blogs {{table_name}} ', function (Blueprint $table) {
-        $table->increments {{type}} ('id' {{name}} );
-        $table->string {{type}} ('url' {{name}} )->unique() {{unique exist in rule}}
-        $table->string {{type}} ('title' {{name}} )->unique()  {{unique exist in rule}}
-        $table->string {{type}} ('short_content' {{name}} )->nullable(); {{nullable exist in rule}}
-        $table->text {{type}} ('content' {{name}} );
-        $table->string {{type}} ('meta_description' {{name}} );
-        $table->string {{type}} ('keywords' {{name}} )->nullable(); {{nullable exist in rule}}
-        $table->string {{type}} ('meta_image' {{name}} )->nullable(); {{nullable exist in rule}}
-        $table->boolean {{type}} ('published' {{name}} )->default(true); {{az roe type bayad default true beshe}}
-        $table->boolean {{type}} ('google_index' {{name}}  )->default(true); {{az ro type}}
-        $table->string {{type}} ('canonical_url' {{name}} )->nullable();  {{nullable exist in rule}}
-        
-        // $table->string('related_blogs')->nullable();
-        // $table->integer('category_id')->unsigned();
-        // $table->foreign('category_id')->references('id')->on('categories');
-
-        $table->integer {{type}} ('creator_id' {{name}} )->unsigned(); {{ type???? }}
-        $table->foreign {{ type???? }} ('creator_id' {{name}} )->references('id')->on('users'); {{ relation???? }}
-        $table->integer('editor_id')->unsigned();
-        $table->foreign('editor_id')->references('id')->on('users');
-
-        $table->timestamps();
-        $table->softDeletes();
-    });
-
-factory: single or multi
++ migrations: multiple automatic
++ seeders: single with one array
+factory: single automatic
 	return [
 		{{ required ha inja hastan faghat }}
         'url' => $faker->uuid, {{ unique -> uuid }}
@@ -189,13 +164,8 @@ factory: single or multi
         'meta_description' => {{ type:string -> text(100) }}
         'keywords' => {{ type:string -> text(100) }}
     ];
-
-seeders: single with one array
-	factory(Blog::class, 5)->create();
-
-validation: 
-
-routes: single with one array
++ validation: 
++ routes: single with one array
 	$model_name = 'blog';
 	$resource_controller = 'ResourceController';
 
@@ -208,8 +178,11 @@ routes: single with one array
 		Route::get('pdf' {{static}} , 'ResourceController@getPdf' {{static}} )->name('pdf' {{static}} );
 		Route::redirect('/', route('admin.blog.list.index' {{model_name}} ));
 	});
-
-controllers: multiple automatic
++ controllers: multiple automatic
+form
+table
+excel
+import
 
 add tags: single automatic
 activity log: single automatic
