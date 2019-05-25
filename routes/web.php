@@ -1,4 +1,16 @@
 <?php
+
+Auth::routes();
+Route::get('login/google', 'Auth\LoginController@redirectToProvider');
+Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');
+
+Route::get('/home', 'Front\HomeController@index')->name('home');
+Route::get('', function() {
+	return redirect()->route('admin.dashboard.index');
+});
+
+Route::get('test', 'Front\TestController@index');
+
 // Route::group(['namespace' => 'Admin', 'middleware' => ['throttle:15,0.2', 'auth'], 'as' => 'admin.'], function () {
 // 	Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'as' => 'dashboard.'], function () {
 // 		Route::get('', 'DashboardController@index')->name('index');
@@ -73,10 +85,3 @@
 // 		Route::resource('list', 'ResourceController');
 // 	});
 // });
-Auth::routes();
-Route::get('/home', 'Front\HomeController@index')->name('home');
-Route::get('', function() {
-	return redirect()->route('admin.dashboard.index');
-});
-
-Route::get('test', 'Front\TestController@index');
