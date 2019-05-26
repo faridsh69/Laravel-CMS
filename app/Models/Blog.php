@@ -81,6 +81,22 @@ class Blog extends Model
         return $this->columns;
     }
 
+    public function $blog_columns = [
+        [
+            'name' => 'title', 
+            'type' => 'string',
+            'rule' => 'unique',
+            'validation' => 'required|unique:blogs,title,',
+            'help' => 'Title should be unique.',
+        ],
+        [
+            'name' => 'content', 
+            'type' => 'text',
+            'rule' => '',
+            'validation' => 'required|seo_header',
+            'help' => '',
+        ],
+    ];
     public $columns = [
         [
             'name' => 'title', 
