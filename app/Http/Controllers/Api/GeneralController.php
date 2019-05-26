@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use PragmaRX\Countries\Package\Countries;
-
-// use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 
 class GeneralController extends Controller
 {
@@ -18,5 +17,10 @@ class GeneralController extends Controller
     	];
 
     	return response()->json($output);
+    }
+
+    public function getUser(Request $request)
+    {
+    	return $request->user();
     }
 }

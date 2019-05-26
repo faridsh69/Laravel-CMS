@@ -1,15 +1,13 @@
 <?php
 
 Auth::routes();
-Route::get('login/{social_company}', 'Auth\LoginController@redirectToProvider');
-Route::get('login/{social_company}/callback', 'Auth\LoginController@handleProviderCallback');
+Route::get('login/{social_company}', 'Auth\LoginController@redirectToProvider')->name('login-social');
+Route::get('login/{social_company}/callback', 'Auth\LoginController@handleProviderCallback')->name('login-social-redirect');
 
-Route::get('/home', 'Front\HomeController@index')->name('home');
-Route::get('', function() {
-	return redirect()->route('admin.dashboard.index');
-});
+Route::get('/home', 'Front\HomeController@getHome')->name('home');
+Route::get('', 'Front\HomeController@getHome')->name('index');
 
-Route::get('test', 'Front\TestController@index');
+Route::get('test', 'Front\TestController@index')->name('test');
 
 // Route::group(['namespace' => 'Admin', 'middleware' => ['throttle:15,0.2', 'auth'], 'as' => 'admin.'], function () {
 // 	Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'as' => 'dashboard.'], function () {

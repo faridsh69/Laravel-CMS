@@ -29,7 +29,7 @@ foreach($admin_models as $model_sm)
 		Route::get('import', 'ResourceController@getImport')->name('import');
 		Route::get('change-status/{id}', 'ResourceController@getChangeStatus')->name('change-status');
 		Route::resource('list', 'ResourceController');
-		Route::redirect('', route('admin.' . $model_sm . '.list.index'));
+		Route::get('', 'ResourceController@getRedirect')->name('redirect');
 	});
 }
 Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'as' => 'dashboard.'], function () {
@@ -42,7 +42,7 @@ Route::group(['prefix' => 'setting', 'namespace' => 'Setting', 'as' => 'setting.
 	Route::get('log', 'SettingController@getLog')->name('log');
 	Route::group(['prefix' => 'backup', 'namespace' => 'Backup', 'as' => 'backup.'], function () {
 		Route::resource('list', 'ResourceController');
-		Route::redirect('/', route('admin.setting.backup.list.index'));
+		Route::get('', 'ResourceController@getRedirect')->name('redirect');
 	});
 	Route::group(['prefix' => 'developer-options', 'as' => 'developer-options.'], function () {
 		Route::get('basic', 'SettingController@getDeveloperOptionsBasic')->name('basic');

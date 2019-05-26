@@ -13,12 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('user', 'GeneralController@getUser')->name('user')->middleware('auth:api');
 
-Route::group(['namespace' => 'Api', 'middleware' => ['throttle:5,0.2'], 'as' => 'api.'], function () {
+Route::group(['middleware' => ['throttle:5,0.2']], function () {
 	Route::group(['prefix' => 'general', 'as' => 'general.'], function () {
-		Route::get('countries', 'GeneralController@getCountries');
+		Route::get('countries', 'GeneralController@getCountries')->name('countries');
 	});
 });

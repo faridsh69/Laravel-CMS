@@ -6,7 +6,7 @@
 <script src="{{ Cdn::asset('js/admin/axios.js') }}"></script>
 <script src="{{ Cdn::asset('js/vue-components/passport.js') }}"></script>
 <script src="{{ Cdn::asset('js/admin/vue-runner.js') }}"></script>
-<link rel="stylesheet" type="text/css" href="/panel.css">
+<link rel="stylesheet" href="{{ Cdn::asset('css/admin/panel.css') }}">
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
 @endpush
 

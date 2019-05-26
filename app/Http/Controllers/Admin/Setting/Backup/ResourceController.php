@@ -154,4 +154,9 @@ class ResourceController extends ListController
     public function destroy($id)
     {
     }
+
+    public function getRedirect()
+    {
+        return redirect()->route('admin.setting.backup.list.index');
+    }
 }

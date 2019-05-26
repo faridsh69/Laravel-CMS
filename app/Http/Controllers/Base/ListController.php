@@ -278,4 +278,9 @@ class ListController extends Controller
             'data' => $model->published,
         ]);
     }
+
+    public function getRedirect()
+    {
+        return redirect()->route('admin.' . $this->model_sm . '.list.index');
+    }
 }
