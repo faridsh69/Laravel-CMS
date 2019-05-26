@@ -101,11 +101,13 @@ class ListController extends Controller
         }
         $data = $form->getFieldValues();
 
-        $data_tags = $data['tags'];
-        unset($data['tags']);
+        if(isset($data['tags'])){
+            $data_tags = $data['tags'];
+            unset($data['tags']);
+        }
         $model = $this->repository->create($data);
 
-        if($data_tags){
+        if(isset($data_tags)){
             $tag_names = Tag::whereIn('id', $data_tags)->pluck('name')->toArray();
             $model->retag($tag_names);
         }

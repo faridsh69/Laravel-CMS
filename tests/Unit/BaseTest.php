@@ -44,6 +44,7 @@ class BaseTest extends TestCase
         {
             $this->_checkMethod($method);
         }
+
         $this
             ->get(route('admin.' . strtolower($this->model) . '.redirect'))
             ->assertStatus(302);
@@ -64,13 +65,13 @@ class BaseTest extends TestCase
         	->get(route('admin.' . strtolower($this->model) . '.list.edit', $data))
         	->assertStatus(200);
 
-        $this
-        	->put(route('admin.' . strtolower($this->model) . '.list.update', $data), $fake_data)
-        	->assertStatus(302);
+        // $this
+        // 	->put(route('admin.' . strtolower($this->model) . '.list.update', $data), $fake_data)
+        // 	->assertStatus(302);
 
-        $this
-        	->delete(route('admin.' . strtolower($this->model) . '.list.destroy', $data))
-        	->assertStatus(302);
+        // $this
+        // 	->delete(route('admin.' . strtolower($this->model) . '.list.destroy', $data))
+        // 	->assertStatus(302);
     }
 
     private function _checkMethod($mothod_name)
