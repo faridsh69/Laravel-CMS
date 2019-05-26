@@ -134,6 +134,10 @@
 							'title' => 'Advance',
 							'route' => 'admin.setting.developer-options.advance',
 						],
+						[
+							'title' => 'API',
+							'route' => 'admin.setting.developer-options.api',
+						],
 					],
 				],
 			],

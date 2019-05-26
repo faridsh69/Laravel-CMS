@@ -44,8 +44,11 @@ Route::group(['prefix' => 'setting', 'namespace' => 'Setting', 'as' => 'setting.
 		Route::resource('list', 'ResourceController');
 		Route::redirect('/', route('admin.setting.backup.list.index'));
 	});
-	Route::get('developer-options/basic', 'SettingController@getDeveloperOptionsBasic')->name('developer-options.basic');
-	Route::get('developer-options/advance', 'SettingController@getDeveloperOptionsAdvance')->name('developer-options.advance');
+	Route::group(['prefix' => 'developer-options', 'as' => 'developer-options.'], function () {
+		Route::get('basic', 'SettingController@getDeveloperOptionsBasic')->name('basic');
+		Route::get('advance', 'SettingController@getDeveloperOptionsAdvance')->name('advance');
+		Route::get('api', 'SettingController@getDeveloperOptionsApi')->name('api');
+	});
 });
 Route::group(['prefix' => 'user', 'namespace' => 'User', 'as' => 'user.'], function () {
 	Route::resource('list', 'ResourceController');
