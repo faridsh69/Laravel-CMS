@@ -40,9 +40,15 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function redirectToProvider()
+    public function redirectToProvider($social_company)
     {
-        return Socialite::driver('google')->redirect();
+        $social_companies = ['google', 'github', 'gitlab', 'linkedin', 'twitter', 'facebook', 'bitbucket'];
+
+        if(array_search($social_company, $social_companies) !== false){
+            return Socialite::driver($social_company)->redirect();        
+        }
+
+        return abort(404);
     }
 
     /**

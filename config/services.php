@@ -1,6 +1,6 @@
 <?php
 
-return [
+$output = [
 
     /*
     |--------------------------------------------------------------------------
@@ -35,26 +35,22 @@ return [
     ],
 
     'stripe' => [
-        'model' => App\User::class,
+        'model' => App\Models\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
         'webhook' => [
             'secret' => env('STRIPE_WEBHOOK_SECRET'),
             'tolerance' => env('STRIPE_WEBHOOK_TOLERANCE', 300),
         ],
-    ],
-
-    'github' => [
-        'client_id' => env('GITHUB_CLIENT_ID'),
-        'client_secret' => env('GITHUB_CLIENT_SECRET'),
-        'redirect' => 'http://your-callback-url',
-    ],
-
-    'google' => [
-        'client_id' => env('GOOGLE_CLIENT_ID'),
-        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        'redirect' => env('GOOGLE_CLIENT_CALLBACK'),
-    ],
-    // add this for google, twitter, linkedin and facebook.
-    
+    ],    
 ];
+$social_companies = ['GOOGLE', 'GITHUB', 'GITLAB', 'LINKEDIN', 'TWITTER', 'FACEBOOK', 'BITBUCKET'];
+foreach($social_companies as $social_company){
+    $output[ strtolower($social_company) ] = [
+        'client_id' => env($social_company . '_CLIENT_ID'),
+        'client_secret' => env($social_company . '_CLIENT_SECRET'),
+        'redirect' => env($social_company . '_CLIENT_CALLBACK'),
+    ];
+}
+
+return $output;
