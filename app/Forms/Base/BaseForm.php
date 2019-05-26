@@ -11,7 +11,7 @@ class BaseForm extends Form
     public function __construct()
     {
         $class_name = 'App\\Models\\' . $this->model_name;
-        $model = new $class_name;
+        $model = new $class_name();
         $this->columns = $model->columns;
     }
 
@@ -32,18 +32,18 @@ class BaseForm extends Form
                 continue;
             }
             $input_type = 'text-m';
-            if($name == 'short_content'){
+            if($name === 'short_content'){
                 $input_type = 'textarea';
             }
-            elseif($type == 'text'){
+            elseif($type === 'text'){
                 $input_type = 'ckeditor';
             }
-            elseif($type == 'boolean'){
+            elseif($type === 'boolean'){
                 $input_type = 'switch-m';
             }
 
-            if($rule == 'unique'){
-                $validation = $validation . $id;
+            if($rule === 'unique'){
+                $validation .= $id;
             }
             $this->add($column['name'], $input_type, [
             	'rules' => $validation,
@@ -53,7 +53,7 @@ class BaseForm extends Form
             ]);
         }
 
-        if($this->model_name == 'Blog')
+        if($this->model_name === 'Blog')
         {
             $this->add('tags', 'entity', [
                 'class' => 'Conner\Tagging\Model\Tag',

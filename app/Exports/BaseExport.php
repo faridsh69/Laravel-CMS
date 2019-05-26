@@ -8,6 +8,7 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 class BaseExport implements FromCollection, WithHeadings
 {
 	public $fields;
+
     public $model;
 
     /**
@@ -26,7 +27,7 @@ class BaseExport implements FromCollection, WithHeadings
     public function setModel($model)
     {
         $class_name = 'App\\Models\\' . $model;
-        $this->model = new $class_name;
+        $this->model = new $class_name();
         $this->fields = collect($this->model->getColumns())->pluck('name')->toArray();
         $this->fields[] = 'created_at';
         $this->fields[] = 'updated_at';

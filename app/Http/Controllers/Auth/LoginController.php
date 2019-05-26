@@ -44,8 +44,8 @@ class LoginController extends Controller
     {
         $social_companies = ['google', 'github', 'gitlab', 'linkedin', 'twitter', 'facebook', 'bitbucket'];
 
-        if(array_search($social_company, $social_companies) !== false){
-            return Socialite::driver($social_company)->redirect();        
+        if(array_search($social_company, $social_companies, true) !== false){
+            return Socialite::driver($social_company)->redirect();
         }
 
         return abort(404);

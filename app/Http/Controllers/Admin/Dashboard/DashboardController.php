@@ -7,6 +7,7 @@ use App\Http\Controllers\Base\AdminController;
 class DashboardController extends AdminController
 {
     public $model = 'Dashboard';
+
     public $model_sm = 'dashboard';
 
     public function index()

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use PragmaRX\Countries\Package\Countries;
 use Illuminate\Http\Request;
+use PragmaRX\Countries\Package\Countries;
 
 class GeneralController extends Controller
 {

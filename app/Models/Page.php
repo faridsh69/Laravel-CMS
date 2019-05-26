@@ -60,63 +60,62 @@ class Page extends Model
 
     public $columns = [
         [
-            'name' => 'title', 
+            'name' => 'title',
             'type' => 'string',
             'rule' => 'unique',
         ],
         [
-            'name' => 'url', 
+            'name' => 'url',
             'type' => 'string',
             'rule' => 'unique',
         ],
         [
-            'name' => 'short_content', 
+            'name' => 'short_content',
             'type' => 'string',
             'rule' => 'nullable',
         ],
         [
-            'name' => 'content', 
+            'name' => 'content',
             'type' => 'text',
         ],
         [
-            'name' => 'meta_description', 
+            'name' => 'meta_description',
             'type' => 'string',
         ],
         [
-            'name' => 'keywords', 
-            'type' => 'string',
-            'rule' => 'nullable',
-        ],
-        [
-            'name' => 'meta_image', 
+            'name' => 'keywords',
             'type' => 'string',
             'rule' => 'nullable',
         ],
         [
-            'name' => 'published', 
+            'name' => 'meta_image',
+            'type' => 'string',
+            'rule' => 'nullable',
+        ],
+        [
+            'name' => 'published',
             'type' => 'boolean',
             'rule' => 'default',
         ],
         [
-            'name' => 'google_index', 
+            'name' => 'google_index',
             'type' => 'boolean',
             'rule' => 'default',
         ],
         [
-            'name' => 'canonical_url', 
+            'name' => 'canonical_url',
             'type' => 'string',
             'rule' => 'nullable',
         ],
         [
-            'name' => 'creator_id', 
+            'name' => 'creator_id',
             'relation' => 'users',
         ],
         [
-            'name' => 'editor_id', 
+            'name' => 'editor_id',
             'relation' => 'users',
         ],
     ];
-
 
     protected $hidden = [
         'created_at',

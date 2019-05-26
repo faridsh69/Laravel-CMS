@@ -9,15 +9,18 @@ use Illuminate\Support\Facades\Schema;
 class MigrationService extends Migration
 {
     public $model;
+
     public $table_name;
+
     public $columns;
+
     /**
      * Run the migrations.
      */
     public function __construct()
     {
         $class_name = 'App\\Models\\' . $this->model;
-        $model = new $class_name;
+        $model = new $class_name();
         $this->table_name = $model->getTable();
         $this->columns = $model->columns;
     }

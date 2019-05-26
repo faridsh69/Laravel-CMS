@@ -11,9 +11,11 @@ use Storage;
 class ResourceController extends ListController
 {
     public $model = 'Backup';
+
     public $model_sm = 'backup';
-    
+
     public $disk_name;
+
     public $backup_name;
 
     public function __construct(Request $request)
@@ -98,7 +100,7 @@ class ResourceController extends ListController
         $disk = Storage::disk($disk_name);
         if ($disk->exists($file)) {
             $fs = Storage::disk($disk_name)->getDriver();
-            $stream = $fs->readStream($file);            
+            $stream = $fs->readStream($file);
             return \Response::stream(function () use ($stream) {
                 fpassthru($stream);
             }, 200, [

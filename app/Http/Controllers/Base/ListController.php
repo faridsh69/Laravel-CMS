@@ -15,13 +15,19 @@ class ListController extends Controller
 {
     // public $model = 'Blog';
     public $model;
+
     // public $model_sm = 'blog';
     public $model_sm;
+
     // public $model_form = '\App\Forms\BlogForm';
     public $model_form;
+
     public $repository;
+
     public $request;
+
     public $form_builder;
+
     public $meta = [
         'title' => 'Admin Panel',
         'description' => 'Admin Panel Page For Best Cms In The World',
@@ -38,7 +44,7 @@ class ListController extends Controller
         $this->model_sm = lcfirst($this->model);
         $this->model_form = 'App\\Forms\\' . $this->model . 'Form';
         $class_name = 'App\\Models\\' . $this->model;
-        $this->repository = new $class_name;
+        $this->repository = new $class_name();
         $this->request = $request;
         $this->form_builder = $form_builder;
         $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.index');
@@ -130,7 +136,7 @@ class ListController extends Controller
         $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.edit', $model);
         $this->meta['link_name'] = __($this->model . ' Edit Form');
 
-        return view('admin.list.show', ['data' => $data, 'meta' => $this->meta]); 
+        return view('admin.list.show', ['data' => $data, 'meta' => $this->meta]);
     }
 
     /**
@@ -207,7 +213,7 @@ class ListController extends Controller
         $model->delete();
         $this->request->session()->flash('alert-success', $this->model . ' Deleted Successfully!');
 
-        return redirect()->route('admin.' . $this->model_sm .'.list.index');
+        return redirect()->route('admin.' . $this->model_sm . '.list.index');
     }
 
     public function getPdf()
@@ -228,7 +234,7 @@ class ListController extends Controller
     public function getExport()
     {
         $class_name = 'App\Exports\BaseExport';
-        $base_export = new $class_name;
+        $base_export = new $class_name();
         $base_export->setModel($this->model);
 
         return Excel::download($base_export, $this->model . '.xlsx');
@@ -237,7 +243,7 @@ class ListController extends Controller
     public function getImport()
     {
         $class_name = 'App\Imports\BaseImport';
-        $base_import = new $class_name;
+        $base_import = new $class_name();
         $base_import->setModel($this->model);
 
         Excel::import($base_import, storage_path('app/public/import.xlsx'));

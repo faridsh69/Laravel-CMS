@@ -42,8 +42,8 @@ class Blog extends Model
             // meta_description,   string      required|max:191|min:70
             // keywords,           string      nullable|max:191
             // meta_image,         string      nullable|max:191|url
-            // published,          boolean     
-            // google_index,       boolean     
+            // published,          boolean
+            // google_index,       boolean
             // canonical_url,      string      nullable|max:191|url
             // creator_id,         foreign     -Automatic
             // editor_id,          foreign     -Automatic
@@ -76,82 +76,77 @@ class Blog extends Model
         ['name' => 'deleted_at', 'type' => 'datetime', 'rule' => 'nullable'],
     ];
 
-    public function getColumns()
-    {
-        return $this->columns;
-    }
-
     public $columns = [
         [
-            'name' => 'title', 
+            'name' => 'title',
             'type' => 'string',
             'rule' => 'unique',
             'validation' => 'required|max:60|min:10|unique:blogs,title,',
             'help' => 'Title should be unique, minimum 10 and maximum 60 characters.',
         ],
         [
-            'name' => 'url', 
+            'name' => 'url',
             'type' => 'string',
             'rule' => 'unique',
             'validation' => 'required|max:80|regex:/^[a-z0-9-_]+$/|unique:blogs,url,',
             'help' => 'Url should be unique, contain lowercase characters and numbers and -',
         ],
         [
-            'name' => 'short_content', 
+            'name' => 'short_content',
             'type' => 'string',
             'rule' => 'nullable',
             'validation' => 'nullable|max:191',
             'help' => 'Short content will show in lists instead of content.',
         ],
         [
-            'name' => 'content', 
+            'name' => 'content',
             'type' => 'text',
             'validation' => 'required|seo_header',
         ],
         [
-            'name' => 'meta_description', 
+            'name' => 'meta_description',
             'type' => 'string',
             'validation' => 'required|max:191|min:70',
             'help' => 'Meta description should have minimum 70 and maximum 191 characters.',
         ],
         [
-            'name' => 'keywords', 
+            'name' => 'keywords',
             'type' => 'string',
             'rule' => 'nullable',
             'validation' => 'nullable|max:191',
-            'help' => 'Its not important for google anymore'
+            'help' => 'Its not important for google anymore',
         ],
         [
-            'name' => 'meta_image', 
+            'name' => 'meta_image',
             'type' => 'string',
             'rule' => 'nullable',
             'validation' => 'nullable|max:191|url',
             'help' => 'Meta image shows when this page is shared in social networks.',
         ],
         [
-            'name' => 'published', 
+            'name' => 'published',
             'type' => 'boolean',
             'rule' => 'default',
         ],
         [
-            'name' => 'google_index', 
+            'name' => 'google_index',
             'type' => 'boolean',
             'rule' => 'default',
             'help' => 'Google will index this page.',
         ],
         [
-            'name' => 'canonical_url', 
+            'name' => 'canonical_url',
             'type' => 'string',
             'rule' => 'nullable',
             'rule' => 'nullable|max:191|url',
             'help' => 'Canonical url just used for seo redirect duplicate contents.',
         ],
         [
-            'name' => 'creator_id', 
+            'name' => 'creator_id',
             'relation' => 'users',
         ],
         [
-            'name' => 'editor_id', 
+            'name' => 'editor_id',
             'relation' => 'users',
         ],
     ];
@@ -159,6 +154,11 @@ class Blog extends Model
     protected $hidden = [
         // 'deleted_at',
     ];
+
+    public function getColumns()
+    {
+        return $this->columns;
+    }
 
     public function editor()
     {

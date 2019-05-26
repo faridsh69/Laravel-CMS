@@ -46,7 +46,7 @@ class SettingController extends Controller
 	public function getDeveloperOptionsApi()
 	{
         $this->meta['title'] = __('API Manager');
-        
+
 		return view('admin.setting.developer-options.api', ['meta' => $this->meta]);
-	}	
+	}
 }
