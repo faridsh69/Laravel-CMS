@@ -6,7 +6,6 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\User;
-use App\Models\Blog;
 
 class BaseTest extends TestCase
 {
@@ -15,64 +14,69 @@ class BaseTest extends TestCase
      *
      * @return void
      */
-    public function testExample()
-    {
-        $user = User::first();
+    public $model;
 
+    public $methods = [
+        'pdf',
+        'print',
+        'export',
+        'datatable',
+        'list.index',
+        'list.create',
+    ];
+
+    public function testDashboard()
+    {
+        $this
+            ->get(route('admin.dashboard.index'))
+            ->assertStatus(302);
+    }
+
+    public function resourceTest()
+    {
+        $class_name = 'App\\Models\\' . $this->model;
+        $model_class = new $class_name();
+
+        $user = User::first();
         $this->actingAs($user);
 
+        foreach($this->methods as $method)
+        {
+            $this->_checkMethod($method);
+        }
         $this
-            ->get(route('admin.blog.pdf'))
-            ->assertStatus(200);
-
-        $this
-            ->get(route('admin.blog.print'))
-            ->assertStatus(200);
-
-        $this
-            ->get(route('admin.blog.export'))
-            ->assertStatus(200);
-
-        $this
-            ->get(route('admin.blog.redirect'))
+            ->get(route('admin.' . strtolower($this->model) . '.redirect'))
             ->assertStatus(302);
 
+        $fake_data = factory($class_name)->raw();
+
         $this
-            ->get(route('admin.blog.datatable'))
+        	->post(route('admin.' . strtolower($this->model) . '.list.store', $fake_data))
+        	->assertStatus(302);
+
+        $data = $model_class->orderBy('id', 'desc')->first();
+
+        $this
+        	->get(route('admin.' . strtolower($this->model) . '.list.show', $data))
+        	->assertStatus(200);
+
+        $this
+        	->get(route('admin.' . strtolower($this->model) . '.list.edit', $data))
+        	->assertStatus(200);
+
+        $this
+        	->put(route('admin.' . strtolower($this->model) . '.list.update', $data), $fake_data)
+        	->assertStatus(302);
+
+        $this
+        	->delete(route('admin.' . strtolower($this->model) . '.list.destroy', $data))
+        	->assertStatus(302);
+    }
+
+    private function _checkMethod($mothod_name)
+    {
+        $this
+            ->get(route('admin.' . strtolower($this->model) . '.' . $mothod_name))
             ->assertStatus(200);
-
-	    $this
-	        ->get(route('admin.blog.list.index'))
-	        ->assertStatus(200);
-
-	    $this
-	        ->get(route('admin.blog.list.create'))
-	        ->assertStatus(200);
-
-        $fake_blog = factory(Blog::class)->raw();
-
-        $this
-        	->post(route('admin.blog.list.store', $fake_blog))
-        	->assertStatus(302);
-
-        $blog = Blog::orderBy('id', 'desc')->first();
-
-        $this
-        	->get(route('admin.blog.list.show', $blog))
-        	->assertStatus(200);
-
-        $this
-        	->get(route('admin.blog.list.edit', $blog))
-        	->assertStatus(200);
-
-    	$fake_blog['title'] = rand(100, 10000);
-
-        $this
-        	->put(route('admin.blog.list.update', $blog), $fake_blog)
-        	->assertStatus(302);
-
-        $this
-        	->delete(route('admin.blog.list.destroy', $blog))
-        	->assertStatus(302);
     }
 }

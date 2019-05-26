@@ -19,10 +19,16 @@ foreach($models as $model)
             $relation = isset($column['relation']) ? $column['relation'] : '';
             if($rule === 'nullable'){
                 continue;
+            }elseif($name == 'meta_description'){
+                $output[$name] = $faker->realText(100);
+            }elseif($name == 'url'){
+                $output[$name] = 'fake-_' . $faker->numberBetween($min = 1000, $max = 900000);
+            }elseif($name == 'content'){
+                $output[$name] = '<h1>Fake h1</h1><h2>Fake h2</h2>' . $faker->realText(400);;
             }elseif($type == 'string'){
-                $output[$name] = $faker->text(100);
+                $output[$name] = 'Fake ' . $faker->realText(50);
             }elseif($type == 'text'){
-                $output[$name] = $faker->text;
+                $output[$name] = 'Fake ' . $faker->realText(400);
             }elseif($type == '' || $type == 'boolean'){
                 $output[$name] = 1;
             }
