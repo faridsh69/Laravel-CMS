@@ -138,7 +138,7 @@ class Blog extends Model
             'name' => 'canonical_url',
             'type' => 'string',
             'rule' => 'nullable',
-            'rule' => 'nullable|max:191|url',
+            'validation' => 'nullable|max:191|url',
             'help' => 'Canonical url just used for seo redirect duplicate contents.',
         ],
         [

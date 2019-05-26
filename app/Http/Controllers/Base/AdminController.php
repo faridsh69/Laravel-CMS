@@ -17,22 +17,23 @@ class AdminController extends Controller
     // public $model_sm = 'blog';
     // public $model_form = '\App\Forms\BlogForm';
     // public $repository;
-    // public $request;
-    // public $meta = [
-    //     'title' => 'Admin Panel',
-    //     'description' => 'Admin Panel Page For Best Cms In The World',
-    //     'keywords' => '',
-    //     'image' => '',
-    //     'alert' => 'Advanced form with validation, ckeditor, multiselect, swith... !',
-    //     'link_route' => '/',
-    //     'link_name' => 'Dashboard',
-    //     'search' => 0,
-    // ];
+    public $request;
+    
+    public $meta = [
+        'title' => 'Admin Panel',
+        'description' => 'Admin Panel Page For Best Cms In The World',
+        'keywords' => '',
+        'image' => '',
+        'alert' => 'Advanced form with validation, ckeditor, multiselect, swith... !',
+        'link_route' => '/',
+        'link_name' => 'Dashboard',
+        'search' => 0,
+    ];
 
-    // public function __construct(Request $request)
-    // {
-    //     $this->request = $request;
-    // }
+    public function __construct(Request $request)
+    {
+        $this->request = $request;
+    }
 
     // /**
     //  * Display a listing of the resource.

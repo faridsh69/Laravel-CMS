@@ -17,8 +17,9 @@ foreach($models as $model)
             $type = isset($column['type']) ? $column['type'] : '';
             $rule = isset($column['rule']) ? $column['rule'] : '';
             $relation = isset($column['relation']) ? $column['relation'] : '';
-
-            if($type == 'string'){
+            if($rule === 'nullable'){
+                continue;
+            }elseif($type == 'string'){
                 $output[$name] = $faker->text(100);
             }elseif($type == 'text'){
                 $output[$name] = $faker->text;
