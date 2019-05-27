@@ -49,6 +49,6 @@ return [
         'checkbox-m' => '\App\Forms\Fields\CheckboxM',
         'switch-bootstrap-m' => '\App\Forms\Fields\SwitchBootstrapM',
         'text-m' => '\App\Forms\Fields\TextM',
-        'ckeditor' => '\App\Forms\Fields\Ckeditor',
+        // 'ckeditor' => '\App\Forms\Fields\Ckeditor',
     ],
 ];

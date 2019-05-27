@@ -25,34 +25,44 @@ class BaseForm extends Form
         {
             $name = $column['name'];
             $type = isset($column['type']) ? $column['type'] : '';
+            $form_type = isset($column['form_type']) ? $column['form_type'] : '';
             $rule = isset($column['rule']) ? $column['rule'] : '';
             $relation = isset($column['relation']) ? $column['relation'] : '';
             $validation = isset($column['validation']) ? $column['validation'] : '';
             $help = isset($column['help']) ? $column['help'] : ' ';
-
+            $attr = null;
             if($relation){
                 continue;
             }
             $input_type = 'text-m';
-            if($name === 'short_content'){
+            if($form_type === 'ckeditor'){
                 $input_type = 'textarea';
+                $attr = ['ckeditor' => '1'];
             }
-            elseif($type === 'text'){
-                $input_type = 'ckeditor';
+            elseif($type === 'text' || $form_type === 'textarea'){
+                $input_type = 'textarea';
+                $attr = ['rows' => 3];
             }
             elseif($type === 'boolean'){
                 $input_type = 'switch-m';
             }
-
+            
             if($rule === 'unique'){
                 $validation .= $id;
             }
-            $this->add($column['name'], $input_type, [
-            	'rules' => $validation,
-            	'help_block' => [
-			        'text' => $help,
-			    ],
-            ]);
+
+            $option = [
+                'rules' => $validation,
+                'help_block' => [
+                    'text' => $help,
+                ]
+            ];
+
+            if($attr){
+                $option['attr'] = $attr;
+            }
+
+            $this->add($column['name'], $input_type, $option);
         }
 
         $this->addBottom();

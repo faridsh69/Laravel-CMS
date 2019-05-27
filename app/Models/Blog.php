@@ -97,17 +97,20 @@ class Blog extends Model
             'rule' => 'nullable',
             'validation' => 'nullable|max:191',
             'help' => 'Short content will show in lists instead of content.',
+            'form_type' => 'textarea',
         ],
         [
             'name' => 'content',
             'type' => 'text',
             'validation' => 'required|seo_header',
-        ],
+            'form_type' => 'ckeditor',
+        ], 
         [
             'name' => 'meta_description',
             'type' => 'string',
             'validation' => 'required|max:191|min:70',
             'help' => 'Meta description should have minimum 70 and maximum 191 characters.',
+            'form_type' => 'textarea',
         ],
         [
             'name' => 'keywords',

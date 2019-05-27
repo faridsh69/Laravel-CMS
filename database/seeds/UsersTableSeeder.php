@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder
         	'id' => 1,
         	'name' => 'Farid Shahidi',
         	'email' => 'farid.sh69@gmail.com',
-        	'password' => bcrypt('123'),
+        	'password' => bcrypt('123456'),
         ];
         User::updateOrCreate(['id' => 1], $user);
     }

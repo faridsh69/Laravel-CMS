@@ -1,15 +1,13 @@
 // bootstrap max length
 var BootstrapMaxlength=function() {
     var e=function() {
-        $("#url").maxlength( {
-            threshold: 80, separator: " of ", preText: "You have ", postText: " chars remaining.", warningClass: "m-badge m-badge--brand m-badge--rounded m-badge--wide", limitReachedClass: "m-badge m-badge--success m-badge--rounded m-badge--wide"
-        }),
-        $("#title").maxlength( {
-            threshold: 60, separator: " of ", preText: "You have ", postText: " chars remaining.", warningClass: "m-badge m-badge--brand m-badge--rounded m-badge--wide", limitReachedClass: "m-badge m-badge--success m-badge--rounded m-badge--wide"
-        }),
-        $("#meta_description").maxlength( {
-            threshold: 191, separator: " of ", preText: "You have ", postText: " chars remaining.", warningClass: "m-badge m-badge--brand m-badge--rounded m-badge--wide", limitReachedClass: "m-badge m-badge--success m-badge--rounded m-badge--wide"
-        })
+        var inputsWithTypeText = $("#admin_form :text, textarea");
+        inputsWithTypeText.each(function(){ 
+            var input = $(this);
+            input.maxlength( {
+                threshold: input.attr('maxlength'), separator: " of ", preText: "You have ", postText: " chars remaining.", warningClass: "m-badge m-badge--brand m-badge--rounded m-badge--wide", limitReachedClass: "m-badge m-badge--success m-badge--rounded m-badge--wide"
+            })
+        });
     };
     return {
         init:function() {
@@ -54,7 +52,7 @@ jQuery(document).ready(function() {
 });
 
 // bootstrap ckeditor
-var options = {
+var ckeditorOptions = {
     filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
     filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
     filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
@@ -62,8 +60,16 @@ var options = {
     skin: 'moonocolor,skins/kama/',
     language: 'en',
 };
-// CKEDITOR.replace('meta_description5', options);
-// CKEDITOR.replace('keywords6', options);
+var inputsWithTypeTextarea = $("textarea");
+inputsWithTypeTextarea.each(function(){ 
+    var input = $(this);
+    if(input.attr('ckeditor'))
+    {
+        CKEDITOR.replace(input.attr('id'), ckeditorOptions);
+    }
+});
+
+// CKEDITOR.replace('keywords', ckeditorOptions);
 
 // validation
 jQuery(document).ready(function() {
