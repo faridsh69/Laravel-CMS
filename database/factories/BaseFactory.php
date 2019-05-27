@@ -1,14 +1,13 @@
 <?php
 
-use App\Models\Blog;
 use Faker\Generator as Faker;
 
 $models = ['Blog', 'Page'];
 foreach($models as $model)
 {
     $class_name = 'App\\Models\\' . $model;
-    $model = new $class_name;
-    $columns = $model->columns;
+    $model = new $class_name();
+    $columns = $model->getColumns();
 
     $factory->define($class_name, function (Faker $faker) use ($columns) {
         $output = [];
@@ -17,20 +16,30 @@ foreach($models as $model)
             $type = isset($column['type']) ? $column['type'] : '';
             $rule = isset($column['rule']) ? $column['rule'] : '';
             $relation = isset($column['relation']) ? $column['relation'] : '';
+            
             if($rule === 'nullable'){
                 continue;
-            }elseif($name == 'meta_description'){
+            }
+            elseif($name == 'meta_description'){
                 $output[$name] = $faker->realText(100);
-            }elseif($name == 'url'){
+            }
+            elseif($name == 'url'){
                 $output[$name] = 'fake-_' . $faker->numberBetween($min = 1000, $max = 900000);
-            }elseif($name == 'content'){
+            }
+            elseif($name == 'content'){
                 $output[$name] = '<h1>Fake h1</h1><h2>Fake h2</h2>' . $faker->realText(400);;
-            }elseif($type == 'string'){
+            }
+            elseif($type == 'string'){
                 $output[$name] = 'Fake ' . $faker->realText(50);
-            }elseif($type == 'text'){
+            }
+            elseif($type == 'text'){
                 $output[$name] = 'Fake ' . $faker->realText(400);
-            }elseif($type == '' || $type == 'boolean'){
+            }
+            elseif($type == '' || $type == 'boolean'){
                 $output[$name] = 1;
+            }
+            elseif($type === 'integer'){
+                $output[$name] = $faker->numberBetween(1000, 9000);
             }
         }
 
