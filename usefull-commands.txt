@@ -16,7 +16,7 @@ php artisan make:test BlogTest --unit
 
 php artisan passport:client --password
 
-code style: vendor/bin/ecs check app
+code style: vendor/bin/ecs check resource
 code style and fix errors : vendor/bin/ecs check /routes/web.php --fix
 
 test: ./vendor/bin/phpunit
