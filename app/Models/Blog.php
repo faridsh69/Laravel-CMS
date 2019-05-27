@@ -83,6 +83,7 @@ class Blog extends Model
             'rule' => 'unique',
             'validation' => 'required|max:60|min:10|unique:blogs,title,',
             'help' => 'Title should be unique, minimum 10 and maximum 60 characters.',
+            'table' => true,
         ],
         [
             'name' => 'url',
@@ -90,6 +91,7 @@ class Blog extends Model
             'rule' => 'unique',
             'validation' => 'required|max:80|regex:/^[a-z0-9-_]+$/|unique:blogs,url,',
             'help' => 'Url should be unique, contain lowercase characters and numbers and -',
+            'table' => true,
         ],
         [
             'name' => 'short_content',
@@ -98,6 +100,7 @@ class Blog extends Model
             'validation' => 'nullable|max:191',
             'help' => 'Short content will show in lists instead of content.',
             'form_type' => 'textarea',
+            'table' => true,
         ],
         [
             'name' => 'content',

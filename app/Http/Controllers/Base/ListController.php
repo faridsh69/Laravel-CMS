@@ -64,9 +64,20 @@ class ListController extends Controller
         $this->meta['link_name'] = __('Create New ' . $this->model);
         $this->meta['search'] = 1;
 
-        $columns = $this->repository->getColumns();
+        $table_columns = collect($this->repository->getColumns())
+            ->where('table', true);
 
-        return view('admin.list.table', ['meta' => $this->meta, 'columns' => $this->columns]);
+        $columns = [];
+        foreach($table_columns as $column)
+        {
+            $columns[] = [
+                'field' => $column['name'],
+                'title' => $column['name'],
+            ];
+        }
+        $columns = json_encode($columns);
+
+        return view('admin.list.table', ['meta' => $this->meta, 'columns' => $columns]);
     }
 
     /**

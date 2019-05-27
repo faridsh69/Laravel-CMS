@@ -1,5 +1,6 @@
 var DatatableJsonRemoteDemo=function() {
     var t=function() {
+    	columns = JSON.stringify(columns);
     	console.log(columns);
         var t=$(".m_datatable").mDatatable( {
             data: {
