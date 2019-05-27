@@ -9,11 +9,7 @@
 					<i class="flaticon-statistics"></i>
 				</span>
 				<h3 class="m-portlet__head-text">
-					{{ $data['id'] }} - 
-					{{ $data['title'] }}
-				<small>
-					{{ $data['url'] }}
-				</small>
+					ID: {{ $data['id'] }}
 				</h3>
 			</div>
 		</div>

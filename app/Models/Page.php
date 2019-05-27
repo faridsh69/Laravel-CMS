@@ -63,7 +63,7 @@ class Page extends Model
             'name' => 'title1',
             'type' => 'string',
             'rule' => 'unique',
-            'validation' => 'required|max:190|min:10|unique:pages,title,',
+            'validation' => 'required|max:190|min:10|unique:pages,title1,',
             // 'help' => 'Title should be unique, minimum 10 and maximum 60 characters.',
         ],
         [
@@ -77,8 +77,8 @@ class Page extends Model
             'name' => 'short_content3',
             'type' => 'integer',
             'rule' => 'nullable',
-            'validation' => 'required|digits:11',
-            'help' => 'required|digits:11',
+            'validation' => 'required|digits:5',
+            'help' => 'required|digits:5',
         ],
         [
             'name' => 'content',
@@ -181,9 +181,14 @@ class Page extends Model
         parent::boot();
 
         self::creating(function($model){
+            $model->creator_id11 = Auth::id() ?: 1;
+            $model->editor_id12 = Auth::id() ?: 1;
+
         });
 
         self::updating(function($model){
+            $model->creator_id11 = Auth::id() ?: 1;
+            $model->editor_id12 = Auth::id() ?: 1;
         });
     }
 }

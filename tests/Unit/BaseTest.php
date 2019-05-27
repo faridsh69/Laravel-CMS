@@ -50,7 +50,7 @@ class BaseTest extends TestCase
             ->assertStatus(302);
 
         $fake_data = factory($class_name)->raw();
-
+        
         $this
         	->post(route('admin.' . strtolower($this->model) . '.list.store', $fake_data))
         	->assertStatus(302);
@@ -65,13 +65,13 @@ class BaseTest extends TestCase
         	->get(route('admin.' . strtolower($this->model) . '.list.edit', $data))
         	->assertStatus(200);
 
-        // $this
-        // 	->put(route('admin.' . strtolower($this->model) . '.list.update', $data), $fake_data)
-        // 	->assertStatus(302);
+        $this
+        	->put(route('admin.' . strtolower($this->model) . '.list.update', $data), $fake_data)
+        	->assertStatus(302);
 
-        // $this
-        // 	->delete(route('admin.' . strtolower($this->model) . '.list.destroy', $data))
-        // 	->assertStatus(302);
+        $this
+        	->delete(route('admin.' . strtolower($this->model) . '.list.destroy', $data))
+        	->assertStatus(302);
     }
 
     private function _checkMethod($mothod_name)
