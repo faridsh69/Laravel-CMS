@@ -1,8 +1,9 @@
 var DatatableJsonRemoteDemo=function() {
     var t=function() {
+    	console.log(columns);
         var t=$(".m_datatable").mDatatable( {
             data: {
-                type:"remote", 
+                type:"remote",
                 source: {
                 	read: {
                 		url: "datatable",
@@ -51,8 +52,6 @@ var DatatableJsonRemoteDemo=function() {
 						return '<small>' + row.short_content + '</small>';
 					}
 	        	},
-	            {field:"editor", title:"Editor"},
-	            {field: "updated_at", title: "Updated At"},
 	            {field:"published", title:"published", 
 	            	template: function (row) {
 var output = 
@@ -65,7 +64,10 @@ output += '/><span></span></label></span>';
 	            		return output;
 	            	},
 	        	},
-	            {field:"Actions", 
+	        	{field:"editor", title:"Editor"},
+	        	{field: "updated_at", title: "Updated At"},
+	            {
+	            	field:"Actions", 
 	            	width: 100, 
 	            	title: "Actions", 
 	            	sortable: false, 

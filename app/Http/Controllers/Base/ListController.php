@@ -64,7 +64,9 @@ class ListController extends Controller
         $this->meta['link_name'] = __('Create New ' . $this->model);
         $this->meta['search'] = 1;
 
-        return view('admin.list.table', ['meta' => $this->meta]);
+        $columns = $this->repository->getColumns();
+
+        return view('admin.list.table', ['meta' => $this->meta, 'columns' => $this->columns]);
     }
 
     /**
