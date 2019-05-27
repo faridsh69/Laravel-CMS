@@ -43,6 +43,10 @@
 					'title' => 'Page list',
 					'route' => 'admin.page.list.index',
 				],
+				[
+					'title' => 'Create New Page',
+					'route' => 'admin.page.list.create',
+				],
 			],
 		],
 		[

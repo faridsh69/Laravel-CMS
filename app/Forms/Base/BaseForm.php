@@ -19,6 +19,8 @@ class BaseForm extends Form
     {
     	$id = $this->model ? $this->model->id : 0;
 
+        $this->addTop();
+
         foreach($this->columns as $column)
         {
             $name = $column['name'];
@@ -26,7 +28,7 @@ class BaseForm extends Form
             $rule = isset($column['rule']) ? $column['rule'] : '';
             $relation = isset($column['relation']) ? $column['relation'] : '';
             $validation = isset($column['validation']) ? $column['validation'] : '';
-            $help = isset($column['help']) ? $column['help'] : null;
+            $help = isset($column['help']) ? $column['help'] : ' ';
 
             if($relation){
                 continue;
@@ -53,15 +55,16 @@ class BaseForm extends Form
             ]);
         }
 
-        if($this->model_name === 'Blog')
-        {
-            $this->add('tags', 'entity', [
-                'class' => 'Conner\Tagging\Model\Tag',
-                'property' => 'name',
-                'property_key' => 'id',
-                'attr' => ['multiple' => 'true', 'class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker', 'data-live-search' => 'true'],
-            ]);
-        }
+        $this->addBottom();
+
         $this->add('submit', 'submit');
+    }
+
+    public function addTop()
+    {
+    }
+
+    public function addBottom()
+    {
     }
 }
