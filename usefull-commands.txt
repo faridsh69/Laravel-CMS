@@ -1,0 +1,62 @@
+composer dump-autoload
+php artisan clear-compiled
+php artisan package:discover
+
+php artisan make:migration create_blogs_table
+php artisan make:model Models/Blog
+php artisan make:factory BlogFactory
+php artisan make:seeder BlogsTableSeeder
+php artisan make:controller Api/GeneralController
+php artisan make:export BlogsExport --model=Blog
+php artisan make:import BlogsImport --model=Blog
+php artisan make:mail UserRegistered
+php artisan backup:run
+php artisan apidoc:generate
+php artisan make:test BlogTest --unit
+
+php artisan passport:client --password
+
+code style: vendor/bin/ecs check app
+code style and fix errors : vendor/bin/ecs check /routes/web.php --fix
+
+test: ./vendor/bin/phpunit
+
+@TODO
+
+// Mail::to(Auth::user())->send(new UserRegistered());
+
+./vendor/bin/phpunit
+
+php artisan make:form Forms/BlogForm --fields="title:text, url:text, short_content:textarea, content:textarea, status:checkbox"
+
+php artisan make:rule SeoHeading
+
+ln -s /home/faridsh/domains/faridtest.ir/storage/app/public public_html/cdn/storage 
+
+ln -s end -> first 
+
+mklink
+MKLINK ./storage ../storage/app/public
+mklink d:\link-name c:\original-file
+
+mklink /D C:\xampp\htdocs\cms-new\public_html\cdn\storage C:\xampp\htdocs\cms-new\storage\app\public
+
+
+git update-index --assume-unchanged public_html/vendor/
+
+/usr/local/bin/mysqldump
+
+find / -name 'mysqldump'
+
+-- php php-cs-fixer.phar fix /
+
+php artisan passport:install
+
+Encryption keys generated successfully.
+Personal access client created successfully.
+Client ID: 1
+Client secret: SYzCFY3sHmTiFSs1IjdG3P9GNFRtx0bRl09nnxKf
+Password grant client created successfully.
+Client ID: 2
+Client secret: 0Deb3JmbBQbn6yfVV7XCvpMMkN52YD5HAaOInOPK
+
