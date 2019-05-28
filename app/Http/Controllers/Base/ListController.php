@@ -72,10 +72,9 @@ class ListController extends Controller
         {
             $columns[] = [
                 'field' => $column['name'],
-                'title' => $column['name'],
+                'title' => \Str::title($column['name']),
             ];
         }
-        $columns = json_encode($columns);
 
         return view('admin.list.table', ['meta' => $this->meta, 'columns' => $columns]);
     }

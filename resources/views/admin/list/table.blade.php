@@ -2,8 +2,8 @@
 
 @push('script')
 <script>
-	// var columns  = {field: "title", title: "Title"};
-	var columns  = "{{ $columns }}";
+	var columns  = '{!! json_encode($columns) !!}';
+	columns = JSON.parse(columns);
 </script>
 <script src="{{ Cdn::asset('js/table/table.js') }}"></script>
 <script src="{{ Cdn::asset('js/table/change-status.js') }}"></script>
