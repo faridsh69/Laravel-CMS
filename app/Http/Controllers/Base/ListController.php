@@ -124,7 +124,11 @@ class ListController extends Controller
             $tag_names = Tag::whereIn('id', $data_tags)->pluck('name')->toArray();
             $model->retag($tag_names);
         }
-
+        if(isset($data['related_blogs']))
+        {
+            $model->related_blogs()->sync($data['related_blogs'], true);
+        }
+        
         activity($this->model)
             ->performedOn($model)
             ->causedBy(Auth::user())
@@ -194,18 +198,18 @@ class ListController extends Controller
         if (! $form->isValid()) {
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
-
+        
         $data = $form->getFieldValues();
 
+        if(isset($data['related_blogs']))
+        {
+            $model->related_blogs()->sync($data['related_blogs'], true);
+            unset($data['related_blogs']);
+        }
         if(isset($data['tags'])){
             $data_tags = $data['tags'];
+            unset($data['tags']);
         }
-        if(isset($data['category'])){
-            $data['category_id'] = $data['category'];
-        }
-
-        unset($data['category']);
-        unset($data['tags']);
 
         $model->update($data);
 

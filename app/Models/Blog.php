@@ -182,10 +182,16 @@ class Blog extends Model
         return $this->belongsTo('App\Models\User', 'creator_id', 'id');
     }
 
-    // public function category()
-    // {
-    //     return $this->belongsTo('App\Models\Category', 'category_id', 'id');
-    // }
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Category', 'category_id', 'id');
+    }
+
+    public function related_blogs()
+    {
+        return $this->belongsToMany('App\Models\Blog', 'related_blogs', 'blog_id', 'related_blog_id');
+
+    }
 
     public function scopeActive($query)
     {

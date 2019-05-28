@@ -27,5 +27,11 @@ class BlogForm extends BaseForm
             'property_key' => 'id',
             'attr' => ['multiple' => 'true', 'class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker', 'data-live-search' => 'true'],
         ]);
+        $this->add('related_blogs', 'entity', [
+            'class' => 'App\Models\Blog',
+            'property' => 'title',
+            'property_key' => 'id',
+            'attr' => ['multiple' => 'true', 'class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker', 'data-live-search' => 'true'],
+        ]);
     }
 }
