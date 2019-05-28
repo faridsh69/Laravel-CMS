@@ -144,6 +144,7 @@ class Blog extends Model
             'type' => 'boolean',
             'rule' => 'default',
             'help' => 'Google will index this page.',
+            'form_type' => 'checkbox'
         ],
         [
             'name' => 'canonical_url',

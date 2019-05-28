@@ -44,7 +44,11 @@ class BaseForm extends Form
                 $attr = ['rows' => 3];
             }
             elseif($type === 'boolean'){
-                $input_type = 'switch-m';
+                if($form_type === 'checkbox'){
+                    $input_type = 'checkbox-m';
+                }else{
+                    $input_type = 'switch-m';
+                }
             }
             
             if($rule === 'unique'){

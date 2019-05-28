@@ -75,15 +75,6 @@ class ResourceController extends ListController
         return redirect()->route('admin.setting.backup.list.index');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store()
-    {
-    }
 
     /**
      * Display the specified resource.
@@ -134,27 +125,6 @@ class ResourceController extends ListController
         $this->request->session()->flash('alert-success', 'Backup Deleted');
 
         return redirect()->route('admin.setting.backup.list.index');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update($id)
-    {
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
     }
 
     public function getRedirect()

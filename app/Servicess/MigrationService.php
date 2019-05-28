@@ -22,7 +22,7 @@ class MigrationService extends Migration
         $class_name = 'App\\Models\\' . $this->model;
         $model = new $class_name();
         $this->table_name = $model->getTable();
-        $this->columns = $model->columns;
+        $this->columns = $model->getColumns();
     }
 
     public function up()
