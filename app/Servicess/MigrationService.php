@@ -28,8 +28,9 @@ class MigrationService extends Migration
     public function up()
     {
         $columns = $this->columns;
+        $table_name = $this->table_name;
         Schema::defaultStringLength(191);
-        Schema::create($this->table_name, function (Blueprint $table) use ($columns) {
+        Schema::create($table_name, function (Blueprint $table) use ($columns, $table_name) {
             $table->bigIncrements('id');
             foreach($columns as $column){
                 $name = $column['name'];
@@ -44,6 +45,12 @@ class MigrationService extends Migration
                 else{
                     $table->{$type}($name)->{$rule}(true);
                 }
+            }
+            if($table_name === 'categories'){
+                $table->nestedSet();
+            }
+            if($table_name === 'users'){
+                $table->rememberToken();
             }
             $table->timestamps();
             $table->softDeletes();

@@ -40,4 +40,46 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public $columns = [
+        [
+            'name' => 'name',
+            'type' => 'string',
+            'rule' => '',
+            'validation' => '',
+            'table' => true,
+        ],
+        [
+            'name' => 'email',
+            'type' => 'string',
+            'rule' => 'unique',
+            'validation' => 'required|unique:users,email,',
+            'table' => true,
+        ],
+        [
+            'name' => 'email_verified_at',
+            'type' => 'timestamp',
+            'rule' => 'nullable',
+            'validation' => 'nullable|date',
+            'help' => '',
+            'form_type' => 'system',
+            'table' => true,
+        ],
+        [
+            'name' => 'password',
+            'type' => 'string',
+            'rule' => 'required',
+            'form_type' => 'password',
+        ], 
+        [
+            'name' => 'activated',
+            'type' => 'boolean',
+            'rule' => 'default',
+        ],
+    ];
+
+    public function getColumns()
+    {
+        return $this->columns;
+    }
 }

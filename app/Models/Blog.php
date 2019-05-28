@@ -94,7 +94,7 @@ class Blog extends Model
             'table' => true,
         ],
         [
-            'name' => 'short_content',
+            'name' => 'description',
             'type' => 'string',
             'rule' => 'nullable',
             'validation' => 'nullable|max:191',
@@ -192,10 +192,10 @@ class Blog extends Model
         return $query->where('editor_id', \Auth::id());
     }
 
-    public function scopeFindTag($tags)
-    {
-        return $this->withAnyTags(['tag 1', 'tag 2'])->get();
-    }
+    // public function scopeFindTag($tags)
+    // {
+    //     return $this->withAnyTags(['tag 1', 'tag 2'])->get();
+    // }
 
     public static function getFillables()
     {

@@ -8,7 +8,7 @@ $admin_models = [
 	'media', // 5 
 	'comment', // 6
 	// setting 7 
-	// user 8 
+	'user', // 8 
 	'theme', // 9 
 	'block', // 10
 	'widget', // 11
@@ -51,7 +51,6 @@ Route::group(['prefix' => 'setting', 'namespace' => 'Setting', 'as' => 'setting.
 	});
 });
 Route::group(['prefix' => 'user', 'namespace' => 'User', 'as' => 'user.'], function () {
-	Route::resource('list', 'ResourceController');
 	Route::get('role', 'UserController@getRole')->name('role');
 	Route::get('permission', 'UserController@getPermission')->name('permission');
 	Route::get('registration-setting', 'UserController@getRegistrationSetting')->name('registration-setting');
