@@ -41,7 +41,7 @@ class Category extends Model
             'validation' => 'nullable|max:191',
             'help' => 'Brif description about this category.',
             'form_type' => 'textarea',
-            'table' => true,
+            'table' => false,
         ],
         [
             'name' => 'meta_description',

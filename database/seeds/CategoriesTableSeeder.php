@@ -57,6 +57,12 @@ class CategoriesTableSeeder extends Seeder
         {
             if(!Category::first()){
                 Category::create($shop);
+                $categories = Category::get();
+                foreach($categories as $category)
+                {
+                    $category->published = 1;
+                    $category->save();
+                }
             }
         }
         // $node = new Category(['name' => 'root']);

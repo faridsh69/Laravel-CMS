@@ -8,10 +8,10 @@ class ResourceController extends ListController
 {
     public $model = 'Category';
 
-    public function index()
-    {
-        $shops = $this->repository->get()->toTree();
+    // public function index()
+    // {
+    //     $shops = $this->repository->get()->toTree();
         
-        return view('shop', compact('shops'));
-    }
+    //     return view('shop', compact('shops'));
+    // }
 }
