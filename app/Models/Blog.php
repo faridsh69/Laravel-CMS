@@ -100,13 +100,14 @@ class Blog extends Model
             'validation' => 'nullable|max:191',
             'help' => 'Short content will show in lists instead of content.',
             'form_type' => 'textarea',
-            'table' => true,
+            'table' => false,
         ],
         [
             'name' => 'content',
             'type' => 'text',
             'validation' => 'required|seo_header',
             'form_type' => 'ckeditor',
+            'table' => true,
         ], 
         [
             'name' => 'meta_description',

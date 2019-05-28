@@ -72,7 +72,7 @@ class ListController extends Controller
         {
             $columns[] = [
                 'field' => $column['name'],
-                'title' => \Str::title($column['name']),
+                'title' => preg_replace('/([a-z])([A-Z])/s','$1 $2', \Str::studly($column['name']))
             ];
         }
 
@@ -268,7 +268,7 @@ class ListController extends Controller
     public function getDatatable()
     {
         $model = $this->repository->orderBy('id', 'desc')->get();
-
+        
         return datatables()
             ->of($model)
             ->addColumn('editor', function($model) {
@@ -283,7 +283,7 @@ class ListController extends Controller
             ->addColumn('delete_url', function($model) {
                 return route('admin.' . $this->model_sm . '.list.destroy', $model);
             })
-            ->rawColumns(['id'])
+            ->rawColumns(['id', 'content'])
             ->toJson();
     }
 

@@ -84,12 +84,14 @@ class Page extends Model
             'name' => 'content',
             'type' => 'text',
             'validation' => 'required',
+            'table' => true,
         ],
         [
             'name' => 'meta_description5',
             'type' => 'string',
             'validation' => 'required|exists:users,id',
             'help' => 'required|exists:users,id',
+            'table' => true,
         ],
         [
             'name' => 'keywords6',
@@ -106,12 +108,12 @@ class Page extends Model
             'help' => 'Meta image shows when this page is shared in social networks.',
         ],
         [
-            'name' => 'published8',
+            'name' => 'published',
             'type' => 'boolean',
             'rule' => 'default',
         ],
         [
-            'name' => 'google_index9',
+            'name' => 'google_index',
             'type' => 'boolean',
             'rule' => 'default',
             'help' => 'Google will index this page.',
@@ -124,11 +126,11 @@ class Page extends Model
             'help' => 'Canonical url just used for seo redirect duplicate contents.',
         ],
         [
-            'name' => 'creator_id11',
+            'name' => 'creator_id',
             'relation' => 'users',
         ],
         [
-            'name' => 'editor_id12',
+            'name' => 'editor_id',
             'relation' => 'users',
         ],
     ];
@@ -181,14 +183,16 @@ class Page extends Model
         parent::boot();
 
         self::creating(function($model){
-            $model->creator_id11 = Auth::id() ?: 1;
-            $model->editor_id12 = Auth::id() ?: 1;
-
+            $model->published = $model->published ? 1 : 0;
+            $model->google_index = $model->google_index ? 1 : 0;
+            $model->creator_id = Auth::id() ?: 1;
+            $model->editor_id = Auth::id() ?: 1;
         });
 
         self::updating(function($model){
-            $model->creator_id11 = Auth::id() ?: 1;
-            $model->editor_id12 = Auth::id() ?: 1;
+            $model->published = $model->published ? 1 : 0;
+            $model->google_index = $model->google_index ? 1 : 0;
+            $model->editor_id = Auth::id() ?: 1;
         });
     }
 }
