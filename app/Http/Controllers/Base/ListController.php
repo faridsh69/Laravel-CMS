@@ -117,6 +117,7 @@ class ListController extends Controller
             $data_tags = $data['tags'];
             unset($data['tags']);
         }
+
         $model = $this->repository->create($data);
 
         if(isset($data_tags)){
@@ -164,7 +165,6 @@ class ListController extends Controller
         $model = $this->repository->findOrFail($id);
 
         $this->meta['title'] = __('Edit ' . $this->model . ' ' . $id);
-
         $form = $this->form_builder->create($this->model_form, [
             'method' => 'PUT',
             'url' => route('admin.' . $this->model_sm . '.list.update', $model),
@@ -196,12 +196,16 @@ class ListController extends Controller
         }
 
         $data = $form->getFieldValues();
-        
+
         if(isset($data['tags'])){
             $data_tags = $data['tags'];
-            unset($data['tags']);
         }
-        $model = $this->repository->create($data);
+        if(isset($data['category'])){
+            $data['category_id'] = $data['category'];
+        }
+
+        unset($data['category']);
+        unset($data['tags']);
 
         $model->update($data);
 

@@ -10,12 +10,13 @@ class BlogForm extends BaseForm
 
     public function addTop()
     {
-		// $this->add('title', 'text-m', [
-  //           'rules' => 'required|max:60|min:10|unique:blogs,title,' . $id,
-  //           'help_block' => [
-		//         'text' => 'Title should be unique, minimum 10 and maximum 60 characters.',
-		//     ],
-  //       ]);    
+        $this->add('category_id', 'entity', [
+            'label' => 'Category',
+            'class' => 'App\Models\Category',
+            'property' => 'title',
+            'property_key' => 'id',
+            'attr' => ['class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker', 'data-live-search' => 'true'],
+        ]);
 	}
 
     public function addBottom()

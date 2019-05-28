@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Kalnoy\Nestedset\NodeTrait;
 use Str;
 
-// use Nestable\NestableTrait;
-
 class Category extends Model
 {
     use NodeTrait;

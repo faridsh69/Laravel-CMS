@@ -1,3 +1,18 @@
+// bootstrap select
+var BootstrapSelect = function() {
+    var t = function() {
+        $(".m_selectpicker").selectpicker()
+    };
+    return {
+        init: function() {
+            t()
+        }
+    }
+}();
+jQuery(document).ready(function() {
+    BootstrapSelect.init()
+});
+
 // bootstrap max length
 var BootstrapMaxlength=function() {
     var e=function() {
@@ -34,21 +49,6 @@ var BootstrapSwitch = function() {
 }();
 jQuery(document).ready(function() {
     BootstrapSwitch.init()
-});
-
-// bootstrap select
-var BootstrapSelect = function() {
-    var t = function() {
-        $(".m_selectpicker").selectpicker()
-    };
-    return {
-        init: function() {
-            t()
-        }
-    }
-}();
-jQuery(document).ready(function() {
-    BootstrapSelect.init()
 });
 
 // bootstrap ckeditor

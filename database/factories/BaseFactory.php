@@ -24,7 +24,7 @@ foreach($models as $model)
                 $output[$name] = $faker->realText(100);
             }
             elseif($name == 'url'){
-                $output[$name] = 'fake-_' . $faker->numberBetween($min = 1000, $max = 900000);
+                $output[$name] = 'fake-' . $faker->numberBetween($min = 1000, $max = 900000);
             }
             elseif($name == 'content'){
                 $output[$name] = '<h1>Fake h1</h1><h2>Fake h2</h2>' . $faker->realText(400);;
