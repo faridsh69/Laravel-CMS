@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Base\BaseSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,13 +14,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RolesTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
-
-        $models = [
-            'Blog', 'Page',
-        ];
-
-        foreach($models as $model) {
-            factory('App\\Models\\' . $model, 8)->create();
-        }
+        $this->call(BaseSeeder::class);
     }
 }
