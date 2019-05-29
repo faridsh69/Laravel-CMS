@@ -9,10 +9,13 @@ class BaseFactory
 {
     public function index($factory)
     {
-        $models = Config::get('services.models');
-
+        $models = config('services.models');
         foreach($models as $model)
         {
+            if($model === 'tag' || $model === 'media'){
+                continue;
+            }
+            $model = ucfirst($model);
             $class_name = 'App\\Models\\' . $model;
             $model = new $class_name();
             $columns = $model->getColumns();

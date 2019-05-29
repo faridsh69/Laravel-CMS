@@ -12,7 +12,10 @@ class UsersTableSeeder extends Seeder
     {
         $user = [
         	'id' => 1,
-        	'name' => 'Farid Shahidi',
+            'first_name' => 'Farid',
+            'last_name' => 'Shahidi',
+            'url' => 'farid-shahidi',
+        	'barcode' => 'farid-shahidi' . random_int(100, 100000),
         	'email' => 'farid.sh69@gmail.com',
         	'password' => bcrypt('123456'),
             'activated' => 1,

@@ -1,19 +1,6 @@
 <?php
 
 $output = [
-
-    /*
-    |--------------------------------------------------------------------------
-    | Third Party Services
-    |--------------------------------------------------------------------------
-    |
-    | This file is for storing the credentials for third party services such
-    | as Stripe, Mailgun, SparkPost and others. This file provides a sane
-    | default location for this type of information, allowing packages
-    | to have a conventional place to find your various credentials.
-    |
-    */
-
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
         'secret' => env('MAILGUN_SECRET'),
@@ -61,8 +48,8 @@ $output = [
         'category', // 3
         'tag', // 4 
         'media', // 5 
-        'comment', // 6
-        //'setting', 7 
+        // 'comment', // 6
+        'setting', // 7 
         'user', // 8 
         'theme', // 9 
         'block', // 10
