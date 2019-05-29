@@ -19,9 +19,12 @@ var BootstrapMaxlength=function() {
         var inputsWithTypeText = $("#admin_form :text, textarea");
         inputsWithTypeText.each(function(){ 
             var input = $(this);
-            input.maxlength( {
-                threshold: input.attr('maxlength'), separator: " of ", preText: "You have ", postText: " chars remaining.", warningClass: "m-badge m-badge--brand m-badge--rounded m-badge--wide", limitReachedClass: "m-badge m-badge--success m-badge--rounded m-badge--wide"
-            })
+            var maxlength = input.attr('maxlength');
+            if(maxlength){
+                input.maxlength( {
+                    threshold: maxlength, separator: " of ", preText: "You have ", postText: " chars remaining.", warningClass: "m-badge m-badge--brand m-badge--rounded m-badge--wide", limitReachedClass: "m-badge m-badge--success m-badge--rounded m-badge--wide"
+                })
+            }
         });
     };
     return {

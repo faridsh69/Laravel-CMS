@@ -12,19 +12,19 @@
 						<ul class="m-nav">
 							<li class="m-nav__section m-nav__section--first m--hide">
 								<span class="m-nav__section-text">
-									Quick Actions
+									Quick Actions {{ $model = Request::segment(1) }}
 								</span>
 							</li>
 							<li class="m-nav__item">
-								<a href="{{ route('admin.blog.list.create') }}" class="m-nav__link">
+								<a href="{{ route('admin.'.$model.'.list.create') }}" class="m-nav__link">
 									<i class="m-nav__link-icon flaticon-share"></i>
 									<span class="m-nav__link-text">
-										Create Blog
+										Create {{ ucfirst($model) }}
 									</span>
 								</a>
 							</li>
 							<li class="m-nav__item">
-								<a href="{{ route('admin.blog.export') }}" class="m-nav__link">
+								<a href="{{ route('admin.'.$model.'.export') }}" class="m-nav__link">
 									<i class="m-nav__link-icon flaticon-download"></i>
 									<span class="m-nav__link-text">
 										Export Excel
@@ -32,7 +32,7 @@
 								</a>
 							</li>
 							<li class="m-nav__item">
-								<a href="{{ route('admin.blog.import') }}" class="m-nav__link">
+								<a href="{{ route('admin.'.$model.'.import') }}" class="m-nav__link">
 									<i class="m-nav__link-icon flaticon-up-arrow"></i>
 									<span class="m-nav__link-text">
 										Import Excel
@@ -40,7 +40,7 @@
 								</a>
 							</li>
 							<li class="m-nav__item">
-								<a href="{{ route('admin.blog.pdf') }}" class="m-nav__link">
+								<a href="{{ route('admin.'.$model.'.pdf') }}" class="m-nav__link">
 									<i class="m-nav__link-icon flaticon-file"></i>
 									<span class="m-nav__link-text">
 										Download PDF
@@ -48,19 +48,13 @@
 								</a>
 							</li>
 							<li class="m-nav__item">
-								<a href="{{ route('admin.blog.print') }}" class="m-nav__link">
+								<a href="{{ route('admin.'.$model.'.print') }}" class="m-nav__link">
 									<i class="m-nav__link-icon flaticon-clipboard"></i>
 									<span class="m-nav__link-text">
 										Print
 									</span>
 								</a>
 							</li>
-							<!-- <li class="m-nav__separator m-nav__separator--fit"></li> -->
-							<!-- <li class="m-nav__item">
-								<a href="#" class="btn btn-outline-danger m-btn m-btn--pill m-btn--wide btn-sm">
-									Submit
-								</a>
-							</li> -->
 						</ul>
 					</div>
 				</div>

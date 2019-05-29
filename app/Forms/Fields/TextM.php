@@ -9,7 +9,7 @@ class TextM extends FormField
     public function getDefaults()
     {
         return [
-            'left_icon' => 'la-exclamation-circle',
+            'left_icon' => 'la-clipboard',
             'right_icon' => 'la-check',
         ];
     }
