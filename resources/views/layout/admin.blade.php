@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en" dir="ltr">
 	@include('common.admin.header')
 	<body class="m-page--fluid m--skin- m-content--skin-light2 m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default"  >
 		<div class="m-grid m-grid--hor m-grid--root m-page">
@@ -30,6 +30,7 @@
 				</div>
 			</div>
 			@include('common.admin.footer')
+			@include('common.admin.scripts')
 		</div>
     	@stack('script')
 	</body>
