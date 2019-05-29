@@ -52,9 +52,29 @@ $output = [
         // 'GITLAB',
         // 'BITBUCKET',
     ],
+    'countries' => PragmaRX\Countries\Package\Countries::where('name.common', '!=', '')
+        ->pluck('name.common')
+        ->toArray(),
+    'models' => [
+        'blog', // 1
+        'page', // 2
+        'category', // 3
+        'tag', // 4 
+        'media', // 5 
+        'comment', // 6
+        //'setting', 7 
+        'user', // 8 
+        'theme', // 9 
+        'block', // 10
+        'widget', // 11
+        //'seo' // 12 
+        'form', // 13
+        'report', // 14
+        'notification', // 15
+        'menu', // 16
+    ],
 ];
-$social_companies = ['GOOGLE', 'GITHUB', 'GITLAB', 'LINKEDIN', 'TWITTER', 'FACEBOOK', 'BITBUCKET'];
-foreach($social_companies as $social_company){
+foreach($output['social_companies'] as $social_company){
     $output[ strtolower($social_company) ] = [
         'client_id' => env($social_company . '_CLIENT_ID'),
         'client_secret' => env($social_company . '_CLIENT_SECRET'),

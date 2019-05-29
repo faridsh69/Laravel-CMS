@@ -17,6 +17,7 @@ php artisan make:form Forms/BlogForm --fields="title:text, url:text, short_conte
 php artisan passport:client --password
 php artisan passport:install
 php artisan apidoc:generate
+php artisan route:list
 
 code style: vendor/bin/ecs check app
 code style and fix errors : vendor/bin/ecs check /routes/web.php --fix

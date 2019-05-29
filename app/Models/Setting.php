@@ -3,17 +3,50 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Setting extends Model
 {
-    // Schema::create('settings', function (Blueprint $table) {
-    //     $table->increments('id');
-    //     $table->string('key')->unique();
-    //     $table->text('value')->nullable();
-    //     $table->string('description')->nullable();
-    //     $table->integer('user_id')->unsigned()->nullable();
-    //     $table->foreign('user_id')->references('id')->on('users');
-    //     $table->softDeletes();
-    //     $table->timestamps();
-    // });
+    use SoftDeletes;
+
+    public $guarded = [];
+
+    protected $hidden = [
+        'deleted_at',
+    ];
+
+    public $columns = [
+        [
+            'name' => 'title',
+            'type' => 'string',
+            'database' => 'unique',
+            'rule' => 'required',
+            'help' => '',
+            'form_type' => 'none',
+            'table' => true,
+        ],
+        [
+            'name' => 'help',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => '',
+            'help' => '',
+            'form_type' => 'none',
+            'table' => true,
+        ],
+        [
+            'name' => 'description',
+            'type' => 'text',
+            'database' => 'nullable',
+            'rule' => 'required',
+            'help' => '',
+            'form_type' => 'ckeditor',
+            'table' => true,
+        ],
+    ];
+
+    public function getColumns()
+    {
+        return $this->columns;
+    }
 }

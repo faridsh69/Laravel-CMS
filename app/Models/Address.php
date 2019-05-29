@@ -3,67 +3,104 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Address extends Model
 {
-	public $columns = [
-        [
-            'name' => 'title',
-            'type' => 'string',
-            'rule' => 'unique',
-            'validation' => 'required|max:60|min:10|unique:blogs,title,',
-            'help' => 'Title should be unique, minimum 10 and maximum 60 characters.',
-            'table' => true,
-        ],
-    ];
+    use SoftDeletes;
 
-        // Schema::create('addresses', function (Blueprint $table) {
-        //     $table->increments('id');
-        //     $table->tinyInteger('province');
-        //     $table->string('city')->nullable();
-        //     $table->text('address');
-        //     $table->string('lable')->nullable();
-        //     $table->string('postal_code')->nullable();
-        //     $table->string('phone')->nullable();
-        //     $table->string('sabet_phone')->nullable();
-        //     $table->string('display_name')->nullable();
-        //     $table->decimal('latitude', 10, 8)->nullable();
-        //     $table->decimal('longitude', 11, 8)->nullable();
-        //     $table->tinyInteger('status')->default(1);
-        //     $table->integer('user_id')->unsigned();
-        //     $table->foreign('user_id')->references('id')->on('users');
-        //     $table->timestamps();
-        //     $table->softDeletes();
-        // });
-
+    public $guarded = [];
 
     protected $hidden = [
         'deleted_at',
+    ];
+
+    public $columns = [
+        [
+            'name' => 'label',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => '',
+            'help' => 'Determin home or company or ...',
+            'form_type' => '',
+            'table' => false,
+        ],
+        [
+            'name' => 'description',
+            'type' => 'string',
+            'database' => '',
+            'rule' => 'required',
+            'help' => 'Specify street and building number',
+            'form_type' => '',
+            'table' => true,
+        ],
+        // [
+        //     'name' => 'country_id',
+        //     'type' => 'integer',
+        //     'database' => 'nullable',
+        //     'rule' => 'nullable|unsigned|exist:countries,id,',
+        //     'help' => '',
+        //     'form_type' => '',
+        //     'table' => true,
+        // ],
+        [
+            'name' => 'country',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => '',
+            'help' => '',
+            'form_type' => '',
+            'table' => true,
+        ],
+        [
+            'name' => 'city',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => '',
+            'help' => '',
+            'form_type' => '',
+            'table' => false,
+        ],
+        [
+            'name' => 'postal_code',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => '',
+            'help' => '',
+            'form_type' => '',
+            'table' => false,
+        ],
+        [
+            'name' => 'mobile',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => 'phone:AUTO,UK,mobile',
+            'help' => '',
+            'form_type' => '',
+            'table' => false,
+        ],
+        [
+            'name' => 'landline',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => 'phone:AUTO,UK',
+            'help' => '',
+            'form_type' => '',
+            'table' => false,
+        ],
+        [
+            'name' => 'user_id',
+            'relation' => 'users',
+        ],
     ];
 
     public function getColumns()
     {
         return $this->columns;
     }
-	// Schema::create(config('rinvex.addresses.tables.addresses'), function (Blueprint $table) {
-	// // Columns
-	// $table->increments('id');
-	// $table->morphs('addressable');
-	// $table->string('given_name');
-	// $table->string('family_name');
-	// $table->string('label')->nullable();
-	// $table->string('organization')->nullable();
-	// $table->string('country_code', 2)->nullable();
-	// $table->string('street')->nullable();
-	// $table->string('state')->nullable();
-	// $table->string('city')->nullable();
-	// $table->string('postal_code')->nullable();
-	// $table->decimal('latitude', 10, 7)->nullable();
-	// $table->decimal('longitude', 10, 7)->nullable();
-	// $table->boolean('is_primary')->default(false);
-	// $table->boolean('is_billing')->default(false);
-	// $table->boolean('is_shipping')->default(false);
-	// $table->timestamps();
-	// $table->softDeletes();
-	// });
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id', 'id');
+    }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Seo;
+namespace App\Http\Controllers\Admin\Setting\Seo;
 
 use App\Http\Controllers\Controller;
 

@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Factory;
 
 class BaseFactory
 {
-    public $models = ['Blog', 'Page'];
-
     public function index($factory)
     {
-        foreach($this->models as $model)
+        $models = Config::get('services.models');
+
+        foreach($models as $model)
         {
             $class_name = 'App\\Models\\' . $model;
             $model = new $class_name();

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Auth;
+use Conner\Tagging\Taggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Kalnoy\Nestedset\NodeTrait;
@@ -13,89 +13,86 @@ class Category extends Model
     use NodeTrait;
     use SoftDeletes;
 
-	public $guarded = [];
+    public $guarded = [];
 
-	public $columns = [
+    protected $hidden = [
+        'deleted_at',
+    ];
+
+    public $columns = [
         [
             'name' => 'title',
             'type' => 'string',
-            'rule' => '',
-            'validation' => 'required',
-            'help' => '',
+            'database' => '',
+            'rule' => 'required|max:60|min:10',
+            'help' => 'Title should be minimum 10 and maximum 60 characters.',
+            'form_type' => '',
             'table' => true,
         ],
         [
             'name' => 'url',
             'type' => 'string',
-            'rule' => 'unique',
-            'validation' => 'required',
-            'help' => 'Slug should be unique, contain lowercase characters and numbers and -',
+            'database' => 'unique',
+            'rule' => 'required|max:80|regex:/^[a-z0-9-]+$/|unique:categories,url,',
+            'help' => 'Url should be unique, contain lowercase characters and numbers and -',
+            'form_type' => '',
             'table' => true,
         ],
         [
             'name' => 'description',
             'type' => 'string',
-            'rule' => 'nullable',
-            'validation' => 'nullable|max:191',
-            'help' => 'Brif description about this category.',
+            'database' => 'nullable',
+            'rule' => 'nullable|max:191',
+            'help' => 'Brief description about this category.',
             'form_type' => 'textarea',
             'table' => false,
         ],
         [
             'name' => 'meta_description',
             'type' => 'string',
-            'rule' => 'nullable',
-            'validation' => 'required|max:191|min:70',
+            'database' => 'nullable',
+            'rule' => 'required|max:191|min:70',
             'help' => 'Meta description should have minimum 70 and maximum 191 characters.',
             'form_type' => 'textarea',
+            'table' => false,
         ],
         [
             'name' => 'meta_image',
             'type' => 'string',
-            'rule' => 'nullable',
-            'validation' => 'nullable|max:191|url',
+            'database' => 'nullable',
+            'rule' => 'nullable|max:191|url',
             'help' => 'Meta image shows when this page is shared in social networks.',
+            'form_type' => '',
+            'table' => false,
         ],
         [
             'name' => 'activated',
             'type' => 'boolean',
-            'rule' => 'default',
+            'database' => 'default',
+            'rule' => '',
+            'help' => '',
+            'form_type' => '',
+            'table' => false,
         ],
         [
             'name' => 'google_index',
             'type' => 'boolean',
-            'rule' => 'default',
+            'database' => 'default',
+            'rule' => '',
             'help' => 'Google will index this page.',
+            'form_type' => 'checkbox',
+            'table' => false,
         ],
         [
             'name' => 'canonical_url',
             'type' => 'string',
-            'rule' => 'nullable',
-            'validation' => 'nullable|max:191|url',
+            'database' => 'nullable',
+            'rule' => 'nullable|max:191|url',
             'help' => 'Canonical url just used for seo redirect duplicate contents.',
+            'form_type' => '',
+            'table' => false,
         ],
     ];
-
-        // Schema::create('categories', function (Blueprint $table) {
-        //     $table->increments('id');
-        //     $table->string('title');
-        //     $table->string('type');
-        //     $table->boolean('filter')->default(1);
-        //     $table->tinyInteger('order')->nullable();
-        //     $table->string('description')->nullable();
-        //     $table->string('meta_title')->nullable();
-        //     $table->string('meta_description')->nullable();
-        //     $table->tinyInteger('status')->default(1);
-        //     $table->integer('category_id')->unsigned()->nullable();
-        //     $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-        //     $table->integer('user_id')->unsigned()->nullable();
-        //     $table->foreign('user_id')->references('id')->on('users');
-        //     $table->integer('image_id')->unsigned()->nullable();
-        //     $table->foreign('image_id')->references('id')->on('images')->nullable();
-        //     $table->timestamps();
-        //     $table->softDeletes();
-        // });
-
 
     public function getColumns()
     {
@@ -107,13 +104,11 @@ class Category extends Model
         parent::boot();
 
         self::creating(function($model){
-            $model->url = $model->url ? $model->url : Str::kebab($model->title);
             $model->activated = $model->activated ? 1 : 0;
             $model->google_index = $model->google_index ? 1 : 0;
         });
 
         self::updating(function($model){
-            $model->url = $model->url ? $model->url : Str::kebab($model->title);
             $model->activated = $model->activated ? 1 : 0;
             $model->google_index = $model->google_index ? 1 : 0;
         });

@@ -52,6 +52,10 @@ class BaseMigration extends Migration
             if($table_name === 'users'){
                 $table->rememberToken();
             }
+            if($table_name === 'addresses'){
+                $table->decimal('latitude', 10, 8)->nullable();
+                $table->decimal('longitude', 11, 8)->nullable();
+            }
             $table->timestamps();
             $table->softDeletes();
         });

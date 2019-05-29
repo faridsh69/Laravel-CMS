@@ -15,8 +15,9 @@ use Illuminate\Http\Request;
 
 Route::get('user', 'GeneralController@getUser')->name('user')->middleware('auth:api');
 
-Route::group(['middleware' => ['throttle:5,0.2']], function () {
+Route::group([], function () {
 	Route::group(['prefix' => 'general', 'as' => 'general.'], function () {
 		Route::get('countries', 'GeneralController@getCountries')->name('countries');
+		Route::get('cities/{country_name}', 'GeneralController@getCities')->name('cities');
 	});
 });

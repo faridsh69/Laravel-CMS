@@ -65,7 +65,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::prefix('api')
             ->as('api.')
-            ->middleware('api')
+            ->middleware(['api', 'throttle:15,0.2'])
             ->namespace($this->namespace . '\Api')
             ->group(base_path('routes/api.php'));
     }
