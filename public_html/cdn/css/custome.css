@@ -26,32 +26,3 @@
 .padding-20{
 	padding: 20px !important;
 }
-	/*height: 100px !important;*/
-	/*white-space: nowrap;*/
-	/*height: 120px;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	overflow: hidden;*/
-/*	text-overflow: ellipsis;
-	white-space: nowrap;
-*/
-	/*overflow: hidden;*/
-	/*width:100px;*/
-	/*display: -webkit-box;*/
-	/*-webkit-line-clamp: 3;*/
-	/*-webkit-box-orient: vertical;*/
-/*
-table {
-    table-layout: fixed !important;
-}
-
-table > tbody > tr > td > div {
-    max-height: 30px !important;
-    overflow: hidden !important;
-    white-space: nowrap !important;
-}
-
-table > tbody > tr > td > br {
-    display: normal !important;
-}
-*/

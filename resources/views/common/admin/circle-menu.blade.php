@@ -15,6 +15,7 @@
 									Quick Actions {{ $model = Request::segment(1) }}
 								</span>
 							</li>
+							@if (Route::has('admin.'.$model.'.list.create'))
 							<li class="m-nav__item">
 								<a href="{{ route('admin.'.$model.'.list.create') }}" class="m-nav__link">
 									<i class="m-nav__link-icon flaticon-share"></i>
@@ -55,6 +56,7 @@
 									</span>
 								</a>
 							</li>
+							@endif
 						</ul>
 					</div>
 				</div>

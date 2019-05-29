@@ -15,12 +15,12 @@ var DatatableJsonRemoteDemo=function() {
         	datatableColumns.push(column);
         });
     	datatableColumns.push(
-            {field:"published", title:"published", 
+            {field:"activated", title:"Activated", 
             	template: function (row) {
 var output = 
 '<span class="m-switch m-switch--outline m-switch--icon m-switch--success m-switch--sm"><label>' +
 '<input type="checkbox" onclick="changeStatus(' + row.id + ')"';
-if(row.published == 1){
+if(row.activated == 1){
 output += 'checked="true"' 
 } 
 output += '/><span></span></label></span>';
@@ -28,8 +28,6 @@ output += '/><span></span></label></span>';
             	},
         	});
     	datatableColumns.push(
-        	{field:"editor", title:"Editor"},
-        	{field: "updated_at", title: "Updated At"},
             {
             	field:"Actions", 
             	width: 100, 

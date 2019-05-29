@@ -57,7 +57,7 @@ class Category extends Model
             'help' => 'Meta image shows when this page is shared in social networks.',
         ],
         [
-            'name' => 'published',
+            'name' => 'activated',
             'type' => 'boolean',
             'rule' => 'default',
         ],
@@ -74,34 +74,11 @@ class Category extends Model
             'validation' => 'nullable|max:191|url',
             'help' => 'Canonical url just used for seo redirect duplicate contents.',
         ],
-        [
-            'name' => 'creator_id',
-            'relation' => 'users',
-        ],
-        [
-            'name' => 'editor_id',
-            'relation' => 'users',
-        ],
     ];
 
     public function getColumns()
     {
         return $this->columns;
-    }
-
-    public function editor()
-    {
-        return $this->belongsTo('App\Models\User', 'editor_id', 'id');
-    }
-
-    public function creator()
-    {
-        return $this->belongsTo('App\Models\User', 'creator_id', 'id');
-    }
-
-    public function scopeActive($query)
-    {
-        return $query->where('published', true);
     }
 
     public static function boot()
@@ -110,17 +87,14 @@ class Category extends Model
 
         self::creating(function($model){
             $model->url = $model->url ? $model->url : Str::kebab($model->title);
-            $model->published = $model->published ? 1 : 0;
+            $model->activated = $model->activated ? 1 : 0;
             $model->google_index = $model->google_index ? 1 : 0;
-            $model->creator_id = Auth::id() ?: 1;
-            $model->editor_id = Auth::id() ?: 1;
         });
 
         self::updating(function($model){
             $model->url = $model->url ? $model->url : Str::kebab($model->title);
-            $model->published = $model->published ? 1 : 0;
+            $model->activated = $model->activated ? 1 : 0;
             $model->google_index = $model->google_index ? 1 : 0;
-            $model->editor_id = Auth::id() ?: 1;
         });
     }
 }

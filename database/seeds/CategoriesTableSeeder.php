@@ -60,7 +60,7 @@ class CategoriesTableSeeder extends Seeder
                 $categories = Category::get();
                 foreach($categories as $category)
                 {
-                    $category->published = 1;
+                    $category->activated = 1;
                     $category->save();
                 }
             }

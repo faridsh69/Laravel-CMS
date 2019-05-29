@@ -284,9 +284,6 @@ class ListController extends Controller
         
         return datatables()
             ->of($model)
-            ->addColumn('editor', function($model) {
-                return $model->editor->name;
-            })
             ->addColumn('show_url', function($model) {
                 return route('admin.' . $this->model_sm . '.list.show', $model);
             })
@@ -304,11 +301,11 @@ class ListController extends Controller
     {
         $model = $this->repository->findOrFail($id);
 
-        $model->published = ! $model->published;
+        $model->activated = ! $model->activated;
         $model->update();
 
         return response()->json([
-            'data' => $model->published,
+            'data' => $model->activated,
         ]);
     }
 

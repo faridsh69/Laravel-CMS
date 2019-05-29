@@ -72,7 +72,7 @@ class Blog extends Model
             'help' => 'Meta image shows when this page is shared in social networks.',
         ],
         [
-            'name' => 'published',
+            'name' => 'activated',
             'type' => 'boolean',
             'rule' => 'default',
         ],
@@ -128,12 +128,12 @@ class Blog extends Model
         parent::boot();
 
         self::creating(function($model){
-            $model->published = $model->published ? 1 : 0;
+            $model->activated = $model->activated ? 1 : 0;
             $model->google_index = $model->google_index ? 1 : 0;
         });
 
         self::updating(function($model){
-            $model->published = $model->published ? 1 : 0;
+            $model->activated = $model->activated ? 1 : 0;
             $model->google_index = $model->google_index ? 1 : 0;
         });
     }
