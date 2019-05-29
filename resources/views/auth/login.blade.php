@@ -46,9 +46,11 @@
 						{{ __('Login') }}
 					</button>
 				</div>
-				<a href="{{ route('login-social', 'google') }}">
-					Login Google
+				@foreach(\Config::get('services.social_companies') as $social_company)
+				<a href="{{ route('login-social', strtolower($social_company)) }}">
+					Login {{ ($social_company) }}
 				</a>
+				@endforeach
 			</form>
 		</div>
 	</div>

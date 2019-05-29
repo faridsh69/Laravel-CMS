@@ -63,37 +63,16 @@ class LoginController extends Controller
         try{
             $userSocial = Socialite::driver('google')->user();
         }catch (\Exception $e) {
-            return redirect()->route('login');
+            return redirect()->route('home');
         }
           
         $user = User::where(['email' => $userSocial->getEmail()])->first();
         if($user){
             Auth::login($user);
-            // if recorde google - in email - mojod nabashe besazim
 
-            return redirect()->action('HomeController@getHome');
+            return redirect()->route('home');
         }else{
             return view('auth.register',['name' => $userSocial->getName(), 'email' => $userSocial->getEmail()]);
         }
-        // $user->token;
-
-        // $user = Socialite::driver('github')->user();
-
-        // // OAuth Two Providers
-        // $token = $user->token;
-        // $refreshToken = $user->refreshToken; // not always provided
-        // $expiresIn = $user->expiresIn;
-
-        // // OAuth One Providers
-        // $token = $user->token;
-        // $tokenSecret = $user->tokenSecret;
-
-        // // All Providers
-        // $user->getId();
-        // $user->getNickname();
-        // $user->getName();
-        // $user->getEmail();
-        // $user->getAvatar();
-
     }
 }

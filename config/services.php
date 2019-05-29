@@ -42,7 +42,16 @@ $output = [
             'secret' => env('STRIPE_WEBHOOK_SECRET'),
             'tolerance' => env('STRIPE_WEBHOOK_TOLERANCE', 300),
         ],
-    ],    
+    ],
+    'social_companies' => [
+        'GOOGLE',
+        'GITHUB',
+        'GITLAB',
+        'LINKEDIN',
+        'TWITTER',
+        'FACEBOOK',
+        'BITBUCKET',
+    ],
 ];
 $social_companies = ['GOOGLE', 'GITHUB', 'GITLAB', 'LINKEDIN', 'TWITTER', 'FACEBOOK', 'BITBUCKET'];
 foreach($social_companies as $social_company){
