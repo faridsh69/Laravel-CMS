@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         ];
 
         foreach($models as $model) {
-            factory('App\\Models\\' . $model, 4)->create();
+            factory('App\\Models\\' . $model, 8)->create();
         }
     }
 }

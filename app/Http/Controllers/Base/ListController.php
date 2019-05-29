@@ -112,23 +112,14 @@ class ListController extends Controller
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
         $data = $form->getFieldValues();
-
-        if(isset($data['tags'])){
-            $data_tags = $data['tags'];
-            unset($data['tags']);
-        }
+        $main_data = $data;
+        unset($data['tags']);
+        unset($data['related_blogs']);
 
         $model = $this->repository->create($data);
 
-        if(isset($data_tags)){
-            $tag_names = Tag::whereIn('id', $data_tags)->pluck('name')->toArray();
-            $model->retag($tag_names);
-        }
-        if(isset($data['related_blogs']))
-        {
-            $model->related_blogs()->sync($data['related_blogs'], true);
-        }
-        
+        $this->_saveRelatedData($model, $main_data);
+
         activity($this->model)
             ->performedOn($model)
             ->causedBy(Auth::user())
@@ -137,6 +128,19 @@ class ListController extends Controller
         $this->request->session()->flash('alert-success', $this->model . ' Created Successfully!');
 
         return redirect()->route('admin.' . $this->model_sm . '.list.index');
+    }
+
+    private function _saveRelatedData($model, $data)
+    {
+        if(isset($data['related_blogs']))
+        {
+            $model->related_blogs()->sync($data['related_blogs'], true);
+        }
+        
+        if(isset($data['tags'])){
+            $tag_names = Tag::whereIn('id', $data['tags'])->pluck('name')->toArray();
+            $model->retag($tag_names);
+        }
     }
 
     /**
@@ -198,26 +202,14 @@ class ListController extends Controller
         if (! $form->isValid()) {
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
-        
         $data = $form->getFieldValues();
-
-        if(isset($data['related_blogs']))
-        {
-            $model->related_blogs()->sync($data['related_blogs'], true);
-        }
-        unset($data['related_blogs']);
-    
-        if(isset($data['tags'])){
-            $data_tags = $data['tags'];
-        }
+        $main_data = $data;
         unset($data['tags']);
+        unset($data['related_blogs']);
 
         $model->update($data);
 
-        if(isset($data_tags)){
-            $tag_names = Tag::whereIn('id', $data_tags)->pluck('name')->toArray();
-            $model->retag($tag_names);
-        }
+        $this->_saveRelatedData($model, $main_data);        
 
         activity($this->model)
             ->performedOn($model)
