@@ -18,7 +18,7 @@ php artisan passport:client --password
 php artisan passport:install
 php artisan apidoc:generate
 
-code style: vendor/bin/ecs check resource
+code style: vendor/bin/ecs check app
 code style and fix errors : vendor/bin/ecs check /routes/web.php --fix
 test: ./vendor/bin/phpunit
 
