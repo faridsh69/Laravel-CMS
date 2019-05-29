@@ -11,46 +11,37 @@ php artisan make:export BlogsExport --model=Blog
 php artisan make:import BlogsImport --model=Blog
 php artisan make:mail UserRegistered
 php artisan backup:run
-php artisan apidoc:generate
 php artisan make:test BlogTest --unit
-
+php artisan make:rule SeoHeading
+php artisan make:form Forms/BlogForm --fields="title:text, url:text, short_content:textarea, content:textarea, status:checkbox"
 php artisan passport:client --password
+php artisan passport:install
+php artisan apidoc:generate
 
 code style: vendor/bin/ecs check resource
 code style and fix errors : vendor/bin/ecs check /routes/web.php --fix
-
 test: ./vendor/bin/phpunit
 
-@TODO
-
-// Mail::to(Auth::user())->send(new UserRegistered());
-
-./vendor/bin/phpunit
-
-php artisan make:form Forms/BlogForm --fields="title:text, url:text, short_content:textarea, content:textarea, status:checkbox"
-
-php artisan make:rule SeoHeading
+make link in 
+	windows:
+		mklink /D C:\xampp\htdocs\cms-new\public_html\cdn\storage C:\xampp\htdocs\cms-new\storage\app\public
+	linux:
+		ln -s /home/faridsh/domains/faridtest.ir/storage/app/public public_html/cdn/storage 
 
 ln -s /home/faridsh/domains/faridtest.ir/storage/app/public public_html/cdn/storage 
-
 ln -s end -> first 
 
 mklink
 MKLINK ./storage ../storage/app/public
 mklink d:\link-name c:\original-file
 
-mklink /D C:\xampp\htdocs\cms-new\public_html\cdn\storage C:\xampp\htdocs\cms-new\storage\app\public
-
-
-git update-index --assume-unchanged public_html/vendor/
+git update-index --assume-unchanged public_html/cdn/storage
 
 /usr/local/bin/mysqldump
-
 find / -name 'mysqldump'
 
--- php php-cs-fixer.phar fix /
-
-php artisan passport:install
+git update-index --assume-unchanged public_html/cdn/storage
+git rm --cached public_html/cdn/storage
 
 Encryption keys generated successfully.
 Personal access client created successfully.
