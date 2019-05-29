@@ -12,29 +12,41 @@ This Laravel package make the way easy for writing migrations, seeders, factory,
 This CMS used this packages: 
 
 packages:
+
 	+ admin theme: drag and drop, calendar, notification, upload image, chart, forms
 		+ kinshines/metronic
+
 	+ form builder:
 		+ "kris/laravel-form-builder": "^1.20",
+
 	+ tables: sort, filter, paginate, status activation
 		+ "yajra/laravel-datatables-oracle": "~9.0"
 		+ datatables.net
+
 	+ HTML editor:
 		+ ckeditor4
+
 	+ file manager:
 		+ "unisharp/laravel-filemanager": "dev-master",
+
 	+ image: crop, resize, ye url base dashte bashe kolle system, alt axesh
 		+ "unisharp/laravel-filemanager": "dev-master",
+
 	+ add tags: for blog
 		+ rtconner/laravel-tagging
+
 	+ log:
 		+ "rap2hpoutre/laravel-log-viewer": "^1.1",
+
 	+ export excel:
 		+ Maatwebsite/Laravel-Excel
+
 	+ import with csv:
 		+ Maatwebsite/Laravel-Excel
+
 	+ backup:
 		+ spatie/laravel-backup
+		
 	+ activity user log ,page and blog view:
 		+ "spatie/laravel-activitylog": "^3.5",
 	+ validation phone:
@@ -78,8 +90,11 @@ packages:
 
 ``` bash
 composer update
+
 php artisan migrate
+
 php artisan db:seed
+
 ./vendor/bin/phpunit
 ```
 
@@ -98,10 +113,11 @@ php artisan make:controller Api/GeneralController
 php artisan make:export BlogsExport --model=Blog
 php artisan make:import BlogsImport --model=Blog
 php artisan make:mail UserRegistered
-php artisan backup:run
 php artisan make:test BlogTest --unit
 php artisan make:rule SeoHeading
 php artisan make:form Forms/BlogForm --fields="title:text, url:text, short_content:textarea, content:textarea, status:checkbox"
+
+php artisan backup:run
 php artisan passport:client --password
 php artisan passport:install
 php artisan apidoc:generate
@@ -151,7 +167,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Support us
 
-Faridsh69 is a full stack web developer who is trying to make code for help developers.
+Faridsh69 is a full stack web and application developer and manager who is trying to prepare usefull packages for developers.
 
 ## License
 
