@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
 
@@ -58,8 +60,21 @@ class LoginController extends Controller
      */
     public function handleProviderCallback()
     {
-        $user = Socialite::driver('google')->user();
-        dd($user);
+        try{
+            $userSocial = Socialite::driver('google')->user();
+        }catch (\Exception $e) {
+            return redirect()->route('login');
+        }
+          
+        $user = User::where(['email' => $userSocial->getEmail()])->first();
+        if($user){
+            Auth::login($user);
+            // if recorde google - in email - mojod nabashe besazim
+
+            return redirect()->action('HomeController@getHome');
+        }else{
+            return view('auth.register',['name' => $userSocial->getName(), 'email' => $userSocial->getEmail()]);
+        }
         // $user->token;
 
         // $user = Socialite::driver('github')->user();

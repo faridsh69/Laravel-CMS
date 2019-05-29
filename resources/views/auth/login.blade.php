@@ -46,6 +46,9 @@
 						{{ __('Login') }}
 					</button>
 				</div>
+				<a href="{{ route('login-social', 'google') }}">
+					Login Google
+				</a>
 			</form>
 		</div>
 	</div>
