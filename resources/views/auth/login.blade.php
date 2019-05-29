@@ -47,8 +47,21 @@
 					</button>
 				</div>
 				@foreach(\Config::get('services.social_companies') as $social_company)
-				<a href="{{ route('login-social', strtolower($social_company)) }}">
-					Login {{ ($social_company) }}
+					@php 
+						$social = strtolower($social_company);
+						if($social == 'google')	{
+							$class = 'danger';
+						} elseif($social == 'twitter') {
+							$class = 'info';
+						} elseif($social == 'facebook') {
+							$class = 'primary';
+						} elseif($social == 'linkedin') {
+							$class = 'brand';
+						}
+					@endphp
+				<a href="{{ route('login-social', $social) }}" 
+					class="btn btn-outline-{{ $class }} m-btn m-btn--custom m-btn--outline-2x mb-1 text-center">
+					<i class="fa fa-{{$social}}"></i>
 				</a>
 				@endforeach
 			</form>

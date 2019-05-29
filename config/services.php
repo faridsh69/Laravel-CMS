@@ -45,12 +45,12 @@ $output = [
     ],
     'social_companies' => [
         'GOOGLE',
-        'GITHUB',
-        'GITLAB',
-        'LINKEDIN',
         'TWITTER',
         'FACEBOOK',
-        'BITBUCKET',
+        'LINKEDIN',
+        // 'GITHUB',
+        // 'GITLAB',
+        // 'BITBUCKET',
     ],
 ];
 $social_companies = ['GOOGLE', 'GITHUB', 'GITLAB', 'LINKEDIN', 'TWITTER', 'FACEBOOK', 'BITBUCKET'];
