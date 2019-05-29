@@ -1,6 +1,6 @@
 <?php
 
-$admin_models = [
+$models = [
 	'blog', // 1
 	'page', // 2
 	'category', // 3
@@ -18,7 +18,7 @@ $admin_models = [
 	'notification', // 15
 	'menu', // 16
 ];
-foreach($admin_models as $model_sm)
+foreach($models as $model_sm)
 {
 	$model = ucfirst($model_sm);
 	Route::group(['prefix' => $model_sm, 'namespace' => $model, 'as' => $model_sm . '.'], function () use ($model_sm) {

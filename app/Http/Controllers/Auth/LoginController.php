@@ -69,6 +69,10 @@ class LoginController extends Controller
         $user = User::where(['email' => $userSocial->getEmail()])->first();
         if($user){
             Auth::login($user);
+            activity('User Login')
+                ->performedOn($user)
+                ->causedBy(Auth::user())
+                ->log('User Login');
 
             return redirect()->route('home');
         }else{

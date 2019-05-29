@@ -26,11 +26,12 @@ class BaseForm extends Form
             $name = $column['name'];
             $type = isset($column['type']) ? $column['type'] : '';
             $form_type = isset($column['form_type']) ? $column['form_type'] : '';
-            $rule = isset($column['rule']) ? $column['rule'] : '';
+            $database = isset($column['database']) ? $column['database'] : '';
             $relation = isset($column['relation']) ? $column['relation'] : '';
-            $validation = isset($column['validation']) ? $column['validation'] : '';
+            $rule = isset($column['rule']) ? $column['rule'] : '';
             $help = isset($column['help']) ? $column['help'] : ' ';
             $attr = null;
+
             if($relation){
                 continue;
             }
@@ -50,27 +51,22 @@ class BaseForm extends Form
                     $input_type = 'switch-m';
                 }
             }
-            
-            if($rule === 'unique'){
-                $validation .= $id;
+            if($database === 'unique'){
+                $rule .= $id;
             }
-
             $option = [
-                'rules' => $validation,
+                'rules' => $rule,
                 'help_block' => [
                     'text' => $help,
                 ]
             ];
-
             if($attr){
                 $option['attr'] = $attr;
             }
 
             $this->add($column['name'], $input_type, $option);
         }
-
         $this->addBottom();
-
         $this->add('submit', 'submit');
     }
 

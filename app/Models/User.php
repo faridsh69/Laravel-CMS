@@ -14,36 +14,19 @@ class User extends Authenticatable
     use HasRoles;
     use HasApiTokens;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $gaurd = [];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password', 'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
     public $columns = [
         [
-            'name' => 'name',
+            'name' => 'first_name',
             'type' => 'string',
             'rule' => '',
             'validation' => '',
@@ -77,6 +60,30 @@ class User extends Authenticatable
             'rule' => 'default',
         ],
     ];
+
+        // Schema::defaultStringLength(191);
+        // Schema::create('users', function (Blueprint $table) {
+        //     $table->increments('id');
+        //     $table->string('first_name');
+        //     $table->string('last_name');
+        //     $table->string('phone')->unique();
+        //     $table->string('password');
+        //     $table->string('email')->nullable();
+        //     $table->string('national_code')->nullable();
+        //     $table->enum('gender', ['male', 'female'])->default('male');
+        //     $table->date('birthday')->nullable();
+        //     $table->string('used_marketer_code')->nullable();
+        //     $table->string('generated_marketer_code')->nullable();
+        //     $table->string('rate')->nullable();
+        //     $table->integer('credit')->unsigned()->default(0);
+        //     $table->tinyInteger('status')->default(1);
+        //     $table->integer('image_id')->unsigned()->nullable();
+        //     $table->integer('sms_code')->nullable();
+        //     $table->rememberToken();
+        //     $table->timestamps();
+        //     $table->softDeletes();
+        // });
+
 
     public function getColumns()
     {

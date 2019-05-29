@@ -35,7 +35,7 @@ class BaseMigration extends Migration
             foreach($columns as $column){
                 $name = $column['name'];
                 $type = isset($column['type']) ? $column['type'] : '';
-                $rule = isset($column['rule']) ? $column['rule'] : '';
+                $database = isset($column['database']) ? $column['database'] : '';
                 $relation = isset($column['relation']) ? $column['relation'] : '';
 
                 if($relation){
@@ -43,7 +43,7 @@ class BaseMigration extends Migration
                     $table->foreign($name)->references('id')->on($relation);
                 }
                 else{
-                    $table->{$type}($name)->{$rule}(true);
+                    $table->{$type}($name)->{$database}(true);
                 }
             }
             if($table_name === 'categories'){
