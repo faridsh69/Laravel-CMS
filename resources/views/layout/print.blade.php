@@ -11,9 +11,11 @@
 			<div class="col-xs-12">
 				<table class="table table-striped table-bordered table-responsive">
 					<thead>
-						@foreach($list[0]->getFillables() as $key)
-						<th>{{ $key }}</th>
-						@endforeach
+						@if(count($list) > 0)
+							@foreach($list[0]->getColumns() as $key)
+							<th>{{ $key['name'] }}</th>
+							@endforeach
+						@endif
 					</thead>
 					<tbody>
 						@foreach($list as $item)

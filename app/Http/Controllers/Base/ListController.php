@@ -204,12 +204,13 @@ class ListController extends Controller
         if(isset($data['related_blogs']))
         {
             $model->related_blogs()->sync($data['related_blogs'], true);
-            unset($data['related_blogs']);
         }
+        unset($data['related_blogs']);
+    
         if(isset($data['tags'])){
             $data_tags = $data['tags'];
-            unset($data['tags']);
         }
+        unset($data['tags']);
 
         $model->update($data);
 
