@@ -12,7 +12,7 @@ class BaseFactory
         $models = config('services.models');
         foreach($models as $model)
         {
-            if($model === 'tag' || $model === 'media'){
+            if($model === 'tag' || $model === 'media' || $model === 'comment' || $model === 'report'){
                 continue;
             }
             $model = ucfirst($model);

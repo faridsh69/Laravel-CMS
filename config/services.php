@@ -48,7 +48,7 @@ $output = [
         'category', // 3
         'tag', // 4 
         'media', // 5 
-        // 'comment', // 6
+        'comment', // 6
         'setting', // 7 
         'user', // 8 
         'theme', // 9 

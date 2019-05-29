@@ -43,3 +43,6 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'as' => 'user.'], funct
 	Route::get('permission', 'UserController@getPermission')->name('permission');
 	Route::get('registration-setting', 'UserController@getRegistrationSetting')->name('registration-setting');
 });
+Route::group(['prefix' => 'report', 'namespace' => 'Report', 'as' => 'report.'], function () {
+	Route::get('index', 'ReportController@index')->name('index');
+});

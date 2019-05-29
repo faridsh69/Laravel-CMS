@@ -125,6 +125,27 @@
 					'route' => 'admin.setting.backup.list.index',
 				],
 				[
+					'id' => 12,
+					'title' => 'Seo',
+					'route' => 'seo',
+					'type' => 'submenu',
+					'icon' => 'flaticon-multimedia-1',
+					'children' => [	
+						[
+							'title' => 'Setting',
+							'route' => 'admin.setting.seo.setting',
+						],
+						[
+							'title' => 'Content Rules',
+							'route' => 'admin.setting.seo.content-rules',
+						],
+						[
+							'title' => 'Lazy Loading',
+							'route' => 'admin.setting.seo.lazy-loading',
+						],
+					],
+				],
+				[
 					'id' => 7-5,
 					'title' => 'Developer Options',
 					'type' => 'submenu',
@@ -168,27 +189,6 @@
 				[
 					'title' => 'Registration Setting',
 					'route' => 'admin.user.registration-setting',
-				],
-			],
-		],
-		[
-			'id' => 12,
-			'title' => 'Seo',
-			'route' => 'seo',
-			'type' => 'submenu',
-			'icon' => 'flaticon-multimedia-1',
-			'children' => [	
-				[
-					'title' => 'Setting',
-					'route' => 'admin.seo.setting',
-				],
-				[
-					'title' => 'Content Rules',
-					'route' => 'admin.seo.content-rules',
-				],
-				[
-					'title' => 'Lazy Loading',
-					'route' => 'admin.seo.lazy-loading',
 				],
 			],
 		],

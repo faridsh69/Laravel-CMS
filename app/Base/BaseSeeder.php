@@ -9,10 +9,9 @@ class BaseSeeder extends Seeder
 	public function run()
 	{
 		$models = config('services.models');
-
 	    foreach($models as $model) {
 	    	if($model === 'tag'){
-	    		continue;
+	    		break;
 	    	}
 	        factory('App\\Models\\' . ucfirst($model), 10)->create();
 	    }

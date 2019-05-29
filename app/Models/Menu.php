@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Menu extends Model
 {
     // we dont need this table for version
+    public function getColumns()
+    {
+        return [];
+    }
     // Schema::create('menus', function (Blueprint $table) {
     //     $table->increments('id');
     //     $table->string('title');
