@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Base;
+namespace App\Base;
 
 use App\Http\Controllers\Controller;
 use Auth;
@@ -11,7 +11,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 use View;
 
-class AdminController extends Controller
+class BaseAdminController extends Controller
 {
     public $request;
     

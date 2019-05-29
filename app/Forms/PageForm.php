@@ -2,7 +2,7 @@
 
 namespace App\Forms;
 
-use App\Forms\Base\BaseForm;
+use App\Base\BaseForm;
 
 class PageForm extends BaseForm
 {

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin\Dashboard;
 
-use App\Http\Controllers\Base\AdminController;
+use App\Base\BaseAdminController;
 
-class DashboardController extends AdminController
+class DashboardController extends BaseAdminController
 {
     public $model = 'Dashboard';
 

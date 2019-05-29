@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Base;
+namespace App\Base;
 
 use App\Http\Controllers\Controller;
 use Auth;
@@ -11,7 +11,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 use View;
 
-class ListController extends Controller
+class BaseListController extends Controller
 {
     // public $model = 'Blog';
     public $model;
@@ -253,7 +253,7 @@ class ListController extends Controller
 
     public function getExport()
     {
-        $class_name = 'App\Exports\BaseExport';
+        $class_name = 'App\Base\BaseExport';
         $base_export = new $class_name();
         $base_export->setModel($this->model);
 
@@ -262,7 +262,7 @@ class ListController extends Controller
 
     public function getImport()
     {
-        $class_name = 'App\Imports\BaseImport';
+        $class_name = 'App\Base\BaseImport';
         $base_import = new $class_name();
         $base_import->setModel($this->model);
 

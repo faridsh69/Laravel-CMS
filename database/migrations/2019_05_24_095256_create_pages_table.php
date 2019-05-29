@@ -1,8 +1,8 @@
 <?php
 
-use App\Services\MigrationService;
+use App\Base\BaseMigration;
 
-class CreatePagesTable extends MigrationService
+class CreatePagesTable extends BaseMigration
 {
 	public $model = 'Page';
 }

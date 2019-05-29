@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin\Blog;
 
-use App\Http\Controllers\Base\ListController;
+use App\Base\BaseListController;
 
-class ResourceController extends ListController
+class ResourceController extends BaseListController
 {
 	public $model = 'Blog';
 }

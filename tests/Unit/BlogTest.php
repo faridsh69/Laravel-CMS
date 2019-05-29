@@ -2,6 +2,8 @@
 
 namespace Tests\Unit;
 
+use App\Base\BaseTest;
+
 class BlogTest extends BaseTest
 {
     /**

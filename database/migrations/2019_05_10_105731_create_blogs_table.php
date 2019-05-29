@@ -1,8 +1,8 @@
 <?php
 
-use App\Services\MigrationService;
+use App\Base\BaseMigration;
 
-class CreateBlogsTable extends MigrationService
+class CreateBlogsTable extends BaseMigration
 {
     public $model = 'Blog';
 }
