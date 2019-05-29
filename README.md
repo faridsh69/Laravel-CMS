@@ -46,45 +46,99 @@ packages:
 
 	+ backup:
 		+ spatie/laravel-backup
-		
+
 	+ activity user log ,page and blog view:
 		+ "spatie/laravel-activitylog": "^3.5",
+
 	+ validation phone:
 		+ Propaganistas/Laravel-Phone
+
 	+ api document:
 		+ mpociot/laravel-apidoc-generator
+
 	+ country o city:
 		+ antonioribeiro/countries
+
 	+ pdf:
 		+ barryvdh/laravel-dompdf
+
 	+ breadcrumb:
 		+ myself
+
 	+ meta:
 		+ myself
+
 	+ print layout:
 		+ myself
+
 	+ seo:
 		myself
+
 	+ cdn:
 		myself
+
 	lazy :
 		myself 
+
 	+ code style:		
 		+ symplify/easy-coding-standard
+
 	+ connect to google
 		+ laravel/socialite
+
 	+ debugger
 		+ barryvdh/laravel-debugbar
+
 	+ api authentication
 		+ laravel/passport
+
 	+ module maker:
 		nWidart/laravel-modules
+
 	+ role&permission:
 		spatie/laravel-permission
+
 	+ captcha
 		anhskohbo/no-captcha
+
 	+ category
 		+ lazychaser/laravel-nestedset
+
+
+## Features
+
+	migration:
+
+		https://github.com/faridsh69/cms/blob/master/database/migrations/2014_10_12_000010_create_users_table.php 
+
+		<?php
+		use App\Services\MigrationService;
+		class CreateUsersTable extends MigrationService
+		{
+		    public $model = 'User';
+		}
+
+
+	Controller:
+
+		https://github.com/faridsh69/cms/blob/master/app/Http/Controllers/Admin/Blog/ResourceController.php
+
+		<?php
+		namespace App\Http\Controllers\Admin\Blog;
+		use App\Http\Controllers\Base\ListController;
+		class ResourceController extends ListController
+		{
+			public $model = 'Blog';
+		}
+
+	Seeders:
+
+	Factory:
+
+	Unittest:
+
+	...
+
 
 ## Install
 
