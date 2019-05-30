@@ -42,6 +42,9 @@ class BaseForm extends Form
                 $input_type = 'textarea';
                 $attr = ['ckeditor' => '1'];
             }
+            if($form_type === 'email'){
+                $input_type = 'email';
+            }
             elseif($type === 'text' || $form_type === 'textarea'){
                 $input_type = 'textarea';
                 $attr = ['rows' => 3];

@@ -49,7 +49,7 @@ class User extends Authenticatable
             'database' => 'unique',
             'rule' => 'required|unique:users,email,',
             'help' => '',
-            'form_type' => '',
+            'form_type' => 'email',
             'table' => true,
         ],
         [
