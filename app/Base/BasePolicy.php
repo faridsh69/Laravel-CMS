@@ -28,16 +28,7 @@ class BasePolicy
      */
     public function view(User $user, $list)
     {
-        return true;
-        if ($blog->activated) {
-            return true;
-        }
-
-        if ($user === null) {
-            return false;
-        }
-
-        // admin overrides published status
+        dd($list);
         if ($user->can('view unpublished blog')) {
             return true;
         }

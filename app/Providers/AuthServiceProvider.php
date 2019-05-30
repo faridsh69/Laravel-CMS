@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
+use App\Base\BasePolicy;
 use App\Policies\BlogPolicy;
 use App\Policies\PagePolicy;
-use App\Policies\BasePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Passport\Passport;
