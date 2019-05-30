@@ -14,25 +14,22 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        $role = Role::updateOrCreate(['name' => 'blogger']);
-        $permission_1 = Permission::updateOrCreate(['name' => 'view_blog']);
-        $permission_2 = Permission::updateOrCreate(['name' => 'create_blog']);
-        $role->syncPermissions([$permission_1, $permission_2]);
+        $models = Config::get('services.models');
+
+        foreach($models as $model)
+        {
+            $role = Role::updateOrCreate(['name' => $model . '_manager']);
+            $permission = [];
+            $permission[] = Permission::updateOrCreate(['name' => 'index_' . $model]);
+            $permission[] = Permission::updateOrCreate(['name' => 'view_' . $model]);
+            $permission[] = Permission::updateOrCreate(['name' => 'create_' . $model]);
+            $permission[] = Permission::updateOrCreate(['name' => 'update_' . $model]);
+            $permission[] = Permission::updateOrCreate(['name' => 'delete_' . $model]);
+
+            $role->syncPermissions($permission);
+        }
 
         $user = User::where('email', 'farid.sh69@gmail.com')->first();
-        $user->syncRoles(['blogger']);
-        
-        // $role = Role::create(['name' => 'writer']);
-        // $permission = Permission::create(['name' => 'edit articles']);
-        // $role->givePermissionTo($permission);
-        // $user->syncRoles(['writer', 'admin']);
-
-        // @role('writer')
-        //     I am a writer!
-        // @endrole
-
-        // @can('edit articles')
-        //   //
-        // @endcan
+        $user->syncRoles(['blog_manager']);
     }
 }

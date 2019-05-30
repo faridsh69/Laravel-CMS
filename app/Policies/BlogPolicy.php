@@ -6,5 +6,5 @@ use App\Base\BasePolicy;
 
 class BlogPolicy extends BasePolicy
 {
-    public $model = 'Blog'; 
+    public $model = 'Blog';
 }

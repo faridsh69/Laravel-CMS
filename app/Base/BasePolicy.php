@@ -13,10 +13,14 @@ class BasePolicy
 
     public $model_sm;
 
-    public $repository;
-
     public function __construct()
     {
+        $this->model_sm = strtolower($this->model); 
+    }
+
+    public function index(User $user)
+    {
+        return $user->can('index_' . $this->model_sm);
     }
 
     /**
@@ -28,7 +32,7 @@ class BasePolicy
      */
     public function view(User $user, $list)
     {
-        return $user->can('view_blog');
+        return $user->can('view_' . $this->model_sm);
     }
 
     /**
@@ -39,7 +43,7 @@ class BasePolicy
      */
     public function create(User $user)
     {
-        return $user->can('create_blog');
+        return $user->can('create_' . $this->model_sm);
     }
 
     /**
@@ -51,10 +55,7 @@ class BasePolicy
      */
     public function update(User $user, $list)
     {
-        dd(1);
-        if ($user->can('edit blogs')) {
-            return true;
-        }
+        return $user->can('update_' . $this->model_sm);
     }
 
     /**
@@ -66,38 +67,36 @@ class BasePolicy
      */
     public function delete(User $user, $list)
     {
-        if ($user->can('delete blog')) {
-            return true;
-        }
+        return $user->can('delete_' . $this->model_sm);
     }
 
     public function datatable(User $user)
     {
-        return true;
+        return $user->can('index_' . $this->model_sm);
     }
     
     public function export(User $user)
     {
-        return true;
+        return $user->can('index_' . $this->model_sm);
     }
 
     public function pdf(User $user)
     {
-        return true;
+        return $user->can('index_' . $this->model_sm);
     }
 
     public function print(User $user)
     {
-        return true;
+        return $user->can('index_' . $this->model_sm);
     }
     
     public function import(User $user)
     {
-        return true;
+        return $user->can('index_' . $this->model_sm);
     }
 
     public function changeStatus(User $user)
     {
-        return true;
+        return $user->can('index_' . $this->model_sm);
     }        
 }

@@ -23,6 +23,9 @@ class BaseListController extends Controller
     // public $model_form = '\App\Forms\BlogForm';
     public $model_form;
 
+    // App\Models\Blog
+    public $model_class;
+
     public $repository;
 
     public $request;
@@ -42,11 +45,10 @@ class BaseListController extends Controller
 
     public function __construct(Request $request, FormBuilder $form_builder)
     {
-        $class_name = 'App\\Models\\' . $this->model;
-        $this->authorizeResource($class_name, 'list');
+        $this->model_class = 'App\\Models\\' . $this->model;
         $this->model_sm = lcfirst($this->model);
         $this->model_form = 'App\\Forms\\' . $this->model . 'Form';
-        $this->repository = new $class_name();
+        $this->repository = new $this->model_class();
         $this->request = $request;
         $this->form_builder = $form_builder;
         $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.index');
@@ -60,6 +62,7 @@ class BaseListController extends Controller
      */
     public function index()
     {
+        $this->authorize('index', $this->model_class);
         $this->meta['title'] = __($this->model . ' Manager');
         $this->meta['alert'] = 'Advanced table with sort, search, paginate and status changing!';
         $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.create');
@@ -147,10 +150,10 @@ class BaseListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(BaseDependency $list)
+    public function show($id)
     {
-        $id = $this->request->route()->originalParameters()['list'];
         $model = $this->repository->findOrFail($id);
+        $this->authorize('view', $model);
         $data = $model->getAttributes();
 
         $this->meta['title'] = __($this->model . ' Show');
@@ -258,6 +261,9 @@ class BaseListController extends Controller
 
     public function getPrint()
     {
+        dd(1);
+        $this->authorizeResource($class_name, 'list');
+
         $list = $this->repository->all();
 
         return view('layout.print', compact('list'));

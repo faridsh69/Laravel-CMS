@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Base\BasePolicy;
 use App\Policies\BlogPolicy;
 use App\Policies\PagePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -17,7 +16,6 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Base\BaseDependency' => BasePolicy::class,
         'App\Models\Blog' => BlogPolicy::class,
         'App\Models\Page' => PagePolicy::class,
     ];
@@ -29,9 +27,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        // Gate::before(function ($user, $ability) {
-        //     return $user->hasRole('Super Admin') ? true : null;
-        // });
+        Gate::before(function ($user, $ability) {
+            return $user->hasRole('super_admin') ? true : null;
+        });
 
         Passport::routes();
     }
