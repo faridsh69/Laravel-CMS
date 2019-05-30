@@ -24,6 +24,7 @@ foreach($models as $model_sm)
 		Route::get('change-status/{id}', 'ResourceController@getChangeStatus')
 			->middleware('can:change-status,'.$class_name)
 			->name('change-status');
+		Route::get('ali/{id}', 'ResourceController@getAli');
 		Route::resource('list', 'ResourceController');
 		Route::get('', 'ResourceController@getRedirect')->name('redirect');
 	});

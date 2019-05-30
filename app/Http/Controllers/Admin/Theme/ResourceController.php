@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Blog;
+namespace App\Http\Controllers\Admin\Theme;
 
 use App\Base\BaseListController;
 

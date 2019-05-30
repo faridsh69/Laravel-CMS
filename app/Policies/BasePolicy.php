@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Http\Request;
 
 class BasePolicy
 {
@@ -26,21 +27,21 @@ class BasePolicy
 
     public $repository;
 
-    public function __construct()
+    public $request;
+
+    public function __construct(Request $request)
     {
+        $this->request = $request; 
+        // dd($request);
         // $this->model_sm = lcfirst($this->model);
         // $class_name = 'App\\Models\\' . $this->model;
         // $this->repository = new $class_name();
     }
 
-    public function show()
+    public function view(User $user)
     {
         return true;
-    }
-
-    public function view(User $user, Blog $blog)
-    {
-        1
+        dd($blog);
         if ($blog->activated) {
             return true;
         }
@@ -78,6 +79,7 @@ class BasePolicy
      */
     public function update(User $user, Blog $blog)
     {
+        dd(1);
         if ($user->can('edit blogs')) {
             return true;
         }
@@ -109,7 +111,7 @@ class BasePolicy
 
     public function pdf(User $user)
     {
-        return false;
+        return true;
     }
 
     public function print(User $user)

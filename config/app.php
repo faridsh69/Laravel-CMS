@@ -65,7 +65,6 @@ return [
         UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Conner\Tagging\Providers\TaggingServiceProvider::class,
-        Nestable\NestableServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         Propaganistas\LaravelPhone\PhoneServiceProvider::class,

@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-class BlogPolicy extends BasePolicy
+class UserPolicy extends BasePolicy
 {
     public $model = 'User'; 
 }

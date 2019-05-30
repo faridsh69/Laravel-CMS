@@ -41,15 +41,16 @@ class BaseListController extends Controller
 
     public function __construct(Request $request, FormBuilder $form_builder)
     {
+        $class_name = 'App\\Models\\' . $this->model;
         $this->model_sm = lcfirst($this->model);
         $this->model_form = 'App\\Forms\\' . $this->model . 'Form';
-        $class_name = 'App\\Models\\' . $this->model;
         $this->repository = new $class_name();
         $this->request = $request;
         $this->form_builder = $form_builder;
         $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.index');
         $this->meta['link_name'] = __($this->model . ' Manager');
-        $this->authorizeResource($class_name, $this->model_sm);
+        $modelx = $this->repository->find(3); 
+        // $this->authorizeResource($class_name, 'admin.blog.list');
     }
 
     /**
@@ -140,19 +141,6 @@ class BaseListController extends Controller
         return redirect()->route('admin.' . $this->model_sm . '.list.index');
     }
 
-    private function _saveRelatedData($model, $data)
-    {
-        if(isset($data['related_blogs']))
-        {
-            $model->related_blogs()->sync($data['related_blogs'], true);
-        }
-        
-        if(isset($data['tags'])){
-            $tag_names = Tag::whereIn('id', $data['tags'])->pluck('name')->toArray();
-            $model->retag($tag_names);
-        }
-    }
-
     /**
      * Display the specified resource.
      *
@@ -161,6 +149,7 @@ class BaseListController extends Controller
      */
     public function show($id)
     {
+        dd(14);
         $model = $this->repository->findOrFail($id);
         $data = $model->getAttributes();
 
@@ -328,5 +317,18 @@ class BaseListController extends Controller
     public function getRedirect()
     {
         return redirect()->route('admin.' . $this->model_sm . '.list.index');
+    }
+
+    private function _saveRelatedData($model, $data)
+    {
+        if(isset($data['related_blogs']))
+        {
+            $model->related_blogs()->sync($data['related_blogs'], true);
+        }
+        
+        if(isset($data['tags'])){
+            $tag_names = Tag::whereIn('id', $data['tags'])->pluck('name')->toArray();
+            $model->retag($tag_names);
+        }
     }
 }
