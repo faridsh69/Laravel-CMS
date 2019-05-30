@@ -61,6 +61,7 @@ class CategoriesTableSeeder extends Seeder
                 foreach($categories as $category)
                 {
                     $category->activated = 1;
+                    $category->google_index = 1;
                     $category->save();
                 }
             }

@@ -108,14 +108,6 @@ class Page extends Model
             'form_type' => '',
             'table' => false,
         ],
-        [
-            'name' => 'category_id',
-            'relation' => 'categories',
-            'rule' => 'nullable|exists:categories,id',
-            'help' => '',
-            'form_type' => '',
-            'table' => false,
-        ],
     ];
 
     public function getColumns()

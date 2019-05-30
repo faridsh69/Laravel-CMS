@@ -14,7 +14,7 @@ class User extends Authenticatable
     use HasRoles;
     use HasApiTokens;
 
-    protected $gaurd = [];
+    public $guarded = [];
 
     protected $hidden = [
         'password', 'remember_token', 'deleted_at',
@@ -92,7 +92,7 @@ class User extends Authenticatable
             'name' => 'salary',
             'type' => 'integer',
             'database' => 'nullable',
-            'rule' => 'nullable|integer|unsigned',
+            'rule' => 'nullable|integer',
             'help' => '',
             'form_type' => '',
             'table' => false,
@@ -100,20 +100,20 @@ class User extends Authenticatable
         [
             'name' => 'url',
             'type' => 'string',
-            'database' => 'unique',
+            'database' => 'nullable',
             'rule' => 'required|max:80|regex:/^[a-z0-9-]+$/|unique:users,url,',
             'help' => 'Url should be unique, contain lowercase characters and numbers and -',
             'form_type' => '',
-            'table' => true,
+            'table' => false,
         ],
         [
             'name' => 'barcode',
             'type' => 'string',
-            'database' => 'unique',
+            'database' => 'nullable',
             'rule' => 'required|unique:users,barcode,',
             'help' => 'Url should be unique, contain lowercase characters and numbers and -',
             'form_type' => '',
-            'table' => true,
+            'table' => false,
         ],
         [
             'name' => 'website',
@@ -122,10 +122,8 @@ class User extends Authenticatable
             'rule' => 'nullable|url|max:190',
             'help' => 'Url should be unique, contain lowercase characters and numbers and -',
             'form_type' => '',
-            'table' => true,
+            'table' => false,
         ],
-
-
         [
             'name' => 'email_verified_at',
             'type' => 'timestamp',
@@ -141,7 +139,7 @@ class User extends Authenticatable
             'database' => '',
             'rule' => 'required|confirmed',
             'help' => '',
-            'form_type' => '',
+            'form_type' => 'none',
             'table' => false,
         ],
         [
@@ -160,4 +158,20 @@ class User extends Authenticatable
     {
         return $this->columns;
     }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        self::creating(function($model){
+            $model->activated = $model->activated ? 1 : 0;
+            $model->is_male = $model->is_male ? 1 : 0;
+        });
+
+        self::updating(function($model){
+            $model->activated = $model->activated ? 1 : 0;
+            $model->is_male = $model->is_male ? 1 : 0;
+        });
+    }
+    
 }

@@ -113,8 +113,17 @@ class BaseListController extends Controller
         }
         $data = $form->getFieldValues();
         $main_data = $data;
+
+        // blogs
         unset($data['tags']);
         unset($data['related_blogs']);
+
+        // users
+        if(isset($data['password'])) {
+            $data['password'] = \Hash::make($data['password']);
+        }
+        unset($data['password_confirmation']);
+        unset($data['update_password']);
 
         $model = $this->repository->create($data);
 
@@ -204,8 +213,21 @@ class BaseListController extends Controller
         }
         $data = $form->getFieldValues();
         $main_data = $data;
+
+        // blogs and pages
         unset($data['tags']);
         unset($data['related_blogs']);
+
+        // users
+        if(isset($data['password'])) {
+            if(isset($data['update_password'])){
+                $data['password'] = \Hash::make($data['password']);
+            }else{
+                unset($data['password']);    
+            }
+        }
+        unset($data['password_confirmation']);
+        unset($data['update_password']);
 
         $model->update($data);
 

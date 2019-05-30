@@ -10,7 +10,7 @@ class BaseSeeder extends Seeder
 	{
 		$models = config('services.models');
 	    foreach($models as $model) {
-	    	if($model === 'tag'){
+	    	if($model === 'category'){
 	    		break;
 	    	}
 	        factory('App\\Models\\' . ucfirst($model), 10)->create();

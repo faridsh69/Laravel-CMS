@@ -16,14 +16,14 @@
 			</div>
 			<form class="m-login__form m-form margin-top-20" method="POST" action="{{ route('register') }}">
 				@csrf
-				<div class="form-group m-form__group">
+				<!-- <div class="form-group m-form__group">
 					<input class="form-control m-input" type="text" placeholder="{{ __('Name') }}" name="name" value="{{ isset($name) ? $name : old('name') }}" required autocomplete="name" autofocus>
 					@error('name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror 
-				</div>
+				</div> -->
 				<div class="form-group m-form__group">
 					<input class="form-control m-input" type="email" placeholder="{{ __('E-Mail Address') }}" name="email" value="{{ isset($email) ? $email : old('email') }}" required autocomplete="email">
 					@error('email')

@@ -8,6 +8,8 @@ class BaseForm extends Form
 {
     public $columns;
 
+    public $id;
+
     public function __construct()
     {
         $class_name = 'App\\Models\\' . $this->model_name;
@@ -17,7 +19,7 @@ class BaseForm extends Form
 
     public function buildForm()
     {
-    	$id = $this->model ? $this->model->id : 0;
+    	$this->id = $this->model ? $this->model->id : 0;
 
         $this->addTop();
 
@@ -29,10 +31,10 @@ class BaseForm extends Form
             $database = isset($column['database']) ? $column['database'] : '';
             $relation = isset($column['relation']) ? $column['relation'] : '';
             $rule = isset($column['rule']) ? $column['rule'] : '';
-            $help = isset($column['help']) ? $column['help'] : ' ';
+            $help = isset($column['help']) ? $column['help'] . ' ' : ' ';
             $attr = null;
 
-            if($relation){
+            if($relation || $form_type === 'none'){
                 continue;
             }
             $input_type = 'text-m';
@@ -51,8 +53,8 @@ class BaseForm extends Form
                     $input_type = 'switch-m';
                 }
             }
-            if($database === 'unique'){
-                $rule .= $id;
+            if($database === 'unique' || strpos($rule, 'unique') !== false){
+                $rule .= $this->id;
             }
             $option = [
                 'rules' => $rule,

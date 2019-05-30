@@ -4,9 +4,9 @@ namespace Tests\Unit;
 
 use App\Base\BaseTest;
 
-class PageTest extends BaseTest
+class CategoryTest extends BaseTest
 {
-    public $model = 'Page';
+    public $model = 'Category';
 
     public function testExample()
     {
