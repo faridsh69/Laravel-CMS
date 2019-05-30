@@ -147,12 +147,10 @@ class BaseListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($list)
+    public function show(BaseDependency $list)
     {
-        // dd($this->request->getParameter('list'));
-        // dd($id, $list);
-        dd($list);
-        $model = $this->repository->findOrFail($list);
+        $id = $this->request->route()->originalParameters()['list'];
+        $model = $this->repository->findOrFail($id);
         $data = $model->getAttributes();
 
         $this->meta['title'] = __($this->model . ' Show');

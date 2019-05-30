@@ -8,8 +8,10 @@ class BaseDependency extends Model
 {
     public $table = 'blogs';
     
-    public function where($column, $id)
-    {
-        return \App\Models\Blog::first();
-    }
+    // @todo fix this shite
+    // public function where($column, $id)
+    // {
+    //     // dd($id);
+    //     return \App\Models\Blog::first();
+    // }
 }
