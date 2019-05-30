@@ -28,10 +28,7 @@ class BasePolicy
      */
     public function view(User $user, $list)
     {
-        dd($list);
-        if ($user->can('view unpublished blog')) {
-            return true;
-        }
+        return $user->can('view_blog');
     }
 
     /**
@@ -42,10 +39,7 @@ class BasePolicy
      */
     public function create(User $user)
     {
-        return true;
-        if ($user->can('create blogs')) {
-            return true;
-        }
+        return $user->can('create_blog');
     }
 
     /**
