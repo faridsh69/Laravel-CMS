@@ -49,6 +49,7 @@ class BaseListController extends Controller
         $this->form_builder = $form_builder;
         $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.index');
         $this->meta['link_name'] = __($this->model . ' Manager');
+        $this->authorizeResource($class_name, $this->model_sm);
     }
 
     /**

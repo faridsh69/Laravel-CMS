@@ -11,20 +11,17 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-  //       $admin = new Role();
-		// $admin->name = 'admin';
-		// $admin->display_name = 'User Administrator'; // optional
-		// $admin->description  = 'User is allowed to manage and edit other users'; // optional
-		// $admin->save();
+        $role = Role::create(['name' => 'writer']);
+        $permission = Permission::create(['name' => 'edit articles']);
+        $role->givePermissionTo($permission);
+        $user->syncRoles(['writer', 'admin']);
 
-        // $user->attachRole($admin);
+        // @role('writer')
+        //     I am a writer!
+        // @endrole
 
-        // $createPost = new Permission();
-        // $createPost->name         = 'create-post';
-        // $createPost->display_name = 'Create Posts';
-        // $createPost->description  = 'create new blog posts';
-        // $createPost->save();
-        // $admin->attachPermission($createPost);
-
+        // @can('edit articles')
+        //   //
+        // @endcan
     }
 }

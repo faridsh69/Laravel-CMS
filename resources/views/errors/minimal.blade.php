@@ -9,18 +9,8 @@
 		<meta name="description" content="Error 404 Page - nothing found">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
-		<!--begin::Web font -->
-		<script src="{{ Cdn::asset('js/webfontloader.js') }}"></script>
-		<script>
-          	WebFont.load({
-	            google: {"families":["Poppins:300,400,500,600,700","Roboto:300,400,500,600,700"]},
-	            active: function() {
-	                sessionStorage.fonts = true;
-	            }
-          	});
-		</script>
-		<!--end::Web font -->
 		<style>
 			html{
 				height: 100%;
@@ -28,7 +18,9 @@
 			body{
 				height: 100%;
 				margin: 0px;
-				font-family: Poppins;
+			}
+			*{
+				font-family: 'Roboto', sans-serif;
 			}
 			h1{
 				font-size: 150px;
