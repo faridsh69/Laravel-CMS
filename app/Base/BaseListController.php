@@ -2,6 +2,7 @@
 
 namespace App\Base;
 
+use App\Base\BaseDependency;
 use App\Http\Controllers\Controller;
 use Auth;
 use Conner\Tagging\Model\Tag;
@@ -42,6 +43,7 @@ class BaseListController extends Controller
     public function __construct(Request $request, FormBuilder $form_builder)
     {
         $class_name = 'App\\Models\\' . $this->model;
+        $this->authorizeResource($class_name, 'list');
         $this->model_sm = lcfirst($this->model);
         $this->model_form = 'App\\Forms\\' . $this->model . 'Form';
         $this->repository = new $class_name();
@@ -49,8 +51,6 @@ class BaseListController extends Controller
         $this->form_builder = $form_builder;
         $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.index');
         $this->meta['link_name'] = __($this->model . ' Manager');
-        $modelx = $this->repository->find(3); 
-        // $this->authorizeResource($class_name, 'admin.blog.list');
     }
 
     /**
@@ -147,10 +147,12 @@ class BaseListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($list)
     {
-        dd(14);
-        $model = $this->repository->findOrFail($id);
+        // dd($this->request->getParameter('list'));
+        // dd($id, $list);
+        dd($list);
+        $model = $this->repository->findOrFail($list);
         $data = $model->getAttributes();
 
         $this->meta['title'] = __($this->model . ' Show');

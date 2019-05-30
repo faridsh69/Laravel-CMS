@@ -16,3 +16,4 @@ yarn-error.log
 /logs
 /vendor-old
 /temp
+composer.lock

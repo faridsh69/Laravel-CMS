@@ -300,7 +300,7 @@
 			data-menu-scrollable="false" data-menu-dropdown-timeout="500">
 		<ul class="m-menu__nav m-menu__nav--dropdown-submenu-arrow">
 			@foreach($sidebar as $item)
-			@if($item['type'] == 'item')
+			@if($item['type'] == 'item' && Route::has($item['route']))
 			<li aria-haspopup="true" class="m-menu__item 
 				@if(Route::currentRouteName() == $item['route'] ) m-menu__item--active @endif" >
 				<a href="{{ route($item['route']) }}" class="m-menu__link ">
@@ -370,6 +370,7 @@
 								<span class="m-menu__arrow"></span>
 								<ul class="m-menu__subnav">
 									@foreach($submenu_item['children'] as $submenu_item_subitem)
+									@if(Route::has($submenu_item_subitem['route']))
 									<li aria-haspopup="true" class="m-menu__item  
 										@if(Route::currentRouteName() == $submenu_item_subitem['route'] ) m-menu__item--active @endif">
 										<a  href="{{ route($submenu_item_subitem['route']) }}" class="m-menu__link ">
@@ -381,11 +382,13 @@
 											</span>
 										</a>
 									</li>
+									@endif
 									@endforeach
 								</ul>
 							</div>
 						</li>
 						@else
+						@if(Route::has($submenu_item['route']))
 						<li aria-haspopup="true" class="m-menu__item @if(Route::currentRouteName() == $submenu_item['route'] ) m-menu__item--active @endif">
 							<a  href="{{ route($submenu_item['route']) }}" class="m-menu__link ">
 								<i class="m-menu__link-bullet m-menu__link-bullet--dot">
@@ -396,6 +399,7 @@
 								</span>
 							</a>
 						</li>
+						@endif
 						@endif
 						@endforeach
 					</ul>

@@ -24,7 +24,6 @@ foreach($models as $model_sm)
 		Route::get('change-status/{id}', 'ResourceController@getChangeStatus')
 			->middleware('can:change-status,'.$class_name)
 			->name('change-status');
-		Route::get('ali/{id}', 'ResourceController@getAli');
 		Route::resource('list', 'ResourceController');
 		Route::get('', 'ResourceController@getRedirect')->name('redirect');
 	});
@@ -58,5 +57,5 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'as' => 'user.'], funct
 	Route::get('registration-setting', 'UserController@getRegistrationSetting')->name('registration-setting');
 });
 Route::group(['prefix' => 'report', 'namespace' => 'Report', 'as' => 'report.'], function () {
-	Route::get('index', 'ReportController@index')->name('index');
+	Route::get('index', 'ResourceController@index')->name('index');
 });

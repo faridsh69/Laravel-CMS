@@ -4,11 +4,20 @@ namespace App\Policies;
 
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Illuminate\Http\Request;
 
 class BasePolicy
 {
     use HandlesAuthorization;
+
+    public $model;
+
+    public $model_sm;
+
+    public $repository;
+
+    public function __construct()
+    {
+    }
 
     /**
      * Determine whether the user can view the blog.
@@ -17,31 +26,9 @@ class BasePolicy
      * @param  \App\Blog  $blog
      * @return mixed
      */
-
-
-    // public $model = 'Blog';
-    public $model;
-
-    // public $model_sm = 'blog';
-    public $model_sm;
-
-    public $repository;
-
-    public $request;
-
-    public function __construct(Request $request)
-    {
-        $this->request = $request; 
-        // dd($request);
-        // $this->model_sm = lcfirst($this->model);
-        // $class_name = 'App\\Models\\' . $this->model;
-        // $this->repository = new $class_name();
-    }
-
-    public function view(User $user)
+    public function view(User $user, $list)
     {
         return true;
-        dd($blog);
         if ($blog->activated) {
             return true;
         }
@@ -77,7 +64,7 @@ class BasePolicy
      * @param  \App\Blog  $blog
      * @return mixed
      */
-    public function update(User $user, Blog $blog)
+    public function update(User $user, $list)
     {
         dd(1);
         if ($user->can('edit blogs')) {
@@ -92,7 +79,7 @@ class BasePolicy
      * @param  \App\Blog  $blog
      * @return mixed
      */
-    public function delete(User $user, Blog $blog)
+    public function delete(User $user, $list)
     {
         if ($user->can('delete blog')) {
             return true;
