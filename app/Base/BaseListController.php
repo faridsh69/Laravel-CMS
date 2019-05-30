@@ -261,7 +261,6 @@ class BaseListController extends Controller
 
     public function getPrint()
     {
-        dd(1);
         $this->authorizeResource($class_name, 'list');
 
         $list = $this->repository->all();

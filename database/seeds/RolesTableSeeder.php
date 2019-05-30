@@ -14,6 +14,7 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
+        $models = ['blog', 'user', 'category'];
         $models = Config::get('services.models');
 
         foreach($models as $model)
@@ -30,6 +31,11 @@ class RolesTableSeeder extends Seeder
         }
 
         $user = User::where('email', 'farid.sh69@gmail.com')->first();
-        $user->syncRoles(['blog_manager']);
+        $user->syncRoles([
+            'blog_manager',
+            'page_manager',
+            'category_manager',
+            'user_manager',
+        ]);
     }
 }

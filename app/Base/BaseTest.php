@@ -17,12 +17,12 @@ class BaseTest extends TestCase
     public $model;
 
     public $methods = [
-        'pdf',
-        'print',
-        'export',
-        'datatable',
-        'list.index',
-        'list.create',
+        // 'pdf',
+        // 'print',
+        // 'export',
+        // 'datatable',
+        // 'list.index',
+        // 'list.create',
     ];
 
     public function testDashboard()
