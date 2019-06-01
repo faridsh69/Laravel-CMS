@@ -20,13 +20,11 @@ class SwitchM extends FormField
 
     public function render(array $options = [], $showLabel = true, $showField = true, $showError = true)
     {
-        if($this->parent->getModel())
-        {
-        	$model_value = $this->getModelValueAttribute($this->parent->getModel(), $this->name);
-            if($model_value === 0)
-        	{
-        		$options['checked'] = false;
-        	}
+        $model = $this->parent->getModel();
+        if($model){
+            if($model[$this->name] === 0){
+                $options['checked'] = false;
+            }
         }
 
         return parent::render($options, $showLabel, $showField, $showError);

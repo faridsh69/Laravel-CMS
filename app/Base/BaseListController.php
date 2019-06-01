@@ -26,6 +26,9 @@ class BaseListController extends Controller
     // App\Models\Blog
     public $model_class;
 
+    // App\Models\Blog
+    public $model_columns;
+
     public $repository;
 
     public $request;
@@ -51,6 +54,7 @@ class BaseListController extends Controller
         $this->repository = new $this->model_class();
         $this->request = $request;
         $this->form_builder = $form_builder;
+        $this->model_columns = $this->repository->getColumns();
         $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.index');
         $this->meta['link_name'] = __($this->model . ' Manager');
     }
@@ -69,11 +73,10 @@ class BaseListController extends Controller
         $this->meta['link_name'] = __('Create New ' . $this->model);
         $this->meta['search'] = 1;
 
-        $table_columns = collect($this->repository->getColumns())
-            ->where('table', true);
+        
 
         $columns = [];
-        foreach($table_columns as $column)
+        foreach(collect($this->model_columns)->where('table', true) as $column)
         {
             $columns[] = [
                 'field' => $column['name'],
@@ -209,8 +212,14 @@ class BaseListController extends Controller
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
         $data = $form->getFieldValues();
-
         $main_data = $data;
+        foreach( collect($this->model_columns)->where('type', 'boolean')->pluck('name') as $boolean_column)
+        {
+            if(!isset($data[$boolean_column]))
+            {
+                $data[$boolean_column] = 0;
+            }
+        }
 
         // users
         if($this->model === 'User'){

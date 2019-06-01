@@ -17,8 +17,4 @@ class UserForm extends BaseForm
 		    ],
         ]);
     }
-
-    public function addTop()
-    {
-    }
 }
