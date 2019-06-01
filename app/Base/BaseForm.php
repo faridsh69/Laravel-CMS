@@ -26,15 +26,18 @@ class BaseForm extends Form
         foreach($this->columns as $column)
         {
             $name = $column['name'];
-            $type = isset($column['type']) ? $column['type'] : '';
-            $form_type = isset($column['form_type']) ? $column['form_type'] : '';
-            $database = isset($column['database']) ? $column['database'] : '';
+            $type = $column['type'];
+            $rule = $column['rule'];
+            $help = $column['help'];
+            $database = $column['database'];
+            $form_type = $column['form_type'];
             $relation = isset($column['relation']) ? $column['relation'] : '';
-            $rule = isset($column['rule']) ? $column['rule'] : '';
-            $help = isset($column['help']) ? $column['help'] . ' ' : ' ';
             $attr = null;
             $choices = null;
 
+            if($help === ''){
+                $help = ' ';
+            }
             if($database === 'unique' || strpos($rule, 'unique') !== false){
                 $rule .= $this->id;
             }
@@ -67,6 +70,7 @@ class BaseForm extends Form
             }
             elseif($form_type === 'password'){
                 $option['attr'] = ['type' => 'password'];
+                $option['value'] = '';
             }
             elseif($form_type === 'date'){
                 $option['attr'] = ['autocomplete' => 'off'];

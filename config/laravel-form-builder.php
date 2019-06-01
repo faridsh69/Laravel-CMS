@@ -51,4 +51,22 @@ return [
         'text-m' => '\App\Forms\Fields\TextM',
         // 'ckeditor' => '\App\Forms\Fields\Ckeditor',
     ],
+    
+    'field_icons' => [
+        'url' => 'la-sitemap',
+        'title' => 'la-header',
+        'keywords' => 'la-key',
+        'meta_image' => 'la-image',
+        'canonical_url' => 'la-globe',
+        'meta_description' => 'la-bookmark',
+        'email' => 'la-envelope-o',
+        'first_name' => 'la-user',
+        'last_name' => 'la-users',
+        'mobile' => 'la-mobile-phone',
+        'phone' => 'la-phone',
+        'birth_date' => 'la-child',
+        'website' => 'la-internet-explorer',
+        'password' => 'la-lock',
+        'password_confirmation' => 'la-unlock',
+    ],
 ];

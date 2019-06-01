@@ -110,6 +110,8 @@ class Blog extends Model
         ],
         [
             'name' => 'category_id',
+            'type' => 'bigInteger',
+            'database' => 'unsigned',
             'relation' => 'categories',
             'rule' => 'nullable|exists:categories,id',
             'help' => '',

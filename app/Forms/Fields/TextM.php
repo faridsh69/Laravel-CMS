@@ -2,6 +2,7 @@
 
 namespace App\Forms\Fields;
 
+use Config;
 use Kris\LaravelFormBuilder\Fields\FormField;
 
 class TextM extends FormField
@@ -16,23 +17,7 @@ class TextM extends FormField
 
     public function render(array $options = [], $showLabel = true, $showField = true, $showError = true)
     {
-        $field_icons = [
-            'url' => 'la-sitemap',
-            'title' => 'la-header',
-            'keywords' => 'la-key',
-            'meta_image' => 'la-image',
-            'canonical_url' => 'la-globe',
-            'meta_description' => 'la-bookmark',
-            'email' => 'la-envelope-o',
-            'first_name' => 'la-user',
-            'last_name' => 'la-users',
-            'mobile' => 'la-mobile-phone',
-            'phone' => 'la-phone',
-            'birth_date' => 'la-child',
-            'website' => 'la-internet-explorer',
-            'password' => 'la-lock',
-            'password_confirmation' => 'la-unlock',
-        ];
+        $field_icons = Config::get('laravel-form-builder.field_icons');
         if(isset($field_icons[$this->name])){
             $options['left_icon'] = $field_icons[$this->name];
         }

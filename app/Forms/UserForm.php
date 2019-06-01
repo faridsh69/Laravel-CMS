@@ -16,20 +16,9 @@ class UserForm extends BaseForm
 		        'text' => 'Password should match confirm password.',
 		    ],
         ]);
-
-        // $this->add('update_password', 'checkbox-m', [
-        //     'checked' => false,
-        //     'help_block' => [
-        //         'text' => 'In update mode this will be used.',
-        //     ],
-        // ]);
     }
 
     public function addTop()
     {
-        // if($this->id)
-        // {
-        //     $this->model->password = null;
-        // }
     }
 }
