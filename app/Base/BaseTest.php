@@ -25,13 +25,6 @@ class BaseTest extends TestCase
         'list.create',
     ];
 
-    public function testDashboard()
-    {
-        $this
-            ->get(route('admin.dashboard.index'))
-            ->assertStatus(302);
-    }
-
     public function resourceTest()
     {
         $class_name = 'App\\Models\\' . $this->model;

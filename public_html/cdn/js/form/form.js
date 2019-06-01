@@ -47,7 +47,13 @@ var BootstrapSelect = function() {
 var BootstrapDatepicker=function() {
     var t=function() {
         $("#birth_date").datepicker( {
-            todayBtn:"linked", clearBtn:!0, todayHighlight:!0, orientation:"bottom left", templates: {
+            format: 'yyyy/mm/dd',
+            autoclose: true,
+            todayBtn:"linked", 
+            clearBtn:!0, 
+            todayHighlight:!0, 
+            orientation:"bottom left", 
+            templates: {
                 leftArrow: '<i class="la la-angle-left"></i>', rightArrow: '<i class="la la-angle-right"></i>'
             }
         })

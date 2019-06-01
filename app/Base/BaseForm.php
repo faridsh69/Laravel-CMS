@@ -35,38 +35,6 @@ class BaseForm extends Form
             $attr = null;
             $choices = null;
 
-            if($relation || $form_type === 'none'){
-                continue;
-            }
-            $input_type = 'text-m';
-            if($form_type === 'ckeditor'){
-                $input_type = 'textarea';
-                $attr = ['ckeditor' => '1'];
-            }
-            if($form_type === 'email'){
-                $input_type = 'email';
-            }
-            elseif($type === 'text' || $form_type === 'textarea'){
-                $input_type = 'textarea';
-                $attr = ['rows' => 3];
-            }
-            elseif($type === 'date' || $form_type === 'date'){
-                $attr = ['autocomplete' => 'off'];
-            }
-            elseif($type === 'boolean'){
-                if($form_type === 'checkbox'){
-                    $input_type = 'checkbox-m';
-                }
-                elseif($form_type === 'switch-bootstrap-m'){
-                    $input_type = 'switch-bootstrap-m';
-                    if($name === 'gender'){
-                        $choices = ['male', 'female'];
-                    }
-                }
-                else{
-                    $input_type = 'switch-m';
-                }                
-            }
             if($database === 'unique' || strpos($rule, 'unique') !== false){
                 $rule .= $this->id;
             }
@@ -76,13 +44,38 @@ class BaseForm extends Form
                     'text' => $help,
                 ]
             ];
-            if($attr){
-                $option['attr'] = $attr;
+            if($relation || $form_type === 'none'){
+                continue;
             }
-            if($choices){
-                $option['choices'] = $choices;
-            }
+            $input_type = 'text-m';
 
+            if($type === 'boolean'){
+                $input_type = 'switch-m';
+                if($form_type === 'checkbox'){
+                    $input_type = 'checkbox-m';
+                }
+                elseif($form_type === 'switch-bootstrap-m'){
+                    $input_type = 'switch-bootstrap-m';
+                }
+            }
+            elseif($form_type === 'ckeditor'){
+                $input_type = 'textarea';
+                $option['attr'] = ['ckeditor' => 'on'];
+            }
+            elseif($form_type === 'email'){
+                $option['attr'] = ['type' => 'email'];
+            }
+            elseif($form_type === 'password'){
+                $option['attr'] = ['type' => 'password'];
+            }
+            elseif($form_type === 'date'){
+                $option['attr'] = ['autocomplete' => 'off'];
+            }
+            elseif($form_type === 'textarea'){
+                $input_type = 'textarea';
+                $option['attr'] = ['rows' => 3];
+            }
+            
             $this->add($column['name'], $input_type, $option);
         }
         $this->addBottom();

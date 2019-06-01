@@ -34,9 +34,14 @@ class SwitchBootstrapM extends FormField
                 $options['checked'] = false;
             }
         }
-        $options['attr']['data-on-text'] = $this->options['choices'][0];
-        $options['attr']['data-off-text'] = $this->options['choices'][1];
-        
+
+        $options['choices'] = ['on', 'off'];
+        if($this->name === 'gender'){
+            $options['choices'] = ['male', 'female'];
+        }
+        $options['attr']['data-on-text'] = $options['choices'][0];
+        $options['attr']['data-off-text'] = $options['choices'][1];
+
         return parent::render($options, $showLabel, $showField, $showError);
     }
 

@@ -87,7 +87,7 @@ class User extends Authenticatable
             'database' => 'nullable',
             'rule' => 'nullable|date',
             'help' => '',
-            'form_type' => '',
+            'form_type' => 'date',
             'table' => false,
         ],
         [
@@ -139,9 +139,9 @@ class User extends Authenticatable
             'name' => 'password',
             'type' => 'string',
             'database' => '',
-            'rule' => 'required|confirmed',
+            'rule' => 'confirmed',
             'help' => 'Password should match confirm password.',
-            'form_type' => '',
+            'form_type' => 'password',
             'table' => false,
         ],
         

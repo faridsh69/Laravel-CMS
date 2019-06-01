@@ -209,22 +209,21 @@ class BaseListController extends Controller
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
         $data = $form->getFieldValues();
+
         $main_data = $data;
 
-        // blogs and pages
-        unset($data['tags']);
-        unset($data['related_blogs']);
-
         // users
-        if(isset($data['password'])) {
-            if(isset($data['update_password'])){
+        if($this->model === 'User'){
+            if(isset($data['password'])) {
                 $data['password'] = \Hash::make($data['password']);
-            }else{
-                unset($data['password']);    
+            }
+            else{
+                $data['password'] = $model->password;
             }
         }
+        unset($data['tags']);
+        unset($data['related_blogs']);
         unset($data['password_confirmation']);
-        unset($data['update_password']);
 
         $model->update($data);
 

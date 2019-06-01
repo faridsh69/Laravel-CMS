@@ -16,25 +16,25 @@ class TextM extends FormField
 
     public function render(array $options = [], $showLabel = true, $showField = true, $showError = true)
     {
-        switch ($this->name) {
-            case 'url':
-                $options['left_icon'] = 'la-sitemap';
-                break;
-            case 'title':
-                $options['left_icon'] = 'la-header';
-                break;
-            case 'keywords':
-                $options['left_icon'] = 'la-key';
-                break;
-            case 'meta_image':
-                $options['left_icon'] = 'la-image';
-                break;
-            case 'canonical_url':
-                $options['left_icon'] = 'la-globe';
-                break;
-            case 'meta_description':
-                $options['left_icon'] = 'la-bookmark';
-                break;
+        $field_icons = [
+            'url' => 'la-sitemap',
+            'title' => 'la-header',
+            'keywords' => 'la-key',
+            'meta_image' => 'la-image',
+            'canonical_url' => 'la-globe',
+            'meta_description' => 'la-bookmark',
+            'email' => 'la-envelope-o',
+            'first_name' => 'la-user',
+            'last_name' => 'la-users',
+            'mobile' => 'la-mobile-phone',
+            'phone' => 'la-phone',
+            'birth_date' => 'la-child',
+            'website' => 'la-internet-explorer',
+            'password' => 'la-lock',
+            'password_confirmation' => 'la-unlock',
+        ];
+        if(isset($field_icons[$this->name])){
+            $options['left_icon'] = $field_icons[$this->name];
         }
 
         return parent::render($options, $showLabel, $showField, $showError);
