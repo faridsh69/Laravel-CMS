@@ -17,12 +17,12 @@ class BaseTest extends TestCase
     public $model;
 
     public $methods = [
-        // 'pdf',
-        // 'print',
-        // 'export',
-        // 'datatable',
-        // 'list.index',
-        // 'list.create',
+        'pdf',
+        'print',
+        'export',
+        'datatable',
+        'list.index',
+        'list.create',
     ];
 
     public function testDashboard()
@@ -72,6 +72,10 @@ class BaseTest extends TestCase
         $this
         	->delete(route('admin.' . strtolower($this->model) . '.list.destroy', $data))
         	->assertStatus(302);
+
+        $this
+            ->get(route('admin.' . strtolower($this->model) . '.list.restore', $data))
+            ->assertStatus(302);
     }
 
     private function _checkMethod($mothod_name)

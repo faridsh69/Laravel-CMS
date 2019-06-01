@@ -91,6 +91,7 @@ class BaseListController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', $this->model_class);
         $this->meta['title'] = __('Create New ' . $this->model);
 
         $form = $this->form_builder->create($this->model_form, [
@@ -111,6 +112,7 @@ class BaseListController extends Controller
      */
     public function store()
     {
+        $this->authorize('create', $this->model_class);
         $form = $this->form_builder->create($this->model_form);
 
         if (! $form->isValid()) {
@@ -173,6 +175,7 @@ class BaseListController extends Controller
     public function edit($id)
     {
         $model = $this->repository->findOrFail($id);
+        $this->authorize('update', $model);
 
         $this->meta['title'] = __('Edit ' . $this->model . ' ' . $id);
         $form = $this->form_builder->create($this->model_form, [
@@ -196,6 +199,7 @@ class BaseListController extends Controller
     public function update($id)
     {
         $model = $this->repository->findOrFail($id);
+        $this->authorize('update', $model);
 
         $form = $this->form_builder->create($this->model_form, [
             'model' => $model,
@@ -245,7 +249,20 @@ class BaseListController extends Controller
     public function destroy($id)
     {
         $model = $this->repository->findOrFail($id);
+        $this->authorize('delete', $model);
+
         $model->delete();
+        $this->request->session()->flash('alert-success', $this->model . ' Deleted Successfully!');
+
+        return redirect()->route('admin.' . $this->model_sm . '.list.index');
+    }
+
+    public function getRestore($id)
+    {
+        $model = $this->repository->withTrashed()->findOrFail($id);
+        $this->authorize('restore', $model);
+
+        $model->restore();
         $this->request->session()->flash('alert-success', $this->model . ' Deleted Successfully!');
 
         return redirect()->route('admin.' . $this->model_sm . '.list.index');
@@ -261,8 +278,6 @@ class BaseListController extends Controller
 
     public function getPrint()
     {
-        $this->authorizeResource($class_name, 'list');
-
         $list = $this->repository->all();
 
         return view('layout.print', compact('list'));

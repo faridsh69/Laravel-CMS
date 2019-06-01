@@ -8,7 +8,7 @@ class PageTest extends BaseTest
 {
     public $model = 'Page';
 
-    public function testExample()
+    public function test()
     {
         $this->resourceTest();
     }

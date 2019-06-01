@@ -25,6 +25,7 @@ foreach($models as $model_sm)
 			->middleware('can:change-status,'.$class_name)
 			->name('change-status');
 		Route::resource('list', 'ResourceController');
+		Route::get('list/{list}/restore', 'ResourceController@getRestore')->name('list.restore');
 		Route::get('', 'ResourceController@getRedirect')->name('redirect');
 	});
 }

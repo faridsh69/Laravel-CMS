@@ -152,19 +152,18 @@ class User extends Authenticatable
         return $this->columns;
     }
 
-    public static function boot()
-    {
-        parent::boot();
+    // public static function boot()
+    // {
+    //     parent::boot();
 
-        self::creating(function($model){
-            $model->activated = $model->activated ? 1 : 0;
-            $model->is_male = $model->is_male ? 1 : 0;
-        });
+    //     self::creating(function($model){
+    //         $model->activated = $model->activated ? 1 : 0;
+    //         $model->is_male = $model->is_male ? 1 : 0;
+    //     });
 
-        self::updating(function($model){
-            $model->activated = $model->activated ? 1 : 0;
-            $model->is_male = $model->is_male ? 1 : 0;
-        });
-    }
-    
+    //     self::updating(function($model){
+    //         $model->activated = $model->activated ? 1 : 0;
+    //         $model->is_male = $model->is_male ? 1 : 0;
+    //     });
+    // }
 }

@@ -8,7 +8,7 @@ class BlogTest extends BaseTest
 {
     public $model = 'Blog';
 
-    public function testExample()
+    public function test()
     {
         $this->resourceTest();
     }

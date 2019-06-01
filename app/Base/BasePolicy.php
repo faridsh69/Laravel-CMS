@@ -70,6 +70,11 @@ class BasePolicy
         return $user->can('delete_' . $this->model_sm);
     }
 
+    public function restore(User $user, $list)
+    {
+        return $user->can('index_' . $this->model_sm);
+    }
+
     public function datatable(User $user)
     {
         return $user->can('index_' . $this->model_sm);

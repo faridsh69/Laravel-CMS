@@ -8,7 +8,7 @@ class UserTest extends BaseTest
 {
     public $model = 'User';
 
-    public function testExample()
+    public function test()
     {
         $this->resourceTest();
     }

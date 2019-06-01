@@ -10,16 +10,28 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $user = [
-        	'id' => 1,
-            'first_name' => 'Farid',
-            'last_name' => 'Shahidi',
-            'url' => 'farid-shahidi',
-        	'barcode' => 'farid-shahidi' . random_int(100, 100000),
-        	'email' => 'farid.sh69@gmail.com',
-        	'password' => bcrypt('123456'),
-            'activated' => 1,
+        $users = [
+            [
+            	'id' => 1,
+                'first_name' => 'Farid',
+                'last_name' => 'Shahidi',
+                'url' => 'farid-shahidi',
+            	'email' => 'farid.sh69@gmail.com',
+            	'password' => bcrypt('111'),
+                'activated' => 1,
+            ],
+            [
+                'id' => 2,
+                'first_name' => 'Arash',
+                'last_name' => 'Masihpour',
+                'url' => 'Arash-Masihpour',
+                'email' => 'farid.sh692@gmail.com',
+                'password' => bcrypt('111'),
+                'activated' => 1,
+            ],
         ];
-        User::updateOrCreate(['id' => 1], $user);
+        foreach($users as $user){
+            User::updateOrCreate(['id' => $user['id']], $user);
+        }
     }
 }

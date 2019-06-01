@@ -8,7 +8,7 @@ class CategoryTest extends BaseTest
 {
     public $model = 'Category';
 
-    public function testExample()
+    public function test()
     {
         $this->resourceTest();
     }
