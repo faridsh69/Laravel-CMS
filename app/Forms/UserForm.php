@@ -14,12 +14,12 @@ class UserForm extends BaseForm
         {
             $this->model->password = null;
         }
-    	$this->add('password', 'text-m', [
-        	'rules' => 'required|confirmed',
-        	'help_block' => [
-		        'text' => 'Password should match confirm password.',
-		    ],
-        ]);
+    	// $this->add('password', 'text-m', [
+     //    	'rules' => 'required|confirmed',
+     //    	'help_block' => [
+		   //      'text' => 'Password should match confirm password.',
+		   //  ],
+     //    ]);
 
         $this->add('password_confirmation', 'text-m', [
         	'rules' => 'nullable',

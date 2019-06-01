@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers\Admin\Setting;
 
-use App\Http\Controllers\Controller;
+use App\Base\BaseAdminController;
 use Rap2hpoutre\LaravelLogViewer\LogViewerController;
 
-class SettingController extends Controller
+class SettingController extends BaseAdminController
 {
-	public $meta = [
-        'title' => 'Settings Manager',
-        'description' => 'Admin Panel Page For Best Cms In The World',
-        'keywords' => '',
-        'image' => '',
-        'alert' => 'Advanced form with validation, ckeditor, multiselect, swith... !',
-        'link_route' => '/',
-        'link_name' => 'Dashboard',
-        'search' => 0,
-    ];
+	public $model = 'Setting';
+	// public $meta = [
+ //        'title' => 'Settings Manager',
+ //        'description' => 'Admin Panel Page For Best Cms In The World',
+ //        'keywords' => '',
+ //        'image' => '',
+ //        'alert' => 'Advanced form with validation, ckeditor, multiselect, swith... !',
+ //        'link_route' => '/',
+ //        'link_name' => 'Dashboard',
+ //        'search' => 0,
+ //    ];
 
 	public function getGeneral()
 	{
@@ -30,8 +31,18 @@ class SettingController extends Controller
 
 	public function getLog(LogViewerController $LogViewerController)
 	{
+        $this->meta['title'] = __('Log Manager');
+        $this->meta['alert'] = 'Log of system with all traces!';
+
+		return view('admin.setting.log', ['meta' => $this->meta]);
+	}
+
+	public function getLogView(LogViewerController $LogViewerController)
+	{
 		return $LogViewerController->index();
 	}
+
+	
 
 	public function getDeveloperOptionsBasic()
 	{

@@ -4,6 +4,12 @@
 *{
 	font-family: 'Roboto', sans-serif;
 }
+.iframe{
+	border: none;
+	width: 100%;
+	height: 500px;
+	margin: -30px;
+}
 .m-datatable__cell span{
 	max-height: 120px !important;
 }

@@ -36,6 +36,7 @@ Route::group(['prefix' => 'setting', 'namespace' => 'Setting', 'as' => 'setting.
 	Route::get('general', 'SettingController@getGeneral')->name('general');
 	Route::get('contact', 'SettingController@getContact')->name('contact');
 	Route::get('log', 'SettingController@getLog')->name('log');
+	Route::get('log-view', 'SettingController@getLogView')->name('log-view');
 	Route::group(['prefix' => 'backup', 'namespace' => 'Backup', 'as' => 'backup.'], function () {
 		Route::resource('list', 'ResourceController');
 		Route::get('', 'ResourceController@getRedirect')->name('redirect');

@@ -1,18 +1,3 @@
-// bootstrap select
-var BootstrapSelect = function() {
-    var t = function() {
-        $(".m_selectpicker").selectpicker()
-    };
-    return {
-        init: function() {
-            t()
-        }
-    }
-}();
-jQuery(document).ready(function() {
-    BootstrapSelect.init()
-});
-
 // bootstrap max length
 var BootstrapMaxlength=function() {
     var e=function() {
@@ -32,12 +17,7 @@ var BootstrapMaxlength=function() {
             e()
         }
     }
-}
-();
-jQuery(document).ready(function() {
-    BootstrapMaxlength.init()
-}
-);
+}();
 
 // bootstrap switch
 var BootstrapSwitch = function() {
@@ -50,9 +30,34 @@ var BootstrapSwitch = function() {
         }
     }
 }();
-jQuery(document).ready(function() {
-    BootstrapSwitch.init()
-});
+
+// bootstrap select
+var BootstrapSelect = function() {
+    var t = function() {
+        $(".m_selectpicker").selectpicker()
+    };
+    return {
+        init: function() {
+            t()
+        }
+    }
+}();
+
+// bootstrao date picker
+var BootstrapDatepicker=function() {
+    var t=function() {
+        $("#birth_date").datepicker( {
+            todayBtn:"linked", clearBtn:!0, todayHighlight:!0, orientation:"bottom left", templates: {
+                leftArrow: '<i class="la la-angle-left"></i>', rightArrow: '<i class="la la-angle-right"></i>'
+            }
+        })
+    };
+    return {
+        init:function() {
+            t()
+        }
+    }
+}();
 
 // bootstrap ckeditor
 var ckeditorOptions = {
@@ -72,9 +77,11 @@ inputsWithTypeTextarea.each(function(){
     }
 });
 
-// CKEDITOR.replace('keywords', ckeditorOptions);
-
-// validation
 jQuery(document).ready(function() {
+    BootstrapMaxlength.init();
+    BootstrapSwitch.init();
+    BootstrapDatepicker.init();
+    BootstrapSelect.init();
     $("#admin_form").validate({});
 });
+

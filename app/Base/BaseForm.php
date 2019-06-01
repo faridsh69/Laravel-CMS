@@ -49,12 +49,22 @@ class BaseForm extends Form
                 $input_type = 'textarea';
                 $attr = ['rows' => 3];
             }
+            elseif($type === 'date' || $form_type === 'date'){
+                $attr = ['autocomplete' => 'off'];
+            }
             elseif($type === 'boolean'){
                 if($form_type === 'checkbox'){
                     $input_type = 'checkbox-m';
-                }else{
-                    $input_type = 'switch-m';
                 }
+                elseif($form_type === 'switch-bootstrap-m'){
+                    $input_type = 'switch-bootstrap-m';
+                    if($name === 'gender'){
+                        // attr = 
+                    }
+                }
+                else{
+                    $input_type = 'switch-m';
+                }                
             }
             if($database === 'unique' || strpos($rule, 'unique') !== false){
                 $rule .= $this->id;

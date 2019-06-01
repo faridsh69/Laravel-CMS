@@ -13,8 +13,24 @@ use View;
 
 class BaseAdminController extends Controller
 {
+    // public $model = 'Blog';
+    public $model;
+
+    // public $model_sm = 'blog';
+    public $model_sm;
+
+    // public $model_form = '\App\Forms\BlogForm';
+    public $model_form;
+
+    // App\Models\Blog
+    public $model_class;
+
+    public $repository;
+
     public $request;
-    
+
+    public $form_builder;
+
     public $meta = [
         'title' => 'Admin Panel',
         'description' => 'Admin Panel Page For Best Cms In The World',
@@ -26,8 +42,13 @@ class BaseAdminController extends Controller
         'search' => 0,
     ];
 
-    public function __construct(Request $request)
+    public function __construct(Request $request, FormBuilder $form_builder)
     {
+        $this->model_class = 'App\\Models\\' . $this->model;
+        $this->model_sm = lcfirst($this->model);
+        $this->model_form = 'App\\Forms\\' . $this->model . 'Form';
+        $this->repository = new $this->model_class();
         $this->request = $request;
+        $this->form_builder = $form_builder;
     }
 }
