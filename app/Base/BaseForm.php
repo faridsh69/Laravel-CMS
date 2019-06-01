@@ -33,6 +33,7 @@ class BaseForm extends Form
             $rule = isset($column['rule']) ? $column['rule'] : '';
             $help = isset($column['help']) ? $column['help'] . ' ' : ' ';
             $attr = null;
+            $choices = null;
 
             if($relation || $form_type === 'none'){
                 continue;
@@ -59,7 +60,7 @@ class BaseForm extends Form
                 elseif($form_type === 'switch-bootstrap-m'){
                     $input_type = 'switch-bootstrap-m';
                     if($name === 'gender'){
-                        // attr = 
+                        $choices = ['male', 'female'];
                     }
                 }
                 else{
@@ -77,6 +78,9 @@ class BaseForm extends Form
             ];
             if($attr){
                 $option['attr'] = $attr;
+            }
+            if($choices){
+                $option['choices'] = $choices;
             }
 
             $this->add($column['name'], $input_type, $option);

@@ -12,7 +12,13 @@ class SwitchBootstrapM extends FormField
     public function getDefaults()
     {
         return [
-            'attr' => ['class' => null, 'id' => $this->getName()],
+            'attr' => [
+                'class' => null, 
+                'id' => $this->getName(), 
+                'data-switch' => 'true',
+                'data-on-text' => 'Enabled', 
+                'data-off-text' => 'Disabled',
+            ],
             'value' => 1,
             'checked' => true,
         ];
@@ -28,7 +34,9 @@ class SwitchBootstrapM extends FormField
                 $options['checked'] = false;
             }
         }
-
+        $options['attr']['data-on-text'] = $this->options['choices'][0];
+        $options['attr']['data-off-text'] = $this->options['choices'][1];
+        
         return parent::render($options, $showLabel, $showField, $showError);
     }
 

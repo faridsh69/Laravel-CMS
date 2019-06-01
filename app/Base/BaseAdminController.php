@@ -25,8 +25,6 @@ class BaseAdminController extends Controller
     // App\Models\Blog
     public $model_class;
 
-    public $repository;
-
     public $request;
 
     public $form_builder;
@@ -47,7 +45,6 @@ class BaseAdminController extends Controller
         $this->model_class = 'App\\Models\\' . $this->model;
         $this->model_sm = lcfirst($this->model);
         $this->model_form = 'App\\Forms\\' . $this->model . 'Form';
-        $this->repository = new $this->model_class();
         $this->request = $request;
         $this->form_builder = $form_builder;
     }

@@ -10,7 +10,7 @@
 	    <?php endif; ?>
     
         <span class="m-bootstrap-switch m-bootstrap-switch--pill m-bootstrap-switch--air">
-            <?= Form::checkbox($name, $options['value'], $options['checked'], ['data-switch="true"']) ?>
+            <?= Form::checkbox($name, $options['value'], $options['checked'], $options['attr']) ?>
         </span>
 
     <?php include 'help_block.php' ?>
