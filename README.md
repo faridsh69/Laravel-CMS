@@ -7,7 +7,278 @@
 [![StyleCI](https://styleci.io/repos/30915528/shield)](https://styleci.io/repos/30915528)
 [![Total Downloads](https://img.shields.io/packagist/dt/faridsh69/cms.svg?style=flat-square)](https://packagist.org/packages/faridsh69/cms)
 
-This Laravel package make the way easy for writing migrations, seeders, factory, routes, controller, view, forms, tables, export pdf, excel, import, print, ...
+This Laravel package that you should just define an array in each model then every thing will be ready nd ofcourse you can change as much as you want.
+This array in model make the way easy for automatic create 
+	migrations, 
+	seeders, 
+	factory, 
+	routes, 
+	controller, 
+	view, 
+	forms, 
+	tables, 
+	export pdf, 
+	export excel, 
+	import excel, 
+	print, 
+	unit test,
+	policies
+
+
+## How to use
+	
+	This is an complete model for blogs
+
+	You just need to define what you want from this project !!!
+	Define public $columns in each model
+
+	'name': name of column in table and field in inputs and factory and everywhere.
+	'type': use for form and migrations that show type of column
+	'database': a method that will run affter each migration column like:
+		nullable, unique, default(true), unsigned
+	'rul': validation after form in update and create
+	'help': help block under each field in forms
+	'form_type': type of each column, like
+		ckeditor, date, email, switch, checkbox, image, textarea, none(for dont show in db)
+	'table': boolean that use for show that item in tables
+	'relation': use for relation columns just need to define name of table
+
+	This is my array in blog model:
+
+	public $columns = [
+        [
+            'name' => 'title',
+            'type' => 'string',
+            'database' => 'unique',
+            'rule' => 'required|max:60|min:10|unique:blogs,title,',
+            'help' => 'Title should be unique, minimum 10 and maximum 60 characters.',
+            'form_type' => '',
+            'table' => true,
+        ],
+        [
+            'name' => 'url',
+            'type' => 'string',
+            'database' => 'unique',
+            'rule' => 'required|max:80|regex:/^[a-z0-9-]+$/|unique:blogs,url,',
+            'help' => 'Url should be unique, contain lowercase characters and numbers and -',
+            'form_type' => '',
+            'table' => true,
+        ],
+        [
+            'name' => 'description',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => 'nullable|max:191',
+            'help' => 'Description will show in lists instead of content.',
+            'form_type' => 'textarea',
+            'table' => false,
+        ],
+        [
+            'name' => 'content',
+            'type' => 'text',
+            'database' => '',
+            'rule' => 'required|seo_header',
+            'help' => '',
+            'form_type' => 'ckeditor',
+            'table' => true,
+        ], 
+        [
+            'name' => 'meta_description',
+            'type' => 'string',
+            'database' => '',
+            'rule' => 'required|max:191|min:70',
+            'help' => 'Meta description should have minimum 70 and maximum 191 characters.',
+            'form_type' => 'textarea',
+            'table' => false,
+        ],
+        [
+            'name' => 'keywords',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => 'nullable|max:191',
+            'help' => 'Its not important for google anymore',
+            'form_type' => '',
+            'table' => false,
+        ],
+        [
+            'name' => 'meta_image',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => 'nullable|max:191|url',
+            'help' => 'Meta image shows when this page is shared in social networks.',
+            'form_type' => '',
+            'table' => false,
+        ],
+        [
+            'name' => 'activated',
+            'type' => 'boolean',
+            'database' => 'default',
+            'rule' => '',
+            'help' => '',
+            'form_type' => '', // switch-m
+            'table' => false,
+        ],
+        [
+            'name' => 'google_index',
+            'type' => 'boolean',
+            'database' => 'default',
+            'rule' => '',
+            'help' => 'Google will index this page.',
+            'form_type' => 'checkbox',
+            'table' => false,
+        ],
+        [
+            'name' => 'canonical_url',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => 'nullable|max:191|url',
+            'help' => 'Canonical url just used for seo redirect duplicate contents.',
+            'form_type' => '',
+            'table' => false,
+        ],
+        [
+            'name' => 'category_id',
+            'type' => 'bigInteger',
+            'database' => 'unsigned',
+            'relation' => 'categories',
+            'rule' => 'nullable|exists:categories,id',
+            'help' => '',
+            'form_type' => '',
+            'table' => false,
+        ],
+    ];
+
+    This is another sample for users table
+
+    public $columns = [
+        [
+            'name' => 'first_name',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => 'required|max:100',
+            'help' => '',
+            'form_type' => '',
+            'table' => true,
+        ],
+        [
+            'name' => 'last_name',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => 'required|max:100',
+            'help' => '',
+            'form_type' => '',
+            'table' => true,
+        ],
+        [
+            'name' => 'email',
+            'type' => 'string',
+            'database' => 'unique',
+            'rule' => 'required|unique:users,email,',
+            'help' => '',
+            'form_type' => 'email',
+            'table' => true,
+        ],
+        [
+            'name' => 'mobile',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => 'nullable|numeric|digits_between:5,16',
+            'help' => '',
+            'form_type' => '',
+            'table' => false,
+        ],
+        [
+            'name' => 'phone',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => 'nullable|numeric|digits_between:5,16',
+            'help' => '',
+            'form_type' => 'none',
+            'table' => false,
+        ],
+        [
+            'name' => 'gender',
+            'type' => 'boolean',
+            'database' => 'default',
+            'rule' => '',
+            'help' => '',
+            'form_type' => 'switch-bootstrap-m',
+            'table' => false,
+        ],
+        [
+            'name' => 'birth_date',
+            'type' => 'date',
+            'database' => 'nullable',
+            'rule' => 'nullable|date',
+            'help' => '',
+            'form_type' => 'date',
+            'table' => false,
+        ],
+        [
+            'name' => 'salary',
+            'type' => 'integer',
+            'database' => 'nullable',
+            'rule' => 'nullable|integer',
+            'help' => '',
+            'form_type' => 'none',
+            'table' => false,
+        ],
+        [
+            'name' => 'url',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => 'nullable|max:80|regex:/^[a-z0-9-]+$/|unique:users,url,',
+            'help' => 'Url should be unique, contain lowercase characters and numbers and -',
+            'form_type' => 'none',
+            'table' => false,
+        ],
+        [
+            'name' => 'website',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => 'nullable|url|max:190',
+            'help' => '',
+            'form_type' => '',
+            'table' => false,
+        ],
+        [
+            'name' => 'email_verified_at',
+            'type' => 'timestamp',
+            'database' => 'nullable',
+            'rule' => '',
+            'help' => '',
+            'form_type' => 'none',
+            'table' => false,
+        ],
+        [
+            'name' => 'activated',
+            'type' => 'boolean',
+            'database' => 'default',
+            'rule' => '',
+            'help' => '',
+            'form_type' => '',
+            'table' => false,
+        ],
+        [
+            'name' => 'status',
+            'type' => 'tinyInteger',
+            'database' => 'nullable',
+            'rule' => 'required|enum_key:\App\Enums\UserStatus',
+            'help' => '',
+            'form_type' => '',
+            'table' => false,
+        ],
+        [
+            'name' => 'password',
+            'type' => 'string',
+            'database' => '',
+            'rule' => 'nullable|confirmed|min:3|max:100',
+            'help' => 'If you let this field be empty in update password will not change.',
+            'form_type' => 'password',
+            'table' => false,
+        ],
+        
+    ];
 
 This CMS used this packages: 
 

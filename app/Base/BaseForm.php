@@ -41,6 +41,11 @@ class BaseForm extends Form
             if($database === 'unique' || strpos($rule, 'unique') !== false){
                 $rule .= $this->id;
             }
+
+            if($name === 'status'){
+                $rule = 'required|enum_value:' . \App\Enums\UserStatus::class;
+                // dd($rule);
+            }
             $option = [
                 'rules' => $rule,
                 'help_block' => [
