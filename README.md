@@ -7,7 +7,7 @@
 [![StyleCI](https://styleci.io/repos/30915528/shield)](https://styleci.io/repos/30915528)
 [![Total Downloads](https://img.shields.io/packagist/dt/faridsh69/cms.svg?style=flat-square)](https://packagist.org/packages/faridsh69/cms)
 
-This Laravel package that you should just define an array in each model then every thing will be ready nd ofcourse you can change as much as you want.
+This Laravel package that you should just define an array in each model then every thing will be ready and ofcourse you can change as much as you want.
 This array in model make the way easy for automatic create 
 	migrations, 
 	seeders, 
@@ -36,12 +36,13 @@ This array in model make the way easy for automatic create
 	'type': use for form and migrations that show type of column
 	'database': a method that will run affter each migration column like:
 		nullable, unique, default(true), unsigned
-	'rul': validation after form in update and create
+	'rule': validation after form in update and create
 	'help': help block under each field in forms
 	'form_type': type of each column, like
 		ckeditor, date, email, switch, checkbox, image, textarea, none(for dont show in db)
 	'table': boolean that use for show that item in tables
-	'relation': use for relation columns just need to define name of table
+	'relation': used for relation columns just need to define name of table
+
 
 	This is my array in blog model:
 
@@ -147,6 +148,7 @@ This array in model make the way easy for automatic create
             'table' => false,
         ],
     ];
+
 
     This is another sample for users table
 
@@ -263,7 +265,7 @@ This array in model make the way easy for automatic create
             'name' => 'status',
             'type' => 'tinyInteger',
             'database' => 'nullable',
-            'rule' => 'required|enum_key:\App\Enums\UserStatus',
+            'rule' => 'required',
             'help' => '',
             'form_type' => '',
             'table' => false,
@@ -279,6 +281,10 @@ This array in model make the way easy for automatic create
         ],
         
     ];
+
+
+
+## Used Packages
 
 This CMS used this packages: 
 
