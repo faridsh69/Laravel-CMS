@@ -39,7 +39,7 @@ class BaseListController extends Controller
         'title' => 'Admin Panel',
         'description' => 'Admin Panel Page For Best Cms In The World',
         'keywords' => '',
-        'image' => '',
+        'image' => '/cdn/upload/images/logo.png',
         'alert' => 'Advanced form with validation, ckeditor, multiselect, swith... !',
         'link_route' => '/',
         'link_name' => 'Dashboard',
