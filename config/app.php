@@ -138,7 +138,7 @@ return [
         'Cdn' => App\Services\CdnService::class,
         'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'Nestable' => Nestable\Facades\NestableService::class,
+        // 'Nestable' => Nestable\Facades\NestableService::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
