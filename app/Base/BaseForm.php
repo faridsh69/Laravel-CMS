@@ -74,7 +74,7 @@ class BaseForm extends Form
                 $option['attr'] = ['type' => 'email'];
             }
             elseif($form_type === 'password'){
-                $option['attr'] = ['type' => 'password'];
+                $option['attr'] = ['type' => 'password', 'autocomplete' => 'off'];
                 $option['value'] = '';
             }
             elseif($form_type === 'date'){

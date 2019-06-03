@@ -44,6 +44,8 @@ find / -name 'mysqldump'
 
 git update-index --assume-unchanged public_html/cdn/storage
 git rm --cached public_html/cdn/storage
+git config credential.helper store
+
 
 Encryption keys generated successfully.
 Personal access client created successfully.

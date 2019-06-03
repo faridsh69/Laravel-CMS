@@ -147,7 +147,7 @@ class User extends Authenticatable
             'name' => 'status',
             'type' => 'tinyInteger',
             'database' => 'nullable',
-            'rule' => 'required|enum_key:\App\Enums\UserStatus',
+            'rule' => 'required|enum_valuea:\App\Enums\UserStatus,false',
             'help' => '',
             'form_type' => '',
             'table' => false,
