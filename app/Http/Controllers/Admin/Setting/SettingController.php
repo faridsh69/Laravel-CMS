@@ -22,10 +22,15 @@ class SettingController extends BaseAdminController
 		return $LogViewerController->index();
 	}
 
-	public function getDeveloperOptionsApi()
+	public function getApi()
 	{
         $this->meta['title'] = __('API Manager');
 
-		return view('admin.setting.developer-options.api', ['meta' => $this->meta]);
+		return view('admin.setting.api', ['meta' => $this->meta]);
+	}
+
+	public function getAdvance()
+	{
+		return view('admin.setting.advance');
 	}
 }

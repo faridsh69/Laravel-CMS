@@ -18,4 +18,9 @@ class GeneralController extends BaseAdminController
 	{
         return $this->putSettingForm($this->section);
 	}
+
+	public function redirect()
+	{
+		return redirect()->route('admin.setting.general');
+	}
 }

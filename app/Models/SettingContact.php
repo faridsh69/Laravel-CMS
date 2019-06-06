@@ -17,6 +17,11 @@ class SettingContact extends Model
 
     public $columns = [
         [
+            'name' => 'email',
+            'type' => 'string',
+            'form_type' => 'email',
+        ],
+        [
             'name' => 'mobile',
             'type' => 'string',
             'form_type' => '',
@@ -25,6 +30,16 @@ class SettingContact extends Model
             'name' => 'phone',
             'type' => 'string',
             'form_type' => '',
+        ],
+        [
+            'name' => 'fax',
+            'type' => 'string',
+            'form_type' => '',
+        ],
+        [
+            'name' => 'address',
+            'type' => 'string',
+            'form_type' => 'textarea',
         ],
         [
             'name' => 'google_plus',
@@ -55,21 +70,6 @@ class SettingContact extends Model
             'name' => 'telegram',
             'type' => 'string',
             'form_type' => '',
-        ],
-        [
-            'name' => 'address',
-            'type' => 'string',
-            'form_type' => 'textarea',
-        ],
-        [
-            'name' => 'fax',
-            'type' => 'string',
-            'form_type' => '',
-        ],
-        [
-            'name' => 'email',
-            'type' => 'string',
-            'form_type' => 'email',
         ],
     ];
 

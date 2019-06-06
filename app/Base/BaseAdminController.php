@@ -36,7 +36,7 @@ class BaseAdminController extends Controller
         'description' => 'Admin Panel Page For Best Cms In The World',
         'keywords' => '',
         'image' => '',
-        'alert' => 'Advanced form with validation, ckeditor, multiselect, swith... !',
+        'alert' => '',
         'link_route' => '/',
         'link_name' => 'Dashboard',
         'search' => 0,

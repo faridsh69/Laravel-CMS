@@ -1,6 +1,24 @@
 <?php
 
 $models = Config::get('services.models');
+$models = [
+        'blog', // 1 +
+        'page', // 2 +
+        'category', // 3 +
+        'tag', // 4  
+        'media', // 5  
+        'comment', // 6
+        // 'setting', // 7 + 
+        'user', // 8 
+        'theme', // 9 
+        'block', // 10
+        'widget', // 11
+        //'seo' // 12 
+        'form', // 13
+        'report', // 14
+        'notification', // 15
+        'menu', // 16
+    ];
 foreach($models as $model_sm)
 {
 	$model = ucfirst($model_sm);
@@ -34,6 +52,7 @@ Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'as' => 'dash
 	Route::get('profile', 'DashboardController@getProfile')->name('profile');
 });
 Route::group(['prefix' => 'setting', 'namespace' => 'Setting', 'as' => 'setting.'], function () {
+	Route::get('', 'GeneralController@redirect')->name('general.redirect');
 	Route::get('general', 'GeneralController@index')->name('general');
 	Route::put('general', 'GeneralController@update')->name('general.update');
 
@@ -42,22 +61,20 @@ Route::group(['prefix' => 'setting', 'namespace' => 'Setting', 'as' => 'setting.
 
 	Route::get('developer', 'DeveloperController@index')->name('developer');
 	Route::put('developer', 'DeveloperController@update')->name('developer.update');
+	
+	Route::get('advance', 'SettingController@getAdvance')->name('advance');
+
+	Route::get('api', 'SettingController@getApi')->name('api');
 
 	Route::get('log', 'SettingController@getLog')->name('log');
 	Route::get('log-view', 'SettingController@getLogView')->name('log-view');
-	Route::group(['prefix' => 'backup', 'namespace' => 'Backup', 'as' => 'backup.'], function () {
-		Route::resource('list', 'ResourceController');
-		Route::get('', 'ResourceController@getRedirect')->name('redirect');
-	});
+
+	Route::resource('backup', 'BackupController');
+
 	Route::group(['prefix' => 'seo', 'namespace' => 'Seo', 'as' => 'seo.'], function () {
 		Route::get('setting', 'SeoController@getSetting')->name('setting');
 		Route::get('content-rules', 'SeoController@getContentRules')->name('content-rules');
 		Route::get('lazy-loading', 'SeoController@getLazyLoading')->name('lazy-loading');
-	});
-	Route::group(['prefix' => 'developer-options', 'as' => 'developer-options.'], function () {
-		Route::get('basic', 'SettingController@getDeveloperOptionsBasic')->name('basic');
-		Route::get('advance', 'SettingController@getDeveloperOptionsAdvance')->name('advance');
-		Route::get('api', 'SettingController@getDeveloperOptionsApi')->name('api');
 	});
 });
 Route::group(['prefix' => 'user', 'namespace' => 'User', 'as' => 'user.'], function () {

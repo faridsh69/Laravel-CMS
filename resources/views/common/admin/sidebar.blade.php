@@ -116,16 +116,31 @@
 				],
 				[
 					'id' => 7-3,
+					'title' => 'Developer',
+					'route' => 'admin.setting.developer',
+				],
+				[
+					'id' => 7-4,
+					'title' => 'Advance',
+					'route' => 'admin.setting.advance',
+				],
+				[
+					'id' => 7-5,
+					'title' => 'API',
+					'route' => 'admin.setting.api',
+				],
+				[
+					'id' => 7-6,
 					'title' => 'Logs',
 					'route' => 'admin.setting.log',
 				],
 				[
-					'id' => 7-4,
+					'id' => 7-7,
 					'title' => 'Backup',
 					'route' => 'admin.setting.backup.list.index',
 				],
 				[
-					'id' => 12,
+					'id' => 7-8,
 					'title' => 'Seo',
 					'route' => 'seo',
 					'type' => 'submenu',
@@ -142,26 +157,6 @@
 						[
 							'title' => 'Lazy Loading',
 							'route' => 'admin.setting.seo.lazy-loading',
-						],
-					],
-				],
-				[
-					'id' => 7-5,
-					'title' => 'Developer Options',
-					'type' => 'submenu',
-					'route' => 'developer-options',
-					'children' => [	
-						[
-							'title' => 'Basic',
-							'route' => 'admin.setting.developer-options.basic',
-						],
-						[
-							'title' => 'Advance',
-							'route' => 'admin.setting.developer-options.advance',
-						],
-						[
-							'title' => 'API',
-							'route' => 'admin.setting.developer-options.api',
 						],
 					],
 				],
