@@ -43,13 +43,13 @@ $output = [
         ->pluck('name.common')
         ->toArray(),
     'models' => [
-        'blog', // 1
-        'page', // 2
-        'category', // 3
-        'tag', // 4 
-        'media', // 5 
+        'blog', // 1 +
+        'page', // 2 +
+        'category', // 3 +
+        'tag', // 4  
+        'media', // 5  
         'comment', // 6
-        'setting', // 7 
+        'setting', // 7 + 
         'user', // 8 
         'theme', // 9 
         'block', // 10

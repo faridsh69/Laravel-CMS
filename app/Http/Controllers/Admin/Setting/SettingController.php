@@ -3,25 +3,67 @@
 namespace App\Http\Controllers\Admin\Setting;
 
 use App\Base\BaseAdminController;
+use Auth;
+use Config;
+use File;
 use Rap2hpoutre\LaravelLogViewer\LogViewerController;
 
 class SettingController extends BaseAdminController
 {
 	public $model = 'Setting';
-	// public $meta = [
- //        'title' => 'Settings Manager',
- //        'description' => 'Admin Panel Page For Best Cms In The World',
- //        'keywords' => '',
- //        'image' => '',
- //        'alert' => 'Advanced form with validation, ckeditor, multiselect, swith... !',
- //        'link_route' => '/',
- //        'link_name' => 'Dashboard',
- //        'search' => 0,
- //    ];
 
 	public function getGeneral()
 	{
-		return view('admin.blog');
+		$this->authorize('index', $this->model_class);
+		$model = Config::get('base');
+
+        $form = $this->form_builder->create($this->model_form, [
+            'method' => 'PUT',
+            'url' => route('admin.setting.general'),
+            'class' => 'm-form m-form--state',
+            'id' =>  'admin_form',
+            'model' => $model,
+        ]);
+
+        return view('admin.list.form', ['form' => $form, 'meta' => $this->meta]);
+	}
+
+	public function putGeneral()
+	{
+        $this->authorize('index', $this->model_class);
+		$model = Config::get('base');
+
+        $form = $this->form_builder->create($this->model_form, [
+            'model' => $model,
+        ]);
+
+        if (!$form->isValid()) {
+            return redirect()->back()->withErrors($form->getErrors())->withInput();
+        }
+        $updated_data = $form->getFieldValues();
+        foreach(collect($this->model_columns)
+        	->where('type', 'boolean')
+        	->pluck('name') as $boolean_column)
+        {
+            if(!isset($updated_data[$boolean_column]))
+            {
+                $updated_data[$boolean_column] = 0;
+            }
+        }
+
+        $base_data = config('base');
+		$new_settings = array_merge($base_data, $updated_data);
+		$newSettings = var_export($new_settings, 1);
+		File::put(config_path() . '/base.php', "<?php\n return $newSettings ;");
+
+        activity($this->model)
+            ->causedBy(Auth::user())
+            ->log(json_encode($model));
+            
+        $this->request->session()->flash('alert-success', $this->model . ' Updated Successfully!');
+
+        return redirect()->route('admin.setting.general');
+
 	}
 
 	public function getContact()

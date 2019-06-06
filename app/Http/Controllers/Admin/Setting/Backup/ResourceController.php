@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Setting\Backup;
 
-use App\Base\BaseListController;
+use App\Base\BaseAdminController;
 use Artisan;
 use Auth;
 use Illuminate\Http\Request;
 use Storage;
 
-class ResourceController extends BaseListController
+class ResourceController extends BaseAdminController
 {
     public $model = 'Backup';
 

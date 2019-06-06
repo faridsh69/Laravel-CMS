@@ -17,32 +17,81 @@ class Setting extends Model
 
     public $columns = [
         [
-            'name' => 'title',
+            'name' => 'app_name',
             'type' => 'string',
-            'database' => 'unique',
-            'rule' => 'required',
-            'help' => '',
-            'form_type' => 'none',
-            'table' => true,
+            'form_type' => '',
         ],
         [
-            'name' => 'help',
+            'name' => 'app_url',
             'type' => 'string',
-            'database' => 'nullable',
-            'rule' => '',
-            'help' => '',
-            'form_type' => 'none',
-            'table' => true,
+            'form_type' => '',
         ],
         [
-            'name' => 'description',
-            'type' => 'text',
-            'database' => 'nullable',
-            'rule' => 'required',
-            'help' => '',
-            'form_type' => 'ckeditor',
-            'table' => true,
+            'name' => 'cdn_url',
+            'type' => 'string',
+            'form_type' => '',
         ],
+        [
+            'name' => 'default_meta_title',
+            'type' => 'string',
+            'form_type' => '',
+        ],
+        [
+            'name' => 'default_meta_description',
+            'type' => 'string',
+            'form_type' => '',
+        ],
+        [
+            'name' => 'pagination_number',
+            'type' => 'string',
+            'form_type' => '',
+        ],
+        [
+            'name' => 'crisp',
+            'type' => 'string',
+            'form_type' => '',
+        ],
+        [
+            'name' => 'google_analytics',
+            'type' => 'string',
+            'form_type' => '',
+        ],
+        [
+            'name' => 'throttle',
+            'type' => 'string',
+            'form_type' => '',
+        ],
+        [
+            'name' => 'default_meta_image',
+            'type' => 'string',
+            'form_type' => 'image',
+        ],
+        [
+            'name' => 'default_user_image',
+            'type' => 'string',
+            'form_type' => 'image',
+        ],
+        [
+            'name' => 'logo',
+            'type' => 'string',
+            'form_type' => 'image',
+        ],
+        [
+            'name' => 'app_debug',
+            'type' => 'boolean',
+            'form_type' => 'checkbox',
+        ],
+        [
+            'name' => 'google_index',
+            'type' => 'boolean',
+            'form_type' => 'checkbox',
+        ],
+        [
+            'name' => 'app_env',
+            'type' => 'boolean',
+            'form_type' => 'switch-bootstrap-m',
+        ],
+        
     ];
 
     public function getColumns()

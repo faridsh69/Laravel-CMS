@@ -37,6 +37,11 @@ class SwitchBootstrapM extends FormField
         if($this->name === 'gender'){
             $options['choices'] = ['male', 'female'];
         }
+        elseif($this->name === 'app_env'){
+            $options['choices'] = ['production', 'development'];
+        }
+
+        
         $options['attr']['data-on-text'] = $options['choices'][0];
         $options['attr']['data-off-text'] = $options['choices'][1];
 

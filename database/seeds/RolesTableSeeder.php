@@ -14,8 +14,7 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        $models = ['blog', 'user', 'category'];
-        $models = Config::get('services.models');
+        $models = ['blog', 'user', 'category', 'page', 'setting'];
 
         foreach($models as $model)
         {
@@ -36,6 +35,7 @@ class RolesTableSeeder extends Seeder
             'page_manager',
             'category_manager',
             'user_manager',
+            'setting_manager',
         ]);
     }
 }

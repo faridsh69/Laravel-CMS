@@ -19,7 +19,9 @@ class BaseForm extends Form
 
     public function buildForm()
     {
-    	$this->id = $this->model ? $this->model->id : 0;
+        if( isset($this->model->id) ){
+        	$this->id = $this->model ? $this->model->id : 0;
+        }
 
         $this->addTop();
 
@@ -27,9 +29,9 @@ class BaseForm extends Form
         {
             $name = $column['name'];
             $type = $column['type'];
-            $rule = $column['rule'];
-            $help = $column['help'];
-            $database = $column['database'];
+            $rule = isset($column['rule']) ? $column['rule'] : null;
+            $help = isset($column['help']) ? $column['help'] : ' ';
+            $database = isset($column['database']) ? $column['database'] : null;
             $form_type = $column['form_type'];
             $relation = isset($column['relation']) ? $column['relation'] : '';
             $attr = null;

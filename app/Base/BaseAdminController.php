@@ -41,10 +41,13 @@ class BaseAdminController extends Controller
     ];
 
     public function __construct(Request $request, FormBuilder $form_builder)
-    {
+{
         $this->model_class = 'App\\Models\\' . $this->model;
+        $this->repository = new $this->model_class();
+        $this->model_columns = $this->repository->getColumns();
         $this->model_sm = lcfirst($this->model);
         $this->model_form = 'App\\Forms\\' . $this->model . 'Form';
+        $this->repository = new $this->model_class();
         $this->request = $request;
         $this->form_builder = $form_builder;
     }

@@ -35,6 +35,7 @@ Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'as' => 'dash
 });
 Route::group(['prefix' => 'setting', 'namespace' => 'Setting', 'as' => 'setting.'], function () {
 	Route::get('general', 'SettingController@getGeneral')->name('general');
+	Route::put('general', 'SettingController@putGeneral')->name('general.update');
 	Route::get('contact', 'SettingController@getContact')->name('contact');
 	Route::get('log', 'SettingController@getLog')->name('log');
 	Route::get('log-view', 'SettingController@getLogView')->name('log-view');
