@@ -36,8 +36,13 @@ Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'as' => 'dash
 Route::group(['prefix' => 'setting', 'namespace' => 'Setting', 'as' => 'setting.'], function () {
 	Route::get('general', 'GeneralController@index')->name('general');
 	Route::put('general', 'GeneralController@update')->name('general.update');
+
 	Route::get('contact', 'ContactController@index')->name('contact');
 	Route::put('contact', 'ContactController@update')->name('contact.update');
+
+	Route::get('developer', 'DeveloperController@index')->name('developer');
+	Route::put('developer', 'DeveloperController@update')->name('developer.update');
+
 	Route::get('log', 'SettingController@getLog')->name('log');
 	Route::get('log-view', 'SettingController@getLogView')->name('log-view');
 	Route::group(['prefix' => 'backup', 'namespace' => 'Backup', 'as' => 'backup.'], function () {
@@ -49,10 +54,8 @@ Route::group(['prefix' => 'setting', 'namespace' => 'Setting', 'as' => 'setting.
 		Route::get('content-rules', 'SeoController@getContentRules')->name('content-rules');
 		Route::get('lazy-loading', 'SeoController@getLazyLoading')->name('lazy-loading');
 	});
-	Route::group(['prefix' => 'developer-options', 'namespace' => 'DeveloperOptions', 'as' => 'developer-options.'], function () {
-		Route::get('basic', 'BasicController@index')->name('basic');
-		Route::put('basic', 'BasicController@update')->name('basic.update');
-
+	Route::group(['prefix' => 'developer-options', 'as' => 'developer-options.'], function () {
+		Route::get('basic', 'SettingController@getDeveloperOptionsBasic')->name('basic');
 		Route::get('advance', 'SettingController@getDeveloperOptionsAdvance')->name('advance');
 		Route::get('api', 'SettingController@getDeveloperOptionsApi')->name('api');
 	});

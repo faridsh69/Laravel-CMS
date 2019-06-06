@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Setting\DeveloperOptions;
+namespace App\Http\Controllers\Admin\Setting;
 
 use App\Base\BaseAdminController;
 
-class BasicController extends BaseAdminController
+class DeveloperController extends BaseAdminController
 {
-	public $model = 'SettingBasic';
-	public $section = 'basic';
+	public $model = 'SettingDeveloper';
+	public $section = 'developer';
 
 	public function index()
 	{
