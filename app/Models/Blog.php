@@ -76,9 +76,9 @@ class Blog extends Model
             'name' => 'meta_image',
             'type' => 'string',
             'database' => 'nullable',
-            'rule' => 'nullable|max:191|url',
+            'rule' => 'nullable|max:191',
             'help' => 'Meta image shows when this page is shared in social networks.',
-            'form_type' => '',
+            'form_type' => 'image',
             'table' => false,
         ],
         [

@@ -2,9 +2,9 @@
 
 namespace App\Enums;
 
-use BenSampo\Enum\Enum;
+use App\Enum\BaseEnum;
 
-final class Days extends Enum
+final class Days extends BaseEnum
 {
     const Monday    = 1;
     const Tuesday   = 2;

@@ -2,10 +2,9 @@
 
 namespace App\Enums;
 
-use BenSampo\Enum\Enum;
-// use BenSampo\Enum\Contracts\LocalizedEnum;
+use App\Enum\BaseEnum;
 
-final class Countries extends Enum
+final class Countries extends BaseEnum
 {
     const AF = "Afghanistan";
     const AL = "Albania";

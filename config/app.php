@@ -70,8 +70,6 @@ return [
         Propaganistas\LaravelPhone\PhoneServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
-        BenSampo\Enum\EnumServiceProvider::class,
-
         /*
          * Application Service Providers...
          */

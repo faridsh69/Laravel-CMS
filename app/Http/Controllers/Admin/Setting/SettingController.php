@@ -29,7 +29,7 @@ class SettingController extends BaseAdminController
 		return view('admin.blog');
 	}
 
-	public function getLog(LogViewerController $LogViewerController)
+	public function getLog()
 	{
         $this->meta['title'] = __('Log Manager');
         $this->meta['alert'] = 'Log of system with all traces!';

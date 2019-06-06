@@ -2,9 +2,9 @@
 
 namespace App\Enums;
 
-use BenSampo\Enum\Enum;
+use App\Enum\BaseEnum;
 
-final class Months extends Enum
+final class Months extends BaseEnum
 {
     const January   = 1;
     const February  = 2;

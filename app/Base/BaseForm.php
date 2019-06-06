@@ -35,23 +35,25 @@ class BaseForm extends Form
             $attr = null;
             $choices = null;
 
+            // help
             if($help === ''){
                 $help = ' ';
             }
+
+            // rule
             if($database === 'unique' || strpos($rule, 'unique') !== false){
                 $rule .= $this->id;
             }
 
-            if($name === 'status'){
-                $rule = 'required|enum_value:' . \App\Enums\UserStatus::class;
-                // dd($rule);
-            }
+            // options
             $option = [
                 'rules' => $rule,
                 'help_block' => [
                     'text' => $help,
                 ]
             ];
+
+            // type
             if($relation || $form_type === 'none'){
                 continue;
             }
@@ -83,6 +85,14 @@ class BaseForm extends Form
             elseif($form_type === 'textarea'){
                 $input_type = 'textarea';
                 $option['attr'] = ['rows' => 3];
+            }elseif($form_type === 'enum'){
+                $input_type = 'select';
+                $option =  [
+                    'choices' => \App\Enums\UserStatus::data,
+                    'attr' => ['class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker'],
+                ];
+            }elseif($form_type === 'image'){
+                $input_type = 'image';
             }
             
             $this->add($column['name'], $input_type, $option);

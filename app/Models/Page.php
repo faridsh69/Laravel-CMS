@@ -78,7 +78,7 @@ class Page extends Model
             'database' => 'nullable',
             'rule' => 'nullable|max:191|url',
             'help' => 'Meta image shows when this page is shared in social networks.',
-            'form_type' => '',
+            'form_type' => 'image',
             'table' => false,
         ],
         [

@@ -3,13 +3,12 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Enums\UserStatus;
+use App\Enums\CastsEnums;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
-use BenSampo\Enum\Traits\CastsEnums;
 
 class User extends Authenticatable
 {
@@ -17,7 +16,6 @@ class User extends Authenticatable
     use HasApiTokens;
     use Notifiable;
     use SoftDeletes;
-    use CastsEnums;
 
     public $guarded = [];
 
@@ -28,11 +26,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    protected $enumCasts = [
-        'status' => UserStatus::class,
-    ];
-
 
     public $columns = [
         [
@@ -147,9 +140,9 @@ class User extends Authenticatable
             'name' => 'status',
             'type' => 'tinyInteger',
             'database' => 'nullable',
-            'rule' => 'required|enum_valuea:\App\Enums\UserStatus,false',
+            'rule' => 'required|in:1,2,3',
             'help' => '',
-            'form_type' => '',
+            'form_type' => 'enum',
             'table' => false,
         ],
         [
