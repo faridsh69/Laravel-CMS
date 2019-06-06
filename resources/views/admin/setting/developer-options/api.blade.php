@@ -1,13 +1,12 @@
 @extends('layout.admin')
 
 @push('script')
-<script src="{{ Cdn::asset('js/admin/vue.min.js') }}"></script>
-<script src="{{ Cdn::asset('js/admin/vue-2.js') }}"></script>
-<script src="{{ Cdn::asset('js/admin/axios.js') }}"></script>
-<script src="{{ Cdn::asset('js/vue-components/passport.js') }}"></script>
-<script src="{{ Cdn::asset('js/admin/vue-runner.js') }}"></script>
+<script src="{{ Cdn::asset('js/admin/vue/vue.min.js') }}"></script>
+<script src="{{ Cdn::asset('js/admin/vue/vue-2.js') }}"></script>
+<script src="{{ Cdn::asset('js/admin/vue/axios.js') }}"></script>
+<script src="{{ Cdn::asset('js/admin/vue/vue-components/passport.js') }}"></script>
+<script src="{{ Cdn::asset('js/admin/vue/vue-runner.js') }}"></script>
 <link rel="stylesheet" href="{{ Cdn::asset('css/admin/panel.css') }}">
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
 @endpush
 
 @section('content')

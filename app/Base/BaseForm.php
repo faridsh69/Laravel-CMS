@@ -20,7 +20,7 @@ class BaseForm extends Form
     public function buildForm()
     {
         if( isset($this->model->id) ){
-        	$this->id = $this->model ? $this->model->id : 0;
+            $this->id = $this->model ? $this->model->id : 0;
         }
 
         $this->addTop();

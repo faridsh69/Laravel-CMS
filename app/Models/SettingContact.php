@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Setting extends Model
+class SettingContact extends Model
 {
     use SoftDeletes;
 
@@ -17,81 +17,60 @@ class Setting extends Model
 
     public $columns = [
         [
-            'name' => 'app_name',
+            'name' => 'mobile',
             'type' => 'string',
             'form_type' => '',
         ],
         [
-            'name' => 'app_url',
+            'name' => 'phone',
             'type' => 'string',
             'form_type' => '',
         ],
         [
-            'name' => 'cdn_url',
+            'name' => 'google_plus',
             'type' => 'string',
             'form_type' => '',
         ],
         [
-            'name' => 'default_meta_title',
+            'name' => 'twitter',
             'type' => 'string',
             'form_type' => '',
         ],
         [
-            'name' => 'default_meta_description',
+            'name' => 'facebook',
             'type' => 'string',
             'form_type' => '',
         ],
         [
-            'name' => 'pagination_number',
+            'name' => 'skype',
             'type' => 'string',
             'form_type' => '',
         ],
         [
-            'name' => 'crisp',
+            'name' => 'instagram',
             'type' => 'string',
             'form_type' => '',
         ],
         [
-            'name' => 'google_analytics',
+            'name' => 'telegram',
             'type' => 'string',
             'form_type' => '',
         ],
         [
-            'name' => 'throttle',
+            'name' => 'address',
+            'type' => 'string',
+            'form_type' => 'textarea',
+        ],
+        [
+            'name' => 'fax',
             'type' => 'string',
             'form_type' => '',
         ],
         [
-            'name' => 'default_meta_image',
+            'name' => 'email',
             'type' => 'string',
-            'form_type' => 'image',
+            'form_type' => 'email',
         ],
-        [
-            'name' => 'default_user_image',
-            'type' => 'string',
-            'form_type' => 'image',
-        ],
-        [
-            'name' => 'logo',
-            'type' => 'string',
-            'form_type' => 'image',
-        ],
-        [
-            'name' => 'app_debug',
-            'type' => 'boolean',
-            'form_type' => 'checkbox',
-        ],
-        [
-            'name' => 'google_index',
-            'type' => 'boolean',
-            'form_type' => 'checkbox',
-        ],
-        [
-            'name' => 'app_env',
-            'type' => 'boolean',
-            'form_type' => 'switch-bootstrap-m',
-        ],
-        
     ];
 
     public function getColumns()
