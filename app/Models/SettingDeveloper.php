@@ -17,59 +17,24 @@ class SettingDeveloper extends Model
 
     public $columns = [
         [
-            'name' => 'mobile123',
+            'name' => 'cdn_url',
             'type' => 'string',
             'form_type' => '',
         ],
         [
-            'name' => 'phone123',
+            'name' => 'throttle',
             'type' => 'string',
             'form_type' => '',
         ],
         [
-            'name' => 'google_plus',
-            'type' => 'string',
-            'form_type' => '',
+            'name' => 'app_debug',
+            'type' => 'boolean',
+            'form_type' => 'checkbox',
         ],
         [
-            'name' => 'twitter',
-            'type' => 'string',
-            'form_type' => '',
-        ],
-        [
-            'name' => 'facebook',
-            'type' => 'string',
-            'form_type' => '',
-        ],
-        [
-            'name' => 'skype',
-            'type' => 'string',
-            'form_type' => '',
-        ],
-        [
-            'name' => 'instagram',
-            'type' => 'string',
-            'form_type' => '',
-        ],
-        [
-            'name' => 'telegram',
-            'type' => 'string',
-            'form_type' => '',
-        ],
-        [
-            'name' => 'address',
-            'type' => 'string',
-            'form_type' => 'textarea',
-        ],
-        [
-            'name' => 'fax',
-            'type' => 'string',
-            'form_type' => '',
-        ],
-        [
-            'name' => 'email',
-            'type' => 'string',
-            'form_type' => 'email',
+            'name' => 'app_env',
+            'type' => 'boolean',
+            'form_type' => 'switch-bootstrap-m',
         ],
     ];
 

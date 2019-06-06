@@ -27,11 +27,6 @@ class SettingGeneral extends Model
             'form_type' => '',
         ],
         [
-            'name' => 'cdn_url',
-            'type' => 'string',
-            'form_type' => '',
-        ],
-        [
             'name' => 'default_meta_title',
             'type' => 'string',
             'form_type' => '',
@@ -57,11 +52,6 @@ class SettingGeneral extends Model
             'form_type' => '',
         ],
         [
-            'name' => 'throttle',
-            'type' => 'string',
-            'form_type' => '',
-        ],
-        [
             'name' => 'default_meta_image',
             'type' => 'string',
             'form_type' => 'image',
@@ -77,21 +67,10 @@ class SettingGeneral extends Model
             'form_type' => 'image',
         ],
         [
-            'name' => 'app_debug',
-            'type' => 'boolean',
-            'form_type' => 'checkbox',
-        ],
-        [
             'name' => 'google_index',
             'type' => 'boolean',
             'form_type' => 'checkbox',
-        ],
-        [
-            'name' => 'app_env',
-            'type' => 'boolean',
-            'form_type' => 'switch-bootstrap-m',
-        ],
-        
+        ],        
     ];
 
     public function getColumns()
