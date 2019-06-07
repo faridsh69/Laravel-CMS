@@ -69,7 +69,7 @@ Route::group(['prefix' => 'setting', 'namespace' => 'Setting', 'as' => 'setting.
 	Route::get('log', 'SettingController@getLog')->name('log');
 	Route::get('log-view', 'SettingController@getLogView')->name('log-view');
 
-	Route::resource('backup', 'BackupController');
+	Route::resource('backup', 'BackupController')->name('backup', 'backup');
 
 	Route::group(['prefix' => 'seo', 'namespace' => 'Seo', 'as' => 'seo.'], function () {
 		Route::get('setting', 'SeoController@getSetting')->name('setting');

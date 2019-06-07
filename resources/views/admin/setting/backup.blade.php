@@ -30,9 +30,9 @@
         <td>{{ \Carbon\Carbon::parse($backup['last_modified'])->diffInDays() }}</td>
         <td>
             <a class="btn btn-xs btn-default"
-               href="{{ route('admin.setting.backup.list.show', $backup['file_name']) }}">
+               href="{{ route('admin.setting.backup.show', $backup['file_name']) }}">
                	<i class="fa fa-cloud-download"></i> Download</a>
-            <a class="btn btn-xs btn-danger" href="{{ route('admin.setting.backup.list.edit', $backup['file_name']) }}">
+            <a class="btn btn-xs btn-danger" href="{{ route('admin.setting.backup.edit', $backup['file_name']) }}">
             	<i class="fa fa-trash-o"></i> Delete</a>
         </td>
     </tr>

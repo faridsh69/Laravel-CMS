@@ -29,8 +29,13 @@ class SettingController extends BaseAdminController
 		return view('admin.setting.api', ['meta' => $this->meta]);
 	}
 
+	public function redirect()
+	{
+		return redirect()->route('admin.setting.general');
+	}
+
 	public function getAdvance()
 	{
-		return view('admin.setting.advance');
+		return view('admin.setting.advance', ['meta' => $this->meta]);
 	}
 }

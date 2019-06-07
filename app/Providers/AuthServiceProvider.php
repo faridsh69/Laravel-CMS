@@ -4,9 +4,11 @@ namespace App\Providers;
 
 use App\Policies\BlogPolicy;
 use App\Policies\PagePolicy;
+use App\Policies\CategoryPolicy;
 use App\Policies\UserPolicy;
 use App\Policies\SettingPolicy;
-use App\Policies\CategoryPolicy;
+use App\Policies\TagPolicy;
+use App\Policies\FormPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Passport\Passport;
@@ -21,9 +23,11 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         'App\Models\Blog' => BlogPolicy::class,
         'App\Models\Page' => PagePolicy::class,
+        'App\Models\Category' => CategoryPolicy::class,
         'App\Models\User' => UserPolicy::class,
         'App\Models\Setting' => SettingPolicy::class,
-        'App\Models\Category' => CategoryPolicy::class,
+        'App\Models\Tag' => TagPolicy::class,
+        'App\Models\Form' => FormPolicy::class,
     ];
 
     /**

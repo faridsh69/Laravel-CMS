@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Setting\Backup;
+namespace App\Http\Controllers\Admin\Setting;
 
 use App\Base\BaseAdminController;
 use Artisan;
@@ -8,7 +8,7 @@ use Auth;
 use Illuminate\Http\Request;
 use Storage;
 
-class ResourceController extends BaseAdminController
+class BackupController extends BaseAdminController
 {
     public $model = 'Backup';
 
@@ -25,7 +25,7 @@ class ResourceController extends BaseAdminController
         $this->backup_name = config('backup.backup.name');
         $this->meta['title'] = __($this->model . ' Manager');
         $this->meta['alert'] = 'Create and manage Database & Files Backup Easily !';
-        $this->meta['link_route'] = route('admin.setting.backup.list.create');
+        $this->meta['link_route'] = route('admin.setting.backup.create');
         $this->meta['link_name'] = 'Create New Backup';
     }
 
@@ -54,8 +54,8 @@ class ResourceController extends BaseAdminController
         }
         // reverse the backups, so the newest one would be on top
         $backups = array_reverse($backups);
-
-        return view('admin.setting.backup.index', ['backups' => $backups, 'meta' => $this->meta]);
+        
+        return view('admin.setting.backup', ['backups' => $backups, 'meta' => $this->meta]);
     }
 
     /**

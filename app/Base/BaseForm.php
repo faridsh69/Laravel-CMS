@@ -14,7 +14,7 @@ class BaseForm extends Form
     {
         $class_name = 'App\\Models\\' . $this->model_name;
         $model = new $class_name();
-        $this->columns = $model->columns;
+        $this->columns = $model->getColumns();
     }
 
     public function buildForm()

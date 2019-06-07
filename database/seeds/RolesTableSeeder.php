@@ -14,11 +14,30 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        $models = ['blog', 'user', 'category', 'page', 'setting'];
+        $models = [
+            'blog', 
+            'page', 
+            'category', 
+            'user', 
+            'setting',
+            'tag',
+            'media',
+            'form',
+        ];
+        // // 'comment', // 6
+        // 'theme', // 9 
+        // 'block', // 10
+        // 'widget', // 11
+        // //'seo' // 12 
+        // 'form', // 13
+        // // 'report', // 14
+        // // 'notification', // 15
+        // // 'menu', // 16
 
+        $roles = [];
+        $user = User::where('email', 'farid.sh69@gmail.com')->first();
         foreach($models as $model)
         {
-            $role = Role::updateOrCreate(['name' => $model . '_manager']);
             $permission = [];
             $permission[] = Permission::updateOrCreate(['name' => 'index_' . $model]);
             $permission[] = Permission::updateOrCreate(['name' => 'view_' . $model]);
@@ -26,16 +45,11 @@ class RolesTableSeeder extends Seeder
             $permission[] = Permission::updateOrCreate(['name' => 'update_' . $model]);
             $permission[] = Permission::updateOrCreate(['name' => 'delete_' . $model]);
 
+            $role = Role::updateOrCreate(['name' => $model . '_manager']);
+            $roles[] = $role->name;
             $role->syncPermissions($permission);
         }
-
-        $user = User::where('email', 'farid.sh69@gmail.com')->first();
-        $user->syncRoles([
-            'blog_manager',
-            'page_manager',
-            'category_manager',
-            'user_manager',
-            'setting_manager',
-        ]);
+        
+        $user->syncRoles($roles);
     }
 }
