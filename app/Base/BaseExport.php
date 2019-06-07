@@ -29,8 +29,10 @@ class BaseExport implements FromCollection, WithHeadings
         $class_name = 'App\\Models\\' . $model;
         $this->model = new $class_name();
         $this->fields = collect($this->model->getColumns())->pluck('name')->toArray();
-        $this->fields[] = 'created_at';
-        $this->fields[] = 'updated_at';
-        $this->fields[] = 'deleted_at';
+        if($model !== 'Tag'){
+            $this->fields[] = 'created_at';
+            $this->fields[] = 'updated_at';
+            $this->fields[] = 'deleted_at';
+        }
     }
 }

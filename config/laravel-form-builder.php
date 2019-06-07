@@ -54,7 +54,9 @@ return [
     
     'field_icons' => [
         'url' => 'la-sitemap',
+        'slug' => 'la-sitemap',
         'title' => 'la-header',
+        'name' => 'la-header',
         'keywords' => 'la-key',
         'meta_image' => 'la-image',
         'canonical_url' => 'la-globe',

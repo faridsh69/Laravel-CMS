@@ -63,13 +63,14 @@ Route::group(['prefix' => 'setting', 'namespace' => 'Setting', 'as' => 'setting.
 	Route::put('developer', 'DeveloperController@update')->name('developer.update');
 	
 	Route::get('advance', 'SettingController@getAdvance')->name('advance');
+	Route::get('advance/command/{command}', 'SettingController@getCommand')->name('advance.command');
 
 	Route::get('api', 'SettingController@getApi')->name('api');
 
 	Route::get('log', 'SettingController@getLog')->name('log');
 	Route::get('log-view', 'SettingController@getLogView')->name('log-view');
 
-	Route::resource('backup', 'BackupController')->name('backup', 'backup');
+	Route::resource('backup', 'BackupController');
 
 	Route::group(['prefix' => 'seo', 'namespace' => 'Seo', 'as' => 'seo.'], function () {
 		Route::get('setting', 'SeoController@getSetting')->name('setting');

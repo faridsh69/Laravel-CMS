@@ -85,7 +85,7 @@ class Blog extends Model
             'name' => 'activated',
             'type' => 'boolean',
             'database' => 'default',
-            'rule' => '',
+            'rule' => 'boolean',
             'help' => '',
             'form_type' => '', // switch-m
             'table' => false,
@@ -94,7 +94,7 @@ class Blog extends Model
             'name' => 'google_index',
             'type' => 'boolean',
             'database' => 'default',
-            'rule' => '',
+            'rule' => 'boolean',
             'help' => 'Google will index this page.',
             'form_type' => 'checkbox',
             'table' => false,

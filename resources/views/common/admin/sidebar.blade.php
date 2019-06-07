@@ -137,7 +137,7 @@
 				[
 					'id' => 7-7,
 					'title' => 'Backup',
-					'route' => 'admin.setting.backup',
+					'route' => 'admin.setting.backup.index',
 				],
 				[
 					'id' => 7-8,
