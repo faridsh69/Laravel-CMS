@@ -58,7 +58,7 @@ class BaseAdminController extends Controller
 
     public function getSettingForm($section)
     {
-        // $this->authorize('index', $this->model_class);
+        $this->authorize('index', $this->model_class);
         $model = Config::get('base-' . $section);
         $form = $this->form_builder->create($this->model_form, [
             'method' => 'PUT',
@@ -73,7 +73,7 @@ class BaseAdminController extends Controller
 
     public function putSettingForm($section)
     {
-        // $this->authorize('index', $this->model_class);
+        $this->authorize('index', $this->model_class);
         $model = Config::get('base-' . $section);
 
         $form = $this->form_builder->create($this->model_form, [

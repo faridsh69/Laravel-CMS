@@ -10,6 +10,11 @@
 				</span>
 				<h3 class="m-portlet__head-text">
 					ID: {{ $data['id'] }}
+					@if(isset($data['first_name']))
+						<a href="{{ route('admin.user.login', $data['id']) }}" class="btn btn-success btn-sm m-btn m-btn--custom m-btn--air m-btn--pill">
+							Login with this user
+						</a>
+					@endif
 				</h3>
 			</div>
 		</div>

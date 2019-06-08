@@ -79,6 +79,7 @@ Route::group(['prefix' => 'setting', 'namespace' => 'Setting', 'as' => 'setting.
 	});
 });
 Route::group(['prefix' => 'user', 'namespace' => 'User', 'as' => 'user.'], function () {
+	Route::get('login/{id}', 'UserController@getlogin')->name('login');
 	Route::get('role', 'UserController@getRole')->name('role');
 	Route::get('permission', 'UserController@getPermission')->name('permission');
 	Route::get('registration-setting', 'UserController@getRegistrationSetting')->name('registration-setting');
