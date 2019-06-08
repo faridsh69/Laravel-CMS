@@ -7,6 +7,8 @@ use App\Policies\PagePolicy;
 use App\Policies\CategoryPolicy;
 use App\Policies\UserPolicy;
 use App\Policies\SettingGeneralPolicy;
+use App\Policies\SettingContactPolicy;
+use App\Policies\SettingDeveloperPolicy;
 use App\Policies\TagPolicy;
 use App\Policies\FormPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -25,7 +27,11 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Page' => PagePolicy::class,
         'App\Models\Category' => CategoryPolicy::class,
         'App\Models\User' => UserPolicy::class,
+        'App\Models\Permission' => UserPolicy::class,
+        'App\Models\Role' => UserPolicy::class,
         'App\Models\SettingGeneral' => SettingGeneralPolicy::class,
+        'App\Models\SettingContact' => SettingContactPolicy::class,
+        'App\Models\SettingDeveloper' => SettingDeveloperPolicy::class,
         'App\Models\Tag' => TagPolicy::class,
         'App\Models\Form' => FormPolicy::class,
     ];

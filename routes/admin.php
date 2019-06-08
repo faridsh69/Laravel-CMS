@@ -79,10 +79,13 @@ Route::group(['prefix' => 'setting', 'namespace' => 'Setting', 'as' => 'setting.
 	});
 });
 Route::group(['prefix' => 'user', 'namespace' => 'User', 'as' => 'user.'], function () {
-	Route::get('login/{id}', 'UserController@getlogin')->name('login');
-	Route::get('role', 'UserController@getRole')->name('role');
-	Route::get('permission', 'UserController@getPermission')->name('permission');
-	Route::get('registration-setting', 'UserController@getRegistrationSetting')->name('registration-setting');
+	Route::get('login/{id}', 'ResourceController@getlogin')->name('login');
+
+	Route::get('role/datatable', 'RoleController@getDatatable')->name('role.datatable');
+	Route::resource('role', 'RoleController');
+
+	Route::get('permission/datatable', 'PermissionController@getDatatable')->name('permission.datatable');
+	Route::resource('permission', 'PermissionController');
 });
 Route::group(['prefix' => 'report', 'namespace' => 'Report', 'as' => 'report.'], function () {
 	Route::get('index', 'ResourceController@index')->name('index');

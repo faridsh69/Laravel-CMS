@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
+use Route;
 use View;
 
 class BaseListController extends Controller
@@ -55,7 +56,9 @@ class BaseListController extends Controller
         $this->request = $request;
         $this->form_builder = $form_builder;
         $this->model_columns = $this->repository->getColumns();
-        $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.index');
+        if(Route::has('admin.' . $this->model_sm . '.list.index')){
+            $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.index');
+        }
         $this->meta['link_name'] = __($this->model . ' Manager');
     }
 
@@ -69,11 +72,11 @@ class BaseListController extends Controller
         $this->authorize('index', $this->model_class);
         $this->meta['title'] = __($this->model . ' Manager');
         $this->meta['alert'] = 'Advanced table with sort, search, paginate and status changing!';
-        $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.create');
+        if(Route::has('admin.' . $this->model_sm . '.list.index')){
+            $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.create');
+        }
         $this->meta['link_name'] = __('Create New ' . $this->model);
         $this->meta['search'] = 1;
-
-        
 
         $columns = [];
         foreach(collect($this->model_columns)->where('table', true) as $column)
@@ -314,7 +317,7 @@ class BaseListController extends Controller
     public function getDatatable()
     {
         $model = $this->repository->orderBy('id', 'desc')->get();
-        
+
         return datatables()
             ->of($model)
             ->addColumn('show_url', function($model) {

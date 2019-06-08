@@ -58,7 +58,8 @@ return [
                  * Match only routes whose paths match this pattern (use * as a wildcard to match any characters).
                  */
                 'prefixes' => [
-                    'api/*',
+                    '',
+                    // 'api/*',
                     // 'users/*',
                 ],
 

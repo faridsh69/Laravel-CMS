@@ -21,6 +21,7 @@ class RolesTableSeeder extends Seeder
             'user', 
             'settinggeneral',
             'settingcontact',
+            'settingdeveloper',
             'tag',
             'media',
             'form',
@@ -37,6 +38,7 @@ class RolesTableSeeder extends Seeder
 
         $roles = [];
         $user = User::where('email', 'farid.sh69@gmail.com')->first();
+        $user_2 = User::where('email', 'farid.sh692@gmail.com')->first();
         foreach($models as $model)
         {
             $permission = [];
@@ -52,5 +54,6 @@ class RolesTableSeeder extends Seeder
         }
         
         $user->syncRoles($roles);
+        $user_2->syncRoles($roles);
     }
 }

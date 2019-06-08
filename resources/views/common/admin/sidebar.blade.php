@@ -175,15 +175,11 @@
 				],
 				[
 					'title' => 'Role',
-					'route' => 'admin.user.role',
+					'route' => 'admin.user.role.index',
 				],
 				[
 					'title' => 'Permission',
-					'route' => 'admin.user.permission',
-				],
-				[
-					'title' => 'Registration Setting',
-					'route' => 'admin.user.registration-setting',
+					'route' => 'admin.user.permission.index',
 				],
 			],
 		],
