@@ -14,7 +14,7 @@ class BaseFactory
             'blog', // 1 +
             'page', // 2 +
             'category', // 3 +
-            // 'tag', // 4  
+            'tag', // 4  
             // 'media', // 5  
             // 'comment', // 6
             // // 'setting', // 7 + 
@@ -30,9 +30,6 @@ class BaseFactory
         ];
         foreach($models as $model)
         {
-            if($model === 'tag' || $model === 'media' || $model === 'comment' || $model === 'report'){
-                continue;
-            }
             $model = ucfirst($model);
             $class_name = 'App\\Models\\' . $model;
             $model = new $class_name();

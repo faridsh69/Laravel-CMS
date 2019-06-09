@@ -4,44 +4,43 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use PragmaRX\Countries\Package\Countries;
 
 class GeneralController extends Controller
 {
     public function getCountries()
     {
-    	$countries = Countries::where('name.common', '!=', '')
-            ->pluck('name.common')
-            ->toArray();
+    	// $countries = Countries::where('name.common', '!=', '')
+     //        ->pluck('name.common')
+     //        ->toArray();
 
-    	$output = [
-    	    'data' => $countries,
-    	];
+    	// $output = [
+    	//     'data' => $countries,
+    	// ];
 
     	return response()->json($output);
     }
 
     public function getCities($country_name)
     {
-        $dataa = \Config::get('constants.countries');
+        // $dataa = \Config::get('constants.countries');
 
-        $country = Countries::where('name.common', ucfirst($country_name))
-            ->first()
-            ->toArray();
+        // $country = Countries::where('name.common', ucfirst($country_name))
+        //     ->first()
+        //     ->toArray();
 
-        $output = [
-            'data' => '',
-        ];
-        if($country){
-            $cities  = $country->hydrate('cities')
-                ->cities
-                ->pluck('name');
-            $output = [
-                'data' => $cities,
-            ];
-        }
+        // $output = [
+        //     'data' => '',
+        // ];
+        // if($country){
+        //     $cities  = $country->hydrate('cities')
+        //         ->cities
+        //         ->pluck('name');
+        //     $output = [
+        //         'data' => $cities,
+        //     ];
+        // }
 
-        return response()->json($output);
+        // return response()->json($output);
     }
 
     public function getUser(Request $request)

@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Conner\Tagging\Model\Tag as TagSpatie;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Tag extends TagSpatie
 {
+    use SoftDeletes;
+    
     public $columns = [
         [
             'name' => 'name',

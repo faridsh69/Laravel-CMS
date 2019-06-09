@@ -25,6 +25,7 @@ class CreateTagsTable extends Migration
 			$table->string('name', 125);
 			$table->boolean('suggest')->default(false);
 			$table->integer('count')->unsigned()->default(0); // count of how many times this tag was used
+            $table->softDeletes();
 		});
 
 		Schema::create('tagging_tag_groups', function(Blueprint $table) {

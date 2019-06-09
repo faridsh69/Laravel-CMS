@@ -39,9 +39,6 @@ $output = [
         // 'GITLAB',
         // 'BITBUCKET',
     ],
-    'countries' => PragmaRX\Countries\Package\Countries::where('name.common', '!=', '')
-        ->pluck('name.common')
-        ->toArray(),
     'models' => [
         'blog', // 1 +
         'page', // 2 +
