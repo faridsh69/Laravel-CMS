@@ -2,20 +2,21 @@
 
 return [
 
-    'cdn' => [
-        'url' => env('CDN_URL', 'cdn-eric.com'),
-        'format' => 'css|js|eot|woff|ttf|jpg|jpeg|png|gif|svg',
-    ],
+    // 'cdn' => [
+    //     'url' => env('CDN_URL', 'cdn-eric.com'),
+    //     'format' => 'css|js|eot|woff|ttf|jpg|jpeg|png|gif|svg',
+    // ],
+    // 'name' => env('APP_NAME', 'Laravel'),
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => config('0-general.app_name'),
 
-    'env' => env('APP_ENV', 'production'),
+    'env' => config('0-developer.app_env'),
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => config('0-developer.app_debug'),
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => config('0-general.app_url'),
 
-    'asset_url' => env('ASSET_URL', null),
+    'asset_url' => config('0-developer.cdn_url'),
 
     'timezone' => 'UTC',
 
