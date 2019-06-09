@@ -1,8 +1,8 @@
 @extends('layout.admin')
 
 @push('scripts')
-	<script src="{{ Cdn::asset('admin/report.js') }}"></script>
-	<script src="{{ Cdn::asset('admin/calendar.js') }}"></script>
+	<script src="{{ asset('admin/report.js') }}"></script>
+	<script src="{{ asset('admin/calendar.js') }}"></script>
 @endpush
 
 @section('content')

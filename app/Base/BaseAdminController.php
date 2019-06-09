@@ -61,7 +61,7 @@ class BaseAdminController extends Controller
     {
         $this->meta['title'] = __(ucfirst($section) . ' Setting Manager');
         $this->authorize('index', $this->model_class);
-        $model = Config::get('base-' . $section);
+        $model = Config::get('0-' . $section);
         $form = $this->form_builder->create($this->model_form, [
             'method' => 'PUT',
             'url' => route('admin.setting.' . $section),
@@ -76,7 +76,7 @@ class BaseAdminController extends Controller
     public function putSettingForm($section)
     {
         $this->authorize('index', $this->model_class);
-        $model = Config::get('base-' . $section);
+        $model = Config::get('0-' . $section);
 
         $form = $this->form_builder->create($this->model_form, [
             'model' => $model,
@@ -95,11 +95,11 @@ class BaseAdminController extends Controller
             }
         }
 
-        $base_data = config('base-' . $section);
+        $base_data = config('0-' . $section);
         $new_settings = array_merge($base_data, $updated_data);
         $newSettings = var_export($new_settings, 1);
         $new_config = "<?php\n return $newSettings ;"; 
-        File::put(config_path() . '/base-' . $section . '.php', $new_config);
+        File::put(config_path() . '/0-' . $section . '.php', $new_config);
 
         activity($this->model)
             ->causedBy(Auth::user())

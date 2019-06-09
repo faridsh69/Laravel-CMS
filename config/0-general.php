@@ -1,8 +1,8 @@
 <?php
  return array (
-  'app_name' => 'Laravel',
+  'app_name' => 'Farid',
   'app_url' => 'http://eric.com',
-  'default_meta_title' => 'Laravel',
+  'default_meta_title' => 'Farid',
   'default_meta_description' => 'https://github.com/faridsh69/cms is this cms github.',
   'pagination_number' => '10',
   'crisp' => 'Afsadfasdf',

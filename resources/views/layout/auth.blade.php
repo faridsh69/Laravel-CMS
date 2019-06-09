@@ -14,13 +14,13 @@
 		<link rel="canonical" href="{{ url()->current() }}">
 
 	    <!--begin::Base Styles -->
-		<link href="{{ Cdn::asset('css/vendors.bundle.css') }}" rel="stylesheet" />
-		<link href="{{ Cdn::asset('css/style.bundle.css') }}" rel="stylesheet" />
+		<link href="{{ asset('css/vendors.bundle.css') }}" rel="stylesheet" />
+		<link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet" />
 		<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-		<link href="{{ Cdn::asset('css/custome.css') }}" rel="stylesheet" />
+		<link href="{{ asset('css/custome.css') }}" rel="stylesheet" />
 		<!--end::Base Styles -->
 		
-		<link rel="shortcut icon" href="{{ Cdn::asset('upload/images/favicon.png') }}" />
+		<link rel="shortcut icon" href="{{ asset('upload/images/favicon.png') }}" />
 	</head>
 	<body class="m--skin- m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default"  >
 		<!-- begin:: Page -->
@@ -31,7 +31,7 @@
 						@yield('content')
 					</div>
 				</div>
-				<div class="m-grid__item m-grid__item--fluid m-grid m-grid--center m-grid--hor m-grid__item--order-tablet-and-mobile-1	m-login__content" style="background-image: url({{ Cdn::asset('images/login-backgournd.jpg') }} )">
+				<div class="m-grid__item m-grid__item--fluid m-grid m-grid--center m-grid--hor m-grid__item--order-tablet-and-mobile-1	m-login__content" style="background-image: url({{ asset('images/login-backgournd.jpg') }} )">
 					<div class="m-grid__item m-grid__item--middle">
 						<h3 class="m-login__welcome">
 							{{ __('Join Our Community') }}
@@ -47,7 +47,7 @@
 		</div>
 		@include('common.admin.scripts')
 
-	<!-- <script src="{{ Cdn::asset('js/admin/login.js') }}"></script> -->
+	<!-- <script src="{{ asset('js/admin/login.js') }}"></script> -->
 	</body>
 	<!-- end::Body -->
 </html>

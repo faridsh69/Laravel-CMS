@@ -11,10 +11,11 @@ php artisan make:export BlogsExport --model=Blog
 php artisan make:import BlogsImport --model=Blog
 php artisan make:mail UserRegistered
 php artisan make:policy BlogPolicy --model=Blog
-php artisan backup:run
+php artisan make:notification News
 php artisan make:test BlogTest --unit
 php artisan make:rule SeoHeading
 php artisan make:form Forms/BlogForm --fields="title:text, url:text, short_content:textarea, content:textarea, status:checkbox"
+php artisan backup:run
 php artisan passport:client --password
 php artisan passport:install
 php artisan apidoc:generate

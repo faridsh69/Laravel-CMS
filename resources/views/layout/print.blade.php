@@ -2,8 +2,8 @@
 <html>
 <head>
 	<title>Print PDF</title>
-	<link href="{{ Cdn::asset('css/vendors.bundle.css') }}" rel="stylesheet" type="text/css" />
-	<link href="{{ Cdn::asset('css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ asset('css/vendors.bundle.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<div class="container-fluid">

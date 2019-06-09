@@ -19,9 +19,4 @@ class SeoController extends BaseAdminController
 
 		return view('admin.setting.seo.rules', ['meta' => $this->meta]);
 	}
-
-	public function getLazyLoading ()
-	{
-		return view('admin.blog');
-	}
 }

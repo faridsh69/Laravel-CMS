@@ -21,6 +21,9 @@ class SettingTest extends TestCase
         'setting.seo.content-rules',
         'report.index',
         'dashboard.index',
+        'media.list.index',
+        'user.permission.index',
+        'user.role.index',
     ];
 
 	private function _checkMethod($mothod_name)

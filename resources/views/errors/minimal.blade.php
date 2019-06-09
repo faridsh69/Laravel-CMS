@@ -45,14 +45,14 @@
 			}
 			.c-error-1-row{
 				flex: 1;
-				background-image: url("{{ Cdn::asset('images/error.jpg') }}");
+				background-image: url("{{ asset('images/error.jpg') }}");
 				background-position: center;
 			    background-repeat: no-repeat;
 			    background-attachment: fixed;
 			    background-size: cover;
 			}
 		</style>
-		<link rel="shortcut icon" href="{{ Cdn::asset('upload/images/favicon.png') }}" />
+		<link rel="shortcut icon" href="{{ asset('upload/images/favicon.png') }}" />
 	</head>
 	<!-- end::Head -->
     <!-- end::Body -->
