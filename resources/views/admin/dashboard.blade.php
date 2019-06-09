@@ -1,6 +1,7 @@
 @extends('layout.admin')
 
 @section('content')
+
 <pre>
 
 		CHANGELOG: Version 0.9.16

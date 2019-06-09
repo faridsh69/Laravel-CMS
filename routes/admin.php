@@ -15,7 +15,7 @@ $models = [
         'widget', // 11
         //'seo' // 12 
         'form', // 13
-        'report', // 14
+        // 'report', // 14
         'notification', // 15
         'menu', // 16
     ];
@@ -73,6 +73,7 @@ Route::group(['prefix' => 'setting', 'namespace' => 'Setting', 'as' => 'setting.
 	Route::resource('backup', 'BackupController');
 
 	Route::group(['prefix' => 'seo', 'namespace' => 'Seo', 'as' => 'seo.'], function () {
+		Route::get('', 'SeoController@getCrowl')->name('crowl');
 		Route::get('crowl', 'SeoController@getCrowl')->name('crowl');
 		Route::get('content-rules', 'SeoController@getContentRules')->name('content-rules');
 		Route::get('lazy-loading', 'SeoController@getLazyLoading')->name('lazy-loading');
@@ -88,5 +89,5 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'as' => 'user.'], funct
 	Route::resource('permission', 'PermissionController');
 });
 Route::group(['prefix' => 'report', 'namespace' => 'Report', 'as' => 'report.'], function () {
-	Route::get('index', 'ResourceController@index')->name('index');
+	Route::get('', 'ResourceController@index')->name('index');
 });

@@ -180,6 +180,19 @@
 			],
 		],
 		[
+			'id' => 14,
+			'title' => 'Report',
+			'route' => 'report',
+			'type' => 'submenu',
+			'icon' => 'flaticon-graphic-2',
+			'children' => [	
+				[
+					'title' => 'Report list',
+					'route' => 'admin.report.index',
+				],
+			],
+		],
+		[
 			'id' => 13,
 			'title' => 'Form',
 			'route' => 'form',
@@ -189,19 +202,6 @@
 				[
 					'title' => 'Form list',
 					'route' => 'admin.form.list.index',
-				],
-			],
-		],
-		[
-			'id' => 14,
-			'title' => 'Report',
-			'route' => 'report',
-			'type' => 'submenu',
-			'icon' => 'flaticon-graphic-2',
-			'children' => [	
-				[
-					'title' => 'Report list',
-					'route' => 'admin.report.list.index',
 				],
 			],
 		],

@@ -11,6 +11,7 @@ use App\Policies\SettingContactPolicy;
 use App\Policies\SettingDeveloperPolicy;
 use App\Policies\TagPolicy;
 use App\Policies\FormPolicy;
+use App\Policies\ReportPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Passport\Passport;
@@ -33,6 +34,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\SettingContact' => SettingContactPolicy::class,
         'App\Models\SettingDeveloper' => SettingDeveloperPolicy::class,
         'App\Models\Tag' => TagPolicy::class,
+        'App\Models\Report' => ReportPolicy::class,
         'App\Models\Form' => FormPolicy::class,
     ];
 

@@ -25,6 +25,7 @@ class RolesTableSeeder extends Seeder
             'tag',
             'media',
             'form',
+            'report',
         ];
         // // 'comment', // 6
         // 'theme', // 9 
