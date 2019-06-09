@@ -151,10 +151,6 @@
 							'route' => 'admin.setting.seo.content-rules',
 						],
 						[
-							'title' => 'Lazy Loading',
-							'route' => 'admin.setting.seo.lazy-loading',
-						],
-						[
 							'title' => 'Crowl Site',
 							'route' => 'admin.setting.seo.crowl',
 						],

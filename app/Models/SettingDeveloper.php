@@ -32,6 +32,11 @@ class SettingDeveloper extends Model
             'form_type' => 'checkbox',
         ],
         [
+            'name' => 'lazy_loading',
+            'type' => 'boolean',
+            'form_type' => 'checkbox',
+        ],
+        [
             'name' => 'app_env',
             'type' => 'boolean',
             'form_type' => 'switch-bootstrap-m',

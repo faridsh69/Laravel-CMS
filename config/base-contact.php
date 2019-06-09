@@ -10,6 +10,5 @@
   'skype' => 'skype_id123123',
   'facebook' => 'facebook_id2312',
   'twitter' => 'twitter_id231231',
-  'google' => 'gplus_id',
   'google_plus' => '1231',
 ) ;
