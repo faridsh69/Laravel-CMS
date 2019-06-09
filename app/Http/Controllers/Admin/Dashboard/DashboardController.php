@@ -15,6 +15,6 @@ class DashboardController extends BaseAdminController
         $this->meta['title'] = __($this->model . '');
         $this->meta['alert'] = 'Admin Panel Dashboard For Best Cms In The World With LARAVEL!';
 
-        return view('admin.dashboard', ['meta' => $this->meta]);
+        return view('admin.report', ['meta' => $this->meta]);
     }
 }
