@@ -3,7 +3,7 @@
 @section('content')
 <pre>
 
-		CHANGELOG: Version 0.9.14
+		CHANGELOG: Version 0.9.16
 
 Milestone 1: (finished)
 	1 init laravel

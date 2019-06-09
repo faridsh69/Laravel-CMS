@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers\Admin\Setting\Seo;
 
-use App\Http\Controllers\Controller;
+use App\Base\BaseAdminController;
 
-class SeoController extends Controller
+class SeoController extends BaseAdminController
 {
-	public function getSetting()
+	public function getCrowl()
 	{
-		return view('admin.blog');
+		$this->meta['title'] = 'Seo Crwol Website';
+
+		return view('admin.setting.seo.crowl', ['meta' => $this->meta]);
 	}
 
 	public function getContentRules()
 	{
-		return view('admin.blog');
+		$this->meta['title'] = 'Seo Content Rules';
+
+		return view('admin.setting.seo.rules', ['meta' => $this->meta]);
 	}
 
 	public function getLazyLoading ()

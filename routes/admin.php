@@ -73,7 +73,7 @@ Route::group(['prefix' => 'setting', 'namespace' => 'Setting', 'as' => 'setting.
 	Route::resource('backup', 'BackupController');
 
 	Route::group(['prefix' => 'seo', 'namespace' => 'Seo', 'as' => 'seo.'], function () {
-		Route::get('setting', 'SeoController@getSetting')->name('setting');
+		Route::get('crowl', 'SeoController@getCrowl')->name('crowl');
 		Route::get('content-rules', 'SeoController@getContentRules')->name('content-rules');
 		Route::get('lazy-loading', 'SeoController@getLazyLoading')->name('lazy-loading');
 	});

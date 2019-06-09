@@ -147,16 +147,16 @@
 					'icon' => 'flaticon-multimedia-1',
 					'children' => [	
 						[
-							'title' => 'Setting',
-							'route' => 'admin.setting.seo.setting',
-						],
-						[
 							'title' => 'Content Rules',
 							'route' => 'admin.setting.seo.content-rules',
 						],
 						[
 							'title' => 'Lazy Loading',
 							'route' => 'admin.setting.seo.lazy-loading',
+						],
+						[
+							'title' => 'Crowl Site',
+							'route' => 'admin.setting.seo.crowl',
 						],
 					],
 				],
