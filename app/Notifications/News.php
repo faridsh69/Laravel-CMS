@@ -11,14 +11,15 @@ class News extends Notification
 {
     use Queueable;
 
+    public $data;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -30,8 +31,8 @@ class News extends Notification
     public function via($notifiable)
     {
         return [
-            'mail',
-            // 'database',
+            // 'mail',
+            'database',
         ];
     }
 
@@ -44,8 +45,8 @@ class News extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
+                    ->line($this->data)
+                    // ->action('Notification Action', url('/'))
                     ->line('Thank you for using our application!');
     }
 
@@ -58,7 +59,7 @@ class News extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'data' => $this->data,
         ];
     }
 }

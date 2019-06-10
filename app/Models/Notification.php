@@ -14,7 +14,7 @@ class Notification extends Model
             'rule' => '',
             'help' => '',
             'form_type' => 'none',
-            'table' => true,
+            'table' => false,
         ],
         [
             'name' => 'data',
@@ -32,7 +32,7 @@ class Notification extends Model
             'rule' => 'required',
             'help' => '',
             'form_type' => '',
-            'table' => true,
+            'table' => false,
         ],
         [
             'name' => 'notifiable_id',

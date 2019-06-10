@@ -11,13 +11,12 @@ class ResourceController extends BaseListController
 {
     public $model = 'Notification';
 
-    public function index()
-    {
-    	$data = 'hii';
-    	$users = User::where('id', '<', 100)->get();  	
-    	Notification::send($users, new News($data));
-    	// $user->notify(new InvoicePaid($invoice));
+    // public function index()
+    // {
+    // 	$data = 'sagtole';
+    // 	$users = User::where('id', '<', 100)->get();  	
+    // 	Notification::send($users, new News($data));
 
-    	dd(1);
-    }
+    // 	dd(1);
+    // }
 }
