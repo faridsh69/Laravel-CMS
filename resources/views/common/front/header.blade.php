@@ -35,6 +35,10 @@
 
 	<!-- start::Base Styles -->
 	<link rel="stylesheet" href="{{ asset('bootstrap/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('front/css/bs-rtl-awsome-owl.css') }}">
+	<link rel="stylesheet" href="{{ asset('front/css/app.css') }}">
+	<link rel="stylesheet" href="{{ asset('front/css/uikit-rtl.min.css') }}">
+
 	<script src="{{ asset('bootstrap/jquery.min.js') }}"></script>
 	<script src="{{ asset('bootstrap/popper.min.js') }}"></script>
 	<script src="{{ asset('bootstrap/bootstrap.min.js') }}"></script>
@@ -42,5 +46,6 @@
 	<!--end::Base Styles -->
 	<link rel="shortcut icon" href="{{ asset('upload/images/favicon.png') }}" />
 
+	<script src="{{ asset('front/js/uikit.min.js') }}"></script>
 	@stack('style')
 </head>

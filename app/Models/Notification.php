@@ -22,7 +22,7 @@ class Notification extends Model
             'database' => '',
             'rule' => 'required',
             'help' => '',
-            'form_type' => '',
+            'form_type' => 'textarea',
             'table' => true,
         ],
         [
@@ -31,7 +31,7 @@ class Notification extends Model
             'database' => '',
             'rule' => 'required',
             'help' => '',
-            'form_type' => '',
+            'form_type' => 'none',
             'table' => false,
         ],
         [
@@ -40,7 +40,7 @@ class Notification extends Model
             'database' => '',
             'rule' => 'required|numeric',
             'help' => '',
-            'form_type' => '',
+            'form_type' => 'none',
             'table' => true,
         ], 
     ];

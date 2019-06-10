@@ -1,3 +1,1 @@
-<script>
-	console.log('scripts');
-</script>
+<script src="{{ asset('front/js/owl.carousel.min.js') }}"></script>

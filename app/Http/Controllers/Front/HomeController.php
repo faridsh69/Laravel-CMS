@@ -35,28 +35,28 @@ class HomeController extends Controller
 
         $blocks = [];
         $blocks[] = ['widget_type' => 'menu', 'widget_id' => 1];
-        $blocks[] = ['widget_type' => 'header', 'widget_id' => 2];
-        $blocks[] = ['widget_type' => 'slider', 'widget_id' => 4];
-        $blocks[] = ['widget_type' => 'breadcrumb', 'widget_id' => 4];
-        $blocks[] = ['widget_type' => 'features', 'widget_id' => 4];
-        $blocks[] = ['widget_type' => 'counting', 'widget_id' => 3];
+        $blocks[] = ['widget_type' => 'header', 'widget_id' => 1];
+        $blocks[] = ['widget_type' => 'slider', 'widget_id' => 1];
+        $blocks[] = ['widget_type' => 'breadcrumb', 'widget_id' => 1];
+        $blocks[] = ['widget_type' => 'features', 'widget_id' => 1];
+        $blocks[] = ['widget_type' => 'counting', 'widget_id' => 1];
         $blocks[] = [
             'blocks' => [
-                ['column' => 6, 'widget_type' => 'countdown', 'widget_id' => 4],
-                ['column' => 6, 'widget_type' => 'customer_review', 'widget_id' => 4],
+                ['column' => 6, 'widget_type' => 'countdown', 'widget_id' => 1],
+                ['column' => 6, 'widget_type' => 'customer_review', 'widget_id' => 1],
             ],
         ];
         $blocks[] = [
             'blocks' => [
-                ['column' => 3, 'widget_type' => 'news', 'widget_id' => 4],
-                ['column' => 9, 'widget_type' => 'form', 'widget_id' => 4],
+                ['column' => 3, 'widget_type' => 'news', 'widget_id' => 1],
+                ['column' => 9, 'widget_type' => 'form', 'widget_id' => 1],
             ],
         ];
         $blocks[] = [
             'blocks' => [
-                ['column' => 3, 'widget_type' => 'partner', 'widget_id' => 4],
-                ['column' => 6, 'widget_type' => 'googlemap', 'widget_id' => 4],
-                ['column' => 3, 'widget_type' => 'statics', 'widget_id' => 4],
+                ['column' => 3, 'widget_type' => 'partner', 'widget_id' => 1],
+                ['column' => 6, 'widget_type' => 'googlemap', 'widget_id' => 1],
+                ['column' => 3, 'widget_type' => 'statics', 'widget_id' => 1],
             ],
         ];
         $blocks[] = [ 'widget_type' => 'footer', 'widget_id' => 3];

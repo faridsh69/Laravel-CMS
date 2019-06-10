@@ -28,5 +28,4 @@ class RoleForm extends BaseForm
             'attr' => ['multiple' => 'true', 'class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker', 'data-live-search' => 'true'],
         ]);
     }
-
 }
