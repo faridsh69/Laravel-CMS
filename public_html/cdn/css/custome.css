@@ -32,3 +32,8 @@
 .padding-20{
 	padding: 20px !important;
 }
+.seperate{
+	border: 1px solid black;
+	margin-bottom: 20px;
+	min-height: 20px;
+}
