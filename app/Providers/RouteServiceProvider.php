@@ -40,7 +40,13 @@ class RouteServiceProvider extends ServiceProvider
 
     protected function mapAdminRoutes()
     {
+        $admin_domain = 'admin.eric.com';
+        $base_domain = \Request::getHost();
+        if(strpos($base_domain, "admin") !== false){
+            $admin_domain = $base_domain;
+        }
         Route::middleware(['web', 'throttle:15,0.2', 'auth'])
+            ->domain($admin_domain)
             ->as('admin.')
             ->namespace($this->namespace . '\Admin')
             ->group(base_path('routes/admin.php'));
