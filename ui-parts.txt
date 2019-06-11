@@ -1,0 +1,167 @@
+1-Slider:
+	1-http://www.prosez.com/
+	2-https://smartslider3.com/static/
+	3-https://smartslider3.com/product-showcase-page-mobile-app/
+	https://websima.com/#portfolio2
+	https://www.mcmaster.ca/
+	https://ueno.co/work/reuters-news-app
+	https://www.sissa.it/
+	https://www.sfu.ca/
+	https://www.chrono24.com/#gref
+	https://www.blogger.com/about/?r=1-null_user
+	http://www.thegreat.agency/
+	https://www.north2.net/
+	https://www.everandever.co/
+2-Show you business features:
+	1-https://boostedboards.com/
+	2-https://theenvironmentalpartnership.org/what-were-doing/
+	3-http://www.prosez.com/#Industry
+	*https://carleton.ca/     ===> do
+	*http://www.blogphoto.tv/    ===> do
+	*https://www.mediafire.com/   ===>  do
+	http://www.nurturedigital.com/
+3-Partners,
+	0-https://anetwork.ir/en/
+	2-https://www.futurelearn.com/partners
+	*3-https://www.gv.com/portfolio/ ==>  do
+	http://www.ipm.ac.ir/fa/
+	https://www.twosmokingbarrels.co.uk/about/our-clients.php
+	https://www.pinterest.com/pin/443323157061820610/
+	https://www.mercedes-benz.com/en/
+	http://www.canistream.it/
+	https://www.cappen.com/en/about
+	*http://www.nurturedigital.com/   ==>  do
+
+4-Countings -> for show how many users, project done, etc
+	1-https://anetwork.ir/en/
+	2-https://www.smartsheet.com/s/manage-projects?s=1&c=3&m=3001&a=278853859107&k=project%20management&mtp=b&adp=1t1&net=g&dev=c&devm=&plc=&gclid=CjwKCAjw8LTmBRBCEiwAbhh-6KNxqcXFg6_JR9netPBaI771-T51MAAHpife55dA2xMnU9BJkEpoEhoC18IQAvD_BwE
+	- 3-https://boostedboards.com/
+	- https://www.umontreal.ca/
+5-show your site statistics:
+	-  1-https://i.pinimg.com/originals/4e/71/69/4e7169d67e3821d7c7c39d204ab73fe6.png
+	2-https://qvdesign.wordpress.com/2012/03/07/beautiful-design-chart-innovations-from-qliktech-and-the-elephant-in-the-dashboard/
+	- 3-https://dribbble.com/shots/1885376-LPCloud-Dashboard
+	https://de.reuters.com/
+	* https://www.awwwards.com/sites/agence-ebullition
+6-social media icons:
+	- 1-https://www.vandelaydesign.com/free-social-media-icons/
+	- 2-http://gdj.graphicdesignjunction.com/wp-content/uploads/2013/02/flaticons-socialmediaicons.jpg
+	- 3-https://elements.envato.com/social-media-icons-R8X6EX
+	4-https://elements.envato.com/social-media-icons-6DLSCG
+	* https://www.jhornig.com/
+	* http://www.niloulab.com/
+	* https://parswebserver.com/
+	* https://www.protest.eu/de/
+	https://www.teachersguild.org/
+	- https://www.nowness.com/
+	https://blog.hubspot.com/marketing/10-commandments-diy-marketing-design
+	* https://parall.ax/
+	https://www.merci-michel.com/contact/
+	* https://www.viens-la.com/
+7-counting down for time to start your events:
+	 - 1-https://i.pinimg.com/originals/19/10/98/1910986e27a2295713444a99ce9a7511.jpg
+	-  2-https://dribbble.com/shots/6265423-Daily-UI-Challenge-014-Countdown-Timer
+	- 3-https://dribbble.com/shots/2369565-Daily-UI-14-Countdown-Timer
+	- 4-https://dribbble.com/shots/6430318-Countdown-Timer-UI-Design-Dark-Version
+	- https://www.stinkstudios.com/
+	https://countingdownto.com/
+	-https://www.aliexpress.com/item/Super-Large-Digital-LED-Alarm-Clock-Wall-Clock-Remote-Control-Countdown-Timer-Sports-Timer-Stopwatch/32496237492.html
+	https://marketplace.magento.com/mageplaza-module-countdown-timer.html
+
+8-customers review:
+	* 0-http://cafetarah.ir/Saadatrent/index.html
+	-  1-https://www.socialmediatoday.com/social-business/social-media-customer-service-statistics-and-trends-infographic
+	2-https://get.chownow.com/testimonials-reviews
+	* 3-https://www.booker.com/customers
+	- 4-https://blog.hubspot.com/service/customer-journey-map
+9-contact us,
+	1-https://anetwork.ir/en/
+	2-https://www.google.com/contact/
+	3-https://www.multichoice.com/contact-us/
+	https://www.franshalsmuseum.nl/en/discover/about/contact/
+	https://www.lahautesociete.com/contact
+	http://refresh-studio.com/contact
+	https://www.studiometa.fr/
+	https://agence-belle-epoque.fr/en/contact
+	https://www.reputationsquad.com/contact
+	https://toyfight.co/
+10-menu,
+	1-https://www.google.com/analytics/tag-manager/use-policy/
+	2-https://www.multichoice.com/contact-us/
+	http://www.feedmusic.com/
+	https://www.franshalsmuseum.nl/en/discover/about/contact/
+	https://www.franshalsmuseum.nl/en/
+	https://www.lahautesociete.com/savoir-faire/metier
+	https://www.hellomonday.com/
+	http://vr.ultranoir.com/
+	https://www.buildinamsterdam.com/cases
+	https://booreiland.amsterdam/
+	https://bearideas.fr/en/who-we-are/
+	https://www.cappen.com/en//
+	https://www.the-artery.com/
+	http://www.veintidosgrados.com/
+	http://www.panicstudio.tv/en/
+	http://dreamteam.pl/contact
+	https://waaark.com/
+	https://www.werkstatt.fr/
+	https://www.signesduquotidien.org/
+11-google map:
+	1-https://dribbble.com/shots/3096959-Directions-Module-UI-Challenge -> I try to add them
+	2-https://dribbble.com/shots/2443129-Dark-UI-Map-Dashboard?1452178107 -> I try to add them
+	3-https://dribbble.com/shots/3078960-Topvet-Desktop-Web-App-Search -> I try to add them
+	https://crypton.trading/
+	http://www.nightshift.fr/about/
+	https://www.weareenvoy.com/about
+	https://www.rodesk.com/contact/
+12-form:
+	0-https://wpforms.com/beautiful-contact-form-designs-you-can-steal/
+	1-https://dribbble.com/shots/2804008-Sign-Up-for-form-creation?webdesign=7998002518
+	2-https://dribbble.com/shots/2057830-Ceek-Landing-Page
+	3-https://cdn-images-1.medium.com/max/1600/1*ZOsCR_CVPlelrS4dnNivpw.png
+	https://www.opera.com/contact/support-form
+	https://www.franshalsmuseum.nl/en/discover/about/contact/
+	http://vr.ultranoir.com/fr/contact/
+	https://cuberto.com/contacts/
+	https://parall.ax/
+	https://www.exo-skills.com/
+13-custome media like video:
+	1-https://burnishcreative.com/
+	2-https://spot.film/
+	3-https://www.awwwards.com/websites/video/
+	http://www.panicstudio.tv/en/
+	http://movie-mark.com/
+	https://www.thedistrict.co.uk/
+	https://vimeo.com/
+14-search:
+	1-search result like google ui
+	http://www.etq-amsterdam.com/
+	http://minimums.com/
+	https://de.reuters.com/
+15-login panel:
+	1-https://colorlib.com/wp/wp-content/uploads/sites/2/login-form-v1.jpg
+	2-https://colorlib.com/wp/wp-content/uploads/sites/2/login-form-v3.jpg
+	3-https://colorlib.com/wp/wp-content/uploads/sites/2/login-form-v7.jpg
+	https://www.pinterest.com/pin/377598750005769775/
+	https://www.pinterest.com/pin/513832638717352220/
+	https://colorlib.com/wp/template/login-form-v20/
+	https://codepen.io/frytyler/pen/EGdtg
+	https://codepen.io/SirWags/pen/Jqnxf
+	https://codepen.io/marcobiedermann/pen/Fybpf
+	https://dribbble.com/shots/2548751-Day-001-Login-Form
+	https://codepen.io/truongnguyen322/pen/WBEQZm?&page=1
+	http://sayleslandmark.com/login-form/16-css-login-forms-3/
+	http://sayleslandmark.com/login-form/login-form-design-bootstrap-bootstrap-login-form-source-code/
+	http://sayleslandmark.com/login-form/login-form-page-computer-generated-animation-stock-video-footage/
+	https://www.elegantthemes.com/blog/divi-resources/free-divi-custom-login-page-extension-allows-you-to-easily-create-a-beautiful-login-experience-for-site-visitors?utm_source=Elegant+Themes&utm_campaign=b8a775049b-Divi_100_Daily&utm_medium=email&utm_term=0_c886a2fc0a-b8a775049b-53653317
+	https://codepen.io/amreshkanna/pen/JGaXWB?page=2
+	https://www.google.com/url?sa=i&source=imgres&cd=&cad=rja&uact=8&ved=2ahUKEwjOpaqKoMDiAhVN8uAKHcgyBJcQjRx6BAgBEAU&url=https%3A%2F%2Fwww.shutterstock.com%2Fimage-vector%2Flogin-page-form-design-black-glossy-787640398&psig=AOvVaw0HaF0_TIrcOVJ4EtRhszzR&ust=1559202499314369
+	https://www.shutterstock.com/image-vector/login-page-form-design-black-glossy-787640398	
+	https://dribbble.com/shots/2209520-Cloudify-iPhone-Login-Screen
+	https://csform.com/wp-content/uploads/2018/04/Embrace-login-animation.gif
+	https://www.google.com/imgres?imgurl=http%3A%2F%2Fs3-ap-southeast-1.amazonaws.com%2Fseeoutlook%2Fwp-content%2Fuploads%2F2018%2F04%2F06070958%2Flogin-page-1.jpg&imgrefurl=http%3A%2F%2Fseeoutlook.com%2Fportfolio-item%2Flogin-page-61%2F&docid=OWlKYJUs_xcYMM&tbnid=9MwDxEoddZzJiM%3A&vet=10ahUKEwi0oPmWoMDiAhVLhRoKHfXuAIQQMwijAShFMEU..i&w=1920&h=1200&bih=754&biw=1536&q=best%20login%20page&ved=0ahUKEwi0oPmWoMDiAhVLhRoKHfXuAIQQMwijAShFMEU&iact=mrc&uact=8#h=1200&imgdii=9MwDxEoddZzJiM:&vet=10ahUKEwi0oPmWoMDiAhVLhRoKHfXuAIQQMwijAShFMEU..i&w=1920
+  loading :
+  https://www.pinterest.com/pin/443323157061820610/
+  http://www.nurturedigital.com/work/
+  https://www.merci-michel.com/contact/
+kosklake  site
+https://www.cappen.com/en/about/

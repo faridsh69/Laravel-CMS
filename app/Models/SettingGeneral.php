@@ -67,6 +67,11 @@ class SettingGeneral extends Model
             'form_type' => 'image',
         ],
         [
+            'name' => 'favicon',
+            'type' => 'string',
+            'form_type' => 'image',
+        ],
+        [
             'name' => 'google_index',
             'type' => 'boolean',
             'form_type' => 'checkbox',

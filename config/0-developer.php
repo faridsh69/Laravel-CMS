@@ -5,4 +5,4 @@
   'app_debug' => 1,
   'lazy_loading' => '1',
   'app_env' => '1',
-) ;
+);
