@@ -3,27 +3,10 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Page;
 
-class HomeController extends Controller
+class PageController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function getHome()
-    {
-        return redirect()->route('admin.dashboard.index');
-    }
-
     public function index()
     {
         $meta = [
@@ -61,6 +44,14 @@ class HomeController extends Controller
         ];
         $blocks[] = [ 'widget_type' => 'footer', 'widget_id' => 3];
 
-        return view('front.home', ['blocks' => $blocks, 'meta' => $meta]);
+        return view('front.page.index', ['blocks' => $blocks, 'meta' => $meta]);
+    }
+
+    public function show($page_url)
+    {
+        $page = Page::where('url', $page_url)->first();
+        abort_if(!$page, 404);
+        dd($page);
+        return view('front.page.show' , ['page' => $page]);
     }
 }

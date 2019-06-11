@@ -34,7 +34,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapWebRoutes();
 
         $this->mapAdminRoutes();
-        
+
         $this->mapFrontRoutes();
     }
 
@@ -56,7 +56,6 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::middleware(['web'])
             ->as('front.')
-            ->prefix('front')
             ->namespace($this->namespace . '\Front')
             ->group(base_path('routes/front.php'));
     }
