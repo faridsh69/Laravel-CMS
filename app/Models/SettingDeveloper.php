@@ -41,6 +41,26 @@ class SettingDeveloper extends Model
             'type' => 'boolean',
             'form_type' => 'switch-bootstrap-m',
         ],
+        [
+            'name' => 'email_username',
+            'type' => 'string',
+            'form_type' => '',
+        ],
+        [
+            'name' => 'email_password',
+            'type' => 'string',
+            'form_type' => '',
+        ],
+        [
+            'name' => 'email_defult_subject',
+            'type' => 'string',
+            'form_type' => '',
+        ],
+        [
+            'name' => 'email_defult_ccc',
+            'type' => 'string',
+            'form_type' => '',
+        ],
     ];
 
     public function getColumns()
