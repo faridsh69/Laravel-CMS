@@ -35,4 +35,5 @@
 .col-seperate{
 	margin-bottom: 20px;
 	min-height: 20px;
+	border: 1px solid black;
 }

@@ -30,14 +30,14 @@ class RouteServiceProvider extends ServiceProvider
     public function map()
     {
         $this->mapAdminRoutes();
+        $this->mapWebRoutes();
         $this->mapFrontRoutes();
         $this->mapApiRoutes();
-        $this->mapWebRoutes();
     }
 
     protected function mapAdminRoutes()
     {
-        $admin_domain = 'admin.eric.com';
+        $admin_domain = 'admin.menew.com';
         $base_domain = \Request::getHost();
         if(strpos($base_domain, "admin") !== false){
             $admin_domain = $base_domain;

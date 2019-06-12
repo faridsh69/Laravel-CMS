@@ -3,6 +3,7 @@
 @include('common.front.header')
 <body>
 	<div class="container-fluid">
+	@yield('content')
 	@foreach($blocks as $key => $block)
 	<div class="row">
 	<div class="col-12 col-seperate">
@@ -21,8 +22,10 @@
 	</div>
 	@endforeach
     </div>
-	@include('front.widgets.go-top')
+    @if(false)
+		@include('front.widgets.go-top')
+	@endif
 	@include('common.front.scripts')
-	@stack('script')
+	@stack('scripts')
 </body>
 </html>

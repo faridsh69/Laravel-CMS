@@ -59,7 +59,7 @@ return [
                  */
                 'prefixes' => [
                     '',
-                    // 'api/*',
+                    'api/*',
                     // 'users/*',
                 ],
 

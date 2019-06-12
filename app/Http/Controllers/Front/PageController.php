@@ -49,9 +49,18 @@ class PageController extends Controller
 
     public function show($page_url)
     {
+        $meta = [
+            'title' => 'APP_NAME',
+            'description' => 'META_DESCRIPTION',
+            'keywords' => '',
+            'image' => '/cdn/upload/images/logo.png',
+        ];
+
         $page = Page::where('url', $page_url)->first();
         abort_if(!$page, 404);
-        dd($page);
-        return view('front.page.show' , ['page' => $page]);
+
+        $blocks = [];
+        
+        return view('front.page.show' , ['blocks' => $blocks, 'page' => $page, 'meta' => $meta]);
     }
 }

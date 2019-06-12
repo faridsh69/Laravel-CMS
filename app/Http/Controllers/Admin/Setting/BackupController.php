@@ -72,7 +72,7 @@ class BackupController extends BaseAdminController
 
         $this->request->session()->flash('alert-success', 'Backup Created');
 
-        return redirect()->route('admin.setting.backup.list.index');
+        return redirect()->route('admin.setting.backup.index');
     }
 
 
@@ -124,11 +124,11 @@ class BackupController extends BaseAdminController
 
         $this->request->session()->flash('alert-success', 'Backup Deleted');
 
-        return redirect()->route('admin.setting.backup.list.index');
+        return redirect()->route('admin.setting.backup.index');
     }
 
     public function getRedirect()
     {
-        return redirect()->route('admin.setting.backup.list.index');
+        return redirect()->route('admin.setting.backup.index');
     }
 }
