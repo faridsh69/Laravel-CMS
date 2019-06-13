@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\Category;
 
 class BlogController extends Controller
 {
@@ -27,5 +28,21 @@ class BlogController extends Controller
         abort_if(!$blog, 404);
         
         return view('front.blog.show' , ['blog' => $blog]);
+    }
+
+    public function getCategories()
+    {
+        $categories = Category::get();
+        abort_if(!$categories, 404);
+        
+        return view('front.blog.categories' , ['categories' => $categories]);
+    }
+
+    public function getCategory($category_url)
+    {
+        $category = Category::where('title', $category_url)->first();
+        abort_if(!$category, 404);
+        
+        return view('front.blog.category' , ['category' => $category]);
     }
 }

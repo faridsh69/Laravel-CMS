@@ -1,4 +1,4 @@
-@foreach($blog->getAttributes() as $key => $value)
+@foreach($category->getAttributes() as $key => $value)
 <p>
 	<small>
 		({!! $key !!}):

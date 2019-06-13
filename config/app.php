@@ -1,22 +1,15 @@
 <?php
 
 return [
-
-    // 'cdn' => [
-    //     'url' => env('CDN_URL', 'cdn-eric.com'),
-    //     'format' => 'css|js|eot|woff|ttf|jpg|jpeg|png|gif|svg',
-    // ],
-    // 'name' => env('APP_NAME', 'Laravel'),
-
     'name' => config('0-general.app_name'),
+
+    'url' => config('0-general.app_url'),
+
+    'asset_url' => config('0-general.cdn_url'),
 
     'env' => config('0-developer.app_env'),
 
     'debug' => config('0-developer.app_debug'),
-
-    'url' => config('0-general.app_url'),
-
-    'asset_url' => config('0-developer.cdn_url'),
 
     'timezone' => 'UTC',
 
@@ -133,13 +126,13 @@ return [
         /*
          * Package Aliases
          */
-        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         // 'Cdn' => App\Services\CdnService::class,
-        'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
         // 'Image' => Intervention\Image\Facades\Image::class,
         // 'Nestable' => Nestable\Facades\NestableService::class,
+        // 'PDF' => Barryvdh\DomPDF\Facade::class,
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+        'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-        'PDF' => Barryvdh\DomPDF\Facade::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 ];

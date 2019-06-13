@@ -27,6 +27,11 @@ class SettingGeneral extends Model
             'form_type' => '',
         ],
         [
+            'name' => 'cdn_url',
+            'type' => 'string',
+            'form_type' => '',
+        ],
+        [
             'name' => 'default_meta_title',
             'type' => 'string',
             'form_type' => '',

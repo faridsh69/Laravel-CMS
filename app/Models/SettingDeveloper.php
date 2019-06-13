@@ -17,11 +17,6 @@ class SettingDeveloper extends Model
 
     public $columns = [
         [
-            'name' => 'cdn_url',
-            'type' => 'string',
-            'form_type' => '',
-        ],
-        [
             'name' => 'throttle',
             'type' => 'string',
             'form_type' => '',

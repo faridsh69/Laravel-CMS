@@ -1,6 +1,7 @@
 composer dump-autoload
 php artisan clear-compiled
 php artisan package:discover
+php artisan key:generate
 
 php artisan make:migration create_blogs_table
 php artisan make:model Models/Blog

@@ -2,11 +2,9 @@
 
 namespace App\Models;
 
-use Conner\Tagging\Taggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Kalnoy\Nestedset\NodeTrait;
-use Str;
 
 class Category extends Model
 {
@@ -32,7 +30,7 @@ class Category extends Model
         [
             'name' => 'url',
             'type' => 'string',
-            'database' => 'nullable',
+            'database' => '',
             'rule' => 'required|max:80|regex:/^[a-z0-9-]+$/',
             'help' => 'Url should be unique, contain lowercase characters and numbers and -',
             'form_type' => '',
@@ -98,19 +96,4 @@ class Category extends Model
     {
         return $this->columns;
     }
-
-    // public static function boot()
-    // {
-    //     parent::boot();
-
-    //     self::creating(function($model){
-    //         $model->activated = $model->activated ? 1 : 0;
-    //         $model->google_index = $model->google_index ? 1 : 0;
-    //     });
-
-    //     self::updating(function($model){
-    //         $model->activated = $model->activated ? 1 : 0;
-    //         $model->google_index = $model->google_index ? 1 : 0;
-    //     });
-    // }
 }

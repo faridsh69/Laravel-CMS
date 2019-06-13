@@ -10,7 +10,7 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $shops = [
+        $blog_categories = [
             [
                 'title' => 'Books',
                 'children' => [
@@ -53,13 +53,15 @@ class CategoriesTableSeeder extends Seeder
                 ],
             ],
         ];
-        foreach($shops as $shop)
-        {
-            if(!Category::first()){
-                Category::create($shop);
+
+        if(!Category::first()){
+            foreach($blog_categories as $blog_category)
+            {
+                Category::create($blog_category);
                 $categories = Category::get();
                 foreach($categories as $category)
                 {
+                    $category->url = strtolower($category->title);
                     $category->activated = 1;
                     $category->google_index = 1;
                     $category->save();
