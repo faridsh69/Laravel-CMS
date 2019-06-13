@@ -24,19 +24,15 @@ class RolesTableSeeder extends Seeder
             'settingdeveloper',
             'tag',
             'media',
-            'form',
             'report',
             'notification',
+            'menu',
+            'comment',
+            'form',
         ];
-        // // 'comment', // 6
         // 'theme', // 9 
         // 'block', // 10
         // 'widget', // 11
-        // //'seo' // 12 
-        // 'form', // 13
-        // // 'report', // 14
-        // // 'notification', // 15
-        // // 'menu', // 16
 
         $roles = [];
         $user = User::where('email', 'farid.sh69@gmail.com')->first();

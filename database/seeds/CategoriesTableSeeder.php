@@ -2,6 +2,7 @@
 
 use App\Models\Category;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class CategoriesTableSeeder extends Seeder
 {
@@ -41,7 +42,7 @@ class CategoriesTableSeeder extends Seeder
                 ['id' => $category['id']], 
                 [
                     'title' => $category['title'],
-                    'url' => strtolower($category['title']),
+                    'url' => Str::slug($category['title']),
                     'activated' => 1,
                     'google_index' => 1,
                 ]

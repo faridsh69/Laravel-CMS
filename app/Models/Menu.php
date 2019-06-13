@@ -17,20 +17,20 @@ class Menu extends Model
         'deleted_at',
     ];
 
-    //     $table->integer('order')->unsigned()->nullable();
-    //     $table->tinyInteger('location')->default(1);
-    //     $table->tinyInteger('status')->default(1);
-    //     $table->integer('menu_id')->unsigned()->nullable();
-    //     $table->foreign('menu_id')->references('id')->on('menus');
+    protected $appends = ['text'];
 
+    public function getTextAttribute()
+    {
+        return $this->title;
+    }
 
     public $columns = [
         [
             'name' => 'title',
             'type' => 'string',
             'database' => '',
-            'rule' => 'required|max:60|min:10',
-            'help' => 'Title should be minimum 10 and maximum 60 characters.',
+            'rule' => 'required|max:60|min:2',
+            'help' => 'Title should be minimum 2 and maximum 60 characters.',
             'form_type' => '',
             'table' => true,
         ],
@@ -50,6 +50,15 @@ class Menu extends Model
             'rule' => 'boolean',
             'help' => '',
             'form_type' => '',
+            'table' => false,
+        ],
+        [
+            'name' => 'location',
+            'type' => 'tinyInteger',
+            'database' => 'nullable',
+            'rule' => 'required',
+            'help' => '',
+            'form_type' => 'enum',
             'table' => false,
         ],
     ];

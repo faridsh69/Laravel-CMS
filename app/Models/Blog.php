@@ -5,11 +5,26 @@ namespace App\Models;
 use Conner\Tagging\Taggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Actuallymab\LaravelComment\Contracts\Commentable;
+use Actuallymab\LaravelComment\HasComments;
 
-class Blog extends Model
+class Blog extends Model implements Commentable
 {
-	use SoftDeletes;
+    use SoftDeletes;
     use Taggable;
+    use HasComments;
+
+    public function canBeRated(): bool
+    {
+        return true;
+    }
+
+    public function mustBeApproved(): bool
+    {
+        return true; // default false
+    }
+
+
 
     public $guarded = [];
 
@@ -22,8 +37,8 @@ class Blog extends Model
             'name' => 'title',
             'type' => 'string',
             'database' => 'unique',
-            'rule' => 'required|max:60|min:10|unique:blogs,title,',
-            'help' => 'Title should be unique, minimum 10 and maximum 60 characters.',
+            'rule' => 'required|max:60|min:5|unique:blogs,title,',
+            'help' => 'Title should be unique, minimum 5 and maximum 60 characters.',
             'form_type' => '',
             'table' => true,
         ],

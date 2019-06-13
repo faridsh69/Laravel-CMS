@@ -8,13 +8,13 @@ $models = [
         'tag', // 4  
         'media', // 5  
         'user', // 8 
-        'comment', // 6
         // // 'setting', // 7 + 
         // // 'seo' // 12 
         //  // 'report', // 14
         'notification', // 15
         'form', // 13
         'menu', // 16
+        'comment', // 6
         'block', // 10
         'widget', // 11
         'theme', // 9 
@@ -52,6 +52,10 @@ Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'as' => 'dash
 	Route::get('profile', 'DashboardController@getProfile')->name('profile');
 });
 Route::group(['prefix' => 'category', 'namespace' => 'Category', 'as' => 'category.'], function () {
+	Route::get('tree', 'ResourceController@getTree')->name('tree');
+	Route::post('tree', 'ResourceController@postTree')->name('tree.store');
+});
+Route::group(['prefix' => 'menu', 'namespace' => 'Menu', 'as' => 'menu.'], function () {
 	Route::get('tree', 'ResourceController@getTree')->name('tree');
 	Route::post('tree', 'ResourceController@postTree')->name('tree.store');
 });

@@ -218,19 +218,6 @@
 			],
 		],
 		[
-			'id' => 13,
-			'title' => 'Form',
-			'route' => 'form',
-			'type' => 'submenu',
-			'icon' => 'flaticon-interface',
-			'children' => [	
-				[
-					'title' => 'Form list',
-					'route' => 'admin.form.list.index',
-				],
-			],
-		],
-				[
 			'id' => 6,
 			'title' => 'Comment',
 			'route' => 'comment',
@@ -243,6 +230,19 @@
 				],
 			],
 		],
+		[
+			'id' => 13,
+			'title' => 'Form',
+			'route' => 'form',
+			'type' => 'submenu',
+			'icon' => 'flaticon-interface',
+			'children' => [	
+				[
+					'title' => 'Form list',
+					'route' => 'admin.form.list.index',
+				],
+			],
+		],		
 		[
 			'id' => 9,
 			'title' => 'Theme',

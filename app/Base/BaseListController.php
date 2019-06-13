@@ -183,7 +183,7 @@ class BaseListController extends Controller
         $model = $this->repository->findOrFail($id);
         $this->authorize('update', $model);
 
-        $this->meta['title'] = __('Edit ' . $this->model . ' ' . $id);
+        $this->meta['title'] = __('Edit ' . $this->model . ' - #' . $id);
         $form = $this->form_builder->create($this->model_form, [
             'method' => 'PUT',
             'url' => route('admin.' . $this->model_sm . '.list.update', $model),

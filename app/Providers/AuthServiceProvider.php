@@ -11,7 +11,9 @@ use App\Policies\SettingContactPolicy;
 use App\Policies\SettingDeveloperPolicy;
 use App\Policies\TagPolicy;
 use App\Policies\FormPolicy;
+use App\Policies\MenuPolicy;
 use App\Policies\ReportPolicy;
+use App\Policies\CommentPolicy;
 use App\Policies\NotificationPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -37,6 +39,8 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\SettingDeveloper' => SettingDeveloperPolicy::class,
         'App\Models\Report' => ReportPolicy::class,
         'App\Models\Notification' => NotificationPolicy::class,
+        'App\Models\Menu' => MenuPolicy::class,
+        'App\Models\Comment' => CommentPolicy::class,
         'App\Models\Form' => FormPolicy::class,
     ];
 
