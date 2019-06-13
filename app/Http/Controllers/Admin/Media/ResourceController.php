@@ -17,11 +17,16 @@ class ResourceController extends BaseAdminController
         $this->meta['alert'] = 'File manager for move, copy, resize, crop and delete file and images.';
 
         return view('admin.media.index', ['meta' => $this->meta]);
-    }
+    } 
 
-    public function create(){abort(404);}
-    public function show($id){abort(404);}
-    public function edit($id){abort(404);}
-    public function update($id){abort(404);}
-    public function destroy($id){abort(404);}
+    public function create(){return $this->getRedirect();}
+    public function show($id){return $this->getRedirect();}
+    public function edit($id){return $this->getRedirect();}
+    public function update($id){return $this->getRedirect();}
+    public function destroy($id){return $this->getRedirect();}
+
+    public function getRedirect()
+    {
+        return redirect()->route('admin.media.list.index');
+    }
 }

@@ -28,16 +28,16 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Blog' => BlogPolicy::class,
         'App\Models\Page' => PagePolicy::class,
         'App\Models\Category' => CategoryPolicy::class,
+        'App\Models\Tag' => TagPolicy::class,
         'App\Models\User' => UserPolicy::class,
         'App\Models\Permission' => UserPolicy::class,
         'App\Models\Role' => UserPolicy::class,
         'App\Models\SettingGeneral' => SettingGeneralPolicy::class,
         'App\Models\SettingContact' => SettingContactPolicy::class,
         'App\Models\SettingDeveloper' => SettingDeveloperPolicy::class,
-        'App\Models\Tag' => TagPolicy::class,
         'App\Models\Report' => ReportPolicy::class,
-        'App\Models\Form' => FormPolicy::class,
         'App\Models\Notification' => NotificationPolicy::class,
+        'App\Models\Form' => FormPolicy::class,
     ];
 
     /**
