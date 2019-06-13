@@ -6,6 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\User;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 class BaseTest extends TestCase
 {
@@ -27,6 +28,7 @@ class BaseTest extends TestCase
 
     public function resourceTest()
     {
+
         $class_name = 'App\\Models\\' . $this->model;
         $model_class = new $class_name();
 
@@ -43,7 +45,7 @@ class BaseTest extends TestCase
             ->assertStatus(302);
 
         $fake_data = factory($class_name)->raw();
-        
+            
         $this
         	->post(route('admin.' . strtolower($this->model) . '.list.store', $fake_data))
         	->assertStatus(302);

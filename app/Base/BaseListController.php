@@ -282,9 +282,19 @@ class BaseListController extends Controller
     public function getPdf()
     {
         $list = $this->repository->all();
-        $pdf = PDF::loadView('layout.print', compact('list'));
 
-        return $pdf->download($this->model . '.pdf');
+        return view('layout.print', compact('list'));
+        // $list = $this->repository->all();
+
+        // $pdf = \App::make('dompdf.wrapper');
+        // $pdf->loadView('layout.print', compact('list'));
+        // return $pdf->stream();
+
+
+
+        // return PDF::loadView('layout.print', compact('list'))
+        //     ->setPaper('a4', 'landscape')
+        //     ->download($this->model . '.pdf');
     }
 
     public function getPrint()

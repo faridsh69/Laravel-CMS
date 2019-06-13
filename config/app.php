@@ -134,9 +134,9 @@ return [
          * Package Aliases
          */
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
-        'Cdn' => App\Services\CdnService::class,
+        // 'Cdn' => App\Services\CdnService::class,
         'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
-        'Image' => Intervention\Image\Facades\Image::class,
+        // 'Image' => Intervention\Image\Facades\Image::class,
         // 'Nestable' => Nestable\Facades\NestableService::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,

@@ -2,7 +2,7 @@
  return array (
   'cdn_url' => 'http://cdn-menew.com',
   'throttle' => '15,0.2',
-  'app_debug' => 1,
+  'app_debug' => '0',
   'lazy_loading' => '1',
   'app_env' => '1',
   'email_username' => 'farid.sh69@gmail.com',

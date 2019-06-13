@@ -1,24 +1,13 @@
-<!-- <?php if ($options['wrapper'] !== false): ?>
-<div <?= $options['wrapperAttrs'] ?> >
-<?php endif; ?>
-
-<?= Form::button($options['label'], $options['attr']) ?>
-<?php include 'help_block.php' ?>
-
-<?php if ($options['wrapper'] !== false): ?>
-</div>
-<?php endif; ?>
- -->
 <div class="m-portlet__foot m-portlet__foot--fit">
 	<div class="m-form__actions m-form__actions">
 		<div class="row">
 			<div class="col-lg-12 ml-lg-auto">
 				<button type="submit" class="btn btn-primary">
-					<?= $options['label'] ?>
+					Submit
 				</button>
-				<button type="reset" class="btn btn-secondary">
-					Cancel
-				</button>
+				<a href="<?php echo url()->previous(); ?>" class="btn btn-secondary" style="margin-left: 20px">
+					Back
+				</a>
 			</div>
 		</div>
 	</div>
