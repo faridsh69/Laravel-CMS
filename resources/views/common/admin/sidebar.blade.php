@@ -60,8 +60,16 @@
 					'title' => 'Category list',
 					'route' => 'admin.category.list.index',
 				],
+			],
+		],
+		[
+			'id' => 4,
+			'title' => 'Tag',
+			'route' => 'tag',
+			'type' => 'submenu',
+			'icon' => 'flaticon-interface-9',
+			'children' => [	
 				[
-					'id' => 4,
 					'title' => 'Tags list',
 					'route' => 'admin.tag.list.index',
 				],
@@ -77,19 +85,6 @@
 				[
 					'title' => 'Media list',
 					'route' => 'admin.media.list.index',
-				],
-			],
-		],
-		[
-			'id' => 6,
-			'title' => 'Comment',
-			'route' => 'comment',
-			'type' => 'submenu',
-			'icon' => 'flaticon-comment',
-			'children' => [	
-				[
-					'title' => 'Comment list',
-					'route' => 'admin.comment.list.index',
 				],
 			],
 		],
@@ -125,9 +120,9 @@
 					'route' => 'admin.setting.advance',
 				],
 				[
-					'id' => 7-5,
-					'title' => 'API',
-					'route' => 'admin.setting.api',
+					'id' => 7-7,
+					'title' => 'Backup',
+					'route' => 'admin.setting.backup.index',
 				],
 				[
 					'id' => 7-6,
@@ -135,9 +130,9 @@
 					'route' => 'admin.setting.log',
 				],
 				[
-					'id' => 7-7,
-					'title' => 'Backup',
-					'route' => 'admin.setting.backup.index',
+					'id' => 7-5,
+					'title' => 'API',
+					'route' => 'admin.setting.api',
 				],
 				[
 					'id' => 7-8,
@@ -193,19 +188,6 @@
 			],
 		],
 		[
-			'id' => 13,
-			'title' => 'Form',
-			'route' => 'form',
-			'type' => 'submenu',
-			'icon' => 'flaticon-interface',
-			'children' => [	
-				[
-					'title' => 'Form list',
-					'route' => 'admin.form.list.index',
-				],
-			],
-		],
-		[
 			'id' => 15,
 			'title' => 'Notification',
 			'route' => 'notification',
@@ -221,6 +203,45 @@
 		[
 			'title' => 'THEME',
 			'type' => 'section',
+		],
+		[
+			'id' => 16,
+			'title' => 'Menu',
+			'route' => 'menu',
+			'type' => 'submenu',
+			'icon' => 'flaticon-grid-menu',
+			'children' => [	
+				[
+					'title' => 'Menu list',
+					'route' => 'admin.menu.list.index',
+				],
+			],
+		],
+		[
+			'id' => 13,
+			'title' => 'Form',
+			'route' => 'form',
+			'type' => 'submenu',
+			'icon' => 'flaticon-interface',
+			'children' => [	
+				[
+					'title' => 'Form list',
+					'route' => 'admin.form.list.index',
+				],
+			],
+		],
+				[
+			'id' => 6,
+			'title' => 'Comment',
+			'route' => 'comment',
+			'type' => 'submenu',
+			'icon' => 'flaticon-comment',
+			'children' => [	
+				[
+					'title' => 'Comment list',
+					'route' => 'admin.comment.list.index',
+				],
+			],
 		],
 		[
 			'id' => 9,
@@ -261,19 +282,6 @@
 				],
 			],
 		],
-		[
-			'id' => 16,
-			'title' => 'Menu',
-			'route' => 'menu',
-			'type' => 'submenu',
-			'icon' => 'flaticon-grid-menu',
-			'children' => [	
-				[
-					'title' => 'Menu list',
-					'route' => 'admin.menu.list.index',
-				],
-			],
-		],
 	];
 @endphp
 
@@ -289,7 +297,7 @@
 			@foreach($sidebar as $item)
 			@if($item['type'] == 'item' && Route::has($item['route']))
 			<li aria-haspopup="true" class="m-menu__item 
-				@if(Route::currentRouteName() == $item['route'] ) m-menu__item--active @endif" >
+				@if(Route::currentRouteName() == $item['route']) m-menu__item--active @endif" >
 				<a href="{{ route($item['route']) }}" class="m-menu__link ">
 					<i class="m-menu__link-icon {{ $item['icon'] }}"></i>
 					<span class="m-menu__link-title">

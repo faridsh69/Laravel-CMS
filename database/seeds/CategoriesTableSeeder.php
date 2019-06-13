@@ -12,62 +12,50 @@ class CategoriesTableSeeder extends Seeder
     {
         $blog_categories = [
             [
-                'title' => 'Books',
+                'id' => 1,
+                'title' => 'Solar',
                 'children' => [
-                    [    
-                        'title' => 'Comic Book',
-                        'children' => [
-                            ['title' => 'Marvel Comic Book'],
-                            ['title' => 'DC Comic Book'],
-                            ['title' => 'Action comics'],
-                        ],
-                    ],
-                    [    
-                        'title' => 'Textbooks',
-                        'children' => [
-                            ['title' => 'Business'],
-                            ['title' => 'Finance'],
-                            ['title' => 'Computer Science'],
-                        ],
-                    ],
-                ],
-            ],
-            [
-                'title' => 'Electronics',
-                'children' => [
+                    ['id' => 2, 'title' => 'Solar eClips'],
+                    ['id' => 3, 'title' => 'Solar for Business'],
+                    ['id' => 4, 'title' => 'Solar for Homeowners'],
+                    ['id' => 5, 'title' => 'FAQ'], 
                     [
-                        'title' => 'TV',
+                        'id' => 6, 
+                        'title' => 'test6',
                         'children' => [
-                            ['title' => 'LED'],
-                            ['title' => 'Blu-ray'],
-                        ],
-                    ],
-                    [
-                        'title' => 'Mobile',
-                        'children' => [
-                            ['title' => 'Samsung'],
-                            ['title' => 'iPhone'],
-                            ['title' => 'Xiomi'],
+                            ['id' => 7, 'title' => 'test7'],
                         ],
                     ],
                 ],
             ],
         ];
 
-        if(!Category::first()){
-            foreach($blog_categories as $blog_category)
-            {
-                Category::create($blog_category);
-                $categories = Category::get();
-                foreach($categories as $category)
-                {
-                    $category->url = strtolower($category->title);
-                    $category->activated = 1;
-                    $category->google_index = 1;
-                    $category->save();
-                }
+        $this->saveTree($blog_categories, null);
+    }
+
+    public function saveTree($categories, $parent)
+    {
+        foreach($categories as $category)
+        {
+            $node = Category::updateOrCreate(
+                ['id' => $category['id']], 
+                [
+                    'title' => $category['title'],
+                    'url' => strtolower($category['title']),
+                    'activated' => 1,
+                    'google_index' => 1,
+                ]
+            );
+
+            if(isset($parent)){
+                $parent->appendNode($node);
+            }
+            if(isset($category['children'])){
+                $this->saveTree($category['children'], $node);
             }
         }
+    }
+
         // $node = new Category(['name' => 'root']);
         // $node->save(); // Saved as root
 
@@ -146,5 +134,5 @@ class CategoriesTableSeeder extends Seeder
     	// {
      //    	Category::updateOrCreate(['id' => $category['id']], $category);
     	// }
-    }
+    // }
 }

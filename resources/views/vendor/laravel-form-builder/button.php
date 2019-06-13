@@ -3,10 +3,10 @@
 		<div class="row">
 			<div class="col-lg-12 ml-lg-auto">
 				<button type="submit" class="btn btn-primary">
-					Submit
+					{{ __('Submit') }}
 				</button>
 				<a href="<?php echo url()->previous(); ?>" class="btn btn-secondary" style="margin-left: 20px">
-					Back
+					{{ __('Back') }}
 				</a>
 			</div>
 		</div>

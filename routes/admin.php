@@ -51,6 +51,10 @@ Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'as' => 'dash
 	Route::get('', 'DashboardController@index')->name('index');
 	Route::get('profile', 'DashboardController@getProfile')->name('profile');
 });
+Route::group(['prefix' => 'category', 'namespace' => 'Category', 'as' => 'category.'], function () {
+	Route::get('tree', 'ResourceController@getTree')->name('tree');
+	Route::post('tree', 'ResourceController@postTree')->name('tree.store');
+});
 Route::group(['prefix' => 'setting', 'namespace' => 'Setting', 'as' => 'setting.'], function () {
 	Route::get('', 'GeneralController@redirect')->name('general.redirect');
 	Route::get('general', 'GeneralController@index')->name('general');

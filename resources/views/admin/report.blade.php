@@ -6,7 +6,7 @@
 @endpush
 
 @section('content')
-	CHANGELOG: Version 0.9.16
+	CHANGELOG: Version 0.9.36
 	<br>
 	This Page will be dynamic in version 2.0.0
 	</div>

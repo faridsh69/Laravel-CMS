@@ -11,11 +11,18 @@ class Category extends Model
     use NodeTrait;
     use SoftDeletes;
 
-    public $guarded = [];
+    protected $guarded = [];
 
     protected $hidden = [
         'deleted_at',
     ];
+
+    protected $appends = ['text'];
+
+    public function getTextAttribute()
+    {
+        return $this->title;
+    }
 
     public $columns = [
         [

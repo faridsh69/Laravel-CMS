@@ -32,11 +32,22 @@
 		</div>
 	</div>
 	<div class="m-portlet__body">
-		<div id="m_tree_5" class="tree-demo"></div>
-	    <hr>
-	    @foreach($categories as $category)
-	    	{{$category}}
-	    @endforeach
+		<div id="m_tree_6" class="tree-demo"></div>
+			<div class="row" style="margin-top: 30px;">
+				<div class="col-lg-12 ml-lg-auto">
+					<form id="categorytreeForm" method="post" action="tree">
+						@csrf
+						<input type="hidden" name="categorytree" id="categorytree">
+					</form>
+					<button type="submit" class="btn btn-sm btn-success">
+						{{ __('Save Changes') }}
+					</button>
+					<a href="<?php echo url()->previous(); ?>" class="btn btn-sm btn-secondary" style="margin-left: 10px">
+						{{ __('Back') }}
+					</a>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 @endsection
