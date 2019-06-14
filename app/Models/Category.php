@@ -97,6 +97,16 @@ class Category extends Model
             'form_type' => '',
             'table' => false,
         ],
+        [
+            'name' => 'parent_id',
+            'type' => 'bigInteger',
+            'database' => 'none',
+            'relation' => 'categories',
+            'rule' => 'nullable|exists:categories,id',
+            'help' => '',
+            'form_type' => 'none',
+            'table' => true,
+        ],
     ];
 
     public function getColumns()

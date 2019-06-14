@@ -15,6 +15,7 @@ class ResourceController extends BaseListController
         $this->meta['title'] = __($this->model . ' Manager');
         $this->meta['alert'] = '';
         $this->meta['link_name'] = __('Create New ' . $this->model);
+        $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.create');
         $this->meta['search'] = 1;
 
         $columns = [];

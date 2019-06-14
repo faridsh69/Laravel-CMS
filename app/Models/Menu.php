@@ -61,6 +61,17 @@ class Menu extends Model
             'form_type' => 'enum',
             'table' => false,
         ],
+        [
+            'name' => 'parent_id',
+            'type' => 'bigInteger',
+            'database' => 'none',
+            'relation' => 'menus',
+            'rule' => 'nullable|exists:menus,id',
+            'help' => '',
+            'form_type' => 'none',
+            'table' => true,
+        ],
+
     ];
 
     public function getColumns()

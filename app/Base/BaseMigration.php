@@ -38,7 +38,10 @@ class BaseMigration extends Migration
                 $database = isset($column['database']) ? $column['database'] : '';
                 $relation = isset($column['relation']) ? $column['relation'] : '';
 
-                if($relation){
+                if($database === 'none'){
+                    continue;
+                }
+                elseif($relation){
                     $table->unsignedBigInteger($name);
                     $table->foreign($name)->references('id')->on($relation);
                 }

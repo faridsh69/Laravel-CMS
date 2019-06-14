@@ -12,6 +12,7 @@ class ResourceController extends BaseListController
 {
     public $model = 'Notification';
 
+    // public function index() {}
     public function store()
     {
         $this->authorize('create', $this->model_class);
@@ -37,6 +38,14 @@ class ResourceController extends BaseListController
         return redirect()->route('admin.' . $this->model_sm . '.list.index');
     }
 
-    public function edit($id){abort(404);}
-    public function update($id){abort(404);}
+    public function create(){return $this->getRedirect();}
+    public function show($id){return $this->getRedirect();}
+    public function edit($id){return $this->getRedirect();}
+    public function update($id){return $this->getRedirect();}
+    public function destroy($id){return $this->getRedirect();}
+
+    public function getRedirect()
+    {
+        return redirect()->route('admin.notification.list.index');
+    }
 }

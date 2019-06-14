@@ -38,10 +38,10 @@ class BaseListController extends Controller
 
     public $meta = [
         'title' => 'Admin Panel',
-        'description' => 'Admin Panel Page For Best Cms In The World',
+        'description' => 'Admin Panel Page For Full Features, Best UI-UX Cms ever.',
         'keywords' => '',
         'image' => '/cdn/upload/images/logo.png',
-        'alert' => 'Advanced form with validation, ckeditor, multiselect, swith... !',
+        'alert' => 'Advanced form with nice ui, easy to fill, real validation, ckeditor, switch, multiselect, max length limmiter, icon base and responsive features.',
         'link_route' => '/',
         'link_name' => 'Dashboard',
         'search' => 0,
@@ -71,7 +71,7 @@ class BaseListController extends Controller
     {
         $this->authorize('index', $this->model_class);
         $this->meta['title'] = __($this->model . ' Manager');
-        $this->meta['alert'] = 'Advanced table with sort, search, paginate and status changing!';
+        $this->meta['alert'] = 'Advanced data table with sort on each column, search, paginate, status changing and full access actions with policies.';
         if(Route::has('admin.' . $this->model_sm . '.list.index')){
             $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.create');
         }
