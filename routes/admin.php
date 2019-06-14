@@ -1,24 +1,7 @@
 <?php
 
-// $models = Config::get('services.models');
-$models = [
-        'blog', // 1 +
-        'page', // 2 +
-        'category', // 3 +
-        'tag', // 4  
-        'media', // 5  
-        'user', // 8 
-        // // 'setting', // 7 + 
-        // // 'seo' // 12 
-        //  // 'report', // 14
-        'notification', // 15
-        'form', // 13
-        'menu', // 16
-        'comment', // 6
-        'block', // 10
-        'widget', // 11
-        'theme', // 9 
-    ];
+$models = Config::get('services.models.admin_routes');
+
 foreach($models as $model_sm)
 {
 	$model = ucfirst($model_sm);

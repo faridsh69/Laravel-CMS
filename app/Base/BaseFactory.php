@@ -9,25 +9,8 @@ class BaseFactory
 {
     public function index($factory)
     {
-        $models = config('services.models');
-        $models = [
-            'blog', // 1 +
-            'page', // 2 +
-            'category', // 3 +
-            'tag', // 4  
-            'user', // 8 
-            // // 'media', // 5  
-            // // 'setting', // 7 + 
-            // // 'seo' // 12 
-            // // 'report', // 14
-            // // 'notification', // 15
-            'menu', // 16
-            'comment', // 6
-            'form', // 13
-            // 'block', // 10
-            // 'widget', // 11
-            // 'theme', // 9 
-        ];
+        $models = config('services.models.factory');
+
         foreach($models as $model)
         {
             $model = ucfirst($model);
@@ -77,6 +60,26 @@ class BaseFactory
         }
     }
 }
+
+// $models_unused = [
+//     'blog', // 1 +
+//     'page', // 2 +
+//     'category', // 3 +
+//     'tag', // 4  
+//     'user', // 8 
+//     // // 'media', // 5  
+//     // // 'setting', // 7 + 
+//     // // 'seo' // 12 
+//     // // 'report', // 14
+//     // // 'notification', // 15
+//     'menu', // 16
+//     'comment', // 6
+//     'form', // 13
+//     // 'block', // 10
+//     // 'widget', // 11
+//     // 'theme', // 9 
+// ];
+
 
 // 'name' => $faker->name,
 // 'email' => $faker->unique()->safeEmail,

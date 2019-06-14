@@ -6,6 +6,6 @@
   'app_env' => '1',
   'email_username' => 'farid.sh69@gmail.com',
   'email_password' => 'farid111',
-  'email_defult_ccc' => 'farid.sh69@gmail.com',
-  'email_defult_subject' => 'CMS',
+  'email_default_ccc' => 'farid.sh69@gmail.com',
+  'email_default_subject' => 'CMS',
 );

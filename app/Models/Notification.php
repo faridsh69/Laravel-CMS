@@ -13,7 +13,16 @@ class Notification extends Model
     protected $hidden = [
         'deleted_at',
     ];
-    
+
+    public function getDataAttribute($data)
+    {
+        if( isset($data) && $data != '[]' ){
+            // dd(json_decode($data)->data);
+            return json_decode($data)->data;
+        }
+        return '-';
+    }
+
     public $columns = [
         [
             'name' => 'read_at',
@@ -49,12 +58,17 @@ class Notification extends Model
             'rule' => 'required|numeric',
             'help' => '',
             'form_type' => 'none',
-            'table' => true,
+            'table' => false,
         ], 
     ];
 
     public function getColumns()
     {
         return $this->columns;
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'notifiable_id', 'id');
     }
 }

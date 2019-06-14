@@ -175,19 +175,6 @@
 			],
 		],
 		[
-			'id' => 14,
-			'title' => 'Report',
-			'route' => 'report',
-			'type' => 'submenu',
-			'icon' => 'flaticon-graphic-2',
-			'children' => [	
-				[
-					'title' => 'Report list',
-					'route' => 'admin.report.index',
-				],
-			],
-		],
-		[
 			'id' => 15,
 			'title' => 'Notification',
 			'route' => 'notification',
@@ -197,6 +184,19 @@
 				[
 					'title' => 'Notification list',
 					'route' => 'admin.notification.list.index',
+				],
+			],
+		],
+		[
+			'id' => 14,
+			'title' => 'Report',
+			'route' => 'report',
+			'type' => 'submenu',
+			'icon' => 'flaticon-graphic-2',
+			'children' => [	
+				[
+					'title' => 'Report list',
+					'route' => 'admin.report.index',
 				],
 			],
 		],

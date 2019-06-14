@@ -12,6 +12,7 @@ class News extends Notification
     use Queueable;
 
     public $data;
+    
     /**
      * Create a new notification instance.
      *

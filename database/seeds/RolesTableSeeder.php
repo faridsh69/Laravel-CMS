@@ -35,8 +35,8 @@ class RolesTableSeeder extends Seeder
         // 'widget', // 11
 
         $roles = [];
-        $user = User::where('email', 'farid.sh69@gmail.com')->first();
-        $user_2 = User::where('email', 'farid.sh692@gmail.com')->first();
+        $user = User::where('id', 1)->first();
+        $user_2 = User::where('id', 2)->first();
         foreach($models as $model)
         {
             $permission = [];

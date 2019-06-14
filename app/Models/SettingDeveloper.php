@@ -47,12 +47,12 @@ class SettingDeveloper extends Model
             'form_type' => '',
         ],
         [
-            'name' => 'email_defult_subject',
+            'name' => 'email_default_subject',
             'type' => 'string',
             'form_type' => '',
         ],
         [
-            'name' => 'email_defult_ccc',
+            'name' => 'email_default_ccc',
             'type' => 'string',
             'form_type' => '',
         ],

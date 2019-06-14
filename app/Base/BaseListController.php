@@ -324,7 +324,7 @@ class BaseListController extends Controller
 
     public function getDatatable()
     {
-        $model = $this->repository->orderBy('id', 'desc')->get();
+        $model = $this->repository->orderBy('updated_at', 'desc')->get();
 
         return datatables()
             ->of($model)

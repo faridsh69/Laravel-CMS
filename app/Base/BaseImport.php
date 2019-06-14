@@ -14,11 +14,6 @@ class BaseImport implements ToModel
 
     public $class_name;
 
-    /**
-     * @param array $row
-     *
-     * @return \Illuminate\Database\Eloquent\Model|null
-     */
     public function model(array $row)
     {
         foreach($this->model_fields as $key => $model_field)
