@@ -6,6 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Notification extends Model
 {
+    public $incrementing = false;
+
+    public $guarded = [];
+
+    protected $hidden = [
+        'deleted_at',
+    ];
+    
     public $columns = [
         [
             'name' => 'read_at',

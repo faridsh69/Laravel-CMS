@@ -5,7 +5,7 @@
   'lazy_loading' => '1',
   'app_env' => '1',
   'email_username' => 'farid.sh69@gmail.com',
-  'email_password' => 'faridSag123@',
+  'email_password' => 'farid111',
   'email_defult_ccc' => 'farid.sh69@gmail.com',
   'email_defult_subject' => 'CMS',
 );

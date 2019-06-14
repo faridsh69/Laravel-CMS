@@ -14,6 +14,12 @@ class Blog extends Model implements Commentable
     use Taggable;
     use HasComments;
 
+    public $guarded = [];
+
+    protected $hidden = [
+        'deleted_at',
+    ];
+
     public function canBeRated(): bool
     {
         return true;
@@ -23,14 +29,6 @@ class Blog extends Model implements Commentable
     {
         return true; // default false
     }
-
-
-
-    public $guarded = [];
-
-    protected $hidden = [
-        'deleted_at',
-    ];
 
     public $columns = [
         [

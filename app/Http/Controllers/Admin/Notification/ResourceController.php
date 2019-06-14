@@ -38,8 +38,6 @@ class ResourceController extends BaseListController
         return redirect()->route('admin.' . $this->model_sm . '.list.index');
     }
 
-    public function create(){return $this->getRedirect();}
-    public function show($id){return $this->getRedirect();}
     public function edit($id){return $this->getRedirect();}
     public function update($id){return $this->getRedirect();}
     public function destroy($id){return $this->getRedirect();}
