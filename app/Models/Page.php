@@ -22,7 +22,7 @@ class Page extends Model
             'name' => 'title',
             'type' => 'string',
             'database' => 'unique',
-            'rule' => 'required|max:60|min:5|unique:page,title,',
+            'rule' => 'required|max:60|min:5|unique:pages,title,',
             'help' => 'Title should be unique, minimum 5 and maximum 60 characters.',
             'form_type' => '',
             'table' => true,
