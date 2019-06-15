@@ -7,7 +7,7 @@ return [
 
     'asset_url' => config('0-general.cdn_url'),
 
-    'env' => config('0-developer.app_env'),
+    'env' => env('APP_ENV' ,config('0-developer.app_env')),
 
     'debug' => config('0-developer.app_debug'),
 

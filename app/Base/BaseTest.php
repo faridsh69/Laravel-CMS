@@ -44,7 +44,7 @@ class BaseTest extends TestCase
             ->assertStatus(302);
 
         $fake_data = factory($class_name)->raw();
-            
+        
         $this
         	->post(route('admin.' . strtolower($this->model) . '.list.store', $fake_data))
         	->assertStatus(302);
