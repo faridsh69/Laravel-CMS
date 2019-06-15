@@ -17,3 +17,4 @@ yarn-error.log
 /vendor-old
 /temp
 composer.lock
+php.ini
