@@ -37,7 +37,7 @@ class RouteServiceProvider extends ServiceProvider
 
     protected function mapAdminRoutes()
     {
-        $admin_domain = 'admin.menew.com';
+        $admin_domain = 'www.admin.eric.com';
         $base_domain = \Request::getHost();
         if(strpos($base_domain, "admin") !== false){
             $admin_domain = $base_domain;
