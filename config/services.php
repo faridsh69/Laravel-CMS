@@ -63,7 +63,7 @@ $output = [
             'page', // 2 +
             'tag', // 4  
             'menu', // 16
-            // 'comment', // 6
+            'comment', // 6
             // 'form', // 13
             // 'block', // 10
             // 'widget', // 11

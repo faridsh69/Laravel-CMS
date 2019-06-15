@@ -59,7 +59,20 @@ class Notification extends Model
             'help' => '',
             'form_type' => 'none',
             'table' => false,
-        ], 
+        ],
+        [
+            'name' => 'users',
+            'type' => 'array',
+            'database' => 'none',
+            'rule' => 'nullable',
+            'help' => '',
+            'form_type' => 'entity',
+            'class' => 'App\Models\User',
+            'property' => 'email',
+            'property_key' => 'id',
+            'multiple' => true,
+            'table' => true,
+        ],
     ];
 
     public function getColumns()

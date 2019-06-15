@@ -156,7 +156,15 @@ class User extends Authenticatable
             'form_type' => 'password',
             'table' => false,
         ],
-        
+        [
+            'name' => 'password_confirmation',
+            'type' => 'string',
+            'database' => 'none',
+            'rule' => 'nullable',
+            'help' => 'Password should match confirm password.',
+            'form_type' => '',
+            'table' => false,
+        ],        
     ];
 
     public function getColumns()

@@ -14,12 +14,12 @@ var DatatableJsonRemoteDemo=function() {
         columns.forEach(function(column){
         	datatableColumns.push(column);
         });
-        datatableColumns.push(
-            {field:"users", title:"User", 
-                template: function (row) {
-                    return row.user;
-                },
-            });
+        // datatableColumns.push(
+        //     {field:"users", title:"User", 
+        //         template: function (row) {
+        //             return row.user;
+        //         },
+        //     });
         datatableColumns.push(
             {field:"type", title:"Type", 
                 template: function (row) {

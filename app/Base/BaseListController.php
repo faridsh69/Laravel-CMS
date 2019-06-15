@@ -131,12 +131,23 @@ class BaseListController extends Controller
         unset($data['tags']);
         unset($data['related_blogs']);
 
+        // comment 
+        if($this->model === 'Comment' && isset($data['blog_url'])){
+            $blog = \App\Models\Blog::where('id', $data['blog_url'])->first();
+            Auth::user()->comment($blog, $data['comment'], $rate = 0);
+            $blog->comments[0]->approve();
+            activity($this->model)->performedOn($blog)->causedBy(Auth::user())->log($this->model . ' Created');
+            $this->request->session()->flash('alert-success', $this->model . ' Created Successfully!');
+            return redirect()->route('admin.' . $this->model_sm . '.list.index');
+        }
+
         // users
-        if(isset($data['password'])) {
-            $data['password'] = \Hash::make($data['password']);
+        if($this->model === 'User'){
+            if(isset($data['password'])) {
+                $data['password'] = \Hash::make($data['password']);
+            }
         }
         unset($data['password_confirmation']);
-        unset($data['update_password']);
 
         $model = $this->repository->create($data);
 
@@ -216,12 +227,24 @@ class BaseListController extends Controller
         }
         $data = $form->getFieldValues();
         $main_data = $data;
+
         foreach( collect($this->model_columns)->where('type', 'boolean')->pluck('name') as $boolean_column)
         {
             if(!isset($data[$boolean_column]))
             {
                 $data[$boolean_column] = 0;
             }
+        }
+
+        // comment 
+        if($this->model === 'Comment' && isset($data['blog_url'])){
+            $model->commentable_id = $data['blog_url'];
+            $model->comment = $data['comment'];
+            $model->update();
+
+            activity($this->model)->performedOn($model)->causedBy(Auth::user())->log($this->model . ' Updated');
+            $this->request->session()->flash('alert-success', $this->model . ' Updated Successfully!');
+            return redirect()->route('admin.' . $this->model_sm . '.list.index');
         }
 
         // users
@@ -233,9 +256,11 @@ class BaseListController extends Controller
                 $data['password'] = $model->password;
             }
         }
+        unset($data['password_confirmation']);
+
+        // blogs
         unset($data['tags']);
         unset($data['related_blogs']);
-        unset($data['password_confirmation']);
 
         $model->update($data);
 
@@ -326,7 +351,7 @@ class BaseListController extends Controller
     {
         $model = $this->repository->orderBy('updated_at', 'desc')->get();
 
-        return datatables()
+        $datatable = datatables()
             ->of($model)
             ->addColumn('show_url', function($model) {
                 return route('admin.' . $this->model_sm . '.list.show', $model);
@@ -336,8 +361,32 @@ class BaseListController extends Controller
             })
             ->addColumn('delete_url', function($model) {
                 return route('admin.' . $this->model_sm . '.list.destroy', $model);
-            })
-            ->rawColumns(['id', 'content'])
+            });
+        if($this->model === 'Notification') {
+            $datatable->addColumn('users', function($model) {
+                return $model->user->email;
+            });
+        }
+        elseif($this->model === 'Comment') {
+            $datatable->addColumn('blog_url', function($model) {
+                if($model->blog){
+                    return $model->blog->url;
+                }
+                else{
+                    return null;
+                }
+            });
+            $datatable->addColumn('author', function($model) {
+                if($model->user){
+                    return $model->user->email;
+                }
+                else{
+                    return null;
+                }
+            });
+        }
+
+        return $datatable->rawColumns(['id', 'content'])
             ->toJson();
     }
 
@@ -345,7 +394,12 @@ class BaseListController extends Controller
     {
         $model = $this->repository->findOrFail($id);
 
-        $model->activated = ! $model->activated;
+        if($this->model === 'Comment'){
+            $model->approved = ! $model->approved;
+        }else{
+            $model->activated = ! $model->activated;
+        }
+
         $model->update();
 
         return response()->json([

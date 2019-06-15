@@ -181,7 +181,6 @@ class RoleController extends BaseListController
             ->addColumn('delete_url', function($model) {
                 return route('admin.user.role.destroy', $model);
             })
-
             ->rawColumns(['id', 'users', 'permissions'])
             ->toJson();
     }

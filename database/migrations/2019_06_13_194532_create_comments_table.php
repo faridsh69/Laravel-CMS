@@ -20,6 +20,7 @@ class CreateCommentsTable extends Migration
             $table->boolean('approved')->default(true);
             $table->double('rate', 15, 8)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -27,7 +27,7 @@ class BaseFactory
                     $rule = isset($column['rule']) ? $column['rule'] : '';
                     $relation = isset($column['relation']) ? $column['relation'] : '';
                     
-                    if($database === 'nullable'){
+                    if($database === 'nullable' || $database === 'none'){
                         continue;
                     }
                     elseif($name == 'meta_description'){

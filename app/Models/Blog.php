@@ -128,11 +128,41 @@ class Blog extends Model implements Commentable
             'relation' => 'categories',
             'rule' => 'nullable|exists:categories,id',
             'help' => '',
-            'form_type' => '',
+            'form_type' => 'entity',
+            'class' => 'App\Models\Category',
+            'property' => 'title',
+            'property_key' => 'id',
+            'multiple' => false,
+            'table' => false,
+        ],
+        [
+            'name' => 'tags',
+            'type' => 'array',
+            'database' => 'none',
+            'rule' => 'nullable',
+            'help' => '',
+            'form_type' => 'entity',
+            'class' => 'App\Models\Tag',
+            'property' => 'name',
+            'property_key' => 'id',
+            'multiple' => true,
+            'table' => false,
+        ],
+        [
+            'name' => 'related_blogs',
+            'type' => 'array',
+            'database' => 'none',
+            'rule' => 'nullable',
+            'help' => '',
+            'form_type' => 'entity',
+            'class' => 'App\Models\Blog',
+            'property' => 'title',
+            'property_key' => 'id',
+            'multiple' => true,
             'table' => false,
         ],
     ];
-
+        
     public function getColumns()
     {
         return $this->columns;

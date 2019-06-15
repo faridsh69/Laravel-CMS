@@ -56,12 +56,11 @@ class BaseForm extends Form
             ];
 
             // type
-            if($relation || $form_type === 'none'){
+            $input_type = 'text-m';
+            if($form_type === 'none'){
                 continue;
             }
-            $input_type = 'text-m';
-
-            if($type === 'boolean'){
+            elseif($type === 'boolean'){
                 $input_type = 'switch-m';
                 if($form_type === 'checkbox'){
                     $input_type = 'checkbox-m';
@@ -87,14 +86,25 @@ class BaseForm extends Form
             elseif($form_type === 'textarea'){
                 $input_type = 'textarea';
                 $option['attr'] = ['rows' => 3];
-            }elseif($form_type === 'enum'){
+            }
+            elseif($form_type === 'enum'){
                 $input_type = 'select';
-                $option =  [
-                    'choices' => \App\Enums\UserStatus::data,
-                    'attr' => ['class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker'],
-                ];
-            }elseif($form_type === 'image'){
+                $option['choices'] = \App\Enums\UserStatus::data;
+                $option['attr'] = ['class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker'];
+            }
+            elseif($form_type === 'image'){
                 $input_type = 'image';
+            }
+            elseif($form_type === 'entity'){
+                $input_type = 'entity';
+                $option['class'] = $column['class'];
+                $option['property'] = $column['property'];
+                $option['property_key'] = $column['property_key'];
+                $option['attr']['class'] = 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker';
+                $option['attr']['data-live-search'] = 'true';
+                if($column['multiple'] === true){
+                    $option['attr']['multiple'] = 'true';
+                }
             }
             
             $this->add($column['name'], $input_type, $option);

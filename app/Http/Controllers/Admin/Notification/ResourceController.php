@@ -34,24 +34,24 @@ class ResourceController extends BaseListController
         return view('admin.notification.notification-table', ['meta' => $this->meta, 'columns' => $columns]);
     }
 
-    public function getDatatable()
-    {
-        $model = $this->repository->orderBy('updated_at', 'desc')->get();
+    // public function getDatatable()
+    // {
+    //     $model = $this->repository->orderBy('updated_at', 'desc')->get();
 
-        return datatables()
-            ->of($model)
-            ->addColumn('show_url', function($model) {
-                return route('admin.' . $this->model_sm . '.list.show', $model);
-            })
-            ->addColumn('user', function($model) {
-                return $model->user->email;
-            })
-            ->addColumn('delete_url', function($model) {
-                return route('admin.' . $this->model_sm . '.list.destroy', $model);
-            })
-            ->rawColumns(['id', 'content'])
-            ->toJson();
-    }
+    //     return datatables()
+    //         ->of($model)
+    //         ->addColumn('show_url', function($model) {
+    //             return route('admin.' . $this->model_sm . '.list.show', $model);
+    //         })
+    //         ->addColumn('users', function($model) {
+    //             return $model->user->email;
+    //         })
+    //         // ->addColumn('delete_url', function($model) {
+    //         //     return route('admin.' . $this->model_sm . '.list.destroy', $model);
+    //         // })
+    //         // ->rawColumns(['id', 'content'])
+    //         ->toJson();
+    // }
 
     public function store()
     {

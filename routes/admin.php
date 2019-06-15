@@ -79,7 +79,7 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'as' => 'user.'], funct
 	Route::resource('permission', 'PermissionController');
 });
 Route::group(['prefix' => 'report', 'namespace' => 'Report', 'as' => 'report.'], function () {
-	Route::get('', 'ResourceController@index')->name('index');
+	Route::get('', 'ReportController@index')->name('index');
 });
 
 Route::get('', 'Dashboard\DashboardController@index')->name('index');

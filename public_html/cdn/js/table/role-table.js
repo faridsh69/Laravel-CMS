@@ -14,19 +14,19 @@ var DatatableJsonRemoteDemo=function() {
         columns.forEach(function(column){
         	datatableColumns.push(column);
         });
+        // datatableColumns.push(
+        //     {field:"users", title:"Users", 
+        //         template: function (row) {
+        //             return row.users;
+        //         },
+        //     });
+        // datatableColumns.push(
+        //     {field:"permissions", title:"Permissions", 
+        //         template: function (row) {
+        //             return row.permissions;
+        //         },
+        //     });
         datatableColumns.push(
-            {field:"users", title:"Users", 
-                template: function (row) {
-                    return row.users;
-                },
-            });
-        datatableColumns.push(
-            {field:"permissions", title:"Permissions", 
-                template: function (row) {
-                    return row.permissions;
-                },
-            });
-                datatableColumns.push(
             {
                 field:"Actions", 
                 width: 100, 
