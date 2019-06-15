@@ -6,7 +6,6 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\User;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 class BaseTest extends TestCase
 {
@@ -18,7 +17,7 @@ class BaseTest extends TestCase
     public $model;
 
     public $methods = [
-        'pdf',
+        // 'pdf',
         'print',
         'export',
         'datatable',
