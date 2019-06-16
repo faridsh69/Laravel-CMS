@@ -11,7 +11,7 @@
 <?php if ($showField): ?>
 	<div class="input-group">
 		<span class="input-group-btn">
-			<button class="btn btn-brand" type="button" id="lfm" data-preview="holder" data-input="<?php echo $options['real_name']; ?>">
+			<button class="lfm btn btn-brand" type="button" id="lfm" data-preview="holder" data-input="<?php echo $options['real_name']; ?>">
 				<i class="fa fa-picture-o"></i> Choose Image
 			</button>
 		</span>

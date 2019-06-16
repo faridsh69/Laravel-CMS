@@ -89,7 +89,7 @@ jQuery(document).ready(function() {
     BootstrapDatepicker.init();
     BootstrapSelect.init();
     $("#admin_form").validate({});
-    $('#lfm').filemanager('image');
+    $('.lfm').filemanager('image');
 });
 
 
