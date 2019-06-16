@@ -39,7 +39,7 @@ mklink
 MKLINK ./storage ../storage/app/public
 mklink d:\link-name c:\original-file
 
-git update-index --assume-unchanged config/0-developer.php
+git update-index --assume-unchanged config/0-general.php
 
 /usr/local/bin/mysqldump
 find / -name 'mysqldump'
