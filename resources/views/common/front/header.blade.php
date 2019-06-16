@@ -42,7 +42,7 @@
 	<script src="{{ asset('bootstrap/jquery.min.js') }}"></script>
 	<script src="{{ asset('bootstrap/popper.min.js') }}"></script>
 	<script src="{{ asset('bootstrap/bootstrap.min.js') }}"></script>
-	<link href="{{ asset('css/custome.css') }}" rel="stylesheet" />
+	<link href="{{ asset('css/custome-front.css') }}" rel="stylesheet" />
 	<!--end::Base Styles -->
 	<link rel="shortcut icon" href="{{ asset('upload/images/favicon.png') }}" />
 
