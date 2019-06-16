@@ -21,14 +21,14 @@ class PageController extends Controller
         $blocks[] = ['widget_type' => 'header', 'widget_id' => 1];
         $blocks[] = ['widget_type' => 'slider', 'widget_id' => 1];
         $blocks[] = ['widget_type' => 'breadcrumb', 'widget_id' => 1];
-        $blocks[] = ['widget_type' => 'features', 'widget_id' => 1];
-        $blocks[] = ['widget_type' => 'counting', 'widget_id' => 1];
         $blocks[] = [
             'blocks' => [
                 ['column' => 6, 'widget_type' => 'countdown', 'widget_id' => 1],
                 ['column' => 6, 'widget_type' => 'customer_review', 'widget_id' => 1],
             ],
         ];
+        $blocks[] = ['widget_type' => 'features', 'widget_id' => 1];
+        $blocks[] = ['widget_type' => 'counting', 'widget_id' => 1];
         $blocks[] = [
             'blocks' => [
                 ['column' => 3, 'widget_type' => 'news', 'widget_id' => 1],

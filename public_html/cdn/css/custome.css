@@ -33,7 +33,13 @@
 	padding: 20px !important;
 }
 .col-seperate{
-	margin-bottom: 20px;
+	/*margin-bottom: 20px;*/
 	min-height: 20px;
-	border: 1px solid black;
+	border: 1px dotted #aaa;
+}
+.title-in-middle{
+	text-align: center;
+	font-size: 30px;
+	color: #666;
+	padding: 10px;
 }

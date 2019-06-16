@@ -11,12 +11,22 @@
 		<div class="row">
 		@foreach($block['blocks'] as $mini_block)
 			<div class="col-md-{{ $mini_block['column'] }} col-seperate">
-				@include('front.widgets.' . $mini_block['widget_type'] . '.' . $mini_block['widget_id'])
+				@if(0) 
+					@include('front.widgets.' . $mini_block['widget_type'] . '.' . $mini_block['widget_id'])
+				@endif
+				<div class="title-in-middle">
+					{{ $mini_block['widget_type'] }}
+				</div>
 			</div>
 		@endforeach
 		</div>
 	@else
-		@include('front.widgets.' . $block['widget_type'] . '.' . $block['widget_id'])
+		@if(0) 
+			@include('front.widgets.' . $block['widget_type'] . '.' . $block['widget_id']) 
+		@endif
+		<div class="title-in-middle">
+			{{ $block['widget_type'] }}
+		</div>
 	@endif
 	</div>
 	</div>
