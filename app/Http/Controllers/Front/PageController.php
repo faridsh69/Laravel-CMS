@@ -10,10 +10,10 @@ class PageController extends Controller
     public function index()
     {
         $meta = [
-            'title' => 'APP_NAME',
-            'description' => 'META_DESCRIPTION',
+            'title' => config('0-general.default_meta_title'),
+            'description' => config('0-general.default_meta_description'),
             'keywords' => '',
-            'image' => '/cdn/upload/images/logo.png',
+            'image' => config('0-general.default_meta_image'),
         ];
 
         $blocks = [];
