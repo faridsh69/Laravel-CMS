@@ -5,6 +5,9 @@
 
     RewriteEngine On
 
+    RewriteCond %{REQUEST_URI} "/admin/"
+    RewriteRule (.*) $1 [L]
+
     # First rewrite to HTTPS:
     # Don't put www. here. If it is already there it will be included, if not
     # the subsequent rule will catch it.
