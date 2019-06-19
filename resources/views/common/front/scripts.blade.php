@@ -1,5 +1,3 @@
-<!-- <script src="{{ asset('front/js/owl.carousel.min.js') }}"></script> -->
-
 <!-- Jquery-2.2.4 JS -->
 <script src="{{ asset('js/front/ca/jquery-2.2.4.min.js') }}"></script>
 <!-- Popper js -->

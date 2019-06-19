@@ -1,5 +1,5 @@
 <!-- Special Description Area -->
-<section>
+<section class="special-area bg-white section_padding_100" style="margin-top: -200px;">
     <div class="special_description_area mt-150">
         <div class="container">
             <div class="row">

@@ -21,7 +21,7 @@
     </div>
     <!-- Welcome thumb -->
     <div class="welcome-thumb wow fadeInDown" data-wow-delay="0.5s">
-        <img src="{{ asset('img/bg-img/welcome-img.png') }}" alt="">
+        <img src="img/bg-img/welcome-img.png" alt="">
     </div>
 </section>
 <!-- ***** Wellcome Area End ***** -->
