@@ -1,5 +1,8 @@
 <head>
 	<meta name="robots" content="noindex"> 
+	@if(!config('0-general.google_index'))
+		<meta name="robots" content="noindex">
+	@endif
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -30,11 +33,12 @@
 	<meta property="twitter:creator" content="farid shahidi">
 	<meta property="twitter:image" content="{{ $meta['image'] }}">
 	<meta property="twitter:domain" content="{{ url('/') }}">
-
 	<link rel="canonical" href="{{ url()->current() }}">
 
 	<!-- start::Base Styles -->
-	<link rel="stylesheet" href="{{ asset('bootstrap/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('/css/front/ca/style.css') }}">
+	<link rel="stylesheet" href="{{ asset('/css/front/ca/responsive.css') }}">
+	<!-- <link rel="stylesheet" href="{{ asset('bootstrap/bootstrap.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('front/css/bs-rtl-awsome-owl.css') }}">
 	<link rel="stylesheet" href="{{ asset('front/css/app.css') }}">
 	<link rel="stylesheet" href="{{ asset('front/css/uikit-rtl.min.css') }}">
@@ -43,10 +47,9 @@
 	<script src="{{ asset('bootstrap/popper.min.js') }}"></script>
 	<script src="{{ asset('bootstrap/bootstrap.min.js') }}"></script>
 	<link href="{{ asset('css/custome-front.css') }}" rel="stylesheet" />
+	<script src="{{ asset('front/js/uikit.min.js') }}"></script> -->
 	<!--end::Base Styles -->
-	<!-- 'upload/images/favicon.png' -->
-	<link rel="shortcut icon" href="{{ asset(config('0-general.favicon')) }}" />
-
-	<script src="{{ asset('front/js/uikit.min.js') }}"></script>
 	@stack('style')
+
+	<link rel="shortcut icon" href="{{ asset(config('0-general.favicon')) }}" />
 </head>

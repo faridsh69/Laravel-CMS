@@ -1,5 +1,8 @@
 <head>
 	<meta name="robots" content="noindex">
+	@if(!config('0-general.google_index'))
+		<meta name="robots" content="noindex">
+	@endif
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -34,13 +37,12 @@
 	<link rel="canonical" href="{{ url()->current() }}">
 
     <!--begin::Base Styles -->
-	<link href="{{ asset('css/vendors.bundle.css') }}" rel="stylesheet" />
-	<link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet" />
+	<link href="{{ asset('css/admin/vendors.bundle.css') }}" rel="stylesheet" />
+	<link href="{{ asset('css/admin/style.bundle.css') }}" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-	<link href="{{ asset('css/custome.css') }}" rel="stylesheet" />
+	<link href="{{ asset('css/admin/custome.css') }}" rel="stylesheet" />
 	<!--end::Base Styles -->
-	
-	<link rel="shortcut icon" href="{{ asset('upload/images/favicon.png') }}" />
+	<link rel="shortcut icon" href="{{ asset(config('0-general.favicon')) }}" />
 
 	@stack('style')
 </head>

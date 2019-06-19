@@ -5,22 +5,20 @@
 
     RewriteEngine On
 
-    RewriteCond %{REQUEST_URI} "/admin/"
-    RewriteRule (.*) $1 [L]
+    RewriteCond %{HTTP_HOST} !^www\. [NC]
+    RewriteRule .* http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
+    # RewriteCond %{REQUEST_URI} "/admin/"
+    # RewriteRule (.*) $1 [L]
     # First rewrite to HTTPS:
     # Don't put www. here. If it is already there it will be included, if not
     # the subsequent rule will catch it.
     # RewriteCond %{HTTPS} off
     # RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-
-    RewriteCond %{HTTP_HOST} !^www\. [NC]
-    RewriteRule .* http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-
     # Handle Authorization Header
-    RewriteCond %{HTTP:Authorization} .
-    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-
+    
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} (.+)/$
