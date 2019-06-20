@@ -1,3 +1,7 @@
+.wellcome_area{
+    height: 700px;
+}
+
 @media (min-width: 992px) and (max-width: 1199px) {
     .menu_area .navbar-brand {
         font-size: 42px;

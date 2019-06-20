@@ -51,7 +51,6 @@ class PageController extends Controller
     public function index($page_url = '/')
     {
         $page = Page::where('url', $page_url)->active()->first();
-        dd($page);
         abort_if(!$page, 404);
 
         $meta = [
@@ -63,7 +62,7 @@ class PageController extends Controller
             'canonical_url' => $page->canonical_url ? $page->canonical_url : url()->current(),
         ];
         $blocks = $page->blocks()->active()->get();
-        
+
         return view('front.page.index' , ['blocks' => $blocks, 'page' => $page, 'meta' => $meta]);
     }
 }
