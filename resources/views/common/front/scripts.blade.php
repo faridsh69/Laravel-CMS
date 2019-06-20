@@ -12,3 +12,4 @@
 <script src="{{ asset('js/front/ca/footer-reveal.min.js') }}"></script>
 <!-- Active JS -->
 <script src="{{ asset('js/front/ca/active.js') }}"></script>
+@stack('scripts')

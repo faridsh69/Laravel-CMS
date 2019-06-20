@@ -1,6 +1,6 @@
 <head>
 	<meta name="robots" content="noindex"> 
-	@if(!config('0-general.google_index'))
+	@if(!config('0-general.google_index') || !$meta['google_index'])
 		<meta name="robots" content="noindex">
 	@endif
 	<meta charset="utf-8" />
@@ -33,7 +33,8 @@
 	<meta property="twitter:creator" content="farid shahidi">
 	<meta property="twitter:image" content="{{ $meta['image'] }}">
 	<meta property="twitter:domain" content="{{ url('/') }}">
-	<link rel="canonical" href="{{ url()->current() }}">
+	
+	<link rel="canonical" href="{{ $meta['canonical_url'] }}">
 
 	<!-- start::Base Styles -->
 	<link rel="stylesheet" href="{{ asset('/css/front/ca/style.css') }}">

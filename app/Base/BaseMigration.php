@@ -49,7 +49,7 @@ class BaseMigration extends Migration
                     $table->{$type}($name)->{$database}(true);
                 }
             }
-            if($table_name === 'categories' || $table_name === 'menus'){
+            if($table_name === 'categories' || $table_name === 'menus' || $table_name === 'blocks'){
                 $table->nestedSet();
             }
             if($table_name === 'users'){

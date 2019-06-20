@@ -14,26 +14,7 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        $models = [
-            'blog', 
-            'page', 
-            'category', 
-            'user', 
-            'settinggeneral',
-            'settingcontact',
-            'settingdeveloper',
-            'tag',
-            'media',
-            'report',
-            'notification',
-            'menu',
-            'comment',
-            'form',
-        ];
-        // 'theme', // 9 
-        // 'block', // 10
-        // 'widget', // 11
-
+        $models = config('services.models.permissions');
         $roles = [];
         $user = User::where('id', 1)->first();
         $user_2 = User::where('id', 2)->first();

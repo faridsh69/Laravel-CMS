@@ -7,8 +7,9 @@ use App\Models\Page;
 
 class PageController extends Controller
 {
-    public function index()
+    public function index2()
     {
+        dd(1);
         $meta = [
             'title' => config('0-general.default_meta_title'),
             'description' => config('0-general.default_meta_description'),
@@ -47,20 +48,22 @@ class PageController extends Controller
         return view('front.page.index', ['blocks' => $blocks, 'meta' => $meta]);
     }
 
-    public function show($page_url)
+    public function index($page_url = '/')
     {
-        $meta = [
-            'title' => 'APP_NAME',
-            'description' => 'META_DESCRIPTION',
-            'keywords' => '',
-            'image' => '/cdn/upload/images/logo.png',
-        ];
-
-        $page = Page::where('url', $page_url)->first();
+        $page = Page::where('url', $page_url)->active()->first();
+        dd($page);
         abort_if(!$page, 404);
 
-        $blocks = [];
+        $meta = [
+            'title' => $page->title,
+            'description' => $page->meta_description,
+            'keywords' => $page->keywords,
+            'image' => $page->meta_image,
+            'google_index' => $page->google_index,
+            'canonical_url' => $page->canonical_url ? $page->canonical_url : url()->current(),
+        ];
+        $blocks = $page->blocks()->active()->get();
         
-        return view('front.page.show' , ['blocks' => $blocks, 'page' => $page, 'meta' => $meta]);
+        return view('front.page.index' , ['blocks' => $blocks, 'page' => $page, 'meta' => $meta]);
     }
 }

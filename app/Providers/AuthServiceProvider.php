@@ -13,6 +13,8 @@ use App\Policies\TagPolicy;
 use App\Policies\FormPolicy;
 use App\Policies\MenuPolicy;
 use App\Policies\CommentPolicy;
+use App\Policies\BlockPolicy;
+use App\Policies\WidgetPolicy;
 use App\Policies\NotificationPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -40,6 +42,8 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Menu' => MenuPolicy::class,
         'App\Models\Comment' => CommentPolicy::class,
         'App\Models\Form' => FormPolicy::class,
+        'App\Models\Block' => BlockPolicy::class,
+        'App\Models\Widget' => WidgetPolicy::class,
     ];
 
     /**

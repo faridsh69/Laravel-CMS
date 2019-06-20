@@ -4,6 +4,5 @@
 <body>
 	@yield('content')
 	@include('common.front.scripts')
-	@stack('scripts')
 </body>
 </html>

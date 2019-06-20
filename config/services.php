@@ -49,14 +49,9 @@ $output = [
             'menu', // 16
             'comment', // 6
             'form', // 13
-            // 'block', // 10
-            // 'widget', // 11
+            'block', // 10
+            'widget', // 11
             // 'theme', // 9 
-            // // 'media', // 5  
-            // // 'setting', // 7 + 
-            // // 'seo' // 12 
-            // // 'report', // 14
-            // // 'notification', // 15
         ],
         'seeder' => [
             'blog', // 1 +
@@ -68,10 +63,6 @@ $output = [
             // 'block', // 10
             // 'widget', // 11
             // // 'media', // 5  
-            // // 'setting', // 7 + 
-            // // 'seo' // 12 
-            // // 'user', // 8 
-            // // 'report', // 14
             // // 'notification', // 15
             // // 'theme', // 9 
         ],
@@ -89,10 +80,26 @@ $output = [
             'block', // 10
             'widget', // 11
             'theme', // 9 
-            // // 'setting', // 7 + 
-            // // 'seo' // 12 
-            //  // 'report', // 14
         ],
+        'permissions' => [
+            'blog', 
+            'page', 
+            'category', 
+            'user', 
+            'settinggeneral',
+            'settingcontact',
+            'settingdeveloper',
+            'tag',
+            'media',
+            'report',
+            'notification',
+            'menu',
+            'comment',
+            'form',
+            'block',
+            'widget',
+            // 'theme', // 9 
+        ], 
         // 'blog', // 1 +
         // 'page', // 2 +
         // 'category', // 3 +

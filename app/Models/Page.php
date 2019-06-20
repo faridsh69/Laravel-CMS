@@ -37,15 +37,6 @@ class Page extends Model
             'table' => true,
         ],
         [
-            'name' => 'description',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => 'nullable|max:191',
-            'help' => 'Description will show in lists instead of content.',
-            'form_type' => 'textarea',
-            'table' => false,
-        ],
-        [
             'name' => 'content',
             'type' => 'text',
             'database' => '',
@@ -115,40 +106,13 @@ class Page extends Model
         return $this->columns;
     }
 
-    public function editor()
+    public function blocks()
     {
-        // @todo in bayad az laravel activity log bekhone
-        // return $this->belongsTo('App\Models\User', 'editor_id', 'id');
+        return $this->hasMany('App\Models\Block', 'page_id', 'id');
     }
 
-    public function creator()
+    public function scopeActive($query)
     {
-        // @todo in bayad az laravel activity log bekhone
-        // return $this->belongsTo('App\Models\User', 'creator_id', 'id');
+        return $query->where('activated', 1);
     }
-
-    public function category()
-    {
-        return $this->belongsTo('App\Models\Category', 'category_id', 'id');
-    }
-
-    public function related_blogs()
-    {
-        return $this->belongsToMany('App\Models\Blog', 'related_blogs', 'blog_id', 'related_blog_id');
-    }
-
-    // public static function boot()
-    // {
-    //     parent::boot();
-
-    //     self::creating(function($model){
-    //         $model->activated = $model->activated ? 1 : 0;
-    //         $model->google_index = $model->google_index ? 1 : 0;
-    //     });
-
-    //     self::updating(function($model){
-    //         $model->activated = $model->activated ? 1 : 0;
-    //         $model->google_index = $model->google_index ? 1 : 0;
-    //     });
-    // }
 }
