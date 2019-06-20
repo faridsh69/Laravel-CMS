@@ -13,6 +13,6 @@
 @endif
 @endpush
 
-@section('content')	
+@section('content')
 {!! form($form) !!}
 @endsection

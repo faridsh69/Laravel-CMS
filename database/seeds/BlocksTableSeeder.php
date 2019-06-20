@@ -15,7 +15,7 @@ class BlocksTableSeeder extends Seeder
     	$blocks = [
             [
             	'id' => 1,
-            	'columns' => 12,
+            	'column' => 12,
             	'widget_type' => 'menu',
             	'widget_id' => 1,
             	'page_id' => 1,
@@ -24,7 +24,7 @@ class BlocksTableSeeder extends Seeder
             ],
             [
             	'id' => 2,
-            	'columns' => 12,
+            	'column' => 12,
             	'widget_type' => 'header',
             	'widget_id' => 2,
             	'page_id' => 1,
@@ -33,7 +33,7 @@ class BlocksTableSeeder extends Seeder
             ],
             [
             	'id' => 3,
-            	'columns' => 12,
+            	'column' => 12,
             	'widget_type' => 'features',
             	'widget_id' => 3,
             	'page_id' => 1,
@@ -42,7 +42,7 @@ class BlocksTableSeeder extends Seeder
             ],
             [
             	'id' => 4,
-            	'columns' => 12,
+            	'column' => 12,
             	'widget_type' => 'content',
             	'widget_id' => 4,
             	'page_id' => 1,
@@ -51,7 +51,7 @@ class BlocksTableSeeder extends Seeder
             ],
             [
             	'id' => 5,
-            	'columns' => 12,
+            	'column' => 12,
             	'widget_type' => 'features',
             	'widget_id' => 5,
             	'page_id' => 1,
@@ -60,7 +60,7 @@ class BlocksTableSeeder extends Seeder
             ],
             [
             	'id' => 6,
-            	'columns' => 12,
+            	'column' => 12,
             	'widget_type' => 'video',
             	'widget_id' => 6,
             	'page_id' => 1,
@@ -69,7 +69,7 @@ class BlocksTableSeeder extends Seeder
             ],
             [
             	'id' => 7,
-            	'columns' => 12,
+            	'column' => 12,
             	'widget_type' => 'counting',
             	'widget_id' => 7,
             	'page_id' => 1,
@@ -78,7 +78,7 @@ class BlocksTableSeeder extends Seeder
             ],
             [
             	'id' => 8,
-            	'columns' => 12,
+            	'column' => 12,
             	'widget_type' => 'products',
             	'widget_id' => 8,
             	'page_id' => 1,
@@ -87,7 +87,7 @@ class BlocksTableSeeder extends Seeder
             ],
             [
             	'id' => 9,
-            	'columns' => 12,
+            	'column' => 12,
             	'widget_type' => 'pricing',
             	'widget_id' => 9,
             	'page_id' => 1,
@@ -96,7 +96,7 @@ class BlocksTableSeeder extends Seeder
             ],
             [
             	'id' => 10,
-            	'columns' => 12,
+            	'column' => 12,
             	'widget_type' => 'feedback',
             	'widget_id' => 10,
             	'page_id' => 1,
@@ -105,7 +105,7 @@ class BlocksTableSeeder extends Seeder
             ],
             [
             	'id' => 11,
-            	'columns' => 12,
+            	'column' => 12,
             	'widget_type' => 'subscribe',
             	'widget_id' => 11,
             	'page_id' => 1,
@@ -114,7 +114,7 @@ class BlocksTableSeeder extends Seeder
             ],
             [
             	'id' => 12,
-            	'columns' => 12,
+            	'column' => 12,
             	'widget_type' => 'team',
             	'widget_id' => 12,
             	'page_id' => 1,
@@ -123,7 +123,7 @@ class BlocksTableSeeder extends Seeder
             ],
             [
             	'id' => 13,
-            	'columns' => 12,
+            	'column' => 12,
             	'widget_type' => 'contact',
             	'widget_id' => 13,
             	'page_id' => 1,
@@ -132,7 +132,7 @@ class BlocksTableSeeder extends Seeder
             ],
             [
             	'id' => 14,
-            	'columns' => 12,
+            	'column' => 12,
             	'widget_type' => 'footer',
             	'widget_id' => 14,
             	'page_id' => 1,
@@ -141,7 +141,7 @@ class BlocksTableSeeder extends Seeder
             ],
             [
             	'id' => 15,
-            	'columns' => 12,
+            	'column' => 12,
             	'widget_type' => 'loading',
             	'widget_id' => 15,
             	'page_id' => 1,

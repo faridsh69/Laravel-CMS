@@ -26,12 +26,15 @@ class BaseFactory
                     $database = isset($column['database']) ? $column['database'] : '';
                     $rule = isset($column['rule']) ? $column['rule'] : '';
                     $relation = isset($column['relation']) ? $column['relation'] : '';
-                    
+
                     if($database === 'nullable' || $database === 'none'){
                         continue;
                     }
                     elseif($name == 'meta_description'){
                         $fake_data = $faker->realText(100);
+                    }
+                    elseif($name == 'widget_id'){
+                        $fake_data = 1;
                     }
                     elseif($name == 'url'){
                         $fake_data = 'fake-' . $faker->numberBetween($min = 1000, $max = 900000);

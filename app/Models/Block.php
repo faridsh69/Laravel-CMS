@@ -19,7 +19,7 @@ class Block extends Model
     
     public $columns = [
     	[
-            'name' => 'columns',
+            'name' => 'column',
             'type' => 'tinyInteger',
             'database' => 'nullable',
             'rule' => 'required',
