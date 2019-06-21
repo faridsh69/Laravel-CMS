@@ -13,10 +13,6 @@ class Block extends Model
 
     public $guarded = [];
 
-    protected $hidden = [
-        'deleted_at',
-    ];
-    
     public $columns = [
     	[
             'name' => 'column',
@@ -99,7 +95,11 @@ class Block extends Model
             'table' => false,
         ],
     ];
-        
+    
+    protected $hidden = [
+        'deleted_at',
+    ];
+       
     public function getColumns()
     {
         return $this->columns;

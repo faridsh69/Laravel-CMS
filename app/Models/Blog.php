@@ -16,10 +16,6 @@ class Blog extends Model implements Commentable
 
     public $guarded = [];
 
-    protected $hidden = [
-        'deleted_at',
-    ];
-
     public function canBeRated(): bool
     {
         return true;
@@ -162,7 +158,11 @@ class Blog extends Model implements Commentable
             'table' => false,
         ],
     ];
-        
+
+    protected $hidden = [
+        'deleted_at',
+    ];
+            
     public function getColumns()
     {
         return $this->columns;

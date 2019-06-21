@@ -16,7 +16,7 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => config('0_general.cdn_url') . '/storage',
+            'url' => config('0-general.cdn_url') . '/storage',
             'visibility' => 'public',
         ],
 

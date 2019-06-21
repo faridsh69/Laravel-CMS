@@ -6,7 +6,5 @@ use App\Base\BasePolicy;
 
 class NotificationPolicy extends BasePolicy
 {
-    public $model = 'Notification'; 
+    public $model = 'Notification';
 }
-
-

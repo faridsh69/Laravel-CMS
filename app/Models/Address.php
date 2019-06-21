@@ -11,10 +11,6 @@ class Address extends Model
 
     public $guarded = [];
 
-    protected $hidden = [
-        'deleted_at',
-    ];
-
     public $columns = [
         [
             'name' => 'label',
@@ -92,6 +88,10 @@ class Address extends Model
             'name' => 'user_id',
             'relation' => 'users',
         ],
+    ];
+
+    protected $hidden = [
+        'deleted_at',
     ];
 
     public function getColumns()

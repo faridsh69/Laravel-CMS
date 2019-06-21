@@ -39,7 +39,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         $admin_domain = 'www.admin.eric.com';
         $base_domain = \Request::getHost();
-        if(strpos($base_domain, "admin") !== false){
+        if(strpos($base_domain, 'admin') !== false){
             $admin_domain = $base_domain;
         }
         Route::middleware(['web', 'throttle:15,0.2', 'auth'])

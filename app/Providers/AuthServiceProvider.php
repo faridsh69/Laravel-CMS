@@ -2,20 +2,20 @@
 
 namespace App\Providers;
 
+use App\Policies\BlockPolicy;
 use App\Policies\BlogPolicy;
-use App\Policies\PagePolicy;
 use App\Policies\CategoryPolicy;
-use App\Policies\UserPolicy;
-use App\Policies\SettingGeneralPolicy;
-use App\Policies\SettingContactPolicy;
-use App\Policies\SettingDeveloperPolicy;
-use App\Policies\TagPolicy;
+use App\Policies\CommentPolicy;
 use App\Policies\FormPolicy;
 use App\Policies\MenuPolicy;
-use App\Policies\CommentPolicy;
-use App\Policies\BlockPolicy;
-use App\Policies\WidgetPolicy;
 use App\Policies\NotificationPolicy;
+use App\Policies\PagePolicy;
+use App\Policies\SettingContactPolicy;
+use App\Policies\SettingDeveloperPolicy;
+use App\Policies\SettingGeneralPolicy;
+use App\Policies\TagPolicy;
+use App\Policies\UserPolicy;
+use App\Policies\WidgetPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Passport\Passport;

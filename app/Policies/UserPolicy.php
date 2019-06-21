@@ -6,5 +6,5 @@ use App\Base\BasePolicy;
 
 class UserPolicy extends BasePolicy
 {
-    public $model = 'User'; 
+    public $model = 'User';
 }

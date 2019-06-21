@@ -6,5 +6,5 @@ use App\Base\BasePolicy;
 
 class CategoryPolicy extends BasePolicy
 {
-    public $model = 'Category'; 
+    public $model = 'Category';
 }

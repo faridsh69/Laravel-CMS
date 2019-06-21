@@ -3,20 +3,17 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
 
 class News extends Notification
 {
     use Queueable;
 
     public $data;
-    
+
     /**
      * Create a new notification instance.
-     *
-     * @return void
      */
     public function __construct($data)
     {
@@ -45,10 +42,10 @@ class News extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-                    ->line($this->data)
-                    // ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+        return (new MailMessage())
+            ->line($this->data)
+            // ->action('Notification Action', url('/'))
+            ->line('Thank you for using our application!');
     }
 
     /**

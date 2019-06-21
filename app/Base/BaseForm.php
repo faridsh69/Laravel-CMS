@@ -33,9 +33,6 @@ class BaseForm extends Form
             $help = isset($column['help']) ? $column['help'] : ' ';
             $database = isset($column['database']) ? $column['database'] : null;
             $form_type = $column['form_type'];
-            $relation = isset($column['relation']) ? $column['relation'] : '';
-            $attr = null;
-            $choices = null;
 
             // help
             if($help === ''){
@@ -107,7 +104,7 @@ class BaseForm extends Form
                 }
             }
             
-            $this->add($column['name'], $input_type, $option);
+            $this->add($name, $input_type, $option);
         }
         $this->addBottom();
         $this->add('submit', 'submit');

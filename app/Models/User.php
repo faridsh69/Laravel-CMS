@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Enums\CastsEnums;
+use Actuallymab\LaravelComment\CanComment;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
-use Actuallymab\LaravelComment\CanComment;
 
 class User extends Authenticatable
 {
@@ -20,14 +18,6 @@ class User extends Authenticatable
     use CanComment;
 
     public $guarded = [];
-
-    protected $hidden = [
-        'password', 'remember_token', 'deleted_at',
-    ];
-
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
 
     public $columns = [
         [
@@ -164,7 +154,15 @@ class User extends Authenticatable
             'help' => 'Password should match confirm password.',
             'form_type' => '',
             'table' => false,
-        ],        
+        ],
+    ];
+
+    protected $hidden = [
+        'password', 'remember_token', 'deleted_at',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
     ];
 
     public function getColumns()

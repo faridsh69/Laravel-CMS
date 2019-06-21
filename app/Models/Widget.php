@@ -51,7 +51,7 @@ class Widget extends Model
             'help' => '',
             'form_type' => 'ckeditor',
             'table' => true,
-        ], 
+        ],
         [
             'name' => 'image',
             'type' => 'string',

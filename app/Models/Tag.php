@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Tag extends TagSpatie
 {
     use SoftDeletes;
-    
+
     public $columns = [
         [
             'name' => 'name',
