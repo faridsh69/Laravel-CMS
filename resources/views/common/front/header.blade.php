@@ -35,22 +35,8 @@
 	<meta property="twitter:domain" content="{{ url('/') }}">
 	
 	<link rel="canonical" href="{{ $meta['canonical_url'] }}">
-
-	<!-- start::Base Styles -->
-	<link rel="stylesheet" href="{{ asset('/css/front/ca/style.css') }}">
-	<link rel="stylesheet" href="{{ asset('/css/front/ca/responsive.css') }}">
-	<!-- <link rel="stylesheet" href="{{ asset('bootstrap/bootstrap.min.css') }}">
-	<link rel="stylesheet" href="{{ asset('front/css/bs-rtl-awsome-owl.css') }}">
-	<link rel="stylesheet" href="{{ asset('front/css/app.css') }}">
-	<link rel="stylesheet" href="{{ asset('front/css/uikit-rtl.min.css') }}">
-
-	<script src="{{ asset('bootstrap/jquery.min.js') }}"></script>
-	<script src="{{ asset('bootstrap/popper.min.js') }}"></script>
-	<script src="{{ asset('bootstrap/bootstrap.min.js') }}"></script>
-	<link href="{{ asset('css/custome-front.css') }}" rel="stylesheet" />
-	<script src="{{ asset('front/js/uikit.min.js') }}"></script> -->
-	<!--end::Base Styles -->
-	@stack('style')
-
 	<link rel="shortcut icon" href="{{ asset(config('0-general.favicon')) }}" />
+
+	@include('common.front.styles')
+	@stack('style')
 </head>

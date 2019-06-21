@@ -5,9 +5,9 @@
 	var columns  = '{!! json_encode($columns) !!}';
 	columns = JSON.parse(columns);
 </script>
-<script src="{{ asset('js/table/table.js') }}"></script>
-<script src="{{ asset('js/table/change-status.js') }}"></script>
-<script src="{{ asset('js/table/tree.js') }}"></script>
+<script src="{{ asset('js/admin/table/table.js') }}"></script>
+<script src="{{ asset('js/admin/table/change-status.js') }}"></script>
+<script src="{{ asset('js/admin/table/tree.js') }}"></script>
 @if(Session::has('alert-success'))
 <script>
     jQuery(document).ready(function() {

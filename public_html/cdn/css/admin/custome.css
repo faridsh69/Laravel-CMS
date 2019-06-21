@@ -1,6 +1,16 @@
 .display-none{
 	display: none !important;
 }
+.separate{
+	height: 30px;
+	clear: both;
+}
+.m-sortable-table-body{
+	height:200px; 
+	overflow: scroll; 
+	border: 1px solid #ddd;
+	position: relative;
+}
 *{
 	font-family: 'Roboto', sans-serif;
 }

@@ -42,6 +42,9 @@ Route::group(['prefix' => 'menu', 'namespace' => 'Menu', 'as' => 'menu.'], funct
 	Route::get('tree', 'ResourceController@getTree')->name('tree');
 	Route::post('tree', 'ResourceController@postTree')->name('tree.store');
 });
+Route::group(['prefix' => 'block', 'namespace' => 'Block', 'as' => 'block.'], function () {
+	Route::post('sort', 'ResourceController@postSort')->name('sort.store');
+});
 Route::group(['prefix' => 'setting', 'namespace' => 'Setting', 'as' => 'setting.'], function () {
 	Route::get('', 'GeneralController@redirect')->name('general.redirect');
 	Route::get('general', 'GeneralController@index')->name('general');

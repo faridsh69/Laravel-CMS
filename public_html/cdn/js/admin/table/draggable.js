@@ -10,13 +10,13 @@ var PortletDraggable= {
             forcePlaceholderSize:!0, 
             tolerance:"pointer", 
             helper:"clone", 
-            tolerance:"pointer", 
-            forcePlaceholderSize:!0, 
-            helper:"clone", 
             cancel:".m-portlet--sortable-empty", 
             revert:250, 
+            axis: 'y',
             update:function(e, t) {
-                t.item.prev().hasClass("m-portlet--sortable-empty")&&t.item.prev().before(t.item)
+                // var data = $(this).sortable('toArray');
+                // console.log(data);
+                // t.item.prev().hasClass("m-portlet--sortable-empty")&&t.item.prev().before(t.item)
             }
         }
         )

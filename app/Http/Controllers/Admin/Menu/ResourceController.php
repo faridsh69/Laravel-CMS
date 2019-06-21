@@ -27,7 +27,7 @@ class ResourceController extends BaseListController
         }
         $categories = $this->repository->get()->toTree();
 
-        return view('admin.category.order-table', ['meta' => $this->meta, 'columns' => $columns, 'categories' => $categories]);
+        return view('admin.list.tree-table', ['meta' => $this->meta, 'columns' => $columns, 'categories' => $categories]);
     }
 
     public function postTree()
@@ -35,7 +35,7 @@ class ResourceController extends BaseListController
     	$tree_json = $this->request->categorytree;
     	$tree = json_decode($tree_json);    	
     	$this->saveTree($tree, null);
-    	$this->request->session()->flash('alert-success', $this->model . ' Created Successfully!');
+    	$this->request->session()->flash('alert-success', $this->model . ' Order Updated Successfully!');
 
         return redirect()->route('admin.' . $this->model_sm . '.list.index');
     }
