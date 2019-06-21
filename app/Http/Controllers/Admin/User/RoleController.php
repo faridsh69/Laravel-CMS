@@ -31,7 +31,7 @@ class RoleController extends BaseListController
             ];
         }
 
-        return view('admin.user.role-table', ['meta' => $this->meta, 'columns' => $columns]);
+        return view('admin.list.special-table', ['meta' => $this->meta, 'columns' => $columns, 'model_sm' => $this->model_sm]);
     }
 
     public function create()

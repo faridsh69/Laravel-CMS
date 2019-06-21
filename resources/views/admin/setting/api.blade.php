@@ -6,7 +6,7 @@
 <script src="{{ asset('js/admin/vue/axios.js') }}"></script>
 <script src="{{ asset('js/admin/vue/vue-components/passport.js') }}"></script>
 <script src="{{ asset('js/admin/vue/vue-runner.js') }}"></script>
-<link rel="stylesheet" href="{{ asset('css/admin/panel.css') }}">
+<link rel="stylesheet" href="{{ asset('css/admin/table/panel.css') }}">
 @endpush
 
 @section('content')

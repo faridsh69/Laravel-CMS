@@ -5,8 +5,8 @@
 	var columns  = '{!! json_encode($columns) !!}';
 	columns = JSON.parse(columns);
 </script>
-<script src="{{ asset('js/table/role-table.js') }}"></script>
-<script src="{{ asset('js/table/change-status.js') }}"></script>
+<script src="{{ asset('js/admin/table/' . $model_sm . '-table.js') }}"></script>
+<script src="{{ asset('js/admin/table/change-status.js') }}"></script>
 @if(Session::has('alert-success'))
 <script>
     jQuery(document).ready(function() {
