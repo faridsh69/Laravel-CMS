@@ -89,6 +89,19 @@
 			],
 		],
 		[
+			'id' => 6,
+			'title' => 'Comment',
+			'route' => 'comment',
+			'type' => 'submenu',
+			'icon' => 'flaticon-comment',
+			'children' => [	
+				[
+					'title' => 'Comment list',
+					'route' => 'admin.comment.list.index',
+				],
+			],
+		],
+		[
 			'title' => 'Management',
 			'type' => 'section',
 		],
@@ -205,45 +218,6 @@
 			'type' => 'section',
 		],
 		[
-			'id' => 16,
-			'title' => 'Menu',
-			'route' => 'menu',
-			'type' => 'submenu',
-			'icon' => 'flaticon-grid-menu',
-			'children' => [	
-				[
-					'title' => 'Menu list',
-					'route' => 'admin.menu.list.index',
-				],
-			],
-		],
-		[
-			'id' => 6,
-			'title' => 'Comment',
-			'route' => 'comment',
-			'type' => 'submenu',
-			'icon' => 'flaticon-comment',
-			'children' => [	
-				[
-					'title' => 'Comment list',
-					'route' => 'admin.comment.list.index',
-				],
-			],
-		],
-		[
-			'id' => 13,
-			'title' => 'Form',
-			'route' => 'form',
-			'type' => 'submenu',
-			'icon' => 'flaticon-interface',
-			'children' => [	
-				[
-					'title' => 'Form list',
-					'route' => 'admin.form.list.index',
-				],
-			],
-		],		
-		[
 			'id' => 9,
 			'title' => 'Theme',
 			'route' => 'theme',
@@ -279,6 +253,32 @@
 				[
 					'title' => 'Widget list',
 					'route' => 'admin.widget.list.index',
+				],
+			],
+		],
+		[
+			'id' => 16,
+			'title' => 'Menu',
+			'route' => 'menu',
+			'type' => 'submenu',
+			'icon' => 'flaticon-grid-menu',
+			'children' => [	
+				[
+					'title' => 'Menu list',
+					'route' => 'admin.menu.list.index',
+				],
+			],
+		],
+		[
+			'id' => 13,
+			'title' => 'Form',
+			'route' => 'form',
+			'type' => 'submenu',
+			'icon' => 'flaticon-interface',
+			'children' => [	
+				[
+					'title' => 'Form list',
+					'route' => 'admin.form.list.index',
 				],
 			],
 		],
