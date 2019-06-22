@@ -191,7 +191,7 @@ class BlocksTableSeeder extends Seeder
                   'widget_id' => 15,
                   'page_id' => 1,
                   'theme' => 'ca',
-                  'activated' => 1,
+                  'activated' => 0,
             ],
         ];
         
