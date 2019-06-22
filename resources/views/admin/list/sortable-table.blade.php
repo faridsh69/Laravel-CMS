@@ -17,13 +17,6 @@
 <script>
 	jQuery(document).ready(function() {
 	    $('button').on('click', function () {
-	    	// var sorted1 = $( "#m_sortable_portlets" ).sortable( "serialize", { key: "sort" } );
-	    	// console.log(sorted1);
-	     //    var sorted = [];
-	        // $('.blocks-sorted').each(function() {
-	        // 	sorted.push($(this).attr('id'));
-	        // });
-	        // var sorted = $("#m_sortable_portlets").sortable('serialize');
 	        var sorted_array = $("#m_sortable_portlets").sortable('toArray');
 	        var json = JSON.stringify(sorted_array);
 	        document.getElementById('blockSort').value = json;
@@ -60,7 +53,7 @@
 			<div class="col-lg-{{ $block->column }}">
 				<!--begin::Portlet-->
 				<div class="m-portlet m-portlet--mobile m-portlet--sortable 
-					@if( array_search($block->widget_type, ['menu', 'content', 'header', 'footer', 'loading']) !== false)
+					@if( array_search($block->widget_type, \App\Models\Block::getStaticTypes()) !== false)
 						m-portlet--danger
 					@else
 						m-portlet--brand

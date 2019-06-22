@@ -21,10 +21,12 @@ class PageController extends Controller
             'google_index' => $page->google_index,
             'canonical_url' => $page->canonical_url ? $page->canonical_url : url()->current(),
         ];
+
+        $static_types = Block::getStaticTypes();
         $blocks = Block::active()
-            ->where(function($query) use ($page) {
+            ->where(function($query) use ($page, $static_types) {
                 $query->where('page_id', $page->id)
-                    ->orWhereIn('widget_type', ['menu', 'content', 'header', 'footer', 'loading']);
+                    ->orWhereIn('widget_type', $static_types);
             })
             ->orderBy('_lft', 'asc')
             ->get();

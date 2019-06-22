@@ -14,15 +14,6 @@ class Block extends Model
     public $guarded = [];
 
     public $columns = [
-    	[
-            'name' => 'column',
-            'type' => 'tinyInteger',
-            'database' => 'nullable',
-            'rule' => 'required',
-            'help' => 'Default value is 12, and each row has 12 columns',
-            'form_type' => '',
-            'table' => true,
-        ],
         [
             'name' => 'widget_type',
             'type' => 'string',
@@ -60,7 +51,7 @@ class Block extends Model
             'property' => 'title',
             'property_key' => 'id',
             'multiple' => false,
-            'table' => true,
+            'table' => false,
         ],
     	[
             'name' => 'page_id',
@@ -77,11 +68,38 @@ class Block extends Model
             'table' => false,
         ],
         [
+            'name' => 'page',
+            'type' => 'string',
+            'database' => 'none',
+            'rule' => '',
+            'help' => '',
+            'form_type' => 'none',
+            'table' => true,
+        ],
+        [
             'name' => 'theme',
             'type' => 'string',
             'database' => 'nullable',
             'rule' => 'required',
             'help' => 'Default theme is CA.',
+            'form_type' => '',
+            'table' => true,
+        ],
+        [
+            'name' => '_rgt',
+            'type' => 'integer',
+            'database' => 'none',
+            'rule' => 'numeric',
+            'help' => 'Order of columns',
+            'form_type' => '',
+            'table' => true,
+        ],
+        [
+            'name' => 'column',
+            'type' => 'tinyInteger',
+            'database' => 'nullable',
+            'rule' => 'required',
+            'help' => 'Default value is 12, and each row has 12 columns',
             'form_type' => '',
             'table' => true,
         ],
@@ -103,6 +121,17 @@ class Block extends Model
     public function getColumns()
     {
         return $this->columns;
+    }
+
+    public static function getStaticTypes()
+    {
+        return [
+            'menu', 
+            'header', 
+            'content', 
+            'footer', 
+            'loading',
+        ];
     }
 
     public function page()

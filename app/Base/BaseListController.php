@@ -385,8 +385,23 @@ class BaseListController extends Controller
                 }
             });
         }
+        elseif($this->model === 'Block') {
+            $datatable->addColumn('page', function($model) {
+                if($model->page_id){
+                    if(array_search($model->widget_type, \App\Models\Block::getStaticTypes()) !== false) {
+                        return '*';
+                    } 
+                    else {
+                        return $model->page->title;
+                    }
+                }
+                else{
+                    return null;
+                }
+            });
+        }
 
-        return $datatable->rawColumns(['id', 'content'])
+        return $datatable->rawColumns(['id', 'content', '_rgt'])
             ->toJson();
     }
 
