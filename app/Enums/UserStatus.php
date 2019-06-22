@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-use App\Enums\BaseEnum;
+use App\Base\BaseEnum;
 
 final class UserStatus extends BaseEnum
 {

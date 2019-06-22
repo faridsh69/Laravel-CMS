@@ -85,8 +85,13 @@ class BaseForm extends Form
                 $option['attr'] = ['rows' => 3];
             }
             elseif($form_type === 'enum'){
+                if($this->model_name == 'User'){
+                    $option['choices'] = \App\Enums\UserStatus::data;
+                }
+                elseif($this->model_name == 'Block'){
+                    $option['choices'] = \App\Enums\BlockType::data;
+                }
                 $input_type = 'select';
-                $option['choices'] = \App\Enums\UserStatus::data;
                 $option['attr'] = ['class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker'];
             }
             elseif($form_type === 'image'){
