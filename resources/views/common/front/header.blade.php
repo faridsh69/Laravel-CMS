@@ -37,6 +37,6 @@
 	<link rel="canonical" href="{{ $meta['canonical_url'] }}">
 	<link rel="shortcut icon" href="{{ asset(config('0-general.favicon')) }}" />
 
-	@include('common.front.styles')
+	@include('front.widgets.styles.' . config('0-developer.theme'))
 	@stack('style')
 </head>

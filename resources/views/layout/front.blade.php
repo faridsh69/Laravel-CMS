@@ -3,6 +3,7 @@
 @include('common.front.header')
 <body>
 	@yield('content')
-	@include('common.front.scripts')
+	@include('front.widgets.scripts.' . config('0-developer.theme'))
+	@stack('scripts')
 </body>
 </html>

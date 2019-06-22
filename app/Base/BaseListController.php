@@ -77,6 +77,10 @@ class BaseListController extends Controller
         }
         $this->meta['link_name'] = __('Create New ' . $this->model);
         $this->meta['search'] = 1;
+        if($this->model === 'Theme'){
+            $this->meta['link_route'] = route('admin.setting.developer');
+            $this->meta['link_name'] = __('Change Theme');
+        }
 
         $columns = [];
         foreach(collect($this->model_columns)->where('table', true) as $column)
