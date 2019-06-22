@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Kalnoy\Nestedset\NodeTrait;
+// use Kalnoy\Nestedset\NodeTrait;
 
 class Block extends Model
 {
     use SoftDeletes;
-    use NodeTrait;
+    // use NodeTrait;
 
     public $guarded = [];
 
@@ -87,11 +87,11 @@ class Block extends Model
             'table' => false,
         ],
         [
-            'name' => '_rgt',
+            'name' => 'order',
             'type' => 'integer',
-            'database' => 'none',
+            'database' => '',
             'rule' => 'numeric',
-            'help' => 'Order of columns',
+            'help' => 'Order of block, lower is on top',
             'form_type' => '',
             'table' => true,
         ],

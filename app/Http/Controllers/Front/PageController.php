@@ -28,7 +28,7 @@ class PageController extends Controller
                 $query->where('page_id', $page->id)
                     ->orWhereIn('widget_type', $static_types);
             })
-            ->orderBy('_lft', 'asc')
+            ->orderBy('order', 'asc')
             ->get();
 
         return view('front.page.index' , ['blocks' => $blocks, 'page' => $page, 'meta' => $meta]);

@@ -405,7 +405,7 @@ class BaseListController extends Controller
             });
         }
 
-        return $datatable->rawColumns(['id', 'content', '_rgt'])
+        return $datatable->rawColumns(['id', 'content', 'order'])
             ->toJson();
     }
 

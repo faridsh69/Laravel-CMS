@@ -2,7 +2,7 @@
 
 @push('style')
 <link href="{{ asset('css/admin/table/jquery-ui.bundle.css') }}" rel="stylesheet" />
-@include('common.front.styles')
+@include('front.widgets.styles.' . config('0-developer.theme'))
 @endpush
 
 @push('script')
@@ -137,9 +137,11 @@
 							</ul>
 						</div>
 					</div>
-					<div class="m-portlet__body m-sortable-table-body">
-						@include('front.widgets.' . $block->widget_type . '.' . config('0-developer.theme'))
-					</div>
+					@if(false)
+						<div class="m-portlet__body m-sortable-table-body">
+							@includeIf('front.widgets.' . $block->widget_type . '.' . config('0-developer.theme'))
+						</div>
+					@endif
 				</div>
 			</div>
 			@endforeach

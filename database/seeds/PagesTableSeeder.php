@@ -54,6 +54,16 @@ class PagesTableSeeder extends Seeder
             	'meta_image' => '',
             ],
             [
+                'id' => 6,
+                'title' => 'Blogs',
+                'url' => 'blogs',
+                'content' => '<h1>HEADING 1 CMS BLOGS</h1><h2>HEADING 2 CMS BLOGS</h2>',
+                'meta_description' => 'description about BLOGS page',
+                'activated' => 1,
+                'google_index' => 1,
+                'meta_image' => '',
+            ],
+            [
             	'id' => 5,
             	'title' => 'Contact Us',
             	'url' => 'contact-us',

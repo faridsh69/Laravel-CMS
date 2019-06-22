@@ -25,7 +25,9 @@ class ResourceController extends BaseListController
                 'title' => preg_replace('/([a-z])([A-Z])/s','$1 $2', \Str::studly($column['name']))
             ];
         }
-        $blocks = Block::orderBy('_lft', 'asc')->where('widget_type', '!=', 'loading')->get()->toTree();
+        $blocks = Block::orderBy('order', 'asc')
+            ->where('widget_type', '!=', 'loading')
+            ->get();
         
         return view('admin.list.sortable-table', ['meta' => $this->meta, 'columns' => $columns, 'blocks' => $blocks]);
     }

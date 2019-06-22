@@ -218,19 +218,6 @@
 			'type' => 'section',
 		],
 		[
-			'id' => 9,
-			'title' => 'Theme',
-			'route' => 'theme',
-			'type' => 'submenu',
-			'icon' => 'flaticon-visible',
-			'children' => [	
-				[
-					'title' => 'Theme list',
-					'route' => 'admin.theme.list.index',
-				],
-			],
-		],
-		[
 			'id' => 10,
 			'title' => 'Block',
 			'route' => 'block',
@@ -240,6 +227,19 @@
 				[
 					'title' => 'Block list',
 					'route' => 'admin.block.list.index',
+				],
+			],
+		],
+		[
+			'id' => 9,
+			'title' => 'Theme',
+			'route' => 'theme',
+			'type' => 'submenu',
+			'icon' => 'flaticon-visible',
+			'children' => [	
+				[
+					'title' => 'Theme list',
+					'route' => 'admin.theme.list.index',
 				],
 			],
 		],

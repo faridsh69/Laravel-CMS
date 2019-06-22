@@ -2,8 +2,7 @@
 
 @section('content')
 
-	
-	  
+@if(false)
 	  	@include('front.widgets.menu.stayhome')
 	  	@include('front.widgets.header.stayhome')
 	  	@include('front.widgets.features.stayhome')
@@ -18,12 +17,9 @@
 	  	@include('front.widgets.map.stayhome')
 	  	@include('front.widgets.footer.stayhome')
 	  	@include('front.widgets.loading.stayhome')
-
-  
-  
-@if(false)
-	@foreach($blocks as $block)
-		@include('front.widgets.' . $block->widget_type . '.' . config('0-developer.theme'))
-	@endforeach
 @endif
+  
+	@foreach($blocks as $block)
+		@includeIf('front.widgets.' . $block->widget_type . '.' . config('0-developer.theme'))
+	@endforeach
 @endsection
