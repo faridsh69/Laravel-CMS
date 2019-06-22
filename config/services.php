@@ -51,7 +51,7 @@ $output = [
             'form', // 13
             'block', // 10
             'widget', // 11
-            // 'theme', // 9 
+            'theme', // 9 
         ],
         'seeder' => [
             'blog', // 1 +
@@ -59,12 +59,12 @@ $output = [
             'tag', // 4  
             'menu', // 16
             'comment', // 6
+            'theme', // 9 
+            'block', // 10
+            'widget', // 11
             // 'form', // 13
-            // 'block', // 10
-            // 'widget', // 11
             // // 'media', // 5  
             // // 'notification', // 15
-            // // 'theme', // 9 
         ],
         'admin_routes' => [
             'blog', // 1 +
@@ -98,7 +98,7 @@ $output = [
             'form',
             'block',
             'widget',
-            // 'theme', // 9 
+            'theme',
         ], 
         // 'blog', // 1 +
         // 'page', // 2 +

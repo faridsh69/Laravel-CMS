@@ -14,6 +14,7 @@ use App\Policies\SettingContactPolicy;
 use App\Policies\SettingDeveloperPolicy;
 use App\Policies\SettingGeneralPolicy;
 use App\Policies\TagPolicy;
+use App\Policies\ThemePolicy;
 use App\Policies\UserPolicy;
 use App\Policies\WidgetPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -44,6 +45,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Form' => FormPolicy::class,
         'App\Models\Block' => BlockPolicy::class,
         'App\Models\Widget' => WidgetPolicy::class,
+        'App\Models\Theme' => ThemePolicy::class,
     ];
 
     /**
