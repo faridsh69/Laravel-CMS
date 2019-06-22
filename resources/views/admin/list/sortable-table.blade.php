@@ -2,7 +2,11 @@
 
 @push('style')
 <link href="{{ asset('css/admin/table/jquery-ui.bundle.css') }}" rel="stylesheet" />
+
+@if(false)
 @include('front.widgets.styles.' . config('0-developer.theme'))
+@endif
+
 @endpush
 
 @push('script')
