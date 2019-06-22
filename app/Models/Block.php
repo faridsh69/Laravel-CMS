@@ -83,8 +83,8 @@ class Block extends Model
             'database' => 'nullable',
             'rule' => 'required',
             'help' => 'Default theme is CA.',
-            'form_type' => '',
-            'table' => true,
+            'form_type' => 'none',
+            'table' => false,
         ],
         [
             'name' => '_rgt',

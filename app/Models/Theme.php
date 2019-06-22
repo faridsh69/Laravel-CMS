@@ -3,9 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Theme extends Model
 {
+    use SoftDeletes;
+
+    public $guarded = [];
+
 	public $columns = [
         [
             'name' => 'title',
@@ -23,7 +28,7 @@ class Theme extends Model
             'rule' => 'nullable|max:191',
             'help' => '',
             'form_type' => 'textarea',
-            'table' => false,
+            'table' => true,
         ],
         [
             'name' => 'activated',

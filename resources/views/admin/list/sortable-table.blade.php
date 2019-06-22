@@ -138,7 +138,7 @@
 						</div>
 					</div>
 					<div class="m-portlet__body m-sortable-table-body">
-						@include('front.widgets.' . $block->widget_type . '.' . $block->theme)
+						@include('front.widgets.' . $block->widget_type . '.' . config('0-developer.theme'))
 					</div>
 				</div>
 			</div>
