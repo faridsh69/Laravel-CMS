@@ -6,6 +6,7 @@
 	@yield('content')
 	
 	@include('front.widgets.scripts.' . config('0-developer.theme'))
+	@include('common.front.scripts')
 	@stack('scripts')
 </body>
 </html>
