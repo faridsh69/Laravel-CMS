@@ -7,4 +7,3 @@ Route::get('blogs/tags', 'BlogController@getTags')->name('blog.tags');
 Route::get('blogs/tags/{tag_url}', 'BlogController@getTag')->name('blog.tag');
 Route::get('blogs/{blog_url}', 'BlogController@show')->name('blog.show');
 Route::get('{page_url?}', 'PageController@index')->name('page.index');
-// Route::get('', 'PageController@index')->name('page.index');

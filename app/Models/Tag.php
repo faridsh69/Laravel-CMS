@@ -10,6 +10,19 @@ class Tag extends TagSpatie
 {
     use SoftDeletes;
 
+    protected $appends = ['url', 'title'];
+
+    public function getUrlAttribute()
+    {
+        return $this->slug;
+    }
+
+    public function getTitleAttribute()
+    {
+        // return $this->attributes['name'];
+        return "{$this->name}";
+    }
+
     public $columns = [
         [
             'name' => 'name',

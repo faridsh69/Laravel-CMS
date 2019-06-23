@@ -47,8 +47,7 @@ class ResourceController extends BaseListController
     	foreach($block_ids as $block_order => $block_id)
     	{
     		$block = Block::find($block_id);
-    		$block->_lft = (3 * $block_order) + 1;
-    		$block->_rgt = (3 * $block_order) + 2;
+    		$block->order = (3 * $block_order) + 1;
     		$block->save();
     	}
     }

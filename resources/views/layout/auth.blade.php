@@ -2,6 +2,9 @@
 <html lang="en" dir="ltr">
 	<head>
 		<meta name="robots" content="noindex">
+		@if(!config('0-general.google_index'))
+			<meta name="robots" content="noindex">
+		@endif
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,7 +23,7 @@
 		<link href="{{ asset('css/admin/custome.css') }}" rel="stylesheet" />
 		<!--end::Base Styles -->
 		
-		<link rel="shortcut icon" href="{{ asset('upload/images/favicon.png') }}" />
+		<link rel="shortcut icon" href="{{ asset(config('0-general.favicon')) }}" />
 	</head>
 	<body class="m--skin- m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default"  >
 		<!-- begin:: Page -->

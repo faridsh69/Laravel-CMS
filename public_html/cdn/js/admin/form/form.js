@@ -91,5 +91,3 @@ jQuery(document).ready(function() {
     $("#admin_form").validate({});
     $('.lfm').filemanager('image');
 });
-
-

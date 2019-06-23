@@ -60,13 +60,16 @@ class LoginController extends Controller
      */
     public function handleProviderCallback()
     {
-        try{
-            $userSocial = Socialite::driver('google')->user();
-        }catch (\Exception $e) {
-            return redirect()->route('home');
-        }
-          
+        $userSocial = Socialite::driver('google')->user();
+        dd($userSocial);
+        // try{
+        // }catch (\Exception $e) {
+        //     dd($e);
+        //     return redirect()->route('admin.dashboard.index');
+        // }
+
         $user = User::where(['email' => $userSocial->getEmail()])->first();
+        dd($user);
         if($user){
             Auth::login($user);
             activity('User Login')
@@ -74,7 +77,7 @@ class LoginController extends Controller
                 ->causedBy(Auth::user())
                 ->log('User Login');
 
-            return redirect()->route('home');
+            return redirect()->route('admin.dashboard.index');
         }else{
             return view('auth.register',['name' => $userSocial->getName(), 'email' => $userSocial->getEmail()]);
         }

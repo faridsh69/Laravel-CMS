@@ -20,7 +20,7 @@ class BlocksTableSeeder extends Seeder
                   'widget_type' => 'menu',
                   'widget_id' => 1,
             	'page_id' => 1,
-            	'theme' => 'ca',
+            	'theme' => 'capp',
             	'activated' => 1,
             ],
             [
@@ -30,8 +30,18 @@ class BlocksTableSeeder extends Seeder
             	'widget_type' => 'header',
             	'widget_id' => 2,
             	'page_id' => 1,
-            	'theme' => 'ca',
+            	'theme' => 'capp',
             	'activated' => 1,
+            ],
+            [
+                  'id' => 17,
+                  'order' => 8,
+                  'column' => 12,
+                  'widget_type' => 'blogs',
+                  'widget_id' => 15,
+                  'page_id' => 6,
+                  'theme' => 'capp',
+                  'activated' => 1,
             ],
             [
             	'id' => 3,
@@ -40,7 +50,7 @@ class BlocksTableSeeder extends Seeder
             	'widget_type' => 'content',
             	'widget_id' => 3,
             	'page_id' => 1,
-            	'theme' => 'ca',
+            	'theme' => 'capp',
             	'activated' => 1,
             ],
             [
@@ -50,7 +60,7 @@ class BlocksTableSeeder extends Seeder
                   'widget_type' => 'features',
                   'widget_id' => 4,
                   'page_id' => 1,
-                  'theme' => 'ca',
+                  'theme' => 'capp',
                   'activated' => 1,
             ],
             [
@@ -60,7 +70,7 @@ class BlocksTableSeeder extends Seeder
                   'widget_type' => 'application',
                   'widget_id' => 5,
                   'page_id' => 1,
-                  'theme' => 'ca',
+                  'theme' => 'capp',
                   'activated' => 1,
             ],            
             [
@@ -70,7 +80,7 @@ class BlocksTableSeeder extends Seeder
             	'widget_type' => 'video',
             	'widget_id' => 6,
             	'page_id' => 1,
-            	'theme' => 'ca',
+            	'theme' => 'capp',
             	'activated' => 1,
             ],
             [
@@ -80,7 +90,7 @@ class BlocksTableSeeder extends Seeder
             	'widget_type' => 'counting',
             	'widget_id' => 7,
             	'page_id' => 1,
-            	'theme' => 'ca',
+            	'theme' => 'capp',
             	'activated' => 1,
             ],
             [
@@ -90,7 +100,7 @@ class BlocksTableSeeder extends Seeder
             	'widget_type' => 'products',
             	'widget_id' => 8,
             	'page_id' => 3,
-            	'theme' => 'ca',
+            	'theme' => 'capp',
             	'activated' => 1,
             ],
             [
@@ -100,7 +110,7 @@ class BlocksTableSeeder extends Seeder
             	'widget_type' => 'pricing',
             	'widget_id' => 9,
             	'page_id' => 3,
-            	'theme' => 'ca',
+            	'theme' => 'capp',
             	'activated' => 1,
             ],
             [
@@ -110,7 +120,7 @@ class BlocksTableSeeder extends Seeder
             	'widget_type' => 'feedback',
             	'widget_id' => 10,
             	'page_id' => 1,
-            	'theme' => 'ca',
+            	'theme' => 'capp',
             	'activated' => 1,
             ],
             [
@@ -120,7 +130,7 @@ class BlocksTableSeeder extends Seeder
             	'widget_type' => 'subscribe',
             	'widget_id' => 11,
             	'page_id' => 1,
-            	'theme' => 'ca',
+            	'theme' => 'capp',
             	'activated' => 1,
             ],
             [
@@ -130,7 +140,7 @@ class BlocksTableSeeder extends Seeder
             	'widget_type' => 'team',
             	'widget_id' => 12,
             	'page_id' => 2,
-            	'theme' => 'ca',
+            	'theme' => 'capp',
             	'activated' => 1,
             ],
             [
@@ -140,7 +150,7 @@ class BlocksTableSeeder extends Seeder
             	'widget_type' => 'contact',
             	'widget_id' => 13,
             	'page_id' => 5,
-            	'theme' => 'ca',
+            	'theme' => 'capp',
             	'activated' => 1,
             ],
             [
@@ -150,17 +160,17 @@ class BlocksTableSeeder extends Seeder
             	'widget_type' => 'footer',
             	'widget_id' => 14,
             	'page_id' => 1,
-            	'theme' => 'ca',
+            	'theme' => 'capp',
             	'activated' => 1,
             ],
             [
             	'id' => 15,
-                  'order' => 45,
+                  'order' => 9999,
             	'column' => 12,
             	'widget_type' => 'loading',
             	'widget_id' => 15,
             	'page_id' => 1,
-            	'theme' => 'ca',
+            	'theme' => 'capp',
             	'activated' => 1,
             ],
             [
@@ -170,17 +180,7 @@ class BlocksTableSeeder extends Seeder
                   'widget_type' => 'learn',
                   'widget_id' => 15,
                   'page_id' => 1,
-                  'theme' => 'ca',
-                  'activated' => 1,
-            ],
-            [
-                  'id' => 17,
-                  'order' => 17,
-                  'column' => 12,
-                  'widget_type' => 'blogs',
-                  'widget_id' => 15,
-                  'page_id' => 6,
-                  'theme' => 'ca',
+                  'theme' => 'capp',
                   'activated' => 1,
             ],
             [
@@ -190,7 +190,7 @@ class BlocksTableSeeder extends Seeder
                   'widget_type' => 'map',
                   'widget_id' => 15,
                   'page_id' => 1,
-                  'theme' => 'ca',
+                  'theme' => 'capp',
                   'activated' => 0,
             ],
         ];

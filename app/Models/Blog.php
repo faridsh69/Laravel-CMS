@@ -26,6 +26,15 @@ class Blog extends Model implements Commentable
         return true; // default false
     }
 
+    public function getMetaImageAttribute($value)
+    {
+        if($value){
+            return $value;
+        }else{
+            return config('0-general.default_meta_image');
+        }
+    }
+
     public $columns = [
         [
             'name' => 'title',
@@ -188,5 +197,10 @@ class Blog extends Model implements Commentable
     public function related_blogs()
     {
         return $this->belongsToMany('App\Models\Blog', 'related_blogs', 'blog_id', 'related_blog_id');
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('activated', 1);
     }
 }
