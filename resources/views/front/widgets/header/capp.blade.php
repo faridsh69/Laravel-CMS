@@ -4,9 +4,9 @@
         <div class="row h-100 align-items-center">
             <div class="col-12 col-md">
                 <div class="wellcome-heading">
-                    <h2>Colorlib app</h2>
-                    <h3>C</h3>
-                    <p>Everything You Need. To Start Selling Online Beautifully</p>
+                    <h2>Synergy Power</h2>
+                    <h3>SP</h3>
+                    <p>Go Solar. Save Money.</p>
                 </div>
                 <div class="get-start-area">
                     <!-- Form Start -->
@@ -20,8 +20,8 @@
         </div>
     </div>
     <!-- Welcome thumb -->
-    <div class="welcome-thumb wow fadeInDown" data-wow-delay="0.5s">
-        <img src="img/bg-img/welcome-img.png" alt="">
+    <div class="welcome-thumb wow fadeInDown" data-wow-delay="0.5s" style="width: 40%">
+        <img src="{{ asset('storage/files/shares/welcome.png') }}" alt="Welcome">
     </div>
 </section>
 <!-- ***** Wellcome Area End ***** -->

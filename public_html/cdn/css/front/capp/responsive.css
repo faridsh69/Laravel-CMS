@@ -1,6 +1,28 @@
 .wellcome_area{
     height: 700px;
 }
+.display-none{
+    display: none;
+}
+.submenu-items-container{
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    display: none;
+    position: absolute;
+    margin-top: -10px;
+    width: 170px;
+}
+.submenu-items-container a{
+    display: block;
+}
+.submenu-items-container:hover{
+    display: block;
+}
+.nav-link:hover + .submenu-items-container{
+    display: block;
+}
 
 @media (min-width: 992px) and (max-width: 1199px) {
     .menu_area .navbar-brand {

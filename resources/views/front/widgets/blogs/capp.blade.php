@@ -50,8 +50,7 @@
                 {{ $blogs->links() }}
             </div>
         </div>
-        @endif
-        @if(isset($blog))
+        @elseif(isset($blog))
             <span class="mr-3 text-info">Date: {{ $blog->created_at }}</span>
             <span class="mr-3 text-info">Category: {{ $blog->category->title }}</span>
             

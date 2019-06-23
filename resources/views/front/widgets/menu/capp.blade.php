@@ -7,22 +7,32 @@
                 <div class="menu_area">
                     <nav class="navbar navbar-expand-lg navbar-light">
                         <!-- Logo -->
-                        <a class="navbar-brand" href="#">Ca.</a>
+                        <a class="navbar-brand" href="{{ route('front.page.index', '/') }}">
+                            <img style="max-height: 60px;" src="{{ asset('storage/files/shares/logo4.png') }}" alt="logo">
+                        </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ca-navbar" aria-controls="ca-navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                         <!-- Menu Area -->
                         <div class="collapse navbar-collapse" id="ca-navbar">
                             <ul class="navbar-nav ml-auto" id="nav">
-                                <li class="nav-item active"><a class="nav-link" href="#home">Home</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#screenshot">Screenshot</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                                @foreach(\App\Models\Menu::get()->toTree() as $menu_item)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('front.page.index', $menu_item->url) }}">
+                                        {{ $menu_item->title }}
+                                    </a>
+                                    @if($menu_item->children->count() > 0)
+                                    <div class="submenu-items-container"> 
+                                        @foreach($menu_item->children as $sub_menu)
+                                        <a href="{{ route('front.page.index', $sub_menu->url) }}"> 
+                                            {{ $sub_menu->title }}
+                                        </a>
+                                        @endforeach
+                                    </div>
+                                    @endif
+                                </li>
+                                @endforeach
                             </ul>
                             <div class="sing-up-button d-lg-none">
-                                <a href="#">Sign Up Free</a>
+                                <a href="{{ route('admin.dashboard.index') }}">Admin Panel</a>
                             </div>
                         </div>
                     </nav>
@@ -31,7 +41,7 @@
             <!-- Signup btn -->
             <div class="col-12 col-lg-2">
                 <div class="sing-up-button d-none d-lg-block">
-                    <a href="#">Sign Up Free</a>
+                    <a href="{{ route('admin.dashboard.index') }}">Admin Panel</a>
                 </div>
             </div>
         </div>

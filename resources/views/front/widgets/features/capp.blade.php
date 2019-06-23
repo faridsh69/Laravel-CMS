@@ -18,8 +18,13 @@
                     <div class="single-icon">
                         <i class="ti-mobile" aria-hidden="true"></i>
                     </div>
-                    <h4>Easy to use</h4>
-                    <p>We build pretty complex tools and this allows us to take designs and turn them into functional quickly and easily</p>
+
+                    
+
+
+
+                    <h4>Call the Best!</h4>
+                    <p>Serving the Bay Area for 14 years!</p>
                 </div>
             </div>
             <!-- Single Special Area -->

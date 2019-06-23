@@ -17,7 +17,7 @@ class PagesTableSeeder extends Seeder
             	'id' => 1,
             	'title' => 'Home',
             	'url' => '/',
-            	'content' => '<h1>HEADING 1 CMS</h1><h2>HEADING 2 CMS</h2>',
+            	'content' => '<h1>Welcome</h1>',
             	'meta_description' => 'description about home page',
             	'activated' => 1,
             	'google_index' => 1,
