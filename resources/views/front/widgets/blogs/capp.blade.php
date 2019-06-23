@@ -34,14 +34,6 @@
                 <div class="single-team-member">
                     <div class="member-image">
                         <img src="{{ $blog->meta_image }}" alt="">
-                        <div class="team-hover-effects">
-                            <!-- <div class="team-social-icon">
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                                <a href="#"> <i class="fa fa-instagram" aria-hidden="true"></i></a>
-                            </div> -->
-                        </div>
                     </div>
                     <div class="member-text">
                         <a href="{{ route('front.blog.show', $blog->url) }}">
@@ -60,9 +52,66 @@
         </div>
         @endif
         @if(isset($blog))
-            Date: {!! $blog->created_at !!}
+            <span class="mr-3 text-info">Date: {{ $blog->created_at }}</span>
+            <span class="mr-3 text-info">Category: {{ $blog->category->title }}</span>
+            
             <hr>
+            <br>
             {!! $blog->content !!}
+            <br>
+            <hr>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <!-- Heading Text  -->
+                    <div class="section-heading">
+                        <h2>Tags</h2>
+                        <div class="line-shape"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row"> 
+            @foreach($blog->tags as $tag)
+                <div class="col-lg-3 col-md-4 col-12">
+                    <div class="card p-3"> 
+                        <a href="{{ route('front.blog.tag', $tag->slug) }}">
+                        {{$tag->name}}
+                        </a>
+                    </div>
+                </div>
+            @endforeach
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            @if($blog->related_blogs)
+            <div class="row">
+                <div class="col-12 text-center">
+                    <!-- Heading Text  -->
+                    <div class="section-heading">
+                        <h2>Related Blogs</h2>
+                        <div class="line-shape"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row"> 
+                @foreach($blog->related_blogs as $blog)
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="single-team-member">
+                        <div class="member-image">
+                            <img src="{{ $blog->meta_image }}" alt="">
+                        </div>
+                        <div class="member-text">
+                            <a href="{{ route('front.blog.show', $blog->url) }}">
+                                <h4>{{ $blog->title }}</h4>
+                                <p>{{ $blog->description }}</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            @endif
         @endif
     </div>
 </section>
