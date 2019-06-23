@@ -2,12 +2,6 @@
     <div class="container">
         <div class="row">
             @if(isset($categories))
-            <!-- <div class="col-12 text-center">
-                <div class="section-heading">
-                    <h2>Categories</h2>
-                    <div class="line-shape"></div>
-                </div>
-            </div> -->
                 @foreach($categories as $category)
                     <div class="col-lg-3 col-md-4 col-12">
                         <div class="card p-3"> 
@@ -23,6 +17,7 @@
                 @endforeach
             @endif
         </div>
+        @if(isset($blogs))
         <div style="height: 50px;"></div>
         <div class="row">
             <div class="col-12 text-center">
@@ -63,6 +58,12 @@
                 {{ $blogs->links() }}
             </div>
         </div>
+        @endif
+        @if(isset($blog))
+            Date: {!! $blog->created_at !!}
+            <hr>
+            {!! $blog->content !!}
+        @endif
     </div>
 </section>
 <!-- ***** Our Team Area End ***** -->
