@@ -145,7 +145,7 @@ class BlocksTableSeeder extends Seeder
             ],
             [
             	'id' => 13,
-                  'order' => 39,
+                  'order' => 41,
             	'column' => 12,
             	'widget_type' => 'contact',
             	'widget_id' => 13,
