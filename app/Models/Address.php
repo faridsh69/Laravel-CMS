@@ -13,7 +13,7 @@ class Address extends Model
 
     public $columns = [
         [
-            'name' => 'label',
+            'name' => 'title',
             'type' => 'string',
             'database' => 'nullable',
             'rule' => '',
@@ -22,7 +22,7 @@ class Address extends Model
             'table' => false,
         ],
         [
-            'name' => 'description',
+            'name' => 'content',
             'type' => 'string',
             'database' => '',
             'rule' => 'required',
@@ -70,16 +70,25 @@ class Address extends Model
             'name' => 'mobile',
             'type' => 'string',
             'database' => 'nullable',
-            'rule' => 'phone:AUTO,UK,mobile',
+            'rule' => 'phone:AUTO,mobile',
             'help' => '',
             'form_type' => '',
             'table' => false,
         ],
         [
-            'name' => 'landline',
+            'name' => 'phone',
             'type' => 'string',
             'database' => 'nullable',
-            'rule' => 'phone:AUTO,UK',
+            'rule' => 'phone:AUTO',
+            'help' => '',
+            'form_type' => '',
+            'table' => false,
+        ],
+        [
+            'name' => 'fax',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => '',
             'help' => '',
             'form_type' => '',
             'table' => false,

@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
-use Conner\Tagging\Taggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Page extends Model
 {
     use SoftDeletes;
-    use Taggable;
 
     public $guarded = [];
 

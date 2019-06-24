@@ -41,45 +41,42 @@ $output = [
     ],
     'models' => [
         'factory' => [
-            'blog', // 1 +
-            'page', // 2 +
-            'category', // 3 +
-            'tag', // 4  
-            'user', // 8 
-            'menu', // 16
-            'comment', // 6
-            'form', // 13
-            'block', // 10
-            'widget', // 11
-            'theme', // 9 
+            'blog',
+            'page',
+            'category',
+            'tag',  
+            'user', 
+            'menu',
+            'comment',
+            'form',
+            'block',
+            'widget',
+            'theme', 
         ],
         'seeder' => [
-            'blog', // 1 +
-            'page', // 2 +
-            'tag', // 4  
-            'menu', // 16
-            'comment', // 6
-            'theme', // 9 
-            'block', // 10
-            'widget', // 11
-            // 'form', // 13
-            // // 'media', // 5  
-            // // 'notification', // 15
+            'blog',
+            'page',
+            'tag',  
+            'menu',
+            'comment',
+            'theme',
+            'block',
+            'widget',
         ],
         'admin_routes' => [
-            'blog', // 1 +
-            'page', // 2 +
-            'category', // 3 +
-            'tag', // 4  
-            'media', // 5  
-            'user', // 8 
-            'notification', // 15
-            'form', // 13
-            'menu', // 16
-            'comment', // 6
-            'block', // 10
-            'widget', // 11
-            'theme', // 9 
+            'blog',
+            'page',
+            'category',
+            'tag', 
+            'media',
+            'user',
+            'notification',
+            'form',
+            'menu',
+            'comment',
+            'block',
+            'widget',
+            'theme',
         ],
         'permissions' => [
             'blog', 
@@ -99,25 +96,40 @@ $output = [
             'block',
             'widget',
             'theme',
-        ], 
-        // 'blog', // 1 +
-        // 'page', // 2 +
-        // 'category', // 3 +
-        // 'tag', // 4  
-        // 'media', // 5  
-        // 'comment', // 6
-        // 'setting', // 7 + 
-        // 'user', // 8 
-        // 'theme', // 9 
-        // 'block', // 10
-        // 'widget', // 11
-        // //'seo' // 12 
-        // 'form', // 13
-        // 'report', // 14
-        // 'notification', // 15
-        // 'menu', // 16
+        ],
     ],
 ];
+
+if(strpos(config('0-general.app_name'), 'enew') !== false){
+    $output['models']['factory'][] = 'shop';
+    $output['models']['factory'][] = 'product';
+
+    $output['models']['seeder'][] = 'shop'; 
+    $output['models']['seeder'][] = 'product'; 
+
+    $output['models']['admin_routes'][] = 'shop';
+    $output['models']['admin_routes'][] = 'product';
+    
+    $output['models']['permissions'][] = 'shop';
+    $output['models']['permissions'][] = 'product';
+}
+// 'blog', // 1 +
+// 'page', // 2 +
+// 'category', // 3 +
+// 'tag', // 4  +
+// 'media', // 5 + 
+// 'comment', // 6 +
+// 'setting', // 7 + 
+// 'user', // 8 +
+// 'theme', // 9 +
+// 'block', // 10 +
+// 'widget', // 11
+// //'seo' // 12  + 
+// 'form', // 13
+// 'report', // 14 +
+// 'notification', // 15
+// 'menu', // 16 +
+
 foreach($output['social_companies'] as $social_company){
     $output[ strtolower($social_company) ] = [
         'client_id' => env($social_company . '_CLIENT_ID'),

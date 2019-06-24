@@ -2,6 +2,7 @@
 
 namespace App\Base;
 
+use Artisan;
 use App\Http\Controllers\Controller;
 use Auth;
 use Config;
@@ -106,6 +107,8 @@ class BaseAdminController extends Controller
             ->log(json_encode($model));
 
         $this->request->session()->flash('alert-success', $this->model . ' Updated Successfully!');
+
+        Artisan::call('config:cache');
 
         return redirect()->route('admin.setting.' . $section);
     }
