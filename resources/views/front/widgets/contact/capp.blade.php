@@ -8,16 +8,20 @@
                     <div class="line-shape"></div>
                 </div>
                 <div class="footer-text">
-                    <p>We'll send you epic weekly blogs, whitepapers and things to make your app startup thrive, all FREE!</p>
+                    <p>Our Promise <br>
+                        We hate spam and would never mishandle the information you share with us.  
+                        Our mission is to help with your solar needs with quality, 
+                        expert service and nothing more.
+                    </p>
                 </div>
                 <div class="address-text">
-                    <p><span>Address:</span> 40 Baria Sreet 133/2 NewYork City, US</p>
+                    <p><span>Address:</span>{{ config('0-contact.address') }}</p>
                 </div>
                 <div class="phone-text">
-                    <p><span>Phone:</span> +11-225-888-888-66</p>
+                    <p><span>Phone:</span>{{ config('0-contact.phone') }}</p>
                 </div>
                 <div class="email-text">
-                    <p><span>Email:</span> info.deercreative@gmail.com</p>
+                    <p><span>Email:</span> {{ config('0-contact.email') }} </p>
                 </div>
             </div>
             <div class="col-md-6">
