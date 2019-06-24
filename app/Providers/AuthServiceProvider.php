@@ -17,6 +17,8 @@ use App\Policies\TagPolicy;
 use App\Policies\ThemePolicy;
 use App\Policies\UserPolicy;
 use App\Policies\WidgetPolicy;
+use App\Policies\ShopPolicy;
+use App\Policies\ProductPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Passport\Passport;
@@ -46,6 +48,8 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Block' => BlockPolicy::class,
         'App\Models\Widget' => WidgetPolicy::class,
         'App\Models\Theme' => ThemePolicy::class,
+        'App\Models\Shop' => ShopPolicy::class,
+        'App\Models\Product' => ProductPolicy::class,
     ];
 
     /**

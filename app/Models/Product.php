@@ -30,7 +30,8 @@ class Product extends Model implements Commentable
 	// shop_id,
 	// price,
 	// discount_price,
-	// inventory,
+    // inventory,
+	// order,
 
 
 public $columns = [
@@ -45,7 +46,7 @@ public $columns = [
         ],
         [
             'name' => 'price',
-            'type' => 'bigInteger',
+            'type' => 'integer',
             'database' => 'nullable',
             'rule' => '',
             'help' => '',
@@ -54,7 +55,7 @@ public $columns = [
         ],
         [
             'name' => 'discount_price',
-            'type' => 'bigInteger',
+            'type' => 'integer',
             'database' => 'nullable',
             'rule' => '',
             'help' => '',
@@ -63,7 +64,16 @@ public $columns = [
         ],
         [
             'name' => 'inventory',
-            'type' => 'bigInteger',
+            'type' => 'integer',
+            'database' => 'nullable',
+            'rule' => '',
+            'help' => '',
+            'form_type' => 'none',
+            'table' => false,
+        ],
+        [
+            'name' => 'order',
+            'type' => 'integer',
             'database' => 'nullable',
             'rule' => '',
             'help' => '',

@@ -46,13 +46,13 @@ class BaseFactory
                     elseif($type == 'text'){
                         $fake_data = 'Fake ' . $faker->realText(400);
                     }
-                    elseif($type == '' || $type == 'boolean'){
+                    elseif($type == '' || $type == 'boolean' || $type === 'bigInteger'){
                         $fake_data = 1;
                     }
                     elseif($type === 'integer'){
                         $fake_data = $faker->numberBetween(1000, 9000);
                     }
-
+                    
                     $output[$name] = $fake_data;
                 }
 

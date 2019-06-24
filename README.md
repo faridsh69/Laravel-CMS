@@ -1,11 +1,11 @@
 # A modern easy to develope cms for Laravel apps
 
-[![Latest Stable Version](https://poser.pugx.org/faridsh69/cms/v/stable?format=flat-square)](https://packagist.org/packages/faridsh69/cms)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://img.shields.io/travis/faridsh69/cms/master.svg?style=flat-square)](https://travis-ci.org/faridsh69/cms)
-[![Quality Score](https://img.shields.io/scrutinizer/g/faridsh69/cms.svg?style=flat-square)](https://scrutinizer-ci.com/g/faridsh69/cms)
-[![StyleCI](https://styleci.io/repos/30915528/shield)](https://styleci.io/repos/30915528)
-[![Total Downloads](https://img.shields.io/packagist/dt/faridsh69/cms.svg?style=flat-square)](https://packagist.org/packages/faridsh69/cms)
+# [![Latest Stable Version](https://poser.pugx.org/faridsh69/cms/v/stable?format=flat-square)](https://packagist.org/packages/faridsh69/cms)
+# [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+# [![Build Status](https://img.shields.io/travis/faridsh69/cms/master.svg?style=flat-square)](https://travis-ci.org/faridsh69/cms)
+# [![Quality Score](https://img.shields.io/scrutinizer/g/faridsh69/cms.svg?style=flat-square)](https://scrutinizer-ci.com/g/faridsh69/cms)
+# [![StyleCI](https://styleci.io/repos/30915528/shield)](https://styleci.io/repos/30915528)
+# [![Total Downloads](https://img.shields.io/packagist/dt/faridsh69/cms.svg?style=flat-square)](https://packagist.org/packages/faridsh69/cms)
 
 This Laravel package that you should just define an array in each model then every thing will be ready and ofcourse you can change as much as you want.
 This array in model make the way easy for automatic create 

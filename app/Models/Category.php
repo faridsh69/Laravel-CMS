@@ -107,6 +107,20 @@ class Category extends Model
             'form_type' => 'none',
             'table' => true,
         ],
+        [
+            'name' => 'shop_id',
+            'type' => 'bigInteger',
+            'database' => 'unsigned',
+            'relation' => 'shops',
+            'rule' => '',
+            'help' => '',
+            'form_type' => 'none', // 'entity',
+            'class' => 'App\Models\Shop',
+            'property' => 'title',
+            'property_key' => 'id',
+            'multiple' => false,
+            'table' => false,
+        ],
     ];
 
     public function getColumns()

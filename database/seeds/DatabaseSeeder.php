@@ -10,14 +10,25 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(UsersTableSeeder::class);
-        $this->call(ThemesTableSeeder::class);
+        if(config('services.models.platform') === 'shop')
+        {
+            $this->call(ShopUsersTableSeeder::class);
+            $this->call(ShopThemesTableSeeder::class);
+            $this->call(ShopTagsTableSeeder::class);
+            $this->call(ShopCategoriesTableSeeder::class);
+            $this->call(ShopMenusTableSeeder::class);
+        }
+        else
+        {
+            $this->call(ThemesTableSeeder::class);
+            $this->call(UsersTableSeeder::class);
+            $this->call(TagsTableSeeder::class);
+            $this->call(CategoriesTableSeeder::class);
+            $this->call(MenusTableSeeder::class);
+        }
         $this->call(WidgetsTableSeeder::class);
         $this->call(BlocksTableSeeder::class);
         $this->call(PagesTableSeeder::class);
-        $this->call(TagsTableSeeder::class);
-        $this->call(CategoriesTableSeeder::class);
-        $this->call(MenusTableSeeder::class);
         $this->call(RolesTableSeeder::class);
         $this->call(BaseSeeder::class);
     }

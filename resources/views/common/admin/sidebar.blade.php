@@ -283,6 +283,57 @@
 			],
 		],
 	];
+
+	if(config('services.models.platform') === 'shop')
+    {
+    	$sidebar_shop = [
+			[
+				'title' => 'Bussiness',
+				'type' => 'section',
+			],
+			[
+				'id' => 100,
+				'title' => 'Shop',
+				'route' => 'shop',
+				'type' => 'submenu',
+				'icon' => 'flaticon-business',
+				'children' => [	
+					[
+						'title' => 'Shop list',
+						'route' => 'admin.shop.list.index',
+					],
+					[
+						'title' => 'Create New Shop',
+						'route' => 'admin.shop.list.create',
+					],
+				],
+			],
+			[
+				'id' => 101,
+				'title' => 'Product',
+				'route' => 'product',
+				'type' => 'submenu',
+				'icon' => 'flaticon-tool',
+				'children' => [	
+					[
+						'title' => 'Product list',
+						'route' => 'admin.product.list.index',
+					],
+					[
+						'title' => 'Create New Product',
+						'route' => 'admin.product.list.create',
+					],
+				],
+			],
+			[
+				'title' => 'Dashboard',
+				'type' => 'section',
+			],
+		];
+
+		$sidebar = array_merge($sidebar_shop, $sidebar);
+    }
+
 @endphp
 
 <button class="m-aside-left-close  m-aside-left-close--skin-dark " id="m_aside_left_close_btn">

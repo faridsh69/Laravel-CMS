@@ -97,6 +97,7 @@ $output = [
             'widget',
             'theme',
         ],
+        'platform' => 'company',
     ],
 ];
 
@@ -109,9 +110,11 @@ if(strpos(config('0-general.app_name'), 'enew') !== false){
 
     $output['models']['admin_routes'][] = 'shop';
     $output['models']['admin_routes'][] = 'product';
-    
+
     $output['models']['permissions'][] = 'shop';
     $output['models']['permissions'][] = 'product';
+
+    $output['models']['platform'] = 'shop';
 }
 // 'blog', // 1 +
 // 'page', // 2 +

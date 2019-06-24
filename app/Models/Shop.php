@@ -287,4 +287,60 @@ class Shop extends Model implements Commentable
     {
         return $query->where('activated', 1);
     }
+
+    // public function createStore(){
+    //     $this->mysqldbName = $this->_createMysqldbName($this->nameEn);
+    //     // make folder for statics
+    //     FileHelper::createDirectory(\Yii::getAlias('@statics/web/').$this->nameEn);
+    //     // todo: set dns and subdomain for statics
+
+    //     $storeFile = \Yii::getAlias('@stores/').$this->nameEn;
+    //     // copy base code
+    //     FileHelper::copyDirectory(\Yii::getAlias('@mainStores/store-base-codes'), $storeFile);
+
+    //     // change some variables in stores
+    //     $indexFile = $storeFile.'/index.php';
+    //     file_put_contents($indexFile,str_replace(':storeName', $this->nameEn, file_get_contents($indexFile)));
+    //     file_put_contents($indexFile,str_replace(':mysqldbName', $this->mysqldbName, file_get_contents($indexFile)));
+    //     $migrationFile = $storeFile.'/components/Migration.php';
+    //     file_put_contents($migrationFile,str_replace(':db', $this->mysqldbName, file_get_contents($migrationFile)));
+
+    //     $configFile = $storeFile.'/config/main.php';
+    //     $configFileStr = file_get_contents($configFile);
+    //     $configFileStr = str_replace(':storeName', $this->nameEn, $configFileStr);
+    //     $configFileStr = str_replace(':cookie', \Yii::$app->security->generateRandomString(), $configFileStr);
+    //     file_put_contents($configFile, $configFileStr);
+
+    //     // todo: install theme && insert settings to store
+
+    //     // inja function change theme o bezan ke monaseb ba type khodesh theme bezane
+
+    //     FileHelper::copyDirectory(\Yii::getAlias('@mainStores/themes/basic/views'), $storeFile.'/themes/basic');
+    //     FileHelper::copyDirectory(\Yii::getAlias('@mainStores/themes/basic/bundle'), \Yii::getAlias('@statics/web/').$this->nameEn.'/bundle');
+    //     $this->imageSizes = [
+    //         ['type'=>'brand', 'sizes' => [
+    //             ["width"=>200, "height"=>100, "isConvert"=>1, "convertQuality"=>91, 'type' => Image::TYPE_BASE],
+    //             ["width"=>100, "height"=>50, "isConvert"=>1, "convertQuality"=>91]
+    //         ]],
+    //         ['type'=>'product', 'sizes' => [
+    //             ["width"=>200, "height"=>200, "isConvert"=>1, "convertQuality"=>91, 'type' => Image::TYPE_BASE],
+    //             ["width"=>75, "height"=>75, "isConvert"=>1, "convertQuality"=>91],
+    //             ["width"=>400, "height"=>400, "isConvert"=>1, "convertQuality"=>91],
+    //         ]]
+    //     ];
+        
+    //     $this->save(false);
+
+    //     // todo: set database mysql&mongodb and create index
+    //     \Yii::$app->db->createCommand('CREATE DATABASE `'.$this->mysqldbName.'` CHARACTER SET utf8 COLLATE utf8_general_ci')->execute();
+
+    //     $root = \Yii::getAlias('@root');
+    //     \Yii::info("cd $root && echo yes | yii migrate --db=migrationDb --migrationPath=$storeFile/migrations --migrationTable=migration_{$this->mysqldbName}", "command");
+    //     $e = exec("cd $root && echo yes | yii migrate --db=migrationDb --migrationPath=$storeFile/migrations --migrationTable=migration_{$this->mysqldbName}");
+    //     \Yii::info($e, "migration");
+
+    //     // todo: set dns and subdoamin for store
+    //     exec("php -q /home/faridsh/domains/sangsite.ir/add_subdomain.php $this->nameEn");
+
+    // }
 }
