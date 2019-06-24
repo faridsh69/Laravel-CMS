@@ -4,6 +4,10 @@
 .display-none{
     display: none;
 }
+.separate{
+    clear: both;
+    height: 40px;
+}
 .submenu-items-container{
     background-color: white;
     border: 1px solid #ddd;
