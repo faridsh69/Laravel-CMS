@@ -12,18 +12,18 @@ class ShopsTableSeeder extends Seeder
      */
     public function run()
     {
-    	$shops = [
-            [
-            	'id' => 1,
-            	'title' => 'menew',
-                'description' => 'menew custome theme',
-            	'activated' => 1,
-            ],
-        ];
+    	// $shops = [
+     //        [
+     //        	'id' => 1,
+     //        	'title' => 'menew',
+     //            'description' => 'menew custome theme',
+     //        	'activated' => 1,
+     //        ],
+     //    ];
         
-        foreach($themes as $theme){
-            Theme::updateOrCreate(['id' => $theme['id']], $theme);
-        }
+     //    foreach($themes as $theme){
+     //        Theme::updateOrCreate(['id' => $theme['id']], $theme);
+     //    }
     }
 }
 

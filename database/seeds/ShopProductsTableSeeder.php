@@ -12,17 +12,17 @@ class ShopProductsTableSeeder extends Seeder
      */
     public function run()
     {
-    	$themes = [
-            [
-            	'id' => 1,
-            	'title' => 'menew',
-                'description' => 'menew custome theme',
-            	'activated' => 1,
-            ],
-        ];
+    	// $themes = [
+     //        [
+     //        	'id' => 1,
+     //        	'title' => 'menew',
+     //            'description' => 'menew custome theme',
+     //        	'activated' => 1,
+     //        ],
+     //    ];
         
-        foreach($themes as $theme){
-            Theme::updateOrCreate(['id' => $theme['id']], $theme);
-        }
+     //    foreach($themes as $theme){
+     //        Theme::updateOrCreate(['id' => $theme['id']], $theme);
+     //    }
     }
 }
