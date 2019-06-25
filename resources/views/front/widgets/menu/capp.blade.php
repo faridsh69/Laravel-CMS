@@ -8,7 +8,7 @@
                     <nav class="navbar navbar-expand-lg navbar-light">
                         <!-- Logo -->
                         <a class="navbar-brand" href="{{ route('front.page.index', '/') }}">
-                            <img style="max-height: 60px;" src="{{ asset('storage/files/shares/logo4.png') }}" alt="logo">
+                            <img style="max-height: 50px;" src="{{ asset('storage/files/shares/logo4.png') }}" alt="logo">
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ca-navbar" aria-controls="ca-navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                         <!-- Menu Area -->

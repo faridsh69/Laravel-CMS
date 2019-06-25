@@ -20,7 +20,7 @@
         </div>
     </div>
     <!-- Welcome thumb -->
-    <div class="welcome-thumb wow fadeInDown" data-wow-delay="0.5s" style="width: 40%">
+    <div class="welcome-thumb wow fadeInDown" data-wow-delay="0.5s">
         <img src="{{ asset('storage/files/shares/welcome.png') }}" alt="Welcome">
     </div>
 </section>
