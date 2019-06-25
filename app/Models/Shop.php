@@ -10,6 +10,11 @@ use Actuallymab\LaravelComment\HasComments;
 
 class Shop extends Model implements Commentable
 {
+
+    // for registeration
+    // to storage ye folder besazam ke file hash o in user bezare inja
+    // copy migiram az file hae dakhele widgets o hame o vase theme jadid mirizam ke bad beshe taghir dad
+    
     use SoftDeletes;
     use Taggable;
     use HasComments;
