@@ -11,6 +11,30 @@ class ShopCategoriesTableSeeder extends Seeder
      */
     public function run()
     {
+
+        INSERT INTO `folders` (`id`, `name`, `description`, `image`, `status`, `tag`, `level`, `parent_id`, `user_id`, `sort`, `created_at`, `updated_at`) VALUES
+(1, 'صبحانه', NULL, 'sausages.svg', 'incomplete', NULL, 'batch', NULL, NULL, 1, '2018-06-21 15:05:12', '2019-06-11 19:20:54'),
+(2, 'پیش غذا', NULL, 'soup.svg', 'Incomplete', NULL, 'batch', NULL, NULL, 2, '2019-03-09 12:56:54', '2019-06-11 19:20:54'),
+(3, 'غذای اصلی', NULL, 'fast-food.svg', 'Incomplete', NULL, 'batch', NULL, NULL, 3, '2019-03-09 12:59:40', '2019-06-11 19:20:54'),
+(4, 'اسموتی و ماکتل', NULL, 'cocktail.svg', 'Incomplete', NULL, 'batch', NULL, NULL, 4, '2019-03-09 13:00:06', '2019-06-11 19:20:54'),
+(5, 'آبمیوه و شیک', NULL, 'fruit.svg', 'Incomplete', NULL, 'batch', NULL, NULL, 5, '2019-03-09 13:05:49', '2019-06-11 19:20:54'),
+(6, 'قهوه', NULL, 'beer.svg', 'Incomplete', NULL, 'batch', NULL, NULL, 8, '2019-03-09 13:06:12', '2019-06-11 19:20:54'),
+(7, 'دمنوش', NULL, 'coffee-cup.svg', 'Incomplete', NULL, 'batch', NULL, NULL, 7, '2019-03-09 13:06:44', '2019-06-11 19:20:54'),
+(8, 'نوشیدنی و دسر', NULL, 'cupcake.svg', 'Incomplete', NULL, 'batch', NULL, NULL, 6, '2019-03-09 13:08:14', '2019-06-11 19:20:54'),
+(9, 'مخصوص دِنجا', NULL, 'cutlery.svg', 'Incomplete', NULL, 'batch', NULL, NULL, 0, '2019-03-09 13:10:32', '2019-06-11 19:20:54'),
+(10, 'چای ارگانیک لاهیجان', NULL, 'vegan.svg', 'Incomplete', NULL, 'batch', NULL, NULL, 9, '2019-03-10 08:53:29', '2019-06-11 19:20:54'),
+(12, 'شیرینی ها', NULL, NULL, 'Incomplete', NULL, 'batch', NULL, NULL, 10, '2019-05-14 07:44:08', '2019-06-11 19:20:54'),
+(11, 'تست', NULL, NULL, 'archive', NULL, 'batch', NULL, NULL, 10, '2019-04-20 15:39:28', '2019-04-21 14:18:19'),
+(13, 'آرشیو مناسبتها', NULL, NULL, 'Incomplete', NULL, 'batch', NULL, NULL, 11, '2019-05-31 07:01:10', '2019-06-11 19:20:54');
+
+
+
+
+        title, url, description, meta_description, meta_image, activated, google_index, canonical_url, parent_id, _rgt, _lft, shop_id,
+
+        'name', 'description', 'image', 'status', 'tag', 'sort', 'level', 'parent_id', 'user_id'
+
+
     	$types =[
         	['id' => 1, 'name' => 'پیتزا'],
         	['id' => 2, 'name' => 'سانویچ'],

@@ -5,7 +5,7 @@
 	<div class="m-login__wrapper padding-0">
 		<div class="m-login__logo">
 			<a href="javascript:void(0)">
-				<img src="{{ asset('upload/images/admin.png') }}">
+				<img src="{{ asset(config('0-general.logo')) }}">
 			</a>
 		</div>
 		<div class="m-login__signup1">
