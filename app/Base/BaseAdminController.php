@@ -108,7 +108,8 @@ class BaseAdminController extends Controller
 
         $this->request->session()->flash('alert-success', $this->model . ' Updated Successfully!');
 
-        Artisan::call('config:cache');
+        Artisan::call('cache:clear');
+        sleep(1);
 
         return redirect()->route('admin.setting.' . $section);
     }

@@ -29,24 +29,49 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
-        $this->mapAdminRoutes();
-        $this->mapWebRoutes();
-        $this->mapFrontRoutes();
-        $this->mapApiRoutes();
+        $domain_parts = explode('.', \Request::getHost());
+        if(count($domain_parts) === 4){
+            if($domain_parts[1] === 'admin'){
+                $this->mapAdminRoutes();
+            }
+            else{
+                $this->mapShopRoutes($domain_parts[1]);
+            }
+        }else{
+            $this->mapFrontRoutes();
+            $this->mapApiRoutes();
+        }
+        // dd($domain_parts);
+        // dd($base_domain);
+        // Route::domain('{account}.{domain}.com')->group(function () {
+        //     dd($domain);
+        //     Route::get('', function ($account) {
+        //         dd($account);
+        //     });
+        // });
+        // $base_domain = \Request::getHost();
+        // if(strpos($base_domain, 'admin') !== false){
+        // $this->mapAdminRoutes();
+        // $this->mapShopRoutes();
+        // $this->mapWebRoutes();
+        // $this->mapFrontRoutes();
+        // $this->mapApiRoutes();
     }
 
     protected function mapAdminRoutes()
     {
-        $admin_domain = 'www.admin.cms.com';
-        $base_domain = \Request::getHost();
-        if(strpos($base_domain, 'admin') !== false){
-            $admin_domain = $base_domain;
-        }
-        Route::middleware(['web', 'throttle:15,0.2', 'auth'])
-            ->domain($admin_domain)
+        Route::middleware(['web', 'throttle:25,0.1', 'auth'])
             ->as('admin.')
             ->namespace($this->namespace . '\Admin')
             ->group(base_path('routes/admin.php'));
+    }
+
+    protected function mapShopRoutes($subdomain)
+    {
+        Route::middleware(['web', 'throttle:15,0.1'])
+            ->as('shop.')
+            ->namespace($this->namespace . '\Shop')
+            ->group(base_path('routes/shop.php'));
     }
 
     protected function mapFrontRoutes()
@@ -57,29 +82,31 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/front.php'));
     }
 
+    protected function mapApiRoutes()
+    {
+        Route::prefix('api')
+            ->as('api.')
+            ->middleware(['api', 'throttle:15,0.3'])
+            ->namespace($this->namespace . '\Api')
+            ->group(base_path('routes/api.php'));
+    }
+
     /**
      * Define the "web" routes for the application.
      *
      * These routes all receive session state, CSRF protection, etc.
      */
-    protected function mapWebRoutes()
-    {
-        Route::middleware('web')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/web.php'));
-    }
+    // protected function mapWebRoutes()
+    // {
+    //     Route::middleware('web')
+    //         ->namespace($this->namespace)
+    //         ->group(base_path('routes/web.php'));
+    // }
 
     /**
      * Define the "api" routes for the application.
      *
      * These routes are typically stateless.
      */
-    protected function mapApiRoutes()
-    {
-        Route::prefix('api')
-            ->as('api.')
-            ->middleware(['api', 'throttle:15,0.2'])
-            ->namespace($this->namespace . '\Api')
-            ->group(base_path('routes/api.php'));
-    }
+    
 }
