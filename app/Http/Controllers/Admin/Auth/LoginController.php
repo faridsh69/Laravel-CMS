@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -61,15 +61,8 @@ class LoginController extends Controller
     public function handleProviderCallback()
     {
         $userSocial = Socialite::driver('google')->user();
-        dd($userSocial);
-        // try{
-        // }catch (\Exception $e) {
-        //     dd($e);
-        //     return redirect()->route('admin.dashboard.index');
-        // }
-
         $user = User::where(['email' => $userSocial->getEmail()])->first();
-        dd($user);
+        
         if($user){
             Auth::login($user);
             activity('User Login')
