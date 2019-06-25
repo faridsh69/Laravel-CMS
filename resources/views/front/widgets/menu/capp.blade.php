@@ -32,7 +32,7 @@
                                 @endforeach
                             </ul>
                             <div class="sing-up-button d-lg-none">
-                                <a href="{{ route('admin.dashboard.index') }}">Admin Panel</a>
+                                <a href="{{ route('front.page.index') }}">Home Page</a>
                             </div>
                         </div>
                     </nav>
@@ -41,7 +41,7 @@
             <!-- Signup btn -->
             <div class="col-12 col-lg-2">
                 <div class="sing-up-button d-none d-lg-block">
-                    <a href="{{ route('admin.dashboard.index') }}">Admin Panel</a>
+                    <a href="{{ route('front.page.index') }}">Home Page</a>
                 </div>
             </div>
         </div>
