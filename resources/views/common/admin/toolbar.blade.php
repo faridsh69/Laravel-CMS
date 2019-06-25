@@ -12,7 +12,7 @@
 					<span class="m-dropdown__arrow m-dropdown__arrow--center"></span>
 					<div class="m-dropdown__inner">
 						<div class="m-dropdown__header m--align-center" style="background: url(
-							{{ asset('upload/images/notification_bg.jpg') }}) ; background-size: cover;">
+							{{ asset(config('0-general.default_user_image')) }}) ; background-size: cover;">
 							<span class="m-dropdown__header-title">
 								3 New
 							</span>
