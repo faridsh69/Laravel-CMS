@@ -2,8 +2,11 @@
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
-This Laravel package that you should just define an array in each model then every thing will be ready and ofcourse you can change as much as you want.
-This array in model make the way easy for automatic create 
+This is a Laravel package that is very easy to developer. 
+you should just define an array in each model about what you want from this software, 
+then every thing will be ready also you can change everything as you need.
+
+Automatic generate:
 	migrations, 
 	seeders, 
 	factory, 
