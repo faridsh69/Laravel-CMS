@@ -12,15 +12,6 @@ class ShopsTableSeeder extends Seeder
      */
     public function run()
     {
-
-open time , persian name , theme,  'کافه نان دِنجا' , 'Denja Bakery Café' , 09120338850
-INSERT INTO `settings` (`id`, `key`, `value`, `created_at`, `updated_at`) VALUES
-
-(46, 'theme', 'denja', NULL, NULL),
-(47, 'theme_color', '#d1aa4b', NULL, NULL);
-
-
-
     	$shops = [
     		[
     			'id' => 1,

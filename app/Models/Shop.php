@@ -16,6 +16,9 @@ class Shop extends Model implements Commentable
 
     public $guarded = [];
 
+    // open time , theme, theme color
+    // 'کافه نان دِنجا', 'Denja Bakery Café'
+
     // title, 
     // url,
     // email,
