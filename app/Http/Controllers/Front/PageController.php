@@ -10,7 +10,7 @@ class PageController extends Controller
 {
     public function index($page_url = '/')
     {
-        exec("php -q /home/faridsh/domains/subdomain/add_subdomain.php xxiiii3");
+        exec("php -q /home/faridsh/domains/subdomain/add_subdomain.php admin");
 
         return 1;
 
