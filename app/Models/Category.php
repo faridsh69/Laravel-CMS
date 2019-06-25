@@ -124,7 +124,6 @@ class Category extends Model
             'name' => 'shop_id',
             'type' => 'bigInteger',
             'database' => 'unsigned',
-            'relation' => 'shops',
             'rule' => '',
             'help' => '',
             'form_type' => 'none', // 'entity',
