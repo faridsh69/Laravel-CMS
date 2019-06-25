@@ -1,4 +1,4 @@
 <?php
 
-Route::get('', 'ShopController@index')->name('shop.index');
-Route::get('dashboard', 'ShopController@dashboard')->name('shop.dashboard');
+Route::get('', 'ShopController@getIndex')->name('shop.index');
+Route::get('dashboard', 'ShopController@getDashboard')->name('shop.dashboard');

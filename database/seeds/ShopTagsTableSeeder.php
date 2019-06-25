@@ -14,6 +14,9 @@ class ShopTagsTableSeeder extends Seeder
         	[
 	        	'name' => 'Fast Food',
         	],
+            [
+                'name' => 'Italian',
+            ],
         	[
 	        	'name' => 'Restaurant',
         	],

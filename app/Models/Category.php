@@ -24,6 +24,19 @@ class Category extends Model
         return $this->title;
     }
 
+    // title,
+    // url,
+    // description,
+    // meta_description,
+    // meta_image,
+    // activated,
+    // google_index,
+    // canonical_url,
+    // parent_id,
+    // _rgt,
+    // _lft,
+    // shop_id,
+
     public $columns = [
         [
             'name' => 'title',
@@ -126,5 +139,10 @@ class Category extends Model
     public function getColumns()
     {
         return $this->columns;
+    }
+
+    public function products()
+    {
+        return $this->hasMany('App\Models\Product', 'category_id', 'id');
     }
 }

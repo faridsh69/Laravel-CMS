@@ -588,27 +588,10 @@
 
 
 <div class="content">
-    @yield('content')
-</div>
-<div class="msgBox">
-    <div class="innerbox">
-        <!-- <div class="exit"></div> -->
-        <div class="topSide">warning</div>
-        <div class="bottomSide"></div>
-        <div class="btns">
-            <div class="btn confirmBtn">Yep</div>
-            <div class="btn cancelBtn">Nope</div>
-        </div>
-    </div>
-</div>
-<script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
 
-</script>
-@stack('script')
-</body>
-</html>
+
+
+
+
+
+

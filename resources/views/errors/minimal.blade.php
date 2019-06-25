@@ -52,7 +52,7 @@
 			    background-size: cover;
 			}
 		</style>
-		<link rel="shortcut icon" href="{{ asset('upload/images/favicon.png') }}" />
+		<link rel="shortcut icon" href="{{ asset(config('0-general.favicon')) }}" />
 	</head>
 	<!-- end::Head -->
     <!-- end::Body -->

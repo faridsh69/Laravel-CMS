@@ -51,6 +51,7 @@ class ShopCategoriesTableSeeder extends Seeder
             [
                 'id' => 1,
                 'title' => 'فست فود',
+                'meta_image' => '',
                 'children' => [
                     ['id' => 2, 'title' => 'پیتزا'],
                     ['id' => 3, 'title' => 'سانویچ'],
