@@ -17,6 +17,8 @@
 		</span>
 		<?= Form::input('text', $name, $options['value'], $options['attr']) ?>
 	</div>
+
+	<img style="margin-top:10px;width: 150px" src="<?php echo $options['value']; ?>" alt="image">
 	<div id="holder" style="margin-top:10px;max-height:100px;"></div>
 		
     <?php include 'help_block.php' ?>
