@@ -181,7 +181,7 @@ public $columns = [
     {
         return false;
     }
-            
+
     public function getColumns()
     {
         return $this->columns;
