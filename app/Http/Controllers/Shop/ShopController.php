@@ -10,9 +10,9 @@ class ShopController extends Controller
 {
     public function getIndex()
     {
-        exec("php -q /home/faridsh/domains/mmenew.ir/add_subdomain.php xxqq");
+        // exec("php -q /home/faridsh/domains/mmenew.ir/add_subdomain.php xxqq");
 
-        return 1;
+        // return 1;
         $categories = Category::get();
         $shop = Shop::first();
 
