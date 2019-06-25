@@ -9,7 +9,7 @@
 	<meta name="author" content="farid shahidi">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
-	<title>{{ $meta['title'] }}</title>
+	<title>{!! $meta['title'] !!}</title>
 	<meta name="keywords" content="{{ $meta['keywords'] }}">
 	<meta name="description" content="{{ $meta['description'] }}">
 	
