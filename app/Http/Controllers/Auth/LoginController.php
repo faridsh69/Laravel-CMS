@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Auth;
+namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -29,6 +29,10 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/';
 
+    public function redirectTo()
+    {
+        return route('admin.dashboard.index');
+    }
     /**
      * Create a new controller instance.
      */

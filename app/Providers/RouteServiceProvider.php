@@ -37,10 +37,10 @@ class RouteServiceProvider extends ServiceProvider
             else{
                 $this->mapShopRoutes($domain_parts[1]);
             }
-        }else{
-            $this->mapFrontRoutes();
-            $this->mapApiRoutes();
         }
+        $this->mapAuthRoutes();
+        $this->mapFrontRoutes();
+        $this->mapApiRoutes();
         // dd($domain_parts);
         // dd($base_domain);
         // Route::domain('{account}.{domain}.com')->group(function () {
@@ -91,22 +91,10 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/api.php'));
     }
 
-    /**
-     * Define the "web" routes for the application.
-     *
-     * These routes all receive session state, CSRF protection, etc.
-     */
-    // protected function mapWebRoutes()
-    // {
-    //     Route::middleware('web')
-    //         ->namespace($this->namespace)
-    //         ->group(base_path('routes/web.php'));
-    // }
-
-    /**
-     * Define the "api" routes for the application.
-     *
-     * These routes are typically stateless.
-     */
-    
+    protected function mapAuthRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/auth.php'));
+    }    
 }

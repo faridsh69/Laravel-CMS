@@ -30,11 +30,6 @@ foreach($models as $model_sm)
 		Route::get('', 'ResourceController@getRedirect')->name('redirect');
 	});
 }
-
-Auth::routes();
-Route::get('login/{social_company}', 'Auth\LoginController@redirectToProvider')->name('login-social');
-Route::get('login/{social_company}/callback', 'Auth\LoginController@handleProviderCallback')->name('login-social-redirect');
-
 Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'as' => 'dashboard.'], function () {
 	Route::get('', 'DashboardController@index')->name('index');
 	Route::get('profile', 'DashboardController@getProfile')->name('profile');

@@ -1,0 +1,32 @@
+body {
+	background-color: #162741;
+}
+
+.header {
+	background: #d1aa4b;
+	color: #111;
+}
+
+.header a {
+	color: #111;
+}
+
+/*.header .showmore .showmoreicon {*/
+/*	background: transparent url('../../images/icons/arrowdown2.svg') center bottom no-repeat;*/
+/*}*/
+
+.header .shoppingcarticon {
+	background-image: url('../../images/icons/shoppingcart2.svg');
+}
+
+.menuitem.outoforder::after {
+	background: rgba(22, 39, 65, 0.9) url('../../images/icons/out.png') no-repeat;
+}
+
+.detailsbox {
+	background-color: #162741;
+}
+
+.header .navicon {
+	background-image: url('../../images/icons/navicon2.svg');
+}
