@@ -1,5 +1,5 @@
 //Change default directory page
-DirectoryIndex ../index123.php
+DirectoryIndex ../index.php
  
 
 <IfModule mod_rewrite.c>
