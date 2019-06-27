@@ -2,10 +2,10 @@
 <html xmlns="https://www.w3.org/1999/xhtml">
 
 <head id="head_url" data-url="laravel-method-getUrl" data-defulturl="laravel-method-getDefultUrl" data-ip="laravel-method-getIp" data-loadingsrc="{{asset('replace')}}">
+    <meta name="robots" content="noindex">
     <title>{{ $shop->title }} &bull; MeneW</title>
     <meta charset="UTF-8" />
     <meta name="author" content="MeneW" />
-    <meta name="robots" content="index,follow" />
     <meta name="format-detection" content="telephone=+98" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, height=device-height, viewport-fit=cover" />
     <meta name="keywords" content="">
