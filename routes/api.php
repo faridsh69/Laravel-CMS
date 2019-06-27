@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('', 'GeneralController@getVersion')->name('version');
 Route::get('user', 'GeneralController@getUser')->name('user')->middleware('auth:api');
 
 Route::group([], function () {

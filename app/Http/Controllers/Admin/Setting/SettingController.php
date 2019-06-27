@@ -75,13 +75,13 @@ class SettingController extends BaseAdminController
 			],
 			[
 				'id' => 8,
-				'description' => 'recompile cache',
+				'description' => 'recompile config cache',
 				'command' => 'config:cache',
 			],
 			[
 				'id' => 9,
-				'description' => 'clear cache',
-				'command' => 'cache:clear',
+				'description' => 'clear config cache',
+				'command' => 'config:clear',
 			],
 			[
 				'id' => 10,
@@ -92,6 +92,26 @@ class SettingController extends BaseAdminController
 				'id' => 11,
 				'description' => 'run seeders',
 				'command' => 'db:seed',
+			],
+			[
+				'id' => 12,
+				'description' => 'recompile route cache',
+				'command' => 'route:cache',
+			],
+			[
+				'id' => 13,
+				'description' => 'clear route cache',
+				'command' => 'route:clear',
+			],
+			[
+				'id' => 14,
+				'description' => 'recompile view cache',
+				'command' => 'view:cache',
+			],
+			[
+				'id' => 15,
+				'description' => 'clear view cache',
+				'command' => 'view:clear',
 			],
 			
 		];

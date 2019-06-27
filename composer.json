@@ -23,6 +23,7 @@
         "maatwebsite/excel": "^3.1",
         "mpociot/laravel-apidoc-generator": "^3.7",
         "nwidart/laravel-modules": "^5.0",
+        "predis/predis": "^1.1",
         "propaganistas/laravel-phone": "^4.2",
         "rap2hpoutre/laravel-log-viewer": "^1.1",
         "rtconner/laravel-tagging": "~3.1",

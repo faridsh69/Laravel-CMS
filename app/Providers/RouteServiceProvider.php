@@ -29,18 +29,15 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
-        $domain_parts = explode('.', \Request::getHost());
-        if(count($domain_parts) === 4){
-            if($domain_parts[1] === 'admin'){
-                $this->mapAdminRoutes();
-            }
-            else{
-                $this->mapShopRoutes($domain_parts[1]);
-            }
-        }
-        $this->mapAuthRoutes();
-        $this->mapFrontRoutes();
-        $this->mapApiRoutes();
+        // $domain_parts = explode('.', \Request::getHost());
+        // if(count($domain_parts) === 4){
+        //     if($domain_parts[1] === 'admin'){
+                
+        //     }
+        //     else{
+        //         $domain_parts[1]);
+        //     }
+        // }
         // dd($domain_parts);
         // dd($base_domain);
         // Route::domain('{account}.{domain}.com')->group(function () {
@@ -56,19 +53,27 @@ class RouteServiceProvider extends ServiceProvider
         // $this->mapWebRoutes();
         // $this->mapFrontRoutes();
         // $this->mapApiRoutes();
+        
+        $this->mapAdminRoutes();
+        $this->mapShopRoutes();
+        $this->mapApiRoutes();
+        $this->mapAuthRoutes();
+        $this->mapFrontRoutes();
     }
 
     protected function mapAdminRoutes()
     {
         Route::middleware(['web', 'throttle:25,0.1', 'auth'])
+            ->domain('www.admin.mmenew.com')
             ->as('admin.')
             ->namespace($this->namespace . '\Admin')
             ->group(base_path('routes/admin.php'));
     }
 
-    protected function mapShopRoutes($subdomain)
+    protected function mapShopRoutes()
     {
         Route::middleware(['web', 'throttle:15,0.1'])
+            ->domain('www.cofe.mmenew.com')
             ->as('shop.')
             ->namespace($this->namespace . '\Shop')
             ->group(base_path('routes/shop.php'));

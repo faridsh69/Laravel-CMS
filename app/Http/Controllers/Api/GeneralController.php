@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class GeneralController extends Controller
 {
+    public function getVersion()
+    {
+        return '1.4.1';
+    }
+
     public function getCountries()
     {
     	// $countries = Countries::where('name.common', '!=', '')
