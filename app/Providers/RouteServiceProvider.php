@@ -46,34 +46,44 @@ class RouteServiceProvider extends ServiceProvider
         //         dd($account);
         //     });
         // });
-        // $base_domain = \Request::getHost();
+        // $base_domain = \Request::getHost(); // getHttpHost
         // if(strpos($base_domain, 'admin') !== false){
         // $this->mapAdminRoutes();
         // $this->mapShopRoutes();
         // $this->mapWebRoutes();
         // $this->mapFrontRoutes();
         // $this->mapApiRoutes();
-            
-        $this->mapAdminRoutes();
-        $this->mapShopRoutes();
+
+        // $domain_parts = explode('.', \Request::getHost());
+        // $domain_length = count($domain_parts);
+        // if(isset($domain_parts[$domain_length-2])){
+        //     $domain = $domain_parts[$domain_length-2] . '.' . $domain_parts[$domain_length-1];
+        // }
+        // else{
+        //     $domain = 'cms.com';
+        // }
+        $domain = env('DOMAIN_NAME', 'cms.com');
+
+        $this->mapAdminRoutes($domain);
+        $this->mapShopRoutes($domain);
         $this->mapApiRoutes();
         $this->mapAuthRoutes();
         $this->mapFrontRoutes();
     }
 
-    protected function mapAdminRoutes()
+    protected function mapAdminRoutes($domain)
     {
         Route::middleware(['web', 'throttle:25,0.1', 'auth'])
-            ->domain('www.admin.' . config('0-developer.app_url'))
+            ->domain('www.admin.' . $domain)
             ->as('admin.')
             ->namespace($this->namespace . '\Admin')
             ->group(base_path('routes/admin.php'));
     }
 
-    protected function mapShopRoutes()
+    protected function mapShopRoutes($domain)
     {
         Route::middleware(['web', 'throttle:15,0.1'])
-            ->domain('www.{shop_subdomain}.' . config('0-developer.app_url'))
+            ->domain('www.{shop_subdomain}.' . $domain)
             ->as('shop.')
             ->namespace($this->namespace . '\Shop')
             ->group(base_path('routes/shop.php'));
