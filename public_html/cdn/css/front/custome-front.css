@@ -7,6 +7,34 @@
 .header_area_custome *:hover{
 	color: #000 !important;
 }
+.color-synegry{
+	color: rgb(59, 132, 25);
+}
+.special_description_content h2{
+	color: rgb(59, 132, 25) !important;
+}
+.section-heading h2{
+	color: rgb(59, 132, 25) !important;
+}
+.single-special h4{
+	color: rgb(59, 132, 25) !important;
+}
+.footer-text h2{
+	color: rgb(59, 132, 25) !important;
+}
+.get-start-area .email{
+	background: rgb(59, 132, 25) !important;
+	color: white;
+}
+.sing-up-button > a{
+	border: 2px solid rgb(59, 132, 25);
+}
+.cool_facts_area{
+	background: linear-gradient(to left, rgb(59, 132, 25), rgb(57, 216, 38))
+}
+.our-monthly-membership{
+	background: linear-gradient(to left, rgb(155, 237, 114), rgb(57, 216, 38));
+}
 /*.features-custom{
 	float: right;
 }*/

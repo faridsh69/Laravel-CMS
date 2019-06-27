@@ -10,8 +10,9 @@
                 </div>
                 <div class="get-start-area">
                     <!-- Form Start -->
-                    <form action="#" method="post" class="form-inline">
-                        <input type="email" class="form-control email" placeholder="name@company.com">
+                    <form action="" method="get" class="form-inline">
+                        @csrf
+                        <input type="email" class="form-control email" placeholder="Email">
                         <input type="submit" class="submit" value="Get Started">
                     </form>
                     <!-- Form End -->
