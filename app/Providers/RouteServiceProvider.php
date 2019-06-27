@@ -53,7 +53,7 @@ class RouteServiceProvider extends ServiceProvider
         // $this->mapWebRoutes();
         // $this->mapFrontRoutes();
         // $this->mapApiRoutes();
-        
+            
         $this->mapAdminRoutes();
         $this->mapShopRoutes();
         $this->mapApiRoutes();
@@ -64,7 +64,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapAdminRoutes()
     {
         Route::middleware(['web', 'throttle:25,0.1', 'auth'])
-            ->domain('www.admin.mmenew.com')
+            ->domain('www.admin.' . config('0-developer.app_url'))
             ->as('admin.')
             ->namespace($this->namespace . '\Admin')
             ->group(base_path('routes/admin.php'));
@@ -73,7 +73,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapShopRoutes()
     {
         Route::middleware(['web', 'throttle:15,0.1'])
-            ->domain('www.cofe.mmenew.com')
+            ->domain('www.{shop_subdomain}.' . config('0-developer.app_url'))
             ->as('shop.')
             ->namespace($this->namespace . '\Shop')
             ->group(base_path('routes/shop.php'));

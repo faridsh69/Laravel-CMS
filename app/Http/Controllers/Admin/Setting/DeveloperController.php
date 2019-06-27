@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin\Setting;
 
-use App\Base\BaseAdminController;
+use App\Http\Controllers\Admin\Setting\SettingController;
 
-class DeveloperController extends BaseAdminController
+class DeveloperController extends SettingController
 {
 	public $model = 'SettingDeveloper';
 	public $section = 'developer';

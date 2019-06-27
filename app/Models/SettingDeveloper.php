@@ -17,7 +17,12 @@ class SettingDeveloper extends Model
 
     public $columns = [
         [
-            'name' => 'throttle',
+            'name' => 'app_url',
+            'type' => 'string',
+            'form_type' => '',
+        ],
+        [
+            'name' => 'cdn_url',
             'type' => 'string',
             'form_type' => '',
         ],
@@ -25,16 +30,6 @@ class SettingDeveloper extends Model
             'name' => 'app_debug',
             'type' => 'boolean',
             'form_type' => 'checkbox',
-        ],
-        [
-            'name' => 'lazy_loading',
-            'type' => 'boolean',
-            'form_type' => 'checkbox',
-        ],
-        [
-            'name' => 'app_env',
-            'type' => 'boolean',
-            'form_type' => 'switch-bootstrap-m',
         ],
         [
             'name' => 'theme',
@@ -49,6 +44,21 @@ class SettingDeveloper extends Model
             'property_key' => 'title',
             'multiple' => false,
             'table' => true,
+        ],
+        [
+            'name' => 'throttle',
+            'type' => 'string',
+            'form_type' => '',
+        ],
+        [
+            'name' => 'lazy_loading',
+            'type' => 'boolean',
+            'form_type' => 'checkbox',
+        ],
+        [
+            'name' => 'app_env',
+            'type' => 'boolean',
+            'form_type' => 'switch-bootstrap-m',
         ],
         [
             'name' => 'email_username',

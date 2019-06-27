@@ -19,7 +19,7 @@
 	</div>
 
 	<img style="margin-top:10px;width: 150px" src="<?php echo $options['value']; ?>" alt="image">
-	<div id="holder" style="margin-top:10px;max-height:100px;"></div>
+	<div id="holder" style="margin-top:10px;height:1px; width: 1px"></div>
 		
     <?php include 'help_block.php' ?>
 <?php endif; ?>

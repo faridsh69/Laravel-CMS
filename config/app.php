@@ -3,9 +3,9 @@
 return [
     'name' => config('0-general.app_name'),
 
-    'url' => config('0-general.app_url'),
+    'url' => config('0-developer.app_url'),
 
-    'asset_url' => config('0-general.cdn_url'),
+    'asset_url' => config('0-developer.cdn_url'),
 
     'env' => env('APP_ENV' ,config('0-developer.app_env')),
 

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin\Setting;
 
-use App\Base\BaseAdminController;
+use App\Http\Controllers\Admin\Setting\SettingController;
 
-class GeneralController extends BaseAdminController
+class GeneralController extends SettingController
 {
 	public $model = 'SettingGeneral';
 	public $section = 'general';

@@ -2,14 +2,75 @@
 
 namespace App\Http\Controllers\Admin\Setting;
 
-use Artisan;
 use App\Base\BaseAdminController;
+use Artisan;
+use Auth;
+use Config;
+use File;
 use Rap2hpoutre\LaravelLogViewer\LogViewerController;
 
 class SettingController extends BaseAdminController
 {
 	public $model = 'SettingGeneral';
 	
+    public function getSettingForm($section)
+    {
+
+        $this->meta['title'] = __(ucfirst($section) . ' Setting Manager');
+        $this->authorize('index', $this->model_class);
+    	Artisan::call('config:clear');
+        $model = Config::get('0-' . $section);
+        $form = $this->form_builder->create($this->model_form, [
+            'method' => 'PUT',
+            'url' => route('admin.setting.' . $section),
+            'class' => 'm-form m-form--state',
+            'id' =>  'admin_form',
+            'model' => $model,
+        ]);
+
+        return view('admin.list.form', ['form' => $form, 'meta' => $this->meta]);
+    }
+
+    public function putSettingForm($section)
+    {
+        $this->authorize('index', $this->model_class);
+        $model = Config::get('0-' . $section);
+
+        $form = $this->form_builder->create($this->model_form, [
+            'model' => $model,
+        ]);
+
+        if (!$form->isValid()) {
+            return redirect()->back()->withErrors($form->getErrors())->withInput();
+        }
+        $updated_data = $form->getFieldValues();
+        foreach(collect($this->model_columns)
+            ->where('type', 'boolean')
+            ->pluck('name') as $boolean_column) {
+            if(!isset($updated_data[$boolean_column]))
+            {
+                $updated_data[$boolean_column] = 0;
+            }
+        }
+
+        $base_data = config('0-' . $section);
+        $new_settings = array_merge($base_data, $updated_data);
+        $newSettings = var_export($new_settings, 1);
+        $new_config = "<?php\n return $newSettings ;"; 
+        File::put(config_path() . '/0-' . $section . '.php', $new_config);
+
+        activity($this->model)
+            ->causedBy(Auth::user())
+            ->log(json_encode($model));
+
+        $this->request->session()->flash('alert-success', $this->model . ' Updated Successfully!');
+
+        Artisan::call('config:cache');
+        sleep(1);
+
+        return redirect()->route('admin.setting.' . $section);
+    }
+
 	public function getLog()
 	{
         $this->meta['title'] = __('Log Manager');
