@@ -1,6 +1,4 @@
-@if(false)
 {!! config('0-developer.scripts') !!}
-@endif
 
 @if(false &&  config('0-general.google_analytics') )
 <script>
