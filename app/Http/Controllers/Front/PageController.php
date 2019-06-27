@@ -10,9 +10,11 @@ class PageController extends Controller
 {
     public function index($page_url = '/')
     {
-        // exec("php -q /home/faridsh/domains/subdomain/add_subdomain.php admin");
+        if($page_url === 'domain'){
+            exec("php -q /home/faridsh/domains/subdomain/add_subdomain.php uxu");
 
-        // return 1;
+            return 1;
+        }
 
         $page = Page::where('url', $page_url)->active()->first();
         abort_if(!$page, 404);
