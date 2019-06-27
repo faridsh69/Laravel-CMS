@@ -72,6 +72,8 @@ class PageController extends Controller
             ]);
         }
 
+        $request->session()->flash('alert-success', 'Congratulation, you will go solar soon!');
+
         return redirect()->route('front.page.index', '/');
     }
 }
