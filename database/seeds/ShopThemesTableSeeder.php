@@ -14,9 +14,9 @@ class ShopThemesTableSeeder extends Seeder
     {
     	$themes = [
             [
-            	'id' => 1,
+            	'id' => 4,
             	'title' => 'menew',
-                'description' => 'menew custome theme',
+                'description' => 'menew custom theme',
             	'activated' => 1,
             ],
         ];

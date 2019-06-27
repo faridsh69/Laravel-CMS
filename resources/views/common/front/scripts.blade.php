@@ -1,4 +1,6 @@
-@if( config('0-general.google_analytics') )
+{!! config('0-developer.scripts') !!}
+
+@if(false &&  config('0-general.google_analytics') )
 <script>
     (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
@@ -15,7 +17,7 @@
 	ga('set', 'userId', {{ \Auth::user() ? \Auth::id() : 0 }} );
 </script>
 @endif
-@if( config('0-general.crisp') )
+@if(false && config('0-general.crisp') )
 <script data-cfasync='false'>
     window.$crisp=[];
     CRISP_RUNTIME_CONFIG = {

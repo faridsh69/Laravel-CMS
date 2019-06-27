@@ -80,6 +80,11 @@ class SettingDeveloper extends Model
             'type' => 'string',
             'form_type' => '',
         ],
+        [
+            'name' => 'scripts',
+            'type' => 'text',
+            'form_type' => 'textarea',
+        ],
     ];
 
     public function getColumns()
