@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
 use App\Models\Block;
+use Illuminate\Http\Request;
+use App\Models\User;
+use Carbon\Carbon;
 
 class PageController extends Controller
 {
@@ -53,4 +56,22 @@ class PageController extends Controller
         return view('front.page.video', ['meta' => $meta]);
     }
     
+    public function postSubscribe(Request $request)
+    {
+        $date = Carbon::now()->format('Y/d/m');
+        $time = Carbon::now()->format('H:i');
+        $email = $request->input('email');
+
+        if( !User::where('email', $email)->first() ){
+            User::create([
+                'first_name' => $date,
+                'last_name' => $time,
+                'email' => $email,
+                'status' => 2,
+                'password' => 'farid123SS!@#%#@$FDSAddd' . rand(200,1000),
+            ]);
+        }
+
+        return redirect()->route('front.page.index', '/');
+    }
 }

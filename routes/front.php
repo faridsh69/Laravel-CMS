@@ -7,4 +7,5 @@ Route::get('blogs/tags', 'BlogController@getTags')->name('blog.tags');
 Route::get('blogs/tags/{tag_url}', 'BlogController@getTag')->name('blog.tag');
 Route::get('blogs/{blog_url}', 'BlogController@show')->name('blog.show');
 Route::get('video', 'PageController@getVideo')->name('page.video');
+Route::post('subscribe', 'PageController@postSubscribe')->name('page.subscribe');
 Route::get('{page_url?}', 'PageController@index')->name('page.index');

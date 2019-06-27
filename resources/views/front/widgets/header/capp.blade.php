@@ -8,15 +8,7 @@
                     <h3>SP</h3>
                     <p>Go Solar. Save Money.</p>
                 </div>
-                <div class="get-start-area">
-                    <!-- Form Start -->
-                    <form action="" method="get" class="form-inline">
-                        @csrf
-                        <input type="email" class="form-control email" placeholder="Email">
-                        <input type="submit" class="submit" value="Get Started">
-                    </form>
-                    <!-- Form End -->
-                </div>
+                @include('front.widgets.form.' . config("0-developer.theme"))
             </div>
         </div>
     </div>

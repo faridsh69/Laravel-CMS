@@ -11,7 +11,7 @@ return [
 
     'debug' => config('0-developer.app_debug'),
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Tehran',
 
     'locale' => 'en',
 

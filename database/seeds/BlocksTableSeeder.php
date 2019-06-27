@@ -55,7 +55,7 @@ class BlocksTableSeeder extends Seeder
             ],
             [
                   'id' => 4,
-                  'order' => 15,
+                  'order' => 13,
                   'column' => 12,
                   'widget_type' => 'features',
                   'widget_id' => 4,
@@ -65,7 +65,7 @@ class BlocksTableSeeder extends Seeder
             ],
             [
                   'id' => 5,
-                  'order' => 12,
+                  'order' => 14,
                   'column' => 12,
                   'widget_type' => 'application',
                   'widget_id' => 5,

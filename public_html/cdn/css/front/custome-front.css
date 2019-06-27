@@ -22,9 +22,13 @@
 .footer-text h2{
 	color: rgb(59, 132, 25) !important;
 }
+.get-start-area{
+	margin-top: 60px;
+}
 .get-start-area .email{
-	background: rgb(59, 132, 25) !important;
-	color: white;
+	background: white !important;
+	box-shadow: 0px 0px 10px rgb(59, 132, 25);
+	color: black;
 }
 .sing-up-button > a{
 	border: 2px solid rgb(59, 132, 25);
