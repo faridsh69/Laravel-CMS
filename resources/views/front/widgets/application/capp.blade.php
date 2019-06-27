@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="special_description_img">
-                        <img src="{{ asset('storage/files/shares/service1.png') }}" class="pull-right" alt="services">
+                        <img src="{{ asset('css/front/capp/img/eric/icon1.jpg') }}" class="pull-right" alt="services">
                     </div>
                 </div>
                 <div class="col-lg-6 col-xl-5 ml-xl-auto">
@@ -39,7 +39,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="special_description_img">
-                        <img src="{{ asset('storage/files/shares/service2.png') }}" alt="services">
+                        <img src="{{ asset('css/front/capp/img/eric/icon2.jpg') }}" alt="services">
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="special_description_img">
-                        <img src="{{ asset('storage/files/shares/service3.jpg') }}" class="pull-right alt="services">
+                        <img src="{{ asset('css/front/capp/img/eric/icon3.jpg') }}" class="pull-right alt="services">
                     </div>
                 </div>
                 <div class="col-lg-6 col-xl-5 ml-xl-auto">

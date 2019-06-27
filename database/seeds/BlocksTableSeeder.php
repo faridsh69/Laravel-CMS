@@ -139,9 +139,9 @@ class BlocksTableSeeder extends Seeder
             	'column' => 12,
             	'widget_type' => 'team',
             	'widget_id' => 12,
-            	'page_id' => 1,
+            	'page_id' => 2,
             	'theme' => 'capp',
-            	'activated' => 1,
+            	'activated' => 0,
             ],
             [
             	'id' => 13,

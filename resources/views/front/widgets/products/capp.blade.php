@@ -17,22 +17,22 @@
                 <!-- App Screenshots Slides  -->
                 <div class="app_screenshots_slides owl-carousel">
                     <div class="single-shot">
-                        <img src="img/scr-img/app-1.jpg" alt="">
+                        <img src="{{ asset('css/front/capp/img/eric/app-1.jpg') }}" alt="prodduct 1">
                     </div>
                     <div class="single-shot">
-                        <img src="img/scr-img/app-2.jpg" alt="">
+                        <img src="{{ asset('css/front/capp/img/eric/app-2.jpg') }}" alt="">
                     </div>
                     <div class="single-shot">
-                        <img src="img/scr-img/app-3.jpg" alt="">
+                        <img src="{{ asset('css/front/capp/img/eric/app-3.jpg') }}" alt="">
                     </div>
                     <div class="single-shot">
-                        <img src="img/scr-img/app-4.jpg" alt="">
+                        <img src="{{ asset('css/front/capp/img/eric/app-4.jpg') }}" alt="">
                     </div>
                     <div class="single-shot">
-                        <img src="img/scr-img/app-5.jpg" alt="">
+                        <img src="{{ asset('css/front/capp/img/eric/app-5.jpg') }}" alt="">
                     </div>
                     <div class="single-shot">
-                        <img src="img/scr-img/app-3.jpg" alt="">
+                        <img src="{{ asset('css/front/capp/img/eric/app-6.jpg') }}" alt="">
                     </div>
                 </div>
             </div>
