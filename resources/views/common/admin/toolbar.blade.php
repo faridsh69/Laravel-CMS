@@ -148,10 +148,10 @@
 								</div>
 								<div class="m-card-user__details">
 									<span class="m-card-user__name m--font-weight-500">
-										{{ Auth::user()->name }}
+										{{ Auth::user() ? Auth::user()->name : '' }}
 									</span>
 									<a href="" class="m-card-user__email m--font-weight-300 m-link">
-										{{ Auth::user()->email }}
+										{{ Auth::user() ? Auth::user()->email : '' }}
 									</a>
 								</div>
 							</div>

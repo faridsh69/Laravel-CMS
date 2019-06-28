@@ -17,16 +17,24 @@ class TestController extends Controller
 
     public $folder_id = '01G2WUFWH43SLT2MFNSJDKSESHA7VXYKWI';
 
-    public function getTest()
+    public function getNewJob()
     {
-        $data_full = 'data:image/jpeg;base64,/9';
+        return view('front.test.new-job');
+    }
 
-        list($format, $data_with_base64) = explode(';', $data_full);
-        list(, $base64)      = explode(',', $data_with_base64);
-        $image = base64_decode($base64);
+    public function postNewJob(Request $request)
+    {
+        $folder_id = $request->input('parentId');
+        $image_name = $request->image->getClientOriginalName();
+        $file = $request->file('image');
+        $image_data = base64_encode(
+                file_get_contents(
+                    $request->file('image')
+            ));
 
-        file_put_contents('/xxxxxx.jpg', $image);
-        return view('front.page.test');
+        $this->getUploadImage($image_data, $image_name, $folder_id);
+        
+        return redirect()->route('front.page.test-new-job');
     }
 
     public function call_curl($url, $method, $body, $authorization = null)
@@ -68,9 +76,8 @@ class TestController extends Controller
         return $access_token;
     }
 
-    public function getUploadImage()
+    public function getUploadImage($image_coded_full, $file_name, $folder_id)
     {
-        $file_name = 'farid1.jpg';
         $access_token = $this->getAccessToken();
         $authorization = 'Authorization: Bearer ' . $access_token;
 
@@ -78,24 +85,37 @@ class TestController extends Controller
             $this->job_site_id .
             '/drive/items/';
 
-        $url_upload_image_part_2 = $this->folder_id . 
+        $url_upload_image_part_2 = $folder_id . 
             ':/' . 
             $file_name . 
             ':/content';
 
         $url_upload_image = $url_upload_image_part_1 . $url_upload_image_part_2;
-
-        $image_coded_full = 'data:image/jpeg;base64,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';
-
-        list($format, $data_with_base64) = explode(';', $image_coded_full);
-        list(, $base64)      = explode(',', $data_with_base64);
-        $data_upload_image = base64_decode($base64);
+        
+        // list($format, $data_with_base64) = explode(';', $image_coded_full);
+        // list(, $base64)      = explode(',', $data_with_base64);
+        $data_upload_image = base64_decode($image_coded_full);
 
         $server_output_upload = $this->call_curl($url_upload_image, 
             'PUT', $data_upload_image, $authorization);
 
         return json_decode($server_output_upload);
     }
+
+    public $image_coded_full = 'data:image/jpeg;base64,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';
+
+
+    // public function getTest()
+    // {
+    //     $data_full = 'data:image/jpeg;base64,/9';
+
+    //     list($format, $data_with_base64) = explode(';', $data_full);
+    //     list(, $base64)      = explode(',', $data_with_base64);
+    //     $image = base64_decode($base64);
+
+    //     file_put_contents('/xxxxxx.jpg', $image);
+    //     return view('front.page.test');
+    // }
         
                 // $access_token_body = [
         //     "client_id" => "1c797945-49d2-4959-a874-800e0017f98f",
