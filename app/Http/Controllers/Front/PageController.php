@@ -11,7 +11,7 @@ use Carbon\Carbon;
 
 class PageController extends Controller
 {
-    public function index($page_url = '/')
+    public function getIndex($page_url = '/')
     {
         // if($page_url === 'domain'){
         //     exec("php -q /home/faridsh/domains/subdomain/add_subdomain.php uxu");
