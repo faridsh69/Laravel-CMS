@@ -24,13 +24,10 @@ class TestController extends Controller
 
     public function postNewJob(Request $request)
     {
+        // folder ID that needs to upload image into it.
         $folder_id = $request->input('parentId');
         $image_name = $request->image->getClientOriginalName();
-        $file = $request->file('image');
-        $image_data = base64_encode(
-                file_get_contents(
-                    $request->file('image')
-            ));
+        $image_data = base64_encode( file_get_contents( $request->file('image') ) );
 
         $this->getUploadImage($image_data, $image_name, $folder_id);
         
@@ -78,6 +75,7 @@ class TestController extends Controller
 
     public function getUploadImage($image_coded_full, $file_name, $folder_id)
     {
+        // get access token for header
         $access_token = $this->getAccessToken();
         $authorization = 'Authorization: Bearer ' . $access_token;
 
@@ -94,8 +92,10 @@ class TestController extends Controller
         
         // list($format, $data_with_base64) = explode(';', $image_coded_full);
         // list(, $base64)      = explode(',', $data_with_base64);
-        $data_upload_image = base64_decode($image_coded_full);
 
+        // convert from base64 to image
+        $data_upload_image = base64_decode($image_coded_full);
+        
         $server_output_upload = $this->call_curl($url_upload_image, 
             'PUT', $data_upload_image, $authorization);
 

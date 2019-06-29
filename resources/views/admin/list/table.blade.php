@@ -17,5 +17,10 @@
 @endpush
 
 @section('content')
+
+    @if(Request::segment(1) === 'form')
+    Sample form for upload image to sharepoint
+    <iframe src="{{ route('front.page.test-new-job') }}" style="width: 100%; height: 400px;border:  none;"></iframe>
+    @endif
     <div class="m_datatable"></div>
 @endsection
