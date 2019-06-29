@@ -178,7 +178,7 @@ class ShopCategoriesTableSeeder extends Seeder
                     'description' => $category['title'],
                     'meta_description' => $category['title'],
                     'url' => Str::slug($category['title']),
-                    'activated' => $category['id'] === 11 ? 1 : 0,
+                    'activated' => $category['id'] === 11 ? 0 : 1,
                     'google_index' => 1,
                 ]
             );
