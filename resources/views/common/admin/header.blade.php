@@ -1,5 +1,4 @@
 <head>
-	<meta name="robots" content="noindex">
 	@if(!config('0-general.google_index'))
 		<meta name="robots" content="noindex">
 	@endif
@@ -35,6 +34,7 @@
 	<meta property="twitter:domain" content="{{ url('/') }}">
 
 	<link rel="canonical" href="{{ url()->current() }}">
+	<link rel="shortcut icon" href="{{ asset(config('0-general.favicon')) }}" />
 
     <!--begin::Base Styles -->
 	<link href="{{ asset('css/admin/vendors.bundle.css') }}" rel="stylesheet" />
@@ -42,7 +42,6 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 	<link href="{{ asset('css/admin/custome.css') }}" rel="stylesheet" />
 	<!--end::Base Styles -->
-	<link rel="shortcut icon" href="{{ asset(config('0-general.favicon')) }}" />
 
 	@stack('style')
 </head>

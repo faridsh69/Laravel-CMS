@@ -35,8 +35,7 @@ class ShopController extends Controller
             'fully_just_content' => 'fully_just_content',
             'version_type' => 2,
             'license' => 1,
-        ]
-        );
+        ]);
         // title, url, description, meta_description, meta_image, activated, google_index, canonical_url, parent_id, _rgt, _lft, shop_id,
 
         // 'name', 'description', 'image', 'status', 'tag', 'sort', 'level', 'parent_id', 'user_id'

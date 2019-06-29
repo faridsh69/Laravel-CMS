@@ -172,7 +172,7 @@ class ShopCategoriesTableSeeder extends Seeder
                 ['id' => $category['id']], 
                 [
                     'title' => $category['title'],
-                    'meta_image' => $category['meta_image'],
+                    'meta_image' => asset('images/icons/restaurant_pack/' . $category['meta_image']),
                     'shop_id' => $category['shop_id'],
                     'description' => $category['title'],
                     'meta_description' => $category['title'],

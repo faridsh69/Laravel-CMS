@@ -1,12 +1,11 @@
 <head>
-	<meta name="robots" content="noindex"> 
 	@if(!config('0-general.google_index') || !$meta['google_index'])
 		<meta name="robots" content="noindex">
 	@endif
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="author" content="farid shahidi">
+	<meta name="author" content="farid.sh69@gmail.com">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
 	<title>{!! $meta['title'] !!}</title>

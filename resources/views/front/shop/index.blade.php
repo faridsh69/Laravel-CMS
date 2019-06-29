@@ -1,39 +1,5 @@
-<!DOCTYPE html>
-<html xmlns="https://www.w3.org/1999/xhtml">
-<head>
-    @if(!$meta['google_index'])
-        <meta name="robots" content="noindex">
-    @endif
-    <title>{{ $meta['title'] }} &bull; MeneW</title>
-    <meta charset="UTF-8" />
-    <meta name="author" content="farid.sh69@gmail.com" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, height=device-height, viewport-fit=cover" />
-    <meta name="application-name" content="MeneW" />
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-    <link rel="apple-touch-icon-precomposed" href="{{ asset('images/menew_icon-removebg-preview.png?v=2') }}" />
-    <link rel="shortcut icon" sizes="196x196" href="{{ asset('images/menew_icon-removebg-preview.png?v=2') }}" />
-    <link rel="shortcut icon" sizes="128x128" href="{{ asset('images/menew_icon-removebg-preview.png?v=2') }}" />
-    <link rel="icon" href="{{ asset('images/menew_icon-removebg-preview.png?v=2') }}" type="{{ asset('images/menew_icon-removebg-preview.png?v=2') }}" />
-    <link rel="apple-touch-icon" href="{{ asset('images/menew_icon-removebg-preview.png?v=2') }}" />
-
-    <link rel="stylesheet" href="{{ asset('css/front/shops/main/swiper.min.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('css/front/shops/main/smooth-scrollbar.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('css/front/shops/main/style.css?v=0.5') }}" type="text/css" media="all" />
-    <link rel="stylesheet" href="{{ asset('css/front/shops/denja/style.css?v=0.1') }}" type="text/css" media="all" />
-    <link href="{{ asset('css/front/shops/main/fontawesome.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/front/shops/main/jquery-1.9.0.min.js') }}"></script>
-    <script src="{{ asset('js/front/shops/main/jquery.form.js') }}"></script>
-    <script src="{{ asset('js/front/shops/main/smooth-scrollbar.js') }}"></script>
-    <script src="{{ asset('js/front/shops/main/touchswipe.js') }}"></script>
-    <script src="{{ asset('js/front/shops/main/swiper.min.js') }}"></script>
-    <script src="{{ asset('js/front/shops/main/main.js') }}"></script>
-    <script src="{{ asset('js/front/shops/main/disablescroll.js') }}"></script>
-    <script src="{{ asset('js/front/shops/main/bodyScrollLock.js') }}"></script>
-</head>
-<body id="body" style="background: #302f40">
+@extends('layout.shop')
+@section('content')
 
 <div class="header" style="background: {{ $shop->theme_color ? $shop->theme_color : '#da315f' }}; color: black">
     <div class="headertop">
@@ -99,8 +65,267 @@
         {{--@endif--}}
 {{--@endif--}}
 {{--</div>--}}
-@push('script')
-    <script>
+
+
+
+
+
+<div class="content">
+
+    <div class="indexloading"></div>
+    <div class="homeintro" data-jcmessage="{{__('messages.jc_message')}}"
+         data-activeorderingmsg="{{__('messages.activate_ordering_message')}}"
+         data-disableconstruction="{{__('messages.disable_under_construction')}}"
+         style="background-image: url( {{ asset( '/images/intro/logo01.png') }} ); display: none;" data-userid="laravel-method-getUserId"
+         data-versiontype="laravel-data-version_type">
+        <div class="homeintro-overlay">
+            <div class="intrologo" style="background-image: url(laravel-method-LogoImg);"></div>
+            <div class="gotomenu">
+                <img class="menewlogo" src=""/>
+                <button class="menewlink">مشاهده مِ نیو</button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="menushow">
+            
+
+
+<div class="detailsbox wrapclose">
+    <div class="gotobottom">
+        <div class="icon"><i class="fas fa-angle-double-down"></i></div>
+    </div>
+    <div class="dboxwrapper" id="dboxwrapper" data-scrollbar>
+        <div class="close"></div>
+        <div class="itemmedia">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    {{--<div class="swiper-slide"><img id="mainimage_slider" src=""/></div>--}}
+                    {{--@foreach($item->images as $gallery)--}}
+                    {{--@if(strpos($gallery->image, '.mp4') == 0 and strpos($gallery->image, '.webm') == 0)--}}
+                    {{--<div class='swiper-slide'><img src=''/></div>--}}
+                    {{--@else--}}
+                    {{--<div class="swiper-slide video-content">--}}
+                    {{--<video>--}}
+                    {{--<source src="{{asset($gallery->image)}}" type="video/webm"/>--}}
+                    {{--<source src="{{asset($gallery->image)}}" type="video/mp4"/>--}}
+                    {{--</video>--}}
+                    {{--</div>--}}
+                    {{--@endif--}}
+                    {{--@endforeach--}}
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        <div class="itemcontent">
+            <form class="addto_shopping_basket" id="ordering_item_form"
+                  method="post">
+                <input type="hidden" name="order_count" value="1">
+                <header class="title" id="home_itemdetail_name"></header>
+                <input type="hidden" id="home_itemdetail_id" name="item_id">
+                <input type="hidden" id="item_order_count" name="count">
+                <input type="hidden" id="home_order_state" name="state">
+                <div class="ratingstars">
+                    <fieldset class="rating" id="home_vote_show"></fieldset>
+                </div>
+                <div class="shortdescription_header">مــحـتــویات</div>
+                <div class="description" id="home_item_short_description"></div>
+                {{--<div class="description_header">تـــوضـیـحـات</div>--}}
+                {{--<div id="home_item_description"></div>--}}
+                {{--<ul class="comments">--}}
+                {{--<header>نظرات</header>--}}
+                {{--<li class="comment">--}}
+                {{--<div class="author">آرمین</div>--}}
+                {{--<div class="comment_content">بد نبود ولی کیفیت گوشتش کمی پایین بود...</div>--}}
+                {{--</li>--}}
+                {{--<li class="comment">--}}
+                {{--<div class="author">اشکان</div>--}}
+                {{--<div class="comment_content">حرف نداشت. ممنون از شما</div>--}}
+                {{--</li>--}}
+
+                {{--</ul>--}}
+                @if($just_content == 0 && $fully_just_content == 0 && $is_restaurant_close == 0)
+                    <div class="addingcount">
+                        <button type="button" class="btn btn_2 plus">+</button>
+                        <div class="count" id="home_itemdetail_ordercount">12</div>
+                        <button type="button" class="btn btn_2 minus">-</button>
+                    </div>
+                    <button type="submit" class="addtocart btn btn_1"><i class="fas fa-cart-plus"></i>افزودن به سبد خرید
+                    </button>
+                @endif
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+            @foreach($categories as $category)
+                @if($category->products->count() > 0)
+                    <div class="menucat" id="batch{{$category->id}}">
+                        <div class="foldername">{{$category->title}}</div>
+                        @foreach($category->products as $product)
+                            @php
+                                $has_video = 0;
+                                if(!is_null($product->images)) {
+                                  $filtered = $product->images->filter(function ($value, $key) {
+                                      return (strpos($value, "mp4") >= 0 || strpos($value, "webm") >= 0);
+                                  });
+                                  if($filtered->count() > 0) {
+                                    $has_video = 1;
+                                  }
+                                }
+
+                                $ordered_item = 0;
+                                if($ordered_item) {
+                                $order_count = $ordered_item->count;
+                                $is_ordered = "ordered";
+                                } else {
+                                $order_count = 1;
+                                $is_ordered = "";
+                                }
+                            @endphp
+                            <section id="item{{$product->id}}"
+                                     class="menuitem {{$product->image_class}} {{$product->finished_class}} {{$product->discount_class}} {{$is_ordered}}"
+                                     @if(!is_null($product->discount)) data-before="{{$product->price}}"
+                                     data-discount="{{$product->calculate_discount}}" @endif
+                                     data-gallery="{{$product->images}}" data-itemid="{{$product->id}}"
+                                     data-mediumimage="{{$product->item_medium_image}}"
+                                     data-purepic="{{$product->main_image}}"
+                                     data-available="{{$product->count}}" data-vote="{{$product->vote_show}}"
+                                     data-desc="{{$product->description}}"
+                                     data-galleryaddr="{{$product->gallery_address}}"
+                                     data-type="{{$product->type}}">
+                                <span class="qty">{{$order_count}}</span>
+
+                                <div class="itemimage"
+                                     style="background-image: url('{{$product->item_small_image}}');">
+                                    @if($has_video)
+                                        <div class="video_play_icon">
+                                            <i class="fas fa-play"></i>
+                                        </div>
+                                    @endif
+                                </div>
+                                {{--<div class="itemimage lazy"  data-src="{{$product->item_small_image}}"></div>--}}
+
+                                <div class="itemdetails">
+                                    <header class="title">{{$product->title}}</header>
+                                    @if(!is_null($product->description))
+                                        <div class="desc"><p
+                                                    style="white-space: pre-line">{!! $product->description !!}</p>
+                                        </div>
+                                    @endif
+                                    @if($product->type == 'shop_card' && !is_null($product->price))
+                                        <div class="price">
+                                            @if(is_null($product->discount_price))
+                                                {{$product->price}} {{moneyUnit()}}
+                                            @else
+                                                <div class="oldprice">{{$product->price}} {{moneyUnit()}}</div>
+                                                <div class="newprice">{{$product->discount_price}} {{moneyUnit()}}</div>
+                                            @endif
+                                        </div>
+                                    @endif
+                                    <div class="qtychange"><span class="plus"><i class="fas fa-plus"></i></span><span
+                                                class="minus">@if($order_count!='1')
+                                                <i class="fas fa-minus"></i>@else
+                                                <div style="font-size: 20px;"><i
+                                                            class="far fa-trash-alt"></i></div>@endif</span></div>
+                                    @if($product->vote!='0')
+                                        <div class="ratingstars">
+                                            <fieldset class="rating">
+                                                <input type="radio" id="star5" name="rating" value="5"
+                                                       @if($product->vote_show == 10) class="selected" @endif/><label
+                                                        class="full" for="star5">
+                                                    <div><i class="fas fa-star"></i></div>
+                                                </label>
+                                                <input type="radio" id="star4half" name="rating" value="4 and a half"
+                                                       @if($product->vote_show >= 9 && $product->vote_show < 10) class="selected" @endif /><label
+                                                        class="half" for="star4half">
+                                                    <div><i class="fas fa-star-half"></i></div>
+                                                </label>
+                                                <input type="radio" id="star4" name="rating" value="4"
+                                                       @if($product->vote_show >= 8 && $product->vote_show < 9) class="selected" @endif /><label
+                                                        class="full" for="star4">
+                                                    <div><i class="fas fa-star"></i></div>
+                                                </label>
+                                                <input type="radio" id="star3half" name="rating" value="3 and a half"
+                                                       @if($product->vote_show >= 7 && $product->vote_show < 8) class="selected" @endif /><label
+                                                        class="half" for="star3half">
+                                                    <div><i class="fas fa-star-half"></i></div>
+                                                </label>
+                                                <input type="radio" id="star3" name="rating" value="3"
+                                                       @if($product->vote_show >= 6 && $product->vote_show < 7) class="selected" @endif /><label
+                                                        class="full" for="star3">
+                                                    <div><i class="fas fa-star"></i></div>
+                                                </label>
+                                                <input type="radio" id="star2half" name="rating" value="2 and a half"
+                                                       @if($product->vote_show >= 5 && $product->vote_show < 6) class="selected" @endif /><label
+                                                        class="half" for="star2half">
+                                                    <div><i class="fas fa-star-half"></i></div>
+                                                </label>
+                                                <input type="radio" id="star2" name="rating" value="2"
+                                                       @if($product->vote_show >= 4 && $product->vote_show < 5) class="selected" @endif /><label
+                                                        class="full" for="star2">
+                                                    <div><i class="fas fa-star"></i></div>
+                                                </label>
+                                                <input type="radio" id="star1half" name="rating" value="1 and a half"
+                                                       @if($product->vote_show >= 3 && $product->vote_show < 4) class="selected" @endif /><label
+                                                        class="half" for="star1half">
+                                                    <div><i class="fas fa-star-half"></i></div>
+                                                </label>
+                                                <input type="radio" id="star1" name="rating" value="1"
+                                                       @if($product->vote_show >= 2 && $product->vote_show < 3) class="selected" @endif /><label
+                                                        class="full" for="star1">
+                                                    <div><i class="fas fa-star"></i></div>
+                                                </label>
+                                                <input type="radio" id="starhalf" name="rating" value="half"
+                                                       @if($product->vote_show >= 1 && $product->vote_show < 2) class="selected" @endif /><label
+                                                        class="half" for="starhalf">
+                                                    <div><i class="fas fa-star-half"></i></div>
+                                                </label>
+                                            </fieldset>
+                                            <div class="ratingcontent hidden">امتیاز {{$product->vote_show/2}} از 5</div>
+                                        </div>
+                                    @endif
+                                </div>
+                            </section>
+                        @endforeach
+                    </div>
+                @endif
+            @endforeach
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    
+</div>
+<div class="msgBox">
+    <div class="innerbox">
+        <!-- <div class="exit"></div> -->
+        <div class="topSide">warning</div>
+        <div class="bottomSide"></div>
+        <div class="btns">
+            <div class="btn confirmBtn">Yep</div>
+            <div class="btn cancelBtn">Nope</div>
+        </div>
+    </div>
+</div>
+
+@endsection
+
+
+@push('scripts')
+
+
+<script>
       $(document).ready(function () {
         version_type = $('.header').data('versiontype')
 
@@ -435,7 +660,6 @@
       //        });
 
     </script>
-@endpush
 
 
 
@@ -447,232 +671,6 @@
 
 
 
-<div class="content">
-
-    <div class="indexloading"></div>
-    <div class="homeintro" data-jcmessage="{{__('messages.jc_message')}}"
-         data-activeorderingmsg="{{__('messages.activate_ordering_message')}}"
-         data-disableconstruction="{{__('messages.disable_under_construction')}}"
-         style="background-image: url( {{ asset( '/images/intro/logo01.png') }} ); display: none;" data-userid="laravel-method-getUserId"
-         data-versiontype="laravel-data-version_type">
-        <div class="homeintro-overlay">
-            <div class="intrologo" style="background-image: url(laravel-method-LogoImg);"></div>
-            <div class="gotomenu">
-                <img class="menewlogo" src=""/>
-                <button class="menewlink">مشاهده مِ نیو</button>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="menushow">
-            
-
-
-<div class="detailsbox wrapclose">
-    <div class="gotobottom">
-        <div class="icon"><i class="fas fa-angle-double-down"></i></div>
-    </div>
-    <div class="dboxwrapper" id="dboxwrapper" data-scrollbar>
-        <div class="close"></div>
-        <div class="itemmedia">
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    {{--<div class="swiper-slide"><img id="mainimage_slider" src=""/></div>--}}
-                    {{--@foreach($item->images as $gallery)--}}
-                    {{--@if(strpos($gallery->image, '.mp4') == 0 and strpos($gallery->image, '.webm') == 0)--}}
-                    {{--<div class='swiper-slide'><img src=''/></div>--}}
-                    {{--@else--}}
-                    {{--<div class="swiper-slide video-content">--}}
-                    {{--<video>--}}
-                    {{--<source src="{{asset($gallery->image)}}" type="video/webm"/>--}}
-                    {{--<source src="{{asset($gallery->image)}}" type="video/mp4"/>--}}
-                    {{--</video>--}}
-                    {{--</div>--}}
-                    {{--@endif--}}
-                    {{--@endforeach--}}
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-        <div class="itemcontent">
-            <form class="addto_shopping_basket" id="ordering_item_form"
-                  method="post">
-                <input type="hidden" name="order_count" value="1">
-                <header class="title" id="home_itemdetail_name"></header>
-                <input type="hidden" id="home_itemdetail_id" name="item_id">
-                <input type="hidden" id="item_order_count" name="count">
-                <input type="hidden" id="home_order_state" name="state">
-                <div class="ratingstars">
-                    <fieldset class="rating" id="home_vote_show"></fieldset>
-                </div>
-                <div class="shortdescription_header">مــحـتــویات</div>
-                <div class="description" id="home_item_short_description"></div>
-                {{--<div class="description_header">تـــوضـیـحـات</div>--}}
-                {{--<div id="home_item_description"></div>--}}
-                {{--<ul class="comments">--}}
-                {{--<header>نظرات</header>--}}
-                {{--<li class="comment">--}}
-                {{--<div class="author">آرمین</div>--}}
-                {{--<div class="comment_content">بد نبود ولی کیفیت گوشتش کمی پایین بود...</div>--}}
-                {{--</li>--}}
-                {{--<li class="comment">--}}
-                {{--<div class="author">اشکان</div>--}}
-                {{--<div class="comment_content">حرف نداشت. ممنون از شما</div>--}}
-                {{--</li>--}}
-
-                {{--</ul>--}}
-                @if($just_content == 0 && $fully_just_content == 0 && $is_restaurant_close == 0)
-                    <div class="addingcount">
-                        <button type="button" class="btn btn_2 plus">+</button>
-                        <div class="count" id="home_itemdetail_ordercount">12</div>
-                        <button type="button" class="btn btn_2 minus">-</button>
-                    </div>
-                    <button type="submit" class="addtocart btn btn_1"><i class="fas fa-cart-plus"></i>افزودن به سبد خرید
-                    </button>
-                @endif
-            </form>
-        </div>
-    </div>
-</div>
-
-
-
-
-            @foreach($categories as $category)
-                @if($category->products->count() > 0)
-                    <div class="menucat" id="batch{{$category->id}}">
-                        <div class="foldername">{{$category->title}}</div>
-                        @foreach($category->products as $product)
-                            @php
-                                $has_video = 0;
-                                if(!is_null($product->images)) {
-                                  $filtered = $product->images->filter(function ($value, $key) {
-                                      return (strpos($value, "mp4") >= 0 || strpos($value, "webm") >= 0);
-                                  });
-                                  if($filtered->count() > 0) {
-                                    $has_video = 1;
-                                  }
-                                }
-
-                                $ordered_item = 0;
-                                if($ordered_item) {
-                                $order_count = $ordered_item->count;
-                                $is_ordered = "ordered";
-                                } else {
-                                $order_count = 1;
-                                $is_ordered = "";
-                                }
-                            @endphp
-                            <section id="item{{$product->id}}"
-                                     class="menuitem {{$product->image_class}} {{$product->finished_class}} {{$product->discount_class}} {{$is_ordered}}"
-                                     @if(!is_null($product->discount)) data-before="{{$product->price}}"
-                                     data-discount="{{$product->calculate_discount}}" @endif
-                                     data-gallery="{{$product->images}}" data-itemid="{{$product->id}}"
-                                     data-mediumimage="{{$product->item_medium_image}}"
-                                     data-purepic="{{$product->main_image}}"
-                                     data-available="{{$product->count}}" data-vote="{{$product->vote_show}}"
-                                     data-desc="{{$product->description}}"
-                                     data-galleryaddr="{{$product->gallery_address}}"
-                                     data-type="{{$product->type}}">
-                                <span class="qty">{{$order_count}}</span>
-
-                                <div class="itemimage"
-                                     style="background-image: url('{{$product->item_small_image}}');">
-                                    @if($has_video)
-                                        <div class="video_play_icon">
-                                            <i class="fas fa-play"></i>
-                                        </div>
-                                    @endif
-                                </div>
-                                {{--<div class="itemimage lazy"  data-src="{{$product->item_small_image}}"></div>--}}
-
-                                <div class="itemdetails">
-                                    <header class="title">{{$product->title}}</header>
-                                    @if(!is_null($product->description))
-                                        <div class="desc"><p
-                                                    style="white-space: pre-line">{!! $product->description !!}</p>
-                                        </div>
-                                    @endif
-                                    @if($product->type == 'shop_card' && !is_null($product->price))
-                                        <div class="price">
-                                            @if(is_null($product->discount_price))
-                                                {{$product->price}} {{moneyUnit()}}
-                                            @else
-                                                <div class="oldprice">{{$product->price}} {{moneyUnit()}}</div>
-                                                <div class="newprice">{{$product->discount_price}} {{moneyUnit()}}</div>
-                                            @endif
-                                        </div>
-                                    @endif
-                                    <div class="qtychange"><span class="plus"><i class="fas fa-plus"></i></span><span
-                                                class="minus">@if($order_count!='1')
-                                                <i class="fas fa-minus"></i>@else
-                                                <div style="font-size: 20px;"><i
-                                                            class="far fa-trash-alt"></i></div>@endif</span></div>
-                                    @if($product->vote!='0')
-                                        <div class="ratingstars">
-                                            <fieldset class="rating">
-                                                <input type="radio" id="star5" name="rating" value="5"
-                                                       @if($product->vote_show == 10) class="selected" @endif/><label
-                                                        class="full" for="star5">
-                                                    <div><i class="fas fa-star"></i></div>
-                                                </label>
-                                                <input type="radio" id="star4half" name="rating" value="4 and a half"
-                                                       @if($product->vote_show >= 9 && $product->vote_show < 10) class="selected" @endif /><label
-                                                        class="half" for="star4half">
-                                                    <div><i class="fas fa-star-half"></i></div>
-                                                </label>
-                                                <input type="radio" id="star4" name="rating" value="4"
-                                                       @if($product->vote_show >= 8 && $product->vote_show < 9) class="selected" @endif /><label
-                                                        class="full" for="star4">
-                                                    <div><i class="fas fa-star"></i></div>
-                                                </label>
-                                                <input type="radio" id="star3half" name="rating" value="3 and a half"
-                                                       @if($product->vote_show >= 7 && $product->vote_show < 8) class="selected" @endif /><label
-                                                        class="half" for="star3half">
-                                                    <div><i class="fas fa-star-half"></i></div>
-                                                </label>
-                                                <input type="radio" id="star3" name="rating" value="3"
-                                                       @if($product->vote_show >= 6 && $product->vote_show < 7) class="selected" @endif /><label
-                                                        class="full" for="star3">
-                                                    <div><i class="fas fa-star"></i></div>
-                                                </label>
-                                                <input type="radio" id="star2half" name="rating" value="2 and a half"
-                                                       @if($product->vote_show >= 5 && $product->vote_show < 6) class="selected" @endif /><label
-                                                        class="half" for="star2half">
-                                                    <div><i class="fas fa-star-half"></i></div>
-                                                </label>
-                                                <input type="radio" id="star2" name="rating" value="2"
-                                                       @if($product->vote_show >= 4 && $product->vote_show < 5) class="selected" @endif /><label
-                                                        class="full" for="star2">
-                                                    <div><i class="fas fa-star"></i></div>
-                                                </label>
-                                                <input type="radio" id="star1half" name="rating" value="1 and a half"
-                                                       @if($product->vote_show >= 3 && $product->vote_show < 4) class="selected" @endif /><label
-                                                        class="half" for="star1half">
-                                                    <div><i class="fas fa-star-half"></i></div>
-                                                </label>
-                                                <input type="radio" id="star1" name="rating" value="1"
-                                                       @if($product->vote_show >= 2 && $product->vote_show < 3) class="selected" @endif /><label
-                                                        class="full" for="star1">
-                                                    <div><i class="fas fa-star"></i></div>
-                                                </label>
-                                                <input type="radio" id="starhalf" name="rating" value="half"
-                                                       @if($product->vote_show >= 1 && $product->vote_show < 2) class="selected" @endif /><label
-                                                        class="half" for="starhalf">
-                                                    <div><i class="fas fa-star-half"></i></div>
-                                                </label>
-                                            </fieldset>
-                                            <div class="ratingcontent hidden">امتیاز {{$product->vote_show/2}} از 5</div>
-                                        </div>
-                                    @endif
-                                </div>
-                            </section>
-                        @endforeach
-                    </div>
-                @endif
-            @endforeach
-        </div>
-    </div>
 
 
 
@@ -682,19 +680,20 @@
 
 
 
-    
-</div>
-<div class="msgBox">
-    <div class="innerbox">
-        <!-- <div class="exit"></div> -->
-        <div class="topSide">warning</div>
-        <div class="bottomSide"></div>
-        <div class="btns">
-            <div class="btn confirmBtn">Yep</div>
-            <div class="btn cancelBtn">Nope</div>
-        </div>
-    </div>
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script>
     $.ajaxSetup({
         headers: {
@@ -1445,6 +1444,5 @@
     </script>
 
 
-</body>
-</html>
 
+@endpush
