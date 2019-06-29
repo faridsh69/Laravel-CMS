@@ -65,7 +65,7 @@ class SettingController extends BaseAdminController
 
         $this->request->session()->flash('alert-success', $this->model . ' Updated Successfully!');
 
-        Artisan::call('config:cache');
+        Artisan::call('config:clear');
         sleep(1);
 
         return redirect()->route('admin.setting.' . $section);
