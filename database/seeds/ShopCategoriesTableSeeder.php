@@ -43,15 +43,9 @@ class ShopCategoriesTableSeeder extends Seeder
                 'shop_id' => 1,
             ],
             [
-                'id' => 6,
-                'title' => 'قهوه',
-                'meta_image' => 'beer.svg',
-                'shop_id' => 1,
-            ],
-            [
-                'id' => 7,
-                'title' => 'دمنوش',
-                'meta_image' => 'coffee-cup.svg',
+                'id' => 12,
+                'title' => 'شیرینی ها',
+                'meta_image' => 'cupcake.svg',
                 'shop_id' => 1,
             ],
             [
@@ -61,9 +55,15 @@ class ShopCategoriesTableSeeder extends Seeder
                 'shop_id' => 1,
             ],
             [
-                'id' => 9,
-                'title' => 'مخصوص دِنجا',
-                'meta_image' => 'cutlery.svg',
+                'id' => 7,
+                'title' => 'دمنوش',
+                'meta_image' => 'coffee-cup.svg',
+                'shop_id' => 1,
+            ],
+            [
+                'id' => 6,
+                'title' => 'قهوه',
+                'meta_image' => 'beer.svg',
                 'shop_id' => 1,
             ],
             [
@@ -73,23 +73,24 @@ class ShopCategoriesTableSeeder extends Seeder
                 'shop_id' => 1,
             ],
             [
+                'id' => 9,
+                'title' => 'مخصوص دِنجا',
+                'meta_image' => 'cutlery.svg',
+                'shop_id' => 1,
+            ],
+            [
                 'id' => 11,
                 'title' => 'تست',
                 'meta_image' => 'no.svg',
                 'shop_id' => 1,
             ],
-            [
-                'id' => 12,
-                'title' => 'شیرینی ها',
-                'meta_image' => 'cupcake.svg',
-                'shop_id' => 1,
-            ],
-            [
-                'id' => 13,
-                'title' => 'آرشیو مناسبتها',
-                'meta_image' => 'no.svg',
-                'shop_id' => 1,
-            ],
+            
+            // [
+            //     'id' => 13,
+            //     'title' => 'آرشیو مناسبتها',
+            //     'meta_image' => 'no.svg',
+            //     'shop_id' => 1,
+            // ],
 
 
             // cofe cinema
@@ -177,7 +178,7 @@ class ShopCategoriesTableSeeder extends Seeder
                     'description' => $category['title'],
                     'meta_description' => $category['title'],
                     'url' => Str::slug($category['title']),
-                    'activated' => 1,
+                    'activated' => $category['id'] === 11 ? 1 : 0,
                     'google_index' => 1,
                 ]
             );

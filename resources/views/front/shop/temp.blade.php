@@ -1,3 +1,22 @@
+
+<!-- <meta name="application-name" content="MeneW" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<link rel="apple-touch-icon-precomposed" href="{{ asset('images/menew_icon-removebg-preview.png?v=2') }}" />
+<link rel="shortcut icon" sizes="196x196" href="{{ asset('images/menew_icon-removebg-preview.png?v=2') }}" />
+<link rel="shortcut icon" sizes="128x128" href="{{ asset('images/menew_icon-removebg-preview.png?v=2') }}" />
+<link rel="icon" href="{{ asset('images/menew_icon-removebg-preview.png?v=2') }}" type="{{ asset('images/menew_icon-removebg-preview.png?v=2') }}" />
+<link rel="apple-touch-icon" href="{{ asset('images/menew_icon-removebg-preview.png?v=2') }}" /> -->
+
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, height=device-height, viewport-fit=cover"> -->
+
+
+
+
+
+
     <script>
         // {{--(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){--}}
         // {{--(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),--}}

@@ -1,6 +1,7 @@
 @extends('layout.shop')
 @section('content')
 
+<!-- begin category -->
 <div class="header" style="background: {{ $shop->theme_color ? $shop->theme_color : '#da315f' }}; color: black">
     <div class="headertop">
         <header class="title">
@@ -11,69 +12,38 @@
     </div>
     <div class="categories">
         @foreach($categories as $category)
-            <div class="cat" id="batch{{$category->id}}cat"
-                     style="background-image: url({{$category->meta_image}})"><span>{{$category->title}}</span></div>
+            <div class="cat" id="batch{{$category->id}}cat" style="background-image: url({{$category->meta_image}})">
+                <span>
+                    {{$category->title}}
+                </span>
+            </div>
         @endforeach
     </div>
-    <div class="showmore">همه دسته بندی ها<span class="showmoreicon" style="@if('laravel-method-getCategoryIconColor' == '#f0f0f0') background-image:url({{asset('images/icons/arrowdown.svg')}}); @else background-image:url({{asset('images/icons/arrowdown2.svg')}});@endif background-repeat: no-repeat;background-position: center bottom;"></span></div>
+    <div class="showmore">
+        همه دسته بندی ها
+        <span class="showmoreicon" style="background-image:url({{asset('images/icons/arrowdown2.svg')}});background-repeat: no-repeat;background-position: center bottom;">
+        </span>
     </div>
 </div>
-@php
-    $show_waiting_orders = 1;
-    if($version_type == 'LP') {
-    if(Route::current()->getName() == 'order.prefactor') {
-    $show_waiting_orders = 0;
-    }
-    } elseif ($version_type == 'FP') {
-    if(Route::current()->getName() == 'order.show') {
-    $show_waiting_orders = 0;
-    }
-    }
-@endphp
-@if($is_restaurant_close == 1)
-    <div class="alerts_holder">
-        <div class="just_content_message_div">
-            <div class="just_content_message">
-                ساعات عدم فعالیت رستوران laravel-method-getName
-            </div>
+<!-- end category -->
+
+<!-- begin closed -->
+<div class="alerts_holder" style="display: none;">
+    <div class="just_content_message_div">
+        <div class="just_content_message">
+            ساعات عدم فعالیت {{ $shop->title_fa}}
         </div>
     </div>
-@endif
-{{--<div class="alerts_holder">--}}
-    {{--@if(($waiting_orders->count() > 0 && $show_waiting_orders) || ($just_content == 1))--}}
-        {{--@if($waiting_orders->count() > 0 && $show_waiting_orders)--}}
-            {{--<div class="waiting_orders">--}}
-                {{--@foreach($waiting_orders as $order)--}}
-                    {{--<a href="@if($version_type == 'FP'){{route('order.show', ['id' => $order[0]->id])}}@elseif($version_type == 'LP') {{route('order.chose-page', ['id' => $order[0]->id])}} @endif">--}}
-                        {{--<div class="waiting_order">--}}
-                            {{--@if($version_type == 'FP')--}}
-                                {{--شماره فاکتور {{$order[0]->factor_number}} فعال <br/>--}}
-                            {{--@elseif($version_type == 'LP')--}}
-                                {{--شماره میز {{$order[0]->table_number}} فعال <br/>--}}
-                            {{--@endif--}}
-                        {{--</div>--}}
-                    {{--</a>--}}
-                {{--@endforeach--}}
-            {{--</div>--}}
-        {{--@endif--}}
-        {{--@if($just_content == 1 && $under_construction == 0 && $is_restaurant_close == 0)--}}
-            {{--<div class="just_content_message_div">--}}
-                {{--<div class="just_content_message">--}}
-                    {{--در حال حاضر سفارشات این رستوران بصورت حضوری دریافت می‌شود<br/>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--@endif--}}
-{{--@endif--}}
-{{--</div>--}}
-
-
-
-
+</div>
+<!-- end closed -->
 
 <div class="content">
 
+    <!-- begin loading -->
     <div class="indexloading"></div>
-    <div class="homeintro" data-jcmessage="{{__('messages.jc_message')}}"
+    <!-- end loading -->
+
+    <!-- <div class="homeintro" data-jcmessage="{{__('messages.jc_message')}}"
          data-activeorderingmsg="{{__('messages.activate_ordering_message')}}"
          data-disableconstruction="{{__('messages.disable_under_construction')}}"
          style="background-image: url( {{ asset( '/images/intro/logo01.png') }} ); display: none;" data-userid="laravel-method-getUserId"
@@ -85,82 +55,48 @@
                 <button class="menewlink">مشاهده مِ نیو</button>
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="container">
         <div class="menushow">
-            
-
-
-<div class="detailsbox wrapclose">
-    <div class="gotobottom">
-        <div class="icon"><i class="fas fa-angle-double-down"></i></div>
-    </div>
-    <div class="dboxwrapper" id="dboxwrapper" data-scrollbar>
-        <div class="close"></div>
-        <div class="itemmedia">
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    {{--<div class="swiper-slide"><img id="mainimage_slider" src=""/></div>--}}
-                    {{--@foreach($item->images as $gallery)--}}
-                    {{--@if(strpos($gallery->image, '.mp4') == 0 and strpos($gallery->image, '.webm') == 0)--}}
-                    {{--<div class='swiper-slide'><img src=''/></div>--}}
-                    {{--@else--}}
-                    {{--<div class="swiper-slide video-content">--}}
-                    {{--<video>--}}
-                    {{--<source src="{{asset($gallery->image)}}" type="video/webm"/>--}}
-                    {{--<source src="{{asset($gallery->image)}}" type="video/mp4"/>--}}
-                    {{--</video>--}}
-                    {{--</div>--}}
-                    {{--@endif--}}
-                    {{--@endforeach--}}
+            <div class="detailsbox wrapclose">
+                <div class="gotobottom">
+                    <div class="icon"><i class="fas fa-angle-double-down"></i></div>
                 </div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-        <div class="itemcontent">
-            <form class="addto_shopping_basket" id="ordering_item_form"
-                  method="post">
-                <input type="hidden" name="order_count" value="1">
-                <header class="title" id="home_itemdetail_name"></header>
-                <input type="hidden" id="home_itemdetail_id" name="item_id">
-                <input type="hidden" id="item_order_count" name="count">
-                <input type="hidden" id="home_order_state" name="state">
-                <div class="ratingstars">
-                    <fieldset class="rating" id="home_vote_show"></fieldset>
-                </div>
-                <div class="shortdescription_header">مــحـتــویات</div>
-                <div class="description" id="home_item_short_description"></div>
-                {{--<div class="description_header">تـــوضـیـحـات</div>--}}
-                {{--<div id="home_item_description"></div>--}}
-                {{--<ul class="comments">--}}
-                {{--<header>نظرات</header>--}}
-                {{--<li class="comment">--}}
-                {{--<div class="author">آرمین</div>--}}
-                {{--<div class="comment_content">بد نبود ولی کیفیت گوشتش کمی پایین بود...</div>--}}
-                {{--</li>--}}
-                {{--<li class="comment">--}}
-                {{--<div class="author">اشکان</div>--}}
-                {{--<div class="comment_content">حرف نداشت. ممنون از شما</div>--}}
-                {{--</li>--}}
-
-                {{--</ul>--}}
-                @if($just_content == 0 && $fully_just_content == 0 && $is_restaurant_close == 0)
-                    <div class="addingcount">
-                        <button type="button" class="btn btn_2 plus">+</button>
-                        <div class="count" id="home_itemdetail_ordercount">12</div>
-                        <button type="button" class="btn btn_2 minus">-</button>
+                <div class="dboxwrapper" id="dboxwrapper" data-scrollbar>
+                    <div class="close"></div>
+                    <div class="itemmedia">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
                     </div>
-                    <button type="submit" class="addtocart btn btn_1"><i class="fas fa-cart-plus"></i>افزودن به سبد خرید
-                    </button>
-                @endif
-            </form>
-        </div>
-    </div>
-</div>
-
-
-
-
+                    <div class="itemcontent">
+                        <form class="addto_shopping_basket" id="ordering_item_form"
+                              method="post">
+                            <input type="hidden" name="order_count" value="1">
+                            <header class="title" id="home_itemdetail_name"></header>
+                            <input type="hidden" id="home_itemdetail_id" name="item_id">
+                            <input type="hidden" id="item_order_count" name="count">
+                            <input type="hidden" id="home_order_state" name="state">
+                            <div class="ratingstars">
+                                <fieldset class="rating" id="home_vote_show"></fieldset>
+                            </div>
+                            <div class="shortdescription_header">مــحـتــویات</div>
+                            <div class="description" id="home_item_short_description"></div>
+                            @if(false && $just_content == 0 && $fully_just_content == 0 && $is_restaurant_close == 0)
+                                <div class="addingcount">
+                                    <button type="button" class="btn btn_2 plus">+</button>
+                                    <div class="count" id="home_itemdetail_ordercount">12</div>
+                                    <button type="button" class="btn btn_2 minus">-</button>
+                                </div>
+                                <button type="submit" class="addtocart btn btn_1"><i class="fas fa-cart-plus"></i>افزودن به سبد خرید
+                                </button>
+                            @endif
+                        </form>
+                    </div>
+                </div>
+            </div>
             @foreach($categories as $category)
                 @if($category->products->count() > 0)
                     <div class="menucat" id="batch{{$category->id}}">
@@ -200,7 +136,7 @@
                                 <span class="qty">{{$order_count}}</span>
 
                                 <div class="itemimage"
-                                     style="background-image: url('{{$product->item_small_image}}');">
+                                     style="background-image: url('{{ $product->logo }}');">
                                     @if($has_video)
                                         <div class="video_play_icon">
                                             <i class="fas fa-play"></i>
@@ -211,9 +147,9 @@
 
                                 <div class="itemdetails">
                                     <header class="title">{{$product->title}}</header>
-                                    @if(!is_null($product->description))
+                                    @if(!is_null($product->content))
                                         <div class="desc"><p
-                                                    style="white-space: pre-line">{!! $product->description !!}</p>
+                                                    style="white-space: pre-line">{!! $product->content !!}</p>
                                         </div>
                                     @endif
                                     @if($product->type == 'shop_card' && !is_null($product->price))
@@ -298,13 +234,6 @@
     </div>
 
 
-
-
-
-
-
-
-
     
 </div>
 <div class="msgBox">
@@ -323,266 +252,179 @@
 
 
 @push('scripts')
-
-
 <script>
-      $(document).ready(function () {
-        version_type = $('.header').data('versiontype')
+var headerheight = $('.waiting_orders').outerHeight() + $('.header').outerHeight()
+$(document).ready(function () {
 
-        function preloader () {
-//          if (document.images) {
-//            var img1 = new Image()
-//            var img2 = new Image()
+    // $.ajaxSetup({
+    //     headers: {
+    //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //     }
+    // });
 
-//            img1.src = $('#head_url').data('url') + '/images/icons/help/arrow01.svg'
-//            img2.src = $('#head_url').data('url') + '/images/icons/shcart2.png'
-//          }
-        }
 
-        function addLoadEvent (func) {
-          var oldonload = window.onload
-          if (typeof window.onload != 'function') {
-            window.onload = func
-          } else {
-            window.onload = function () {
-              if (oldonload) {
-                oldonload()
-              }
-              func()
-            }
-          }
-        }
+    // version_type = $('.header').data('versiontype')
 
-        addLoadEvent(preloader)
+//         function preloader () {
+// //          if (document.images) {
+// //            var img1 = new Image()
+// //            var img2 = new Image()
 
-        $('.menewcpright').click(function () {
-          $('.menewcpright .menewnumber').toggleClass('open')
-        })
+// //            img1.src = $('#head_url').data('url') + '/images/icons/help/arrow01.svg'
+// //            img2.src = $('#head_url').data('url') + '/images/icons/shcart2.png'
+// //          }
+//         }
 
-        if (isMobile) {
+        // function addLoadEvent (func) {
+        //   var oldonload = window.onload
+        //   if (typeof window.onload != 'function') {
+        //     window.onload = func
+        //   } else {
+        //     window.onload = function () {
+        //       if (oldonload) {
+        //         oldonload()
+        //       }
+        //       func()
+        //     }
+        //   }
+        // }
 
-//          if (!isApple) {
-          $('#sharewithfriends').show()
-//          }
+        // addLoadEvent(preloader)
 
-          $('#preview_form #inout .toggle').swipe({
-            swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
-              if (direction == 'right' && !$('#preview_form #inout .toggle .toggle_input').is(':checked')) {
-                $('#preview_form #inout .toggle').trigger('click')
-              }
-              else if (direction == 'left' && $('#preview_form #inout .toggle .toggle_input').is(':checked')) {
-                $('#preview_form #inout .toggle').trigger('click')
-              }
-            },
-            threshold: 20
-          })
+        // $('.menewcpright').click(function () {
+        //   $('.menewcpright .menewnumber').toggleClass('open')
+        // })
+    if (isMobile) {
 
-          $('.header .showmore').swipe({
-            swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
-              if (direction == 'down' && !$(this).hasClass('rotate')) {
-                $('.header .showmore').trigger('click')
-              }
-              if (direction == 'up' && $(this).hasClass('rotate')) {
-                $('.header .showmore').trigger('click')
-              }
-            },
-            threshold: 20
-          })
+          // $('#sharewithfriends').show()
 
-          $('body').swipe({
-            swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
-              if (!$(event.target).closest('label').length) {
-                if (!$(event.target).closest('.categories').length || $(event.target).closest('.categories').length && !$('.header').hasClass('shrink')) {
-                  if (direction == 'right' && !$('.bgwrap').hasClass('show')) {
-                    $('.header .shoppingcarticon').trigger('click')
-                  }
-                  else if (direction == 'left' && !$('.bgwrap').hasClass('show')) {
-                    $('.header .navicon').trigger('click')
-                  }
-                  else if (direction == 'left' && $('.bgwrap').hasClass('show') && $('.shcart').hasClass('activated')) {
-                    $('.bgwrap').trigger('click')
-                  }
-                  else if (direction == 'right' && $('.bgwrap').hasClass('show') && $('.mainmenu').hasClass('activated')) {
-                    $('.bgwrap').trigger('click')
-                  }
-                }
-              }
-            },
-            threshold: 120,
-            preventDefaultEvents: false
-          })
+          // $('#preview_form #inout .toggle').swipe({
+          //   swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+          //     if (direction == 'right' && !$('#preview_form #inout .toggle .toggle_input').is(':checked')) {
+          //       $('#preview_form #inout .toggle').trigger('click')
+          //     }
+          //     else if (direction == 'left' && $('#preview_form #inout .toggle .toggle_input').is(':checked')) {
+          //       $('#preview_form #inout .toggle').trigger('click')
+          //     }
+          //   },
+          //   threshold: 20
+          // })
 
-          window.onload = function () {
-            if (typeof history.pushState === 'function') {
-              history.pushState('jibberish', null, null)
-              window.onpopstate = function () {
-                history.scrollRestoration = 'manual'
-                history.pushState('newjibberish', null, null)
-                if ($('.galzoom').length) {
-                  $('.galzoom').trigger('click')
-                }
-                else if ($('.bgwrap').hasClass('show')) {
-                  $('.bgwrap').trigger('click')
-                }
-                else if ($('.categories .cat').hasClass('selected')) {
-                  $('.categories .cat.cloned').trigger('click')
-                }
-                else if ($('.showmore').hasClass('rotate')) {
-                  $('.header .showmore.rotate').trigger('click')
-                }
-                else {
-                  $('.header .icon.backicon').trigger('click')
-                }
-              }
-            }
-          }
-        }
+          // $('.header .showmore').swipe({
+          //   swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+          //     if (direction == 'down' && !$(this).hasClass('rotate')) {
+          //       $('.header .showmore').trigger('click')
+          //     }
+          //     if (direction == 'up' && $(this).hasClass('rotate')) {
+          //       $('.header .showmore').trigger('click')
+          //     }
+          //   },
+          //   threshold: 20
+          // })
 
-        if ($('ul#cart_list li').length != 0) {
-          $('.empty_basket').hide()
-        }
+          // $('body').swipe({
+          //   swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+          //     if (!$(event.target).closest('label').length) {
+          //       if (!$(event.target).closest('.categories').length || $(event.target).closest('.categories').length && !$('.header').hasClass('shrink')) {
+          //         if (direction == 'right' && !$('.bgwrap').hasClass('show')) {
+          //           $('.header .shoppingcarticon').trigger('click')
+          //         }
+          //         else if (direction == 'left' && !$('.bgwrap').hasClass('show')) {
+          //           $('.header .navicon').trigger('click')
+          //         }
+          //         else if (direction == 'left' && $('.bgwrap').hasClass('show') && $('.shcart').hasClass('activated')) {
+          //           $('.bgwrap').trigger('click')
+          //         }
+          //         else if (direction == 'right' && $('.bgwrap').hasClass('show') && $('.mainmenu').hasClass('activated')) {
+          //           $('.bgwrap').trigger('click')
+          //         }
+          //       }
+          //     }
+          //   },
+          //   threshold: 120,
+          //   preventDefaultEvents: false
+          // })
 
-        var headerPaddingTop = parseInt($('.header').css('padding-top'))
+          // window.onload = function () {
+          //   if (typeof history.pushState === 'function') {
+          //     history.pushState('jibberish', null, null)
+          //     window.onpopstate = function () {
+          //       history.scrollRestoration = 'manual'
+          //       history.pushState('newjibberish', null, null)
+          //       if ($('.galzoom').length) {
+          //         $('.galzoom').trigger('click')
+          //       }
+          //       else if ($('.bgwrap').hasClass('show')) {
+          //         $('.bgwrap').trigger('click')
+          //       }
+          //       else if ($('.categories .cat').hasClass('selected')) {
+          //         $('.categories .cat.cloned').trigger('click')
+          //       }
+          //       else if ($('.showmore').hasClass('rotate')) {
+          //         $('.header .showmore.rotate').trigger('click')
+          //       }
+          //       else {
+          //         $('.header .icon.backicon').trigger('click')
+          //       }
+          //     }
+          //   }
+          // }
+    }
+
+        // if ($('ul#cart_list li').length != 0) {
+        //   $('.empty_basket').hide()
+        // }
+
+        // var headerPaddingTop = parseInt($('.header').css('padding-top'))
         /* Commented By RZIW */
 //        $('.header').css('padding-top', $('.waiting_orders').outerHeight() + headerPaddingTop + 'px')
         /* Added By RZIW */
-        $('.header').css('padding-top', $('.alerts_holder').outerHeight() + headerPaddingTop + 'px')
-      })
+        // $('.header').css('padding-top', $('.alerts_holder').outerHeight() + headerPaddingTop + 'px')
+})
 
-      var headerheight = $('.waiting_orders').outerHeight() + $('.header').outerHeight()
 
-      $('.container').css({'padding-top': headerheight})
+      // $('.container').css({'padding-top': headerheight})
 
-      {{--function FPCartActions (elem) {--}}
+      // function getOrderItemElems () {
 
-        {{--showLoading($(elem), 0, 'رفتن به سبد خرید <div style=\'display: inline-block; margin-right: 9px; position: absolute; padding: 3px 0 0 0; font-size: 14px;\'><i class=\'fas fa-ellipsis-h\'></i></div>')--}}
-        {{--getOrderItemElems()--}}
+      //   order_item_ids = []
+      //   order_item_counts = []
 
-        {{--CallAjaxFunc('{{route('order.updateOrderCount')}}', {--}}
-          {{--'order_item_ids': order_item_ids,--}}
-          {{--'order_item_counts': order_item_counts,--}}
-          {{--'order_status': 2,--}}
-          {{--'basket_button': 1--}}
-        {{--}, redirect, failRedirect)--}}
-      {{--}--}}
+      //   $('ul#cart_list li').each(function () {
+      //     var item_id = $(this).attr('id').substr(4)
+      //     order_item_ids.push(item_id)
+      //     order_item_counts.push($(this).find('.count').html())
+      //   })
 
-      {{--function LPCartActions (elem) {--}}
+      // }
 
-        {{--getOrderItemElems()--}}
-        {{--CallAjaxFunc('{{route('order.checkTableNumber')}}', {--}}
-          {{--'order_item_ids': order_item_ids,--}}
-          {{--'order_item_counts': order_item_counts,--}}
-          {{--'order_status': 2,--}}
-          {{--'basket_button': 1--}}
-        {{--}, redirect, failRedirect)--}}
+      // $(document).on('click', '#waiter_call_err', function () {
+      //   var table_number = $('#main_table_number').val()
 
-      {{--}--}}
+      //   CallAjaxFunc(laravel-route-user.alertWaiter, {
+      //     'table_number': table_number,
+      //   }, alertWaiterCallback)
+      // })
 
-      function getOrderItemElems () {
+      // function alertWaiterCallback () {
+      //   $('#waiter_call_err').addClass('disabled')
+      //   setTimeout(function () {
+      //     $('#waiter_call_err').removeClass('disabled')
+      //   }, 10000)
+      //   alert('پیام به گارسون رسید')
+      // }
 
-        order_item_ids = []
-        order_item_counts = []
-
-        $('ul#cart_list li').each(function () {
-          var item_id = $(this).attr('id').substr(4)
-          order_item_ids.push(item_id)
-          order_item_counts.push($(this).find('.count').html())
-        })
-
-      }
-
-      {{--$(document).on('click', '#basket_button', function () {--}}
-
-        {{--if (version_type == 'FP') {--}}
-          {{--FPCartActions(this)--}}
-        {{--} else if (version_type == 'LP') {--}}
-          {{--LPCartActions(this)--}}
-        {{--}--}}
-
-      {{--})--}}
-
-      {{--$(document).on('click', '#enter_tb_number', function () {--}}
-
-        {{--getOrderItemElems()--}}
-        {{--table_number = $('#main_table_number').val()--}}
-
-        {{--CallAjaxFunc('{{route('order.addTableNumber')}}', {--}}
-          {{--'order_item_ids': order_item_ids,--}}
-          {{--'order_item_counts': order_item_counts,--}}
-          {{--'order_status': 2,--}}
-          {{--'basket_button': 1,--}}
-          {{--'table_number': table_number--}}
-        {{--}, redirect, failRedirect)--}}
-
-      {{--})--}}
-
-      {{--function redirect (data) {--}}
-        {{--if (version_type == 'LP') {--}}
-          {{--redirectInLp(data)--}}
-        {{--} else if (version_type == 'FP') {--}}
-          {{--window.location.href = '{{route('order.preview')}}'--}}
-        {{--}--}}
-      {{--}--}}
-
-      {{--function failRedirect () {--}}
-        {{--$('#basket_button').html('<span\n' +--}}
-          {{--'                style="margin-right: -9px;">رفتن به سبد خرید</span>')--}}
-      {{--}--}}
-
-      $(document).on('click', '#waiter_call_err', function () {
-        var table_number = $('#main_table_number').val()
-
-        CallAjaxFunc(laravel-route-user.alertWaiter, {
-          'table_number': table_number,
-        }, alertWaiterCallback)
-      })
-
-      function alertWaiterCallback () {
-        $('#waiter_call_err').addClass('disabled')
-        setTimeout(function () {
-          $('#waiter_call_err').removeClass('disabled')
-        }, 10000)
-        alert('پیام به گارسون رسید')
-      }
-
-      {{--function redirectInLp (data) {--}}
-        {{--if (data == 0) {--}}
-          {{--window.location.href = '{{route('order.preview')}}'--}}
-        {{--} else if (data == -1) {--}}
-          {{--location.reload()--}}
-        {{--}--}}
-        {{--else {--}}
-          {{--$('#tb_fill_error').html('')--}}
-          {{--if (data == 'get_tb_number') {--}}
-            {{--$('.confirmBtn').attr('id', 'enter_tb_number').addClass('not_close')--}}
-            {{--ShowMessage('Table Number', '<div class="message_content"><label class="">لطفا شماره میز خود را وارد کنید</label><input type="number" name="table_number" id="main_table_number" required><div id="tb_fill_error"></div></div><div class="waitercall_validate_errors"></div>', 'Table Number', 'ثبت', 'لغو', true, false)--}}
-          {{--} else if (data == 'just_content_message') {--}}
-
-          {{--} else {--}}
-            {{--var errors = data--}}
-            {{--$.each(errors, function (first_key, error) {--}}
-              {{--$.each(error, function (key, err) {--}}
-                {{--if (first_key == 'self_made') {--}}
-                  {{--$('#tb_fill_error').append('<p class=\'danger alert-danger\'>' + err + '</p><div class=\'icon waiter_call\' id=\'waiter_call_err\'></div>')--}}
-                {{--} else {--}}
-                  {{--$('#tb_fill_error').append('<p class=\'danger alert-danger\'>' + err + '</p>')--}}
-                {{--}--}}
-              {{--})--}}
-            {{--})--}}
-          {{--}--}}
-        {{--}--}}
-      {{--}--}}
-
-      $(document).on('click', '.waiter_call', function () {
-        if ($(this).hasClass('defined_seat')) {
-          table_number = $('.waiter_call').data('tablenumber')
-          callWaiter(table_number)
-        } else {
-//                $('.cancelBtn').attr('id', 'call_waiter_cancel');
-          $('.confirmBtn').attr('id', 'call_waiter_confirm').addClass('not_close')
-          ShowMessage('call waiter', '<div class="message_content"><label class="">لطفا شماره میز خود را وارد کنید</label><input type="number" name="table_number" id="call_waiter_table_number" required></div><div class="waitercall_validate_errors"></div>', 'Call Waiter', 'فراخوانی', 'لغو', true, false)
-        }
-      })
+      
+//       $(document).on('click', '.waiter_call', function () {
+//         if ($(this).hasClass('defined_seat')) {
+//           table_number = $('.waiter_call').data('tablenumber')
+//           callWaiter(table_number)
+//         } else {
+// //                $('.cancelBtn').attr('id', 'call_waiter_cancel');
+//           $('.confirmBtn').attr('id', 'call_waiter_confirm').addClass('not_close')
+//           ShowMessage('call waiter', '<div class="message_content"><label class="">لطفا شماره میز خود را وارد کنید</label><input type="number" name="table_number" id="call_waiter_table_number" required></div><div class="waitercall_validate_errors"></div>', 'Call Waiter', 'فراخوانی', 'لغو', true, false)
+//         }
+//       })
 
       //        function activeWaiterCallReactionFail(jqXHR, textStatus, errorThrown) {
       //            console.log(errorThrown);
@@ -605,51 +447,51 @@
       //            }
       //        }
 
-      function callWaiter (table_number) {
-        CallAjaxFunc('laravel-route-user.waiterCall', {
-          'table_number': table_number,
-        }, hideMessageBox, callWaiterActionsFail)
-      }
+//       function callWaiter (table_number) {
+//         CallAjaxFunc('laravel-route-user.waiterCall', {
+//           'table_number': table_number,
+//         }, hideMessageBox, callWaiterActionsFail)
+//       }
 
-      $(document).on('click', '#call_waiter_confirm', function () {
+//       $(document).on('click', '#call_waiter_confirm', function () {
 
-        $(this).text('ارسال...').addClass('disabled ')//it seems disabled not work!
-//            $('.cancelBtn').addClass('disabled');
-        table_number = $('#call_waiter_table_number').val()
-        callWaiter(table_number)
-      })
+//         $(this).text('ارسال...').addClass('disabled ')//it seems disabled not work!
+// //            $('.cancelBtn').addClass('disabled');
+//         table_number = $('#call_waiter_table_number').val()
+//         callWaiter(table_number)
+//       })
 
-      function hideMessageBox (status) {
-        $('.confirmBtn').removeClass('disabled').text('فراخوانی')
-//            $('.cancelBtn').removeClass('disabled');
-        if (status != 1) {
-//                var errors = JSON.parse(status);
-          var errors = ''
-          if (status.errors) {//there are server validation error
-            $.each(status.errors, function (key, value) {
-              errors += '<br>' + value
-            })
-            $('.waitercall_validate_errors').html('<h2>' + errors + '</h2>')
-          }
-        } else {
-          $('.confirmBtn').removeAttr('id')
-          $('.msgBox').removeClass('show')
-          $('.waiter_call').addClass('active defined_seat ' + table_number).data('tablenumber', table_number)
-          alert('U successfully called waiter')
-        }
-      }
+//       function hideMessageBox (status) {
+//         $('.confirmBtn').removeClass('disabled').text('فراخوانی')
+// //            $('.cancelBtn').removeClass('disabled');
+//         if (status != 1) {
+// //                var errors = JSON.parse(status);
+//           var errors = ''
+//           if (status.errors) {//there are server validation error
+//             $.each(status.errors, function (key, value) {
+//               errors += '<br>' + value
+//             })
+//             $('.waitercall_validate_errors').html('<h2>' + errors + '</h2>')
+//           }
+//         } else {
+//           $('.confirmBtn').removeAttr('id')
+//           $('.msgBox').removeClass('show')
+//           $('.waiter_call').addClass('active defined_seat ' + table_number).data('tablenumber', table_number)
+//           alert('U successfully called waiter')
+//         }
+//       }
 
-      function callWaiterActionsFail (jqXHR, textStatus, errorThrown) {
+//       function callWaiterActionsFail (jqXHR, textStatus, errorThrown) {
 
-        $('.confirmBtn').removeClass('disabled').text('فراخوانی')
-        $('.cancelBtn').removeClass('disabled')
-        console.log(errorThrown)
-//            if (textStatus === 'timeout') {
-//                ShowMessage('error', "لطفا بعدا امتحان کنید.", 'warning', 'باشه', '', true, false);
-//            } else {
-//                ShowMessage('error', "اینترنت خود را بررسی نموده و بعدا امتحان کنید.", 'warning', 'باشه', '', true, false);
-//            }
-      }
+//         $('.confirmBtn').removeClass('disabled').text('فراخوانی')
+//         $('.cancelBtn').removeClass('disabled')
+//         console.log(errorThrown)
+// //            if (textStatus === 'timeout') {
+// //                ShowMessage('error', "لطفا بعدا امتحان کنید.", 'warning', 'باشه', '', true, false);
+// //            } else {
+// //                ShowMessage('error', "اینترنت خود را بررسی نموده و بعدا امتحان کنید.", 'warning', 'باشه', '', true, false);
+// //            }
+//       }
 
       // socket.on('remove_waiter_call', function (data) {
       //   $('.waiter_call.' + data).removeClass('active')
@@ -659,70 +501,27 @@
       //            $(".confirmBtn").removeAttr('id');
       //        });
 
-    </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
 </script>
 
+<script>
+    is_expired = 0
 
-    <script>
-        is_expired = 0
-
-        var mySwiper = new Swiper('.swiper-container', {
-            effect: 'coverflow',
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: 'auto',
-            coverflowEffect: {
-                rotate: 60,
-                stretch: 20,
-                depth: 100,
-                modifier: 1,
-                slideShadows: false,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-            },
-        })
+    var mySwiper = new Swiper('.swiper-container', {
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        coverflowEffect: {
+            rotate: 60,
+            stretch: 20,
+            depth: 100,
+            modifier: 1,
+            slideShadows: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+        },
+    })
 
         setTimeout(function () {
             $('.indexloading').addClass('hide')
@@ -733,7 +532,7 @@
             $(window).load(function () {
                 setTimeout(function () {
                     $('.indexloading').addClass('hide')
-                }, 2000)
+                }, 100)
             })
 
             if (isMobile && isApple) {
@@ -987,21 +786,6 @@
             }
         })
         changedTotal = 0//when quantity is more than available the changed total will store here
-        {{--function checkDecreaseQuantity (available_count, theTotal, integer_item_id, action) {--}}
-        {{--if (available_count < theTotal && available_count != -1) {--}}
-        {{--changedTotal = available_count--}}
-        {{--lowhasBeenClicked = false--}}
-        {{--// changedTotal = available_count;--}}
-        {{--CallAjaxFunc('{{url(route('order.update'))}}' + '/' + integer_item_id, {--}}
-        {{--'count': available_count,--}}
-        {{--'state': 1--}}
-        {{--}, automaticDecreaseQuantity)--}}
-        {{--ShowMessage('error', 'امکان سفارش بیش از این تعداد امکانپذیر نمی باشد.', 'حداکثر موجودی: ' + available_count, 'باشه', '', true, false)--}}
-        {{--}--}}
-        {{--if (available_count == theTotal && action == 'plus') {--}}
-        {{--ShowMessage('error', 'امکان سفارش بیش از این تعداد امکانپذیر نمی باشد.', 'حداکثر موجودی: ' + available_count, 'باشه', '', true, false)--}}
-        {{--}--}}
-        {{--}--}}
 
         function automaticDecreaseQuantity(data) {
             elem.find('.qty').text(changedTotal)
@@ -1137,88 +921,6 @@
                 itemincart = '.a-persons-cart #' + itemincart
 
 //          comment for not having ordering
-                {{--if ($(e.target).closest('.minus').length) {--}}
-                {{--lowhasBeenClicked = true--}}
-                {{--checkDecreaseQuantity(available_count, theTotal, integer_item_id, 'minus')--}}
-                {{--$(this).find('.minus').remove('atten')--}}
-                {{--$(this).find('.minus').not('.atten').addClass('atten').delay(500).queue(function () {--}}
-                {{--$(this).removeClass('atten').dequeue()--}}
-                {{--})--}}
-                {{--} else {--}}
-                {{--if (orderable) {--}}
-                {{--CallAjaxFunc('{{url(route('order.update'))}}' + '/' + integer_item_id, {--}}
-                {{--'count': 'plus',--}}
-                {{--'state': 1--}}
-                {{--}, plusErrorCheck)--}}
-                {{--$(this).find('.plus').not('.atten').addClass('atten').delay(500).queue(function () {--}}
-                {{--$(this).removeClass('atten').dequeue()--}}
-                {{--})--}}
-                {{--} else {--}}
-                {{--checkDecreaseQuantity(available_count, theTotal, integer_item_id, 'plus')--}}
-                {{--}--}}
-                {{--}--}}
-
-                {{--if (lowhasBeenClicked && Number(theTotal) > 1) {--}}
-                {{--//                        alert("ine");--}}
-                {{--CallAjaxFunc('{{url(route('order.update'))}}' + '/' + integer_item_id, {--}}
-                {{--'count': 'minus',--}}
-                {{--'state': 1--}}
-                {{--}, minusErrorCheck)--}}
-                {{--minusElderTotal = Number(theTotal)--}}
-                {{--theTotal = Number(theTotal) - 1--}}
-                {{--$(this).find('.qty').text(theTotal)--}}
-                {{--$(dboxCount).find('.count').text(theTotal)--}}
-                {{--$(itemincart + ' .count').text(theTotal)--}}
-                {{--if (Number(theTotal) == 1) {--}}
-                {{--$(this).find('.minus').html('<div style=\'font-size: 20px;\'><i class=\'far fa-trash-alt\'></i></div>')--}}
-                {{--}--}}
-                {{--}--}}
-                {{--else if (lowhasBeenClicked && Number(theTotal) == 1) {--}}
-                {{--if ($('ul#cart_list li').length == 1) {--}}
-                {{--$('.empty_basket').show()--}}
-                {{--$('.shcart').find('.button1').prop('disabled', true).addClass('disabled')--}}
-                {{--}--}}
-                {{--CallAjaxFunc('{{url(route('order.destroy.orderitem'))}}' + '/' + integer_item_id, {'state': 1}, rmErrorCheck)--}}
-                {{--$(this).removeClass('ordered')--}}
-                {{--$(dboxCount).removeClass('ordered')--}}
-                {{--$(itemincart).remove()--}}
-                {{--shcartNew()--}}
-
-                {{--}--}}
-                {{--else {--}}
-                {{--if (orderable) {--}}
-                {{--plusElderTotal = Number(theTotal)--}}
-                {{--theTotal = Number(theTotal) + 1--}}
-                {{--$(this).find('.qty').text(theTotal)--}}
-                {{--$(dboxCount).find('.count').text(theTotal)--}}
-                {{--$(itemincart + ' .count').text(theTotal)--}}
-                {{--$(this).find('.minus').html('<i class=\'fas fa-minus\'></i>')--}}
-                {{--}--}}
-                {{--}--}}
-
-                {{--function minusErrorCheck (result) {--}}
-                {{--if (result == 0) {--}}
-                {{--elem.find('.qty').text(minusElderTotal)--}}
-                {{--$(itemincart + ' .count').text(minusElderTotal)--}}
-                {{--}--}}
-                {{--}--}}
-
-                {{--function plusErrorCheck (result) {--}}
-                {{--if (result == 0) {--}}
-                {{--elem.find('.qty').html(plusElderTotal)--}}
-                {{--$(itemincart + ' .count').text(plusElderTotal)--}}
-                {{--}--}}
-                {{--}--}}
-
-                {{--function rmErrorCheck (result) {--}}
-                {{--if (result == 0) {--}}
-                {{--alert('something is wrong to remove ordering this item')--}}
-                {{--//                                elem.addClass('ordered');--}}
-                {{--//                                $(itemincart).show();--}}
-                {{--}--}}
-                {{--}--}}
-
-                {{--lowhasBeenClicked = false--}}
                 //          comment for not having ordering
 
             }
@@ -1422,10 +1124,6 @@
         })
         });
 
-    </script>
-
-    <script>
-
 
         user_id = $('.homeintro').data('userid')
         version_type = $('.homeintro').data('versiontype')
@@ -1441,8 +1139,5 @@
         })
 
 
-    </script>
-
-
-
+</script>
 @endpush
