@@ -1,194 +1,56 @@
 <!DOCTYPE html>
 <html xmlns="https://www.w3.org/1999/xhtml">
-
-<head id="head_url" data-url="laravel-method-getUrl" data-defulturl="laravel-method-getDefultUrl" data-ip="laravel-method-getIp" data-loadingsrc="{{asset('replace')}}">
-    <meta name="robots" content="noindex">
-    <title>{{ $shop->title }} &bull; MeneW</title>
+<head>
+    @if(!$meta['google_index'])
+        <meta name="robots" content="noindex">
+    @endif
+    <title>{{ $meta['title'] }} &bull; MeneW</title>
     <meta charset="UTF-8" />
-    <meta name="author" content="MeneW" />
-    <meta name="format-detection" content="telephone=+98" />
+    <meta name="author" content="farid.sh69@gmail.com" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, height=device-height, viewport-fit=cover" />
-    <meta name="keywords" content="">
-    <meta name="description" content="" />
-    <meta property="og:site_name" content="" />
-    <meta property="og:title" content="" />
-    <meta property="og:description" content="" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="" />
-    <meta property="og:image" content="" />
-    <meta name="theme-color" content="laravel-method-getCategoryBgColor" />
-    <meta name="enamad" content=""/>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta http-equiv="cache-control" content="no-cache" />
-    <meta http-equiv="expires" content="0" />
-    <meta http-equiv="pragma" content="no-cache" />
     <meta name="application-name" content="MeneW" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
     <link rel="apple-touch-icon-precomposed" href="{{ asset('images/menew_icon-removebg-preview.png?v=2') }}" />
     <link rel="shortcut icon" sizes="196x196" href="{{ asset('images/menew_icon-removebg-preview.png?v=2') }}" />
     <link rel="shortcut icon" sizes="128x128" href="{{ asset('images/menew_icon-removebg-preview.png?v=2') }}" />
     <link rel="icon" href="{{ asset('images/menew_icon-removebg-preview.png?v=2') }}" type="{{ asset('images/menew_icon-removebg-preview.png?v=2') }}" />
     <link rel="apple-touch-icon" href="{{ asset('images/menew_icon-removebg-preview.png?v=2') }}" />
-    <link rel="stylesheet" href="{{ asset('css/swiper.min.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('css/smooth-scrollbar.css') }}" type="text/css" />
-    {{--@if(\App::isLocale('en'))--}}
-        {{--load ltr --}}
-    {{--@elseif(\App::isLocale('fa'))--}}
-        {{--load rtl --}}
-    {{--@endif--}}
-    <link rel="stylesheet" href="{{ asset('css/style.css?v=0.5') }}" type="text/css" media="all" />
-    <link rel="stylesheet" href="{{ asset('themes/laravel-method-getTheme/style.css?v=0.1') }}" type="text/css" media="all" />
-    <link href="{{ asset('css/fontawesome.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/jquery-1.9.0.min.js') }}"></script>
-    <script src="{{ asset('adminfiles/js/jquery.form.js') }}"></script>
-    <script src="{{ asset('js/smooth-scrollbar.js') }}"></script>
-    <script src="{{ asset('js/touchswipe.js') }}"></script>
-    <script src="{{ asset('js/swiper.min.js') }}"></script>
-    <!-- <script src="{{asset('js/socket.io.js')}}"></script> -->
-    <script src="{{ asset('js/main.js') }}"></script>
-    <script src="{{ asset('js/disablescroll.js') }}"></script>
-    <script src="{{ asset('js/bodyScrollLock.js') }}"></script>
-    <script>
-      {{--(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){--}}
-        {{--(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),--}}
-        {{--m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)--}}
-      {{--})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');--}}
 
-      {{--ga('create', 'UA-129686169-2', 'auto');--}}
-      {{--ga('send', 'pageview');--}}
-  </script>
-    @stack('headscript')
+    <link rel="stylesheet" href="{{ asset('css/front/shops/main/swiper.min.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('css/front/shops/main/smooth-scrollbar.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('css/front/shops/main/style.css?v=0.5') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('css/front/shops/denja/style.css?v=0.1') }}" type="text/css" media="all" />
+    <link href="{{ asset('css/front/shops/main/fontawesome.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/front/shops/main/jquery-1.9.0.min.js') }}"></script>
+    <script src="{{ asset('js/front/shops/main/jquery.form.js') }}"></script>
+    <script src="{{ asset('js/front/shops/main/smooth-scrollbar.js') }}"></script>
+    <script src="{{ asset('js/front/shops/main/touchswipe.js') }}"></script>
+    <script src="{{ asset('js/front/shops/main/swiper.min.js') }}"></script>
+    <script src="{{ asset('js/front/shops/main/main.js') }}"></script>
+    <script src="{{ asset('js/front/shops/main/disablescroll.js') }}"></script>
+    <script src="{{ asset('js/front/shops/main/bodyScrollLock.js') }}"></script>
 </head>
+<body id="body" style="background: #302f40">
 
-
-
-<body id="body" style="background: laravel-method-getBgColor">
-
-
-
-
-
-<div class="bgwrap"></div>
-<div class="helpdesk"></div>
-<div class="loading"></div>
-<div class="mainmenu wrapclose">
-    <div class="icon close"></div>
-    {{--@if($fully_just_content == 0 && $has_table_number == 1)--}}
-    {{--<div class="icon waiter_call @if(isset($waiter_call) && $waiter_call->waiter_calling == 1) active {{$waiter_call->table_number}} @endif @if(isset($waiter_call) && !is_null($waiter_call->table_number)) defined_seat @endif"--}}
-    {{--@if(isset($waiter_call) && !is_null($waiter_call->table_number)) data-tablenumber="{{$waiter_call->table_number}}" @endif></div>--}}
-    {{--@endif--}}
-    <nav class="navmenu">
-        <ul>
-            <li><a href="{{url('/')}}">
-                    <div class="iconholder"><span
-                                style="display: inline-block; width: 25px; height: 25px; background-size:cover; background-image: url('{{ asset('images/icons/restaurant_pack/default2.png') }}');"></span>
-                    </div>
-                    مشاهده منو</a></li>
-            <li>
-                @if(!is_null(session('userid')) && $user->permission_id == -1 || $license == config('app.super_license'))
-                    <a href="{{route('admin.menumaker.index')}}">
-                        <div class="iconholder"><i class="fas fa-sliders-h"></i></div>
-                        داشبورد مدیریت
-                    </a>
-                @endif
-            </li>
-            <li>
-                @if(!is_null(session('userid')))
-                    <a href="{{route('user.profile')}}">
-                        <div style="position: absolute; right: 0px;"><i class="fas fa-user"></i></div>
-                        پروفایل من
-                    </a>
-                @elseif($license != config('app.super_license'))
-                    <a href="laravel-route-redirect-login">
-                        <div style="position: absolute; right: 0px;"><i class="fas fa-user"></i></div>
-                        ثبت نام / ورود
-                    </a>
-                @endif
-
-            </li>
-            {{--<li class="deactive"><a href="#">--}}
-            {{--<div class="iconholder"><i class="fas fa-lock"></i></div>--}}
-            {{--تاریخچه خرید</a></li>--}}
-            <li>------------</li>
-            <li>
-                <div class="iconholder"><i class="fas fa-info"></i></div>
-                <a href="laravel-route-about">درباره رستوران</a>
-            </li>
-            <li id="sharewithfriends" style="display: none;">
-                <div class="iconholder"><i class="fas fa-user-friends"></i></div>
-                <a href="sms:?&body= سلام. من همین الان در رستوران laravel-method-getLocalName هستم؛ از شما دعوت می‌کنم به این رستوران سر بزنید! (رستوران laravel-method-getName مجهز به منوی دیجیتال مِ‌نیو می‌باشد)"
-                   data-action="share/whatsapp/share">معرفی به دوستان</a>
-            </li>
-        </ul>
-    </nav>
-    <div class="menewcpright">Powered By MeneW
-        <div class="menewnumber">0912 033 8850</div>
-    </div>
-</div>
-<div class="shcart wrapclose">
-    <div class="icon close"></div>
-    <div class="cartcontent" data-scrollbar>
-        <ul class="a-persons-cart" id="cart_list">
-            <div class="person">سفارش های من</div>
-            <hr/>
-            <p class="empty_basket">سبد خرید شما خالی است</p>
-
-            @if(isset($order->orderitems))
-                @foreach($order->orderitems as $ordered_item)
-                    <li id="item{{$ordered_item->item_id}}">
-                        @if(!is_null($ordered_item->item->item_image))
-                            <div class="itemimage"
-                                 style="background-image: url('{{$ordered_item->item->item_image}}');"></div>
-                        @endif
-                        <header>{{$ordered_item->item->name}}</header>
-                        <div class='count'>{{$ordered_item->count}}</div>
-                    </li>
-                @endforeach
-            @endif
-        </ul>
-    </div>
-    {{--<button class="button1 @if(isset($order->orderitems) && $order->orderitems->count() == 0 || is_null($order)) disabled @endif"--}}
-            {{--id="basket_button" @if(isset($order->orderitems) && $order->orderitems->count() == 0) disabled @endif><span--}}
-                {{--style="margin-right: -9px;">رفتن به سبد خرید</span>--}}
-        {{--<div style="display: inline-block; margin-right: 9px; position: absolute; padding: 3px 0 0 0; font-size: 14px;">--}}
-            {{--<i class="fas fa-arrow-left"></i></div>--}}
-    {{--</button>--}}
-</div>
-
-<div class="header" style="background: laravel-method-getCategoryBgColor; color: laravel-method-getCategoryIconColor" data-versiontype="{{$version_type}}">
+<div class="header" style="background: {{ $shop->theme_color ? $shop->theme_color : '#da315f' }}; color: black">
     <div class="headertop">
-        <span style="display: none;">@if(!is_null(\Auth::user()))<h3>{{\Auth::user()->name}}
-                خوش آمدید </h3>@endif</span>
-        <header class="title"><a id="main_logo_userside" style="color: laravel-method-getCategoryIconColor" href="{{url('/')}}">laravel-method-getName</a></header>
-        {{--<div class="icon navicon"></div>--}}
-{{--        @if($just_content == 0 && $fully_just_content == 0 && $is_restaurant_close == 0)--}}
-{{--            @if (Route::current()->getName() == 'home' && $first_time_open_menu == 1) { ?>--}}
-{{--            <div class="icon helpicon"><i class="fas fa-question-circle"></i></div>--}}
-{{--            @endif--}}
-{{--        @endif--}}
-        <div class="icon backicon" data-elderpageurl=""></div>
-
-        @if($just_content == 0 && $fully_just_content == 0 && $is_restaurant_close == 0)
-            <div class="icon shoppingcarticon @if(isset($order->orderitems) && $order->orderitems->count() > 0) notempty @endif">
-                @if(isset($order->orderitems) && $order->orderitems->count() > 0)
-                    <span>{{$order->orderitems->count()}}</span> @endif
-            </div>
-        @endif
+        <header class="title">
+            <h1>
+                {{ $shop->title }}
+            </h1>
+        </header>
     </div>
-    @if(isset($categories))
-        <div class="categories">
-            @foreach($categories as $category)
-                @if($category->products->count() > 0)
-                    <div class="cat" id="batch{{$category->id}}cat"
-                         style="background-image: url({{$category->meta_image}})"><span>{{$category->title}}</span></div>
-                @endif
-            @endforeach
-        </div>
-        <div class="showmore">همه دسته بندی ها<span class="showmoreicon" style="@if('laravel-method-getCategoryIconColor' == '#f0f0f0') background-image:url({{asset('images/icons/arrowdown.svg')}}); @else background-image:url({{asset('images/icons/arrowdown2.svg')}});@endif background-repeat: no-repeat;background-position: center bottom;"></span></div>
-    @endif
-</div>
+    <div class="categories">
+        @foreach($categories as $category)
+            <div class="cat" id="batch{{$category->id}}cat"
+                     style="background-image: url({{$category->meta_image}})"><span>{{$category->title}}</span></div>
+        @endforeach
+    </div>
+    <div class="showmore">همه دسته بندی ها<span class="showmoreicon" style="@if('laravel-method-getCategoryIconColor' == '#f0f0f0') background-image:url({{asset('images/icons/arrowdown.svg')}}); @else background-image:url({{asset('images/icons/arrowdown2.svg')}});@endif background-repeat: no-repeat;background-position: center bottom;"></span></div>
+    </div>
 </div>
 @php
     $show_waiting_orders = 1;

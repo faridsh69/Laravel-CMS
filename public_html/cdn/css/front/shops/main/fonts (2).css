@@ -1,0 +1,67 @@
+@font-face {
+	font-family: IRANSans;
+	font-style: normal;
+	font-weight: bold;
+	src: url('../fonts/IranSans/IRANSansWeb_Bold.woff') format('woff');
+}
+
+@font-face {
+	font-family: IRANSans;
+	font-style: normal;
+	font-weight: 500;
+	src: url('../fonts/IranSans/IRANSansWeb_Medium.woff') format('woff');
+}
+@font-face {
+	font-family: IRANSans;
+	font-style: normal;
+	font-weight: 300;
+	src: url('../fonts/IranSans/IRANSansWeb_Light.woff') format('woff');
+}
+@font-face {
+	font-family: IRANSans;
+	font-style: normal;
+	font-weight: 100;
+	src:url('../fonts/IranSans/IRANSansWeb_UltraLight.woff') format('woff');
+}
+@font-face {
+	font-family: IRANSans;
+	font-style: normal;
+	font-weight: normal;
+	src: url('../fonts/IranSans/IRANSansWeb.woff') format('woff');
+}
+
+@font-face {
+	font-family: IRANSansFA;
+	src: url('../fonts/IranSans/IRANSansWeb(FaNum).woff') format('woff');
+}
+
+@font-face {
+	font-family:'vogue';
+	font-style: normal;
+	src:url('../fonts/Vogue/vogue.ttf') format('truetype');
+}
+
+@font-face {
+	font-family:'vogueb';
+	font-style: normal;
+	src:url('../fonts/Vogue/vogueb.ttf') format('truetype');
+}
+
+@font-face {
+	font-family:'brush';
+	font-style: normal;
+	src:url('../fonts/Brush/brush.ttf') format('truetype');
+}
+
+@font-face {
+	font-family:'bask';
+	font-style: normal;
+	src:url('../fonts/Bask/bask.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'iranyekan';
+  src: url('../fonts/IranYekan/ykb.woff2') format('woff2'),
+       url('../fonts/IranYekan/ykb.woff') format('woff'),
+       url('../fonts/IranYekan/ykb.ttf')  format('truetype');
+}

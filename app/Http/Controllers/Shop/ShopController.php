@@ -8,15 +8,23 @@ use App\Models\Shop;
 
 class ShopController extends Controller
 {
-    public function getIndex()
+    public function getIndex($shop_subdomain)
     {
-        // exec("php -q /home/faridsh/domains/mmenew.ir/add_subdomain.php xxqq");
+        $shop = Shop::where('url', $shop_subdomain)->first();
+        abort_if(!$shop, 404);
 
-        // return 1;
-        $categories = Category::get();
-        $shop = Shop::first();
+        $meta = [
+            'title' => $shop->title_fa,
+            'description' => $shop->meta_description,
+            'keywords' => $shop->keywords,
+            'image' => $shop->logo,
+            'google_index' => 0,
+            'canonical_url' => url()->current(),
+        ];
+        $categories = $shop->categories;
 
         return view('front.shop.index', [
+            'meta' => $meta,
             'shop' => $shop,
             'categories' => $categories,
             'just_content' => 'just_content',
