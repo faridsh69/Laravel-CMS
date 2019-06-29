@@ -29,40 +29,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
-        // $domain_parts = explode('.', \Request::getHost());
-        // if(count($domain_parts) === 4){
-        //     if($domain_parts[1] === 'admin'){
-                
-        //     }
-        //     else{
-        //         $domain_parts[1]);
-        //     }
-        // }
-        // dd($domain_parts);
-        // dd($base_domain);
-        // Route::domain('{account}.{domain}.com')->group(function () {
-        //     dd($domain);
-        //     Route::get('', function ($account) {
-        //         dd($account);
-        //     });
-        // });
-        // $base_domain = \Request::getHost(); // getHttpHost
-        // if(strpos($base_domain, 'admin') !== false){
-        // $this->mapAdminRoutes();
-        // $this->mapShopRoutes();
-        // $this->mapWebRoutes();
-        // $this->mapFrontRoutes();
-        // $this->mapApiRoutes();
-
-        // $domain_parts = explode('.', \Request::getHost());
-        // $domain_length = count($domain_parts);
-        // if(isset($domain_parts[$domain_length-2])){
-        //     $domain = $domain_parts[$domain_length-2] . '.' . $domain_parts[$domain_length-1];
-        // }
-        // else{
-        //     $domain = 'cms.com';
-        // }
-        $domain = env('DOMAIN_NAME', 'cms.com');
+        $domain = env('DOMAIN_NAME');
 
         $this->mapAdminRoutes($domain);
         $this->mapShopRoutes($domain);
@@ -114,3 +81,38 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/auth.php'));
     }    
 }
+
+
+        // $domain_parts = explode('.', \Request::getHost());
+        // if(count($domain_parts) === 4){
+        //     if($domain_parts[1] === 'admin'){
+                
+        //     }
+        //     else{
+        //         $domain_parts[1]);
+        //     }
+        // }
+        // dd($domain_parts);
+        // dd($base_domain);
+        // Route::domain('{account}.{domain}.com')->group(function () {
+        //     dd($domain);
+        //     Route::get('', function ($account) {
+        //         dd($account);
+        //     });
+        // });
+        // $base_domain = \Request::getHost(); // getHttpHost
+        // if(strpos($base_domain, 'admin') !== false){
+        // $this->mapAdminRoutes();
+        // $this->mapShopRoutes();
+        // $this->mapWebRoutes();
+        // $this->mapFrontRoutes();
+        // $this->mapApiRoutes();
+
+        // $domain_parts = explode('.', \Request::getHost());
+        // $domain_length = count($domain_parts);
+        // if(isset($domain_parts[$domain_length-2])){
+        //     $domain = $domain_parts[$domain_length-2] . '.' . $domain_parts[$domain_length-1];
+        // }
+        // else{
+        //     $domain = 'cms.com';
+        // }

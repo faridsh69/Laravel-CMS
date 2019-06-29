@@ -21,10 +21,8 @@ class Shop extends Model implements Commentable
 
     public $guarded = [];
 
-    // open time , theme, theme color
-    // 'کافه نان دِنجا', 'Denja Bakery Café'
-
-    // title, 
+    // title,
+    // title_fa,
     // url,
     // email,
     // logo,
@@ -48,7 +46,14 @@ class Shop extends Model implements Commentable
     // keywords,
     // tags,
     // gallery,
+    // theme_name,
+    // theme_color,
+    // open_time
     
+    // 'کافه نان دِنجا', 'Denja Bakery Café'
+
+
+
     public $columns = [
         [
             'name' => 'title',
@@ -58,6 +63,15 @@ class Shop extends Model implements Commentable
             'help' => 'Title should be unique, minimum 5 and maximum 60 characters.',
             'form_type' => '',
             'table' => true,
+        ],
+        [
+            'name' => 'title_fa',
+            'type' => 'string',
+            'database' => '',
+            'rule' => '',
+            'help' => '',
+            'form_type' => '',
+            'table' => false,
         ],
         [
             'name' => 'url',
@@ -268,6 +282,33 @@ class Shop extends Model implements Commentable
             'property' => 'name',
             'property_key' => 'id',
             'multiple' => true,
+            'table' => false,
+        ],
+        [
+            'name' => 'theme_name',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => '',
+            'help' => '',
+            'form_type' => '',
+            'table' => false,
+        ],
+        [
+            'name' => 'theme_color',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => '',
+            'help' => '',
+            'form_type' => '',
+            'table' => false,
+        ],
+        [
+            'name' => 'open_time',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => '',
+            'help' => '',
+            'form_type' => '',
             'table' => false,
         ],
     ];

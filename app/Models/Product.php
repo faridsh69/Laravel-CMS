@@ -32,7 +32,7 @@ class Product extends Model implements Commentable
 	// discount_price,
     // inventory,
 	// order,
-
+    // ready_duration_time,
 
 public $columns = [
         [
@@ -164,6 +164,15 @@ public $columns = [
             'property' => 'name',
             'property_key' => 'id',
             'multiple' => true,
+            'table' => false,
+        ],
+        [
+            'name' => 'ready_time',
+            'type' => 'integer',
+            'database' => 'nullable',
+            'rule' => '',
+            'help' => '',
+            'form_type' => 'none',
             'table' => false,
         ],
     ];

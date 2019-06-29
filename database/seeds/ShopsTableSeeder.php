@@ -15,7 +15,8 @@ class ShopsTableSeeder extends Seeder
     	$shops = [
     		[
     			'id' => 1,
-            	'title' => 'Denja Bakery Café',
+                'title' => 'Denja Bakery Café',
+                'title_fa' => 'کافه نان دِنجا',
             	'url' => 'denja',
             	'email' => 'farid.sh69@gmail.com',
             	'logo' => 'images/shop-logo.png',
@@ -36,11 +37,15 @@ class ShopsTableSeeder extends Seeder
             	'description' => 'Denja description that will show in google search',
             	'meta_description' => 'Denja description',
             	'keywords' => 'Denja, coffee, bakery',
-            	'content' => '<h1>Welcome To Denja Bakery Café</h1>',    
+            	'content' => '<h1>Welcome To Denja Bakery Café</h1>', 
+                'theme_name' => 'denja',
+                'theme_color' => '#d1aa4b',
+                'open_time' => '0:00|23:59',
         	],   
         	[
     			'id' => 2,
-            	'title' => 'Cinema Café',
+                'title' => 'Cinema Café',
+            	'title_fa' => 'کافه سینما',
             	'url' => 'cinema',
             	'email' => 'farid.sh69@gmail.com',
             	'logo' => 'images/shop-logo.png',
@@ -61,7 +66,10 @@ class ShopsTableSeeder extends Seeder
             	'description' => 'Cinema Coffee description that will show in google search',
             	'meta_description' => 'Cinema Coffee description',
             	'keywords' => 'Cinema, coffee',
-            	'content' => '<h1>Welcome To Cinema Café</h1>',    
+            	'content' => '<h1>Welcome To Cinema Café</h1>',
+                'theme_name' => 'denja',
+                'theme_color' => '#d1aa4b',
+                'open_time' => '0:00|23:59',
         	],
         ];
         
