@@ -68,7 +68,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapShopRoutes($domain);
         $this->mapApiRoutes();
         $this->mapAuthRoutes();
-        $this->mapFrontRoutes();
+        $this->mapFrontRoutes($domain);
     }
 
     protected function mapAdminRoutes($domain)
@@ -89,9 +89,10 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/shop.php'));
     }
 
-    protected function mapFrontRoutes()
+    protected function mapFrontRoutes($domain)
     {
         Route::middleware(['web'])
+            ->domain('www.' . $domain)
             ->as('front.')
             ->namespace($this->namespace . '\Front')
             ->group(base_path('routes/front.php'));
