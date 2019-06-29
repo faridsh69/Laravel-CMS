@@ -143,7 +143,6 @@
                                         </div>
                                     @endif
                                 </div>
-                                {{--<div class="itemimage lazy"  data-src="{{$product->item_small_image}}"></div>--}}
 
                                 <div class="itemdetails">
                                     <header class="title">{{$product->title}}</header>
@@ -152,75 +151,32 @@
                                                     style="white-space: pre-line">{!! $product->content !!}</p>
                                         </div>
                                     @endif
-                                    @if($product->type == 'shop_card' && !is_null($product->price))
+                                    @if(!is_null($product->price))
                                         <div class="price">
                                             @if(is_null($product->discount_price))
-                                                {{$product->price}} {{moneyUnit()}}
+                                                {{$product->price}} تومان
                                             @else
-                                                <div class="oldprice">{{$product->price}} {{moneyUnit()}}</div>
-                                                <div class="newprice">{{$product->discount_price}} {{moneyUnit()}}</div>
+                                                <div class="oldprice">{{$product->price}} تومان</div>
+                                                <div class="newprice">{{$product->discount_price}} تومان</div>
                                             @endif
                                         </div>
                                     @endif
-                                    <div class="qtychange"><span class="plus"><i class="fas fa-plus"></i></span><span
-                                                class="minus">@if($order_count!='1')
-                                                <i class="fas fa-minus"></i>@else
-                                                <div style="font-size: 20px;"><i
-                                                            class="far fa-trash-alt"></i></div>@endif</span></div>
-                                    @if($product->vote!='0')
+                                    <div class="qtychange">
+                                        <span class="plus">
+                                            <i class="fas fa-plus"></i>
+                                        </span>
+                                        <span class="minus">    
+                                            @if($order_count!='1')
+                                                <i class="fas fa-minus"></i>
+                                            @else
+                                                <div style="font-size: 20px;">
+                                                    <i class="far fa-trash-alt"></i>
+                                                </div>
+                                            @endif
+                                        </span>
+                                    </div>
+                                    @if(false && $product->vote != '0' )
                                         <div class="ratingstars">
-                                            <fieldset class="rating">
-                                                <input type="radio" id="star5" name="rating" value="5"
-                                                       @if($product->vote_show == 10) class="selected" @endif/><label
-                                                        class="full" for="star5">
-                                                    <div><i class="fas fa-star"></i></div>
-                                                </label>
-                                                <input type="radio" id="star4half" name="rating" value="4 and a half"
-                                                       @if($product->vote_show >= 9 && $product->vote_show < 10) class="selected" @endif /><label
-                                                        class="half" for="star4half">
-                                                    <div><i class="fas fa-star-half"></i></div>
-                                                </label>
-                                                <input type="radio" id="star4" name="rating" value="4"
-                                                       @if($product->vote_show >= 8 && $product->vote_show < 9) class="selected" @endif /><label
-                                                        class="full" for="star4">
-                                                    <div><i class="fas fa-star"></i></div>
-                                                </label>
-                                                <input type="radio" id="star3half" name="rating" value="3 and a half"
-                                                       @if($product->vote_show >= 7 && $product->vote_show < 8) class="selected" @endif /><label
-                                                        class="half" for="star3half">
-                                                    <div><i class="fas fa-star-half"></i></div>
-                                                </label>
-                                                <input type="radio" id="star3" name="rating" value="3"
-                                                       @if($product->vote_show >= 6 && $product->vote_show < 7) class="selected" @endif /><label
-                                                        class="full" for="star3">
-                                                    <div><i class="fas fa-star"></i></div>
-                                                </label>
-                                                <input type="radio" id="star2half" name="rating" value="2 and a half"
-                                                       @if($product->vote_show >= 5 && $product->vote_show < 6) class="selected" @endif /><label
-                                                        class="half" for="star2half">
-                                                    <div><i class="fas fa-star-half"></i></div>
-                                                </label>
-                                                <input type="radio" id="star2" name="rating" value="2"
-                                                       @if($product->vote_show >= 4 && $product->vote_show < 5) class="selected" @endif /><label
-                                                        class="full" for="star2">
-                                                    <div><i class="fas fa-star"></i></div>
-                                                </label>
-                                                <input type="radio" id="star1half" name="rating" value="1 and a half"
-                                                       @if($product->vote_show >= 3 && $product->vote_show < 4) class="selected" @endif /><label
-                                                        class="half" for="star1half">
-                                                    <div><i class="fas fa-star-half"></i></div>
-                                                </label>
-                                                <input type="radio" id="star1" name="rating" value="1"
-                                                       @if($product->vote_show >= 2 && $product->vote_show < 3) class="selected" @endif /><label
-                                                        class="full" for="star1">
-                                                    <div><i class="fas fa-star"></i></div>
-                                                </label>
-                                                <input type="radio" id="starhalf" name="rating" value="half"
-                                                       @if($product->vote_show >= 1 && $product->vote_show < 2) class="selected" @endif /><label
-                                                        class="half" for="starhalf">
-                                                    <div><i class="fas fa-star-half"></i></div>
-                                                </label>
-                                            </fieldset>
                                             <div class="ratingcontent hidden">امتیاز {{$product->vote_show/2}} از 5</div>
                                         </div>
                                     @endif
@@ -232,13 +188,9 @@
             @endforeach
         </div>
     </div>
-
-
-    
 </div>
-<div class="msgBox">
+<!-- <div class="msgBox">
     <div class="innerbox">
-        <!-- <div class="exit"></div> -->
         <div class="topSide">warning</div>
         <div class="bottomSide"></div>
         <div class="btns">
@@ -246,7 +198,7 @@
             <div class="btn cancelBtn">Nope</div>
         </div>
     </div>
-</div>
+</div> -->
 
 @endsection
 
@@ -255,251 +207,6 @@
 <script>
 var headerheight = $('.waiting_orders').outerHeight() + $('.header').outerHeight()
 $(document).ready(function () {
-
-    // $.ajaxSetup({
-    //     headers: {
-    //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //     }
-    // });
-
-
-    // version_type = $('.header').data('versiontype')
-
-//         function preloader () {
-// //          if (document.images) {
-// //            var img1 = new Image()
-// //            var img2 = new Image()
-
-// //            img1.src = $('#head_url').data('url') + '/images/icons/help/arrow01.svg'
-// //            img2.src = $('#head_url').data('url') + '/images/icons/shcart2.png'
-// //          }
-//         }
-
-        // function addLoadEvent (func) {
-        //   var oldonload = window.onload
-        //   if (typeof window.onload != 'function') {
-        //     window.onload = func
-        //   } else {
-        //     window.onload = function () {
-        //       if (oldonload) {
-        //         oldonload()
-        //       }
-        //       func()
-        //     }
-        //   }
-        // }
-
-        // addLoadEvent(preloader)
-
-        // $('.menewcpright').click(function () {
-        //   $('.menewcpright .menewnumber').toggleClass('open')
-        // })
-    if (isMobile) {
-
-          // $('#sharewithfriends').show()
-
-          // $('#preview_form #inout .toggle').swipe({
-          //   swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
-          //     if (direction == 'right' && !$('#preview_form #inout .toggle .toggle_input').is(':checked')) {
-          //       $('#preview_form #inout .toggle').trigger('click')
-          //     }
-          //     else if (direction == 'left' && $('#preview_form #inout .toggle .toggle_input').is(':checked')) {
-          //       $('#preview_form #inout .toggle').trigger('click')
-          //     }
-          //   },
-          //   threshold: 20
-          // })
-
-          // $('.header .showmore').swipe({
-          //   swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
-          //     if (direction == 'down' && !$(this).hasClass('rotate')) {
-          //       $('.header .showmore').trigger('click')
-          //     }
-          //     if (direction == 'up' && $(this).hasClass('rotate')) {
-          //       $('.header .showmore').trigger('click')
-          //     }
-          //   },
-          //   threshold: 20
-          // })
-
-          // $('body').swipe({
-          //   swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
-          //     if (!$(event.target).closest('label').length) {
-          //       if (!$(event.target).closest('.categories').length || $(event.target).closest('.categories').length && !$('.header').hasClass('shrink')) {
-          //         if (direction == 'right' && !$('.bgwrap').hasClass('show')) {
-          //           $('.header .shoppingcarticon').trigger('click')
-          //         }
-          //         else if (direction == 'left' && !$('.bgwrap').hasClass('show')) {
-          //           $('.header .navicon').trigger('click')
-          //         }
-          //         else if (direction == 'left' && $('.bgwrap').hasClass('show') && $('.shcart').hasClass('activated')) {
-          //           $('.bgwrap').trigger('click')
-          //         }
-          //         else if (direction == 'right' && $('.bgwrap').hasClass('show') && $('.mainmenu').hasClass('activated')) {
-          //           $('.bgwrap').trigger('click')
-          //         }
-          //       }
-          //     }
-          //   },
-          //   threshold: 120,
-          //   preventDefaultEvents: false
-          // })
-
-          // window.onload = function () {
-          //   if (typeof history.pushState === 'function') {
-          //     history.pushState('jibberish', null, null)
-          //     window.onpopstate = function () {
-          //       history.scrollRestoration = 'manual'
-          //       history.pushState('newjibberish', null, null)
-          //       if ($('.galzoom').length) {
-          //         $('.galzoom').trigger('click')
-          //       }
-          //       else if ($('.bgwrap').hasClass('show')) {
-          //         $('.bgwrap').trigger('click')
-          //       }
-          //       else if ($('.categories .cat').hasClass('selected')) {
-          //         $('.categories .cat.cloned').trigger('click')
-          //       }
-          //       else if ($('.showmore').hasClass('rotate')) {
-          //         $('.header .showmore.rotate').trigger('click')
-          //       }
-          //       else {
-          //         $('.header .icon.backicon').trigger('click')
-          //       }
-          //     }
-          //   }
-          // }
-    }
-
-        // if ($('ul#cart_list li').length != 0) {
-        //   $('.empty_basket').hide()
-        // }
-
-        // var headerPaddingTop = parseInt($('.header').css('padding-top'))
-        /* Commented By RZIW */
-//        $('.header').css('padding-top', $('.waiting_orders').outerHeight() + headerPaddingTop + 'px')
-        /* Added By RZIW */
-        // $('.header').css('padding-top', $('.alerts_holder').outerHeight() + headerPaddingTop + 'px')
-})
-
-
-      // $('.container').css({'padding-top': headerheight})
-
-      // function getOrderItemElems () {
-
-      //   order_item_ids = []
-      //   order_item_counts = []
-
-      //   $('ul#cart_list li').each(function () {
-      //     var item_id = $(this).attr('id').substr(4)
-      //     order_item_ids.push(item_id)
-      //     order_item_counts.push($(this).find('.count').html())
-      //   })
-
-      // }
-
-      // $(document).on('click', '#waiter_call_err', function () {
-      //   var table_number = $('#main_table_number').val()
-
-      //   CallAjaxFunc(laravel-route-user.alertWaiter, {
-      //     'table_number': table_number,
-      //   }, alertWaiterCallback)
-      // })
-
-      // function alertWaiterCallback () {
-      //   $('#waiter_call_err').addClass('disabled')
-      //   setTimeout(function () {
-      //     $('#waiter_call_err').removeClass('disabled')
-      //   }, 10000)
-      //   alert('پیام به گارسون رسید')
-      // }
-
-      
-//       $(document).on('click', '.waiter_call', function () {
-//         if ($(this).hasClass('defined_seat')) {
-//           table_number = $('.waiter_call').data('tablenumber')
-//           callWaiter(table_number)
-//         } else {
-// //                $('.cancelBtn').attr('id', 'call_waiter_cancel');
-//           $('.confirmBtn').attr('id', 'call_waiter_confirm').addClass('not_close')
-//           ShowMessage('call waiter', '<div class="message_content"><label class="">لطفا شماره میز خود را وارد کنید</label><input type="number" name="table_number" id="call_waiter_table_number" required></div><div class="waitercall_validate_errors"></div>', 'Call Waiter', 'فراخوانی', 'لغو', true, false)
-//         }
-//       })
-
-      //        function activeWaiterCallReactionFail(jqXHR, textStatus, errorThrown) {
-      //            console.log(errorThrown);
-      //            if (textStatus === 'timeout') {
-      //                ShowMessage('error', "لطفا بعدا امتحان کنید.", 'warning', 'باشه', '', true, false);
-      //            } else {
-      //                ShowMessage('error', "اینترنت خود را بررسی نموده و بعدا امتحان کنید.", 'warning', 'باشه', '', true, false);
-      //            }
-      //        }
-      //
-      //        function activeWaiterCallReaction(data) {
-      ////            alert(data);
-      //            $('.cancelBtn').attr('id', 'call_waiter_cancel');
-      //            $('.confirmBtn').attr('id', 'call_waiter_confirm');
-      //            if(data == 'null' ) {
-      //                ShowMessage('call waiter', '<div class="message_content"><label class="">شماره میز خود را وارد کنید</label><input type="text" name="table_number" id="call_waiter_table_number" required></div>', 'Call Waiter', 'فراخوانی', '', true, false);
-      //            } else {
-      //                table_number = $(".waiter_call").data('tablenumber')
-      //                callWaiter(table_number);
-      //            }
-      //        }
-
-//       function callWaiter (table_number) {
-//         CallAjaxFunc('laravel-route-user.waiterCall', {
-//           'table_number': table_number,
-//         }, hideMessageBox, callWaiterActionsFail)
-//       }
-
-//       $(document).on('click', '#call_waiter_confirm', function () {
-
-//         $(this).text('ارسال...').addClass('disabled ')//it seems disabled not work!
-// //            $('.cancelBtn').addClass('disabled');
-//         table_number = $('#call_waiter_table_number').val()
-//         callWaiter(table_number)
-//       })
-
-//       function hideMessageBox (status) {
-//         $('.confirmBtn').removeClass('disabled').text('فراخوانی')
-// //            $('.cancelBtn').removeClass('disabled');
-//         if (status != 1) {
-// //                var errors = JSON.parse(status);
-//           var errors = ''
-//           if (status.errors) {//there are server validation error
-//             $.each(status.errors, function (key, value) {
-//               errors += '<br>' + value
-//             })
-//             $('.waitercall_validate_errors').html('<h2>' + errors + '</h2>')
-//           }
-//         } else {
-//           $('.confirmBtn').removeAttr('id')
-//           $('.msgBox').removeClass('show')
-//           $('.waiter_call').addClass('active defined_seat ' + table_number).data('tablenumber', table_number)
-//           alert('U successfully called waiter')
-//         }
-//       }
-
-//       function callWaiterActionsFail (jqXHR, textStatus, errorThrown) {
-
-//         $('.confirmBtn').removeClass('disabled').text('فراخوانی')
-//         $('.cancelBtn').removeClass('disabled')
-//         console.log(errorThrown)
-// //            if (textStatus === 'timeout') {
-// //                ShowMessage('error', "لطفا بعدا امتحان کنید.", 'warning', 'باشه', '', true, false);
-// //            } else {
-// //                ShowMessage('error', "اینترنت خود را بررسی نموده و بعدا امتحان کنید.", 'warning', 'باشه', '', true, false);
-// //            }
-//       }
-
-      // socket.on('remove_waiter_call', function (data) {
-      //   $('.waiter_call.' + data).removeClass('active')
-      // })
-
-      //        $(document).on('click', '.cancelBtn', function () {
-      //            $(".confirmBtn").removeAttr('id');
-      //        });
 
 </script>
 
@@ -1137,7 +844,5 @@ $(document).ready(function () {
         $(document).on('click', '#reload_page', function () {
             location.reload()
         })
-
-
 </script>
 @endpush
