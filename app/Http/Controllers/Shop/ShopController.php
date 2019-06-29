@@ -21,7 +21,11 @@ class ShopController extends Controller
             'google_index' => 0,
             'canonical_url' => url()->current(),
         ];
-        $categories = $shop->categories;
+
+        $categories = Category::where('shop_id', $shop->id)
+            ->active()
+            ->orderBy('_rgt', 'asc')
+            ->get();
 
         return view('front.shop.index', [
             'meta' => $meta,

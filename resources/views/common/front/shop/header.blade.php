@@ -5,7 +5,6 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, height=device-height, viewport-fit=cover"> -->
     <meta name="author" content="farid.sh69@gmail.com">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -37,6 +36,19 @@
     <link rel="canonical" href="{{ $meta['canonical_url'] }}">
     <link rel="shortcut icon" href="{{ asset($shop->favicon) }}" />
 
+    <!--begin::Base Styles -->
+    <link href="{{ asset('css/front/shops/main/swiper.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/front/shops/main/smooth-scrollbar.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/front/shops/main/style.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/front/shops/main/style.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/front/shops/main/style.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/front/shops/denja/style.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/front/shops/main/fontawesome.css') }}" rel="stylesheet" />
+    <!--end::Base Styles -->
+
+</head>
+
+
     <!-- <meta name="application-name" content="MeneW" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -48,22 +60,5 @@
     <link rel="icon" href="{{ asset('images/menew_icon-removebg-preview.png?v=2') }}" type="{{ asset('images/menew_icon-removebg-preview.png?v=2') }}" />
     <link rel="apple-touch-icon" href="{{ asset('images/menew_icon-removebg-preview.png?v=2') }}" /> -->
 
-    <!--begin::Base Styles -->
-    <link href="{{ asset('css/front/shops/main/swiper.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/front/shops/main/smooth-scrollbar.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/front/shops/main/style.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/front/shops/main/style.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/front/shops/main/style.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/front/shops/denja/style.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/front/shops/main/fontawesome.css') }}" rel="stylesheet" />
-    <!--end::Base Styles -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, height=device-height, viewport-fit=cover"> -->
 
-    <script src="{{ asset('js/front/shops/main/jquery-1.9.0.min.js') }}"></script>
-    <script src="{{ asset('js/front/shops/main/jquery.form.js') }}"></script>
-    <script src="{{ asset('js/front/shops/main/smooth-scrollbar.js') }}"></script>
-    <script src="{{ asset('js/front/shops/main/touchswipe.js') }}"></script>
-    <script src="{{ asset('js/front/shops/main/swiper.min.js') }}"></script>
-    <script src="{{ asset('js/front/shops/main/main.js') }}"></script>
-    <script src="{{ asset('js/front/shops/main/disablescroll.js') }}"></script>
-    <script src="{{ asset('js/front/shops/main/bodyScrollLock.js') }}"></script>
-</head>

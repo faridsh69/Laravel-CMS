@@ -57,7 +57,7 @@ class ShopCategoriesTableSeeder extends Seeder
             [
                 'id' => 8,
                 'title' => 'نوشیدنی و دسر',
-                'meta_image' => 'cupcake.svg',
+                'meta_image' => 'ice-cream.svg',
                 'shop_id' => 1,
             ],
             [
@@ -81,7 +81,7 @@ class ShopCategoriesTableSeeder extends Seeder
             [
                 'id' => 12,
                 'title' => 'شیرینی ها',
-                'meta_image' => 'no.svg',
+                'meta_image' => 'cupcake.svg',
                 'shop_id' => 1,
             ],
             [

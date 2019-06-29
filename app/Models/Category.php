@@ -13,6 +13,8 @@ class Category extends Model
 
     protected $guarded = [];
 
+    protected $fillable = ['_rgt', '_lft'];
+
     protected $hidden = [
         'deleted_at',
     ];
@@ -54,7 +56,7 @@ class Category extends Model
             'rule' => 'required|max:80|regex:/^[a-z0-9-]+$/',
             'help' => 'Url should be unique, contain lowercase characters and numbers and -',
             'form_type' => '',
-            'table' => true,
+            'table' => false,
         ],
         [
             'name' => 'description',
@@ -111,6 +113,13 @@ class Category extends Model
             'table' => false,
         ],
         [
+            'name' => '_rgt',
+            'type' => 'integer',
+            'database' => 'none',
+            'form_type' => 'none',
+            'table' => true,
+        ],
+        [
             'name' => 'parent_id',
             'type' => 'bigInteger',
             'database' => 'none',
@@ -119,7 +128,7 @@ class Category extends Model
             'help' => '',
             'form_type' => 'none',
             'table' => true,
-        ],
+        ],        
         [
             'name' => 'shop_id',
             'type' => 'bigInteger',
@@ -143,5 +152,10 @@ class Category extends Model
     public function products()
     {
         return $this->hasMany('App\Models\Product', 'category_id', 'id');
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('activated', 1);
     }
 }
