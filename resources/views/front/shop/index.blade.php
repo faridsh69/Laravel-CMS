@@ -205,12 +205,8 @@
 
 @push('scripts')
 <script>
-var headerheight = $('.waiting_orders').outerHeight() + $('.header').outerHeight()
-$(document).ready(function () {
+    var headerheight = $('.waiting_orders').outerHeight() + $('.header').outerHeight();
 
-</script>
-
-<script>
     is_expired = 0
 
     var mySwiper = new Swiper('.swiper-container', {
