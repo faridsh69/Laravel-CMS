@@ -33,6 +33,6 @@ class CreateCommentsTable extends Migration
     {
         $model = config('comment.model');
 
-        return (new $model)->getTable();
+        return (new $model())->getTable();
     }
 }

@@ -10,7 +10,7 @@ class ReportController extends BaseAdminController
     {
     	$this->authorize('index_settingdeveloper');
     	$this->meta['title'] = 'Report Manager';
-    	
+
         return view('admin.report', ['meta' => $this->meta]);
     }
 }

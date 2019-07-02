@@ -2,26 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Conner\Tagging\Model\Tag as TagSpatie;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Tag extends TagSpatie
 {
     use SoftDeletes;
-
-    protected $appends = ['url', 'title'];
-
-    public function getUrlAttribute()
-    {
-        return $this->slug;
-    }
-
-    public function getTitleAttribute()
-    {
-        // return $this->attributes['name'];
-        return "{$this->name}";
-    }
 
     public $columns = [
         [
@@ -62,9 +48,20 @@ class Tag extends TagSpatie
         ],
     ];
 
+    protected $appends = ['url', 'title'];
+
+    public function getUrlAttribute()
+    {
+        return $this->slug;
+    }
+
+    public function getTitleAttribute()
+    {
+        return "{$this->name}";
+    }
+
     public function getColumns()
     {
         return $this->columns;
     }
 }
-

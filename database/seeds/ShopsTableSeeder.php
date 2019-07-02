@@ -1,14 +1,12 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Models\Shop;
+use Illuminate\Database\Seeder;
 
 class ShopsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
     public function run()
     {
@@ -37,11 +35,11 @@ class ShopsTableSeeder extends Seeder
             	'description' => 'Denja description that will show in google search',
             	'meta_description' => 'Denja description',
             	'keywords' => 'Denja, coffee, bakery',
-            	'content' => '<h1>Welcome To Denja Bakery Café</h1>', 
+            	'content' => '<h1>Welcome To Denja Bakery Café</h1>',
                 'theme_name' => 'denja',
                 'theme_color' => '#d1aa4b',
                 'open_time' => '0:00|23:59',
-        	],   
+        	],
         	[
     			'id' => 2,
                 'title' => 'Cinema Café',
@@ -72,10 +70,9 @@ class ShopsTableSeeder extends Seeder
                 'open_time' => '0:00|23:59',
         	],
         ];
-        
+
         foreach($shops as $shop){
             Shop::updateOrCreate(['id' => $shop['id']], $shop);
         }
     }
 }
-

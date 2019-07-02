@@ -15,7 +15,7 @@ class BasePolicy
 
     public function __construct()
     {
-        $this->model_sm = strtolower($this->model); 
+        $this->model_sm = strtolower($this->model);
     }
 
     public function index(User $user)
@@ -27,7 +27,6 @@ class BasePolicy
      * Determine whether the user can view the blog.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Blog  $blog
      * @return mixed
      */
     public function view(User $user, $list)
@@ -50,7 +49,6 @@ class BasePolicy
      * Determine whether the user can update the blog.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Blog  $blog
      * @return mixed
      */
     public function update(User $user, $list)
@@ -62,7 +60,6 @@ class BasePolicy
      * Determine whether the user can delete the blog.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Blog  $blog
      * @return mixed
      */
     public function delete(User $user, $list)
@@ -79,7 +76,7 @@ class BasePolicy
     {
         return $user->can('index_' . $this->model_sm);
     }
-    
+
     public function export(User $user)
     {
         return $user->can('index_' . $this->model_sm);
@@ -94,7 +91,7 @@ class BasePolicy
     {
         return $user->can('index_' . $this->model_sm);
     }
-    
+
     public function import(User $user)
     {
         return $user->can('index_' . $this->model_sm);
@@ -103,5 +100,5 @@ class BasePolicy
     public function changeStatus(User $user)
     {
         return $user->can('index_' . $this->model_sm);
-    }        
+    }
 }

@@ -9,8 +9,6 @@ class Theme extends Model
 {
     use SoftDeletes;
 
-    public $guarded = [];
-
 	public $columns = [
         [
             'name' => 'title',
@@ -39,6 +37,12 @@ class Theme extends Model
             'form_type' => '', // switch-m
             'table' => false,
         ],
+    ];
+
+    protected $guarded = [];
+
+    protected $hidden = [
+        'deleted_at',
     ];
 
     public function getColumns()

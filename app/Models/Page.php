@@ -9,12 +9,6 @@ class Page extends Model
 {
     use SoftDeletes;
 
-    public $guarded = [];
-
-    protected $hidden = [
-        'deleted_at',
-    ];
-
     public $columns = [
         [
             'name' => 'title',
@@ -42,7 +36,7 @@ class Page extends Model
             'help' => '',
             'form_type' => 'ckeditor',
             'table' => true,
-        ], 
+        ],
         [
             'name' => 'meta_description',
             'type' => 'string',
@@ -97,6 +91,12 @@ class Page extends Model
             'form_type' => '',
             'table' => false,
         ],
+    ];
+
+    protected $guarded = [];
+
+    protected $hidden = [
+        'deleted_at',
     ];
 
     public function getColumns()

@@ -22,7 +22,7 @@ class PermissionController extends BaseListController
         {
             $columns[] = [
                 'field' => $column['name'],
-                'title' => preg_replace('/([a-z])([A-Z])/s','$1 $2', \Str::studly($column['name']))
+                'title' => preg_replace('/([a-z])([A-Z])/s', '$1 $2', \Str::studly($column['name'])),
             ];
         }
 
@@ -39,9 +39,13 @@ class PermissionController extends BaseListController
             ->toJson();
     }
 
-    public function create(){abort(404);}
-    public function show($id){abort(404);}
-    public function edit($id){abort(404);}
-    public function update($id){abort(404);}
-    public function destroy($id){abort(404);}
+    public function create(){abort(404); }
+
+    public function show($id){abort(404); }
+
+    public function edit($id){abort(404); }
+
+    public function update($id){abort(404); }
+
+    public function destroy($id){abort(404); }
 }

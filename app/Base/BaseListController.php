@@ -2,7 +2,6 @@
 
 namespace App\Base;
 
-use App\Base\BaseDependency;
 use App\Http\Controllers\Controller;
 use Auth;
 use Conner\Tagging\Model\Tag;
@@ -87,7 +86,7 @@ class BaseListController extends Controller
         {
             $columns[] = [
                 'field' => $column['name'],
-                'title' => preg_replace('/([a-z])([A-Z])/s','$1 $2', \Str::studly($column['name']))
+                'title' => preg_replace('/([a-z])([A-Z])/s', '$1 $2', \Str::studly($column['name'])),
             ];
         }
 
@@ -135,7 +134,7 @@ class BaseListController extends Controller
         unset($data['tags']);
         unset($data['related_blogs']);
 
-        // comment 
+        // comment
         if($this->model === 'Comment' && isset($data['blog_url'])){
             $blog = \App\Models\Blog::where('id', $data['blog_url'])->first();
             Auth::user()->comment($blog, $data['comment'], $rate = 0);
@@ -232,15 +231,15 @@ class BaseListController extends Controller
         $data = $form->getFieldValues();
         $main_data = $data;
 
-        foreach( collect($this->model_columns)->where('type', 'boolean')->pluck('name') as $boolean_column)
+        foreach(collect($this->model_columns)->where('type', 'boolean')->pluck('name') as $boolean_column)
         {
-            if(!isset($data[$boolean_column]))
+            if(! isset($data[$boolean_column]))
             {
                 $data[$boolean_column] = 0;
             }
         }
 
-        // comment 
+        // comment
         if($this->model === 'Comment' && isset($data['blog_url'])){
             $model->commentable_id = $data['blog_url'];
             $model->comment = $data['comment'];
@@ -268,7 +267,7 @@ class BaseListController extends Controller
 
         $model->update($data);
 
-        $this->_saveRelatedData($model, $main_data);        
+        $this->_saveRelatedData($model, $main_data);
 
         activity($this->model)
             ->performedOn($model)
@@ -376,32 +375,24 @@ class BaseListController extends Controller
                 if($model->blog){
                     return $model->blog->url;
                 }
-                else{
-                    return null;
-                }
+                return null;
             });
             $datatable->addColumn('author', function($model) {
                 if($model->user){
                     return $model->user->email;
                 }
-                else{
-                    return null;
-                }
+                return null;
             });
         }
         elseif($this->model === 'Block') {
             $datatable->addColumn('page', function($model) {
                 if($model->page_id){
-                    if(array_search($model->widget_type, \App\Models\Block::getStaticTypes()) !== false) {
+                    if(array_search($model->widget_type, \App\Models\Block::getStaticTypes(), true) !== false) {
                         return '*';
-                    } 
-                    else {
-                        return $model->page->title;
                     }
+                    return $model->page->title;
                 }
-                else{
-                    return null;
-                }
+                return null;
             });
         }
 
@@ -437,7 +428,7 @@ class BaseListController extends Controller
         {
             $model->related_blogs()->sync($data['related_blogs'], true);
         }
-        
+
         if(isset($data['tags'])){
             $tag_names = Tag::whereIn('id', $data['tags'])->pluck('name')->toArray();
             $model->retag($tag_names);

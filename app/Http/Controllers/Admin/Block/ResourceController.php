@@ -16,26 +16,25 @@ class ResourceController extends BaseListController
         $this->meta['alert'] = 'This CMS is Block Base, It means every part of website can change so easily and can be sort';
         $this->meta['link_name'] = __('Create New ' . $this->model);
         $this->meta['search'] = 1;
-
         $columns = [];
         foreach(collect($this->model_columns)->where('table', true) as $column)
         {
             $columns[] = [
                 'field' => $column['name'],
-                'title' => preg_replace('/([a-z])([A-Z])/s','$1 $2', \Str::studly($column['name']))
+                'title' => preg_replace('/([a-z])([A-Z])/s', '$1 $2', \Str::studly($column['name'])),
             ];
         }
         $blocks = Block::orderBy('order', 'asc')
             ->where('widget_type', '!=', 'loading')
             ->get();
-        
+
         return view('admin.list.sortable-table', ['meta' => $this->meta, 'columns' => $columns, 'blocks' => $blocks]);
     }
 
     public function postSort()
     {
     	$block_sort_json = $this->request->blockSort;
-    	$block_sort = json_decode($block_sort_json);    	
+    	$block_sort = json_decode($block_sort_json);
     	$this->saveSort($block_sort);
     	$this->request->session()->flash('alert-success', $this->model . ' Order Updated Successfully!');
 

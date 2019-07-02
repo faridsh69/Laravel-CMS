@@ -11,10 +11,6 @@ class SettingContact extends Model
 
     public $guarded = [];
 
-    protected $hidden = [
-        'deleted_at',
-    ];
-
     public $columns = [
         [
             'name' => 'email',
@@ -71,6 +67,10 @@ class SettingContact extends Model
             'type' => 'string',
             'form_type' => '',
         ],
+    ];
+
+    protected $hidden = [
+        'deleted_at',
     ];
 
     public function getColumns()

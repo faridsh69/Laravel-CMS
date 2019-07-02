@@ -17,8 +17,6 @@ class User extends Authenticatable
     use SoftDeletes;
     use CanComment;
 
-    public $guarded = [];
-
     public $columns = [
         [
             'name' => 'first_name',
@@ -157,8 +155,12 @@ class User extends Authenticatable
         ],
     ];
 
+    protected $guarded = [];
+
     protected $hidden = [
-        'password', 'remember_token', 'deleted_at',
+        'password',
+        'remember_token',
+        'deleted_at',
     ];
 
     protected $casts = [

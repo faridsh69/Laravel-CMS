@@ -21,13 +21,12 @@ class RoleController extends BaseListController
         $this->meta['link_route'] = route('admin.user.role.create');
         $this->meta['link_name'] = __('Create New ' . $this->model);
 
-
         $columns = [];
         foreach(collect($this->model_columns)->where('table', true) as $column)
         {
             $columns[] = [
                 'field' => $column['name'],
-                'title' => preg_replace('/([a-z])([A-Z])/s','$1 $2', \Str::studly($column['name']))
+                'title' => preg_replace('/([a-z])([A-Z])/s', '$1 $2', \Str::studly($column['name'])),
             ];
         }
 
@@ -159,7 +158,6 @@ class RoleController extends BaseListController
         return redirect()->route('admin.' . $this->model_sm . '.list.index');
     }
 
-
     public function getDatatable()
     {
         $model = $this->repository->orderBy('id', 'desc')->get();
@@ -167,10 +165,10 @@ class RoleController extends BaseListController
         return datatables()
             ->of($model)
             ->addColumn('permissions', function($model) {
-                return implode(",<br>", $model->permissions()->pluck('name')->toArray());
+                return implode(',<br>', $model->permissions()->pluck('name')->toArray());
             })
             ->addColumn('users', function($model) {
-                return implode(",<br>", User::role($model->name)->select('email')->pluck('email')->toArray());
+                return implode(',<br>', User::role($model->name)->select('email')->pluck('email')->toArray());
             })
             ->addColumn('show_url', function($model) {
                 return route('admin.user.role.show', $model);
@@ -184,5 +182,4 @@ class RoleController extends BaseListController
             ->rawColumns(['id', 'users', 'permissions'])
             ->toJson();
     }
-
 }

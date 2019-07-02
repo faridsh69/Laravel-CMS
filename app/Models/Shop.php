@@ -2,29 +2,25 @@
 
 namespace App\Models;
 
+use Actuallymab\LaravelComment\Contracts\Commentable;
+use Actuallymab\LaravelComment\HasComments;
 use Conner\Tagging\Taggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Actuallymab\LaravelComment\Contracts\Commentable;
-use Actuallymab\LaravelComment\HasComments;
 
 class Shop extends Model implements Commentable
 {
-
     // for registeration
     // to storage ye folder besazam ke file hash o in user bezare inja
     // copy migiram az file hae dakhele widgets o hame o vase theme jadid mirizam ke bad beshe taghir dad
-    
+
     // exec("php -q /home/faridsh/domains/mmenew.ir/add_subdomain.php xxqq");
 
     // return 1;
 
-
     use SoftDeletes;
     use Taggable;
     use HasComments;
-
-    public $guarded = [];
 
     // title,
     // title_fa,
@@ -54,10 +50,7 @@ class Shop extends Model implements Commentable
     // theme_name,
     // theme_color,
     // open_time
-    
     // 'کافه نان دِنجا', 'Denja Bakery Café'
-
-
 
     public $columns = [
         [
@@ -257,7 +250,7 @@ class Shop extends Model implements Commentable
             'help' => '',
             'form_type' => 'ckeditor',
             'table' => true,
-        ], 
+        ],
         [
             'name' => 'meta_description',
             'type' => 'string',
@@ -318,6 +311,8 @@ class Shop extends Model implements Commentable
         ],
     ];
 
+    protected $guarded = [];
+
     protected $hidden = [
         'deleted_at',
     ];
@@ -331,7 +326,7 @@ class Shop extends Model implements Commentable
     {
         return true; // default false
     }
-            
+
     public function getColumns()
     {
         return $this->columns;
@@ -346,8 +341,6 @@ class Shop extends Model implements Commentable
     {
         return $this->hasMany('App\Models\Category', 'shop_id', 'id');
     }
-
-    
 
     // public function createStore(){
     //     $this->mysqldbName = $this->_createMysqldbName($this->nameEn);
@@ -389,7 +382,6 @@ class Shop extends Model implements Commentable
     //             ["width"=>400, "height"=>400, "isConvert"=>1, "convertQuality"=>91],
     //         ]]
     //     ];
-        
     //     $this->save(false);
 
     //     // todo: set database mysql&mongodb and create index
@@ -402,6 +394,5 @@ class Shop extends Model implements Commentable
 
     //     // todo: set dns and subdoamin for store
     //     exec("php -q /home/faridsh/domains/sangsite.ir/add_subdomain.php $this->nameEn");
-
     // }
 }

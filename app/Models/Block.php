@@ -4,14 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-// use Kalnoy\Nestedset\NodeTrait;
 
 class Block extends Model
 {
     use SoftDeletes;
-    // use NodeTrait;
-
-    public $guarded = [];
 
     public $columns = [
         [
@@ -114,11 +110,13 @@ class Block extends Model
             'table' => false,
         ],
     ];
-    
+
+    protected $guarded = [];
+
     protected $hidden = [
         'deleted_at',
     ];
-       
+
     public function getColumns()
     {
         return $this->columns;
@@ -127,10 +125,10 @@ class Block extends Model
     public static function getStaticTypes()
     {
         return [
-            'menu', 
-            'header', 
-            'content', 
-            'footer', 
+            'menu',
+            'header',
+            'content',
+            'footer',
             'loading',
         ];
     }

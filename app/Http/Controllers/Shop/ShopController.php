@@ -11,7 +11,7 @@ class ShopController extends Controller
     public function getIndex($shop_subdomain)
     {
         $shop = Shop::where('url', $shop_subdomain)->first();
-        abort_if(!$shop, 404);
+        abort_if(! $shop, 404);
 
         $meta = [
             'title' => $shop->title_fa,
@@ -43,7 +43,6 @@ class ShopController extends Controller
         // title, url, description, meta_description, meta_image, activated, google_index, canonical_url, parent_id, _rgt, _lft, shop_id,
 
         // 'name', 'description', 'image', 'status', 'tag', 'sort', 'level', 'parent_id', 'user_id'
-
 
         // 'name', 'description', 'main_image', 'status', 'tag', 'sort', 'count', 'default_count', 'vote', 'voter_count', 'price', 'sell_count', 'ready_duration_time', 'discount', 'folder_id', 'short_description', 'available', 'discount_enable', 'check_critical_count', 'type'
     }

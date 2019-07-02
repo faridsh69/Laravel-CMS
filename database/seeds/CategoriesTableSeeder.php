@@ -19,9 +19,9 @@ class CategoriesTableSeeder extends Seeder
                     ['id' => 2, 'title' => 'Solar eClips'],
                     ['id' => 3, 'title' => 'Solar for Business'],
                     ['id' => 4, 'title' => 'Solar for Homeowners'],
-                    ['id' => 5, 'title' => 'FAQ'], 
+                    ['id' => 5, 'title' => 'FAQ'],
                     [
-                        'id' => 6, 
+                        'id' => 6,
                         'title' => 'test6',
                         'children' => [
                             ['id' => 7, 'title' => 'test7'],
@@ -39,7 +39,7 @@ class CategoriesTableSeeder extends Seeder
         foreach($categories as $category)
         {
             $node = Category::updateOrCreate(
-                ['id' => $category['id']], 
+                ['id' => $category['id']],
                 [
                     'title' => $category['title'],
                     'url' => Str::slug($category['title']),
@@ -87,7 +87,6 @@ class CategoriesTableSeeder extends Seeder
         // $node->afterNode($neighbor)->save();
         // $node->beforeNode($neighbor)->save();
 
-        
         // Category::rebuildTree($data);
         // Category::rebuildSubtree($root, $data);
 
@@ -96,8 +95,6 @@ class CategoriesTableSeeder extends Seeder
 
         // // Shift node by 3 siblings
         // $bool = $node->down(3);
-
-
 
         // $nodes = Category::get()->toTree();
 
@@ -110,8 +107,6 @@ class CategoriesTableSeeder extends Seeder
         // };
 
         // $traverse($nodes);
-
-
 
      //    $categories = [
      //    	[

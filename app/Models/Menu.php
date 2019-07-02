@@ -11,19 +11,6 @@ class Menu extends Model
     use NodeTrait;
     use SoftDeletes;
 
-    public $guarded = [];
-
-    protected $hidden = [
-        'deleted_at',
-    ];
-
-    protected $appends = ['text'];
-
-    public function getTextAttribute()
-    {
-        return $this->title;
-    }
-
     public $columns = [
         [
             'name' => 'title',
@@ -71,8 +58,20 @@ class Menu extends Model
             'form_type' => 'none',
             'table' => true,
         ],
-
     ];
+
+    protected $guarded = [];
+
+    protected $hidden = [
+        'deleted_at',
+    ];
+
+    protected $appends = ['text'];
+
+    public function getTextAttribute()
+    {
+        return $this->title;
+    }
 
     public function getColumns()
     {

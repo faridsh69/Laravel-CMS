@@ -49,4 +49,3 @@ class Role extends RoleSpatie
         return $this->columns;
     }
 }
-

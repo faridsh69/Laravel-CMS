@@ -4,7 +4,7 @@ namespace App\Enums;
 
 Trait CastsEnums
 {
-	/**
+    /**
      * Get a plain attribute (not a relationship).
      *
      * @param  string  $key
@@ -18,6 +18,7 @@ Trait CastsEnums
         }
         return $value;
     }
+
     /**
      * Set a given attribute on the model.
      *
@@ -41,6 +42,7 @@ Trait CastsEnums
     //     }
     //     parent::setAttribute($key, $value);
     // }
+
     /**
      * Determine whether an attribute should be cast to a enum.
      *
@@ -58,8 +60,7 @@ Trait CastsEnums
         $enum = $this->enumCasts[$key];
         if ($value === null || $value instanceOf Enum) {
             return $value;
-        } else {
-            return $enum::getInstance($value);
         }
+        return $enum::getInstance($value);
     }
 }

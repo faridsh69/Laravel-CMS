@@ -9,12 +9,6 @@ class SettingDeveloper extends Model
 {
     use SoftDeletes;
 
-    public $guarded = [];
-
-    protected $hidden = [
-        'deleted_at',
-    ];
-
     public $columns = [
         [
             'name' => 'app_url',
@@ -85,6 +79,12 @@ class SettingDeveloper extends Model
             'type' => 'text',
             'form_type' => 'textarea',
         ],
+    ];
+
+    protected $guarded = [];
+
+    protected $hidden = [
+        'deleted_at',
     ];
 
     public function getColumns()

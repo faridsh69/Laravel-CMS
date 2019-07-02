@@ -12,7 +12,7 @@ use Rap2hpoutre\LaravelLogViewer\LogViewerController;
 class SettingController extends BaseAdminController
 {
 	public $model = 'SettingGeneral';
-	
+
     public function getSettingForm($section)
     {
 
@@ -40,14 +40,14 @@ class SettingController extends BaseAdminController
             'model' => $model,
         ]);
 
-        if (!$form->isValid()) {
+        if (! $form->isValid()) {
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
         $updated_data = $form->getFieldValues();
         foreach(collect($this->model_columns)
             ->where('type', 'boolean')
             ->pluck('name') as $boolean_column) {
-            if(!isset($updated_data[$boolean_column]))
+            if(! isset($updated_data[$boolean_column]))
             {
                 $updated_data[$boolean_column] = 0;
             }
@@ -56,7 +56,7 @@ class SettingController extends BaseAdminController
         $base_data = config('0-' . $section);
         $new_settings = array_merge($base_data, $updated_data);
         $newSettings = var_export($new_settings, 1);
-        $new_config = "<?php\n return $newSettings ;"; 
+        $new_config = "<?php\n return ${newSettings} ;";
         File::put(config_path() . '/0-' . $section . '.php', $new_config);
 
         activity($this->model)
@@ -174,7 +174,6 @@ class SettingController extends BaseAdminController
 				'description' => 'clear view cache',
 				'command' => 'view:clear',
 			],
-			
 		];
 
 		return view('admin.setting.advance', ['meta' => $this->meta, 'commands' => $commands]);

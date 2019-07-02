@@ -13,8 +13,7 @@ class ResourceController extends BaseListController
         if (\Auth::loginUsingId($id)){
             return redirect('/');
         }
-        else{
-            return back()->withError('Error occurred.');
-        }
+
+        return back()->withError('Error occurred.');
 	}
 }

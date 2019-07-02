@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use App\Models\Page;
 use App\Models\Block;
-use Illuminate\Http\Request;
+use App\Models\Page;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
@@ -20,7 +20,7 @@ class PageController extends Controller
         // }
 
         $page = Page::where('url', $page_url)->active()->first();
-        abort_if(!$page, 404);
+        abort_if(! $page, 404);
 
         $meta = [
             'title' => $page->title,
@@ -28,7 +28,7 @@ class PageController extends Controller
             'keywords' => $page->keywords,
             'image' => $page->meta_image,
             'google_index' => $page->google_index,
-            'canonical_url' => $page->canonical_url ? $page->canonical_url : url()->current(),
+            'canonical_url' => $page->canonical_url ?: url()->current(),
         ];
 
         $static_types = Block::getStaticTypes();
@@ -40,7 +40,7 @@ class PageController extends Controller
             ->orderBy('order', 'asc')
             ->get();
 
-        return view('front.page.index' , ['blocks' => $blocks, 'page' => $page, 'meta' => $meta]);
+        return view('front.page.index', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta]);
     }
 
     public function getVideo()
@@ -53,22 +53,23 @@ class PageController extends Controller
             'google_index' => 1,
             'canonical_url' => url()->current(),
         ];
+
         return view('front.page.video', ['meta' => $meta]);
     }
-    
+
     public function postSubscribe(Request $request)
     {
         $date = Carbon::now()->format('Y/d/m');
         $time = Carbon::now()->format('H:i');
         $email = $request->input('email');
 
-        if( !User::where('email', $email)->first() ){
+        if(! User::where('email', $email)->first()){
             User::create([
                 'first_name' => $date,
                 'last_name' => $time,
                 'email' => $email,
                 'status' => 2,
-                'password' => 'farid123SS!@#%#@$FDSAddd' . rand(200,1000),
+                'password' => 'farid123SS!@#%#@$FDSAddd' . rand(200, 1000),
             ]);
         }
 

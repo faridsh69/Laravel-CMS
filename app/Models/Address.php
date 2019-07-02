@@ -9,8 +9,6 @@ class Address extends Model
 {
     use SoftDeletes;
 
-    public $guarded = [];
-
     public $columns = [
         [
             'name' => 'title',
@@ -98,6 +96,8 @@ class Address extends Model
             'relation' => 'users',
         ],
     ];
+
+    protected $guarded = [];
 
     protected $hidden = [
         'deleted_at',

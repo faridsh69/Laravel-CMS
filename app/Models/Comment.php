@@ -9,19 +9,6 @@ class Comment extends CommentSpatie
 {
 	use SoftDeletes;
 
-    public $guarded = [];
-
-    protected $hidden = [
-        'deleted_at',
-    ];
-
-    protected $appends = ['activated'];
-
-    public function getActivatedAttribute()
-    {
-        return $this->approved;
-    }
-
     public $columns = [
         [
 	        'name' => 'commented_id',
@@ -84,6 +71,21 @@ class Comment extends CommentSpatie
             'table' => false,
         ],
     ];
+
+    protected $guarded = [];
+
+    protected $hidden = [
+        'deleted_at',
+    ];
+
+    protected $appends = [
+        'activated',
+    ];
+
+    public function getActivatedAttribute()
+    {
+        return $this->approved;
+    }
 
     public function getColumns()
     {

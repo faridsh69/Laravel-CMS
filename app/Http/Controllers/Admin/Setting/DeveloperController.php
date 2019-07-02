@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Setting;
 
-use App\Http\Controllers\Admin\Setting\SettingController;
+// use App\Http\Controllers\Admin\Setting\SettingController;
 
 class DeveloperController extends SettingController
 {
 	public $model = 'SettingDeveloper';
+
 	public $section = 'developer';
 
 	public function index()

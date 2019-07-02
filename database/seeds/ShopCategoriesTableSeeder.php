@@ -84,14 +84,13 @@ class ShopCategoriesTableSeeder extends Seeder
                 'meta_image' => 'no.svg',
                 'shop_id' => 1,
             ],
-            
+
             // [
             //     'id' => 13,
             //     'title' => 'آرشیو مناسبتها',
             //     'meta_image' => 'no.svg',
             //     'shop_id' => 1,
             // ],
-
 
             // cofe cinema
             [
@@ -170,7 +169,7 @@ class ShopCategoriesTableSeeder extends Seeder
         foreach($categories as $category)
         {
             $node = Category::updateOrCreate(
-                ['id' => $category['id']], 
+                ['id' => $category['id']],
                 [
                     'title' => $category['title'],
                     'meta_image' => asset('images/icons/restaurant_pack/' . $category['meta_image']),
@@ -256,7 +255,7 @@ class ShopCategoriesTableSeeder extends Seeder
      //                ['id' => 2, 'title' => 'پیتزا'],
      //                ['id' => 3, 'title' => 'سانویچ'],
      //                ['id' => 4, 'title' => 'سوخاری'],
-     //                ['id' => 5, 'title' => 'برگر'], 
+     //                ['id' => 5, 'title' => 'برگر'],
      //            ],
      //        ],
      //    ];

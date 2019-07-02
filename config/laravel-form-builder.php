@@ -52,7 +52,7 @@ return [
         'submit-m' => '\App\Forms\Fields\SubmitM',
         'image' => '\App\Forms\Fields\Image',
     ],
-    
+
     'field_icons' => [
         'url' => 'la-sitemap',
         'app_url' => 'la-sitemap',

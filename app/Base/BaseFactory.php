@@ -3,7 +3,6 @@
 namespace App\Base;
 
 use Faker\Generator as Faker;
-use Illuminate\Database\Eloquent\Factory;
 
 class BaseFactory
 {
@@ -28,31 +27,31 @@ class BaseFactory
                     if($database === 'nullable' || $database === 'none'){
                         continue;
                     }
-                    elseif($name == 'meta_description'){
+                    elseif($name === 'meta_description'){
                         $fake_data = $faker->realText(100);
                     }
-                    elseif($name == 'widget_id'){
+                    elseif($name === 'widget_id'){
                         $fake_data = 1;
                     }
-                    elseif($name == 'url'){
+                    elseif($name === 'url'){
                         $fake_data = 'fake-' . $faker->numberBetween($min = 1000, $max = 900000);
                     }
-                    elseif($name == 'content'){
+                    elseif($name === 'content'){
                         $fake_data = '<h1>Fake h1</h1><h2>Fake h2</h2>' . $faker->realText(400);
                     }
-                    elseif($type == 'string'){
+                    elseif($type === 'string'){
                         $fake_data = 'Fake ' . $faker->realText(50);
                     }
-                    elseif($type == 'text'){
+                    elseif($type === 'text'){
                         $fake_data = 'Fake ' . $faker->realText(400);
                     }
-                    elseif($type == '' || $type == 'boolean' || $type === 'bigInteger'){
+                    elseif($type === '' || $type === 'boolean' || $type === 'bigInteger'){
                         $fake_data = 1;
                     }
                     elseif($type === 'integer'){
                         $fake_data = $faker->numberBetween(1000, 9000);
                     }
-                    
+
                     $output[$name] = $fake_data;
                 }
 
@@ -61,26 +60,6 @@ class BaseFactory
         }
     }
 }
-
-// $models_unused = [
-//     'blog', // 1 +
-//     'page', // 2 +
-//     'category', // 3 +
-//     'tag', // 4  
-//     'user', // 8 
-//     // // 'media', // 5  
-//     // // 'setting', // 7 + 
-//     // // 'seo' // 12 
-//     // // 'report', // 14
-//     // // 'notification', // 15
-//     'menu', // 16
-//     'comment', // 6
-//     'form', // 13
-//     // 'block', // 10
-//     // 'widget', // 11
-//     // 'theme', // 9 
-// ];
-
 
 // 'name' => $faker->name,
 // 'email' => $faker->unique()->safeEmail,

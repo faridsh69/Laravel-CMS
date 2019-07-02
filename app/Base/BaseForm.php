@@ -19,7 +19,7 @@ class BaseForm extends Form
 
     public function buildForm()
     {
-        if( isset($this->model->id) ){
+        if(isset($this->model->id)){
             $this->id = $this->model ? $this->model->id : 0;
         }
 
@@ -49,7 +49,7 @@ class BaseForm extends Form
                 'rules' => $rule,
                 'help_block' => [
                     'text' => $help,
-                ]
+                ],
             ];
 
             // type
@@ -85,10 +85,10 @@ class BaseForm extends Form
                 $option['attr'] = ['rows' => 3];
             }
             elseif($form_type === 'enum'){
-                if($this->model_name == 'User'){
+                if($this->model_name === 'User'){
                     $option['choices'] = \App\Enums\UserStatus::data;
                 }
-                elseif($this->model_name == 'Block'){
+                elseif($this->model_name === 'Block'){
                     $option['choices'] = \App\Enums\BlockType::data;
                 }
                 $input_type = 'select';
@@ -108,7 +108,7 @@ class BaseForm extends Form
                     $option['attr']['multiple'] = 'true';
                 }
             }
-            
+
             $this->add($name, $input_type, $option);
         }
         $this->addBottom();

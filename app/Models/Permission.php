@@ -23,4 +23,3 @@ class Permission extends PermissionSpatie
         return $this->columns;
     }
 }
-

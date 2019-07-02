@@ -11,10 +11,6 @@ class SettingGeneral extends Model
 
     public $guarded = [];
 
-    protected $hidden = [
-        'deleted_at',
-    ];
-
     public $columns = [
         [
             'name' => 'app_name',
@@ -70,7 +66,11 @@ class SettingGeneral extends Model
             'name' => 'google_index',
             'type' => 'boolean',
             'form_type' => 'checkbox',
-        ],        
+        ],
+    ];
+
+    protected $hidden = [
+        'deleted_at',
     ];
 
     public function getColumns()

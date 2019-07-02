@@ -21,16 +21,16 @@ class ShopMenusTableSeeder extends Seeder
                 'title' => 'About Us',
             ],
             [
-            	'id' => 3, 
-            	'title' => 'Services'
+            	'id' => 3,
+            	'title' => 'Services',
             ],
             [
-            	'id' => 4, 
-            	'title' => 'Blog'
+            	'id' => 4,
+            	'title' => 'Blog',
             ],
             [
-            	'id' => 5, 
-            	'title' => 'FAQ'
+            	'id' => 5,
+            	'title' => 'FAQ',
             ],
             [
                 'id' => 6,
@@ -46,7 +46,7 @@ class ShopMenusTableSeeder extends Seeder
         foreach($menus as $menu)
         {
             $node = Menu::updateOrCreate(
-                ['id' => $menu['id']], 
+                ['id' => $menu['id']],
                 [
                     'title' => $menu['title'],
                     'url' => Str::slug($menu['title']),

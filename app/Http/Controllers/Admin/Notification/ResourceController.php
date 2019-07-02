@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin\Notification;
 
-use Auth;
 use App\Base\BaseListController;
 use App\Models\User;
 use App\Notifications\News;
+use Auth;
 use Notification;
 use Route;
 
@@ -27,7 +27,7 @@ class ResourceController extends BaseListController
         {
             $columns[] = [
                 'field' => $column['name'],
-                'title' => preg_replace('/([a-z])([A-Z])/s','$1 $2', \Str::studly($column['name']))
+                'title' => preg_replace('/([a-z])([A-Z])/s', '$1 $2', \Str::studly($column['name'])),
             ];
         }
 
@@ -63,7 +63,7 @@ class ResourceController extends BaseListController
         }
         $data = $form->getFieldValues();
 
-    	$users = User::where('id', $data['users'])->get();  	
+    	$users = User::where('id', $data['users'])->get();
     	Notification::send($users, new News($data['data']));
 
     	$model = \App\Models\Notification::orderBy('id', 'desc')->first();
@@ -78,9 +78,11 @@ class ResourceController extends BaseListController
         return redirect()->route('admin.' . $this->model_sm . '.list.index');
     }
 
-    public function edit($id){return $this->getRedirect();}
-    public function update($id){return $this->getRedirect();}
-    public function destroy($id){return $this->getRedirect();}
+    public function edit($id){return $this->getRedirect(); }
+
+    public function update($id){return $this->getRedirect(); }
+
+    public function destroy($id){return $this->getRedirect(); }
 
     public function getRedirect()
     {

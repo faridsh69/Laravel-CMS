@@ -1,14 +1,12 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Models\Theme;
+use Illuminate\Database\Seeder;
 
 class ShopThemesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
     public function run()
     {
@@ -20,7 +18,7 @@ class ShopThemesTableSeeder extends Seeder
             	'activated' => 1,
             ],
         ];
-        
+
         foreach($themes as $theme){
             Theme::updateOrCreate(['id' => $theme['id']], $theme);
         }

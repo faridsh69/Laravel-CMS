@@ -11,21 +11,6 @@ class Category extends Model
     use NodeTrait;
     use SoftDeletes;
 
-    protected $guarded = [];
-
-    protected $fillable = ['_rgt', '_lft'];
-
-    protected $hidden = [
-        'deleted_at',
-    ];
-
-    protected $appends = ['text'];
-
-    public function getTextAttribute()
-    {
-        return $this->title;
-    }
-
     // title,
     // url,
     // description,
@@ -128,7 +113,7 @@ class Category extends Model
             'help' => '',
             'form_type' => 'none',
             'table' => true,
-        ],        
+        ],
         [
             'name' => 'shop_id',
             'type' => 'bigInteger',
@@ -143,6 +128,21 @@ class Category extends Model
             'table' => false,
         ],
     ];
+
+    protected $fillable = ['_rgt', '_lft'];
+
+    protected $appends = ['text'];
+
+    protected $guarded = [];
+
+    protected $hidden = [
+        'deleted_at',
+    ];
+
+    public function getTextAttribute()
+    {
+        return $this->title;
+    }
 
     public function getColumns()
     {

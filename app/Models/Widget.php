@@ -9,12 +9,6 @@ class Widget extends Model
 {
     use SoftDeletes;
 
-    public $guarded = [];
-
-    protected $hidden = [
-        'deleted_at',
-    ];
-
     public $columns = [
     	[
             'name' => 'title',
@@ -71,7 +65,13 @@ class Widget extends Model
             'table' => false,
         ],
     ];
-        
+
+    protected $guarded = [];
+
+    protected $hidden = [
+        'deleted_at',
+    ];
+
     public function getColumns()
     {
         return $this->columns;

@@ -8,21 +8,6 @@ class Notification extends Model
 {
     public $incrementing = false;
 
-    public $guarded = [];
-
-    protected $hidden = [
-        'deleted_at',
-    ];
-
-    public function getDataAttribute($data)
-    {
-        if( isset($data) && $data != '[]' ){
-            // dd(json_decode($data)->data);
-            return json_decode($data)->data;
-        }
-        return '-';
-    }
-
     public $columns = [
         [
             'name' => 'read_at',
@@ -74,6 +59,21 @@ class Notification extends Model
             'table' => true,
         ],
     ];
+
+    protected $guarded = [];
+
+    protected $hidden = [
+        'deleted_at',
+    ];
+
+    public function getDataAttribute($data)
+    {
+        if(isset($data) && $data !== '[]'){
+            // dd(json_decode($data)->data);
+            return json_decode($data)->data;
+        }
+        return '-';
+    }
 
     public function getColumns()
     {

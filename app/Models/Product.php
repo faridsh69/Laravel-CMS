@@ -2,19 +2,17 @@
 
 namespace App\Models;
 
+use Actuallymab\LaravelComment\Contracts\Commentable;
+use Actuallymab\LaravelComment\HasComments;
 use Conner\Tagging\Taggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Actuallymab\LaravelComment\Contracts\Commentable;
-use Actuallymab\LaravelComment\HasComments;
 
 class Product extends Model implements Commentable
 {
 	use SoftDeletes;
     use Taggable;
     use HasComments;
-
-    public $guarded = [];
 
 	// gallery
 	// title,
@@ -34,7 +32,7 @@ class Product extends Model implements Commentable
 	// order,
     // ready_duration_time,
 
-public $columns = [
+    public $columns = [
         [
             'name' => 'title',
             'type' => 'string',
@@ -134,7 +132,7 @@ public $columns = [
             'help' => '',
             'form_type' => 'ckeditor',
             'table' => true,
-        ], 
+        ],
         [
             'name' => 'logo',
             'type' => 'string',
@@ -176,6 +174,8 @@ public $columns = [
             'table' => false,
         ],
     ];
+
+    protected $guarded = [];
 
     protected $hidden = [
         'deleted_at',

@@ -29,16 +29,17 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/';
 
-    public function redirectTo()
-    {
-        return route('admin.dashboard.index');
-    }
     /**
      * Create a new controller instance.
      */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function redirectTo()
+    {
+        return route('admin.dashboard.index');
     }
 
     /**
@@ -66,7 +67,7 @@ class LoginController extends Controller
     {
         $userSocial = Socialite::driver('google')->user();
         $user = User::where(['email' => $userSocial->getEmail()])->first();
-        
+
         if($user){
             Auth::login($user);
             activity('User Login')
@@ -75,8 +76,8 @@ class LoginController extends Controller
                 ->log('User Login');
 
             return redirect()->route('admin.dashboard.index');
-        }else{
-            return view('auth.register',['name' => $userSocial->getName(), 'email' => $userSocial->getEmail()]);
         }
+
+        return view('auth.register', ['name' => $userSocial->getName(), 'email' => $userSocial->getEmail()]);
     }
 }

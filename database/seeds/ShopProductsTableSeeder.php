@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Models\Product;
+use Illuminate\Database\Seeder;
 
 class ShopProductsTableSeeder extends Seeder
 {
@@ -199,7 +199,7 @@ class ShopProductsTableSeeder extends Seeder
         foreach($products as $product)
         {
             Product::updateOrCreate(
-                ['id' => $product['id']], 
+                ['id' => $product['id']],
                 [
                     'title' => $product['title'],
                     'url' => Str::slug($product['title']),
@@ -213,10 +213,6 @@ class ShopProductsTableSeeder extends Seeder
                 ]
             );
         }
-
-
-
-
 
 // INSERT INTO `items` (`id`, `name`, `short_description`, `description`, `main_image`, `status`, `tag`, `hide`, `check_critical_count`, `sort`, `count`, `default_count`, `vote`, `voter_count`, `price`, `type`, `sell_count`, `ready_duration_time`, `discount`, `folder_id`, `created_at`, `updated_at`) VALUES
 

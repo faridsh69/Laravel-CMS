@@ -1,14 +1,12 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Models\Block;
+use Illuminate\Database\Seeder;
 
 class BlocksTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
     public function run()
     {
@@ -72,7 +70,7 @@ class BlocksTableSeeder extends Seeder
                   'page_id' => 1,
                   'theme' => 'capp',
                   'activated' => 1,
-            ],            
+            ],
             [
             	'id' => 6,
                   'order' => 18,
@@ -194,7 +192,7 @@ class BlocksTableSeeder extends Seeder
                   'activated' => 0,
             ],
         ];
-        
+
         foreach($blocks as $block){
             Block::updateOrCreate(['id' => $block['id']], $block);
         }

@@ -44,19 +44,19 @@ $output = [
             'blog',
             'page',
             'category',
-            'tag',  
-            'user', 
+            'tag',
+            'user',
             'menu',
             'comment',
             'form',
             'block',
             'widget',
-            'theme', 
+            'theme',
         ],
         'seeder' => [
             'blog',
             'page',
-            'tag',  
+            'tag',
             'menu',
             'comment',
             'theme',
@@ -67,7 +67,7 @@ $output = [
             'blog',
             'page',
             'category',
-            'tag', 
+            'tag',
             'media',
             'user',
             'notification',
@@ -79,10 +79,10 @@ $output = [
             'theme',
         ],
         'permissions' => [
-            'blog', 
-            'page', 
-            'category', 
-            'user', 
+            'blog',
+            'page',
+            'category',
+            'user',
             'settinggeneral',
             'settingcontact',
             'settingdeveloper',
@@ -105,8 +105,8 @@ if(strpos(config('0-general.app_name'), 'enew') !== false){
     $output['models']['factory'][] = 'shop';
     $output['models']['factory'][] = 'product';
 
-    $output['models']['seeder'][] = 'shop'; 
-    $output['models']['seeder'][] = 'product'; 
+    $output['models']['seeder'][] = 'shop';
+    $output['models']['seeder'][] = 'product';
 
     $output['models']['admin_routes'][] = 'shop';
     $output['models']['admin_routes'][] = 'product';
@@ -120,21 +120,21 @@ if(strpos(config('0-general.app_name'), 'enew') !== false){
 // 'page', // 2 +
 // 'category', // 3 +
 // 'tag', // 4  +
-// 'media', // 5 + 
+// 'media', // 5 +
 // 'comment', // 6 +
-// 'setting', // 7 + 
+// 'setting', // 7 +
 // 'user', // 8 +
 // 'theme', // 9 +
 // 'block', // 10 +
 // 'widget', // 11
-// //'seo' // 12  + 
+// //'seo' // 12  +
 // 'form', // 13
 // 'report', // 14 +
 // 'notification', // 15
 // 'menu', // 16 +
 
 foreach($output['social_companies'] as $social_company){
-    $output[ strtolower($social_company) ] = [
+    $output[strtolower($social_company)] = [
         'client_id' => env($social_company . '_CLIENT_ID'),
         'client_secret' => env($social_company . '_CLIENT_SECRET'),
         'redirect' => env($social_company . '_CLIENT_CALLBACK'),

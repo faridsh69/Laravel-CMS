@@ -22,7 +22,7 @@ class ResourceController extends BaseListController
         {
             $columns[] = [
                 'field' => $column['name'],
-                'title' => preg_replace('/([a-z])([A-Z])/s','$1 $2', \Str::studly($column['name']))
+                'title' => preg_replace('/([a-z])([A-Z])/s', '$1 $2', \Str::studly($column['name'])),
             ];
         }
         $categories = $this->repository->get()->toTree();
@@ -33,7 +33,7 @@ class ResourceController extends BaseListController
     public function postTree()
     {
     	$tree_json = $this->request->categorytree;
-    	$tree = json_decode($tree_json);    	
+    	$tree = json_decode($tree_json);
     	$this->saveTree($tree, null);
     	$this->request->session()->flash('alert-success', $this->model . ' Order Updated Successfully!');
 
@@ -45,7 +45,7 @@ class ResourceController extends BaseListController
         foreach($menus as $menu)
         {
             $node = Menu::updateOrCreate(
-                ['id' => $menu->id], 
+                ['id' => $menu->id],
                 ['activated' => 1]
             );
             if(isset($parent)){
@@ -59,9 +59,6 @@ class ResourceController extends BaseListController
 
     public function getTree()
     {
-    	$menus = $this->repository->orderBy('_rgt', 'asc')->get()->toTree();
-
-    	return $menus;
+    	return $this->repository->orderBy('_rgt', 'asc')->get()->toTree();
     }
-
 }

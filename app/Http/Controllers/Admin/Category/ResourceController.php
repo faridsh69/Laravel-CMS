@@ -23,22 +23,22 @@ class ResourceController extends BaseListController
         {
             $columns[] = [
                 'field' => $column['name'],
-                'title' => preg_replace('/([a-z])([A-Z])/s','$1 $2', \Str::studly($column['name']))
+                'title' => preg_replace('/([a-z])([A-Z])/s', '$1 $2', \Str::studly($column['name'])),
             ];
         }
         $categories = $this->repository->get()->toTree();
 
         return view('admin.list.tree-table', [
-            'meta' => $this->meta, 
-            'columns' => $columns, 
-            'categories' => $categories
+            'meta' => $this->meta,
+            'columns' => $columns,
+            'categories' => $categories,
         ]);
     }
 
     public function postTree()
     {
     	$tree_json = $this->request->categorytree;
-        $tree = json_decode($tree_json);        
+        $tree = json_decode($tree_json);
     	$this->saveTree($tree, null);
     	$this->request->session()->flash('alert-success', $this->model . ' Order Updated Successfully!');
 
@@ -47,12 +47,11 @@ class ResourceController extends BaseListController
 
     public function saveTree($categories, $parent)
     {
-        $order = 0;
         foreach($categories as $category)
         {
-            $order = $order + 2;
+            $order += 2;
             $node = Category::updateOrCreate(
-                ['id' => $category->id], 
+                ['id' => $category->id],
                 [
                     '_lft' => $order,
                     '_rgt' => $order + 1,
@@ -69,8 +68,6 @@ class ResourceController extends BaseListController
 
     public function getTree()
     {
-    	$categories = $this->repository->orderBy('_rgt', 'asc')->get()->toTree();
-
-    	return $categories;
+    	return $this->repository->orderBy('_rgt', 'asc')->get()->toTree();
     }
 }

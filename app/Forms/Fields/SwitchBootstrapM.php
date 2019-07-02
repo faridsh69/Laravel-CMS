@@ -13,10 +13,10 @@ class SwitchBootstrapM extends FormField
     {
         return [
             'attr' => [
-                'class' => null, 
-                'id' => $this->getName(), 
+                'class' => null,
+                'id' => $this->getName(),
                 'data-switch' => 'true',
-                'data-on-text' => 'Enabled', 
+                'data-on-text' => 'Enabled',
                 'data-off-text' => 'Disabled',
             ],
             'value' => 1,
@@ -41,7 +41,6 @@ class SwitchBootstrapM extends FormField
             $options['choices'] = ['production', 'development'];
         }
 
-        
         $options['attr']['data-on-text'] = $options['choices'][0];
         $options['attr']['data-off-text'] = $options['choices'][1];
 

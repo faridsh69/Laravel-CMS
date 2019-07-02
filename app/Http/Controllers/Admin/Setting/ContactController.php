@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Setting;
 
-use App\Http\Controllers\Admin\Setting\SettingController;
+// use App\Http\Controllers\Admin\Setting\SettingController;
 
 class ContactController extends SettingController
 {
 	public $model = 'SettingContact';
+
 	public $section = 'contact';
 
 	public function index()

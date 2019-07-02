@@ -2,38 +2,17 @@
 
 namespace App\Models;
 
+use Actuallymab\LaravelComment\Contracts\Commentable;
+use Actuallymab\LaravelComment\HasComments;
 use Conner\Tagging\Taggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Actuallymab\LaravelComment\Contracts\Commentable;
-use Actuallymab\LaravelComment\HasComments;
 
 class Blog extends Model implements Commentable
 {
     use SoftDeletes;
     use Taggable;
     use HasComments;
-
-    public $guarded = [];
-
-    public function canBeRated(): bool
-    {
-        return true;
-    }
-
-    public function mustBeApproved(): bool
-    {
-        return true; // default false
-    }
-
-    public function getMetaImageAttribute($value)
-    {
-        if($value){
-            return $value;
-        }else{
-            return config('0-general.default_meta_image');
-        }
-    }
 
     public $columns = [
         [
@@ -71,7 +50,7 @@ class Blog extends Model implements Commentable
             'help' => '',
             'form_type' => 'ckeditor',
             'table' => true,
-        ], 
+        ],
         [
             'name' => 'meta_description',
             'type' => 'string',
@@ -168,10 +147,30 @@ class Blog extends Model implements Commentable
         ],
     ];
 
+    protected $guarded = [];
+
     protected $hidden = [
         'deleted_at',
     ];
-            
+
+    public function canBeRated(): bool
+    {
+        return true;
+    }
+
+    public function mustBeApproved(): bool
+    {
+        return true; // default false
+    }
+
+    public function getMetaImageAttribute($value)
+    {
+        if($value){
+            return $value;
+        }
+        return config('0-general.default_meta_image');
+    }
+
     public function getColumns()
     {
         return $this->columns;

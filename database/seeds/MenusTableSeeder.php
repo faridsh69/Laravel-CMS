@@ -27,7 +27,7 @@ class MenusTableSeeder extends Seeder
                     ['id' => 4, 'title' => 'Solar Panel Installation'],
                     ['id' => 5, 'title' => 'Repairs & Add-Ons'],
                     ['id' => 6, 'title' => 'Maintenance Service'],
-                    ['id' => 7, 'title' => 'Referral Program'], 
+                    ['id' => 7, 'title' => 'Referral Program'],
                 ],
             ],
             [
@@ -83,7 +83,7 @@ class MenusTableSeeder extends Seeder
         foreach($menus as $menu)
         {
             $node = Menu::updateOrCreate(
-                ['id' => $menu['id']], 
+                ['id' => $menu['id']],
                 [
                     'title' => $menu['title'],
                     'url' => Str::slug($menu['title']),
