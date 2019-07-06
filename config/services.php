@@ -52,6 +52,7 @@ $output = [
             'block',
             'widget',
             'theme',
+            'feedback',
         ],
         'seeder' => [
             'blog',
@@ -62,6 +63,7 @@ $output = [
             'theme',
             'block',
             'widget',
+            'feedback',
         ],
         'admin_routes' => [
             'blog',

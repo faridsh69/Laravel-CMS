@@ -188,7 +188,7 @@
 			],
 		],
 		[
-			'id' => 15,
+			'id' => 9,
 			'title' => 'Notification',
 			'route' => 'notification',
 			'type' => 'submenu',
@@ -201,7 +201,7 @@
 			],
 		],
 		[
-			'id' => 14,
+			'id' => 10,
 			'title' => 'Report',
 			'route' => 'report',
 			'type' => 'submenu',
@@ -218,7 +218,7 @@
 			'type' => 'section',
 		],
 		[
-			'id' => 10,
+			'id' => 11,
 			'title' => 'Block',
 			'route' => 'block',
 			'type' => 'submenu',
@@ -231,7 +231,7 @@
 			],
 		],
 		[
-			'id' => 9,
+			'id' => 12,
 			'title' => 'Theme',
 			'route' => 'theme',
 			'type' => 'submenu',
@@ -244,7 +244,7 @@
 			],
 		],
 		[
-			'id' => 11,
+			'id' => 13,
 			'title' => 'Widget',
 			'route' => 'widget',
 			'type' => 'submenu',
@@ -257,7 +257,11 @@
 			],
 		],
 		[
-			'id' => 16,
+			'title' => 'WIDGET',
+			'type' => 'section',
+		],
+		[
+			'id' => 14,
 			'title' => 'Menu',
 			'route' => 'menu',
 			'type' => 'submenu',
@@ -270,7 +274,7 @@
 			],
 		],
 		[
-			'id' => 13,
+			'id' => 15,
 			'title' => 'Form',
 			'route' => 'form',
 			'type' => 'submenu',
@@ -279,6 +283,45 @@
 				[
 					'title' => 'Form list',
 					'route' => 'admin.form.list.index',
+				],
+			],
+		],
+		[
+			'id' => 16,
+			'title' => 'Feedback',
+			'route' => 'feedback',
+			'type' => 'submenu',
+			'icon' => 'flaticon-comment',
+			'children' => [
+				[
+					'title' => 'Feedback list',
+					'route' => 'admin.feedback.list.index',
+				],
+			],
+		],
+		[
+			'id' => 17,
+			'title' => 'Team',
+			'route' => 'team',
+			'type' => 'submenu',
+			'icon' => 'flaticon-users',
+			'children' => [
+				[
+					'title' => 'Team list',
+					'route' => 'admin.team.list.index',
+				],
+			],
+		],
+		[
+			'id' => 18,
+			'title' => 'Partner',
+			'route' => 'partner',
+			'type' => 'submenu',
+			'icon' => 'flaticon-network',
+			'children' => [
+				[
+					'title' => 'Partner list',
+					'route' => 'admin.partner.list.index',
 				],
 			],
 		],

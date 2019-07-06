@@ -25,8 +25,8 @@ class Widget extends Model
             'database' => 'nullable',
             'rule' => '',
             'help' => '',
-            'form_type' => '',
-            'table' => true,
+            'form_type' => 'none',
+            'table' => false,
         ],
         [
             'name' => 'description',
@@ -43,8 +43,8 @@ class Widget extends Model
             'database' => 'nullable',
             'rule' => '',
             'help' => '',
-            'form_type' => 'ckeditor',
-            'table' => true,
+            'form_type' => 'none',
+            'table' => false,
         ],
         [
             'name' => 'image',
@@ -52,7 +52,7 @@ class Widget extends Model
             'database' => 'nullable',
             'rule' => 'nullable|max:191',
             'help' => '',
-            'form_type' => 'image',
+            'form_type' => 'none',
             'table' => false,
         ],
         [
