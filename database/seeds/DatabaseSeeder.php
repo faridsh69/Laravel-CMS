@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PagesTableSeeder::class);
         $this->call(WidgetsTableSeeder::class);
         $this->call(BlocksTableSeeder::class);
-        $this->call(RolesTableSeeder::class);
+        
         $this->call(BaseSeeder::class);
         if(env('APP_NAME') === 'menew')
         {
@@ -28,7 +28,6 @@ class DatabaseSeeder extends Seeder
         }
         elseif(env('APP_NAME') === 'eric')
         {
-            $this->call(UsersTableSeeder::class);
             $this->call(FeedbacksTableSeeder::class);
             $this->call(CountingsTableSeeder::class);
             $this->call(FeaturesTableSeeder::class);
@@ -38,6 +37,8 @@ class DatabaseSeeder extends Seeder
         }
         else
         {
+            $this->call(UsersTableSeeder::class);
         }
+        $this->call(RolesTableSeeder::class);
     }
 }
