@@ -13,9 +13,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ThemesTableSeeder::class);
         $this->call(PagesTableSeeder::class);
         $this->call(WidgetsTableSeeder::class);
-        $this->call(BlocksTableSeeder::class);
-        
-        $this->call(BaseSeeder::class);
+        $this->call(BlocksTableSeeder::class);        
         if(env('APP_NAME') === 'menew')
         {
             $this->call(ShopUsersTableSeeder::class);
@@ -33,12 +31,13 @@ class DatabaseSeeder extends Seeder
             $this->call(FeaturesTableSeeder::class);
             $this->call(MenusTableSeeder::class);
             $this->call(TagsTableSeeder::class);
-            $this->call(CategoriesTableSeeder::class);
         }
         else
         {
             $this->call(UsersTableSeeder::class);
+            $this->call(CategoriesTableSeeder::class);
         }
         $this->call(RolesTableSeeder::class);
+        $this->call(BaseSeeder::class);
     }
 }
