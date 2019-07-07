@@ -25,17 +25,19 @@
                     'icon' => 'ion-ios-star-outline',
                 ],
             ];
+
+            $countings = \App\Models\Counting::active()->get(); 
             @endphp
-            @foreach($items as $item)
+            @foreach($countings as $counting)
             <div class="col-12 col-md-3 col-lg-3">
                 <div class="single-cool-fact justify-content-center wow fadeInUp" data-wow-delay="0.2s">
                     <div class="cool-facts-content">
-                        <i class="{{ $item['icon'] }}"></i>
-                        <p style="display: inline-block; margin-left: 5px">{{ $item['title'] }}</p>
+                        <i class="{{ $counting['icon'] }}"></i>
+                        <p style="display: inline-block; margin-left: 5px">{{ $counting['title'] }}</p>
                     </div>
                     <br>
                     <div class="counter-area">
-                        <h3><span class="counter">{{ $item['number'] }}</span></h3>
+                        <h3><span class="counter">{{ $counting['number'] }}</span></h3>
                     </div>
                 </div>
             </div>

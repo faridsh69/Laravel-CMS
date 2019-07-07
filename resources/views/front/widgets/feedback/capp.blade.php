@@ -27,6 +27,8 @@
                             ],
                             
                         ];
+
+                        $reviews = \App\Models\Feedback::active()->get();
                     @endphp
                     @foreach($reviews as $review)
                     <div class="client-feedback-text text-center">
@@ -44,29 +46,21 @@
                             <i class="ion-ios-star"></i>
                         </div>
                         <div class="client-name text-center">
-                            <h5>{{ $review['author'] }}</h5>
+                            <h5>{{ $review['full_name'] }}</h5>
                             <p>{{ $review['title'] }}</p>
                         </div>
                     </div>
                     @endforeach
-
                 </div>
             </div>
             <!-- Client Thumbnail Area -->
             <div class="col-12 col-md-6 col-lg-5">
                 <div class="slider slider-nav">
+                    @foreach($reviews as $review)
                     <div class="client-thumbnail">
-                        <img src="{{ asset('storage/files/shares/client3.jpg') }}" alt="customer review">
+                        <img src="{{ $review->image }}" alt="customer review">
                     </div>
-                    <div class="client-thumbnail">
-                        <img src="{{ asset('storage/files/shares/client1.jpg') }}" alt="customer review">
-                    </div>
-                    <div class="client-thumbnail">
-                        <img src="{{ asset('storage/files/shares/client2.jpg') }}" alt="customer review">
-                    </div>
-                    <div class="client-thumbnail">
-                        <img src="{{ asset('storage/files/shares/client0.jpg') }}" alt="customer review">
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

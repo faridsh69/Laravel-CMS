@@ -79,6 +79,8 @@ $output = [
             'block',
             'widget',
             'theme',
+            'feedback',
+            'counting',
         ],
         'permissions' => [
             'blog',
@@ -98,6 +100,8 @@ $output = [
             'block',
             'widget',
             'theme',
+            'feedback',
+            'counting',
         ],
         'platform' => 'company',
     ],

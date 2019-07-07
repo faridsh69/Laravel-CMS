@@ -5,47 +5,38 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Feedback extends Model
+class Counting extends Model
 {
     use SoftDeletes;
 
-    // title, full_name, content, image, activated
+    // title, number, icon, activated
     
     public $columns = [
-        [
-            'name' => 'full_name',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => '',
-            'help' => 'Full name of the feedback author.',
-            'form_type' => '',
-            'table' => true,
-        ],
         [
             'name' => 'title',
             'type' => 'string',
             'database' => 'nullable',
-            'rule' => '',
-            'help' => 'Title of the feedback author in company.',
+            'rule' => 'required',
+            'help' => 'Title of Goal.',
             'form_type' => '',
             'table' => true,
         ],
         [
-            'name' => 'content',
-            'type' => 'text',
-            'database' => '',
+            'name' => 'icon',
+            'type' => 'string',
+            'database' => 'nullable',
             'rule' => 'required',
-            'help' => '',
-            'form_type' => 'textarea',
+            'help' => 'Icon of Goal.',
+            'form_type' => '',
             'table' => true,
         ],
         [
-            'name' => 'image',
+            'name' => 'number',
             'type' => 'string',
             'database' => 'nullable',
-            'rule' => 'nullable|max:191',
-            'help' => 'Profile image of the author.',
-            'form_type' => 'image',
+            'rule' => '',
+            'help' => 'Count of times that goal recieved.',
+            'form_type' => '',
             'table' => true,
         ],
         [

@@ -6,6 +6,8 @@ use App\Policies\BlockPolicy;
 use App\Policies\BlogPolicy;
 use App\Policies\CategoryPolicy;
 use App\Policies\CommentPolicy;
+use App\Policies\CountingPolicy;
+use App\Policies\FeedbackPolicy;
 use App\Policies\FormPolicy;
 use App\Policies\MenuPolicy;
 use App\Policies\NotificationPolicy;
@@ -50,6 +52,8 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Theme' => ThemePolicy::class,
         'App\Models\Shop' => ShopPolicy::class,
         'App\Models\Product' => ProductPolicy::class,
+        'App\Models\Feedback' => FeedbackPolicy::class,
+        'App\Models\Counting' => CountingPolicy::class,
     ];
 
     /**

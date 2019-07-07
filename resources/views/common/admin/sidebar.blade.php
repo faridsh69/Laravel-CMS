@@ -300,6 +300,19 @@
 			],
 		],
 		[
+			'id' => 16,
+			'title' => 'Counting',
+			'route' => 'counting',
+			'type' => 'submenu',
+			'icon' => 'flaticon-analytics',
+			'children' => [
+				[
+					'title' => 'Counting list',
+					'route' => 'admin.counting.list.index',
+				],
+			],
+		],
+		[
 			'id' => 17,
 			'title' => 'Team',
 			'route' => 'team',
