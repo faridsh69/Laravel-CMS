@@ -15,7 +15,6 @@ class SettingController extends BaseAdminController
 
     public function getSettingForm($section)
     {
-
         $this->meta['title'] = __(ucfirst($section) . ' Setting Manager');
         $this->authorize('index', $this->model_class);
     	Artisan::call('config:clear');
@@ -62,9 +61,7 @@ class SettingController extends BaseAdminController
         activity($this->model)
             ->causedBy(Auth::user())
             ->log(json_encode($model));
-
         $this->request->session()->flash('alert-success', $this->model . ' Updated Successfully!');
-
         Artisan::call('config:clear');
         sleep(1);
 

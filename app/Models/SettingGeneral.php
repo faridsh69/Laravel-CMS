@@ -67,6 +67,30 @@ class SettingGeneral extends Model
             'type' => 'boolean',
             'form_type' => 'checkbox',
         ],
+        [
+            'name' => 'android_application_url',
+            'type' => 'string',
+            'help' => 'Url of Google play for android application.',
+            'form_type' => '',
+        ],
+        [
+            'name' => 'ios_application_url',
+            'type' => 'string',
+            'help' => 'Url of Apple store for ios application.',
+            'form_type' => '',
+        ],
+        [
+            'name' => 'introduce_video_url',
+            'type' => 'string',
+            'form_type' => '',
+            'help' => 'The main video that will show in home page.',
+        ],
+        [
+            'name' => 'introduce_video_cover_photo',
+            'type' => 'string',
+            'form_type' => 'image',
+            'help' => 'Cover photo for introduce video.',
+        ],
     ];
 
     protected $hidden = [

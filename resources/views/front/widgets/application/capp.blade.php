@@ -14,13 +14,13 @@
 
                         <div class="app-download-area">
                             <div class="app-download-btn wow fadeInUp" data-wow-delay="0.2s">
-                                <a href="javascript:void(0)">
+                                <a href="{{ \Config::get('0-general.android_application_url') }}">
                                     <i class="fa fa-android"></i>
                                     <p class="mb-0"><span>available on</span> Google Store</p>
                                 </a>
                             </div>
                             <div class="app-download-btn wow fadeInDown" data-wow-delay="0.4s">
-                                <a href="javascript:void(0)">
+                                <a href="{{ \Config::get('0-general.ios_application_url') }}">
                                     <i class="fa fa-apple"></i>
                                     <p class="mb-0"><span>available on</span> Apple Store</p>
                                 </a>
