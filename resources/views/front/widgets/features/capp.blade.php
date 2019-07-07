@@ -11,37 +11,42 @@
             </div>
         </div>
 
+        @php
+            $features = [
+                [
+                    'id' => 1,
+                    'title' => 'Call the Best!',
+                    'icon' => 'ti-mobile',
+                    'description' => 'Serving the Bay Area for 14 years!',
+                ],
+                [
+                    'id' => 2,
+                    'title' => 'Earn $400',
+                    'icon' => 'ti-money',
+                    'description' => 'When You Refer Another Customer!',
+                ],
+                [
+                    'id' => 3,
+                    'title' => 'Call Today',
+                    'icon' => 'ti-settings',
+                    'description' => 'To Get Tax Rebates Before It’s Too Late!',
+                ],
+            ];
+
+            $features = \App\Models\Feature::active()->get();
+        @endphp
         <div class="row">
-            <!-- Single Special Area -->
+            @foreach($features as $feature)
             <div class="col-12 col-md-4">
-                <div class="single-special text-center wow fadeInUp" data-wow-delay="0.2s">
+                <div class="single-special text-center wow fadeInUp" data-wow-delay="{{0.2 * $feature['id']}}s">
                     <div class="single-icon">
-                        <i class="ti-mobile" aria-hidden="true"></i>
+                        <i class="{{ $feature['icon'] }}" aria-hidden="true"></i>
                     </div>
-                    <h4>Call the Best!</h4>
-                    <p>Serving the Bay Area for 14 years!</p>
+                    <h4>{{ $feature['title'] }} </h4>
+                    <p>{{ $feature['description'] }} </p>
                 </div>
             </div>
-            <!-- Single Special Area -->
-            <div class="col-12 col-md-4">
-                <div class="single-special text-center wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="single-icon">
-                        <i class="ti-money" aria-hidden="true"></i>
-                    </div>
-                    <h4>Earn $400</h4>
-                    <p>When You Refer Another Customer!</p>
-                </div>
-            </div>
-            <!-- Single Special Area -->
-            <div class="col-12 col-md-4">
-                <div class="single-special text-center wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="single-icon">
-                        <i class="ti-settings" aria-hidden="true"></i>
-                    </div>
-                    <h4>Call Today</h4>
-                    <p>To Get Tax Rebates Before It’s Too Late!</p>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

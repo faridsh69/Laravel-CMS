@@ -7,6 +7,7 @@ use App\Policies\BlogPolicy;
 use App\Policies\CategoryPolicy;
 use App\Policies\CommentPolicy;
 use App\Policies\CountingPolicy;
+use App\Policies\FeaturePolicy;
 use App\Policies\FeedbackPolicy;
 use App\Policies\FormPolicy;
 use App\Policies\MenuPolicy;
@@ -54,6 +55,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Product' => ProductPolicy::class,
         'App\Models\Feedback' => FeedbackPolicy::class,
         'App\Models\Counting' => CountingPolicy::class,
+        'App\Models\Feature' => FeaturePolicy::class,
     ];
 
     /**

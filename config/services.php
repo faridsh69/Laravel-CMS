@@ -53,6 +53,8 @@ $output = [
             'widget',
             'theme',
             'feedback',
+            'counting',
+            'feature',
         ],
         'seeder' => [
             'blog',
@@ -64,6 +66,7 @@ $output = [
             'block',
             'widget',
             'feedback',
+            'feature',
         ],
         'admin_routes' => [
             'blog',
@@ -81,6 +84,7 @@ $output = [
             'theme',
             'feedback',
             'counting',
+            'feature',
         ],
         'permissions' => [
             'blog',
@@ -102,6 +106,7 @@ $output = [
             'theme',
             'feedback',
             'counting',
+            'feature',
         ],
         'platform' => 'company',
     ],

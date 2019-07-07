@@ -38,6 +38,18 @@ class SettingContact extends Model
             'form_type' => 'textarea',
         ],
         [
+            'name' => 'latitude',
+            'type' => 'string',
+            'help' => 'Latitude of the place you want to show on the map.',
+            'form_type' => '',
+        ],
+        [
+            'name' => 'longitude',
+            'type' => 'string',
+            'help' => 'Logitude of the place you want to show on the map.',
+            'form_type' => '',
+        ],
+        [
             'name' => 'google_plus',
             'type' => 'string',
             'form_type' => '',

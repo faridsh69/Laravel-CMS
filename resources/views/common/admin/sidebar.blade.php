@@ -314,6 +314,19 @@
 		],
 		[
 			'id' => 17,
+			'title' => 'Feature',
+			'route' => 'feature',
+			'type' => 'submenu',
+			'icon' => 'flaticon-technology-1',
+			'children' => [
+				[
+					'title' => 'Feature list',
+					'route' => 'admin.feature.list.index',
+				],
+			],
+		],
+		[
+			'id' => 17,
 			'title' => 'Team',
 			'route' => 'team',
 			'type' => 'submenu',

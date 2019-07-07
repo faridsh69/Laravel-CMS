@@ -5,19 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Counting extends Model
+class Feature extends Model
 {
     use SoftDeletes;
 
-    // title, number, icon, activated
-    
+    // title, description, icon, activated
     public $columns = [
         [
             'name' => 'title',
             'type' => 'string',
             'database' => 'nullable',
             'rule' => 'required',
-            'help' => 'Title of Goal.',
+            'help' => 'Title of the company feature.',
             'form_type' => '',
             'table' => true,
         ],
@@ -26,17 +25,17 @@ class Counting extends Model
             'type' => 'string',
             'database' => 'nullable',
             'rule' => '',
-            'help' => 'Icon of Goal.',
+            'help' => 'Icon of company feature.',
             'form_type' => '',
             'table' => true,
         ],
         [
-            'name' => 'number',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => 'numeric',
-            'help' => 'Count of times that goal recieved.',
-            'form_type' => '',
+            'name' => 'description',
+            'type' => 'text',
+            'database' => '',
+            'rule' => 'required',
+            'help' => '',
+            'form_type' => 'textarea',
             'table' => true,
         ],
         [
