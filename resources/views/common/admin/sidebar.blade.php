@@ -365,16 +365,30 @@
 			],
 		],
 		[
-			'id' => 21,
-			'title' => 'Header',
-			'route' => 'header',
+			'id' => 20,
+			'title' => 'Pricing',
+			'route' => 'pricing',
 			'type' => 'submenu',
-			'icon' => 'flaticon-computer',
+			'icon' => 'flaticon-coins',
 			'children' => [
 				[
-					'title' => 'Header list',
-					'route' => 'admin.header.list.index',
+					'title' => 'Pricing list',
+					'route' => 'admin.pricing.list.index',
 				],
+			],
+		],
+	];
+		
+	$x = [
+		'id' => 21,
+		'title' => 'Header',
+		'route' => 'header',
+		'type' => 'submenu',
+		'icon' => 'flaticon-computer',
+		'children' => [
+			[
+				'title' => 'Header list',
+				'route' => 'admin.header.list.index',
 			],
 		],
 	];
