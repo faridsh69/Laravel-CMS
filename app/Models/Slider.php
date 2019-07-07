@@ -5,36 +5,27 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Feedback extends Model
+class Slider extends Model
 {
     use SoftDeletes;
 
-    // title, full_name, content, image, activated
+    // title, description, image, activated
     public $columns = [
-        [
-            'name' => 'full_name',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => '',
-            'help' => 'Full name of the feedback author.',
-            'form_type' => '',
-            'table' => true,
-        ],
         [
             'name' => 'title',
             'type' => 'string',
             'database' => 'nullable',
             'rule' => '',
-            'help' => 'Title of the feedback author in company.',
+            'help' => 'Title of slider.',
             'form_type' => '',
             'table' => true,
         ],
         [
-            'name' => 'content',
+            'name' => 'description',
             'type' => 'text',
             'database' => '',
             'rule' => 'required',
-            'help' => 'What is in author mind?',
+            'help' => 'Slider description.',
             'form_type' => 'textarea',
             'table' => true,
         ],
@@ -43,7 +34,7 @@ class Feedback extends Model
             'type' => 'string',
             'database' => 'nullable',
             'rule' => 'nullable|max:191',
-            'help' => 'Profile image of the author.',
+            'help' => 'Slider image.',
             'form_type' => 'image',
             'table' => true,
         ],

@@ -10,7 +10,6 @@ class Counting extends Model
     use SoftDeletes;
 
     // title, number, icon, activated
-    
     public $columns = [
         [
             'name' => 'title',

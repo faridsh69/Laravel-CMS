@@ -55,6 +55,10 @@ $output = [
             'feedback',
             'counting',
             'feature',
+            'team',
+            'partner',
+            'slider',
+            'pricing',
         ],
         'seeder' => [
             'blog',
@@ -85,6 +89,10 @@ $output = [
             'feedback',
             'counting',
             'feature',
+            'team',
+            'partner',
+            'slider',
+            'pricing',
         ],
         'permissions' => [
             'blog',

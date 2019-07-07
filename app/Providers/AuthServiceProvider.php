@@ -13,12 +13,16 @@ use App\Policies\FormPolicy;
 use App\Policies\MenuPolicy;
 use App\Policies\NotificationPolicy;
 use App\Policies\PagePolicy;
+use App\Policies\PartnerPolicy;
+use App\Policies\PricingPolicy;
 use App\Policies\ProductPolicy;
 use App\Policies\SettingContactPolicy;
 use App\Policies\SettingDeveloperPolicy;
 use App\Policies\SettingGeneralPolicy;
 use App\Policies\ShopPolicy;
+use App\Policies\SliderPolicy;
 use App\Policies\TagPolicy;
+use App\Policies\TeamPolicy;
 use App\Policies\ThemePolicy;
 use App\Policies\UserPolicy;
 use App\Policies\WidgetPolicy;
@@ -56,6 +60,10 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Feedback' => FeedbackPolicy::class,
         'App\Models\Counting' => CountingPolicy::class,
         'App\Models\Feature' => FeaturePolicy::class,
+        'App\Models\Team' => TeamPolicy::class,
+        'App\Models\Partner' => PartnerPolicy::class,
+        'App\Models\Slider' => SliderPolicy::class,
+        'App\Models\Pricing' => PricingPolicy::class,        
     ];
 
     /**

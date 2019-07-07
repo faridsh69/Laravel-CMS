@@ -265,7 +265,7 @@
 			'title' => 'Menu',
 			'route' => 'menu',
 			'type' => 'submenu',
-			'icon' => 'flaticon-grid-menu',
+			'icon' => 'flaticon-more',
 			'children' => [	
 				[
 					'title' => 'Menu list',
@@ -278,7 +278,7 @@
 			'title' => 'Form',
 			'route' => 'form',
 			'type' => 'submenu',
-			'icon' => 'flaticon-interface',
+			'icon' => 'flaticon-edit',
 			'children' => [	
 				[
 					'title' => 'Form list',
@@ -304,7 +304,7 @@
 			'title' => 'Counting',
 			'route' => 'counting',
 			'type' => 'submenu',
-			'icon' => 'flaticon-analytics',
+			'icon' => 'flaticon-diagram',
 			'children' => [
 				[
 					'title' => 'Counting list',
@@ -326,7 +326,7 @@
 			],
 		],
 		[
-			'id' => 17,
+			'id' => 18,
 			'title' => 'Team',
 			'route' => 'team',
 			'type' => 'submenu',
@@ -339,7 +339,7 @@
 			],
 		],
 		[
-			'id' => 18,
+			'id' => 19,
 			'title' => 'Partner',
 			'route' => 'partner',
 			'type' => 'submenu',
@@ -348,6 +348,32 @@
 				[
 					'title' => 'Partner list',
 					'route' => 'admin.partner.list.index',
+				],
+			],
+		],
+		[
+			'id' => 20,
+			'title' => 'Slider',
+			'route' => 'slider',
+			'type' => 'submenu',
+			'icon' => 'flaticon-layers',
+			'children' => [
+				[
+					'title' => 'Slider list',
+					'route' => 'admin.slider.list.index',
+				],
+			],
+		],
+		[
+			'id' => 21,
+			'title' => 'Header',
+			'route' => 'header',
+			'type' => 'submenu',
+			'icon' => 'flaticon-computer',
+			'children' => [
+				[
+					'title' => 'Header list',
+					'route' => 'admin.header.list.index',
 				],
 			],
 		],
