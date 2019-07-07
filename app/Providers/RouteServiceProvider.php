@@ -29,7 +29,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
-        $domain = env('DOMAIN_NAME');
+        $domain = env('APP_URL', 'http://localhost');
 
         $this->mapAdminRoutes($domain);
         $this->mapShopRoutes($domain);

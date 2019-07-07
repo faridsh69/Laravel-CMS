@@ -13,59 +13,51 @@ class SettingGeneral extends Model
 
     public $columns = [
         [
-            'name' => 'app_name',
-            'type' => 'string',
-            'form_type' => '',
-        ],
-        [
             'name' => 'default_meta_title',
             'type' => 'string',
             'form_type' => '',
+            'help' => 'Title of pages that dosnt have title.',
         ],
         [
             'name' => 'default_meta_description',
             'type' => 'text',
-            'form_type' => 'textarea    ',
-        ],
-        [
-            'name' => 'pagination_number',
-            'type' => 'string',
-            'form_type' => '',
-        ],
-        [
-            'name' => 'crisp',
-            'type' => 'string',
-            'form_type' => '',
-        ],
-        [
-            'name' => 'google_analytics',
-            'type' => 'string',
-            'form_type' => '',
-        ],
-        [
-            'name' => 'default_meta_image',
-            'type' => 'string',
-            'form_type' => 'image',
-        ],
-        [
-            'name' => 'default_user_image',
-            'type' => 'string',
-            'form_type' => 'image',
+            'form_type' => 'textarea',
+            'help' => 'Default Description that used in search engines.',
         ],
         [
             'name' => 'logo',
             'type' => 'string',
             'form_type' => 'image',
+            'help' => 'Maximum 100px',
         ],
         [
             'name' => 'favicon',
             'type' => 'string',
             'form_type' => 'image',
+            'help' => 'Maximum 50px',
+        ],
+        [
+            'name' => 'default_meta_image',
+            'type' => 'string',
+            'form_type' => 'image',
+            'help' => 'It can be just like logo image.',
+        ],
+        [
+            'name' => 'default_user_image',
+            'type' => 'string',
+            'form_type' => 'image',
+            'help' => 'Image that used for users that have no profile image.',
         ],
         [
             'name' => 'google_index',
             'type' => 'boolean',
             'form_type' => 'checkbox',
+            'help' => 'Warning! if it is unchecked means google will ignore this site.',
+        ],
+        [
+            'name' => 'pagination_number',
+            'type' => 'string',
+            'form_type' => '',
         ],
         [
             'name' => 'android_application_url',

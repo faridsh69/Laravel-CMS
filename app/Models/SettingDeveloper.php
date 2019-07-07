@@ -11,19 +11,15 @@ class SettingDeveloper extends Model
 
     public $columns = [
         [
-            'name' => 'app_url',
-            'type' => 'string',
-            'form_type' => '',
-        ],
-        [
-            'name' => 'cdn_url',
-            'type' => 'string',
-            'form_type' => '',
-        ],
-        [
             'name' => 'app_debug',
             'type' => 'boolean',
             'form_type' => 'checkbox',
+            'help' => 'Users can see error with details.',
+        ],
+        [
+            'name' => 'app_env',
+            'type' => 'boolean',
+            'form_type' => 'switch-bootstrap-m',
         ],
         [
             'name' => 'theme',
@@ -31,7 +27,7 @@ class SettingDeveloper extends Model
             'database' => 'none',
             'relation' => 'themes',
             'rule' => 'nullable|exists:themes,title',
-            'help' => '',
+            'help' => 'Dont change it without developer order!',
             'form_type' => 'entity',
             'class' => 'App\Models\Theme',
             'property' => 'title',
@@ -40,29 +36,35 @@ class SettingDeveloper extends Model
             'table' => true,
         ],
         [
+            'name' => 'cdn_url',
+            'type' => 'string',
+            'form_type' => '',
+            'help' => 'All of static files will load from this link.',
+        ],
+        [
             'name' => 'throttle',
             'type' => 'string',
             'form_type' => '',
+            'help' => 'Stop users who is requesting alot to server.',
         ],
         [
             'name' => 'lazy_loading',
             'type' => 'boolean',
             'form_type' => 'checkbox',
+            'help' => 'Lazy loading is neccessary for fast website initial loading.',
         ],
-        [
-            'name' => 'app_env',
-            'type' => 'boolean',
-            'form_type' => 'switch-bootstrap-m',
-        ],
+        
         [
             'name' => 'email_username',
             'type' => 'string',
             'form_type' => '',
+            'help' => 'email that is used for sending emails to users.',
         ],
         [
             'name' => 'email_password',
             'type' => 'string',
             'form_type' => '',
+            'help' => 'email password that is used for sending emails to users.',
         ],
         [
             'name' => 'email_default_subject',
@@ -78,6 +80,18 @@ class SettingDeveloper extends Model
             'name' => 'scripts',
             'type' => 'text',
             'form_type' => 'textarea',
+        ],
+        [
+            'name' => 'google_analytics',
+            'type' => 'string',
+            'form_type' => '',
+            'help' => 'You can use this for adding google analytics script.',
+        ],
+        [
+            'name' => 'crisp',
+            'type' => 'string',
+            'form_type' => '',
+            'help' => 'You can use this for adding crisp chat.',
         ],
     ];
 

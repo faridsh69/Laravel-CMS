@@ -1,13 +1,13 @@
 <?php
 
 return [
-    'name' => config('0-general.app_name'),
+    'name' => env('APP_NAME', 'FARID'),
 
-    'url' => config('0-developer.app_url'),
+    'url' => env('APP_URL', 'farid.com'),
 
     'asset_url' => config('0-developer.cdn_url'),
 
-    'env' => env('APP_ENV', config('0-developer.app_env')),
+    'env' => config('0-developer.app_env'),
 
     'debug' => config('0-developer.app_debug'),
 

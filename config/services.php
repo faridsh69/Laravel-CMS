@@ -120,11 +120,10 @@ $output = [
             'slider',
             'pricing',
         ],
-        'platform' => 'company',
     ],
 ];
 
-if(strpos(config('0-general.app_name'), 'enew') !== false){
+if(env('APP_NAME') === 'menew'){
     $output['models']['factory'][] = 'shop';
     $output['models']['factory'][] = 'product';
 
@@ -153,7 +152,7 @@ if(strpos(config('0-general.app_name'), 'enew') !== false){
 // //'seo' // 12  +
 // 'form', // 13
 // 'report', // 14 +
-// 'notification', // 15
+// 'notification', // 15 +
 // 'menu', // 16 +
 
 foreach($output['social_companies'] as $social_company){
