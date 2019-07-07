@@ -14,8 +14,7 @@ class RolesTableSeeder extends Seeder
     {
         $models = config('services.models.permissions');
         $roles = [];
-        $user = User::where('id', 1)->first();
-        $user_2 = User::where('id', 2)->first();
+        
         foreach($models as $model)
         {
             $permission = [];
@@ -30,7 +29,13 @@ class RolesTableSeeder extends Seeder
             $role->syncPermissions($permission);
         }
 
-        $user->syncRoles($roles);
-        $user_2->syncRoles($roles);
+        $user = User::where('id', 1)->first();
+        if($user){
+            $user->syncRoles($roles);
+        }
+        $user_2 = User::where('id', 2)->first();
+        if($user_2){
+            $user_2->syncRoles($roles);
+        }
     }
 }
