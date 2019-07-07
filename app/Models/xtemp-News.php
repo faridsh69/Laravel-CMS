@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class News extends Model
+class tempNews extends Model
 {
     // we dont need this table for version
     // Schema::create('news', function (Blueprint $table) {

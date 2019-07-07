@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Field extends Model
+class tempField extends Model
 {
     // we dont need this table for version
     // Schema::create('features', function (Blueprint $table) {

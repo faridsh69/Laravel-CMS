@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class tempProduct extends Model
 {
     // we dont need this table for version
     // Schema::create('products', function (Blueprint $table) {
