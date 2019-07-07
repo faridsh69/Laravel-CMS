@@ -135,12 +135,14 @@ class BaseListController extends Controller
         unset($data['related_blogs']);
 
         // comment
-        if($this->model === 'Comment' && isset($data['blog_url'])){
-            $blog = \App\Models\Blog::where('id', $data['blog_url'])->first();
+        if($this->model === 'Comment'){
+            $blog = \App\Models\Blog::where('id', $data['commented_id'])->first();
+
             Auth::user()->comment($blog, $data['comment'], $rate = 0);
             $blog->comments[0]->approve();
             activity($this->model)->performedOn($blog)->causedBy(Auth::user())->log($this->model . ' Created');
             $this->request->session()->flash('alert-success', $this->model . ' Created Successfully!');
+
             return redirect()->route('admin.' . $this->model_sm . '.list.index');
         }
 
@@ -291,6 +293,12 @@ class BaseListController extends Controller
         $this->authorize('delete', $model);
 
         $model->delete();
+
+        activity($this->model)
+            ->performedOn($model)
+            ->causedBy(Auth::user())
+            ->log($this->model . ' Deleted');
+
         $this->request->session()->flash('alert-success', $this->model . ' Deleted Successfully!');
 
         return redirect()->route('admin.' . $this->model_sm . '.list.index');
@@ -302,6 +310,10 @@ class BaseListController extends Controller
         $this->authorize('restore', $model);
 
         $model->restore();
+        activity($this->model)
+            ->performedOn($model)
+            ->causedBy(Auth::user())
+            ->log($this->model . ' Restored');
         $this->request->session()->flash('alert-success', $this->model . ' Deleted Successfully!');
 
         return redirect()->route('admin.' . $this->model_sm . '.list.index');

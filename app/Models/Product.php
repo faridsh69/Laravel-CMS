@@ -46,7 +46,7 @@ class Product extends Model implements Commentable
             'name' => 'price',
             'type' => 'integer',
             'database' => 'nullable',
-            'rule' => '',
+            'rule' => 'numeric',
             'help' => '',
             'form_type' => '',
             'table' => true,

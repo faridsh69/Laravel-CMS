@@ -35,47 +35,62 @@ class BaseTest extends TestCase
             $this->_checkMethod($method);
         }
 
+        // redirect
         $this
             ->get(route('admin.' . strtolower($this->model) . '.redirect'))
-            ->assertStatus(302);
+            ->assertRedirect(route('admin.' . strtolower($this->model) . '.list.index'));
 
+        // create fake data for store in database
         $fake_data = factory($class_name)->raw();
 
+        // store fake model
         $this
             ->post(route('admin.' . strtolower($this->model) . '.list.store', $fake_data))
-            ->assertStatus(302);
+            ->assertRedirect(route('admin.' . strtolower($this->model) . '.list.index'));
 
-        $data = $model_class->orderBy('id', 'desc')->first();
+        // get fake model that created at this test
+        $fake_model = $model_class->orderBy('id', 'desc')->first();
 
+        // show fake model
         $this
-            ->get(route('admin.' . strtolower($this->model) . '.list.show', $data))
-            ->assertStatus(200);
+            ->get(route('admin.' . strtolower($this->model) . '.list.show', $fake_model))
+            ->assertOk();
 
+        // edit fake model
         $this
-            ->get(route('admin.' . strtolower($this->model) . '.list.edit', $data))
-            ->assertStatus(200);
+            ->get(route('admin.' . strtolower($this->model) . '.list.edit', $fake_model))
+            ->assertOk();
 
-        if($this->model === 'User' || $this->model === 'Category' || $this->model === 'Menu'
-            || $this->model === 'Block')
-        {
-        }else{
-            $this
-                ->put(route('admin.' . strtolower($this->model) . '.list.update', $data), $fake_data)
-                ->assertStatus(302);
+        // update fake model
+        $this
+            ->put(route('admin.' . strtolower($this->model) . '.list.update', $fake_model), $fake_data)
+            ->assertRedirect(route('admin.' . strtolower($this->model) . '.list.index'));
 
-            $this
-                ->delete(route('admin.' . strtolower($this->model) . '.list.destroy', $data))
-                ->assertStatus(302);
-        }
-        // $this
-        //     ->get(route('admin.' . strtolower($this->model) . '.list.restore', $data))
-        //     ->assertStatus(302);
+        // delete fake model
+        $this
+            ->delete(route('admin.' . strtolower($this->model) . '.list.destroy', $fake_model))
+            ->assertRedirect(route('admin.' . strtolower($this->model) . '.list.index'));
+
+        // restore fake model
+        $this
+            ->get(route('admin.' . strtolower($this->model) . '.list.restore', $fake_model))
+            ->assertRedirect(route('admin.' . strtolower($this->model) . '.list.index'));
+        
+        // delete fake model
+        $this
+            ->delete(route('admin.' . strtolower($this->model) . '.list.destroy', $fake_model))
+            ->assertRedirect(route('admin.' . strtolower($this->model) . '.list.index'));
+
+        // if($this->model === 'User' || $this->model === 'Category' || $this->model === 'Menu'
+        //     || $this->model === 'Block')
+        // {
+        // }else{
     }
 
     private function _checkMethod($mothod_name)
     {
         $this
             ->get(route('admin.' . strtolower($this->model) . '.' . $mothod_name))
-            ->assertStatus(200);
+            ->assertOk();
     }
 }

@@ -11,6 +11,7 @@ class Menu extends Model
     use NodeTrait;
     use SoftDeletes;
 
+    // title, url, activated, location, parent_id
     public $columns = [
         [
             'name' => 'title',
@@ -24,7 +25,7 @@ class Menu extends Model
         [
             'name' => 'url',
             'type' => 'string',
-            'database' => 'nullable',
+            'database' => '',
             'rule' => 'required|max:80|regex:/^[a-z0-9-]+$/',
             'help' => 'Url should be unique, contain lowercase characters and numbers and -',
             'form_type' => '',
@@ -43,7 +44,7 @@ class Menu extends Model
             'name' => 'location',
             'type' => 'tinyInteger',
             'database' => 'nullable',
-            'rule' => 'required',
+            'rule' => '',
             'help' => '',
             'form_type' => 'enum',
             'table' => false,

@@ -15,7 +15,7 @@ class Counting extends Model
         [
             'name' => 'title',
             'type' => 'string',
-            'database' => 'nullable',
+            'database' => '',
             'rule' => 'required',
             'help' => 'Title of Goal.',
             'form_type' => '',
@@ -32,8 +32,8 @@ class Counting extends Model
         ],
         [
             'name' => 'number',
-            'type' => 'string',
-            'database' => 'nullable',
+            'type' => 'integer',
+            'database' => '',
             'rule' => 'numeric',
             'help' => 'Count of times that goal recieved.',
             'form_type' => '',

@@ -11,18 +11,7 @@ class Category extends Model
     use NodeTrait;
     use SoftDeletes;
 
-    // title,
-    // url,
-    // description,
-    // meta_description,
-    // meta_image,
-    // activated,
-    // google_index,
-    // canonical_url,
-    // parent_id,
-    // _rgt,
-    // _lft,
-    // shop_id,
+    // title, url, description, meta_description, meta_image, activated, google_index, canonical_url, parent_id, _rgt, _lft, shop_id,
 
     public $columns = [
         [
@@ -56,7 +45,7 @@ class Category extends Model
             'name' => 'meta_description',
             'type' => 'string',
             'database' => 'nullable',
-            'rule' => 'required|max:191|min:70',
+            'rule' => 'nullable|max:191|min:70',
             'help' => 'Meta description should have minimum 70 and maximum 191 characters.',
             'form_type' => 'textarea',
             'table' => false,
@@ -129,7 +118,9 @@ class Category extends Model
         ],
     ];
 
-    protected $fillable = ['_rgt', '_lft'];
+    protected $fillable = [
+        'title', 'url', 'description', 'meta_description', 'meta_image', 'activated', 'google_index', 'canonical_url', 'parent_id', '_rgt', '_lft', 'shop_id',
+    ];
 
     protected $appends = ['text'];
 

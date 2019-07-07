@@ -14,7 +14,7 @@ class Feature extends Model
         [
             'name' => 'title',
             'type' => 'string',
-            'database' => 'nullable',
+            'database' => '',
             'rule' => 'required',
             'help' => 'Title of the company feature.',
             'form_type' => '',

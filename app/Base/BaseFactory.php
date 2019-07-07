@@ -8,21 +8,23 @@ class BaseFactory
 {
     public function index($factory)
     {
-        $models = config('services.models.factory');
+        $factory_models = config('services.models.factory');
 
-        foreach($models as $model)
+        foreach($factory_models as $factory_model)
         {
-            $model = ucfirst($model);
-            $class_name = 'App\\Models\\' . $model;
+            $model_name = ucfirst($factory_model);
+            $class_name = 'App\\Models\\' . $model_name;
             $model = new $class_name();
             $columns = $model->getColumns();
 
             $factory->define($class_name, function (Faker $faker) use ($columns) {
                 $output = [];
                 foreach($columns as $column){
+                    $fake_data = null;
                     $name = $column['name'];
                     $type = isset($column['type']) ? $column['type'] : '';
                     $database = isset($column['database']) ? $column['database'] : '';
+                    $form_type = isset($column['form_type']) ? $column['form_type'] : '';
 
                     if($database === 'nullable' || $database === 'none'){
                         continue;
@@ -30,8 +32,9 @@ class BaseFactory
                     elseif($name === 'meta_description'){
                         $fake_data = $faker->realText(100);
                     }
-                    elseif($name === 'widget_id'){
-                        $fake_data = 1;
+                    elseif($name === 'password'){
+                        $password = $faker->realText(10);
+                        $fake_data = $password;
                     }
                     elseif($name === 'url'){
                         $fake_data = 'fake-' . $faker->numberBetween($min = 1000, $max = 900000);
@@ -39,20 +42,24 @@ class BaseFactory
                     elseif($name === 'content'){
                         $fake_data = '<h1>Fake h1</h1><h2>Fake h2</h2>' . $faker->realText(400);
                     }
-                    elseif($type === 'string'){
-                        $fake_data = 'Fake ' . $faker->realText(50);
+                    elseif($form_type === 'email'){
+                        $fake_data = $faker->unique()->safeEmail;
                     }
                     elseif($type === 'text'){
                         $fake_data = 'Fake ' . $faker->realText(400);
                     }
-                    elseif($type === '' || $type === 'boolean' || $type === 'bigInteger'){
+                    elseif($type === '' || $type === 'boolean' || $type === 'bigInteger' || $type === 'integer' || $type === 'tinyInteger'){
                         $fake_data = 1;
                     }
-                    elseif($type === 'integer'){
-                        $fake_data = $faker->numberBetween(1000, 9000);
+                    elseif($type === 'string'){
+                        $fake_data = 'Fake ' . $faker->realText(50);
                     }
 
                     $output[$name] = $fake_data;
+                }
+
+                if(isset($password)){
+                    $output['password_confirmation'] = $password;
                 }
 
                 return $output;
