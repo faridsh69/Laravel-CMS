@@ -70,13 +70,15 @@ class TestController extends Controller
     public function getAccessToken()
     {
         $access_token_body_urlencode =
-            'client_id=1c797945-49d2-4959-a874-800e0017f98f&scope=user.read&grant_type=refresh_token&client_secret=0M8GkVZB3j8RrsMcnuTjc7gzFYNWlGMIyZaMxpBeHEQ%3D&redirect_uri=http%3A%2F%2Flocalhost%2F&refresh_token=OAQABAAAAAADCoMpjJXrxTq9VG9te-7FX0Tt-gsgqjHuxmdYM3qT4Vbk3b6nz0Cv6TfC14RJuKQbez6sFfYFEKSBwP2-K9D7n8Dd9FMWggerNtI8i7TAmecSFdo-JxxKZKtqw-vscjl0X_tb3cju8bAHP_EUhEake9BlPpkaIDZJOeomlUltAbFAaZDdcA8wbgWojhAu5YeKplxSV-7RpDUQDQAxz08Ga6JkRYoWsJFn9knIgFlV_bnDmlv7Aq4EKCX8TtQ9tP0aix2afGLb9mA7QrBLngAaJYrQRXDlqNr36yF8QNRYOyeehSIFa23-fx9F-D9y-kASjKDpDdFZAhi0KmMiKLSr2jQ5MGgcRPh0Et891qHGoKJhYZEiV62-jaTfctGHqWxfhw4cRvA-z_rBklhLA0fRn9XRiucz7BsFIKY5wOVxF7uKt93HWmjXh1lQotTlFCXdbdR-cZID9lm6L5O2TD56FPsj0oYTz3MO0LhMNsr8EsGsXgqhp2gkB6wRoOef-EqLa1BCZ9WdTztuRdshYcJg5roJbZqn1gfUB485OPVsabLW1CqaYaBmLHhZyUAqh_sALqkkO3WMVKtcSq4hWSVLsbYD_8h8tnwRnCFdmz77OnmaZV51z5E6zqfzF3vZJvo79f0FzaJuNW0T7zdLnQ6kSgVcikmj5G4U8p6sfoVjehzqmsjwx1_opW9vI0aEa8xt3SF_f6zLC1MUihXfAM75NVFwdqXWMk3B663VVwTg2Ok5wuF7jw866F7FAh7uaq_a6PrziFeDTmkpugsUqw8Q1UcfylhP3yvIwfTKibRH5BSdjItY_uaWihAbvImAHtRqi62AhyKg7Po3lx6wB-ZyaIAA';
+            'client_id=11c797945-49d2-4959-a874-800e0017f98f&scope=user.read&grant_type=refresh_token&client_secret=0M8GkVZB3j8RrsMcnuTjc7gzFYNWlGMIyZaMxpBeHEQ%3D&redirect_uri=http%3A%2F%2Flocalhost%2F&refresh_token=OAQABAAAAAADCoMpjJXrxTq9VG9te-7FX0Tt-gsgqjHuxmdYM3qT4Vbk3b6nz0Cv6TfC14RJuKQbez6sFfYFEKSBwP2-K9D7n8Dd9FMWggerNtI8i7TAmecSFdo-JxxKZKtqw-vscjl0X_tb3cju8bAHP_EUhEake9BlPpkaIDZJOeomlUltAbFAaZDdcA8wbgWojhAu5YeKplxSV-7RpDUQDQAxz08Ga6JkRYoWsJFn9knIgFlV_bnDmlv7Aq4EKCX8TtQ9tP0aix2afGLb9mA7QrBLngAaJYrQRXDlqNr36yF8QNRYOyeehSIFa23-fx9F-D9y-kASjKDpDdFZAhi0KmMiKLSr2jQ5MGgcRPh0Et891qHGoKJhYZEiV62-jaTfctGHqWxfhw4cRvA-z_rBklhLA0fRn9XRiucz7BsFIKY5wOVxF7uKt93HWmjXh1lQotTlFCXdbdR-cZID9lm6L5O2TD56FPsj0oYTz3MO0LhMNsr8EsGsXgqhp2gkB6wRoOef-EqLa1BCZ9WdTztuRdshYcJg5roJbZqn1gfUB485OPVsabLW1CqaYaBmLHhZyUAqh_sALqkkO3WMVKtcSq4hWSVLsbYD_8h8tnwRnCFdmz77OnmaZV51z5E6zqfzF3vZJvo79f0FzaJuNW0T7zdLnQ6kSgVcikmj5G4U8p6sfoVjehzqmsjwx1_opW9vI0aEa8xt3SF_f6zLC1MUihXfAM75NVFwdqXWMk3B663VVwTg2Ok5wuF7jw866F7FAh7uaq_a6PrziFeDTmkpugsUqw8Q1UcfylhP3yvIwfTKibRH5BSdjItY_uaWihAbvImAHtRqi62AhyKg7Po3lx6wB-ZyaIAA';
 
         $server_output_token = $this->call_curl(
             $this->token_url,
             'POST',
             $access_token_body_urlencode
         );
+
+        return $server_output_token;
         return json_decode($server_output_token)->access_token;
     }
 
@@ -111,6 +113,11 @@ class TestController extends Controller
         );
 
         return json_decode($server_output_upload);
+    }
+
+    public function getParameter()
+    {
+        return view('front.test.url-parameter');
     }
 
     // public function getTest()

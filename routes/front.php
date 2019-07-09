@@ -9,8 +9,12 @@ Route::get('blogs/{blog_url}', 'BlogController@show')->name('blog.show');
 Route::get('video', 'PageController@getVideo')->name('page.video');
 Route::post('subscribe', 'PageController@postSubscribe')->name('page.subscribe')
 	->middleware('throttle:4,2');
-Route::get('test/upload-image', 'TestController@getUploadImage')->name('page.test-upload-image');
-Route::get('test/access-token', 'TestController@getAccessToken')->name('page.test-access-token');
-Route::get('test/new-job', 'TestController@getNewJob')->name('page.test-new-job');
-Route::post('test/new-job', 'TestController@postNewJob')->name('page.test-post-new-job');
 Route::get('{page_url?}', 'PageController@getIndex')->name('page.index');
+
+Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
+	Route::get('upload-image', 'TestController@getUploadImage')->name('upload-image');
+	Route::get('access-token', 'TestController@getAccessToken')->name('access-token');
+	Route::get('new-job', 'TestController@getNewJob')->name('new-job');
+	Route::post('new-job', 'TestController@postNewJob')->name('post-new-job');
+	Route::get('url-parameter', 'TestController@getParameter')->name('url-parameter');
+});

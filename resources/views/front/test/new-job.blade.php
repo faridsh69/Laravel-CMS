@@ -11,7 +11,7 @@
 	<div class="container">
 		<br>
 		<br>
-		<form action="{{ route('front.page.test-post-new-job') }}" method="post" enctype="multipart/form-data">
+		<form action="{{ route('front.test.post-new-job') }}" method="post" enctype="multipart/form-data">
 			@csrf
 			<div class="form-group">
 				<label for="parentId">Parent Folder ID: (xxx-farid-test-upload) </label>
