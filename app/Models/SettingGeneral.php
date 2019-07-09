@@ -13,6 +13,12 @@ class SettingGeneral extends Model
 
     public $columns = [
         [
+            'name' => 'app_title',
+            'type' => 'string',
+            'form_type' => '',
+            'help' => 'Name of this website.',
+        ],
+        [
             'name' => 'default_meta_title',
             'type' => 'string',
             'form_type' => '',

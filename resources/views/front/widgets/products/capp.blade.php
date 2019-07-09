@@ -5,7 +5,7 @@
             <div class="col-12 text-center">
                 <!-- Heading Text  -->
                 <div class="section-heading">
-                    <h2>App Screenshots</h2>
+                    <h2>Services</h2>
                     <div class="line-shape"></div>
                 </div>
             </div>
@@ -17,7 +17,7 @@
                 <!-- App Screenshots Slides  -->
                 <div class="app_screenshots_slides owl-carousel">
                     <div class="single-shot">
-                        <img src="{{ asset('css/front/capp/img/eric/app-1.jpg') }}" alt="prodduct 1">
+                        <img src="{{ asset('css/front/capp/img/eric/app-1.jpg') }}">
                     </div>
                     <div class="single-shot">
                         <img src="{{ asset('css/front/capp/img/eric/app-2.jpg') }}" alt="">

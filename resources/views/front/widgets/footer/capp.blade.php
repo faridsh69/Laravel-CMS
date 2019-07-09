@@ -1,7 +1,7 @@
 <footer class="footer-social-icon text-center section_padding_70 clearfix">
     <!-- footer logo -->
     <div class="footer-text">
-        <h2>Synergy Power</h2>
+        <h2>{{ config('0-general.app_title') }}</h2>
     </div>
     <!-- social icon-->
     <div class="footer-social-icon">
@@ -21,6 +21,6 @@
         </nav>
     </div>
     <div class="copyright-text">
-        <p>Copyright ©2019 SP. Designed by Farid Shahidi</p>
+        <p>Copyright ©2019. Designed by farid.sh69@gmail.com</p>
     </div>
 </footer>

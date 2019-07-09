@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
         }
         elseif(env('APP_NAME') === 'eric')
         {
+            $this->call(SlidersTableSeeder::class);
             $this->call(FeedbacksTableSeeder::class);
             $this->call(CountingsTableSeeder::class);
             $this->call(FeaturesTableSeeder::class);
