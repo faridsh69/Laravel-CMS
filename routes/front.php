@@ -17,4 +17,6 @@ Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
 	Route::get('new-job', 'TestController@getNewJob')->name('new-job');
 	Route::post('new-job', 'TestController@postNewJob')->name('post-new-job');
 	Route::get('url-parameter', 'TestController@getParameter')->name('url-parameter');
+	Route::get('thank-you', 'TestController@getThankYou')->name('thank-you');
+	Route::get('redirected', 'TestController@getRedirected')->name('redirected');
 });
