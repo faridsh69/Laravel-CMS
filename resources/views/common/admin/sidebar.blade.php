@@ -450,7 +450,7 @@
 		data-menu-vertical="true"
 			data-menu-scrollable="false" data-menu-dropdown-timeout="500">
 		<ul class="m-menu__nav m-menu__nav--dropdown-submenu-arrow">
-			@foreach($new_sidebar as $item)
+			@foreach($sidebar as $item)
 			@if($item['type'] == 'item' && Route::has($item['route']))
 			<li aria-haspopup="true" class="m-menu__item 
 				@if(Route::currentRouteName() == $item['route']) m-menu__item--active @endif" >

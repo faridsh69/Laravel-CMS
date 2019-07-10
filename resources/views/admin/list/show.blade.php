@@ -40,8 +40,27 @@
 	</div>
 	<div class="m-portlet__body">
 		<div class="m-list-timeline">
+			<h4>Activity log for this model</h4>
+			<br>
 			<div class="m-list-timeline__items">
-				{{ dd(\App\Models\Blog::first()) }}
+				@foreach($activities as $activity)
+				<div class="m-list-timeline__item">
+					<span class="m-list-timeline__badge m-list-timeline__badge--brand"></span>
+					<span class="m-list-timeline__icon flaticon-exclamation-1"></span>
+					<span class="m-list-timeline__text">
+						{{ $activity->description }}
+						By 
+						{{ $activity->causer->getFullName() }}
+					</span>
+				</div>
+				@endforeach
+			</div>
+		</div>
+	</div>
+
+	<div class="m-portlet__body">
+		<div class="m-list-timeline">
+			<div class="m-list-timeline__items">
 				@foreach($data as $key => $value)
 				<div class="m-list-timeline__item">
 					<span class="m-list-timeline__badge m-list-timeline__badge--brand"></span>

@@ -7,19 +7,16 @@ return [
     'cloud' => env('FILESYSTEM_CLOUD', 's3'),
 
     'disks' => [
-
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
         ],
-
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => config('0-general.cdn_url') . '/storage',
+            'url' => config('app.asset_url') . '/storage',
             'visibility' => 'public',
         ],
-
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
@@ -28,7 +25,5 @@ return [
             'bucket' => env('AWS_BUCKET'),
             'url' => env('AWS_URL'),
         ],
-
     ],
-
 ];

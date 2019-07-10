@@ -11,17 +11,20 @@
 <?php if ($showField): ?>
 	<div class="input-group">
 		<span class="input-group-btn">
-			<button class="lfm btn btn-brand" type="button" id="lfm" data-preview="holder" data-input="<?php echo $options['real_name']; ?>">
+			<button class="lfm btn btn-brand" type="button" id="lfm" 
+			data-preview="holder<?php echo $name ?>" 
+			data-input="<?php echo $options['real_name']; ?>">
 				<i class="fa fa-picture-o"></i> Choose Image
 			</button>
 		</span>
 		<?= Form::input('text', $name, $options['value'], $options['attr']) ?>
 	</div>
+	<?php include 'help_block.php' ?>
+	<div class="image-form">
+		<img src="<?php echo $options['value']; ?>" alt="image">
+		<div id="holder<?php echo $name ?>"></div>
+	</div>		
 
-	<img style="display:none; margin-top:10px;width: 150px" src="<?php echo $options['value']; ?>" alt="image">
-	<div id="holder" style="display:none; margin-top:10px;height:1px; width: 1px"></div>
-		
-    <?php include 'help_block.php' ?>
 <?php endif; ?>
 
 <?php include 'errors.php' ?>

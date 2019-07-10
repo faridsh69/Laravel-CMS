@@ -183,16 +183,16 @@ class BaseListController extends Controller
         $this->authorize('view', $model);
         $data = $model->getAttributes();
 
-        $lastLoggedActivity = Activity::all()->last();
-
-        dd($lastLoggedActivity->changes());
+        $activities = Activity::where('subject_type', $this->model_class)
+            ->where('subject_id', $id)
+            ->get();
 
         $this->meta['title'] = __($this->model . ' Show');
         $this->meta['alert'] = 'Simple view of a model !';
         $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.edit', $model);
         $this->meta['link_name'] = __($this->model . ' Edit Form');
 
-        return view('admin.list.show', ['data' => $data, 'meta' => $this->meta]);
+        return view('admin.list.show', ['data' => $data, 'meta' => $this->meta, 'activities' => $activities]);
     }
 
     /**
