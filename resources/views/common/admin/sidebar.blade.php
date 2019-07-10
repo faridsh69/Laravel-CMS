@@ -300,7 +300,7 @@
 			],
 		],
 		[
-			'id' => 16,
+			'id' => 17,
 			'title' => 'Counting',
 			'route' => 'counting',
 			'type' => 'submenu',
@@ -313,7 +313,7 @@
 			],
 		],
 		[
-			'id' => 17,
+			'id' => 18,
 			'title' => 'Feature',
 			'route' => 'feature',
 			'type' => 'submenu',
@@ -326,7 +326,7 @@
 			],
 		],
 		[
-			'id' => 18,
+			'id' => 19,
 			'title' => 'Team',
 			'route' => 'team',
 			'type' => 'submenu',
@@ -339,7 +339,7 @@
 			],
 		],
 		[
-			'id' => 19,
+			'id' => 20,
 			'title' => 'Partner',
 			'route' => 'partner',
 			'type' => 'submenu',
@@ -352,7 +352,7 @@
 			],
 		],
 		[
-			'id' => 20,
+			'id' => 21,
 			'title' => 'Slider',
 			'route' => 'slider',
 			'type' => 'submenu',
@@ -365,7 +365,7 @@
 			],
 		],
 		[
-			'id' => 20,
+			'id' => 22,
 			'title' => 'Pricing',
 			'route' => 'pricing',
 			'type' => 'submenu',
@@ -378,30 +378,16 @@
 			],
 		],
 	];
-		
-	$x = [
-		'id' => 21,
-		'title' => 'Header',
-		'route' => 'header',
-		'type' => 'submenu',
-		'icon' => 'flaticon-computer',
-		'children' => [
-			[
-				'title' => 'Header list',
-				'route' => 'admin.header.list.index',
-			],
-		],
-	];
 
-	if(config('services.models.platform') === 'shop')
+	if( env('APP_NAME') === 'menew' )
     {
     	$sidebar_shop = [
 			[
-				'title' => 'Bussiness',
+				'title' => 'Business',
 				'type' => 'section',
 			],
 			[
-				'id' => 100,
+				'id' => 23,
 				'title' => 'Shop',
 				'route' => 'shop',
 				'type' => 'submenu',
@@ -418,7 +404,7 @@
 				],
 			],
 			[
-				'id' => 101,
+				'id' => 24,
 				'title' => 'Product',
 				'route' => 'product',
 				'type' => 'submenu',
@@ -442,7 +428,17 @@
 
 		$sidebar = array_merge($sidebar_shop, $sidebar);
     }
-
+    $auth_user = Auth::user();
+    $new_sidebar = [];
+    foreach($sidebar as $item)
+    {
+    	if($item['title'] === 'Dashboard'){
+    		$new_sidebar[] = $item;
+    	}
+    	elseif($auth_user->hasAnyPermission(['index_' . strtolower($item['title'])])){ 
+    		$new_sidebar[] = $item;
+    	}
+    }
 @endphp
 
 <button class="m-aside-left-close  m-aside-left-close--skin-dark " id="m_aside_left_close_btn">
@@ -454,7 +450,7 @@
 		data-menu-vertical="true"
 			data-menu-scrollable="false" data-menu-dropdown-timeout="500">
 		<ul class="m-menu__nav m-menu__nav--dropdown-submenu-arrow">
-			@foreach($sidebar as $item)
+			@foreach($new_sidebar as $item)
 			@if($item['type'] == 'item' && Route::has($item['route']))
 			<li aria-haspopup="true" class="m-menu__item 
 				@if(Route::currentRouteName() == $item['route']) m-menu__item--active @endif" >

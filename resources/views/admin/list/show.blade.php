@@ -41,6 +41,7 @@
 	<div class="m-portlet__body">
 		<div class="m-list-timeline">
 			<div class="m-list-timeline__items">
+				{{ dd(\App\Models\Blog::first()) }}
 				@foreach($data as $key => $value)
 				<div class="m-list-timeline__item">
 					<span class="m-list-timeline__badge m-list-timeline__badge--brand"></span>

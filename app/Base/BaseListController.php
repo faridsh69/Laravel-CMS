@@ -10,6 +10,7 @@ use Kris\LaravelFormBuilder\FormBuilder;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 use Route;
+use Spatie\Activitylog\Models\Activity;
 use View;
 
 class BaseListController extends Controller
@@ -68,6 +69,8 @@ class BaseListController extends Controller
      */
     public function index()
     {
+        // dd( \Auth::user()->can('blog_index') );
+        // dd( \Gate::allows('index,App\Models\Blog') );
         $this->authorize('index', $this->model_class);
         $this->meta['title'] = __($this->model . ' Manager');
         $this->meta['alert'] = 'Advanced data table with sort on each column, search, paginate, status changing and full access actions with policies.';
@@ -179,6 +182,10 @@ class BaseListController extends Controller
         $model = $this->repository->findOrFail($id);
         $this->authorize('view', $model);
         $data = $model->getAttributes();
+
+        $lastLoggedActivity = Activity::all()->last();
+
+        dd($lastLoggedActivity->changes());
 
         $this->meta['title'] = __($this->model . ' Show');
         $this->meta['alert'] = 'Simple view of a model !';
