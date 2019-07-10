@@ -63,7 +63,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Team' => TeamPolicy::class,
         'App\Models\Partner' => PartnerPolicy::class,
         'App\Models\Slider' => SliderPolicy::class,
-        'App\Models\Pricing' => PricingPolicy::class,        
+        'App\Models\Pricing' => PricingPolicy::class,
     ];
 
     /**

@@ -20,3 +20,10 @@ Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
 	Route::get('thank-you', 'TestController@getThankYou')->name('thank-you');
 	Route::get('redirected', 'TestController@getRedirected')->name('redirected');
 });
+
+Route::group(['prefix' => 'test-menew', 'as' => 'test.menew.'], function () {
+	Route::get('register-restaurant', 'TestMenewController@getRegisterRestaurant')->name('register-restaurant');
+	Route::post('register-restaurant', 'TestMenewController@postRegisterRestaurant')->name('post-register-restaurant');
+	Route::get('register-thank-you', 'TestMenewController@getRegisterThankYou')->name('register-thank-you');
+
+});

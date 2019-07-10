@@ -123,8 +123,10 @@ class TestController extends Controller
     public function getThankYou(Request $request)
     {
         if($request->input('email')){
-            return redirect()->route('front.test.thank-you', 
-                ['client_id'=> rand(10000,99999)]);
+            return redirect()->route(
+                'front.test.thank-you',
+                ['client_id'=> rand(10000, 99999)]
+            );
         }
 
         return view('front.test.thank-you');

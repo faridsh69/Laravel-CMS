@@ -65,6 +65,15 @@ var BootstrapDatepicker=function() {
     }
 }();
 
+jQuery(document).ready(function() {
+    BootstrapMaxlength.init();
+    BootstrapSwitch.init();
+    BootstrapDatepicker.init();
+    BootstrapSelect.init();
+    $("#admin_form").validate({});
+    $('.lfm').filemanager('image');
+});
+
 // bootstrap ckeditor
 var ckeditorOptions = {
     filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
@@ -81,13 +90,4 @@ inputsWithTypeTextarea.each(function(){
     {
         CKEDITOR.replace(input.attr('id'), ckeditorOptions);
     }
-});
-
-jQuery(document).ready(function() {
-    BootstrapMaxlength.init();
-    BootstrapSwitch.init();
-    BootstrapDatepicker.init();
-    BootstrapSelect.init();
-    $("#admin_form").validate({});
-    $('.lfm').filemanager('image');
 });

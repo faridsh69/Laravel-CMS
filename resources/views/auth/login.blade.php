@@ -46,6 +46,7 @@
 						{{ __('Login') }}
 					</button>
 				</div>
+				<div class="text-center">
 				@foreach(\Config::get('services.social_companies') as $social_company)
 					@php 
 						$social = strtolower($social_company);
@@ -64,6 +65,7 @@
 					<i class="fa fa-{{$social}}"></i>
 				</a>
 				@endforeach
+				</div>
 			</form>
 		</div>
 	</div>

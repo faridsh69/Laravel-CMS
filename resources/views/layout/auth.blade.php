@@ -49,7 +49,7 @@
 			</div>
 		</div>
 		@include('common.admin.scripts')
-
+		@stack('scripts')
 	<!-- <script src="{{ asset('js/admin/login.js') }}"></script> -->
 	</body>
 	<!-- end::Body -->

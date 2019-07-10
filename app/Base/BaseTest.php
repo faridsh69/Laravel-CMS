@@ -75,7 +75,7 @@ class BaseTest extends TestCase
         $this
             ->get(route('admin.' . strtolower($this->model) . '.list.restore', $fake_model))
             ->assertRedirect(route('admin.' . strtolower($this->model) . '.list.index'));
-        
+
         // delete fake model
         $this
             ->delete(route('admin.' . strtolower($this->model) . '.list.destroy', $fake_model))

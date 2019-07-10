@@ -53,7 +53,6 @@ class SettingDeveloper extends Model
             'form_type' => 'checkbox',
             'help' => 'Lazy loading is neccessary for fast website initial loading.',
         ],
-        
         [
             'name' => 'email_username',
             'type' => 'string',
