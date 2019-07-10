@@ -21,7 +21,9 @@
 	</div>
 	<?php include 'help_block.php' ?>
 	<div class="image-form">
-		<img src="<?php echo $options['value']; ?>" alt="image">
+		<?php if ($options['value']): ?>
+			<img src="<?php echo $options['value']; ?>" alt="image">
+		<?php endif; ?>
 		<div id="holder<?php echo $name ?>"></div>
 	</div>		
 

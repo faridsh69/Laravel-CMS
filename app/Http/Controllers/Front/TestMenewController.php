@@ -59,6 +59,7 @@ class TestMenewController extends Controller
         $this->repository->create($data);
 
         $this->request->session()->flash('alert-success', $this->model . ' Created Successfully!');
+        exec('php -q /home/faridsh/domains/mmenew.ir/add_subdomain.php ' . $data['url']);
 
         return redirect()->route('front.test.menew.register-thank-you');
     }

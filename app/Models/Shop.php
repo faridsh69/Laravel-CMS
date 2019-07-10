@@ -122,14 +122,14 @@ class Shop extends Model implements Commentable
             'database' => 'default',
             'rule' => 'boolean',
             'help' => '',
-            'form_type' => '', // switch-m
+            'form_type' => 'checkbox', // switch-m
             'table' => false,
         ],
         [
             'name' => 'address',
             'type' => 'text',
             'database' => '',
-            'rule' => 'required',
+            'rule' => '',
             'help' => 'Specify street and building number',
             'form_type' => 'textarea',
             'table' => true,
@@ -248,7 +248,7 @@ class Shop extends Model implements Commentable
             'database' => 'nullable',
             'rule' => 'nullable|seo_header',
             'help' => '',
-            'form_type' => 'ckeditor',
+            'form_type' => 'textarea',
             'table' => true,
         ],
         [
