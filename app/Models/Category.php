@@ -91,6 +91,13 @@ class Category extends Model
             'type' => 'integer',
             'database' => 'none',
             'form_type' => 'none',
+            'table' => false,
+        ],
+        [
+            'name' => 'order',
+            'type' => 'integer',
+            'database' => '',
+            'form_type' => '',
             'table' => true,
         ],
         [
@@ -119,7 +126,7 @@ class Category extends Model
     ];
 
     protected $fillable = [
-        'title', 'url', 'description', 'meta_description', 'meta_image', 'activated', 'google_index', 'canonical_url', 'parent_id', '_rgt', '_lft', 'shop_id',
+        'title', 'url', 'description', 'meta_description', 'meta_image', 'activated', 'google_index', 'canonical_url', 'parent_id', '_rgt', '_lft', 'shop_id', 'order',
     ];
 
     protected $appends = ['text'];

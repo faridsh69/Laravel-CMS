@@ -26,7 +26,7 @@ class ResourceController extends BaseListController
                 'title' => preg_replace('/([a-z])([A-Z])/s', '$1 $2', \Str::studly($column['name'])),
             ];
         }
-        $categories = $this->repository->get()->toTree();
+        $categories = $this->repository->orderBy('order', 'asc')->get()->toTree();
 
         return view('admin.list.tree-table', [
             'meta' => $this->meta,
@@ -47,14 +47,14 @@ class ResourceController extends BaseListController
 
     public function saveTree($categories, $parent)
     {
+        $order = 0;
         foreach($categories as $category)
         {
-            $order += 2;
+            $order ++;
             $node = Category::updateOrCreate(
                 ['id' => $category->id],
                 [
-                    '_lft' => $order,
-                    '_rgt' => $order + 1,
+                    'order' => $order,
                 ]
             );
             if(isset($parent)){
@@ -68,6 +68,6 @@ class ResourceController extends BaseListController
 
     public function getTree()
     {
-    	return $this->repository->orderBy('_rgt', 'asc')->get()->toTree();
+    	return $this->repository->orderBy('order', 'asc')->get()->toTree();
     }
 }

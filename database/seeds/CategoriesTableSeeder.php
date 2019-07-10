@@ -36,13 +36,16 @@ class CategoriesTableSeeder extends Seeder
 
     public function saveTree($categories, $parent)
     {
+        $order = 0;
         foreach($categories as $category)
         {
+            $order ++;
             $node = Category::updateOrCreate(
                 ['id' => $category['id']],
                 [
                     'title' => $category['title'],
                     'url' => Str::slug($category['title']),
+                    'order' => $order,
                     'activated' => 1,
                     'google_index' => 1,
                 ]

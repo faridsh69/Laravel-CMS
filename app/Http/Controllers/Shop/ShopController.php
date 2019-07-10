@@ -24,7 +24,7 @@ class ShopController extends Controller
 
         $categories = Category::where('shop_id', $shop->id)
             ->active()
-            ->orderBy('_rgt', 'asc')
+            ->orderBy('order', 'asc')
             ->get();
 
         return view('front.shop.index', [

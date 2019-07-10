@@ -76,15 +76,8 @@ class BaseTest extends TestCase
             ->get(route('admin.' . strtolower($this->model) . '.list.restore', $fake_model))
             ->assertRedirect(route('admin.' . strtolower($this->model) . '.list.index'));
 
-        // delete fake model
-        $this
-            ->delete(route('admin.' . strtolower($this->model) . '.list.destroy', $fake_model))
-            ->assertRedirect(route('admin.' . strtolower($this->model) . '.list.index'));
-
-        // if($this->model === 'User' || $this->model === 'Category' || $this->model === 'Menu'
-        //     || $this->model === 'Block')
-        // {
-        // }else{
+        // force delete fake model
+        $fake_model->forceDelete();
     }
 
     private function _checkMethod($mothod_name)

@@ -57,8 +57,8 @@ class RoleController extends BaseListController
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
         $data = $form->getFieldValues();
-        $permissions = Permission::whereIn('id', $data['permissions'])->get();
         $role = Role::create(['name' => $data['name']]);
+        $permissions = Permission::whereIn('id', $data['permissions'])->get();
         $role->syncPermissions($permissions);
         if(isset($data['users'])){
             $users = User::whereIn('id', $data['users'])->get();
@@ -120,11 +120,20 @@ class RoleController extends BaseListController
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
         $data = $form->getFieldValues();
+        $old_name = $model->name;
+        $old_users = User::whereHas('roles', function($q) use($old_name){ 
+            $q->where('name', $old_name); 
+        })
+        ->get();
         $model->name = $data['name'];
         $model->save();
         $permissions = Permission::whereIn('id', $data['permissions'])->get();
         $model->syncPermissions($permissions);
         if(isset($data['users'])){
+            foreach($old_users as $old_user){
+                $old_user->removeRole($model->name);
+            }
+
             $users = User::whereIn('id', $data['users'])->get();
             foreach($users as $user){
                 $user->assignRole($model->name);

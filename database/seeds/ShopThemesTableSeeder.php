@@ -12,7 +12,7 @@ class ShopThemesTableSeeder extends Seeder
     {
     	$themes = [
             [
-            	'id' => 4,
+            	'id' => 3,
             	'title' => 'menew',
                 'description' => 'menew custom theme',
             	'activated' => 1,

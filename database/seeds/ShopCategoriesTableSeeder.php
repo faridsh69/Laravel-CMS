@@ -166,14 +166,17 @@ class ShopCategoriesTableSeeder extends Seeder
 
     public function saveTree($categories, $parent)
     {
+        $order = 0;
         foreach($categories as $category)
         {
+            $order ++;
             $node = Category::updateOrCreate(
                 ['id' => $category['id']],
                 [
                     'title' => $category['title'],
                     'meta_image' => asset('images/icons/restaurant_pack/' . $category['meta_image']),
                     'shop_id' => $category['shop_id'],
+                    'order' => $order,
                     'description' => $category['title'],
                     'meta_description' => $category['title'],
                     'url' => Str::slug($category['title']),
