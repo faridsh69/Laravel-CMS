@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Feature;
 use Illuminate\Database\Seeder;
+use App\Models\Feature;
 
 class FeaturesTableSeeder extends Seeder
 {
@@ -12,25 +12,25 @@ class FeaturesTableSeeder extends Seeder
      */
     public function run()
     {
-	    // title, description, icon, activated
+        // title, description, icon, activated
         $features = [
             [
                 'id' => 1,
-                'title' => 'Call the Best!',
+                'title' => 'Easy to use',
                 'icon' => 'ti-mobile',
-                'description' => 'Serving the Bay Area for 14 years!',
+                'description' => 'We build pretty complex tools and this allows us to take designs and turn them into functional quickly and easily',
             ],
             [
                 'id' => 2,
-                'title' => 'Earn $400',
+                'title' => 'Powerful Design',
                 'icon' => 'ti-money',
-                'description' => 'When You Refer Another Customer!',
+                'description' => 'We build pretty complex tools and this allows us to take designs and turn them into functional quickly and easily',
             ],
             [
                 'id' => 3,
-                'title' => 'Call Today',
+                'title' => 'Customizability',
                 'icon' => 'ti-settings',
-                'description' => 'To Get Tax Rebates Before It’s Too Late!',
+                'description' => 'We build pretty complex tools and this allows us to take designs and turn them into functional quickly and easily',
             ],
         ];
 
@@ -39,4 +39,3 @@ class FeaturesTableSeeder extends Seeder
         }
     }
 }
-

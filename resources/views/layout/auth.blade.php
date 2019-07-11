@@ -11,7 +11,7 @@
 		<meta name="author" content="farid shahidi">
 		<meta name="csrf-token" content="{{ csrf_token() }}">
 
-		<title>Login To Dashboard</title>
+		<title>{{ config('0-general.app_title') }}</title>
 		<meta name="description" content="admin login page">
 
 		<link rel="canonical" href="{{ url()->current() }}">

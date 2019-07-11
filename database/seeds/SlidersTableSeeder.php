@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Slider;
 use Illuminate\Database\Seeder;
+use App\Models\Slider;
 
 class SlidersTableSeeder extends Seeder
 {
@@ -12,41 +12,27 @@ class SlidersTableSeeder extends Seeder
      */
     public function run()
     {
-	    // title, description, image, activated
+        // title, description, image, activated
         $sliders = [
             [
             	'id' => 1,
-            	'title' => 'SP',
+            	'title' => 'F SH',
             	'description' => '',
-            	'image' => asset('css/front/capp/img/bg-img/welcome-bg.png'),
+            	'image' => asset('css/front/capp/img/bg-img/welcome-bg1.png'),
             	'activated' => 1,
             ],
             [
             	'id' => 2,
-            	'title' => 'Synergy Power',
-            	'description' => 'Go Solar. Save Money.',
-            	'image' => asset('storage/files/shares/welcome.png'),
+            	'title' => 'Farid Shahidi',
+            	'description' => 'Everything You Need. To Start Selling Online Beautifully.',
+            	'image' => asset('css/front/capp/img/bg-img/welcome-img.png'),
             	'activated' => 1,
             ],
             [
             	'id' => 3,
-            	'title' => 'Solar Panel Installation',
-            	'description' => 'We’re with you every step of the way, including system design, engineering, permitting, utility interconnection paperwork, installation, and ongoing off-site monitoring.',
-            	'image' => asset('css/front/capp/img/eric/icon1.jpg'),
-            	'activated' => 1,
-            ],
-            [
-            	'id' => 4,
-            	'title' => 'Solar Panel Maintenance',
-            	'description' => 'Is your current solar system producing at maximum capacity? Maybe not. A few times a year, the panels should be inspected for any dirt or debris that may collect on them.',
-            	'image' => asset('css/front/capp/img/eric/icon3.jpg'),
-            	'activated' => 1,
-            ],
-            [
-            	'id' => 5,
-            	'title' => 'Panel Repairs & Add-Ons',
-            	'description' => 'We provide warranty repairs to any solar system we have installed! If your system isn’t working as it should, call us immediately and we will fix the problem right away. We also provide add-ons!',
-            	'image' => asset('css/front/capp/img/eric/icon2.jpg'),
+            	'title' => 'Our Best Propositions for You!',
+            	'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.',
+            	'image' => asset('css/front/capp/img/bg-img/special.png'),
             	'activated' => 1,
             ],
         ];

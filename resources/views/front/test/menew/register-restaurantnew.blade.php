@@ -11,22 +11,25 @@
 		<div class="m-login__signin">
 			<div class="m-login__head">
 				<h3 class="m-login__title">
-					{{ __('Sign In To Admin') }}
+					{{ __('Register Your Shop') }}
 				</h3>
+				<h6 class="text-center">
+					<small>
+						Only 4 fields are required until email address
+					</small>
+				</h6>
 			</div>
+
 			{!! form($form) !!}
+
+			@if(false)
+			{!! form_start($form) !!}
+			{!! form_row($form->title) !!}
+			{!! form_row($form->title_fa) !!}
+			{!! form_row($form->url) !!}
+			{!! form_row($form->email) !!}
+			@endif
 		</div>
-	</div>
-</div>
-<div class="m-stack__item m-stack__item--center">
-	<div class="m-login__account">
-		<span class="m-login__account-msg">
-			{{ __('Do you have any account yet?') }}
-		</span>
-		&nbsp;&nbsp;
-		<a href="{{ route('register') }}" id="m_login_signup" class="m-link m-link--focus m-login__account-link">
-			{{ __('Register') }}
-		</a>
 	</div>
 </div>
 @endsection
