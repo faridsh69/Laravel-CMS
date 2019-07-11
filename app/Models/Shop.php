@@ -54,6 +54,15 @@ class Shop extends Model implements Commentable
 
     public $columns = [
         [
+            'name' => 'full_name',
+            'type' => 'string',
+            'database' => '',
+            'rule' => 'required',
+            'help' => 'Enter your first name and last name.',
+            'form_type' => '',
+            'table' => false,
+        ],
+        [
             'name' => 'title',
             'type' => 'string',
             'database' => '',
@@ -65,8 +74,8 @@ class Shop extends Model implements Commentable
         [
             'name' => 'title_fa',
             'type' => 'string',
-            'database' => '',
-            'rule' => 'required',
+            'database' => 'nullable',
+            'rule' => '',
             'help' => '',
             'form_type' => '',
             'table' => false,
@@ -74,9 +83,9 @@ class Shop extends Model implements Commentable
         [
             'name' => 'url',
             'type' => 'string',
-            'database' => 'unique',
-            'rule' => 'required|max:80|unique:shops,url,',
-            'help' => 'Name that will use in url (subdomain).',
+            'database' => 'nullable',
+            'rule' => 'nullable',
+            'help' => '(Your Url).menew.ir',
             'form_type' => '',
             'table' => true,
         ],
@@ -84,10 +93,19 @@ class Shop extends Model implements Commentable
             'name' => 'email',
             'type' => 'string',
             'database' => '',
-            'rule' => 'required|unique:shops,email,',
+            'rule' => 'required',
             'help' => '',
             'form_type' => 'email',
             'table' => true,
+        ],
+        [
+            'name' => 'mobile',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => 'numeric',
+            'help' => '',
+            'form_type' => '',
+            'table' => false,
         ],
         [
             'name' => 'logo',
@@ -154,15 +172,6 @@ class Shop extends Model implements Commentable
         ],
         [
             'name' => 'postal_code',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => '',
-            'help' => '',
-            'form_type' => '',
-            'table' => false,
-        ],
-        [
-            'name' => 'mobile',
             'type' => 'string',
             'database' => 'nullable',
             'rule' => '',

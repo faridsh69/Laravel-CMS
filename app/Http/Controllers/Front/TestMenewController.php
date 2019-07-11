@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
+use Str;
 
 class TestMenewController extends Controller
 {
@@ -33,6 +34,7 @@ class TestMenewController extends Controller
         $this->request = $request;
         $this->model_form = 'App\\Forms\\' . $this->model . 'Form';
         $this->repository = new $this->model_class();
+        $this->model_columns = $this->repository->getColumns();
     }
 
     public function getRegisterRestaurant()
@@ -56,10 +58,20 @@ class TestMenewController extends Controller
         }
         $data = $form->getFieldValues();
         unset($data['tags']);
+        $data['url'] = Str::slug($data['title']);
+
+        foreach(collect($this->model_columns)->where('type', 'boolean')->pluck('name') as $boolean_column)
+        {
+            if(! isset($data[$boolean_column]))
+            {
+                $data[$boolean_column] = 0;
+            }
+        }
+
         $this->repository->create($data);
 
         $this->request->session()->flash('alert-success', $this->model . ' Created Successfully!');
-        exec('php -q /home/faridsh/domains/subdomain/add_subdomain.php ' . $data['url']);
+        // exec('php -q /home/faridsh/domains/subdomain/add_subdomain.php ' . $data['url']);
 
         return redirect()->route('front.test.menew.register-thank-you');
     }

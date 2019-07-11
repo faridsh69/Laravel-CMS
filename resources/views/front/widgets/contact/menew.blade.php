@@ -1,7 +1,10 @@
 <section class="contactsection">
 	<div class="headtitle">تماس با ما</div>
 	<div class="contactbox">
-		<form id="contactform" class="contactform" action="">
+
+		<iframe src="{{ route('front.test.menew.register-restaurant') }}" style="width: 100%; height: 900px;"></iframe>
+		@if(false)
+		<form id="contactform" class="contactform" action="" style="display: none;">
 			<div class="errorbox"></div>
 			<br class="clear" />
 			<div class="inputer">
@@ -26,5 +29,6 @@
 			</div>
 			<button class="formbtn" id="sendbtn"><span class="txt">ارسال!</span><span class="bgbox"></span></button>
 		</form>
+		@endif
 	</div>
 </section>

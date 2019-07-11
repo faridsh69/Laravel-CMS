@@ -13,6 +13,7 @@ class ShopsTableSeeder extends Seeder
     	$shops = [
     		[
     			'id' => 1,
+                'full_name' => 'Khaleghian',
                 'title' => 'Denja Bakery Café',
                 'title_fa' => 'کافه نان دِنجا',
             	'url' => 'denja',
@@ -42,6 +43,7 @@ class ShopsTableSeeder extends Seeder
         	],
         	[
     			'id' => 2,
+                'full_name' => 'Ehsan Mirabzade',
                 'title' => 'Cinema Café',
             	'title_fa' => 'کافه سینما',
             	'url' => 'cinema',

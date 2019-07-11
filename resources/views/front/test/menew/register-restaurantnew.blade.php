@@ -20,15 +20,16 @@
 				</h6>
 			</div>
 
-			{!! form($form) !!}
-
 			@if(false)
-			{!! form_start($form) !!}
-			{!! form_row($form->title) !!}
-			{!! form_row($form->title_fa) !!}
-			{!! form_row($form->url) !!}
-			{!! form_row($form->email) !!}
+			{!! form($form) !!}
 			@endif
+
+			{!! form_start($form) !!}
+			{!! form_row($form->full_name) !!}
+			{!! form_row($form->title) !!}
+			{!! form_row($form->email) !!}
+			{!! form_row($form->mobile) !!}
+			{!! form_row($form->submit) !!}
 		</div>
 	</div>
 </div>

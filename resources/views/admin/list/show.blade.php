@@ -51,6 +51,8 @@
 						{{ $activity->description }}
 						By 
 						{{ $activity->causer->getFullName() }}
+						At
+						{{ $activity->created_at }}
 					</span>
 				</div>
 				@endforeach
