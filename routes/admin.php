@@ -33,6 +33,8 @@ foreach($models as $model_sm)
 Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'as' => 'dashboard.'], function () {
 	Route::get('', 'DashboardController@index')->name('index');
 	Route::get('profile', 'DashboardController@getProfile')->name('profile');
+	Route::put('profile', 'DashboardController@updateProfile')->name('update-profile');
+	Route::get('activity', 'DashboardController@getActivity')->name('activity');
 });
 Route::group(['prefix' => 'category', 'namespace' => 'Category', 'as' => 'category.'], function () {
 	Route::get('tree', 'ResourceController@getTree')->name('tree');

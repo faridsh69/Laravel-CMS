@@ -118,6 +118,15 @@ class User extends Authenticatable
             'table' => false,
         ],
         [
+            'name' => 'profile_image',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => 'nullable|max:191',
+            'help' => '',
+            'form_type' => 'image',
+            'table' => false,
+        ],
+        [
             'name' => 'activated',
             'type' => 'boolean',
             'database' => 'default',
