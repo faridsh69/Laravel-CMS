@@ -13,12 +13,6 @@ class PageController extends Controller
 {
     public function getIndex($page_url = '/')
     {
-        // if($page_url === 'domain'){
-        //     exec("php -q /home/faridsh/domains/subdomain/add_subdomain.php uxu");
-
-        //     return 1;
-        // }
-
         $page = Page::where('url', $page_url)->active()->first();
         abort_if(! $page, 404);
 
