@@ -128,7 +128,7 @@ class Shop extends Model implements Commentable
         [
             'name' => 'address',
             'type' => 'text',
-            'database' => '',
+            'database' => 'nullable',
             'rule' => '',
             'help' => 'Specify street and building number',
             'form_type' => 'textarea',
