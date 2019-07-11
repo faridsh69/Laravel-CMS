@@ -121,10 +121,9 @@ class RoleController extends BaseListController
         }
         $data = $form->getFieldValues();
         $old_name = $model->name;
-        $old_users = User::whereHas('roles', function($q) use($old_name){ 
-            $q->where('name', $old_name); 
-        })
-        ->get();
+        $old_users = User::whereHas('roles', function($q) use($old_name){
+            $q->where('name', $old_name);
+        })->get();
         $model->name = $data['name'];
         $model->save();
         $permissions = Permission::whereIn('id', $data['permissions'])->get();

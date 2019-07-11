@@ -54,7 +54,6 @@ class DashboardController extends BaseAdminController
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
         $data = $form->getFieldValues();
-        $main_data = $data;
 
         foreach(collect($this->model_columns)->where('type', 'boolean')->pluck('name') as $boolean_column)
         {
@@ -70,6 +69,7 @@ class DashboardController extends BaseAdminController
         else{
             $data['password'] = $model->password;
         }
+
         unset($data['password_confirmation']);
         $model->update($data);
 

@@ -193,7 +193,7 @@
 											</span>
 										</a>
 									</li>
-									<li class="m-nav__item">
+									<!-- <li class="m-nav__item">
 										<a href="{{ route('admin.dashboard.profile') }}" class="m-nav__link">
 											<i class="m-nav__link-icon flaticon-chat-1"></i>
 											
@@ -210,7 +210,7 @@
 												</span>
 											</span>
 										</a>
-									</li>
+									</li> -->
 									<li class="m-nav__separator m-nav__separator--fit"></li>
 									<li class="m-nav__item">
 										<a href="{{ route('logout') }}" 
