@@ -195,6 +195,7 @@ class BlocksTableSeeder extends Seeder
 
         foreach($blocks as $block){
             unset($block['widget_id']);
+            unset($block['theme']);
             Block::updateOrCreate(['id' => $block['id']], $block);
         }
     }
