@@ -40,8 +40,8 @@ class Page extends Model
         [
             'name' => 'meta_description',
             'type' => 'string',
-            'database' => '',
-            'rule' => 'required|max:191|min:30',
+            'database' => 'nullable',
+            'rule' => 'nullable|max:191|min:30',
             'help' => 'Meta description should have minimum 30 and maximum 191 characters.',
             'form_type' => 'textarea',
             'table' => false,

@@ -16,7 +16,7 @@ class PagesTableSeeder extends Seeder
             	'title' => 'Home',
             	'url' => '/',
             	'content' => '<h1>Welcome</h1>',
-            	'meta_description' => 'description about home page',
+            	'meta_description' => '',
             	'activated' => 1,
             	'google_index' => 1,
             	'meta_image' => '',

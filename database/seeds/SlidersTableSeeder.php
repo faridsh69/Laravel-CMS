@@ -16,14 +16,14 @@ class SlidersTableSeeder extends Seeder
         $sliders = [
             [
             	'id' => 1,
-            	'title' => 'F SH',
+            	'title' => 'CMS',
             	'description' => '',
             	'image' => asset('css/front/capp/img/bg-img/welcome-bg1.png'),
             	'activated' => 1,
             ],
             [
             	'id' => 2,
-            	'title' => 'Farid Shahidi',
+            	'title' => 'Laravel CMS',
             	'description' => 'Everything You Need. To Start Selling Online Beautifully.',
             	'image' => asset('css/front/capp/img/bg-img/welcome-img.png'),
             	'activated' => 1,
@@ -31,7 +31,8 @@ class SlidersTableSeeder extends Seeder
             [
             	'id' => 3,
             	'title' => 'Our Best Propositions for You!',
-            	'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.',
+            	'description' => 'When we create a model we can define type of column, type of input in forms, rules, help block, showing on table or not, ...
+We can tell laravel what we want in an static array then every other things will autogenerate!.',
             	'image' => asset('css/front/capp/img/bg-img/special.png'),
             	'activated' => 1,
             ],

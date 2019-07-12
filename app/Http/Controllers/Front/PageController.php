@@ -17,11 +17,11 @@ class PageController extends Controller
         abort_if(! $page, 404);
 
         $meta = [
-            'title' => $page->title,
-            'description' => $page->meta_description,
+            'title' => config('0-general.default_meta_title') . $page->title,
+            'description' => $page->meta_description ?: config('0-general.default_meta_description'),
             'keywords' => $page->keywords,
-            'image' => $page->meta_image,
-            'google_index' => $page->google_index,
+            'image' => $page->meta_image ?: config('0-general.default_meta_image'),
+            'google_index' => config('0-general.google_index') ?: $page->google_index,
             'canonical_url' => $page->canonical_url ?: url()->current(),
         ];
 
