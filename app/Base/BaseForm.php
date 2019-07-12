@@ -22,7 +22,7 @@ class BaseForm extends Form
         if(isset($this->model->id)){
             $this->id = $this->model ? $this->model->id : 0;
         }
-
+        // you can add another fields with define addTop function in form
         $this->addTop();
 
         foreach($this->columns as $column)
@@ -34,10 +34,10 @@ class BaseForm extends Form
             $database = isset($column['database']) ? $column['database'] : null;
             $form_type = $column['form_type'];
 
-            // help
-            if($help === ''){
-                $help = ' ';
-            }
+            // if help in null
+            // if($help === ''){
+            //     $help = ' ';
+            // }
 
             // rule
             if($database === 'unique' || strpos($rule, 'unique') !== false){

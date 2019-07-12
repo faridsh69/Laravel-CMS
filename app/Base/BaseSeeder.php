@@ -13,8 +13,9 @@ class BaseSeeder extends Seeder
 	    foreach($models as $model) {
 	    	$model_class_name = 'App\\Models\\' . ucfirst($model);
 	    	$repository = new $model_class_name();
+	    	// if repository is empty then it will generate fake data
 	    	if(! $repository->first()){
-	        	factory('App\\Models\\' . ucfirst($model), 3)->create();
+	        	factory('App\\Models\\' . ucfirst($model), 5)->create();
 	        }
 	    }
 	}

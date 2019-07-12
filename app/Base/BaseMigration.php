@@ -37,10 +37,11 @@ class BaseMigration extends Migration
                 $type = isset($column['type']) ? $column['type'] : '';
                 $database = isset($column['database']) ? $column['database'] : '';
                 $relation = isset($column['relation']) ? $column['relation'] : '';
-
+                // if database attribute is 'none' it means it dont need database column 
                 if($database === 'none'){
                     continue;
                 }
+                // for create foreign key relation attribute should be defined
                 elseif($relation){
                     $table->unsignedBigInteger($name);
                     $table->foreign($name)->references('id')->on($relation);
@@ -49,16 +50,20 @@ class BaseMigration extends Migration
                     $table->{$type}($name)->{$database}(true);
                 }
             }
+            // for sortable models need to add another column based on trait soratable 
             if($table_name === 'categories' || $table_name === 'menus' || $table_name === 'blocks'){
                 $table->nestedSet();
             }
+            // for users table need to have rememberToken
             if($table_name === 'users'){
                 $table->rememberToken();
             }
+            // for addresses table need to have latitude, longitude
             if($table_name === 'addresses'){
                 $table->decimal('latitude', 10, 8)->nullable();
                 $table->decimal('longitude', 11, 8)->nullable();
             }
+            // for all tables timestamps and softDelete created
             $table->timestamps();
             $table->softDeletes();
         });
