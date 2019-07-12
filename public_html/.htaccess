@@ -31,8 +31,7 @@
 </IfModule>
 
 <IfModule mod_expires.c>
-    # ExpiresActive On
-    # ModPagespeed off
+    ExpiresActive On
 
     # Images
     ExpiresByType image/jpeg "access plus 1 year"
@@ -71,7 +70,7 @@
 </IfModule>
 
 <ifModule mod_gzip.c>
-    # mod_gzip_on Yes
+    mod_gzip_on Yes
     mod_gzip_dechunk Yes
     mod_gzip_item_include file .(html?|txt|css|js|php|pl)$
     mod_gzip_item_include handler ^cgi-script$
