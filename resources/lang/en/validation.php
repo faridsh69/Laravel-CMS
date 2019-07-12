@@ -117,6 +117,7 @@ return [
     'url' => 'The :attribute format is invalid.',
     'uuid' => 'The :attribute must be a valid UUID.',
     'phone' => 'The :attribute field contains an invalid number.',
+    'seo_header' => 'The :attribute should has exactly 1 H1 tag and atleast 1 H2 tag.',
     // 'enum_key' => 'Select an item.',
     // 'enum_value' => 'Select an item.',
     /*

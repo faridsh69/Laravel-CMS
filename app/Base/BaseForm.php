@@ -29,15 +29,10 @@ class BaseForm extends Form
         {
             $name = $column['name'];
             $type = $column['type'];
-            $form_type = $column['form_type'];
             $rule = $column['rule'];
+            $form_type = $column['form_type'];
             $help = isset($column['help']) ? $column['help'] : ' ';
             $database = isset($column['database']) ? $column['database'] : null;
-
-            // if help in null
-            // if($help === ''){
-            //     $help = ' ';
-            // }
 
             // if column is unique it will add id for edit mode
             if($database === 'unique' || strpos($rule, 'unique') !== false){
@@ -101,7 +96,7 @@ class BaseForm extends Form
                 $input_type = 'select';
                 $option['attr'] = ['class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker'];
             }
-            // create image file browser 
+            // create image file browser for select image
             elseif($form_type === 'image'){
                 $input_type = 'image';
             }

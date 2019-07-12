@@ -4,18 +4,36 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Print PDF</title>
-	<link href="{{ asset('css/admin/vendors.bundle.css') }}" rel="stylesheet" type="text/css" />
-	<link href="{{ asset('css/admin/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+	<link rel="shortcut icon" href="{{ asset(config('0-general.favicon')) }}" />
 	<style>
-		html, body {
-		    display: block;
+		.table {
+			font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		.table td, .table th {
+			border: 1px solid #ddd;
+			padding: 8px;
+		}
+
+		.table tr:nth-child(even){background-color: #f2f2f2;}
+
+		.table tr:hover {background-color: #ddd;}
+
+		.table th {
+			padding-top: 12px;
+			padding-bottom: 12px;
+			text-align: left;
+			background-color: #4CAF50;
+			color: white;
 		}
 	</style>
 </head><body>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-xs-12">
-			<table class="table table-striped table-bordered table-responsive">
+			<table class="table">
 				<tr>
 					@if(count($list) > 0)
 						<td>ID</td>
@@ -39,6 +57,6 @@
 	</div>
 </div>
 <script>
-	window.print();
+	// window.print();
 </script>
 </body></html>

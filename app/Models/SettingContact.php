@@ -15,25 +15,25 @@ class SettingContact extends Model
         [
             'name' => 'email',
             'type' => 'string',
-            'rule' => '',
+            'rule' => 'email',
             'form_type' => 'email',
         ],
         [
             'name' => 'mobile',
             'type' => 'string',
-            'rule' => '',
+            'rule' => 'nullable|numeric',
             'form_type' => '',
         ],
         [
             'name' => 'phone',
             'type' => 'string',
-            'rule' => '',
+            'rule' => 'nullable|numeric',
             'form_type' => '',
         ],
         [
             'name' => 'fax',
             'type' => 'string',
-            'rule' => '',
+            'rule' => 'nullable|numeric',
             'form_type' => '',
         ],
         [

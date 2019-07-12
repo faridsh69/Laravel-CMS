@@ -59,6 +59,7 @@ $output = [
             'partner',
             'slider',
             'pricing',
+            'service',
         ],
         'seeder' => [
             'blog',
@@ -93,6 +94,7 @@ $output = [
             'partner',
             'slider',
             'pricing',
+            'service',
         ],
         'permissions' => [
             'blog',
@@ -119,6 +121,7 @@ $output = [
             'partner',
             'slider',
             'pricing',
+            'service',
         ],
     ],
 ];

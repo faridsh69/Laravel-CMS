@@ -21,19 +21,17 @@ class BaseFactory
                 $output = [];
                 foreach($columns as $column){
                     $fake_data = null;
+
                     $name = $column['name'];
                     $type = $column['type'];
+                    $rule = $column['rule'];
                     $form_type = $column['form_type'];
-                    $rule = isset($column['rule']) ? $column['rule'] : null;
-                    $database = isset($column['database']) ? $column['database'] : '';
+                    $help = isset($column['help']) ? $column['help'] : ' ';
+                    $database = isset($column['database']) ? $column['database'] : null;
 
-                    // $string_length = $this->checkStringLength()
-
+                    // if database column is nullable its not neccessary to fill it
                     if($database === 'nullable' || $database === 'none'){
                         continue;
-                    }
-                    elseif($name === 'meta_description'){
-                        $fake_data = $faker->realText(100);
                     }
                     elseif($name === 'password'){
                         $password = $faker->realText(10);
@@ -45,6 +43,9 @@ class BaseFactory
                     elseif($name === 'content'){
                         $fake_data = '<h1>Fake h1</h1><h2>Fake h2</h2>' . $faker->realText(400);
                     }
+                    elseif($name === 'meta_description'){
+                        $fake_data = $faker->realText(100);
+                    }
                     elseif($form_type === 'email'){
                         $fake_data = $faker->unique()->safeEmail;
                     }
@@ -55,7 +56,7 @@ class BaseFactory
                         $fake_data = 1;
                     }
                     elseif($type === 'string'){
-                        $fake_data = 'Fake ' . $faker->realText(50);
+                        $fake_data = 'Fake ' . $faker->realText(20);
                     }
 
                     $output[$name] = $fake_data;

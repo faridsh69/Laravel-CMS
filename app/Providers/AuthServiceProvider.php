@@ -16,6 +16,7 @@ use App\Policies\PagePolicy;
 use App\Policies\PartnerPolicy;
 use App\Policies\PricingPolicy;
 use App\Policies\ProductPolicy;
+use App\Policies\ServicePolicy;
 use App\Policies\SettingContactPolicy;
 use App\Policies\SettingDeveloperPolicy;
 use App\Policies\SettingGeneralPolicy;
@@ -64,6 +65,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Partner' => PartnerPolicy::class,
         'App\Models\Slider' => SliderPolicy::class,
         'App\Models\Pricing' => PricingPolicy::class,
+        'App\Models\Service' => ServicePolicy::class,
     ];
 
     /**

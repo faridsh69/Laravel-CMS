@@ -64,6 +64,7 @@ return [
         Propaganistas\LaravelPhone\PhoneServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -126,10 +127,8 @@ return [
         /*
          * Package Aliases
          */
-        // 'Cdn' => App\Services\CdnService::class,
         // 'Image' => Intervention\Image\Facades\Image::class,
-        // 'Nestable' => Nestable\Facades\NestableService::class,
-        // 'PDF' => Barryvdh\DomPDF\Facade::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
