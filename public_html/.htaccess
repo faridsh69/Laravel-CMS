@@ -66,6 +66,8 @@
     # Others
     ExpiresByType application/pdf "access plus 1 month"
     ExpiresByType application/x-shockwave-flash "access plus 1 month"
+
+    ExpiresDefault "access 1 month"
 </IfModule>
 
 <ifModule mod_gzip.c>
