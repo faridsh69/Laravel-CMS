@@ -24,14 +24,14 @@ class CountingsTableSeeder extends Seeder
             	'id' => 2,
             	'title' => 'Happy Clients',
             	'number' => 139,
-            	'icon' => 'ion-person',
+            	'icon' => 'ion-happy-outline',
             	'activated' => 1,
             ],
             [
             	'id' => 3,
             	'title' => 'Active Developers',
             	'number' => 17,
-            	'icon' => 'ion-happy-outline',
+            	'icon' => 'ion-person',
             	'activated' => 1,
             ],
             [
