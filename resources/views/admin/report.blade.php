@@ -1,16 +1,60 @@
 @extends('layout.admin')
 
 @push('scripts')
-	<script src="{{ asset('admin/report.js') }}"></script>
-	<script src="{{ asset('admin/calendar.js') }}"></script>
+	<!-- <script src="{{ asset('admin/report.js') }}"></script>
+	<script src="{{ asset('admin/calendar.js') }}"></script> -->
 @endpush
 
 @section('content')
-	CHANGELOG: Version 1.0.5
+	<h1>
+		<img src="{{ config('0-general.logo') }}">
+		{{ config('0-general.app_title') }}
+	</h1>
+	<h6>
+		<small>Version: 2.7.12</small>
+	</h6>
 	<br>
-	This Page will be dynamic in version 2.0.0
+	<h5>
+		Theme: {{ config('0-developer.theme') }}
+		<br>
+		<br>
+		App Environment: Producttion
+	</h5>
+
+	@if(config('0-general.google_index'))
+	<div class="alert alert-success">Google is indexing</div>
+	@else
+	<div class="alert alert-danger">Google will not index this website</div>
+	@endif
+	<br>
+	<p>{{ config('0-general.default_meta_description') }}</p>
+	<div class="alert alert-info">
+		@if(config('0-general.android_application_url'))
+		<a href="{{ config('0-general.android_application_url') }}">
+			Android application
+			<i class="fa fa-arrow-right"></i>
+		</a>
+		<br>
+		@endif
+		@if(config('0-general.ios_application_url'))
+		<a href="{{ config('0-general.ios_application_url') }}">
+			ios application
+			<i class="fa fa-arrow-right"></i>
+		</a>
 	</div>
-</div>
+	@endif
+
+	<div class="alert alert-brand">
+		<div class="row">
+			@foreach(config('0-contact') as $key => $value)
+				<div class="col-lg-4">
+				{{ $key }}:
+				{{ $value }}
+				</div>
+			@endforeach
+		</div>
+	</div>
+
 		<!--begin:: Widgets/Profit Share-->
 		<div class="m-widget14">
 			<div class="m-widget14__header">
