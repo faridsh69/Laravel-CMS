@@ -364,10 +364,10 @@ class BaseListController extends Controller
 
     public function getDatatable()
     {
-        $model = $this->repository->orderBy('updated_at', 'desc')->get();
+        $list = $this->repository->orderBy('updated_at', 'desc')->get();
 
         $datatable = datatables()
-            ->of($model)
+            ->of($list)
             ->addColumn('show_url', function($model) {
                 return route('admin.' . $this->model_sm . '.list.show', $model);
             })
@@ -407,8 +407,11 @@ class BaseListController extends Controller
                 return null;
             });
         }
+        $datatable->addColumn('image', function($model) {
+            return '<img style="width:80%" src="' . $model->image . '">';
+        }); 
 
-        return $datatable->rawColumns(['id', 'content', 'order'])
+        return $datatable->rawColumns(['id', 'image', 'content', 'order'])
             ->toJson();
     }
 

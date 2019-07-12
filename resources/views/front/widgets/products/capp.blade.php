@@ -16,24 +16,11 @@
             <div class="col-12">
                 <!-- App Screenshots Slides  -->
                 <div class="app_screenshots_slides owl-carousel">
-                    <div class="single-shot">
-                        <img src="{{ asset('css/front/capp/img/eric/app-1.jpg') }}">
+                    @foreach(\App\Models\Service::active()->get() as $service)
+                    <div class="single-shot" style="max-width: 200px;">
+                        <img src="{{ $service->image }}" alt="services gallery">
                     </div>
-                    <div class="single-shot">
-                        <img src="{{ asset('css/front/capp/img/eric/app-2.jpg') }}" alt="">
-                    </div>
-                    <div class="single-shot">
-                        <img src="{{ asset('css/front/capp/img/eric/app-3.jpg') }}" alt="">
-                    </div>
-                    <div class="single-shot">
-                        <img src="{{ asset('css/front/capp/img/eric/app-4.jpg') }}" alt="">
-                    </div>
-                    <div class="single-shot">
-                        <img src="{{ asset('css/front/capp/img/eric/app-5.jpg') }}" alt="">
-                    </div>
-                    <div class="single-shot">
-                        <img src="{{ asset('css/front/capp/img/eric/app-6.jpg') }}" alt="">
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

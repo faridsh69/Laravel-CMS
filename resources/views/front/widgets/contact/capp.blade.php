@@ -8,11 +8,15 @@
                     <div class="line-shape"></div>
                 </div>
                 <div class="footer-text">
-                    <p>Our Promise <br>
+                    <p>
+                    {{ config('0-general.default_meta_description') }}
+                    </p>
+                    <span class="display-none">
+                        <p>Our Promise <br>
                         We hate spam and would never mishandle the information you share with us.  
                         Our mission is to help with your solar needs with quality, 
                         expert service and nothing more.
-                    </p>
+                    </span>
                 </div>
                 <div class="address-text">
                     <p><span>Address:</span>{{ config('0-contact.address') }}</p>
