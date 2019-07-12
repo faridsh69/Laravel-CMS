@@ -107,7 +107,7 @@ class BlocksTableSeeder extends Seeder
             	'column' => 12,
             	'widget_type' => 'pricing',
             	'widget_id' => 9,
-            	'page_id' => 3,
+            	'page_id' => 1,
             	'theme' => 'capp',
             	'activated' => 1,
             ],
@@ -137,7 +137,7 @@ class BlocksTableSeeder extends Seeder
             	'column' => 12,
             	'widget_type' => 'team',
             	'widget_id' => 12,
-            	'page_id' => 2,
+            	'page_id' => 1,
             	'theme' => 'capp',
             	'activated' => 0,
             ],
@@ -189,7 +189,7 @@ class BlocksTableSeeder extends Seeder
                 'widget_id' => 15,
                 'page_id' => 1,
                 'theme' => 'capp',
-                'activated' => 0,
+                'activated' => 1,
             ],
         ];
 
