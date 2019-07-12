@@ -377,6 +377,19 @@
 				],
 			],
 		],
+		[
+			'id' => 23,
+			'title' => 'Service',
+			'route' => 'service',
+			'type' => 'submenu',
+			'icon' => 'flaticon-open-box',
+			'children' => [
+				[
+					'title' => 'Service list',
+					'route' => 'admin.service.list.index',
+				],
+			],
+		],
 	];
 
 	if( env('APP_NAME') === 'menew' )

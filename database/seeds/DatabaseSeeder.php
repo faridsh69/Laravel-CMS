@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
             $this->call(EricFeedbacksTableSeeder::class);
             $this->call(EricCountingsTableSeeder::class);
             $this->call(EricFeaturesTableSeeder::class);
+            $this->call(EricServicesTableSeeder::class);
         }
         else
         {
@@ -41,6 +42,7 @@ class DatabaseSeeder extends Seeder
             $this->call(FeedbacksTableSeeder::class);
             $this->call(CountingsTableSeeder::class);
             $this->call(FeaturesTableSeeder::class);
+            $this->call(ServicesTableSeeder::class);
         }
         $this->call(RolesTableSeeder::class);
         $this->call(BaseSeeder::class);
