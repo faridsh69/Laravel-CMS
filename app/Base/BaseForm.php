@@ -29,22 +29,22 @@ class BaseForm extends Form
         {
             $name = $column['name'];
             $type = $column['type'];
-            $rule = isset($column['rule']) ? $column['rule'] : null;
+            $form_type = $column['form_type'];
+            $rule = $column['rule'];
             $help = isset($column['help']) ? $column['help'] : ' ';
             $database = isset($column['database']) ? $column['database'] : null;
-            $form_type = $column['form_type'];
 
             // if help in null
             // if($help === ''){
             //     $help = ' ';
             // }
 
-            // rule
+            // if column is unique it will add id for edit mode
             if($database === 'unique' || strpos($rule, 'unique') !== false){
                 $rule .= $this->id;
             }
 
-            // options
+            // form options 
             $option = [
                 'rules' => $rule,
                 'help_block' => [
@@ -52,11 +52,14 @@ class BaseForm extends Form
                 ],
             ];
 
-            // type
+            // default type for form input type is text-m 
             $input_type = 'text-m';
+
+            // if it dosnt need to add field in form it will be none in columns
             if($form_type === 'none'){
                 continue;
             }
+            // boolean types are: 1- switch-m 2- switch-bootstrap-m 3- checkbox-m
             elseif($type === 'boolean'){
                 $input_type = 'switch-m';
                 if($form_type === 'checkbox'){
@@ -66,13 +69,16 @@ class BaseForm extends Form
                     $input_type = 'switch-bootstrap-m';
                 }
             }
+            // for convert textarean to ckeditor 
             elseif($form_type === 'ckeditor'){
                 $input_type = 'textarea';
                 $option['attr'] = ['ckeditor' => 'on'];
             }
+            // create email type input
             elseif($form_type === 'email'){
                 $option['attr'] = ['type' => 'email'];
             }
+            // create password input
             elseif($form_type === 'password'){
                 $option['attr'] = ['type' => 'password', 'autocomplete' => 'off'];
                 $option['value'] = '';
@@ -84,6 +90,7 @@ class BaseForm extends Form
                 $input_type = 'textarea';
                 $option['attr'] = ['rows' => 3];
             }
+            // create select from enum options
             elseif($form_type === 'enum'){
                 if($this->model_name === 'User'){
                     $option['choices'] = \App\Enums\UserStatus::data;
@@ -94,9 +101,11 @@ class BaseForm extends Form
                 $input_type = 'select';
                 $option['attr'] = ['class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker'];
             }
+            // create image file browser 
             elseif($form_type === 'image'){
                 $input_type = 'image';
             }
+            // create option from a list of models item with specific attribute
             elseif($form_type === 'entity'){
                 $input_type = 'entity';
                 $option['class'] = $column['class'];

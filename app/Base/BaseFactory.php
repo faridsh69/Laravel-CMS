@@ -22,9 +22,12 @@ class BaseFactory
                 foreach($columns as $column){
                     $fake_data = null;
                     $name = $column['name'];
-                    $type = isset($column['type']) ? $column['type'] : '';
+                    $type = $column['type'];
+                    $form_type = $column['form_type'];
+                    $rule = isset($column['rule']) ? $column['rule'] : null;
                     $database = isset($column['database']) ? $column['database'] : '';
-                    $form_type = isset($column['form_type']) ? $column['form_type'] : '';
+
+                    // $string_length = $this->checkStringLength()
 
                     if($database === 'nullable' || $database === 'none'){
                         continue;
@@ -58,6 +61,7 @@ class BaseFactory
                     $output[$name] = $fake_data;
                 }
 
+                // if fake user is generation it needs confirmation password
                 if(isset($password)){
                     $output['password_confirmation'] = $password;
                 }
