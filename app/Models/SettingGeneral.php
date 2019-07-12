@@ -103,6 +103,20 @@ class SettingGeneral extends Model
             'help' => 'Cover photo for introduce video.',
             'form_type' => 'image',
         ],
+        [
+            'name' => 'subscribe_description',
+            'type' => 'string',
+            'rule' => '',
+            'help' => 'It will show beside subscribe form.',
+            'form_type' => 'textarea',
+        ],
+        [
+            'name' => 'contact_us_description',
+            'type' => 'string',
+            'rule' => '',
+            'help' => 'It will show beside contact form.',
+            'form_type' => 'textarea',
+        ],
     ];
 
     protected $hidden = [

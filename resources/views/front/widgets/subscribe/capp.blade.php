@@ -5,10 +5,10 @@
             <div class="col-md-6">
                 <div class="membership-description">
                     <p>
-                    {{ config('0-general.default_meta_description') }}
+                    {!! config('0-general.subscribe_description') !!}
                     </p>
                     <span class="display-none">
-                        <p>Our Promise <br>
+                        <p>Our Promise</p>
                         We hate spam and would never mishandle the information you share with us.  
                         Our mission is to help with your solar needs with quality, 
                         expert service and nothing more.

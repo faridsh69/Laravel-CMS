@@ -9,7 +9,7 @@
                 </div>
                 <div class="footer-text">
                     <p>
-                    {{ config('0-general.default_meta_description') }}
+                    {!! config('0-general.contact_us_description') !!}
                     </p>
                     <span class="display-none">
                         <p>Our Promise <br>
