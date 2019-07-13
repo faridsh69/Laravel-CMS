@@ -24,7 +24,7 @@ class DashboardController extends BaseAdminController
     public function index()
     {
         $this->meta['title'] = __('Dashboard');
-        $this->meta['alert'] = 'Usefull information about cms.';
+        $this->meta['alert'] = '';
 
         $yesterday_time = \Carbon\Carbon::now()->subdays(1);
         $last_week_time = \Carbon\Carbon::now()->subdays(7);
@@ -38,10 +38,10 @@ class DashboardController extends BaseAdminController
             'categories' => \App\Models\Category::count(),
         ];
         $data = [
-            'last_comments' => \App\Models\Comment::orderBy('id', 'desc')->take(3)->get(),
+            'last_comments' => \App\Models\Comment::orderBy('id', 'desc')->take(2)->get(),
         ];
         // active comments, new users
-        $activities = Activity::orderBy('id', 'desc')->take(7)->get();
+        $activities = Activity::orderBy('id', 'desc')->take(5)->get();
 
         return view('admin.report', [
             'meta' => $this->meta,

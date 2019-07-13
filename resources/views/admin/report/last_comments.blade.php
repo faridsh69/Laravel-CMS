@@ -1,4 +1,4 @@
-<div class="col-xl-6">
+<div class="col-xl-5">
 	<!--begin:: 3 Last Comments -->
 	<div class="m-portlet m-portlet--full-height ">
 		<div class="m-portlet__head">

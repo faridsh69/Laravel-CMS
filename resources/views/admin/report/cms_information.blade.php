@@ -1,39 +1,96 @@
-<div class="col-xl-6">
-	<h1>
-		<img src="{{ config('0-general.logo') }}">
-		{{ config('0-general.app_title') }}
-	</h1>
-	<h6>
-		<small>Version: 2.7.12</small>
-	</h6>
-	<br>
-	<h5>
-		Theme: {{ config('0-developer.theme') }}
-		<br>
-		<br>
-		App Environment: Producttion
-	</h5>
 
-	@if(config('0-general.google_index'))
-	<div class="alert alert-success">Google is indexing</div>
-	@else
-	<div class="alert alert-danger">Google will not index this website</div>
-	@endif
-	<br>
-	<p>{{ config('0-general.default_meta_description') }}</p>
-	<div class="alert alert-info">
-		@if(config('0-general.android_application_url'))
-		<a href="{{ config('0-general.android_application_url') }}">
-			Android application
-			<i class="fa fa-arrow-right"></i>
-		</a>
-		<br>
-		@endif
-		@if(config('0-general.ios_application_url'))
-		<a href="{{ config('0-general.ios_application_url') }}">
-			ios application
-			<i class="fa fa-arrow-right"></i>
-		</a>
+<div class="col-xl-6">
+	<!--begin:: Widgets/Company Summary-->
+	<div class="m-portlet m-portlet--full-height ">
+		<div class="m-portlet__head">
+			<div class="m-portlet__head-caption">
+				<div class="m-portlet__head-title">
+					<h3 class="m-portlet__head-text">
+						CMS Summary
+					</h3>
+				</div>
+			</div>
+		</div>
+		<div class="m-portlet__body">
+			<div class="m-widget13">
+				<div class="m-widget13__item">
+					<span class="m-widget13__desc m--align-right">
+						App Environment:
+					</span>
+					<span class="m-widget13__text m-widget13__text-bolder">
+						{{ config('0-developer.app_env') == 0 ? 'Development' : 'Production' }}
+					</span>
+				</div>
+				<div class="m-widget13__item">
+					<span class="m-widget13__desc m--align-right">
+						Theme:
+					</span>
+					<span class="m-widget13__text m-widget13__text-bolder">
+						{{ config('0-developer.theme') }}
+					</span>
+				</div>
+				<div class="m-widget13__item">
+					<span class="m-widget13__desc m--align-right">
+						Android Application
+					</span>
+					<span class="m-widget13__text m-widget13__text-bolder">
+						<a href="{{ config('0-general.android_application_url') }}">Download</a>
+					</span>
+				</div>
+				<div class="m-widget13__item">
+					<span class="m-widget13__desc m--align-right">
+						ios Application:
+					</span>
+					<span class="m-widget13__text m-widget13__text-bolder">
+						<a href="{{ config('0-general.ios_application_url') }}">Download</a>
+					</span>
+				</div>
+			</div>
+		</div>
 	</div>
+</div>
+<div class="col-xl-6">
+
+	<div class="media border p-3">
+		<img src="{{ config('0-general.logo') }}" class="mr-3 mt-3 rounded-circle">
+
+		<!-- <img src="img_avatar3.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;"> -->
+		<div class="media-body">
+			<h4>{{ config('0-general.app_title') }}<br><small><i>Version: 2.7.12</i></small></h4>
+			<p>{{ config('0-general.default_meta_description') }}</p>
+		</div>
+	</div>
+	<br>
+	@if(config('0-general.google_index'))
+	<div class="m-alert m-alert--icon m-alert--outline alert alert-success alert-dismissible fade show" role="alert">
+		<div class="m-alert__icon">
+			<i class="la la-warning"></i>
+		</div>
+		<div class="m-alert__text">
+			<strong>
+				Well done!
+			</strong>
+			Google is indexing.
+		</div>
+		<div class="m-alert__close">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+		</div>
+	</div>
+	@else
+	<div class="m-alert m-alert--icon m-alert--outline alert alert-danger alert-dismissible fade show" role="alert">
+		<div class="m-alert__icon">
+			<i class="la la-warning"></i>
+		</div>
+		<div class="m-alert__text">
+			<strong>
+				Warning!
+			</strong>
+			Google is not going to index this website. Turn on google index.
+		</div>
+		<div class="m-alert__close">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+		</div>
+	</div>
+	<div class="alert alert-danger"></div>
 	@endif
 </div>
