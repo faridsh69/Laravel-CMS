@@ -181,9 +181,21 @@ class User extends Authenticatable
         return $this->columns;
     }
 
-    public function getFullName()
+    public function getFullNameAttribute()
     {
         return $this->first_name . ' ' . $this->last_name;
+    }
+
+    public function getImageAttribute()
+    {
+        if($this->profile_image)
+        {
+            return $this->profile_image; 
+        }
+        else
+        {
+            return config('0-general.default_user_image');
+        }
     }
 
     // public static function boot()

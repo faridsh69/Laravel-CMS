@@ -130,13 +130,7 @@
 			<li class="m-nav__item m-topbar__user-profile m-topbar__user-profile--img  m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--header-bg-fill m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" data-dropdown-toggle="click">
 				<a href="#" class="m-nav__link m-dropdown__toggle">
 					<span class="m-topbar__userpic">
-						<img class="m--img-rounded m--marginless m--img-centered" src="
-						@if(Auth::user()->profile_image)
-							{{ Auth::user()->profile_image }}
-						@else
-							{{ config('0-general.default_user_image') }}
-						@endif 
-						"
+						<img class="m--img-rounded m--marginless m--img-centered" src="{{ Auth::user()->image }}"
 						/>
 					</span>
 					<span class="m-topbar__username m--hide">
@@ -161,10 +155,10 @@
 								</div>
 								<div class="m-card-user__details">
 									<span class="m-card-user__name m--font-weight-500">
-										{{ Auth::user() ? Auth::user()->getFullName() : '' }}
+										{{ Auth::user()->full_name }}
 									</span>
 									<a href="" class="m-card-user__email m--font-weight-300 m-link">
-										{{ Auth::user() ? Auth::user()->email : '' }}
+										{{ Auth::user()->email }}
 									</a>
 								</div>
 							</div>
@@ -189,7 +183,7 @@
 										<a href="{{ route('admin.dashboard.activity') }}" class="m-nav__link">
 											<i class="m-nav__link-icon flaticon-share"></i>
 											<span class="m-nav__link-text">
-												Activity
+												My Activity
 											</span>
 										</a>
 									</li>

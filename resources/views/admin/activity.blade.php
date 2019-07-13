@@ -9,11 +9,7 @@
 					<i class="flaticon-statistics"></i>
 				</span>
 				<h3 class="m-portlet__head-text">
-					@if(isset($data['first_name']))
-						<a href="{{ route('admin.user.login', $data['id']) }}" class="btn btn-success btn-sm m-btn m-btn--custom m-btn--air m-btn--pill">
-							Login with this user
-						</a>
-					@endif
+					Last User Activities
 				</h3>
 			</div>
 		</div>
@@ -39,8 +35,6 @@
 	</div>
 	<div class="m-portlet__body">
 		<div class="m-list-timeline">
-			<h4>Activity log</h4>
-			<br>
 			<div class="m-list-timeline__items">
 				@foreach($activities as $activity)
 				<div class="m-list-timeline__item">

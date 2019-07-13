@@ -6,135 +6,65 @@
 @endpush
 
 @section('content')
-	<h1>
-		<img src="{{ config('0-general.logo') }}">
-		{{ config('0-general.app_title') }}
-	</h1>
-	<h6>
-		<small>Version: 2.7.12</small>
-	</h6>
-	<br>
-	<h5>
-		Theme: {{ config('0-developer.theme') }}
-		<br>
-		<br>
-		App Environment: Producttion
-	</h5>
 
-	@if(config('0-general.google_index'))
-	<div class="alert alert-success">Google is indexing</div>
-	@else
-	<div class="alert alert-danger">Google will not index this website</div>
-	@endif
-	<br>
-	<p>{{ config('0-general.default_meta_description') }}</p>
-	<div class="alert alert-info">
-		@if(config('0-general.android_application_url'))
-		<a href="{{ config('0-general.android_application_url') }}">
-			Android application
-			<i class="fa fa-arrow-right"></i>
-		</a>
-		<br>
-		@endif
-		@if(config('0-general.ios_application_url'))
-		<a href="{{ config('0-general.ios_application_url') }}">
-			ios application
-			<i class="fa fa-arrow-right"></i>
-		</a>
+<div class="row">
+	@include('admin.report.cms_information')
+	@include('admin.report.last_activities')
+	@include('admin.report.count_models')
+	@include('admin.report.contact_data')
+	@include('admin.report.last_comments')
+
+	ravande roshde tedade blog o user
+	google analytics link
+	link moz 
+
+</div>
+
+
+
+<!--begin:: Widgets/Profit Share-->
+<div class="m-widget14">
+	<div class="m-widget14__header">
+		<h3 class="m-widget14__title">
+			Profit Share
+		</h3>
+		<span class="m-widget14__desc">
+			Profit Share between customers
+		</span>
 	</div>
-	@endif
-
-	<div class="alert alert-brand">
-		<div class="row">
-			@foreach(config('0-contact') as $key => $value)
-				<div class="col-lg-4">
-				{{ $key }}:
-				{{ $value }}
+	<div class="row  align-items-center">
+		<div class="col">
+			<div id="m_chart_profit_share" class="m-widget14__chart" style="height: 160px">
+				<div class="m-widget14__stat">
+					45
 				</div>
-			@endforeach
+			</div>
 		</div>
-	</div>
-	<div class="alert alert-danger">
-		<div class="row">
-			@foreach($data as $key => $value)
-				<div class="col-lg-4">
-				{{ $key }}:
-				{{ $value }}
-				</div>
-			@endforeach
-		</div>
-	</div>
-
-	<div class="m-portlet__body">
-		<div class="m-list-timeline">
-			<h4>Activity log</h4>
-			<br>
-			<div class="m-list-timeline__items">
-				@foreach($activities as $activity)
-				<div class="m-list-timeline__item">
-					<span class="m-list-timeline__badge m-list-timeline__badge--success"></span>
-					<span class="m-list-timeline__icon flaticon-exclamation-1"></span>
-					<span class="m-list-timeline__text">
-						<span style="font-weight: bold">
-						{{ $activity->description }}
-						</span>
-						With model:  
-						<div style="max-width: 90%; overflow-x: scroll;">
-						{{ $activity->subject()->first() }}
-						</div>
-					</span>
-					<span class="m-list-timeline__time">
-						{{ $activity->created_at }}
+		<div class="col">
+			<div class="m-widget14__legends">
+				<div class="m-widget14__legend">
+					<span class="m-widget14__legend-bullet m--bg-accent"></span>
+					<span class="m-widget14__legend-text">
+						37% Sport Tickets
 					</span>
 				</div>
-				@endforeach
+				<div class="m-widget14__legend">
+					<span class="m-widget14__legend-bullet m--bg-warning"></span>
+					<span class="m-widget14__legend-text">
+						47% Business Events
+					</span>
+				</div>
+				<div class="m-widget14__legend">
+					<span class="m-widget14__legend-bullet m--bg-brand"></span>
+					<span class="m-widget14__legend-text">
+						19% Others
+					</span>
+				</div>
 			</div>
 		</div>
 	</div>
-
-		<!--begin:: Widgets/Profit Share-->
-		<div class="m-widget14">
-			<div class="m-widget14__header">
-				<h3 class="m-widget14__title">
-					Profit Share
-				</h3>
-				<span class="m-widget14__desc">
-					Profit Share between customers
-				</span>
-			</div>
-			<div class="row  align-items-center">
-				<div class="col">
-					<div id="m_chart_profit_share" class="m-widget14__chart" style="height: 160px">
-						<div class="m-widget14__stat">
-							45
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="m-widget14__legends">
-						<div class="m-widget14__legend">
-							<span class="m-widget14__legend-bullet m--bg-accent"></span>
-							<span class="m-widget14__legend-text">
-								37% Sport Tickets
-							</span>
-						</div>
-						<div class="m-widget14__legend">
-							<span class="m-widget14__legend-bullet m--bg-warning"></span>
-							<span class="m-widget14__legend-text">
-								47% Business Events
-							</span>
-						</div>
-						<div class="m-widget14__legend">
-							<span class="m-widget14__legend-bullet m--bg-brand"></span>
-							<span class="m-widget14__legend-text">
-								19% Others
-							</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--end:: Widgets/Profit Share-->
+</div>
+<!--end:: Widgets/Profit Share-->
 
 
 <div class="m-portlet m-portlet--bordered-semi m-portlet--full-height ">
@@ -144,12 +74,6 @@
 				<h3 class="m-portlet__head-text">
 					User Views
 
-
-number of users and active o .... tedade login shode ha o gheire
-number of pages and blogs o ravande roshdeshon
-google analytics link
-link moz
-link 
 
 				</h3>
 			</div>
@@ -232,311 +156,5 @@ link
 </div>
 
 
-<div class="row">
-	<div class="col-xl-6">
-		<!--begin:: Widgets/Tasks -->
-		<div class="m-portlet m-portlet--full-height ">
-			<div class="m-portlet__head">
-				<div class="m-portlet__head-caption">
-					<div class="m-portlet__head-title">
-						<h3 class="m-portlet__head-text">
-							User Activity
-						</h3>
-					</div>
-				</div>
-				<div class="m-portlet__head-tools">
-					<ul class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm" role="tablist">
-						<li class="nav-item m-tabs__item">
-							<a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_widget2_tab1_content" role="tab">
-								Today
-							</a>
-						</li>
-						<li class="nav-item m-tabs__item">
-							<a class="nav-link m-tabs__link" data-toggle="tab" href="#m_widget2_tab2_content1" role="tab">
-								Week
-							</a>
-						</li>
-						<li class="nav-item m-tabs__item">
-							<a class="nav-link m-tabs__link" data-toggle="tab" href="#m_widget2_tab3_content1" role="tab">
-								Month
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="m-portlet__body">
-				<div class="tab-content">
-					<div class="tab-pane active" id="m_widget2_tab1_content">
-						<div class="m-widget2">
-							<div class="m-widget2__item m-widget2__item--primary">
-								<div class="m-widget2__checkbox">
-									<label class="m-checkbox m-checkbox--solid m-checkbox--single m-checkbox--brand">
-										<input type="checkbox">
-										<span></span>
-									</label>
-								</div>
-								<div class="m-widget2__desc">
-									<span class="m-widget2__text">
-										Blog #10 created.
-									</span>
-									<br>
-									<span class="m-widget2__user-name">
-										<a href="#" class="m-widget2__link">
-											By Farid
-										</a>
-									</span>
-								</div>
-								
-							</div>
-							<div class="m-widget2__item m-widget2__item--warning">
-								<div class="m-widget2__checkbox">
-									<label class="m-checkbox m-checkbox--solid m-checkbox--single m-checkbox--brand">
-										<input type="checkbox">
-										<span></span>
-									</label>
-								</div>
-								<div class="m-widget2__desc">
-									<span class="m-widget2__text">
-										General Setting Updated
-									</span>
-									<br>
-									<span class="m-widget2__user-name">
-										<a href="#" class="m-widget2__link">
-											By Eric
-										</a>
-									</span>
-								</div>
-							</div>
-							<div class="m-widget2__item m-widget2__item--brand">
-								<div class="m-widget2__checkbox">
-									<label class="m-checkbox m-checkbox--solid m-checkbox--single m-checkbox--brand">
-										<input type="checkbox">
-										<span></span>
-									</label>
-								</div>
-								<div class="m-widget2__desc">
-									<span class="m-widget2__text">
-										Blog #11 created
-									</span>
-									<br>
-									<span class="m-widget2__user-name">
-										<a href="#" class="m-widget2__link">
-											By Eric
-										</a>
-									</span>
-								</div>
-								
-							</div>
-							<div class="m-widget2__item m-widget2__item--success">
-								<div class="m-widget2__checkbox">
-									<label class="m-checkbox m-checkbox--solid m-checkbox--single m-checkbox--brand">
-										<input type="checkbox">
-										<span></span>
-									</label>
-								</div>
-								<div class="m-widget2__desc">
-									<span class="m-widget2__text">
-										Blog #12 created
-									</span>
-									<br>
-									<span class="m-widget2__user-name">
-										<a href="#" class="m-widget2__link">
-											By Eric
-										</a>
-									</span>
-								</div>
-							</div>
-							<div class="m-widget2__item m-widget2__item--danger">
-								<div class="m-widget2__checkbox">
-									<label class="m-checkbox m-checkbox--solid m-checkbox--single m-checkbox--brand">
-										<input type="checkbox">
-										<span></span>
-									</label>
-								</div>
-								<div class="m-widget2__desc">
-									<span class="m-widget2__text">
-										Page #2 created
-									</span>
-									<br>
-									<span class="m-widget2__user-name">
-										<a href="#" class="m-widget2__link">
-											By Farid
-										</a>
-									</span>
-								</div>
-								
-							</div>
-							<div class="m-widget2__item m-widget2__item--info">
-								<div class="m-widget2__checkbox">
-									<label class="m-checkbox m-checkbox--solid m-checkbox--single m-checkbox--brand">
-										<input type="checkbox">
-										<span></span>
-									</label>
-								</div>
-								<div class="m-widget2__desc">
-									<span class="m-widget2__text">
-										User Registered by email farid.sh69@gmail.com
-									</span>
-									<br>
-									<span class="m-widget2__user-name">
-										<a href="#" class="m-widget2__link">
-											By Farid
-										</a>
-									</span>
-								</div>
-								
-							</div>
-						</div>
-					</div>
-					<div class="tab-pane" id="m_widget2_tab2_content"></div>
-					<div class="tab-pane" id="m_widget2_tab3_content"></div>
-				</div>
-			</div>
-		</div>
-		<!--end:: Widgets/Tasks -->
-	</div>
-	<div class="col-xl-6">
-		<!--begin:: Widgets/Support Tickets -->
-		<div class="m-portlet m-portlet--full-height ">
-			<div class="m-portlet__head">
-				<div class="m-portlet__head-caption">
-					<div class="m-portlet__head-title">
-						<h3 class="m-portlet__head-text">
-							Support Tickets
-						</h3>
-					</div>
-				</div>
-				<div class="m-portlet__head-tools">
-					<ul class="m-portlet__nav">
-						<li class="m-portlet__nav-item m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" data-dropdown-toggle="hover" aria-expanded="true">
-							<a href="#" class="m-portlet__nav-link m-portlet__nav-link--icon m-portlet__nav-link--icon-xl m-dropdown__toggle">
-								<i class="la la-ellipsis-h m--font-brand"></i>
-							</a>
-							<div class="m-dropdown__wrapper">
-								<span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
-								<div class="m-dropdown__inner">
-									<div class="m-dropdown__body">
-										<div class="m-dropdown__content">
-											<ul class="m-nav">
-												<li class="m-nav__item">
-													<a href="" class="m-nav__link">
-														<i class="m-nav__link-icon flaticon-share"></i>
-														<span class="m-nav__link-text">
-															Activity
-														</span>
-													</a>
-												</li>
-												<li class="m-nav__item">
-													<a href="" class="m-nav__link">
-														<i class="m-nav__link-icon flaticon-chat-1"></i>
-														<span class="m-nav__link-text">
-															Messages
-														</span>
-													</a>
-												</li>
-												<li class="m-nav__item">
-													<a href="" class="m-nav__link">
-														<i class="m-nav__link-icon flaticon-info"></i>
-														<span class="m-nav__link-text">
-															FAQ
-														</span>
-													</a>
-												</li>
-												<li class="m-nav__item">
-													<a href="" class="m-nav__link">
-														<i class="m-nav__link-icon flaticon-lifebuoy"></i>
-														<span class="m-nav__link-text">
-															Support
-														</span>
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="m-portlet__body">
-				<div class="m-widget3">
-					<div class="m-widget3__item">
-						<div class="m-widget3__header">
-							<div class="m-widget3__user-img">
-								<!-- <img class="m-widget3__img" src="assets/app/media/img/users/user1.jpg" alt=""> -->
-							</div>
-							<div class="m-widget3__info">
-								<span class="m-widget3__username">
-									Melania Trump
-								</span>
-								<br>
-								<span class="m-widget3__time">
-									2 day ago
-								</span>
-							</div>
-							<span class="m-widget3__status m--font-info">
-								Pending
-							</span>
-						</div>
-						<div class="m-widget3__body">
-							<p class="m-widget3__text">
-								Lorem ipsum dolor sit amet,consectetuer edipiscing elit,sed diam nonummy nibh euismod tinciduntut laoreet doloremagna aliquam erat volutpat.
-							</p>
-						</div>
-					</div>
-					<div class="m-widget3__item">
-						<div class="m-widget3__header">
-							<div class="m-widget3__user-img">
-								<!-- <img class="m-widget3__img" src="assets/app/media/img/users/user4.jpg" alt=""> -->
-							</div>
-							<div class="m-widget3__info">
-								<span class="m-widget3__username">
-									Lebron King James
-								</span>
-								<br>
-								<span class="m-widget3__time">
-									1 day ago
-								</span>
-							</div>
-							<span class="m-widget3__status m--font-brand">
-								Open
-							</span>
-						</div>
-						<div class="m-widget3__body">
-							<p class="m-widget3__text">
-								Lorem ipsum dolor sit amet,consectetuer edipiscing elit,sed diam nonummy nibh euismod tinciduntut laoreet doloremagna aliquam erat volutpat.Ut wisi enim ad minim veniam,quis nostrud exerci tation ullamcorper.
-							</p>
-						</div>
-					</div>
-					<div class="m-widget3__item">
-						<div class="m-widget3__header">
-							<div class="m-widget3__user-img">
-								<!-- <img class="m-widget3__img" src="assets/app/media/img/users/user5.jpg" alt=""> -->
-							</div>
-							<div class="m-widget3__info">
-								<span class="m-widget3__username">
-									Deb Gibson
-								</span>
-								<br>
-								<span class="m-widget3__time">
-									3 weeks ago
-								</span>
-							</div>
-							<span class="m-widget3__status m--font-success">
-								Closed
-							</span>
-						</div>
-						<div class="m-widget3__body">
-							<p class="m-widget3__text">
-								Lorem ipsum dolor sit amet,consectetuer edipiscing elit,sed diam nonummy nibh euismod tinciduntut laoreet doloremagna aliquam erat volutpat.
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--end:: Widgets/Support Tickets -->
-	</div>
-</div>
+
 @endsection

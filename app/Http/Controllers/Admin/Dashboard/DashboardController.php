@@ -24,24 +24,29 @@ class DashboardController extends BaseAdminController
     public function index()
     {
         $this->meta['title'] = __('Dashboard');
-        $this->meta['alert'] = 'Admin Panel Dashboard For Best Cms In The World With LARAVEL!';
+        $this->meta['alert'] = 'Usefull information about cms.';
 
-        $data = [
+        $yesterday_time = \Carbon\Carbon::now()->subdays(1);
+        $last_week_time = \Carbon\Carbon::now()->subdays(7);
+        $count = [
             'tags' => \App\Models\Tag::count(),
             'blogs' => \App\Models\Blog::count(),
             'pages' =>  \App\Models\Page::count(),
             'users' =>   \App\Models\User::count(),
             'comments' => \App\Models\Comment::count(),
-            'new_users' => \App\Models\User::where('created_at', '>', \Carbon\Carbon::now()->subdays(1))
+            'new_users' => \App\Models\User::where('created_at', '>', $yesterday_time)->count(),
             'categories' => \App\Models\Category::count(),
-                ->count(),
+        ];
+        $data = [
+            'last_comments' => \App\Models\Comment::orderBy('id', 'desc')->take(3)->get(),
         ];
         // active comments, new users
         $activities = Activity::orderBy('id', 'desc')->take(7)->get();
 
         return view('admin.report', [
-            'meta' => $this->meta, 
-            'data' => $data, 
+            'meta' => $this->meta,
+            'data' => $data,
+            'count' => $count,
             'activities' => $activities,
         ]);
     }
@@ -101,7 +106,9 @@ class DashboardController extends BaseAdminController
 
     public function getActivity()
     {
-    	$activities = Activity::where('causer_id', Auth::id())->get();
+    	$activities = Activity::where('causer_id', Auth::id())
+            ->orderBy('id', 'desc')
+            ->get();
 
     	return view('admin.activity', ['activities' => $activities, 'meta' => $this->meta]);
     }
