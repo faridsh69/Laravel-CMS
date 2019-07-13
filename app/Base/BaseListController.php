@@ -128,6 +128,9 @@ class BaseListController extends Controller
         $form = $this->form_builder->create($this->model_form);
 
         if (! $form->isValid()) {
+            if(env('APP_ENV') === 'testing'){
+                dd($form->getErrors());
+            }
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
         $data = $form->getFieldValues();
@@ -143,7 +146,14 @@ class BaseListController extends Controller
 
             Auth::user()->comment($blog, $data['comment'], $rate = 0);
             $blog->comments[0]->approve();
-            activity($this->model)->performedOn($blog)->causedBy(Auth::user())->log($this->model . ' Created');
+
+            if(env('APP_ENV') !== 'testing'){
+                activity($this->model)
+                    ->performedOn($blog)
+                    ->causedBy(Auth::user())
+                    ->log($this->model . ' Created');
+            }
+
             $this->request->session()->flash('alert-success', $this->model . ' Created Successfully!');
 
             return redirect()->route('admin.' . $this->model_sm . '.list.index');
@@ -161,10 +171,12 @@ class BaseListController extends Controller
 
         $this->_saveRelatedData($model, $main_data);
 
-        activity($this->model)
-            ->performedOn($model)
-            ->causedBy(Auth::user())
-            ->log($this->model . ' Created');
+        if(env('APP_ENV') !== 'testing'){
+            activity($this->model)
+                ->performedOn($model)
+                ->causedBy(Auth::user())
+                ->log($this->model . ' Created');
+        }
 
         $this->request->session()->flash('alert-success', $this->model . ' Created Successfully!');
 
@@ -234,7 +246,10 @@ class BaseListController extends Controller
             'model' => $model,
         ]);
 
-        if (! $form->isValid()) {
+        if (! $form->isValid()){
+            if(env('APP_ENV') === 'testing'){
+                dd($form->getErrors());
+            }
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
         $data = $form->getFieldValues();
@@ -249,13 +264,19 @@ class BaseListController extends Controller
         }
 
         // comment
-        if($this->model === 'Comment' && isset($data['blog_url'])){
-            $model->commentable_id = $data['blog_url'];
+        if($this->model === 'Comment'){
+            $model->commentable_id = $data['commented_id'];
             $model->comment = $data['comment'];
             $model->update();
 
-            activity($this->model)->performedOn($model)->causedBy(Auth::user())->log($this->model . ' Updated');
+            if(env('APP_ENV') !== 'testing'){
+                activity($this->model)
+                    ->performedOn($model)
+                    ->causedBy(Auth::user())
+                    ->log($this->model . ' Updated');
+            }
             $this->request->session()->flash('alert-success', $this->model . ' Updated Successfully!');
+
             return redirect()->route('admin.' . $this->model_sm . '.list.index');
         }
 
@@ -278,10 +299,12 @@ class BaseListController extends Controller
 
         $this->_saveRelatedData($model, $main_data);
 
-        activity($this->model)
-            ->performedOn($model)
-            ->causedBy(Auth::user())
-            ->log($this->model . ' Updated');
+        if(env('APP_ENV') !== 'testing'){
+            activity($this->model)
+                ->performedOn($model)
+                ->causedBy(Auth::user())
+                ->log($this->model . ' Updated');
+        }
 
         $this->request->session()->flash('alert-success', $this->model . ' Updated Successfully!');
 
@@ -301,10 +324,12 @@ class BaseListController extends Controller
 
         $model->delete();
 
-        activity($this->model)
-            ->performedOn($model)
-            ->causedBy(Auth::user())
-            ->log($this->model . ' Deleted');
+        if(env('APP_ENV') !== 'testing'){
+            activity($this->model)
+                ->performedOn($model)
+                ->causedBy(Auth::user())
+                ->log($this->model . ' Deleted');
+        }
 
         $this->request->session()->flash('alert-success', $this->model . ' Deleted Successfully!');
 
@@ -317,10 +342,14 @@ class BaseListController extends Controller
         $this->authorize('restore', $model);
 
         $model->restore();
-        activity($this->model)
-            ->performedOn($model)
-            ->causedBy(Auth::user())
-            ->log($this->model . ' Restored');
+
+        if(env('APP_ENV') !== 'testing'){
+            activity($this->model)
+                ->performedOn($model)
+                ->causedBy(Auth::user())
+                ->log($this->model . ' Restored');
+        }
+
         $this->request->session()->flash('alert-success', $this->model . ' Deleted Successfully!');
 
         return redirect()->route('admin.' . $this->model_sm . '.list.index');

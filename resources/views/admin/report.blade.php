@@ -54,6 +54,43 @@
 			@endforeach
 		</div>
 	</div>
+	<div class="alert alert-danger">
+		<div class="row">
+			@foreach($data as $key => $value)
+				<div class="col-lg-4">
+				{{ $key }}:
+				{{ $value }}
+				</div>
+			@endforeach
+		</div>
+	</div>
+
+	<div class="m-portlet__body">
+		<div class="m-list-timeline">
+			<h4>Activity log</h4>
+			<br>
+			<div class="m-list-timeline__items">
+				@foreach($activities as $activity)
+				<div class="m-list-timeline__item">
+					<span class="m-list-timeline__badge m-list-timeline__badge--success"></span>
+					<span class="m-list-timeline__icon flaticon-exclamation-1"></span>
+					<span class="m-list-timeline__text">
+						<span style="font-weight: bold">
+						{{ $activity->description }}
+						</span>
+						With model:  
+						<div style="max-width: 90%; overflow-x: scroll;">
+						{{ $activity->subject()->first() }}
+						</div>
+					</span>
+					<span class="m-list-timeline__time">
+						{{ $activity->created_at }}
+					</span>
+				</div>
+				@endforeach
+			</div>
+		</div>
+	</div>
 
 		<!--begin:: Widgets/Profit Share-->
 		<div class="m-widget14">

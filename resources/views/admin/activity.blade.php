@@ -39,7 +39,7 @@
 	</div>
 	<div class="m-portlet__body">
 		<div class="m-list-timeline">
-			<h4>Activity log for this model</h4>
+			<h4>Activity log</h4>
 			<br>
 			<div class="m-list-timeline__items">
 				@foreach($activities as $activity)

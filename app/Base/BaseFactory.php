@@ -52,7 +52,10 @@ class BaseFactory
                     elseif($type === 'text'){
                         $fake_data = 'Fake ' . $faker->realText(400);
                     }
-                    elseif($type === '' || $type === 'boolean' || $type === 'bigInteger' || $type === 'integer' || $type === 'tinyInteger'){
+                    elseif($type === 'boolean'){
+                        $fake_data = 0;
+                    }
+                    elseif($type === '' || $type === 'bigInteger' || $type === 'integer' || $type === 'tinyInteger'){
                         $fake_data = 1;
                     }
                     elseif($type === 'string'){

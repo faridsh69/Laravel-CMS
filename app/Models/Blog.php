@@ -176,18 +176,6 @@ class Blog extends Model implements Commentable
         return $this->columns;
     }
 
-    public function editor()
-    {
-        // @todo in bayad az laravel activity log bekhone
-        // return $this->belongsTo('App\Models\User', 'editor_id', 'id');
-    }
-
-    public function creator()
-    {
-        // @todo in bayad az laravel activity log bekhone
-        // return $this->belongsTo('App\Models\User', 'creator_id', 'id');
-    }
-
     public function category()
     {
         return $this->belongsTo('App\Models\Category', 'category_id', 'id');

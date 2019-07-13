@@ -29,8 +29,21 @@ class DashboardController extends BaseAdminController
         $data = [
             'blogs' => \App\Models\Blog::count(),
             'pages' => \App\Models\Page::count(),
+            'categories' => \App\Models\Category::count(),
+            'tags' => \App\Models\Tag::count(),
+            'comments' => \App\Models\Comment::count(),
+            'users' => \App\Models\User::count(),
+            'new_users' => \App\Models\User::where('created_at', '>', \Carbon\Carbon::now()->subdays(1))
+                ->count(),
         ];
-        return view('admin.report', ['meta' => $this->meta, 'data' => $data]);
+        // active comments, new users
+        $activities = Activity::orderBy('id', 'desc')->take(7)->get();
+
+        return view('admin.report', [
+            'meta' => $this->meta, 
+            'data' => $data, 
+            'activities' => $activities,
+        ]);
     }
 
     public function getProfile()
