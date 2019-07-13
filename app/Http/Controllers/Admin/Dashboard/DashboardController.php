@@ -27,13 +27,13 @@ class DashboardController extends BaseAdminController
         $this->meta['alert'] = 'Admin Panel Dashboard For Best Cms In The World With LARAVEL!';
 
         $data = [
-            'blogs' => \App\Models\Blog::count(),
-            'pages' => \App\Models\Page::count(),
-            'categories' => \App\Models\Category::count(),
             'tags' => \App\Models\Tag::count(),
+            'blogs' => \App\Models\Blog::count(),
+            'pages' =>  \App\Models\Page::count(),
+            'users' =>   \App\Models\User::count(),
             'comments' => \App\Models\Comment::count(),
-            'users' => \App\Models\User::count(),
             'new_users' => \App\Models\User::where('created_at', '>', \Carbon\Carbon::now()->subdays(1))
+            'categories' => \App\Models\Category::count(),
                 ->count(),
         ];
         // active comments, new users

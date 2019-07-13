@@ -23,8 +23,8 @@ class Slider extends Model
         [
             'name' => 'description',
             'type' => 'text',
-            'database' => '',
-            'rule' => 'required',
+            'database' => 'nullable',
+            'rule' => '',
             'help' => 'Slider description.',
             'form_type' => 'textarea',
             'table' => true,
