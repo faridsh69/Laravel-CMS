@@ -17,11 +17,15 @@
 			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
 				@include('common.admin.sidebar')
 				<div class="m-grid__item m-grid__item--fluid m-wrapper">
+					@if(Route::currentRouteName() != 'admin.dashboard.index')
 					@include('common.admin.breadcrumb')
+					@endif
 					<div class="m-content">
-						@if(true) @include('common.admin.page-alert') @endif
+						@include('common.admin.page-alert')
 						<div class="m-portlet m-portlet--mobile">
+							@if(Route::currentRouteName() != 'admin.dashboard.index')
 							@include('common.admin.card-header')
+							@endif
 							<div class="m-portlet__body">
 								@yield('content')
 							</div>
