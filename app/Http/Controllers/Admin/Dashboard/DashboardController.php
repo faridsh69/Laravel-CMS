@@ -7,6 +7,7 @@ use Auth;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Spatie\Activitylog\Models\Activity;
+use Route;
 
 class DashboardController extends BaseAdminController
 {
@@ -23,7 +24,12 @@ class DashboardController extends BaseAdminController
 
     public function index()
     {
-        $this->meta['title'] = __('Dashboard');
+        if(Route::currentRouteName() === 'admin.report.index'){
+            $this->meta['title'] = __('Report');
+        }else{
+            $this->meta['title'] = __('Dashboard');
+        }
+
         $this->meta['alert'] = '';
 
         $yesterday_time = \Carbon\Carbon::now()->subdays(1);
@@ -34,16 +40,18 @@ class DashboardController extends BaseAdminController
             'pages' =>  \App\Models\Page::count(),
             'users' =>   \App\Models\User::count(),
             'comments' => \App\Models\Comment::count(),
-            'new_users' => \App\Models\User::where('created_at', '>', $yesterday_time)->count(),
-            'categories' => \App\Models\Category::count(),
+            'new_users' => \App\Models\User::where('created_at', '>', $last_week_time)->count(),
+            'new_blogs' =>   \App\Models\Blog::where('created_at', '>', $last_week_time)->count(),
+            'user_views' =>   431,
+            'categories' =>    \App\Models\Category::count(),
         ];
         $data = [
-            'last_comments' => \App\Models\Comment::orderBy('id', 'desc')->take(2)->get(),
+            'last_comments' => \App\Models\Comment::where('created_at', '>', $last_week_time)->orderBy('id', 'desc')->take(2)->get(),
         ];
-        // active comments, new users
+
         $activities = Activity::orderBy('id', 'desc')->take(5)->get();
 
-        return view('admin.report', [
+        return view('admin.report.index', [
             'meta' => $this->meta,
             'data' => $data,
             'count' => $count,
@@ -106,10 +114,12 @@ class DashboardController extends BaseAdminController
 
     public function getActivity()
     {
+        $this->meta['title'] = __('My Activity');
+        $this->meta['alert'] = '';
     	$activities = Activity::where('causer_id', Auth::id())
             ->orderBy('id', 'desc')
             ->get();
 
-    	return view('admin.activity', ['activities' => $activities, 'meta' => $this->meta]);
+    	return view('admin.dashboard.activity', ['activities' => $activities, 'meta' => $this->meta]);
     }
 }

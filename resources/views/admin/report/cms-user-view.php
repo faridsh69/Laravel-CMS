@@ -78,7 +78,7 @@
 				</div>
 			</div>
 			<div class="m-widget15__desc">
-				* lorem ipsum dolor sit amet consectetuer sediat elit
+				* Its fake data, it will be dynamic in version 4.0.0
 			</div>
 		</div>
 		<!--end::Widget 6-->

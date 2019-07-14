@@ -32,7 +32,7 @@
 							</div>
 							<div class="col m--align-right">
 								<span class="m-widget1__number m--font-brand">
-									431
+									{{ $count['user_views'] }}
 								</span>
 							</div>
 						</div>
@@ -49,7 +49,7 @@
 							</div>
 							<div class="col m--align-right">
 								<span class="m-widget1__number m--font-danger">
-									32
+									{{ $count['new_blogs'] }}
 								</span>
 							</div>
 						</div>
@@ -66,7 +66,7 @@
 							</div>
 							<div class="col m--align-right">
 								<span class="m-widget1__number m--font-success">
-									78
+									{{ $count['new_users'] }}
 								</span>
 							</div>
 						</div>
