@@ -37,7 +37,9 @@
 							<div class="m-widget2__desc">
 								<span class="m-widget2__text">
 									Record #{{ $activity->subject_id }}
+									<div style="overflow: hidden; white-space: nowrap; max-width: 300px; text-overflow:ellipsis">
 									{{ $activity->description }}
+									</div>
 								</span>
 								<br>
 								<span class="m-widget2__user-name">

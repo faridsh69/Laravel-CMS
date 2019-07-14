@@ -61,6 +61,7 @@ class SettingController extends BaseAdminController
         activity($this->model)
             ->causedBy(Auth::user())
             ->log(json_encode($model));
+            
         $this->request->session()->flash('alert-success', $this->model . ' Updated Successfully!');
         Artisan::call('config:clear');
         sleep(1);
