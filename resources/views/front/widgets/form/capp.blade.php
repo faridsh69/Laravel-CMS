@@ -1,4 +1,5 @@
-<div class="get-start-area" style="display: none;">
+@if(env('APP_NAME') === 'eric')
+<div class="get-start-area">
     <!-- Form Start -->
     @if(Session::has('alert-success'))
     	<div class="alert alert-success" style="max-width: 350px">
@@ -13,3 +14,4 @@
     </form>
     <!-- Form End -->
 </div>
+@endif
