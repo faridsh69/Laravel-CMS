@@ -25,7 +25,7 @@ class EricSlidersTableSeeder extends Seeder
             	'id' => 2,
             	'title' => 'Synergy Power',
             	'description' => 'Go Solar. Save Money.',
-            	'image' => asset('storage/files/shares/welcome.png'),
+            	'image' => asset('css/front/capp/img/eric/welcome.png'),
             	'activated' => 1,
             ],
             [
