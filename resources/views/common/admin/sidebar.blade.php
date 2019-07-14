@@ -214,6 +214,19 @@
 			],
 		],
 		[
+			'id' => 10,
+			'title' => 'User Activity',
+			'route' => 'activity',
+			'type' => 'submenu',
+			'icon' => 'flaticon-share',
+			'children' => [	
+				[
+					'title' => 'User Activity list',
+					'route' => 'admin.activity.list.index',
+				],
+			],
+		],
+		[
 			'title' => 'THEME',
 			'type' => 'section',
 		],

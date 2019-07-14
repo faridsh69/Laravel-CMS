@@ -95,6 +95,7 @@ $output = [
             'slider',
             'pricing',
             'service',
+            'activity',
         ],
         'permissions' => [
             'blog',
@@ -122,6 +123,7 @@ $output = [
             'slider',
             'pricing',
             'service',
+            'activity',
         ],
     ],
 ];

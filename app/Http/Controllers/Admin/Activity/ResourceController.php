@@ -1,0 +1,42 @@
+<?php
+
+namespace App\Http\Controllers\Admin\Activity;
+
+use App\Base\BaseListController;
+
+class ResourceController extends BaseListController
+{
+    public $model = 'Activity';
+
+    public function index()
+    {
+        $this->authorize('index', $this->model_class);
+        $this->meta['title'] = __('Activity Manager');
+        $this->meta['alert'] = 'All user activities.';
+        $this->meta['link_name'] = 'Dashboard';
+        $this->meta['link_route'] = route('admin.dashboard.index');
+        $this->meta['search'] = 1;
+
+        $columns = [];
+        foreach(collect($this->model_columns)->where('table', true) as $column)
+        {
+            $columns[] = [
+                'field' => $column['name'],
+                'title' => preg_replace('/([a-z])([A-Z])/s', '$1 $2', \Str::studly($column['name'])),
+            ];
+        }
+
+        return view('admin.list.table', ['meta' => $this->meta, 'columns' => $columns, 'model_sm' => $this->model_sm]);
+    }
+
+    public function create(){return $this->getRedirect(); }
+
+    public function edit($id){return $this->getRedirect(); }
+
+    public function update($id){return $this->getRedirect(); }
+
+    public function getRedirect()
+    {
+        return redirect()->route('admin.activity.list.index');
+    }
+}

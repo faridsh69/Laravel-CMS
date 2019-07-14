@@ -14,7 +14,7 @@ class PermissionController extends BaseListController
         $this->meta['title'] = __('Permission Manager');
         $this->meta['alert'] = 'System permissions listed here.';
         $this->meta['link_name'] = 'Manage Roles';
-        $this->meta['link_route'] = '/user/role';
+        $this->meta['link_route'] = route('admin.user.role.index');
         $this->meta['search'] = 1;
 
         $columns = [];
@@ -39,13 +39,18 @@ class PermissionController extends BaseListController
             ->toJson();
     }
 
-    public function create(){abort(404); }
+    public function create(){return $this->getRedirect(); }
 
-    public function show($id){abort(404); }
+    public function show($id){return $this->getRedirect(); }
 
-    public function edit($id){abort(404); }
+    public function edit($id){return $this->getRedirect(); }
 
-    public function update($id){abort(404); }
+    public function update($id){return $this->getRedirect(); }
 
-    public function destroy($id){abort(404); }
+    public function destroy($id){return $this->getRedirect(); }
+
+    public function getRedirect()
+    {
+        return redirect()->route('admin.user.role.index');
+    }
 }

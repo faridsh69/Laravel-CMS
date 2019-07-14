@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Policies\ActivityPolicy;
 use App\Policies\BlockPolicy;
 use App\Policies\BlogPolicy;
 use App\Policies\CategoryPolicy;
@@ -39,6 +40,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
+        'App\Models\Activity' => ActivityPolicy::class,
         'App\Models\Blog' => BlogPolicy::class,
         'App\Models\Page' => PagePolicy::class,
         'App\Models\Category' => CategoryPolicy::class,

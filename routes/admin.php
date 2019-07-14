@@ -79,7 +79,6 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'as' => 'user.'], funct
 
 	Route::get('role/datatable', 'RoleController@getDatatable')->name('role.datatable');
 	Route::resource('role', 'RoleController');
-
 	Route::get('permission/datatable', 'PermissionController@getDatatable')->name('permission.datatable');
 	Route::resource('permission', 'PermissionController');
 });
