@@ -1,7 +1,6 @@
-<script src="https://faridsh.b-cdn.net/app.js"></script>
+<script src="{{ asset('js/front/capp/app.js') }}"></script>
 
 @if(false)
-<script src="{{ asset('js/front/capp/app.js') }}"></script>
 <!-- http://www.cms-laravel.com/cdn/js/front/capp/jquery-2.2.4.min.js
 http://www.cms-laravel.com/cdn/js/front/capp/popper.min.js
 http://www.cms-laravel.com/cdn/js/front/capp/bootstrap.min.js
