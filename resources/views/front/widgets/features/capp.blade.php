@@ -1,5 +1,5 @@
 <!-- ***** Special Area Start ***** -->
-<section class="special-area bg-white" id="about">
+<section class="special-area bg-white" style="margin-top: 30px;">
     <div class="container">
         <div class="row">
             <div class="col-12">
