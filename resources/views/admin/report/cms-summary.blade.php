@@ -23,7 +23,6 @@
 		</div>
 		<div class="m-alert__close"><button type="button" class="close" data-dismiss="alert" aria-label="Close"></button></div>
 	</div>
-	<div class="alert alert-danger"></div>
 	@endif
 
 	@if(config('0-developer.cdn_url'))
