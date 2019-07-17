@@ -2,7 +2,7 @@
 	<div class="media border p-3">
 		<img src="{{ config('0-general.logo') }}" style="max-width: 150px" class="mr-3 mt-3 rounded-circle">
 		<div class="media-body">
-			<h4>{{ config('0-general.app_title') }}<br><small><i>Version: 2.7.12</i></small></h4>
+			<h4>{{ config('0-general.app_title') }}<br><small><i>Version: 2.8.3</i></small></h4>
 			<p>{{ config('0-general.default_meta_description') }}</p>
 		</div>
 	</div>
