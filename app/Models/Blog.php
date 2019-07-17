@@ -18,7 +18,7 @@ class Blog extends Model implements Commentable
         [
             'name' => 'title',
             'type' => 'string',
-            'database' => 'unique',
+            'database' => '',
             'rule' => 'required|max:60|min:5|unique:blogs,title,',
             'help' => 'Title should be unique, minimum 5 and maximum 60 characters.',
             'form_type' => '',

@@ -28,4 +28,5 @@
         </div>
     </div>
 </section>
+<img src="{{ asset('css/front/capp/img/bg-img/arm.jpg') }}" style="width: 100%" alt="logo">
 <!-- ***** CTA Area End ***** -->

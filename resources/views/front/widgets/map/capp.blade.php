@@ -11,12 +11,15 @@
         </div>
         <div class="row">
             <div class="col-12">
+                <img src="{{ asset('css/front/capp/img/bg-img/map.png') }}" alt="map">
+                @if(false)
             	<div id="map-widget" style="width: 100%;height: 300px"></div>
+                @endif
             </div>
         </div>
     </div>
 </section>
-@if(true)
+@if(false)
 @push('scripts')
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaTGuyJD5pQKp9i2zkyhg5NJ76RH3vLlA&callback=myMap"></script>
 <script>

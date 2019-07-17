@@ -29,12 +29,12 @@ class DatabaseSeeder extends Seeder
         }
         elseif(env('APP_NAME') === 'eric')
         {
-            $this->call(EricMenusTableSeeder::class);
-            $this->call(EricSlidersTableSeeder::class);
             $this->call(EricFeedbacksTableSeeder::class);
             $this->call(EricCountingsTableSeeder::class);
             $this->call(EricFeaturesTableSeeder::class);
             $this->call(EricServicesTableSeeder::class);
+            $this->call(EricSlidersTableSeeder::class);
+            $this->call(EricMenusTableSeeder::class);
         }
         else
         {

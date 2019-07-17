@@ -13,7 +13,7 @@ class Page extends Model
         [
             'name' => 'title',
             'type' => 'string',
-            'database' => 'unique',
+            'database' => '',
             'rule' => 'required|max:60|min:4|unique:pages,title,',
             'help' => 'Title should be unique, minimum 4 and maximum 60 characters.',
             'form_type' => '',

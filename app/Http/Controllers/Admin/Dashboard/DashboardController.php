@@ -59,6 +59,11 @@ class DashboardController extends BaseAdminController
         ]);
     }
 
+    public function redirect()
+    {
+        return redirect()->route('admin.dashboard.index');
+    }
+
     public function getProfile()
     {
     	$form = $this->form_builder->create($this->model_form, [
