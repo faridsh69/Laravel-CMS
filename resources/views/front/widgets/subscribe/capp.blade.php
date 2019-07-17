@@ -21,6 +21,15 @@
             </div>
             <div class="col-md-6">
                 @include('front.widgets.form.' . config("0-developer.theme"))
+                    @push('scripts')
+
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script> 
+
+    <script async custom-element="amp-call-tracking" src="https://cdn.ampproject.org/v0/amp-call-tracking-0.1.js"></script>
+
+
+    @endpush
+
                 <!-- <div class="get-started-button wow bounceInDown" data-wow-delay="0.5s">
                     <a href="{{ route('front.page.index', 'benefits-of-solar') }}">Learn More</a>
                 </div> -->
