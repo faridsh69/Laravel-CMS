@@ -865,11 +865,63 @@ A payback estimate that uses the production estimate, incentives, and estimated 
                         'id' => 26, 
                         'title' => 'Contact Us',
                         'url' => 'contact-us',
+                        'content' => [
+                            [
+                                'title' => 'Get In Touch With Us!',
+                                'content' => 'At Synergy Power, we work hard to help our customers from The Bay to the Mother Lode save money on energy costs and support the environment by switching to solar! But we know that going solar can be a big decision with a lot of unknowns. If you have questions or concerns, a member of our team is ready to talk – without cost or obligation to you. Whether you’re ready to get started, or you just want some answers, just fill out the contact form below, and we’ll get back to you as soon as possible.
+
+',
+                            ],
+                        ],
                     ],
                     [
                         'id' => 27, 
                         'title' => 'About Us',
                         'url' => 'about-our-solar-panel-company',
+                        'content' => [
+                            [
+                                'title' => 'Our Story',
+                                'content' => ' Established in 2005.
+
+Jason became a licensed general contractor in 2005 (CSLB #859392). A few years later, Eric joined what then became a family partnership, altering the license (#CSLB 909061). The license number was adapted again according to state requirements when our S Corp was formed in 2017. This adjustment to our legal structure has broadened our ability to serve more clients.   
+
+Since establishing the small business partnership in 2005, as general contractors we’ve done everything from build a school auditorium to commercial remodels, eventually focusing on both residential and commercial solar. The formation of the new corporate structure in 2017 gives us a new name and solid footing in the market. Until then, much of our work was done for other sales companies and contractors. Launching Synergy Power now allows us to cater directly to the end user.
+
+',
+                            ],
+                            [
+                                'title' => 'Our Experience',
+                                'content' => 'Fielding a team that includes two NABCEP certified electricians, our elite installers average nearly a decade of experience per person, among the best trained professionals in the industry. We don’t guess, we know. Our quotes are researched and reliable, ensuring your system performs according to precise, informed estimates. Whether it’s rooftop, canopy, or ground mount installation, our work on homes and/or businesses exceeds all requirements and many expectations.
+
+Serving the solar industry for over 14 years, Synergy Power truly values focused, applied energy- from the sun and our team. We all want better energy. Whether it’s conserving by turning off the lights, or expending it by giving a team member the spotlight, we believe energy should be spent where it does the most good. 
+
+',
+                            ],
+                            [
+                                'title' => 'A Green Leader',
+                                'content' => 'Solar is here to stay and we want to share this awesome technology with the world! Not only does solar power save you money, it saves the environment from nasty fossil fuels. Go green today!
+
+',
+                            ],
+                            [
+                                'title' => 'Forward Thinking',
+                                'content' => 'With 2,662 solar panels installed and more than $7,269,600 saved for our customers, you can trust our results and our highly trained, NABCEP.org certified installers.
+
+',
+                            ],
+                            [
+                                'title' => 'Problem Solvers',
+                                'content' => 'Yes, we can help with that. As experts in solar systems, we can handle any project or problem, from a few panels to hundreds. We’ve got you (and the roof) covered!
+
+',
+                            ],
+                            [
+                                'title' => 'Customer Support',
+                                'content' => 'We serve our clients every step of the process, including system design, engineering, permitting, installation, explanation, and off-site monitoring once your system is up and running.
+
+',
+                            ],
+                        ],
                     ],
                     [
                         'id' => 28, 
