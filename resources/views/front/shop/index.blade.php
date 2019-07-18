@@ -1,6 +1,6 @@
 @extends('layout.shop')
 @section('content')
-
+<div class="bgwrap"></div>
 <!-- begin category -->
 <div class="header" style="background: {{ $shop->theme_color ? $shop->theme_color : '#da315f' }}; color: black">
     <div class="headertop">

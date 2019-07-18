@@ -209,7 +209,7 @@ class Product extends Model implements Commentable
         }
         else
         {
-            return config('0-general.logo');
+            return config('0-general.default_product_image');
         }
     }
 

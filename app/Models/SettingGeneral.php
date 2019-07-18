@@ -62,6 +62,13 @@ class SettingGeneral extends Model
             'form_type' => 'image',
         ],
         [
+            'name' => 'default_product_image',
+            'type' => 'string',
+            'rule' => '',
+            'help' => 'Image that used for products.',
+            'form_type' => 'image',
+        ],
+        [
             'name' => 'google_index',
             'type' => 'boolean',
             'rule' => 'boolean',
