@@ -15,26 +15,32 @@ class MenusTableSeeder extends Seeder
             [
                 'id' => 1,
                 'title' => 'Home',
+                'url' => '/',
             ],
             [
                 'id' => 2,
                 'title' => 'About Us',
+                'url' => 'about-us',
             ],
             [
-            	'id' => 3,
-            	'title' => 'Services',
+                'id' => 3,
+                'title' => 'Services',
+                'url' => 'services',
             ],
             [
-            	'id' => 4,
-            	'title' => 'Blog',
+                'id' => 4,
+                'title' => 'Blog',
+                'url' => 'blog',
             ],
             [
-            	'id' => 5,
-            	'title' => 'FAQ',
+                'id' => 5,
+                'title' => 'FAQ',
+                'url' => 'faq',
             ],
             [
                 'id' => 6,
                 'title' => 'Contact Us',
+                'url' => 'contact-us',
             ],
         ];
 
@@ -49,7 +55,7 @@ class MenusTableSeeder extends Seeder
                 ['id' => $menu['id']],
                 [
                     'title' => $menu['title'],
-                    'url' => Str::slug($menu['title']),
+                    'url' => $menu['url'],
                     'activated' => 1,
                 ]
             );

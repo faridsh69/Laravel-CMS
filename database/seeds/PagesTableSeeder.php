@@ -53,8 +53,8 @@ class PagesTableSeeder extends Seeder
             ],
             [
                 'id' => 6,
-                'title' => 'Blogs',
-                'url' => 'blogs',
+                'title' => 'Blog',
+                'url' => 'blog',
                 'content' => ' ',
                 'meta_description' => 'description about BLOGS page',
                 'activated' => 1,
