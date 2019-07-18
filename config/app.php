@@ -127,7 +127,7 @@ return [
         /*
          * Package Aliases
          */
-        // 'Image' => Intervention\Image\Facades\Image::class,
+        'Image' => Intervention\Image\Facades\Image::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,

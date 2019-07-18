@@ -49,7 +49,7 @@ class RouteServiceProvider extends ServiceProvider
 
     protected function mapShopRoutes($domain)
     {
-        Route::middleware(['web', 'throttle:15,0.1'])
+        Route::middleware(['web', 'throttle:35,0.1'])
             ->domain('www.{shop_subdomain}.' . $domain)
             ->as('shop.')
             ->namespace($this->namespace . '\Shop')

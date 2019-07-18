@@ -200,4 +200,31 @@ class Product extends Model implements Commentable
     {
         return $query->where('activated', 1);
     }
+
+    public function getImageAttribute()
+    {
+        if($this->logo)
+        {
+            return $this->logo; 
+        }
+        else
+        {
+            return config('0-general.logo');
+        }
+    }
+
+    public function getImageSmallAttribute()
+    {
+        return '/image/product/' . $this->id . '/150';
+    }
+
+    public function getImageMediumAttribute()
+    {
+        return '/image/product/' . $this->id . '/200';
+    }
+
+    public function getImageLargeAttribute()
+    {
+        return '/image/product/' . $this->id . '/480';
+    }
 }

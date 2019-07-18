@@ -204,7 +204,7 @@ class ShopProductsTableSeeder extends Seeder
                     'title' => $product['title'],
                     'url' => Str::slug($product['title']),
                     'content' => $product['content'],
-                    'logo' => asset('/images/product/' . $product['id'] . '.jpg'),
+                    'logo' => $product['id'] > 3 ? null : asset('/images/product/' . $product['id'] . '.jpg'),
                     'price' => $product['price'],
                     'activated' => 1,
                     'category_id' => $product['category_id'],

@@ -105,38 +105,42 @@
                             @php
                                 $has_video = 0;
                                 if(!is_null($product->images)) {
-                                  $filtered = $product->images->filter(function ($value, $key) {
-                                      return (strpos($value, "mp4") >= 0 || strpos($value, "webm") >= 0);
-                                  });
-                                  if($filtered->count() > 0) {
-                                    $has_video = 1;
-                                  }
+                                    $filtered = $product->images->filter(function ($value, $key) {
+                                        return (strpos($value, "mp4") >= 0 || strpos($value, "webm") >= 0);
+                                    });
+                                    if($filtered->count() > 0) {
+                                        $has_video = 1;
+                                    }
                                 }
 
                                 $ordered_item = 0;
                                 if($ordered_item) {
-                                $order_count = $ordered_item->count;
-                                $is_ordered = "ordered";
+                                    $order_count = $ordered_item->count;
+                                    $is_ordered = "ordered";
                                 } else {
-                                $order_count = 1;
-                                $is_ordered = "";
+                                    $order_count = 1;
+                                    $is_ordered = "";
                                 }
                             @endphp
                             <section id="item{{$product->id}}"
-                                     class="menuitem {{$product->image_class}} {{$product->finished_class}} {{$product->discount_class}} {{$is_ordered}}"
-                                     @if(!is_null($product->discount)) data-before="{{$product->price}}"
-                                     data-discount="{{$product->calculate_discount}}" @endif
-                                     data-gallery="{{$product->images}}" data-itemid="{{$product->id}}"
-                                     data-mediumimage="{{$product->item_medium_image}}"
-                                     data-purepic="{{$product->main_image}}"
-                                     data-available="{{$product->count}}" data-vote="{{$product->vote_show}}"
-                                     data-desc="{{$product->description}}"
-                                     data-galleryaddr="{{$product->gallery_address}}"
-                                     data-type="{{$product->type}}">
+                                    class="menuitem {{$product->image_class}} {{$product->finished_class}} {{$product->discount_class}} {{$is_ordered}}"
+                                    data-before="{{$product->price}}"
+                                    data-discount="{{$product->discount_price}}" 
+                                    data-gallery="{{ json_encode([
+                                        ['file' => $product->image_large]
+                                    ]) }}" 
+                                    data-itemid="{{$product->id}}"
+                                    data-mediumimage="{{$product->image_medium}}"
+                                    data-purepic="{{$product->image}}"
+                                    data-available="{{$product->count}}" 
+                                    data-vote="{{$product->vote_show}}"
+                                    data-desc="{{$product->description}}"
+                                    data-galleryaddr="{{$product->gallery_address}}"
+                                    data-type="{{$product->type}}">
                                 <span class="qty">{{$order_count}}</span>
 
                                 <div class="itemimage"
-                                     style="background-image: url('{{ $product->logo }}');">
+                                     style="background-image: url('{{ $product->image_small }}');">
                                     @if($has_video)
                                         <div class="video_play_icon">
                                             <i class="fas fa-play"></i>
@@ -147,8 +151,8 @@
                                 <div class="itemdetails">
                                     <header class="title">{{$product->title}}</header>
                                     @if(!is_null($product->content))
-                                        <div class="desc"><p
-                                                    style="white-space: pre-line">{!! $product->content !!}</p>
+                                        <div class="desc">
+                                            <p style="white-space: pre-line">{!! $product->content !!}</p>
                                         </div>
                                     @endif
                                     @if(!is_null($product->price))
@@ -545,7 +549,8 @@
             /* if ( item_medium_image != "" ) {
                 $(".swiper-wrapper").append("<div class='swiper-slide'><img src='" + item_medium_image + "'/></div>");
             } */
-            var gallery_address = $(this).data('galleryaddr') + '//'
+            // var gallery_address = $(this).data('galleryaddr') + '//'
+            var gallery_address = $(this).data('galleryaddr') + '';
 
             if (item_type == 'show_card') {
                 $('.addtocart').hide()
@@ -555,7 +560,8 @@
 
             $.each(item_gallery, function (key, value) {
 
-                var galleryfile_name = 'large_' + value.file
+                // var galleryfile_name = 'large_' + value.file
+                var galleryfile_name = value.file
 
                 if (galleryfile_name.indexOf('.mp4') == -1 && galleryfile_name.indexOf('.webm') == -1) {
 //                    if(galleryfile_name.substring(galleryfile_name.indexOf('/')+1) != item_pure_mediumimage_name) {
