@@ -47,8 +47,57 @@ class ShopController extends Controller
         // 'name', 'description', 'main_image', 'status', 'tag', 'sort', 'count', 'default_count', 'vote', 'voter_count', 'price', 'sell_count', 'ready_duration_time', 'discount', 'folder_id', 'short_description', 'available', 'discount_enable', 'check_critical_count', 'type'
     }
 
-    public function getDashboard()
+    public function getDashboard($shop_subdomain)
     {
-        return view('front.shop.dashboard');
+        $categories = Category::with('products')
+            ->orderBy('order', 'asc')
+            ->get();
+
+        $shop = Shop::where('url', $shop_subdomain)->first();
+        abort_if(! $shop, 404);
+
+        $meta = [
+            'title' => $shop->title_fa,
+            'description' => $shop->meta_description,
+            'keywords' => $shop->keywords,
+            'image' => $shop->logo,
+            'google_index' => 0,
+            'canonical_url' => url()->current(),
+        ];
+
+        return view('front.shop.dashboard', array(
+                        'folders' => $categories,
+                        'fully_just_content' => 0,
+                        'meta' => $meta,
+                        'shop' => $shop,
+                    ));
+
+        // if (isset($folder[0])) {
+        //     switch ($folder[0]->level) {
+        //         case null:
+        //         case "batch":
+        //             return view('admin.menumaker.batches.index', array(
+        //                 'folders' => $folder,
+        //                 'fully_just_content' => $fully_just_content,
+        //             ));
+        //             break;
+        //         case "set":
+        //             return view('admin.menumaker.sets.index', array(
+        //                 'folders' => $folder,
+        //                 'fully_just_content' => $fully_just_content,));
+
+        //         case "collection":
+        //             return view('admin.menumaker.collections.index', array(
+        //                 'folders' => $folder,
+        //                 'fully_just_content' => $fully_just_content,));
+        //     }
+        // } else {
+        //     return view('admin.menumaker.batches.index', array(
+        //         'set' => 0,
+        //         'batches' => null,
+        //     ));
+        // }
+
+        // return view('front.shop.dashboard');
     }
 }
