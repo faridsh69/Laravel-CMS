@@ -23,8 +23,8 @@ Route::get('{page_url?}', 'PageController@getIndex')->name('page.index');
 // 	Route::get('redirected', 'TestController@getRedirected')->name('redirected');
 // });
 
-// Route::group(['prefix' => 'test-menew', 'as' => 'test.menew.'], function () {
-// 	Route::get('register-restaurant', 'TestMenewController@getRegisterRestaurant')->name('register-restaurant');
-// 	Route::post('register-restaurant', 'TestMenewController@postRegisterRestaurant')->name('post-register-restaurant');
-// 	Route::get('register-thank-you', 'TestMenewController@getRegisterThankYou')->name('register-thank-you');
-// });
+Route::group(['prefix' => 'test-menew', 'as' => 'test.menew.'], function () {
+	Route::get('register-restaurant', 'TestMenewController@getRegisterRestaurant')->name('register-restaurant');
+	Route::post('register-restaurant', 'TestMenewController@postRegisterRestaurant')->name('post-register-restaurant');
+	Route::get('register-thank-you', 'TestMenewController@getRegisterThankYou')->name('register-thank-you');
+});
