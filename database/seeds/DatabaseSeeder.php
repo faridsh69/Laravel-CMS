@@ -27,10 +27,10 @@ class DatabaseSeeder extends Seeder
             $this->call(ShopsTableSeeder::class);
             $this->call(ShopProductsTableSeeder::class);
 
-            $this->call(ShopFeaturesTableSeeder::class);
             $this->call(FeedbacksTableSeeder::class);
             $this->call(CountingsTableSeeder::class);
             $this->call(ServicesTableSeeder::class);
+            $this->call(ShopFeaturesTableSeeder::class);
         }
         elseif(env('APP_NAME') === 'eric')
         {
