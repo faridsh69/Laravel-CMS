@@ -13,11 +13,14 @@
         <input type="submit" class="submit" value="Go Solar Now">
     </form>
 
-    <amp-analytics config="https://swappy.callrail.com/companies/315389868/amp-analytics.json?cid=CLIENT_ID(cid-scope-cookie-fallback-name)"></amp-analytics> 
-
-    <amp-call-tracking config="https://swappy.callrail.com/companies/315389868/amp-swap.json?t=18664479637&cid=CLIENT_ID(cid-scope-cookie-fallback-name)"> 
-        <a href="tel:8664479637" style="color: gray; background: white;margin: 10px; padding: 0px;">1 866-447-9637</a> 
+<!--     <amp-analytics config="https://swappy.callrail.com/companies/315389868/amp-analytics.json?cid=CLIENT_ID(cid-scope-cookie-fallback-name)"></amp-analytics> 
+ -->
+    <!-- <amp-call-tracking config="https://swappy.callrail.com/companies/315389868/amp-swap.json?t=18664479637&cid=CLIENT_ID(cid-scope-cookie-fallback-name)"> 
+        <a href="tel:8664479637" style="color: gray; background: white;margin: 10px; padding: 0px;"></a> 
     </amp-call-tracking>
+
+    <script type="text/javascript" src="//cdn.callrail.com/companies/315389868/1f41f4d0e4d704b1158e/12/swap.js"></script> -->
+
 
     <!-- Form End -->
 </div>

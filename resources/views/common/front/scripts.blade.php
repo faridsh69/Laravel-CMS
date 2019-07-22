@@ -1,10 +1,12 @@
 {!! config('0-developer.scripts') !!}
     
 @if(env('APP_NAME') === 'eric')
-<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script> 
+<!-- <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script> 
+ -->
+<script type="text/javascript" src="//cdn.callrail.com/companies/315389868/1f41f4d0e4d704b1158e/12/swap.js"></script>
 
-<script async custom-element="amp-call-tracking" src="https://cdn.ampproject.org/v0/amp-call-tracking-0.1.js"></script>
-
+<!-- <script async custom-element="amp-call-tracking" src="https://cdn.ampproject.org/v0/amp-call-tracking-0.1.js"></script>
+ -->
 <!-- Hotjar Tracking Code for http://www.synergypower.ir/ -->
 <script>
     (function(h,o,t,j,a,r){
