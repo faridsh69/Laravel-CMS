@@ -17,7 +17,7 @@
                 <!-- App Screenshots Slides  -->
                 <div class="app_screenshots_slides owl-carousel">
                     @foreach(\App\Models\Service::active()->get() as $service)
-                    <div class="single-shot" style="max-width: 200px;">
+                    <div class="single-shot">
                         <img src="{{ $service->image }}" alt="services gallery">
                     </div>
                     @endforeach
