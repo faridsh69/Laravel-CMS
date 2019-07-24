@@ -273,42 +273,30 @@
 			'title' => 'WIDGET',
 			'type' => 'section',
 		],
+		
 		[
-			'id' => 14,
-			'title' => 'Menu',
-			'route' => 'menu',
+			'id' => 21,
+			'title' => 'Slider',
+			'route' => 'slider',
 			'type' => 'submenu',
-			'icon' => 'flaticon-more',
-			'children' => [	
-				[
-					'title' => 'Menu list',
-					'route' => 'admin.menu.list.index',
-				],
-			],
-		],
-		[
-			'id' => 15,
-			'title' => 'Form',
-			'route' => 'form',
-			'type' => 'submenu',
-			'icon' => 'flaticon-edit',
-			'children' => [	
-				[
-					'title' => 'Form list',
-					'route' => 'admin.form.list.index',
-				],
-			],
-		],
-		[
-			'id' => 16,
-			'title' => 'Feedback',
-			'route' => 'feedback',
-			'type' => 'submenu',
-			'icon' => 'flaticon-comment',
+			'icon' => 'flaticon-layers',
 			'children' => [
 				[
-					'title' => 'Feedback list',
-					'route' => 'admin.feedback.list.index',
+					'title' => 'Slider list',
+					'route' => 'admin.slider.list.index',
+				],
+			],
+		],
+		[
+			'id' => 18,
+			'title' => 'Feature',
+			'route' => 'feature',
+			'type' => 'submenu',
+			'icon' => 'flaticon-technology-1',
+			'children' => [
+				[
+					'title' => 'Feature list',
+					'route' => 'admin.feature.list.index',
 				],
 			],
 		],
@@ -326,15 +314,41 @@
 			],
 		],
 		[
-			'id' => 18,
-			'title' => 'Feature',
-			'route' => 'feature',
+			'id' => 16,
+			'title' => 'Feedback',
+			'route' => 'feedback',
 			'type' => 'submenu',
-			'icon' => 'flaticon-technology-1',
+			'icon' => 'flaticon-comment',
 			'children' => [
 				[
-					'title' => 'Feature list',
-					'route' => 'admin.feature.list.index',
+					'title' => 'Feedback list',
+					'route' => 'admin.feedback.list.index',
+				],
+			],
+		],
+		[
+			'id' => 15,
+			'title' => 'Form',
+			'route' => 'form',
+			'type' => 'submenu',
+			'icon' => 'flaticon-edit',
+			'children' => [	
+				[
+					'title' => 'Form list',
+					'route' => 'admin.form.list.index',
+				],
+			],
+		],
+		[
+			'id' => 14,
+			'title' => 'Menu',
+			'route' => 'menu',
+			'type' => 'submenu',
+			'icon' => 'flaticon-more',
+			'children' => [	
+				[
+					'title' => 'Menu list',
+					'route' => 'admin.menu.list.index',
 				],
 			],
 		],
@@ -364,19 +378,7 @@
 				],
 			],
 		],
-		[
-			'id' => 21,
-			'title' => 'Slider',
-			'route' => 'slider',
-			'type' => 'submenu',
-			'icon' => 'flaticon-layers',
-			'children' => [
-				[
-					'title' => 'Slider list',
-					'route' => 'admin.slider.list.index',
-				],
-			],
-		],
+		
 		[
 			'id' => 22,
 			'title' => 'Pricing',
