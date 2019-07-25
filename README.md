@@ -42,113 +42,113 @@ Auto generate:
 
 Controller:
 
-namespace App\Http\Controllers\Admin\Blog;
-use App\Base\BaseListController;
-class ResourceController extends BaseListController
-{
-	public $model = 'Blog';
-}
+	namespace App\Http\Controllers\Admin\Blog;
+	use App\Base\BaseListController;
+	class ResourceController extends BaseListController
+	{
+		public $model = 'Blog';
+	}
 
 Migrations:
 
-use App\Base\BaseMigration;
-class CreateBlogsTable extends BaseMigration
-{
-    public $model = 'Blog';
-}
+	use App\Base\BaseMigration;
+	class CreateBlogsTable extends BaseMigration
+	{
+	    public $model = 'Blog';
+	}
 
 Tests:
 
-namespace Tests\Unit;
-use App\Base\BaseTest;
-class BlogTest extends BaseTest
-{
-    public $model = 'Blog';
+	namespace Tests\Unit;
+	use App\Base\BaseTest;
+	class BlogTest extends BaseTest
+	{
+	    public $model = 'Blog';
 
-    public function test()
-    {
-        $this->resourceTest();
-    }
-}
+	    public function test()
+	    {
+		$this->resourceTest();
+	    }
+	}
 
 RouteServiceProvider
 
-public function map()
-{
-    $this->mapAdminRoutes();
-    $this->mapApiRoutes();
-    $this->mapAuthRoutes();
-    $this->mapFrontRoutes();
-}
+	public function map()
+	{
+	    $this->mapAdminRoutes();
+	    $this->mapApiRoutes();
+	    $this->mapAuthRoutes();
+	    $this->mapFrontRoutes();
+	}
 
 Factories always will generated automaticly for seed or unit test
 
-use App\Base\BaseFactory;
-$base_factory = new BaseFactory();
-$base_factory->index($factory);
+	use App\Base\BaseFactory;
+	$base_factory = new BaseFactory();
+	$base_factory->index($factory);
 
 Form:
 
-namespace App\Forms;
-use App\Base\BaseForm;
-class BlogForm extends BaseForm
-{
-    public $model_name = 'Blog';
-}
+	namespace App\Forms;
+	use App\Base\BaseForm;
+	class BlogForm extends BaseForm
+	{
+	    public $model_name = 'Blog';
+	}
 
 Policy: (You can ovveride any functions that you want to customise)
 
-namespace App\Policies;
-use App\Base\BasePolicy;
-class BlogPolicy extends BasePolicy
-{
-    public $model = 'Blog';
-}
+	namespace App\Policies;
+	use App\Base\BasePolicy;
+	class BlogPolicy extends BasePolicy
+	{
+	    public $model = 'Blog';
+	}
 
-Model: Just need to define columns array, and let system handle every thing.
+# Model: Just need to define columns array, and let system handle every thing.
 
-public $columns = [
-    [
-        'name' => 'title',
-        'type' => 'string',
-        'database' => '',
-        'rule' => 'required|max:60|min:5|unique:blogs,title,',
-        'help' => 'Title should be unique, minimum 5 and maximum 60 characters.',
-        'form_type' => '',
-        'table' => true,
-    ],
-    .
-    .
-    .
-];
+	public $columns = [
+	    [
+		'name' => 'title',
+		'type' => 'string',
+		'database' => '',
+		'rule' => 'required|max:60|min:5|unique:blogs,title,',
+		'help' => 'Title should be unique, minimum 5 and maximum 60 characters.',
+		'form_type' => '',
+		'table' => true,
+	    ],
+	    .
+	    .
+	    .
+	];
 
-In this cms all of usefull php packages used:
+## In this cms all of usefull php packages used:
 
-admin theme: "kinshines/metronic"
-form builder: "kris/laravel-form-builder": "^1.20",
-tables: "yajra/laravel-datatables-oracle": "~9.0"
-HTML editor: ckeditor4
-file manager: "unisharp/laravel-filemanager": "dev-master",
-image: "unisharp/laravel-filemanager": "dev-master",
-tags: "rtconner/laravel-tagging"
-log: "rap2hpoutre/laravel-log-viewer": "^1.1",
-export excel: "Maatwebsite/Laravel-Excel"
-import with csv: "Maatwebsite/Laravel-Excel"
-backup: "spatie/laravel-backup"
-activity user log: "spatie/laravel-activitylog": "^3.5",
-validation phone: "Propaganistas/Laravel-Phone"
-api document: "mpociot/laravel-apidoc-generator"
-country o city: "antonioribeiro/countries"
-pdf: "barryvdh/laravel-dompdf"
-code style: "symplify/easy-coding-standard"
-social networks: "laravel/socialite"
-debugger: "barryvdh/laravel-debugbar"
-api authentication: "laravel/passport"
-module maker: "nWidart/laravel-modules"
-role&permission: "spatie/laravel-permission"
-captcha: "anhskohbo/no-captcha"
-category: "lazychaser/laravel-nestedset"
-comment o rate: "actuallymab/laravel-comment"
+	admin theme: "kinshines/metronic"
+	form builder: "kris/laravel-form-builder": "^1.20",
+	tables: "yajra/laravel-datatables-oracle": "~9.0"
+	HTML editor: ckeditor4
+	file manager: "unisharp/laravel-filemanager": "dev-master",
+	image: "unisharp/laravel-filemanager": "dev-master",
+	tags: "rtconner/laravel-tagging"
+	log: "rap2hpoutre/laravel-log-viewer": "^1.1",
+	export excel: "Maatwebsite/Laravel-Excel"
+	import with csv: "Maatwebsite/Laravel-Excel"
+	backup: "spatie/laravel-backup"
+	activity user log: "spatie/laravel-activitylog": "^3.5",
+	validation phone: "Propaganistas/Laravel-Phone"
+	api document: "mpociot/laravel-apidoc-generator"
+	country o city: "antonioribeiro/countries"
+	pdf: "barryvdh/laravel-dompdf"
+	code style: "symplify/easy-coding-standard"
+	social networks: "laravel/socialite"
+	debugger: "barryvdh/laravel-debugbar"
+	api authentication: "laravel/passport"
+	module maker: "nWidart/laravel-modules"
+	role&permission: "spatie/laravel-permission"
+	captcha: "anhskohbo/no-captcha"
+	category: "lazychaser/laravel-nestedset"
+	comment o rate: "actuallymab/laravel-comment"
 
 ## How to use
 	
@@ -190,221 +190,6 @@ comment o rate: "actuallymab/laravel-comment"
             'form_type' => '',
             'table' => true,
         ],
-        [
-            'name' => 'description',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => 'nullable|max:191',
-            'help' => 'Description will show in lists instead of content.',
-            'form_type' => 'textarea',
-            'table' => false,
-        ],
-        [
-            'name' => 'content',
-            'type' => 'text',
-            'database' => '',
-            'rule' => 'required|seo_header',
-            'help' => '',
-            'form_type' => 'ckeditor',
-            'table' => true,
-        ], 
-        [
-            'name' => 'meta_description',
-            'type' => 'string',
-            'database' => '',
-            'rule' => 'required|max:191|min:70',
-            'help' => 'Meta description should have minimum 70 and maximum 191 characters.',
-            'form_type' => 'textarea',
-            'table' => false,
-        ],
-        [
-            'name' => 'keywords',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => 'nullable|max:191',
-            'help' => 'Its not important for google anymore',
-            'form_type' => '',
-            'table' => false,
-        ],
-        [
-            'name' => 'meta_image',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => 'nullable|max:191|url',
-            'help' => 'Meta image shows when this page is shared in social networks.',
-            'form_type' => '',
-            'table' => false,
-        ],
-        [
-            'name' => 'activated',
-            'type' => 'boolean',
-            'database' => 'default',
-            'rule' => '',
-            'help' => '',
-            'form_type' => '', // switch-m
-            'table' => false,
-        ],
-        [
-            'name' => 'google_index',
-            'type' => 'boolean',
-            'database' => 'default',
-            'rule' => '',
-            'help' => 'Google will index this page.',
-            'form_type' => 'checkbox',
-            'table' => false,
-        ],
-        [
-            'name' => 'canonical_url',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => 'nullable|max:191|url',
-            'help' => 'Canonical url just used for seo redirect duplicate contents.',
-            'form_type' => '',
-            'table' => false,
-        ],
-        [
-            'name' => 'category_id',
-            'type' => 'bigInteger',
-            'database' => 'unsigned',
-            'relation' => 'categories',
-            'rule' => 'nullable|exists:categories,id',
-            'help' => '',
-            'form_type' => '',
-            'table' => false,
-        ],
-    ];
-
-
-    This is another sample for users table
-
-    public $columns = [
-        [
-            'name' => 'first_name',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => 'required|max:100',
-            'help' => '',
-            'form_type' => '',
-            'table' => true,
-        ],
-        [
-            'name' => 'last_name',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => 'required|max:100',
-            'help' => '',
-            'form_type' => '',
-            'table' => true,
-        ],
-        [
-            'name' => 'email',
-            'type' => 'string',
-            'database' => 'unique',
-            'rule' => 'required|unique:users,email,',
-            'help' => '',
-            'form_type' => 'email',
-            'table' => true,
-        ],
-        [
-            'name' => 'mobile',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => 'nullable|numeric|digits_between:5,16',
-            'help' => '',
-            'form_type' => '',
-            'table' => false,
-        ],
-        [
-            'name' => 'phone',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => 'nullable|numeric|digits_between:5,16',
-            'help' => '',
-            'form_type' => 'none',
-            'table' => false,
-        ],
-        [
-            'name' => 'gender',
-            'type' => 'boolean',
-            'database' => 'default',
-            'rule' => '',
-            'help' => '',
-            'form_type' => 'switch-bootstrap-m',
-            'table' => false,
-        ],
-        [
-            'name' => 'birth_date',
-            'type' => 'date',
-            'database' => 'nullable',
-            'rule' => 'nullable|date',
-            'help' => '',
-            'form_type' => 'date',
-            'table' => false,
-        ],
-        [
-            'name' => 'salary',
-            'type' => 'integer',
-            'database' => 'nullable',
-            'rule' => 'nullable|integer',
-            'help' => '',
-            'form_type' => 'none',
-            'table' => false,
-        ],
-        [
-            'name' => 'url',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => 'nullable|max:80|regex:/^[a-z0-9-]+$/|unique:users,url,',
-            'help' => 'Url should be unique, contain lowercase characters and numbers and -',
-            'form_type' => 'none',
-            'table' => false,
-        ],
-        [
-            'name' => 'website',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => 'nullable|url|max:190',
-            'help' => '',
-            'form_type' => '',
-            'table' => false,
-        ],
-        [
-            'name' => 'email_verified_at',
-            'type' => 'timestamp',
-            'database' => 'nullable',
-            'rule' => '',
-            'help' => '',
-            'form_type' => 'none',
-            'table' => false,
-        ],
-        [
-            'name' => 'activated',
-            'type' => 'boolean',
-            'database' => 'default',
-            'rule' => '',
-            'help' => '',
-            'form_type' => '',
-            'table' => false,
-        ],
-        [
-            'name' => 'status',
-            'type' => 'tinyInteger',
-            'database' => 'nullable',
-            'rule' => 'required',
-            'help' => '',
-            'form_type' => '',
-            'table' => false,
-        ],
-        [
-            'name' => 'password',
-            'type' => 'string',
-            'database' => '',
-            'rule' => 'nullable|confirmed|min:3|max:100',
-            'help' => 'If you let this field be empty in update password will not change.',
-            'form_type' => 'password',
-            'table' => false,
-        ],
-        
     ];
 
 
