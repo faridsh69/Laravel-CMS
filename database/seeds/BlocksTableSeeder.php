@@ -129,7 +129,7 @@ class BlocksTableSeeder extends Seeder
             	'widget_id' => 11,
             	'page_id' => 1,
             	'theme' => 'capp',
-            	'activated' => 1,
+            	'activated' => 0,
             ],
             [
             	'id' => 12,
@@ -189,7 +189,7 @@ class BlocksTableSeeder extends Seeder
                 'widget_id' => 15,
                 'page_id' => 1,
                 'theme' => 'capp',
-                'activated' => 1,
+                'activated' => 0,
             ],
         ];
 
