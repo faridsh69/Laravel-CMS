@@ -2,27 +2,41 @@
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
-# Dont rewrite any code in your application!
-# Dont worry about admin panel!
+## Dont rewrite any code in your application!
+## Dont worry about admin panel!
 
 This is a Laravel package that is very easy to develope. 
 You should just define an array in each model and define what you want from this application, 
 Then every thing will be ready also you can change everything as you need.
 
 Automatic generate:
+
 	migrations, 
+	
 	seeders, 
+	
 	factory, 
+	
 	routes, 
+	
 	controller, 
+	
 	view, 
+	
 	forms, 
+	
 	tables, 
+	
 	export pdf, 
+	
 	export excel, 
+	
 	import excel, 
+	
 	print, 
+	
 	unit test,
+	
 	policies
 
 
