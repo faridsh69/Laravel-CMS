@@ -5,11 +5,11 @@
 ## Dont rewrite any code in your application!
 ## Dont worry about admin panel!
 
-This is a Laravel package that is very easy to develope. 
-You should just define an array in each model and define what you want from this application, 
-Then every thing will be ready also you can change everything as you need.
+### This is a Laravel package that is very easy to develope. 
+### You should just define an array in each model and define what you want from this application, 
+### Then every thing will be ready also you can change everything as you need.
 
-Automatic generate:
+Auto generate:
 
 	migrations, 
 	
@@ -39,6 +39,116 @@ Automatic generate:
 	
 	policies
 
+
+Controller:
+
+namespace App\Http\Controllers\Admin\Blog;
+use App\Base\BaseListController;
+class ResourceController extends BaseListController
+{
+	public $model = 'Blog';
+}
+
+Migrations:
+
+use App\Base\BaseMigration;
+class CreateBlogsTable extends BaseMigration
+{
+    public $model = 'Blog';
+}
+
+Tests:
+
+namespace Tests\Unit;
+use App\Base\BaseTest;
+class BlogTest extends BaseTest
+{
+    public $model = 'Blog';
+
+    public function test()
+    {
+        $this->resourceTest();
+    }
+}
+
+RouteServiceProvider
+
+public function map()
+{
+    $this->mapAdminRoutes();
+    $this->mapApiRoutes();
+    $this->mapAuthRoutes();
+    $this->mapFrontRoutes();
+}
+
+Factories always will generated automaticly for seed or unit test
+
+use App\Base\BaseFactory;
+$base_factory = new BaseFactory();
+$base_factory->index($factory);
+
+Form:
+
+namespace App\Forms;
+use App\Base\BaseForm;
+class BlogForm extends BaseForm
+{
+    public $model_name = 'Blog';
+}
+
+Policy: (You can ovveride any functions that you want to customise)
+
+namespace App\Policies;
+use App\Base\BasePolicy;
+class BlogPolicy extends BasePolicy
+{
+    public $model = 'Blog';
+}
+
+Model: Just need to define columns array, and let system handle every thing.
+
+public $columns = [
+    [
+        'name' => 'title',
+        'type' => 'string',
+        'database' => '',
+        'rule' => 'required|max:60|min:5|unique:blogs,title,',
+        'help' => 'Title should be unique, minimum 5 and maximum 60 characters.',
+        'form_type' => '',
+        'table' => true,
+    ],
+    .
+    .
+    .
+];
+
+In this cms all of usefull php packages used:
+
+admin theme: "kinshines/metronic"
+form builder: "kris/laravel-form-builder": "^1.20",
+tables: "yajra/laravel-datatables-oracle": "~9.0"
+HTML editor: ckeditor4
+file manager: "unisharp/laravel-filemanager": "dev-master",
+image: "unisharp/laravel-filemanager": "dev-master",
+tags: "rtconner/laravel-tagging"
+log: "rap2hpoutre/laravel-log-viewer": "^1.1",
+export excel: "Maatwebsite/Laravel-Excel"
+import with csv: "Maatwebsite/Laravel-Excel"
+backup: "spatie/laravel-backup"
+activity user log: "spatie/laravel-activitylog": "^3.5",
+validation phone: "Propaganistas/Laravel-Phone"
+api document: "mpociot/laravel-apidoc-generator"
+country o city: "antonioribeiro/countries"
+pdf: "barryvdh/laravel-dompdf"
+code style: "symplify/easy-coding-standard"
+social networks: "laravel/socialite"
+debugger: "barryvdh/laravel-debugbar"
+api authentication: "laravel/passport"
+module maker: "nWidart/laravel-modules"
+role&permission: "spatie/laravel-permission"
+captcha: "anhskohbo/no-captcha"
+category: "lazychaser/laravel-nestedset"
+comment o rate: "actuallymab/laravel-comment"
 
 ## How to use
 	
