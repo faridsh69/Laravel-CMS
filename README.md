@@ -122,7 +122,7 @@ Policy: (You can ovveride any functions that you want to customise)
 	    .
 	];
 
-## In this cms all of usefull php packages used:
+## Used Packages
 
 	admin theme: "kinshines/metronic"
 	form builder: "kris/laravel-form-builder": "^1.20",
@@ -194,102 +194,6 @@ Policy: (You can ovveride any functions that you want to customise)
 
 
 
-## Used Packages
-
-This CMS used this packages: 
-
-packages:
-
-	+ admin theme: drag and drop, calendar, notification, upload image, chart, forms
-		+ kinshines/metronic
-
-	+ form builder:
-		+ "kris/laravel-form-builder": "^1.20",
-
-	+ tables: sort, filter, paginate, status activation
-		+ "yajra/laravel-datatables-oracle": "~9.0"
-		+ datatables.net
-
-	+ HTML editor:
-		+ ckeditor4
-
-	+ file manager:
-		+ "unisharp/laravel-filemanager": "dev-master",
-
-	+ image: crop, resize, ye url base dashte bashe kolle system, alt axesh
-		+ "unisharp/laravel-filemanager": "dev-master",
-
-	+ add tags: for blog
-		+ rtconner/laravel-tagging
-
-	+ log:
-		+ "rap2hpoutre/laravel-log-viewer": "^1.1",
-
-	+ export excel:
-		+ Maatwebsite/Laravel-Excel
-
-	+ import with csv:
-		+ Maatwebsite/Laravel-Excel
-
-	+ backup:
-		+ spatie/laravel-backup
-
-	+ activity user log ,page and blog view:
-		+ "spatie/laravel-activitylog": "^3.5",
-
-	+ validation phone:
-		+ Propaganistas/Laravel-Phone
-
-	+ api document:
-		+ mpociot/laravel-apidoc-generator
-
-	+ country o city:
-		+ antonioribeiro/countries
-
-	+ pdf:
-		+ barryvdh/laravel-dompdf
-
-	+ breadcrumb:
-		+ myself
-
-	+ meta:
-		+ myself
-
-	+ print layout:
-		+ myself
-
-	+ seo:
-		myself
-
-	+ cdn:
-		myself
-
-	lazy :
-		myself 
-
-	+ code style:		
-		+ symplify/easy-coding-standard
-
-	+ connect to google
-		+ laravel/socialite
-
-	+ debugger
-		+ barryvdh/laravel-debugbar
-
-	+ api authentication
-		+ laravel/passport
-
-	+ module maker:
-		nWidart/laravel-modules
-
-	+ role&permission:
-		spatie/laravel-permission
-
-	+ captcha
-		anhskohbo/no-captcha
-
-	+ category
-		+ lazychaser/laravel-nestedset
 
 
 ## Features
@@ -367,7 +271,7 @@ php artisan apidoc:generate
 
 ## Demo
 
-[faridtest.ir](http://faridtest.ir)
+[www.cms-laravel.com](http://www.cms-laravel.com)
 
 ## Codestyle
 
