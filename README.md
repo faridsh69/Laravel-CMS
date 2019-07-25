@@ -1,10 +1,13 @@
-# A modern cms for Laravel apps
+# Laravel CMS
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
-This is a Laravel package that is very easy to developer. 
-you should just define an array in each model about what you want from this software, 
-then every thing will be ready also you can change everything as you need.
+# Dont rewrite any code in your application!
+# Dont worry about admin panel!
+
+This is a Laravel package that is very easy to develope. 
+You should just define an array in each model and define what you want from this application, 
+Then every thing will be ready also you can change everything as you need.
 
 Automatic generate:
 	migrations, 
