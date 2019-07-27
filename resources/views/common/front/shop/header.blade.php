@@ -37,11 +37,20 @@
     <link rel="shortcut icon" href="{{ asset($shop->favicon) }}" />
 
     <!--begin::Base Styles -->
+    @if(Request::segment(1) === 'dashboard')
+    <link href="{{ asset('css/front/shops/main/swiper.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/front/shops/main/dashboard/admin-style.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/front/shops/main/dashboard/jquery.mCustomScrollbar.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/front/shops/main/dashboard/owl.carousel.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/front/shops/main/dashboard/rtl.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/front/shops/main/fontawesome.css') }}" rel="stylesheet" />
+    @else
     <link href="{{ asset('css/front/shops/main/swiper.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/front/shops/main/smooth-scrollbar.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/front/shops/main/style.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/front/shops/denja/style.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/front/shops/main/fontawesome.css') }}" rel="stylesheet" />
+    @endif
     <!--end::Base Styles -->
     <style>
         .header .categories{
