@@ -186,16 +186,13 @@ class User extends Authenticatable
         return $this->first_name . ' ' . $this->last_name;
     }
 
-    public function getImageAttribute()
+    public function getImageAttribute($image)
     {
-        if($this->image)
-        {
-            return $this->image; 
+        if(isset($image)) {
+            return $image; 
         }
-        else
-        {
-            return config('0-general.default_user_image');
-        }
+
+        return config('0-general.default_user_image');
     }
 
     // public static function boot()
