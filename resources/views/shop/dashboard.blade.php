@@ -88,20 +88,20 @@
                                 </div>
                                 <div class="items">
                                     <ul class="items_list">
-                                        @foreach($category->products()->orderby('order')->get() as $item)
-                                            <li class="item {{$item->status}} {{$item->hide_class}} {{$item->discount_enabled}}"
-                                                id="item{{$item->id}}"
+                                        @foreach($category->products()->orderby('order')->get() as $product)
+                                            <li class="item {{$product->status}} {{$product->hide_class}} {{$product->discount_enabled}}"
+                                                id="item{{$product->id}}"
                                                 data-url="{{route('shop.dashboard.showItem',
-                                                ['shop_subdomain' => 'denja', 'id' => $item->id]
+                                                ['shop_subdomain' => 'denja', 'id' => $product->id]
                                                   )}}"
-                                                data-itemgalleryresize="{{$item->gallery_resize}}"
-                                                data-galleryaddr="{{$item->gallery_address}}">
+                                                data-itemgalleryresize="{{$product->gallery_resize}}"
+                                                data-galleryaddr="{{$product->gallery_address}}">
 
-                                                <img class="li_item_image @if(is_null($item->item_image)) hidden @endif"
-                                                     src="{{$item->item_small_image}}" alt=""/>
+                                                <img class="li_item_image @if(is_null($product->image)) hidden @endif"
+                                                     src="{{$product->image_small}}" alt=""/>
                                                 <div class="name">
-                                                    <span class="inner_item_name">{{$item->name}}</span>
-                                                    {{--<span class="count">@if($item->count!= -1 && $item->type == 'shop_card') ({{$item->count}}) @endif</span>--}}
+                                                    <span class="inner_item_name">{{$product->title}}</span>
+                                                    {{--<span class="count">@if($product->count!= -1 && $product->type == 'shop_card') ({{$product->count}}) @endif</span>--}}
                                                 </div>
                                                 <div class="discounticon"><i class="fas fa-percent"></i></div>
                                             </li>
@@ -628,7 +628,7 @@
 //                if(openNextItem) {
                 emptyItemDetail();
                 showItemDetail();
-                CallAjaxFunc('{{url(route('shop.dashboard.showItem' ,['shop_subdomain' => 'denja', 'id' => $item->id]))}}' + '/' + item_id.substr(4), {}, fillItemDetail);
+                CallAjaxFunc('{{url(route('shop.dashboard.showItem' ,['shop_subdomain' => 'denja', 'id' => 1]))}}' + '/' + item_id.substr(4), {}, fillItemDetail);
 //                } else {
 //                    console.log("ex process is not saving yet")
 //                }
