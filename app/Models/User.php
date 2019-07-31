@@ -118,7 +118,7 @@ class User extends Authenticatable
             'table' => false,
         ],
         [
-            'name' => 'profile_image',
+            'name' => 'image',
             'type' => 'string',
             'database' => 'nullable',
             'rule' => 'nullable|max:191',
@@ -188,9 +188,9 @@ class User extends Authenticatable
 
     public function getImageAttribute()
     {
-        if($this->profile_image)
+        if($this->image)
         {
-            return $this->profile_image; 
+            return $this->image; 
         }
         else
         {

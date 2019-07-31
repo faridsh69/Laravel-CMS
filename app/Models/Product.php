@@ -14,23 +14,24 @@ class Product extends Model implements Commentable
     use Taggable;
     use HasComments;
 
-	// gallery
-	// title,
-	// url,
-	// description,
-	// content,
-	// tags,
-	// comment,
-	// rate,
-	// logo,
-	// activated,
-	// category_id,
-	// shop_id,
-	// price,
-	// discount_price,
+    // title,
+    // price,
+    // discount_price,
     // inventory,
-	// order,
-    // ready_duration_time,
+    // order,
+    // url,
+    // category_id,
+    // shop_id,
+    // description,
+    // content,
+    // logo,
+    // activated,
+    // tags,
+    // ready_time,
+
+    // comment,
+    // rate,
+	// ??? gallery
 
     public $columns = [
         [
@@ -134,7 +135,7 @@ class Product extends Model implements Commentable
             'table' => true,
         ],
         [
-            'name' => 'logo',
+            'name' => 'image',
             'type' => 'string',
             'database' => 'nullable',
             'rule' => 'nullable|max:191',
@@ -201,16 +202,13 @@ class Product extends Model implements Commentable
         return $query->where('activated', 1);
     }
 
-    public function getImageAttribute()
+    public function getImageAttribute($image)
     {
-        if($this->logo)
-        {
-            return $this->logo; 
+        if(isset($image)) {
+            return $image; 
         }
-        else
-        {
-            return config('0-general.default_product_image');
-        }
+
+        return config('0-general.default_product_image');
     }
 
     public function getImageSmallAttribute()

@@ -12,7 +12,7 @@
     </div>
     <div class="categories">
         @foreach($categories as $category)
-            <div class="cat" id="batch{{$category->id}}cat" style="background-image: url({{$category->meta_image}})">
+            <div class="cat" id="batch{{$category->id}}cat" style="background-image: url({{$category->image}})">
                 <span>
                     {{$category->title}}
                 </span>

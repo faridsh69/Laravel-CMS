@@ -11,7 +11,7 @@ class Category extends Model
     use NodeTrait;
     use SoftDeletes;
 
-    // title, url, description, meta_description, meta_image, activated, google_index, canonical_url, parent_id, _rgt, _lft, shop_id,
+    // title, url, description, meta_description, image, activated, google_index, canonical_url, parent_id, _rgt, _lft, shop_id,
 
     public $columns = [
         [
@@ -51,11 +51,11 @@ class Category extends Model
             'table' => false,
         ],
         [
-            'name' => 'meta_image',
+            'name' => 'image',
             'type' => 'string',
             'database' => 'nullable',
             'rule' => 'nullable|max:191|url',
-            'help' => 'Meta image shows when this page is shared in social networks.',
+            'help' => 'Image shows when this page is shared in social networks.',
             'form_type' => '',
             'table' => false,
         ],
@@ -128,7 +128,7 @@ class Category extends Model
     ];
 
     protected $fillable = [
-        'title', 'url', 'description', 'meta_description', 'meta_image', 'activated', 'google_index', 'canonical_url', 'parent_id', '_rgt', '_lft', 'shop_id', 'order',
+        'title', 'url', 'description', 'meta_description', 'image', 'activated', 'google_index', 'canonical_url', 'parent_id', '_rgt', '_lft', 'shop_id', 'order',
     ];
 
     protected $appends = ['text'];
@@ -157,5 +157,14 @@ class Category extends Model
     public function scopeActive($query)
     {
         return $query->where('activated', 1);
+    }
+
+    public function getImageAttribute($image)
+    {
+        if(isset($image)) {
+            return $image; 
+        }
+
+        return config('0-general.default_product_image');
     }
 }

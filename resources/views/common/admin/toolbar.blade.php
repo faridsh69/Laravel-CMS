@@ -144,14 +144,7 @@
 							style= "background: url( {{ asset('images/admin/user_profile_bg.jpg') }}); background-size: cover;">
 							<div class="m-card-user m-card-user--skin-dark">
 								<div class="m-card-user__pic">
-									<img class="m--img-rounded m--marginless" src="
-									@if(Auth::user()->profile_image)
-										{{ Auth::user()->profile_image }}
-									@else
-										{{ config('0-general.default_user_image') }}
-									@endif 
-									"
-									/>
+									<img class="m--img-rounded m--marginless" src="{{ Auth::user()->image }}"/>
 								</div>
 								<div class="m-card-user__details">
 									<span class="m-card-user__name m--font-weight-500">

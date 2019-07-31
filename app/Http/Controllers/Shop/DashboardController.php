@@ -18,23 +18,20 @@ class DashboardController extends Controller
         abort_if(! $shop, 404);
 
         $meta = [
-            'title' => $shop->title_fa,
-            'description' => $shop->meta_description,
+            'title' => 'Dashboard ' . $shop->title_fa,
+            'description' => 'Dashboard ' . $shop->meta_description,
             'keywords' => $shop->keywords,
             'image' => $shop->logo,
             'google_index' => 0,
             'canonical_url' => url()->current(),
         ];
 
-        // return redirect()->route('shop.index', ['shop_subdomain' => $shop_subdomain]);
-
         return view('shop.dashboard', array(
-                        'folders' => $categories,
-                        // 'fully_just_content' => 0,
-                        'is_restaurant_close' => 0,
-                        'meta' => $meta,
                         'shop' => $shop,
-                        'under_construction' => 1, 
+                        'meta' => $meta,
+                        'categories' => $categories,
+                        'is_restaurant_close' => 0,
+                        'under_construction' => 0, 
                     ));
 
         // if (isset($folder[0])) {

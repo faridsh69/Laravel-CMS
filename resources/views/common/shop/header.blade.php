@@ -23,7 +23,7 @@
     <meta property="og:locale" content="en" />
     <meta property="og:locale:alternate" content="en" />
     <meta property="og:image" content="{{ $meta['image'] }}">
-    <meta property="og:site_name" content="{{ url('/') }}">
+    <meta property="og:site_name" content="{{ url()->current() }}">
 
     <meta property="twitter:card" content="summary">
     <meta property="twitter:site" content="{{ url()->current() }}">
@@ -31,7 +31,7 @@
     <meta property="twitter:description" content="{{ $meta['description'] }}">
     <meta property="twitter:creator" content="farid shahidi">
     <meta property="twitter:image" content="{{ $meta['image'] }}">
-    <meta property="twitter:domain" content="{{ url('/') }}">
+    <meta property="twitter:domain" content="{{ url()->current() }}">
 
     <link rel="canonical" href="{{ $meta['canonical_url'] }}">
     <link rel="shortcut icon" href="{{ asset($shop->favicon) }}" />

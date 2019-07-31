@@ -12,18 +12,18 @@
             </div>
             <div class="user_details">
                 <div class="name">@if(\Auth::check()){{\Auth::user()->username}}@else Super Admin @endif</div>
-                <div class="post">{{__('administrator')}}
+                <div class="post">سرپرست
                 </div>
                 <span class="">
-                    <a href="{{route('shop.index', ['shop_subdomain' => 'denja'])}}" target="_blank">{{__('watch menu')}}</a>
+                    <a href="{{route('shop.index', ['shop_subdomain' => 'denja'])}}" target="_blank">مشاهده منو</a>
                 </span> |
                 @if(!is_null(session('userid')))
-                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{__('logout')}}</a>
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">خروج</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     {{ csrf_field() }}
                 </form>
                 @else
-                    <span id="empty_super_license" data-nexturl="{{route('shop.index', ['shop_subdomain' => 'denja'])}}" data-url="{{'admin.super-license'}}" style="cursor: pointer;">{{__('logout')}}</span>
+                    <span id="empty_super_license" data-nexturl="{{route('shop.index', ['shop_subdomain' => 'denja'])}}" data-url="{{'admin.super-license'}}" style="cursor: pointer;">خروج</span>
                 @endif
             </div>
         </div>
@@ -44,8 +44,8 @@
         </div>
         <div class="emergency_call">
             <div class="inner">
-                <div class="title">{{__('emergency support call')}}</div>
-                <div class="tell"><span class="thinText">{{ $shop->phone }} </span><span class="bigbold">{{$shop->phone}}</span></div>
+                <div class="title">تماس پشتیبانی فوری</div>
+                <div class="tell"><span class="thinText"></span><span class="bigbold">{{$shop->phone}} </span></div>
             </div>
             <div class="icon"></div>
         </div>
@@ -64,23 +64,23 @@
         </div>
         <div class="cards">
             <div class="cardsinner">
-                @if(isset($folders))
-                    @foreach($folders as $folder)
+                @if(isset($categories))
+                    @foreach($categories as $category)
                         <div class="swiper-slide">
-                            <ul class="card swiper-no-swiping" id="{{$folder->id}}">
+                            <ul class="card swiper-no-swiping" id="{{$category->id}}">
                                 <div class="cardheader">
                                     <div class="leftsec">
-                                        <div class="card_name">{{$folder->name}}</div>
-                                        <div class="batchicon edit_card" data-id="batch_{{$folder->id}}" title="{{__('edit batch')}}"></div>
-                                        <div class="batchicon card_archive" data-id="{{$folder->id}}" title="{{__('archive batch')}}"></div>
+                                        <div class="card_name">{{$category->title}}</div>
+                                        <div class="batchicon edit_card" data-id="batch_{{$category->id}}" title="{{__('edit batch')}}"></div>
+                                        <div class="batchicon card_archive" data-id="{{$category->id}}" title="{{__('archive batch')}}"></div>
                                     </div>
                                     <div class="rightsec">
-                                        <div class="card_icon" data-iconname="{{$folder->image}}">
-                                            <img height="100%" width="100%" src="{{$folder->folder_image}}"/>
+                                        <div class="card_icon" data-iconname="{{$category->image}}">
+                                            <img height="100%" width="100%" src="{{$category->image}}"/>
                                         </div>
                                         {{--<label class="card_select">--}}
                                         {{--<input class="select_input" type="checkbox"--}}
-                                        {{--id="batch_{{$folder->id}}">--}}
+                                        {{--id="batch_{{$category->id}}">--}}
                                         {{--<span class="
                                         "></span>--}}
                                         {{--</label>--}}
@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="items">
                                     <ul class="items_list">
-                                        @foreach($folder->products()->orderby('order')->get() as $item)
+                                        @foreach($category->products()->orderby('order')->get() as $item)
                                             <li class="item {{$item->status}} {{$item->hide_class}} {{$item->discount_enabled}}"
                                                 id="item{{$item->id}}"
                                                 data-url="{{route('shop.dashboard.showItem',
@@ -113,7 +113,7 @@
                                         <input type="text" name="name" class="add_item add_item_input"
                                                placeholder="{{__('add new item')}} ..." autocomplete="off"/>
                                         <input type="hidden" name="folder_id" class="folder_id"
-                                               value="{{$folder->id}}">
+                                               value="{{$category->id}}">
                                         <input type="submit" value="{{__('add item')}}" class="add_item_btn">
                                     </form>
                                 </div>
