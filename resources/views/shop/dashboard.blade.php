@@ -264,14 +264,65 @@
 
 
 
-@push('script')
-    <script>
+
+
+
+
+
+
+<div class="footer">
+    <ul class="owl-carousel owl-theme modules_panel">
+        <a href="{{route('shop.dashboard.menumaker.index', ['shop_subdomain' => 'denja'])}}">
+            <li class="item {{ Request::is('admin/menumaker*') ? 'active' : '' }}" id="menumaker">
+            منوساز</li>
+        </a>
+        @if(false && $fully_just_content == 0)
+            <a href="{{route('shop.dashboard.ordersInfo')}}">
+                <li class="item {{ Request::is('admin/orders-info*') ? 'active' : '' }}" id="orders">{{__('orders info')}}
+                </li>
+            </a>
+            <a href="{{route('shop.dashboard.ordersHistory')}}">
+                <li class="item {{ Request::is('admin/orders-history*') ? 'active' : '' }}" id="ordershistory">{{__('activities log')}}
+                </li>
+            </a>
+        @endif
+        <a href="{{route('shop.dashboard.settings.index', ['shop_subdomain' => 'denja'])}}">
+            <li class="item {{ Request::is('admin/settings*') ? 'active' : '' }}" id="settings">
+                تنظیمات
+            </li>
+        </a>
+    </ul>
+</div>
+
+
+
+ <div class="msgBox">
+    <div class="innerbox">
+        <!-- <div class="exit"></div> -->
+        <div class="topSide">warning</div>
+        <div class="bottomSide"></div>
+        <div class="btns">
+            <div class="btn confirmBtn">Yep</div>
+            <div class="btn cancelBtn">Nope</div>
+        </div>
+    </div>
+</div>
+
+
+
+@endsection
+
+@push('scripts')
+
+<script>
 
 
       $(document).ready(function () {
 
         function setDetailsBodyHg() {
           var nonfixheight = $(window).height() - $('.item_info .head').height() - $('.item_info .fixedBottom').height() - 80;
+
+          console.log(nonfixheight);
           $('.item_info .item_body .nonFixed').css('max-height', nonfixheight + 'px');
           $('#mCSB_2').css('max-height', nonfixheight + 'px');
         }
@@ -313,82 +364,10 @@
         });
       })(jQuery);
     </script>
-@endpush
 
 
 
-
-<div class="footer">
-    <!-- <ul class="modules_panel">
-        <li class="module" id="item1"></li>
-        <li class="module" id="item2"></li>
-        <li class="module" id="item3"></li>
-        <li class="module" id="item4"></li>
-        <li class="module" id="item5"></li>
-        <li class="module" id="item6"></li>
-    </ul> -->
-    <ul class="owl-carousel owl-theme modules_panel">
-        <a href="{{route('shop.dashboard.menumaker.index', ['shop_subdomain' => 'denja'])}}">
-            <li class="item {{ Request::is('admin/menumaker*') ? 'active' : '' }}" id="menumaker">{{__('menu maker')}}</li>
-        </a>
-        @if(false && $license != config('app.super_license'))
-            @if($fully_just_content == 0)
-                <a href="{{route('shop.dashboard.ordersInfo')}}">
-                    <li class="item {{ Request::is('admin/orders-info*') ? 'active' : '' }}" id="orders">{{__('orders info')}}
-                    </li>
-                </a>
-                <a href="{{route('shop.dashboard.ordersHistory')}}">
-                    <li class="item {{ Request::is('admin/orders-history*') ? 'active' : '' }}" id="ordershistory">{{__('activities log')}}
-                    </li>
-                </a>
-            @endif
-            <a href="{{route('shop.dashboard.settings.index')}}">
-                <li class="item {{ Request::is('admin/settings*') ? 'active' : '' }}" id="settings">{{__('settings')}}</li>
-            </a>
-        @endif
-    </ul>
-</div>
-
-
-
-
-    <!-- <div class="totop"></div>
-<div id="loading">
-    <div id="loading-center">
-        <div id="loading-center-absolute">
-            <div class="object"></div>
-            <div class="object"></div>
-            <div class="object"></div>
-            <div class="object"></div>
-            <div class="object"></div>
-            <div class="object"></div>
-            <div class="object"></div>
-            <div class="object"></div>
-            <div class="object"></div>
-            <div class="object"></div>
-        </div>
-    </div>
-</div>
- -->
- <div class="msgBox">
-    <div class="innerbox">
-        <!-- <div class="exit"></div> -->
-        <div class="topSide">warning</div>
-        <div class="bottomSide"></div>
-        <div class="btns">
-            <div class="btn confirmBtn">Yep</div>
-            <div class="btn cancelBtn">Nope</div>
-        </div>
-    </div>
-</div>
-
-
-
-@endsection
-
-@push('scripts')
-
-
+    
 <script>
     $.ajaxSetup({
         headers: {

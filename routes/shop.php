@@ -22,5 +22,6 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
 	Route::get('updateCard', 'DashboardController@updateCard')->name('updateCard');
 	Route::get('hideItem', 'DashboardController@hideItem')->name('hideItem');
 	Route::get('changeBatchStatus', 'DashboardController@changeBatchStatus')->name('changeBatchStatus');
+	Route::get('settingsIndex', 'DashboardController@settingsIndex')->name('settings.index');
 
 });
