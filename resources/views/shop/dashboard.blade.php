@@ -1,9 +1,6 @@
 @extends('layout.shop')
 @section('content')
 
-
-
-
 <div class="bgwrap"></div>
 <header class="header">
         <div class="user" id="header_user_info" @if(!is_null(\Auth::user())) data-updateversion="{{\Auth::user()->updated_version}}" @endif data-updateurl="{{'update-version'}}">
@@ -53,7 +50,7 @@
 
 
     @php isset($set->name) ? $set_id = $set->id: $set_id = null @endphp
-    <div class="container fullpage">
+    <div class="container fullpage" id="height-fullpage">
         <div class="address_bar">
             @if(isset($set->name))
                 {{--<a href="" class="address">superstar resturant</a>--}}
@@ -63,7 +60,7 @@
             @endif
         </div>
         <div class="cards">
-            <div class="cardsinner">
+            <div class="cardsinner" id="min-height-cardsinner">
                 @if(isset($categories))
                     @foreach($categories as $category)
                         <div class="swiper-slide">
@@ -86,7 +83,7 @@
                                         {{--</label>--}}
                                     </div>
                                 </div>
-                                <div class="items">
+                                <div class="items max-height-items">
                                     <ul class="items_list">
                                         @foreach($category->products()->orderby('order')->get() as $product)
                                             <li class="item {{$product->status}} {{$product->hide_class}} {{$product->discount_enabled}}"
@@ -325,6 +322,11 @@
           console.log(nonfixheight);
           $('.item_info .item_body .nonFixed').css('max-height', nonfixheight + 'px');
           $('#mCSB_2').css('max-height', nonfixheight + 'px');
+
+          $('#height-fullpage').css('height', (nonfixheight - 12) + 'px');
+          $('#min-height-cardsinner').css('max-height', (nonfixheight - 50) + 'px');
+          $('.max-height-items').css('max-height', (nonfixheight - 100) + 'px');
+           
         }
 
         setDetailsBodyHg();
@@ -367,7 +369,7 @@
 
 
 
-    
+
 <script>
     $.ajaxSetup({
         headers: {

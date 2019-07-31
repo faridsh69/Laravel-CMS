@@ -44,6 +44,19 @@
     <link href="{{ asset('css/front/shops/main/dashboard/owl.carousel.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/front/shops/main/dashboard/rtl.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/front/shops/main/fontawesome.css') }}" rel="stylesheet" />
+    <style>
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #eee;
+        }
+        ::-webkit-scrollbar-thumb {
+            -webkit-border-radius: 5px;
+            background-color: #999;
+        }
+    </style>
     @else
     <link href="{{ asset('css/front/shops/main/swiper.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/front/shops/main/smooth-scrollbar.css') }}" rel="stylesheet" />
