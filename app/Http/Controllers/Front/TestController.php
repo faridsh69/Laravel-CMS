@@ -36,7 +36,7 @@ class TestController extends Controller
 
         $this->getUploadImage($image_data, $image_name, $folder_id);
 
-        return redirect()->route('front.page.test-new-job');
+        return redirect()->route('front.test.new-job');
     }
 
     public function call_curl($url, $method, $body, $authorization = null)

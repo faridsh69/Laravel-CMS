@@ -137,6 +137,7 @@ class BaseListController extends Controller
         // blogs
         unset($data['tags']);
         unset($data['related_blogs']);
+        unset($data['fields']);
 
         // comment
         if($this->model === 'Comment'){
@@ -292,6 +293,7 @@ class BaseListController extends Controller
         // blogs
         unset($data['tags']);
         unset($data['related_blogs']);
+        unset($data['fields']);
 
         $model->update($data);
 
@@ -474,6 +476,11 @@ class BaseListController extends Controller
         if(isset($data['tags'])){
             $tag_names = Tag::whereIn('id', $data['tags'])->pluck('name')->toArray();
             $model->retag($tag_names);
+        }
+
+        if(isset($data['fields']))
+        {
+            $model->fields()->sync($data['fields'], true);
         }
     }
 }

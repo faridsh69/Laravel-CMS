@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Form extends Model
+class Field extends Model
 {
     use SoftDeletes;
 
-    // title, description, fields
+    // title, type, required
     public $columns = [
         [
             'name' => 'title',
@@ -21,13 +21,22 @@ class Form extends Model
             'table' => true,
         ],
         [
-            'name' => 'description',
+            'name' => 'type',
             'type' => 'string',
             'database' => 'nullable',
             'rule' => 'nullable|max:191',
             'help' => '',
-            'form_type' => 'textarea',
+            'form_type' => '',
             'table' => false,
+        ],
+        [
+            'name' => 'required',
+            'type' => 'boolean',
+            'database' => 'default',
+            'rule' => 'boolean',
+            'help' => '',
+            'form_type' => 'switch-bootstrap-m', // switch-m
+            'table' => true,
         ],
         [
             'name' => 'activated',
@@ -36,19 +45,6 @@ class Form extends Model
             'rule' => 'boolean',
             'help' => '',
             'form_type' => '', // switch-m
-            'table' => false,
-        ],
-        [
-            'name' => 'fields',
-            'type' => 'array',
-            'database' => 'none',
-            'rule' => 'nullable',
-            'help' => '',
-            'form_type' => 'entity',
-            'class' => 'App\Models\Field',
-            'property' => 'title',
-            'property_key' => 'id',
-            'multiple' => true,
             'table' => false,
         ],
     ];
@@ -66,7 +62,7 @@ class Form extends Model
 
     public function fields()
     {
-        return $this->belongsToMany('App\Models\Field', 'field_form', 'field_id', 'form_id');
+        return $this->belongsToMany('App\Models\Field', 'field_form', 'form_id', 'field_id');
     }
 
     public function scopeActive($query)

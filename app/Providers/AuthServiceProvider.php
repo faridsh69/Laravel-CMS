@@ -10,6 +10,7 @@ use App\Policies\CommentPolicy;
 use App\Policies\CountingPolicy;
 use App\Policies\FeaturePolicy;
 use App\Policies\FeedbackPolicy;
+use App\Policies\FieldPolicy;
 use App\Policies\FormPolicy;
 use App\Policies\MenuPolicy;
 use App\Policies\NotificationPolicy;
@@ -41,33 +42,34 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'App\Models\Activity' => ActivityPolicy::class,
+        'App\Models\Block' => BlockPolicy::class,
         'App\Models\Blog' => BlogPolicy::class,
-        'App\Models\Page' => PagePolicy::class,
+        'App\Models\Counting' => CountingPolicy::class,
         'App\Models\Category' => CategoryPolicy::class,
-        'App\Models\Tag' => TagPolicy::class,
-        'App\Models\User' => UserPolicy::class,
+        'App\Models\Comment' => CommentPolicy::class,
+        'App\Models\Feature' => FeaturePolicy::class,
+        'App\Models\Feedback' => FeedbackPolicy::class,
+        'App\Models\Field' => FieldPolicy::class,
+        'App\Models\Form' => FormPolicy::class,
+        'App\Models\Notification' => NotificationPolicy::class,
+        'App\Models\Menu' => MenuPolicy::class,
+        'App\Models\Partner' => PartnerPolicy::class,
         'App\Models\Permission' => UserPolicy::class,
+        'App\Models\Page' => PagePolicy::class,
+        'App\Models\Pricing' => PricingPolicy::class,
+        'App\Models\Product' => ProductPolicy::class,
         'App\Models\Role' => UserPolicy::class,
+        'App\Models\Service' => ServicePolicy::class,
         'App\Models\SettingGeneral' => SettingGeneralPolicy::class,
         'App\Models\SettingContact' => SettingContactPolicy::class,
         'App\Models\SettingDeveloper' => SettingDeveloperPolicy::class,
-        'App\Models\Notification' => NotificationPolicy::class,
-        'App\Models\Menu' => MenuPolicy::class,
-        'App\Models\Comment' => CommentPolicy::class,
-        'App\Models\Form' => FormPolicy::class,
-        'App\Models\Block' => BlockPolicy::class,
-        'App\Models\Widget' => WidgetPolicy::class,
-        'App\Models\Theme' => ThemePolicy::class,
         'App\Models\Shop' => ShopPolicy::class,
-        'App\Models\Product' => ProductPolicy::class,
-        'App\Models\Feedback' => FeedbackPolicy::class,
-        'App\Models\Counting' => CountingPolicy::class,
-        'App\Models\Feature' => FeaturePolicy::class,
-        'App\Models\Team' => TeamPolicy::class,
-        'App\Models\Partner' => PartnerPolicy::class,
         'App\Models\Slider' => SliderPolicy::class,
-        'App\Models\Pricing' => PricingPolicy::class,
-        'App\Models\Service' => ServicePolicy::class,
+        'App\Models\Tag' => TagPolicy::class,
+        'App\Models\Team' => TeamPolicy::class,
+        'App\Models\Theme' => ThemePolicy::class,
+        'App\Models\User' => UserPolicy::class,
+        'App\Models\Widget' => WidgetPolicy::class,
     ];
 
     /**

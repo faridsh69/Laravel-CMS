@@ -48,7 +48,7 @@ class PageController extends Controller
             'canonical_url' => url()->current(),
         ];
 
-        return view('front.page.video', ['meta' => $meta]);
+        return view('front.widgets.video.index', ['meta' => $meta]);
     }
 
     public function postSubscribe(Request $request)

@@ -61,6 +61,7 @@
                         </div>
                         <!-- Message Input Area End -->
                     </form>
+                    @include('front.widgets.form.index')
                 </div>
             </div>
         </div>

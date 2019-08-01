@@ -227,6 +227,32 @@
 			],
 		],
 		[
+			'id' => 15,
+			'title' => 'Form',
+			'route' => 'form',
+			'type' => 'submenu',
+			'icon' => 'flaticon-edit',
+			'children' => [	
+				[
+					'title' => 'Form list',
+					'route' => 'admin.form.list.index',
+				],
+			],
+		],
+		[
+			'id' => 15,
+			'title' => 'Field',
+			'route' => 'field',
+			'type' => 'submenu',
+			'icon' => 'flaticon-comment',
+			'children' => [	
+				[
+					'title' => 'Field list',
+					'route' => 'admin.field.list.index',
+				],
+			],
+		],
+		[
 			'title' => 'THEME',
 			'type' => 'section',
 		],
@@ -336,19 +362,6 @@
 				[
 					'title' => 'Service list',
 					'route' => 'admin.service.list.index',
-				],
-			],
-		],
-		[
-			'id' => 15,
-			'title' => 'Form',
-			'route' => 'form',
-			'type' => 'submenu',
-			'icon' => 'flaticon-edit',
-			'children' => [	
-				[
-					'title' => 'Form list',
-					'route' => 'admin.form.list.index',
 				],
 			],
 		],

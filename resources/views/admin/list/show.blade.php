@@ -50,7 +50,7 @@
 					<span class="m-list-timeline__text">
 						{{ $activity->description }}
 						By 
-						{{ $activity->causer->getFullName() }}
+						{{ $activity->causer->fullName }}
 						At
 						{{ $activity->created_at }}
 					</span>
