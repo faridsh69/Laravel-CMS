@@ -10,6 +10,7 @@ class DashboardController extends Controller
 {
     public function index($shop_subdomain)
     {
+        \App::setLocale('fa');
         $shop = Shop::where('url', $shop_subdomain)->first();
         abort_if(! $shop, 404);
 
@@ -35,8 +36,15 @@ class DashboardController extends Controller
         ]);
     }
 
-    public function showItem()
+    public function showItem($id)
     {
+        $product = Product::whereId($id)->first();
 
+        return json_encode($product);
+    }
+
+    public function releaseTable()
+    {
+        return abort(403);
     }
 }

@@ -139,6 +139,7 @@
                                     data-type="{{$product->type}}">
                                 <span class="qty">{{$order_count}}</span>
 
+                                @if($product->image)
                                 <div class="itemimage"
                                      style="background-image: url('{{ $product->image_small }}');">
                                     @if($has_video)
@@ -147,6 +148,7 @@
                                         </div>
                                     @endif
                                 </div>
+                                @endif
 
                                 <div class="itemdetails">
                                     <header class="title">{{$product->title}}</header>

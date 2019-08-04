@@ -37,7 +37,7 @@
                 </div>
             @endif
             <div class="action to_cat hidden"><span>Make Category from...</span></div>
-            @if (Request::is('admin/orders-info*')) <div class="action to_setting" data-tablenumberurl="{{route('shop.dashboard.releaseTable')}}"><span>{{__('settings')}}</span></div>@endif
+            @if (false && Request::is('admin/orders-info*')) <div class="action to_setting" data-tablenumberurl="{{route('shop.dashboard.releaseTable')}}"><span>{{__('settings')}}</span></div>@endif
         </div>
         <div class="emergency_call">
             <div class="inner">
@@ -53,8 +53,6 @@
     <div class="container fullpage" id="height-fullpage">
         <div class="address_bar">
             @if(isset($set->name))
-                {{--<a href="" class="address">superstar resturant</a>--}}
-                {{--<span class="separator"></span>--}}
                 <a href="{{route('shop.dashboard.set.index', ['shop_subdomain' => 'denja'])}}" class="address">Sets</a>
                 <a class="address current_page">{{$set->name}}</a>
             @endif
@@ -75,12 +73,6 @@
                                         <div class="card_icon" data-iconname="{{$category->image}}">
                                             <img height="100%" width="100%" src="{{$category->image}}"/>
                                         </div>
-                                        {{--<label class="card_select">--}}
-                                        {{--<input class="select_input" type="checkbox"--}}
-                                        {{--id="batch_{{$category->id}}">--}}
-                                        {{--<span class="
-                                        "></span>--}}
-                                        {{--</label>--}}
                                     </div>
                                 </div>
                                 <div class="items max-height-items">
@@ -104,7 +96,7 @@
                                             </li>
                                         @endforeach
                                     </ul>
-                                    <form name="" class="add_item_form"
+                                        <form name="" class="add_item_form"
                                           data-action="{{route('shop.dashboard.item.store', ['shop_subdomain' => 'denja'])}}"
                                           method="post">
                                         <input type="text" name="name" class="add_item add_item_input"
@@ -148,7 +140,6 @@
             <div class="btns">
                 <div class="show_hide_btn show_btn"></div>
                 <div class="pin_btn" style="display: none;"></div>
-                {{--<div class="item_type_btn" id="" data-url="{{route('shop.dashboard.changeItemType')}}"></div>--}}
             </div>
         </div>
         <div class="item_body">
@@ -157,7 +148,7 @@
                     <input type="text" name="name" id="item_name" placeholder="{{__('item name')}}" />
                     <input type="hidden" name="_method" value="POST" />
                     <input type="hidden" name="_token" value="{{csrf_token()}}" />
-                    {{-- esme axa faghat to0sh negah dashte miShe --}}
+
                     <input type="hidden" name="gallery_files" id="gallery_files" />
                     <input type="hidden" name="main_pic_from_gallery" id="main_pic_from_gallery" />
                     <input type="hidden" name="type" id="item_type" />
@@ -319,7 +310,6 @@
         function setDetailsBodyHg() {
           var nonfixheight = $(window).height() - $('.item_info .head').height() - $('.item_info .fixedBottom').height() - 80;
 
-          console.log(nonfixheight);
           $('.item_info .item_body .nonFixed').css('max-height', nonfixheight + 'px');
           $('#mCSB_2').css('max-height', nonfixheight + 'px');
 

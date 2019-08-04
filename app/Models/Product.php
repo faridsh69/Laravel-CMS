@@ -202,27 +202,36 @@ class Product extends Model implements Commentable
         return $query->where('activated', 1);
     }
 
-    public function getImageAttribute($image)
-    {
-        if(isset($image)) {
-            return $image; 
-        }
+    // public function getImageAttribute($image)
+    // {
+    //     if(isset($image)) {
+    //         return $image; 
+    //     }
 
-        return config('0-general.default_product_image');
-    }
+    //     return null;
+    // }
 
     public function getImageSmallAttribute()
     {
+        if(!isset($this->image)){
+            return null;
+        }
         return '/image/product/' . $this->id . '/150';
     }
 
     public function getImageMediumAttribute()
     {
+        if(!isset($this->image)){
+            return null;
+        }
         return '/image/product/' . $this->id . '/200';
     }
 
     public function getImageLargeAttribute()
     {
+        if(!isset($this->image)){
+            return null;
+        }
         return '/image/product/' . $this->id . '/480';
     }
 }

@@ -7,6 +7,7 @@ use App\Models\Block;
 use App\Models\Product;
 use App\Models\User;
 use Carbon\Carbon;
+use Cache;
 use Illuminate\Http\Request;
 use Image;
 
@@ -14,13 +15,20 @@ class ImageController extends Controller
 {
     public function getProduct($shop_url, $id, $width)
     {
-        $product = Product::where('id', $id)->first();
-        $image = Image::make($product->image);
+    	sleep(0.3);
+    	$product = Product::findOrFail($id);
+        abort_if(!$product->image, 404);
 
-        $image->resize($width, null, function ($constraint) {
-            $constraint->aspectRatio();
-        });
+    	$seconds = 3;
+        $value = Cache::remember('shop.image.x' . $id . '.' . $width, $seconds, function () use($product, $width) {
+	        $image = Image::make($product->image);
+	        $image->resize($width, null, function ($constraint) {
+	            $constraint->aspectRatio();
+	        });
 
-        return $image->response('jpg');
+	        return $image->response('jpg');
+	    });
+
+        return $value;
     }
 }
