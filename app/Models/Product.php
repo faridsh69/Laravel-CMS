@@ -82,8 +82,8 @@ class Product extends Model implements Commentable
         [
             'name' => 'url',
             'type' => 'string',
-            'database' => '',
-            'rule' => 'required|max:80|min:2',
+            'database' => 'nullable',
+            'rule' => 'nullable|max:80|min:2',
             'help' => 'Url should Contain lowercase characters and numbers and -',
             'form_type' => '',
             'table' => true,
@@ -182,6 +182,8 @@ class Product extends Model implements Commentable
         'deleted_at',
     ];
 
+    protected $appends = ['images'];
+
     public function canBeRated(): bool
     {
         return true;
@@ -197,6 +199,11 @@ class Product extends Model implements Commentable
         return $this->columns;
     }
 
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Category', 'category_id', 'id');
+    }
+
     public function scopeActive($query)
     {
         return $query->where('activated', 1);
@@ -210,6 +217,14 @@ class Product extends Model implements Commentable
 
     //     return null;
     // }
+
+    public function getImagesAttribute($image)
+    {
+        return [
+            ['file' => $this->image], 
+            ['file' => config('0-general.default_product_image')],
+        ];
+    }
 
     public function getImageSmallAttribute()
     {

@@ -26,7 +26,7 @@ class Category extends Model
         [
             'name' => 'url',
             'type' => 'string',
-            'database' => '',
+            'database' => 'nullable',
             'rule' => 'required|max:80|regex:/^[a-z0-9-]+$/',
             'help' => 'Url should be unique, contain lowercase characters and numbers and -',
             'form_type' => '',
@@ -152,6 +152,11 @@ class Category extends Model
     public function products()
     {
         return $this->hasMany('App\Models\Product', 'category_id', 'id');
+    }
+
+    public function shop()
+    {
+        return $this->belongsTo('App\Models\Shop', 'shop_id', 'id');
     }
 
     public function scopeActive($query)

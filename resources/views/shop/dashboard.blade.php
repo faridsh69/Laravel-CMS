@@ -5,7 +5,6 @@
 <header class="header">
         <div class="user" id="header_user_info" @if(!is_null(\Auth::user())) data-updateversion="{{\Auth::user()->updated_version}}" @endif data-updateurl="{{'update-version'}}">
             <div class="user_pic">
-{{--                <img src="@if(\Auth::user()->image != NULL){{asset('')}}{{\Auth::user()->image}}@else{{asset('images/icons/profile.svg')}}@endif" alt="" class="user_img" />--}}
             </div>
             <div class="user_details">
                 <div class="name">@if(\Auth::check()){{\Auth::user()->username}}@else Super Admin @endif</div>
@@ -90,7 +89,6 @@
                                                      src="{{$product->image_small}}" alt=""/>
                                                 <div class="name">
                                                     <span class="inner_item_name">{{$product->title}}</span>
-                                                    {{--<span class="count">@if($product->count!= -1 && $product->type == 'shop_card') ({{$product->count}}) @endif</span>--}}
                                                 </div>
                                                 <div class="discounticon"><i class="fas fa-percent"></i></div>
                                             </li>
@@ -111,11 +109,10 @@
                     @endforeach
                 @endif
                 <span class="swiper-slide add_card_sw">
-                    <form action="{{route('shop.dashboard.batch.store', ['parent_id'=> $set_id])}}" method="post"
+                    <form action="{{route('shop.dashboard.batch.store', ['shop_subdomain' => 'denja'])}}" method="post"
                           name="add_card_form" id="add_card_form" class="add_card">
                         <input type="text" name="name" class="add_card_input" placeholder="{{__('new batch')}}"
                                autocomplete="off"/>
-                        {{--<div class="danger hidden" id="duplicate_batch">This name is duplicated. please select another name</div>--}}
                         <input type="submit" value="{{__('add batch')}}" class="add_card_btn">
                     </form>
                 </span>
@@ -182,60 +179,11 @@
                             <input type="text" name="price" id="price_input" value="" placeholder="{{__('price')}}" />
                             <span class="mprice">تومان</span>
                         </div>
-                        {{--<div class="discount_sec">--}}
-                        {{--<div class="discount_sec_content">--}}
-                        {{--<input type="text" class="discpercent_input" name="discount_enable" />--}}
-                        {{--<label class="discount_label">--}}
-                        {{--<input type="checkbox" class="discount_label_control" />--}}
-                        {{--<span class="discount_label_indicator"></span>--}}
-                        {{--</label>--}}
-                        {{--<input type="number" min="0" class="discount_price" name="discount" value="" placeholder="discounted Price"/>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
                     </div>
                     <div class="group-form extand_and_quantity">
-                        {{--<div class="typeUseSwitch">--}}
-                            {{--<label class="switch">--}}
-                                {{--<input type="checkbox" id="chkaany" name="available"/>--}}
-                                {{--<div class="slider round"></div>--}}
-                            {{--</label>--}}
-                            {{--<label for="switch" id="switchInfo">Extant</label>--}}
-                        {{--</div>--}}
-                        {{--@if($fully_just_content == 0)--}}
-                            {{--<input type="text" name="count" id="quantity_input" value="" placeholder="Quantity"/>--}}
-                            {{--<div class="infinite_limited" id="infinite"></div>--}}
-                        {{--@endif--}}
                     </div>
-                    {{--<textarea name="description" id="item_description" cols="30" rows="5"--}}
-                    {{--placeholder="Description ..."></textarea>--}}
-                    {{--<div class="groups">--}}
-                    {{--<input type="hidden" name="tag" id="item_tag">--}}
-                    {{--<div class="title" class="item_title_lable">Tags</div>--}}
-                    {{--<input type="text" class="add_gi" name="" id=""/>--}}
-                    {{--<div class="appended_tags">--}}
-
-                    {{--<div class="gp_item">pizza</div>--}}
-                    {{--<div class="gp_item">chicken</div>--}}
-                    {{--<div class="gp_item">delicious</div>--}}
-                    {{--<div class="gp_item">pizza</div>--}}
-                    {{--<div class="gp_item">chicken</div>--}}
-                    {{--<div class="gp_item">delicious</div>--}}
-                    {{--<div class="gp_item">pizza</div>--}}
-                    {{--<div class="gp_item">chicken</div>--}}
-                    {{--<div class="gp_item">delicious</div>--}}
-                    {{--<input type="text" class="add_gi" name="" id=""/>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="groups">--}}
-                    {{--<div class="title">Groups</div>--}}
-                    {{--<div class="gp_item">special</div>--}}
-                    {{--<input type="text" class="add_gi" name="" id=""/>--}}
-                    {{--</div>--}}
                 </div>
                 <div class="fixedBottom">
-                    {{--@if($fully_just_content == 0)--}}
-                    {{--<div class="comments">Comments</div>--}}
-                    {{--@endif--}}
                     <div class="btns">
                         <div class="item_detail_errors errors danger"></div>
                         <br>
@@ -260,7 +208,7 @@
 
 <div class="footer">
     <ul class="owl-carousel owl-theme modules_panel">
-        <a href="{{route('shop.dashboard.menumaker.index', ['shop_subdomain' => 'denja'])}}">
+        <a href="{{route('shop.dashboard.index', ['shop_subdomain' => 'denja'])}}">
             <li class="item {{ Request::is('admin/menumaker*') ? 'active' : '' }}" id="menumaker">
             منوساز</li>
         </a>
@@ -274,11 +222,13 @@
                 </li>
             </a>
         @endif
+        @if(true)
         <a href="{{route('shop.dashboard.settings.index', ['shop_subdomain' => 'denja'])}}">
             <li class="item {{ Request::is('admin/settings*') ? 'active' : '' }}" id="settings">
                 تنظیمات
             </li>
         </a>
+        @endif
     </ul>
 </div>
 
@@ -599,7 +549,13 @@
 //                if(openNextItem) {
                 emptyItemDetail();
                 showItemDetail();
-                CallAjaxFunc('{{url(route('shop.dashboard.showItem' ,['shop_subdomain' => 'denja', 'id' => 1]))}}' + '/' + item_id.substr(4), {}, fillItemDetail);
+                var item_id_ajib_gharib = item_id.substr(4);
+                var url_ajib_gharib = '{{url(route('shop.dashboard.showItem' ,['shop_subdomain' => 'denja', 'id' => 1]))}}';
+
+                url_ajib_gharib = url_ajib_gharib.substring(0, url_ajib_gharib.length - 1);
+                url_ajib_gharib = url_ajib_gharib + item_id_ajib_gharib;
+
+                CallAjaxFunc(url_ajib_gharib, {}, fillItemDetail);
 //                } else {
 //                    console.log("ex process is not saving yet")
 //                }
@@ -688,26 +644,26 @@
             function fillItemDetail(data) {
                 // showItemDetail();
                 mainData = JSON.parse(data);
-                setGalleryItems(mainData);
-                $("#item_name").val(mainData.name);
+                $("#item_name").val(mainData.title);
                 $("#item_type").val(mainData.type);
                 showPricePartsOrNoAccordingtoType(mainData.type);
-                $("span.item_name").text(mainData.name);
-                $("span.item_parent_name").text(mainData.folder.name);
+                $("span.item_name").text(mainData.title);
+                $("span.item_parent_name").text(mainData.category.title);
                 $("#price_input").val(mainData.price);
-                $("#item_short_description").val(mainData.short_description);
-                $("#item_description").val(mainData.description);
-                $('.previewPic').attr('src', item_image_src);
+                $("#item_short_description").val(mainData.content);
+                $("#item_description").val(mainData.content);
+                $('.previewPic').attr('src', mainData.image);
                 $("#quantity_input").val(mainData.count);
                 $("#main_pic").val("");
                 $(".item_detail_errors").html("");
                 $("#main_pic_from_gallery").val("");
                 $(".item_type_btn").attr('id', mainData.type);
-                hideOrShowBtn(mainData.hide);
-                fillDiscountParts(mainData.discount);
+                hideOrShowBtn(mainData.active);
+                fillDiscountParts(mainData.discount_price);
                 fillTagsPart(mainData.tag);
                 alterExtantCheckbox(mainData.count);
                 selectMainPicOfGallery();
+                setGalleryItems(mainData);
             }
 
             function hideOrShowBtn(hide) {
@@ -749,9 +705,10 @@
                 var image_name = value.file;
                 if (image_name.indexOf('.mp4') == -1 && image_name.indexOf('.webm') == -1) {
                   if(image_name.indexOf('.gif') == -1) {
-                    image_name = 'small_'+image_name;
+                    // image_name = 'small_'+image_name;
                   }
-                  content = imageGalleryPreview(gallery_address + '/' + image_name, '', value.id)
+                  // content = imageGalleryPreview(gallery_address + '/' + image_name, '', value.id)
+                  content = imageGalleryPreview(image_name, '', value.id)
                 } else {
                   content = videoGalleryPreview(gallery_address + '/' + image_name, '', value.id)
                     }

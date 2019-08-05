@@ -351,6 +351,11 @@ class Shop extends Model implements Commentable
         return $this->hasMany('App\Models\Category', 'shop_id', 'id');
     }
 
+    public function products()
+    {
+        return $this->hasMany('App\Models\Product', 'shop_id', 'id');
+    }
+
     // public function createStore(){
     //     $this->mysqldbName = $this->_createMysqldbName($this->nameEn);
     //     // make folder for statics

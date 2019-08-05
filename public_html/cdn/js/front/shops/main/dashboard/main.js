@@ -1,5 +1,5 @@
 ip = $("#head_url").data('ip');
-var socket = io.connect(ip + ':8890');
+// var socket = io.connect(ip + ':8890');
 
 // var socket2 = io.connect('172.245.55.74:8917');
 // alert(socket2);
@@ -183,15 +183,15 @@ function ShowMessage(type, msg, title, accept, reject, btns, reload) {
     }
 }
 
-socket.on('closing_time', function (data) {
-    location.reload();
-});
+// socket.on('closing_time', function (data) {
+//     location.reload();
+// });
 
-socket.on('alert_closing_to_waiter', function (data) {
-  home_url = $('#head_url').data('url')
-  $(".confirmBtn").addClass("go_settings");
-  ShowMessage('success', data, 'Closing Time', 'Go to setting', 'Got it', true, false);
-});
+// socket.on('alert_closing_to_waiter', function (data) {
+//   home_url = $('#head_url').data('url')
+//   $(".confirmBtn").addClass("go_settings");
+//   ShowMessage('success', data, 'Closing Time', 'Go to setting', 'Got it', true, false);
+// });
 
 $(document).on('click', '.go_settings', function () {
   location.href = home_url+"/admin/settings";
