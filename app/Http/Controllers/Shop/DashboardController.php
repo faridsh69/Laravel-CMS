@@ -18,7 +18,8 @@ class DashboardController extends Controller
         $shop = Shop::where('url', $shop_subdomain)->first();
         abort_if(! $shop, 404);
 
-        $categories = Category::with('products')
+        $categories = Category::where('activated', true)
+            ->with('products')
             ->orderBy('order', 'asc')
             ->get();
 
@@ -45,11 +46,6 @@ class DashboardController extends Controller
         $product = Product::where('id', $id)->with('category')->first();
 
         return json_encode($product);
-    }
-
-    public function releaseTable()
-    {
-        return abort(403);
     }
 
     public function itemStore($shop_subdomain, Request $request, Product $product)
@@ -106,6 +102,88 @@ class DashboardController extends Controller
         return $response;
     }
 
+    public function deleteMainPic($shop_subdomain, Request $request)
+    {
+        $product = Product::where('id', $request->item_id)->first();
+        $product->image = null;
+        $product->save();
+    }
+
+    public function changeCardSortInBatchPage($shop_subdomain, Request $request)
+    {
+        for($i = 0; $i< count($request->cards); $i++) {
+            Category::where('id', $request->cards[$i])->update(['order' => $request->sorts[$i]]);
+        }
+    }
+
+    public function test()
+    {
+        return 1;
+    }
+
+    public function updateItem($shop_subdomain, Request $request)
+    {
+        $product = Product::find($request->id);
+
+        $input = $request->only('name', 'short_description', 'description', 'discount', 'tag', 'main_image', 'type');
+        isset($request->price) ? $input['price'] = $request->price : $input['price'] = null;
+
+        // $input['main_image'] = $this->checkMainPicExist($request, $item);
+        $product->title = $input['name'];
+        $product->price = $input['price'];
+        $product->content = $input['short_description'];
+
+        // $product->image = $input['main_image'];
+        $product->update();
+        // $this->checkEmptyGalleryOrNotToSave($request, $item);
+        return 1;
+    }
+
+    public function hideItem($shop_subdomain, Request $request)
+    {
+        $product = Product::find($request->id);
+        $product->activated = !$product->activated;
+        $product->save();
+
+        return json_encode(!$product->activated);
+    }
+
+
+    public function changeItemSort($shop_subdomain, Request $request)
+    {
+        $product = Product::find($request->main_item_id);
+        $product->update(['category_id' => $request->folder_id]);
+
+        for ($i = 0; $i < count($request->items); $i++) {
+            Product::where('category_id', $request->folder_id)
+                ->where('id', $request->items[$i])
+                ->update(['order' => $request->sorts[$i]]);
+        }
+    }
+
+    public function changeStatus($shop_subdomain, Request $request)
+    {
+        $product = Product::where('id', $request->id)->first();
+        $product->activated = false;
+        $product->save();
+    }
+
+    public function updateCard($shop_subdomain, Request $request, $id)
+    {
+        $category = Category::find($id);
+        $input = $request->only(['name', 'image']);
+        $category->title = $input['name'];
+        $category->image = 'http://www.mmenew.ir/cdn/images/icons/restaurant_pack/' . $input['image'];
+        $category->update();
+    }
+
+    public function changeBatchStatus($shop_subdomain, Request $request)
+    {
+        $category = Category::find($request->id);
+        $category->activated = false;
+        $category->save();
+    }
+
     public function menumakerIndex()
     {
         return redirect()->back();
@@ -114,5 +192,20 @@ class DashboardController extends Controller
     public function settingsIndex()
     {
         return redirect()->back();
+    }
+
+    public function releaseTable()
+    {
+        return abort(403);
+    }
+
+    public function ordersInfo()
+    {
+        return abort(403);
+    }
+
+    public function ordersHistory()
+    {
+        return abort(403);
     }
 }

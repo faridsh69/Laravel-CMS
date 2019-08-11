@@ -77,7 +77,8 @@
                                 <div class="items max-height-items">
                                     <ul class="items_list">
                                         @foreach($category->products()->orderby('order')->get() as $product)
-                                            <li class="item {{$product->status}} {{$product->hide_class}} {{$product->discount_enabled}}"
+                                            <li class="item {{$product->status}} {{
+                                                !$product->activated ? 'hide' : ''}} {{$product->discount_enabled}}"
                                                 id="item{{$product->id}}"
                                                 data-url="{{route('shop.dashboard.showItem',
                                                 ['shop_subdomain' => 'denja', 'id' => $product->id]
@@ -275,11 +276,6 @@
         });
       });
 
-      //        $('.show_hide_btn').click(function () {
-      //            $(this).toggleClass('show_btn');
-      //            $(this).toggleClass('hide_btn');
-      //        });
-
 
       (function ($) {
         $(window).on("load", function () {
@@ -440,6 +436,7 @@
 //                var main_pic_src = $('.main_pic .pic_frame img').attr('src');
 //                swapGalleryAndMainPic(main_pic_src);
                 main_item_id = item_id.substr(4);
+                console.log(main_item_id);
                 CallAjaxFunc('{{url(route('shop.dashboard.deleteMainPic', ['shop_subdomain' => 'denja']))}}', {'item_id': main_item_id}, deleteMainPicResult, deleteMainPicFail);//10min timeout for gallery
             });
             //item drag & drop
@@ -572,7 +569,15 @@
                     'fake': 1
                 }, testOpenCallback);
 
-                CallAjaxImageFunc('{{url(route('shop.dashboard.updateItem', ['shop_subdomain' => 'denja']))}}' + '/' + item_id.substr(4), formData, updateItemDetail, updateItemDetailFail, 300000);//5min timeout
+
+                var item_id_ajib_gharib = item_id.substr(4);
+                var url_ajib_gharib = '{{url(route('shop.dashboard.updateItem' ,['shop_subdomain' => 'denja', 'id' => 1]))}}';
+
+                url_ajib_gharib = url_ajib_gharib.substring(0, url_ajib_gharib.length - 1);
+                url_ajib_gharib = url_ajib_gharib + item_id_ajib_gharib;
+
+
+                CallAjaxImageFunc(url_ajib_gharib, formData, updateItemDetail, updateItemDetailFail, 300000);//5min timeout
                 e.preventDefault();
             });
 
@@ -658,7 +663,7 @@
                 $(".item_detail_errors").html("");
                 $("#main_pic_from_gallery").val("");
                 $(".item_type_btn").attr('id', mainData.type);
-                hideOrShowBtn(mainData.active);
+                hideOrShowBtn(!mainData.activated);
                 fillDiscountParts(mainData.discount_price);
                 fillTagsPart(mainData.tag);
                 alterExtantCheckbox(mainData.count);
@@ -703,17 +708,26 @@
               gallery_file_name = '_'
               $.each(mainData.images, function (key, value) {
                 var image_name = value.file;
-                if (image_name.indexOf('.mp4') == -1 && image_name.indexOf('.webm') == -1) {
-                  if(image_name.indexOf('.gif') == -1) {
-                    // image_name = 'small_'+image_name;
-                  }
-                  // content = imageGalleryPreview(gallery_address + '/' + image_name, '', value.id)
-                  content = imageGalleryPreview(image_name, '', value.id)
-                } else {
-                  content = videoGalleryPreview(gallery_address + '/' + image_name, '', value.id)
+
+
+
+                if(false) {
+                    if (image_name.indexOf('.mp4') == -1 && image_name.indexOf('.webm') == -1) {
+                      if(image_name.indexOf('.gif') == -1) {
+                        // image_name = 'small_'+image_name;
+                      }
+                      // content = imageGalleryPreview(gallery_address + '/' + image_name, '', value.id)
+                      content = imageGalleryPreview(image_name, '', value.id)
+                    } else {
+                      content = videoGalleryPreview(gallery_address + '/' + image_name, '', value.id)
                     }
-                    $(".dynamic_gallery").append(content);
-                });
+                }else{
+                    content = imageGalleryPreview(image_name, '', value.id);
+                }
+                $(".dynamic_gallery").append(content);
+            });
+
+
                 $(".dynamic_gallery").append("<label for='add_gallery_input' id='add_gallery_label'></label><input type='file' name='gallery[]' id='add_gallery_input' multiple  accept='video/mp4, video/webm, image/jpeg, image/png, image/jpg, image/gif, image/svg'/>");
             }
 
@@ -864,32 +878,6 @@
                 }
             }).disableSelection();
         }
-
-        {{--function readURL(input) {--}}
-        {{--//boro vas upload--}}
-        {{--if (input.files && input.files[0]) {--}}
-        {{--var reader = new FileReader();--}}
-        {{--console.log(input.files[0]);--}}
-        {{--var formData = new FormData();--}}
-        {{--formData.append('main_image', input.files[0]);--}}
-        {{--//                reader.onload = function (e) {--}}
-        {{--//                    $('.previewPic').attr('src', e.target.result);--}}
-        {{--//                };--}}
-        {{--CallAjaxImageFunc('{{url(route('shop.dashboard.uploadMainPic', ['shop_subdomain' => 'denja']))}}' + '/' + item_id.substr(4), formData, swithMainPicResult, swithMainPicFail, 600000);//10min timeout for gallery--}}
-
-        {{--//                reader.readAsDataURL(input.files[0]);--}}
-        {{--}--}}
-
-        {{--}--}}
-
-        //        function swithMainPicResult(data) {
-        //            alert(data);
-        //            $('.previewPic').attr('src', data);
-        //        }
-        //
-        //        function swithMainPicFail() {
-        //            alert('errrror');
-        //        }
 
         //upload gallery
         $(document).on('change', '#add_gallery_input', function (event) {
@@ -1234,7 +1222,7 @@
 
             if (simple_icon_name != '' && simple_icon_name != 'default') {
                 icon_name = simple_icon_name + '.svg';
-                $(checked_icon).prop('checked', true);
+                // $(checked_icon).prop('checked', true);
             } else {
               icon_name = '';
             }
