@@ -10,7 +10,7 @@
 <link rel="icon" href="{{ asset('images/menew_icon-removebg-preview.png?v=2') }}" type="{{ asset('images/menew_icon-removebg-preview.png?v=2') }}" />
 <link rel="apple-touch-icon" href="{{ asset('images/menew_icon-removebg-preview.png?v=2') }}" /> -->
 
-<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, height=device-height, viewport-fit=cover"> -->
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, height=device-height, viewport-fit=cover" xw> -->
 
 
 
