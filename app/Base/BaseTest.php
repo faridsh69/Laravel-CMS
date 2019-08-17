@@ -13,7 +13,7 @@ class BaseTest extends TestCase
     public $model;
 
     public $methods = [
-        'pdf',
+        // 'pdf',
         'print',
         'export',
         'datatable',
@@ -28,11 +28,6 @@ class BaseTest extends TestCase
 
         $user = User::first();
         $this->actingAs($user);
-
-        foreach($this->methods as $method)
-        {
-            $this->_checkMethod($method);
-        }
 
         // redirect
         $this
@@ -77,6 +72,11 @@ class BaseTest extends TestCase
 
         // force delete fake model
         $fake_model->forceDelete();
+
+        foreach($this->methods as $method)
+        {
+            $this->_checkMethod($method);
+        }
     }
 
     private function _checkMethod($mothod_name)

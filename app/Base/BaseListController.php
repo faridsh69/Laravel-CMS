@@ -127,7 +127,7 @@ class BaseListController extends Controller
 
         if (! $form->isValid()) {
             if(env('APP_ENV') === 'testing'){
-                dd($form->getErrors());
+                dd($form->getErrors(), $this->model);
             }
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }

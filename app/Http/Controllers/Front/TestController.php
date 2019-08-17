@@ -77,6 +77,7 @@ class TestController extends Controller
             'POST',
             $access_token_body_urlencode
         );
+        dd($server_output_token);
 
         return json_decode($server_output_token);
         return json_decode($server_output_token)->access_token;

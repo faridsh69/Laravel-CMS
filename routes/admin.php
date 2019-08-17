@@ -85,5 +85,4 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'as' => 'user.'], funct
 Route::group(['prefix' => 'report', 'namespace' => 'Report', 'as' => 'report.'], function () {
 	Route::get('', 'ReportController@index')->name('index');
 });
-
 Route::get('', 'Dashboard\DashboardController@redirect')->name('redirect');

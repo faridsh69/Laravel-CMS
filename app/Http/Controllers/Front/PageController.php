@@ -34,7 +34,7 @@ class PageController extends Controller
             ->orderBy('order', 'asc')
             ->get();
 
-        return view('front.page.index', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta]);
+        return view('front.page', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta]);
     }
 
     public function getVideo()

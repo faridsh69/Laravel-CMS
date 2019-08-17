@@ -30,6 +30,13 @@ $output = [
             'tolerance' => env('STRIPE_WEBHOOK_TOLERANCE', 300),
         ],
     ],
+    'rules' => [
+        'title' => 'required|max:60|min:5|unique:blogs,title,',
+        'url' => 'required|max:80|regex:/^[a-z0-9-]+$/|unique:blogs,url,',
+        'meta_description' => 'required|max:191|min:30',
+        'image' => 'nullable|max:191|url',
+        'canonical_url' => 'nullable|max:191|url',
+    ],
     'social_companies' => [
         'GOOGLE',
         'TWITTER',
@@ -148,23 +155,6 @@ if(env('APP_NAME') === 'menew'){
 
     $output['models']['platform'] = 'shop';
 }
-// 'blog', // 1 +
-// 'page', // 2 +
-// 'category', // 3 +
-// 'tag', // 4  +
-// 'media', // 5 +
-// 'comment', // 6 +
-// 'setting', // 7 +
-// 'user', // 8 +
-// 'theme', // 9 +
-// 'block', // 10 +
-// 'widget', // 11
-// //'seo' // 12  +
-// 'form', // 13
-// 'report', // 14 +
-// 'notification', // 15 +
-// 'menu', // 16 +
-
 foreach($output['social_companies'] as $social_company){
     $output[strtolower($social_company)] = [
         'client_id' => env($social_company . '_CLIENT_ID'),

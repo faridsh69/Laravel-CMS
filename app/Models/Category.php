@@ -27,7 +27,7 @@ class Category extends Model
             'name' => 'url',
             'type' => 'string',
             'database' => 'nullable',
-            'rule' => 'required|max:80|regex:/^[a-z0-9-]+$/',
+            'rule' => '',
             'help' => 'Url should be unique, contain lowercase characters and numbers and -',
             'form_type' => '',
             'table' => false,
