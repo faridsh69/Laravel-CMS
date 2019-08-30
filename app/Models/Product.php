@@ -220,10 +220,10 @@ class Product extends Model implements Commentable
 
     public function getImagesAttribute($image)
     {
-        return [
+        return collect([
             ['file' => $this->image], 
             ['file' => config('0-general.default_product_image')],
-        ];
+        ]);
     }
 
     public function getImageSmallAttribute()

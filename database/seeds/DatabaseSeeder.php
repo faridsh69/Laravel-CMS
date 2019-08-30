@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(WidgetsTableSeeder::class);
         $this->call(BlocksTableSeeder::class); 
         $this->call(ThemesTableSeeder::class);
-        if(env('APP_NAME') === 'menew')
+        if(config('app.name') === 'mmenew')
         {
             $this->call(ShopUsersTableSeeder::class);
             $this->call(ShopThemesTableSeeder::class);
@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
             $this->call(ShopFeaturesTableSeeder::class);
             $this->call(ShopSlidersTableSeeder::class);
         }
-        elseif(env('APP_NAME') === 'eric')
+        elseif(config('app.name') === 'eric')
         {
             $this->call(EricFeedbacksTableSeeder::class);
             $this->call(EricCountingsTableSeeder::class);

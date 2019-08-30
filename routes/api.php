@@ -22,3 +22,5 @@ Route::group([], function () {
 		Route::get('cities/{country_name}', 'GeneralController@getCities')->name('cities');
 	});
 });
+
+Route::get('v1/denja/categories', 'ShopController@getCategories')->name('categories');

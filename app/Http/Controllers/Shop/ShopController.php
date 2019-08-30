@@ -8,6 +8,11 @@ use App\Models\Shop;
 
 class ShopController extends Controller
 {
+    public function getVue()
+    {
+        return 1;
+    }
+
     public function getIndex($shop_subdomain)
     {
         $shop = Shop::where('url', $shop_subdomain)->first();

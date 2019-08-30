@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'name' => env('APP_NAME', 'FARID'),
+    'name' => env('APP_NAME', 'cms-laravel'),
 
-    'url' => env('APP_URL', 'farid.com'),
+    'url' => env('APP_URL', 'cms-laravel.com'),
 
     'asset_url' => config('0-developer.cdn_url'),
 

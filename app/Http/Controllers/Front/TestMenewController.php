@@ -27,7 +27,9 @@ class TestMenewController extends Controller
 
     public function __construct(Request $request, FormBuilder $form_builder)
     {
-        abort_if(env('APP_NAME') !== 'menew', 404);
+        if(config('app.name') !== 'mmenew'){
+            return 1;
+        }
 
         $this->model_class = 'App\\Models\\' . $this->model;
         $this->form_builder = $form_builder;

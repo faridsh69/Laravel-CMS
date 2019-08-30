@@ -19,7 +19,9 @@ class TestController extends Controller
 
     public function __construct()
     {
-        // abort_if(env('APP_NAME') !== 'eric', 404);
+        if(config('app.name') !== 'eric'){
+            return 1;
+        }
     }
 
     public function getNewJob()

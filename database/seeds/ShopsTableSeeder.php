@@ -46,7 +46,7 @@ class ShopsTableSeeder extends Seeder
                 'full_name' => 'Ehsan Mirabzade',
                 'title' => 'Cinema Café',
             	'title_fa' => 'کافه سینما',
-            	'url' => 'cinema',
+            	'url' => 'cinemacafe',
             	'email' => 'farid.sh69@gmail.com',
             	'logo' => 'images/shop-logo.png',
             	'favicon' => 'images/shop-logo.png',
@@ -71,6 +71,30 @@ class ShopsTableSeeder extends Seeder
                 'theme_color' => '#d1aa4b',
                 'open_time' => '0:00|23:59',
         	],
+            [
+                'id' => 3,
+                'full_name' => 'Mr. gennaro',
+                'title' => 'Gennaro',
+                'title_fa' => 'جنارو',
+                'url' => 'gennaro',
+                'email' => 'farid.sh69@gmail.com',
+            ],
+            [
+                'id' => 4,
+                'full_name' => 'Mr. fano',
+                'title' => 'Fano',
+                'title_fa' => 'فانو',
+                'url' => 'fano',
+                'email' => 'farid.sh69@gmail.com',
+            ],
+            [
+                'id' => 5,
+                'full_name' => 'Mr. parla',
+                'title' => 'Parla',
+                'title_fa' => 'پارلا',
+                'url' => 'parla',
+                'email' => 'farid.sh69@gmail.com',
+            ],
         ];
 
         foreach($shops as $shop){

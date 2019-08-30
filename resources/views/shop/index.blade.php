@@ -105,12 +105,16 @@
                             @php
                                 $has_video = 0;
                                 if(!is_null($product->images)) {
+
+
+                                    /* 
                                     $filtered = $product->images->filter(function ($value, $key) {
                                         return (strpos($value, "mp4") >= 0 || strpos($value, "webm") >= 0);
                                     });
                                     if($filtered->count() > 0) {
                                         $has_video = 1;
-                                    }
+                                    } 
+                                    */
                                 }
 
                                 $ordered_item = 0;
