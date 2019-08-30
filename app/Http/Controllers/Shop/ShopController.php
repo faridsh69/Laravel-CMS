@@ -19,7 +19,7 @@ class ShopController extends Controller
         abort_if(! $shop, 404);
 
         $meta = [
-            'title' => $shop->title_fa,
+            'title' => $shop->title,
             'description' => $shop->meta_description,
             'keywords' => $shop->keywords,
             'image' => $shop->logo,

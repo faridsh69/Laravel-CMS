@@ -151,7 +151,9 @@ class Category extends Model
 
     public function products()
     {
-        return $this->hasMany('App\Models\Product', 'category_id', 'id');
+        return $this->hasMany('App\Models\Product', 'category_id', 'id')
+            ->where('activated', 1)
+            ->orderBy('order', 'asc');
     }
 
     public function shop()
