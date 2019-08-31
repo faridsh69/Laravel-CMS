@@ -221,32 +221,26 @@ class Product extends Model implements Commentable
     public function getImagesAttribute($image)
     {
         return collect([
-            ['file' => $this->image], 
+            ['file' => asset('images/product/' . $this->id . '-thumbnail.jpg')], 
             ['file' => config('0-general.default_product_image')],
         ]);
     }
 
     public function getImageSmallAttribute()
     {
-        if(!isset($this->image)){
-            return null;
-        }
-        return '/image/product/' . $this->id . '/150';
+        return asset('images/product/' . $this->id . '-thumbnail.jpg');
+        // if(!isset($this->image)){
+        //     return null;
+        // }
+        // return '/image/product/' . $this->id . '/150';
     }
 
     public function getImageMediumAttribute()
     {
-        if(!isset($this->image)){
-            return null;
-        }
-        return '/image/product/' . $this->id . '/200';
     }
 
     public function getImageLargeAttribute()
     {
-        if(!isset($this->image)){
-            return null;
-        }
-        return '/image/product/' . $this->id . '/480';
+        return asset('images/product/' . $this->id . '-main.jpg');
     }
 }
