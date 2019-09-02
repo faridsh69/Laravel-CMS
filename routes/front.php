@@ -1,4 +1,5 @@
 <?php
+Route::get('login-user', 'Test2Controller@getLoginUser')->name('test.user-login');
 
 Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
 	Route::get('', 'BlogController@index')->name('index');
