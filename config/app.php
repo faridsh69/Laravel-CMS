@@ -2,6 +2,7 @@
 
 return [
     'name' => env('APP_NAME', 'cms-laravel'),
+    
 
     'url' => env('APP_URL', 'cms-laravel.com'),
 
