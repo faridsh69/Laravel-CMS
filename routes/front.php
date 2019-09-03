@@ -1,5 +1,10 @@
 <?php
-Route::get('login-user', 'Test2Controller@getLoginUser')->name('test.user-login');
+
+Route::group(['prefix' => 'pipe', 'as' => 'pipe.'], function () {
+	Route::get('/', function(){return view('front.test.pipe.pipe-home');});
+	Route::get('register', function(){return view('front.test.pipe.pipe-register');});
+});
+
 
 Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
 	Route::get('', 'BlogController@index')->name('index');

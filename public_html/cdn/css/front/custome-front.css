@@ -65,9 +65,9 @@
 .display-none{
 	display: none !important;
 }
-*{
+/**{
 	font-family: 'Roboto', sans-serif;
-}
+}*/
 .iframe{
 	border: none;
 	width: 100%;

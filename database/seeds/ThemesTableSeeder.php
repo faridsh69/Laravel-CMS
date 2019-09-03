@@ -29,6 +29,12 @@ class ThemesTableSeeder extends Seeder
                 'description' => 'stayhome',
             	'activated' => 0,
             ],
+            [
+                'id' => 4,
+                'title' => 'persian',
+                'description' => 'persian',
+                'activated' => 0,
+            ],
         ];
 
         foreach($themes as $theme){
