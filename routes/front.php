@@ -1,6 +1,6 @@
 <?php
 
-
+Route::get('/', function(){return view('front.test.pipe.pipe-home');});
 Route::group(['prefix' => 'pipe', 'as' => 'pipe.'], function () {
 	Route::get('/', function(){return view('front.test.pipe.pipe-home');});
 	Route::get('register', function(){return view('front.test.pipe.pipe-register');});
@@ -25,7 +25,7 @@ Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
 Route::get('video', 'PageController@getVideo')->name('page.video');
 Route::post('subscribe', 'PageController@postSubscribe')->name('page.subscribe')
 	->middleware('throttle:4,2');
-Route::get('{page_url?}', 'PageController@getIndex')->name('page.index');
+// Route::get('{page_url?}', 'PageController@getIndex')->name('page.index');
 
 Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
 	Route::get('upload-image', 'TestController@getUploadImage')->name('upload-image');
