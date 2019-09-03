@@ -6,8 +6,8 @@
 <div class="row">
 	<div class="col-xs-12">
 		<div class="well well-lg text-center" style="font-size: 18px">
-			<img src="{{ asset('images/temp1.jpeg') }}" class="img-responsive"> 
-			<img src="{{ asset('images/temp2.jpeg') }}" class="img-responsive"> 
+			<img src="{{ asset('images/temp/temp1.jpeg') }}" class="img-responsive"> 
+			<img src="{{ asset('images/temp/temp2.jpeg') }}" class="img-responsive"> 
 		</div>
 
 		<a href="/pipe/bazresi" class="btn btn-block btn-primary">

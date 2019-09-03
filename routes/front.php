@@ -1,5 +1,6 @@
 <?php
 
+
 Route::group(['prefix' => 'pipe', 'as' => 'pipe.'], function () {
 	Route::get('/', function(){return view('front.test.pipe.pipe-home');});
 	Route::get('register', function(){return view('front.test.pipe.pipe-register');});
@@ -10,6 +11,7 @@ Route::group(['prefix' => 'pipe', 'as' => 'pipe.'], function () {
 	Route::get('bazresi/new', function(){return view('front.test.pipe.pipe-bazresi-new');});
 	Route::get('bazresi/wait', function(){return view('front.test.pipe.pipe-bazresi-wait');});
 	Route::get('bazresi/final', function(){return view('front.test.pipe.pipe-bazresi-final');});
+	Route::get('bazresi/confirm', function(){return view('front.test.pipe.pipe-bazresi-confirm');});
 });
 
 Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {

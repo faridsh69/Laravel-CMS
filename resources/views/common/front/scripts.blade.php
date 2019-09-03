@@ -1,7 +1,8 @@
 @stack('scripts')
 {!! config('0-developer.scripts') !!}
 
-@if(config('0-general.hotjar'))
+<!-- hotjar codes -->
+@if(false)
 <script>
     (function(h,o,t,j,a,r){
         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
@@ -13,8 +14,10 @@
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
 </script>
 @endif
+<!-- hotjar codes -->
 
-@if(config('0-general.google_analytics'))
+<!-- google analytics codes -->
+@if(false)
 <script>
     (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
@@ -28,11 +31,13 @@
     })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
     ga('create', '{{ config("0-general.google_analytics") }}', 'auto' @if(\Auth::id()) ,{ userId: "{{ \Auth::id() ? \Auth::id() : 'Guest' }}" } @endif );
     ga('send', 'pageview');
-	ga('set', 'userId', {{ \Auth::user() ? \Auth::id() : 0 }} );
+    ga('set', 'userId', {{ \Auth::user() ? \Auth::id() : 0 }} );
 </script>
 @endif
+<!-- google analytics codes -->
 
-@if(config('0-general.crisp'))
+<!-- crisp codes -->
+@if(false)
 <script data-cfasync='false'>
     window.$crisp=[];
     CRISP_RUNTIME_CONFIG = {
@@ -45,6 +50,7 @@
     })();       
 </script>
 @endif
+<!-- crisp codes -->
 
 @if(false)
 <!-- <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script> 

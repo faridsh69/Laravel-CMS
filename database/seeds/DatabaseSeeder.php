@@ -10,6 +10,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(SettingsTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
         $this->call(TagsTableSeeder::class);
@@ -20,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ThemesTableSeeder::class);
         if(config('app.name') === 'mmenew')
         {
+            $this->call(ShopSettingsTableSeeder::class);
             $this->call(ShopUsersTableSeeder::class);
             $this->call(ShopThemesTableSeeder::class);
             $this->call(ShopTagsTableSeeder::class);
@@ -35,6 +37,7 @@ class DatabaseSeeder extends Seeder
         }
         elseif(config('app.name') === 'eric')
         {
+            $this->call(EricSettingsTableSeeder::class);
             $this->call(EricFeedbacksTableSeeder::class);
             $this->call(EricCountingsTableSeeder::class);
             $this->call(EricFeaturesTableSeeder::class);
