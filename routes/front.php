@@ -3,8 +3,10 @@
 Route::group(['prefix' => 'pipe', 'as' => 'pipe.'], function () {
 	Route::get('/', function(){return view('front.test.pipe.pipe-home');});
 	Route::get('register', function(){return view('front.test.pipe.pipe-register');});
+	Route::get('register-complete', function(){return view('front.test.pipe.pipe-register-complete');});
+	Route::get('bazresi', function(){return view('front.test.pipe.pipe-bazresi');});
+	Route::get('bazresi/help', function(){return view('front.test.pipe.pipe-bazresi-help');});
 });
-
 
 Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
 	Route::get('', 'BlogController@index')->name('index');

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="rtl">
 <head>
 	<meta name="robots" content="noindex">
 	<meta charset="utf-8" />
@@ -26,7 +26,7 @@
 		<li><a href="#">حمل و نقل کالا</a></li>
 		<li><a href="#">مزایده</a></li>
 		<li><a href="#">مناقصه</a></li>
-		<li><a href="#">بازرسی کالا</a></li>
+		<li><a href="/pipe/bazresi">بازرسی کالا</a></li>
 		<li><a href="#">درباره ما</a></li>
 		<li><a href="#">تماس با ما</a></li>
 		</ul>
