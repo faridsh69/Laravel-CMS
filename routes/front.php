@@ -9,6 +9,7 @@ Route::group(['prefix' => 'pipe', 'as' => 'pipe.'], function () {
 	Route::get('bazresi/list', function(){return view('front.test.pipe.pipe-bazresi-list');});
 	Route::get('bazresi/new', function(){return view('front.test.pipe.pipe-bazresi-new');});
 	Route::get('bazresi/wait', function(){return view('front.test.pipe.pipe-bazresi-wait');});
+	Route::get('bazresi/final', function(){return view('front.test.pipe.pipe-bazresi-final');});
 });
 
 Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
