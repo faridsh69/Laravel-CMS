@@ -8,6 +8,7 @@ use App\Models\SettingGeneral;
 use Illuminate\Support\ServiceProvider;
 use Cache;
 use DB;
+use Schema;
 use Validator;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,7 +25,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $seconds = 100;
+        $seconds = 1;
+        if(!Schema::hasTable('setting_generals') || SettingGeneral::first() === null){
+            return 1;
+        }
         $general_settings = Cache::remember('settings.general', $seconds, function () {
             return SettingGeneral::first()->toArray();
         });
