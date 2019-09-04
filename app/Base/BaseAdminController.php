@@ -24,6 +24,8 @@ class BaseAdminController extends Controller
 
     public $form_builder;
 
+    public $section;
+
     public $meta = [
         'title' => 'Admin Panel',
         'description' => 'Admin Panel Page For Best Cms In The World',
@@ -43,6 +45,7 @@ class BaseAdminController extends Controller
             $this->repository = new $this->model_class();
             $this->model_columns = $this->repository->getColumns();
             $this->repository = new $this->model_class();
+            $this->section = strtolower(str_replace('Setting', '', $this->model));
         }
         $this->model_sm = lcfirst($this->model);
         $this->model_form = 'App\\Forms\\' . $this->model . 'Form';

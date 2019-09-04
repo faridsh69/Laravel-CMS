@@ -5,11 +5,11 @@ return [
 
     'url' => env('APP_URL', 'cms-laravel.com'),
 
-    'asset_url' => config('0-developer.cdn_url'),
+    'asset_url' => env('ASSET_URL', '//' . env('APP_URL') . '/cdn'),
 
     'env' => env('APP_ENV', config('0-developer.app_env')),
 
-    'debug' => config('0-developer.app_debug'),
+    'debug' => 1,
 
     'timezone' => 'Asia/Tehran',
 

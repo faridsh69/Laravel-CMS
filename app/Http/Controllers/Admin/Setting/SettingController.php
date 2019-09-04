@@ -5,23 +5,23 @@ namespace App\Http\Controllers\Admin\Setting;
 use App\Base\BaseAdminController;
 use Artisan;
 use Auth;
+use Cache;
 use Config;
 use File;
 use Rap2hpoutre\LaravelLogViewer\LogViewerController;
 
 class SettingController extends BaseAdminController
 {
-	public $model = 'SettingGeneral';
-
-    public function getSettingForm($section)
+    public function getSettingForm()
     {
-        $this->meta['title'] = __(ucfirst($section) . ' Setting Manager');
+        $this->meta['title'] = __(ucfirst($this->section) . ' Setting Manager');
         $this->authorize('index', $this->model_class);
-    	Artisan::call('config:clear');
-        $model = Config::get('0-' . $section);
+    	// Artisan::call('config:clear');
+        // $model = Config::get('0-' . $this->section);
+        $model = $this->repository->first();
         $form = $this->form_builder->create($this->model_form, [
             'method' => 'PUT',
-            'url' => route('admin.setting.' . $section),
+            'url' => route('admin.setting.' . $this->section),
             'class' => 'm-form m-form--state',
             'id' =>  'admin_form',
             'model' => $model,
@@ -30,10 +30,11 @@ class SettingController extends BaseAdminController
         return view('admin.list.form', ['form' => $form, 'meta' => $this->meta]);
     }
 
-    public function putSettingForm($section)
+    public function putSettingForm()
     {
         $this->authorize('index', $this->model_class);
-        $model = Config::get('0-' . $section);
+        // $model = Config::get('0-' . $this->section);
+        $model = $this->repository->first();
 
         $form = $this->form_builder->create($this->model_form, [
             'model' => $model,
@@ -51,22 +52,24 @@ class SettingController extends BaseAdminController
                 $updated_data[$boolean_column] = 0;
             }
         }
-
-        $base_data = config('0-' . $section);
-        $new_settings = array_merge($base_data, $updated_data);
-        $newSettings = var_export($new_settings, 1);
-        $new_config = "<?php\n return ${newSettings} ;";
-        File::put(config_path() . '/0-' . $section . '.php', $new_config);
+        $model->update($updated_data);
+        
+        Cache::forget('settings.' . $this->section);
+        // $base_data = config('0-' . $this->section);
+        // $new_settings = array_merge($base_data, $updated_data);
+        // $newSettings = var_export($new_settings, 1);
+        // $new_config = "<?php\n return ${newSettings} ;";
+        // File::put(config_path() . '/0-' . $this->section . '.php', $new_config);
 
         activity($this->model)
             ->causedBy(Auth::user())
             ->log(json_encode($model));
             
         $this->request->session()->flash('alert-success', $this->model . ' Updated Successfully!');
-        Artisan::call('config:clear');
-        sleep(1);
+        // Artisan::call('config:clear');
+        // sleep(1);
 
-        return redirect()->route('admin.setting.' . $section);
+        return redirect()->route('admin.setting.' . $this->section);
     }
 
 	public function getLog()

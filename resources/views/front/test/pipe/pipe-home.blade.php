@@ -3,10 +3,10 @@
 <h1 class="page-header text-center">
 	بازارچه الکترونیکی خرید و فروش لوله های فولادی
 </h1>
+{{ config('app.asset_url') }}
 <br>
 <br>
 <br>
-
 <br>
 <div class="row">
 	<div class="col-sm-5 col-sm-offset-1" style="font-size: 16px">

@@ -22,7 +22,7 @@ class SettingsTableSeeder extends Seeder
 			'favicon' => '//www.cms-laravel.com/cdn/images/favicon.png',
 			'default_meta_image' => '//www.cms-laravel.com/cdn/images/logo.png',
 			'default_user_image' => '//www.cms-laravel.com/cdn/images/user.jpg',
-			'default_product_image' => '//www.cms-laravel.com/cdn/images/product.jpg',
+			'default_product_image' => '//www.cms-laravel.com/cdn/images/product.png',
 			'google_index' => '1',
 			'pagination_number' => '10',
 			'android_application_url' => 'https://play.google.com/store/apps',
