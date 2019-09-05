@@ -16,7 +16,7 @@ class ImageController extends Controller
 {
     public function getProduct($shop_url, $id, $width)
     {
-        return json_encode(\App\Models\Image::get()->toArray());
+        return json_encode(\App\Models\Image::get());
         return 1;
         $products = \App\Models\Product::where('id', '>', 3399)->get();
 
