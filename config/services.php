@@ -140,12 +140,12 @@ $output = [
     ],
 ];
 
-if(env('APP_NAME') === 'menew'){
+if(env('APP_NAME') === 'mmenew'){
     $output['models']['factory'][] = 'shop';
     $output['models']['factory'][] = 'product';
 
-    $output['models']['seeder'][] = 'shop';
-    $output['models']['seeder'][] = 'product';
+    // $output['models']['seeder'][] = 'shop';
+    // $output['models']['seeder'][] = 'product';
 
     $output['models']['admin_routes'][] = 'shop';
     $output['models']['admin_routes'][] = 'product';

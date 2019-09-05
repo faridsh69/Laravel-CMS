@@ -37,19 +37,19 @@ class PageController extends Controller
         return view('front.page', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta]);
     }
 
-    public function getVideo()
-    {
-        $meta = [
-            'title' => 'Video',
-            'description' => '',
-            'keywords' => '',
-            'image' => '',
-            'google_index' => 1,
-            'canonical_url' => url()->current(),
-        ];
+    // public function getVideo()
+    // {
+    //     $meta = [
+    //         'title' => 'Video',
+    //         'description' => '',
+    //         'keywords' => '',
+    //         'image' => '',
+    //         'google_index' => 1,
+    //         'canonical_url' => url()->current(),
+    //     ];
 
-        return view('front.widgets.video.index', ['meta' => $meta]);
-    }
+    //     return view('front.widgets.video.index', ['meta' => $meta]);
+    // }
 
     public function postSubscribe(Request $request)
     {

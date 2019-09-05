@@ -5,7 +5,7 @@ use App\Models\SettingDeveloper;
 use App\Models\SettingGeneral;
 use Illuminate\Database\Seeder;
 
-class SettingsTableSeeder extends Seeder
+class ShopSettingsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,22 +15,22 @@ class SettingsTableSeeder extends Seeder
     public function run()
     {
         $general_settings = [
-			'app_title' => 'laravel cms',
-			'default_meta_title' => 'laravel cms',
-			'default_meta_description' => 'https://github.com/faridsh69/cms is this cms github.',
-			'logo' => '//www.cms-laravel.com/cdn/images/logo.png',
-			'favicon' => '//www.cms-laravel.com/cdn/images/favicon.png',
-			'default_meta_image' => '//www.cms-laravel.com/cdn/images/logo.png',
-			'default_user_image' => '//www.cms-laravel.com/cdn/images/user.jpg',
-			'default_product_image' => '//www.cms-laravel.com/cdn/images/product.png',
-			'google_index' => '1',
+			'app_title' => 'Menew',
+			'default_meta_title' => 'MeNEW',
+			'default_meta_description' => 'MeNEW is the futue of all menus',
+			'logo' => 'http://www.mmenew.ir/cdn/storage/photos/shares/logo.png',
+			'favicon' => 'http://www.mmenew.ir/cdn/storage/photos/shares/favicon.png',
+			'default_meta_image' => 'http://www.mmenew.ir/cdn/storage/photos/shares/favicon.png',
+			'default_user_image' => 'http://www.mmenew.ir/cdn/storage/photos/shares/farid.jpeg',
+			'default_product_image' => 'http://www.mmenew.ir/cdn/storage/photos/shares/logo.png',
+			'google_index' => '0',
 			'pagination_number' => '10',
-			'android_application_url' => 'https://play.google.com/store/apps',
-			'ios_application_url' => 'https://sibapp.com/applications',
-			'introduce_video_url' => '//www.cms-laravel.com/cdn/images/video.mp4',
-			'introduce_video_cover_photo' => '//www.cms-laravel.com/cdn/images/video.jpg',
+			'android_application_url' => NULL,
+			'ios_application_url' => NULL,
+			'introduce_video_url' => 'http://www.mmenew.ir/cdn/css/front/capp/img/menew/video.mp4',
+			'introduce_video_cover_photo' => 'http://www.mmenew.ir/cdn/storage/photos/shares/feature-bg07.jpg',
 			'subscribe_description' => 'Join our team.',
-			'contact_us_description' => 'Dont hesitate to cantact with us.',
+			'contact_us_description' => 'Become Online with MeNEW',
         ];
 
         $contact_settings = [
@@ -38,7 +38,7 @@ class SettingsTableSeeder extends Seeder
 			'mobile' => '+989120568203',
 			'phone' => '+989120568203',
 			'fax' => '+989120568203',
-			'address' => 'Iran, Tehran, Ferdos street',
+			'address' => 'Iran,',
 			'latitude' => '35.731138',
 			'longitude' => '51.313043',
 			'google_plus' => 'farid.sh69',
@@ -53,13 +53,13 @@ class SettingsTableSeeder extends Seeder
 			'app_debug' => '1',
 			'app_env' => '1',
 			'theme' => 'capp',
-			'cdn_url' => '//www.cms-laravel.com/cdn/',
+			'cdn_url' => 'http://www.mmenew.ir/cdn',
 			'throttle' => '15,0.2',
 			'lazy_loading' => '1',
 			'email_username' => 'farid.sh69@gmail.com',
 			'email_password' => '********',
 			'email_default_ccc' => 'farid.sh69@gmail.com',
-			'email_default_subject' => 'Laravel Cms',
+			'email_default_subject' => 'menew',
 			'scripts' => '<script> console.log("Script is running..."); </script>',
         ];
 

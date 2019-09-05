@@ -53,6 +53,7 @@ class SettingGeneral extends Model
             'rule' => '',
             'help' => 'It can be just like logo image.',
             'form_type' => 'image',
+            'database' => 'nullable',
         ],
         [
             'name' => 'default_user_image',
@@ -60,6 +61,7 @@ class SettingGeneral extends Model
             'rule' => '',
             'help' => 'Image that used for users that have no profile image.',
             'form_type' => 'image',
+            'database' => 'nullable',
         ],
         [
             'name' => 'default_product_image',
@@ -67,6 +69,7 @@ class SettingGeneral extends Model
             'rule' => '',
             'help' => 'Image that used for products.',
             'form_type' => 'image',
+            'database' => 'nullable',
         ],
         [
             'name' => 'google_index',
@@ -81,6 +84,7 @@ class SettingGeneral extends Model
             'rule' => 'numeric',
             'help' => 'Its tables pagination number in blog list page',
             'form_type' => '',
+            'database' => 'nullable',
         ],
         [
             'name' => 'android_application_url',
@@ -88,6 +92,7 @@ class SettingGeneral extends Model
             'rule' => '',
             'help' => 'Url of Google play for android application.',
             'form_type' => '',
+            'database' => 'nullable',
         ],
         [
             'name' => 'ios_application_url',
@@ -95,6 +100,7 @@ class SettingGeneral extends Model
             'rule' => '',
             'help' => 'Url of Apple store for ios application.',
             'form_type' => '',
+            'database' => 'nullable',
         ],
         [
             'name' => 'introduce_video_url',
@@ -102,6 +108,7 @@ class SettingGeneral extends Model
             'rule' => '',
             'help' => 'The main video that will show in home page.',
             'form_type' => '',
+            'database' => 'nullable',
         ],
         [
             'name' => 'introduce_video_cover_photo',
@@ -109,20 +116,23 @@ class SettingGeneral extends Model
             'rule' => '',
             'help' => 'Cover photo for introduce video.',
             'form_type' => 'image',
+            'database' => 'nullable',
         ],
         [
             'name' => 'subscribe_description',
-            'type' => 'string',
+            'type' => 'text',
             'rule' => '',
             'help' => 'It will show beside subscribe form.',
             'form_type' => 'textarea',
+            'database' => 'nullable',
         ],
         [
             'name' => 'contact_us_description',
-            'type' => 'string',
+            'type' => 'text',
             'rule' => '',
             'help' => 'It will show beside contact form.',
             'form_type' => 'textarea',
+            'database' => 'nullable',
         ],
     ];
 

@@ -8,7 +8,7 @@ Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
 	Route::get('tags/{tag_url}', 'BlogController@getTag')->name('tag');
 	Route::get('{blog_url}', 'BlogController@show')->name('show');
 });
-Route::get('video', 'PageController@getVideo')->name('page.video');
+// Route::get('video', 'PageController@getVideo')->name('page.video');
 Route::post('subscribe', 'PageController@postSubscribe')->name('page.subscribe')
 	->middleware('throttle:4,2');
 Route::get('{page_url?}', 'PageController@getIndex')->name('page.index');
