@@ -104,19 +104,18 @@
                         @foreach($category->products as $product)
                             @php
                                 $has_video = 0;
+                                $is_ordered = "";
+                                $order_count = 1;
+
+                                /*
                                 if(!is_null($product->images)) {
-
-
-                                    /* 
                                     $filtered = $product->images->filter(function ($value, $key) {
                                         return (strpos($value, "mp4") >= 0 || strpos($value, "webm") >= 0);
                                     });
                                     if($filtered->count() > 0) {
                                         $has_video = 1;
                                     } 
-                                    */
                                 }
-
                                 $ordered_item = 0;
                                 if($ordered_item) {
                                     $order_count = $ordered_item->count;
@@ -125,27 +124,26 @@
                                     $order_count = 1;
                                     $is_ordered = "";
                                 }
+                                */
                             @endphp
                             <section id="item{{$product->id}}"
                                     class="menuitem {{$product->image_class}} {{$product->finished_class}} {{$product->discount_class}} {{$is_ordered}}"
                                     data-before="{{$product->price}}"
                                     data-discount="{{$product->discount_price}}" 
-                                    data-gallery="{{ json_encode([
-                                        ['file' => $product->image_large]
-                                    ]) }}" 
+                                    data-gallery="{{ $product->gallery }}" 
+                                    data-mediumimage=""
+                                    data-galleryaddr=""
+                                    xdata-purepic=""
                                     data-itemid="{{$product->id}}"
-                                    data-mediumimage="{{$product->image_medium}}"
-                                    data-purepic="{{$product->image}}"
                                     data-available="{{$product->count}}" 
                                     data-vote="{{$product->vote_show}}"
-                                    data-desc="{{$product->description}}"
-                                    data-galleryaddr="{{$product->gallery_address}}"
+                                    xdata-desc="{{$product->description}}"
                                     data-type="{{$product->type}}">
                                 <span class="qty">{{$order_count}}</span>
 
                                 @if($product->image)
                                 <div class="itemimage"
-                                     style="background-image: url('{{ $product->image_small }}');">
+                                     style="background-image: url('{{ $product->image_thumbnail }}');">
                                     @if($has_video)
                                         <div class="video_play_icon">
                                             <i class="fas fa-play"></i>

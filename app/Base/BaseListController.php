@@ -109,6 +109,7 @@ class BaseListController extends Controller
             'url' => route('admin.' . $this->model_sm . '.list.store'),
             'class' => 'm-form m-form--state',
             'id' =>  'admin_form',
+            'enctype' => 'multipart/form-data',
         ]);
 
         return view('admin.list.form', ['form' => $form, 'meta' => $this->meta]);
@@ -138,7 +139,7 @@ class BaseListController extends Controller
         unset($data['tags']);
         unset($data['related_blogs']);
         unset($data['fields']);
-
+        
         // comment
         if($this->model === 'Comment'){
             $blog = \App\Models\Blog::where('id', $data['commented_id'])->first();
@@ -168,6 +169,14 @@ class BaseListController extends Controller
 
         $model = $this->repository->create($data);
 
+        // product
+        if($this->model === 'Product'){
+            $image_service = new \App\Services\ImageService; 
+            foreach($data['gallery'] as $gallery_image){
+                $image_service->save($gallery_image, $model);
+            }
+        }
+        
         $this->_saveRelatedData($model, $main_data);
 
         if(env('APP_ENV') !== 'testing'){
@@ -224,6 +233,7 @@ class BaseListController extends Controller
             'class' => 'm-form m-form--state',
             'id' => 'admin_form',
             'model' => $model,
+            'enctype' => 'multipart/form-data',
         ]);
 
         return view('admin.list.form', ['form' => $form, 'meta' => $this->meta]);
@@ -262,6 +272,14 @@ class BaseListController extends Controller
             }
         }
 
+        // product
+        if($this->model === 'Product'){
+            $image_service = new \App\Services\ImageService; 
+            foreach($data['gallery'] as $gallery_image){
+                $image_service->save($gallery_image, $model);
+            }
+        }
+
         // comment
         if($this->model === 'Comment'){
             $model->commentable_id = $data['commented_id'];
@@ -294,6 +312,7 @@ class BaseListController extends Controller
         unset($data['tags']);
         unset($data['related_blogs']);
         unset($data['fields']);
+        unset($data['gallery']);
 
         $model->update($data);
 

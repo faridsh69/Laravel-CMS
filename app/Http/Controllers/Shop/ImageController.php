@@ -10,10 +10,37 @@ use Carbon\Carbon;
 use Cache;
 use Illuminate\Http\Request;
 use Image;
+use Illuminate\Http\UploadedFile;
 
 class ImageController extends Controller
 {
     public function getProduct($shop_url, $id, $width)
+    {
+        return json_encode(\App\Models\Image::get()->toArray());
+        return 1;
+        $products = \App\Models\Product::where('id', '>', 3399)->get();
+
+        foreach($products as $product)
+        {
+            if(!$product->image) {continue;}
+            if($product->id < 3399) {continue;}
+            $image_service = new \App\Services\ImageService; 
+            foreach(explode("|", $product->image) as $gallery_image){
+                $gallery_image = str_replace("/","", $gallery_image);
+                if( strpos($gallery_image, "mp4") !== false){
+                    continue;
+                }
+                if($product->id > 3000 && $product->id < 4000) {
+                    $url = 'cdn/images/itemimages/' . fmod($product->id, 1000) . '/' . $gallery_image;
+                }else{
+                    $url = 'cdn/images/itemimages/' . fmod($product->id, 1000) . '/large_' . $gallery_image;
+                }
+                $file =  new UploadedFile($url, $gallery_image);
+                $image_service->save($file, $product);
+            }
+        }
+    }
+    public function getProduct2($shop_url, $id, $width)
     {
         return 1;
         $products = \App\Models\Product::get();

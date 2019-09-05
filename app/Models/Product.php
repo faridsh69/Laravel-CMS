@@ -24,14 +24,14 @@ class Product extends Model implements Commentable
     // shop_id,
     // description,
     // content,
-    // logo,
+    // image,
     // activated,
     // tags,
     // ready_time,
 
     // comment,
     // rate,
-	// ??? gallery
+	// gallery
 
     public $columns = [
         [
@@ -140,7 +140,16 @@ class Product extends Model implements Commentable
             'database' => 'nullable',
             'rule' => 'nullable|max:191',
             'help' => 'Should have rate 1*1',
-            'form_type' => 'image',
+            'form_type' => 'none',
+            'table' => false,
+        ],
+        [
+            'name' => 'gallery',
+            'type' => 'string',
+            'database' => 'none',
+            'rule' => '',
+            'help' => 'select all image files you want to upload',
+            'form_type' => 'gallery',
             'table' => false,
         ],
         [
@@ -182,7 +191,7 @@ class Product extends Model implements Commentable
         'deleted_at',
     ];
 
-    protected $appends = ['images'];
+    // protected $appends = ['images'];
 
     public function canBeRated(): bool
     {
@@ -209,6 +218,41 @@ class Product extends Model implements Commentable
         return $query->where('activated', 1);
     }
 
+    public function images()
+    {
+        return $this->morphMany('App\Models\Image', 'imageable');
+    }
+
+    public function getImageThumbnailAttribute()
+    {
+        $gallery = $this->images;
+        if(count($gallery) > 0){
+            return asset($gallery->first()->src_thumbnail);
+        }
+        return null;
+        // return asset('images/product/' . $this->id . '-thumbnail.jpg');
+    }
+
+    public function getImageMainAttribute()
+    {
+        $gallery = $this->images;
+        if(count($gallery) > 0){
+            return asset($gallery->first()->src_main);
+        }
+        return null;
+        // return asset('images/product/' . $this->id . '-main.jpg');
+    }
+
+    public function getGalleryAttribute()
+    {
+        $gallery = [];
+        foreach($this->images as $gallery_image)
+        {
+            $gallery[] = ['file' => asset($gallery_image->src_main)];
+        }
+        return json_encode($gallery);
+    }
+
     // public function getImageAttribute($image)
     // {
     //     if(isset($image)) {
@@ -218,29 +262,11 @@ class Product extends Model implements Commentable
     //     return null;
     // }
 
-    public function getImagesAttribute($image)
-    {
-        return collect([
-            ['file' => asset('images/product/' . $this->id . '-thumbnail.jpg')], 
-            ['file' => config('0-general.default_product_image')],
-        ]);
-    }
-
-    public function getImageSmallAttribute()
-    {
-        return asset('images/product/' . $this->id . '-thumbnail.jpg');
-        // if(!isset($this->image)){
-        //     return null;
-        // }
-        // return '/image/product/' . $this->id . '/150';
-    }
-
-    public function getImageMediumAttribute()
-    {
-    }
-
-    public function getImageLargeAttribute()
-    {
-        return asset('images/product/' . $this->id . '-main.jpg');
-    }
+    // public function getImagesAttribute($image)
+    // {
+    //     return collect([
+    //         ['file' => asset('images/product/' . $this->id . '-thumbnail.jpg')], 
+    //         ['file' => config('0-general.default_product_image')],
+    //     ]);
+    // }
 }

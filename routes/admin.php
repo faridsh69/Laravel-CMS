@@ -86,3 +86,7 @@ Route::group(['prefix' => 'report', 'namespace' => 'Report', 'as' => 'report.'],
 	Route::get('', 'ReportController@index')->name('index');
 });
 Route::get('', 'Dashboard\DashboardController@redirect')->name('redirect');
+
+Route::group(['prefix' => 'product', 'namespace' => 'Product', 'as' => 'product.'], function () {
+	Route::get('remove-image/{id}', 'ResourceController@getRemoveImage')->name('remove-image');
+});

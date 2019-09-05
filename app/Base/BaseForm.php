@@ -96,10 +96,6 @@ class BaseForm extends Form
                 $input_type = 'select';
                 $option['attr'] = ['class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker'];
             }
-            // create image file browser for select image
-            elseif($form_type === 'image'){
-                $input_type = 'image';
-            }
             // create option from a list of models item with specific attribute
             elseif($form_type === 'entity'){
                 $input_type = 'entity';
@@ -111,6 +107,14 @@ class BaseForm extends Form
                 if($column['multiple'] === true){
                     $option['attr']['multiple'] = 'true';
                 }
+            }
+            // create image file browser for select image
+            elseif($form_type === 'image'){
+                $input_type = 'image';
+            }
+            // create multi select image uploader
+            elseif($form_type === 'gallery'){
+                $input_type = 'gallery';
             }
 
             $this->add($name, $input_type, $option);

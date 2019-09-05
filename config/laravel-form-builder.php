@@ -51,6 +51,7 @@ return [
         'text-m' => '\App\Forms\Fields\TextM',
         'submit-m' => '\App\Forms\Fields\SubmitM',
         'image' => '\App\Forms\Fields\Image',
+        'gallery' => '\App\Forms\Fields\Gallery',
     ],
 
     'field_icons' => [
