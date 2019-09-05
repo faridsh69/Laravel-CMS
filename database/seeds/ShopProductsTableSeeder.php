@@ -872,6 +872,12 @@ INSERT INTO `images` (`id`, `title`, `imageable_type`, `imageable_id`, `src_main
 
 	\DB::unprepared($sql);
 
+	$images = \App\Models\Image::get();
+	foreach($images as $image)
+	{
+		$image->imageable_type = 'App\Models\Product';
+		$image->update();
+	}
 
     }
     /**
