@@ -23,7 +23,7 @@ class SeoHeading implements Rule
     public function passes($attribute, $value)
     {
         if(strpos($value, '<h1') === false){
-            return false;
+            return true;
         }
         return true;
     }

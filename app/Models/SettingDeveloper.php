@@ -42,19 +42,21 @@ class SettingDeveloper extends Model
         //     'property_key' => 'title',
         //     'multiple' => false,
         // ],
-        [
-            'name' => 'cdn_url',
-            'type' => 'string',
-            'rule' => 'required',
-            'form_type' => '',
-            'help' => 'All of static files will load from this link.',
-        ],
+        // [
+        //     'name' => 'cdn_url',
+        //     'type' => 'string',
+        //     'rule' => 'required',
+        //     'form_type' => '',
+        //     'help' => 'All of static files will load from this link.',
+        //     'database' => 'nullable',
+        // ],
         [
             'name' => 'throttle',
             'type' => 'string',
             'rule' => '',
             'form_type' => '',
             'help' => 'Stop users who is requesting alot to server.',
+            'database' => 'nullable',
         ],
         [
             'name' => 'lazy_loading',
@@ -69,6 +71,7 @@ class SettingDeveloper extends Model
             'rule' => 'email',
             'form_type' => '',
             'help' => 'email that is used for sending emails to users.',
+            'database' => 'nullable',
         ],
         [
             'name' => 'email_password',
@@ -76,24 +79,28 @@ class SettingDeveloper extends Model
             'rule' => '',
             'form_type' => '',
             'help' => 'email password that is used for sending emails to users.',
+            'database' => 'nullable',
         ],
         [
             'name' => 'email_default_subject',
             'type' => 'string',
             'rule' => '',
             'form_type' => '',
+            'database' => 'nullable',
         ],
         [
             'name' => 'email_default_ccc',
             'type' => 'string',
             'rule' => '',
             'form_type' => '',
+            'database' => 'nullable',
         ],
         [
             'name' => 'scripts',
             'type' => 'text',
             'rule' => '',
             'form_type' => 'textarea',
+            'database' => 'nullable',
         ],
     ];
 

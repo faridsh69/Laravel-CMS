@@ -22,7 +22,7 @@ class Page extends Model
         [
             'name' => 'url',
             'type' => 'string',
-            'database' => 'unique',
+            'database' => '',
             'rule' => 'required|max:80|unique:blogs,url,',
             'help' => 'Url should be unique, contain lowercase characters and numbers and -',
             'form_type' => '',
@@ -32,7 +32,7 @@ class Page extends Model
             'name' => 'content',
             'type' => 'text',
             'database' => '',
-            'rule' => 'required|seo_header',
+            'rule' => 'nullable|seo_header',
             'help' => '',
             'form_type' => 'ckeditor',
             'table' => true,

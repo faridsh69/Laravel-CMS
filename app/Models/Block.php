@@ -112,7 +112,7 @@ class Block extends Model
         return [
             'menu',
             'header',
-            'features',
+            // 'features',
             'content',
             'subscribe',
             'footer',
