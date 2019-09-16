@@ -850,6 +850,18 @@
 
         $(document).on('click', '#reload_page', function () {
             location.reload()
+        });
+
+        $('.header .showmore').swipe({
+            swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+                if (direction == 'down' && !$(this).hasClass('rotate')) {
+                  $('.header .showmore').trigger('click')
+                }
+                if (direction == 'up' && $(this).hasClass('rotate')) {
+                  $('.header .showmore').trigger('click')
+                }
+            },
+            threshold: 20
         })
 </script>
 @endpush
