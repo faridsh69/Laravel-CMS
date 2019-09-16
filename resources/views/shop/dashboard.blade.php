@@ -1,8 +1,7 @@
 @extends('layout.shop')
 @section('content')
-
 <div class="bgwrap"></div>
-<header class="header">
+    <header class="header">
         <div class="user" id="header_user_info" @if(!is_null(\Auth::user())) data-updateversion="{{\Auth::user()->updated_version}}" @endif data-updateurl="{{'update-version'}}">
             <div class="user_pic">
             </div>
@@ -11,7 +10,7 @@
                 <div class="post">سرپرست
                 </div>
                 <span class="">
-                    <a href="{{route('shop.index', ['shop_subdomain' => 'denja'])}}" target="_blank">مشاهده منو</a>
+                    <a href="{{route('shop.index', ['shop_subdomain' => $shop_subdomain])}}" target="_blank">مشاهده منو</a>
                 </span> |
                 @if(!is_null(session('userid')))
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">خروج</a>
@@ -19,7 +18,7 @@
                     {{ csrf_field() }}
                 </form>
                 @else
-                    <span id="empty_super_license" data-nexturl="{{route('shop.index', ['shop_subdomain' => 'denja'])}}" data-url="{{'admin.super-license'}}" style="cursor: pointer;">خروج</span>
+                    <span id="empty_super_license" data-nexturl="{{route('shop.index', ['shop_subdomain' => $shop_subdomain])}}" data-url="{{'admin.super-license'}}" style="cursor: pointer;">خروج</span>
                 @endif
             </div>
         </div>
@@ -52,7 +51,7 @@
     <div class="container fullpage" id="height-fullpage">
         <div class="address_bar">
             @if(isset($set->name))
-                <a href="{{route('shop.dashboard.set.index', ['shop_subdomain' => 'denja'])}}" class="address">Sets</a>
+                <a href="{{route('shop.dashboard.set.index', ['shop_subdomain' => $shop_subdomain])}}" class="address">Sets</a>
                 <a class="address current_page">{{$set->name}}</a>
             @endif
         </div>
@@ -81,13 +80,13 @@
                                                 !$product->activated ? 'hide' : ''}} {{$product->discount_enabled}}"
                                                 id="item{{$product->id}}"
                                                 data-url="{{route('shop.dashboard.showItem',
-                                                ['shop_subdomain' => 'denja', 'id' => $product->id]
+                                                ['shop_subdomain' => $shop_subdomain, 'id' => $product->id]
                                                   )}}"
                                                 data-itemgalleryresize="{{$product->gallery_resize}}"
                                                 data-galleryaddr="{{$product->gallery_address}}">
 
-                                                <img class="li_item_image @if(is_null($product->image)) hidden @endif"
-                                                     src="{{$product->image_small}}" alt=""/>
+                                                <img class="li_item_image @if(!$product->image) hidden @endif"
+                                                     src="{{$product->image_thumbnail}}" alt=""/>
                                                 <div class="name">
                                                     <span class="inner_item_name">{{$product->title}}</span>
                                                 </div>
@@ -96,7 +95,7 @@
                                         @endforeach
                                     </ul>
                                         <form name="" class="add_item_form"
-                                          data-action="{{route('shop.dashboard.item.store', ['shop_subdomain' => 'denja'])}}"
+                                          data-action="{{route('shop.dashboard.item.store', ['shop_subdomain' => $shop_subdomain])}}"
                                           method="post">
                                         <input type="text" name="name" class="add_item add_item_input"
                                                placeholder="{{__('add new item')}} ..." autocomplete="off"/>
@@ -110,7 +109,7 @@
                     @endforeach
                 @endif
                 <span class="swiper-slide add_card_sw">
-                    <form action="{{route('shop.dashboard.batch.store', ['shop_subdomain' => 'denja'])}}" method="post"
+                    <form action="{{route('shop.dashboard.batch.store', ['shop_subdomain' => $shop_subdomain])}}" method="post"
                           name="add_card_form" id="add_card_form" class="add_card">
                         <input type="text" name="name" class="add_card_input" placeholder="{{__('new batch')}}"
                                autocomplete="off"/>
@@ -209,7 +208,7 @@
 
 <div class="footer">
     <ul class="owl-carousel owl-theme modules_panel">
-        <a href="{{route('shop.dashboard.index', ['shop_subdomain' => 'denja'])}}">
+        <a href="{{route('shop.dashboard.index', ['shop_subdomain' => $shop_subdomain])}}">
             <li class="item {{ Request::is('admin/menumaker*') ? 'active' : '' }}" id="menumaker">
             منوساز</li>
         </a>
@@ -224,7 +223,7 @@
             </a>
         @endif
         @if(true)
-        <a href="{{route('shop.dashboard.settings.index', ['shop_subdomain' => 'denja'])}}">
+        <a href="{{route('shop.dashboard.settings.index', ['shop_subdomain' => $shop_subdomain])}}">
             <li class="item {{ Request::is('admin/settings*') ? 'active' : '' }}" id="settings">
                 تنظیمات
             </li>
@@ -235,9 +234,8 @@
 
 
 
- <div class="msgBox">
+ <div class="msgBox" >
     <div class="innerbox">
-        <!-- <div class="exit"></div> -->
         <div class="topSide">warning</div>
         <div class="bottomSide"></div>
         <div class="btns">
@@ -437,7 +435,7 @@
 //                swapGalleryAndMainPic(main_pic_src);
                 main_item_id = item_id.substr(4);
                 console.log(main_item_id);
-                CallAjaxFunc('{{url(route('shop.dashboard.deleteMainPic', ['shop_subdomain' => 'denja']))}}', {'item_id': main_item_id}, deleteMainPicResult, deleteMainPicFail);//10min timeout for gallery
+                CallAjaxFunc('{{url(route('shop.dashboard.deleteMainPic', ['shop_subdomain' => $shop_subdomain]))}}', {'item_id': main_item_id}, deleteMainPicResult, deleteMainPicFail);//10min timeout for gallery
             });
             //item drag & drop
             ItemsdragDrop();
@@ -457,7 +455,7 @@
                             sorts.push(k);
                             k++;
                         });
-                        CallAjax("{{route('shop.dashboard.changeCardSortInBatchPage', ['shop_subdomain' => 'denja'])}}", {'cards': cards, 'sorts': sorts});
+                        CallAjax("{{route('shop.dashboard.changeCardSortInBatchPage', ['shop_subdomain' => $shop_subdomain])}}", {'cards': cards, 'sorts': sorts});
                     }
                 }).disableSelection();
             });
@@ -547,7 +545,7 @@
                 emptyItemDetail();
                 showItemDetail();
                 var item_id_ajib_gharib = item_id.substr(4);
-                var url_ajib_gharib = '{{url(route('shop.dashboard.showItem' ,['shop_subdomain' => 'denja', 'id' => 1]))}}';
+                var url_ajib_gharib = '{{url(route('shop.dashboard.showItem' ,['shop_subdomain' => $shop_subdomain, 'id' => 1]))}}';
 
                 url_ajib_gharib = url_ajib_gharib.substring(0, url_ajib_gharib.length - 1);
                 url_ajib_gharib = url_ajib_gharib + item_id_ajib_gharib;
@@ -565,13 +563,13 @@
                 openNextItem = 0;
 
                 //rah baz kon!
-                CallAjaxFunc('{{route('shop.dashboard.test', ['shop_subdomain' => 'denja'])}}', {
+                CallAjaxFunc('{{route('shop.dashboard.test', ['shop_subdomain' => $shop_subdomain])}}', {
                     'fake': 1
                 }, testOpenCallback);
 
 
                 var item_id_ajib_gharib = item_id.substr(4);
-                var url_ajib_gharib = '{{url(route('shop.dashboard.updateItem' ,['shop_subdomain' => 'denja', 'id' => 1]))}}';
+                var url_ajib_gharib = '{{url(route('shop.dashboard.updateItem' ,['shop_subdomain' => $shop_subdomain, 'id' => 1]))}}';
 
                 url_ajib_gharib = url_ajib_gharib.substring(0, url_ajib_gharib.length - 1);
                 url_ajib_gharib = url_ajib_gharib + item_id_ajib_gharib;
@@ -869,7 +867,7 @@
                         j++;
                     });
 
-                    CallAjax("{{route('shop.dashboard.changeItemSort', ['shop_subdomain' => 'denja'])}}", {
+                    CallAjax("{{route('shop.dashboard.changeItemSort', ['shop_subdomain' => $shop_subdomain])}}", {
                         'items': items,
                         'sorts': sorts,
                         'folder_id': folder_id,
@@ -906,7 +904,7 @@
                 }
             }
 
-            CallAjaxImageFunc('{{url(route('shop.dashboard.uploadGallery', ['shop_subdomain' => 'denja']))}}' + '/' + item_id.substr(4), formData, addGalleryFiles, addGalleryFilesFail, 600000);//10min timeout for gallery
+            CallAjaxImageFunc('{{url(route('shop.dashboard.uploadGallery', ['shop_subdomain' => $shop_subdomain]))}}' + '/' + item_id.substr(4), formData, addGalleryFiles, addGalleryFilesFail, 600000);//10min timeout for gallery
         });
 
 
@@ -975,7 +973,7 @@
           is_mainpic = 0
         }
         if (file_id != 0) {
-          CallAjaxFunc('{{url(route('shop.dashboard.removeItemGalleryFile', ['shop_subdomain' => 'denja']))}}' + '/' + file_id, {'is_mainpic': is_mainpic}, galleryRmResult)
+          CallAjaxFunc('{{url(route('shop.dashboard.removeItemGalleryFile', ['shop_subdomain' => $shop_subdomain]))}}' + '/' + file_id, {'is_mainpic': is_mainpic}, galleryRmResult)
         } else {
           deleteMainpicIfNeed()
           galleryElem.remove()
@@ -1073,7 +1071,7 @@
 
         $(document).on('click', '#archieve_or_delete_item_confirm', function () {
             $(".confirmBtn").removeAttr('id');
-            CallAjaxFunc('{{url(route('shop.dashboard.changeStatus', ['shop_subdomain' => 'denja']))}}', {
+            CallAjaxFunc('{{url(route('shop.dashboard.changeStatus', ['shop_subdomain' => $shop_subdomain]))}}', {
                 status: item_status,
                 id: item_id.substr(4)
             }, archive_or_delete_callback);
@@ -1132,7 +1130,7 @@
             current_tags.splice($.inArray(removeItem, current_tags), 1);
             remaind_tags = current_tags + "";
             $("#item_tag").val(remaind_tags);
-            CallAjax('{{url(route('shop.dashboard.removeItemTag', ['shop_subdomain' => 'denja']))}}' + '/' + item_id.substr(4), {'tag': remaind_tags});
+            CallAjax('{{url(route('shop.dashboard.removeItemTag', ['shop_subdomain' => $shop_subdomain]))}}' + '/' + item_id.substr(4), {'tag': remaind_tags});
             elem.remove();
         });
 
@@ -1178,7 +1176,7 @@
             var set_name = $("#create_set_input").val();
             var set_id = '{{$set_id}}';
             if (set_name != '') {
-                CallAjaxFunc('{{url(route('shop.dashboard.set.store', ['shop_subdomain' => 'denja']))}}', {
+                CallAjaxFunc('{{url(route('shop.dashboard.set.store', ['shop_subdomain' => $shop_subdomain]))}}', {
                     selected_batches: selected_batches,
                     left_batches: left_batches,
                     name: set_name,
@@ -1198,7 +1196,7 @@
                 $("#dublicate_set").fadeIn();
             } else {
                 $(".confirmBtn").removeAttr('id');
-                window.location.href = '{{route('shop.dashboard.menumaker.index', ['shop_subdomain' => 'denja'])}}';
+                window.location.href = '{{route('shop.dashboard.menumaker.index', ['shop_subdomain' => $shop_subdomain])}}';
             }
         }
 
@@ -1238,7 +1236,7 @@
             if (icon_name == '') {
               $("#icon_select_error").removeClass('hidden');
             } else {
-                CallAjaxFunc('{{url(route('shop.dashboard.updateCard', ['shop_subdomain' => 'denja']))}}' + '/' + batch_id, {
+                CallAjaxFunc('{{url(route('shop.dashboard.updateCard', ['shop_subdomain' => $shop_subdomain]))}}' + '/' + batch_id, {
                     'image': icon_name,
                     'name': new_card_name
                 }, changeBatchDetailDynamic);
@@ -1258,7 +1256,7 @@
         //hide or show item
         $('.show_hide_btn').click(function () {
             item_show_hide_elem = $(this);
-            CallAjaxFunc('{{url(route('shop.dashboard.hideItem', ['shop_subdomain' => 'denja']))}}', {id: item_id.substr(4)}, changeClass);
+            CallAjaxFunc('{{url(route('shop.dashboard.hideItem', ['shop_subdomain' => $shop_subdomain]))}}', {id: item_id.substr(4)}, changeClass);
         });
 
         function changeClass(data) {
@@ -1332,7 +1330,7 @@
 
         $(document).on('click', '#archieve_or_delete_card_confirm', function () {
             $(".confirmBtn").removeAttr('id');
-            CallAjaxFunc('{{url(route('shop.dashboard.changeBatchStatus', ['shop_subdomain' => 'denja']))}}', {
+            CallAjaxFunc('{{url(route('shop.dashboard.changeBatchStatus', ['shop_subdomain' => $shop_subdomain]))}}', {
                 status: batch_status,
                 id: batch_id
             }, cardArchive);

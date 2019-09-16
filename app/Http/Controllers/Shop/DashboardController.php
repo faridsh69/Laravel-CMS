@@ -39,12 +39,14 @@ class DashboardController extends Controller
 
     public function index($shop_subdomain)
     {
+        // dd(Product::where('id', 2070)->first()->image);
         \App::setLocale('fa');
         $shop = Shop::where('url', $shop_subdomain)->first();
         abort_if(! $shop, 404);
 
-        $categories = Category::where('activated', true)
-            ->with('products')
+        $categories = Category::where('shop_id', $shop->id)
+            // ->active()
+            // ->with('products')
             ->orderBy('order', 'asc')
             ->get();
 
@@ -61,6 +63,7 @@ class DashboardController extends Controller
             'shop' => $shop,
             'meta' => $meta,
             'categories' => $categories,
+            'shop_subdomain' => $shop_subdomain,
             'is_restaurant_close' => 0,
             'under_construction' => 0, 
         ]);

@@ -349,7 +349,7 @@ ul, li {
 }
 
 .footer {
-    background-color: red;
+    /*background-color: red;*/
     width: 100%;
     position: fixed;
     text-align: center;
@@ -362,7 +362,7 @@ ul, li {
     background-image: -o-linear-gradient(30deg, #503a83, #da315f);
     background-image: -moz-linear-gradient(30deg, #503a83, #da315f);
 	height: 80px;
-	
+	z-index: 99;
 }
 
 .msgBox {
@@ -1125,7 +1125,7 @@ ul, li {
 
 .item_info {
     position: fixed;
-    left: -100%;
+    left: -200%;
     top: 0;
     width: 100%;
     height: 100%;
@@ -1137,6 +1137,7 @@ ul, li {
     position: absolute;
     height: 100%;
     width: 440px;
+    max-width: 100%;
     left: 0;
     top: 0;
     background-color: #242b33;
