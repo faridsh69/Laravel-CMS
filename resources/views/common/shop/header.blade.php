@@ -9,6 +9,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{!! $meta['title'] !!}  &bull; MeneW</title>
+    <meta name="theme-color" content="{{$shop->theme_color}}">
+
     <meta name="keywords" content="{{ $meta['keywords'] }}">
     <meta name="description" content="{{ $meta['description'] }}">
     
@@ -65,9 +67,4 @@
     <link href="{{ asset('css/front/shops/main/fontawesome.css') }}" rel="stylesheet" />
     @endif
     <!--end::Base Styles -->
-    <!-- <style>
-        .header .categories{
-            transition: all 1s;
-        }
-    </style> -->
 </head>
