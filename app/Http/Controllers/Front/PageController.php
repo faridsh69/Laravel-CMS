@@ -16,6 +16,15 @@ class PageController extends Controller
         $page = Page::where('url', $page_url)->active()->first();
         abort_if(! $page, 404);
 
+
+        if(config('app.name') === 'mmenew'){
+            $ip = $_SERVER['REMOTE_ADDR'];
+            $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}"));
+            if($details->ip === '127.0.0.1' || $details->country === 'IR'){
+                config(['0-developer.theme' => 'menew']);
+            }
+        }
+
         $meta = [
             'title' => config('0-general.default_meta_title') . ' | ' . $page->title,
             'description' => $page->meta_description ?: config('0-general.default_meta_description'),

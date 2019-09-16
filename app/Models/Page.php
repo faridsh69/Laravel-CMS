@@ -31,7 +31,7 @@ class Page extends Model
         [
             'name' => 'content',
             'type' => 'text',
-            'database' => '',
+            'database' => 'nullable',
             'rule' => 'nullable|seo_header',
             'help' => '',
             'form_type' => 'ckeditor',

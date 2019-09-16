@@ -142,6 +142,7 @@ class User extends Authenticatable
         //     'rule' => 'required|in:1,2,3',
         //     'help' => '',
         //     'form_type' => 'enum',
+        //     'form_enum_class' => 'UserStatus',
         //     'table' => false,
         // ],
         [

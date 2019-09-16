@@ -30,13 +30,19 @@ class AppServiceProvider extends ServiceProvider
             return 1;
         }
         $general_settings = Cache::remember('settings.general', $seconds, function () {
-            return SettingGeneral::first()->toArray();
+            $general_setings_database = SettingGeneral::first(); 
+            if($general_setings_database) {return $general_setings_database->toArray();}
+            return [];
         });
         $contact_settings = Cache::remember('settings.contact', $seconds, function () {
-            return SettingContact::first()->toArray();
+            $contact_setings_database = SettingContact::first(); 
+            if($contact_setings_database) {return $contact_setings_database->toArray();}
+            return [];
         });
         $developer_settings = Cache::remember('settings.developer', $seconds, function () {
-            return SettingDeveloper::first()->toArray();
+            $developer_setings_database = SettingDeveloper::first(); 
+            if($developer_setings_database) {return $developer_setings_database->toArray();}
+            return [];
         });
         config(['0-general' => $general_settings]);
         config(['0-developer' => $developer_settings]);

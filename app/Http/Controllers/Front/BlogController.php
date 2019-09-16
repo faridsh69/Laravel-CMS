@@ -15,7 +15,7 @@ class BlogController extends Controller
     {
         $blogs = Blog::orderBy('id', 'desc')->paginate();
 
-        $page = Page::where('url', 'blogs')->active()->first();
+        $page = Page::where('url', 'blog')->active()->first();
         abort_if(! $page, 404);
 
         $meta = [
@@ -36,7 +36,7 @@ class BlogController extends Controller
             ->orderBy('order', 'asc')
             ->get();
 
-        return view('front.page.index', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta, 'blogs' => $blogs]);
+        return view('front.page', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta, 'blogs' => $blogs]);
     }
 
     public function show($blog_url)

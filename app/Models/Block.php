@@ -19,6 +19,7 @@ class Block extends Model
                 // 	menu, header, slider, featurs, counting, products, content, video, pricing, feedback, team, partners, subscribe, map, contact, footer,
             'help' => '',
             'form_type' => 'enum',
+            'form_enum_class' => 'BlockType',
             'table' => true,
         ],
     	[

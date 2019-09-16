@@ -5,9 +5,34 @@ namespace App\Http\Controllers\Shop;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Shop;
+use Illuminate\Http\Request;
 
 class ShopController extends Controller
 {
+    public function getComment($shop_subdomain)
+    {
+        $shop = Shop::where('url', $shop_subdomain)->first();
+        abort_if(! $shop, 404);
+
+        $meta = [
+            'title' => $shop->title,
+            'description' => $shop->meta_description,
+            'keywords' => $shop->keywords,
+            'image' => $shop->logo,
+            'google_index' => 0,
+            'canonical_url' => url()->current(),
+        ];
+
+        $form = \App\Models\Form::active()->first();
+
+        return view('shop.comment', ['meta' => $meta, 'shop' => $shop, 'form' => $form]);
+    }
+
+    public function postComment($shop_subdomain, Request $request)
+    {
+        dd($request->all());
+    }
+
     public function getVue()
     {
         return 1;

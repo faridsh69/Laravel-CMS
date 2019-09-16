@@ -31,12 +31,13 @@ class Field extends Model
     //     $table->softDeletes();
     // });
     
+    // title, type, required, activated, options, order
     public $columns = [
         [
             'name' => 'title',
             'type' => 'string',
             'database' => '',
-            'rule' => 'required|unique:forms,title,',
+            'rule' => 'required',
             'help' => '',
             'form_type' => '',
             'table' => true,
@@ -47,7 +48,8 @@ class Field extends Model
             'database' => 'nullable',
             'rule' => 'nullable|max:191',
             'help' => '',
-            'form_type' => '',
+            'form_type' => 'enum',
+            'form_enum_class' => 'FieldType',
             'table' => false,
         ],
         [
@@ -67,6 +69,22 @@ class Field extends Model
             'help' => '',
             'form_type' => '', // switch-m
             'table' => false,
+        ],
+        [
+            'name' => 'order',
+            'type' => 'integer',
+            'database' => 'nullable',
+            'rule' => 'nullable',
+            'form_type' => '',
+            'table' => true,
+        ],
+        [
+            'name' => 'options',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => 'nullable',
+            'help' => 'devide all options with | character',
+            'form_type' => '',
         ],
     ];
 

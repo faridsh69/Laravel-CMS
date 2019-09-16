@@ -12,6 +12,11 @@ use Str;
 
 class DashboardController extends Controller
 {
+    public function getLogin($shop_subdomain)
+    {        
+        return view('auth.login');
+    }
+
     public function index($shop_subdomain)
     {
         \App::setLocale('fa');

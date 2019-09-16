@@ -11,7 +11,7 @@
 		<div class="m-login__signin">
 			<div class="m-login__head">
 				<h3 class="m-login__title">
-					{{ __('Sign In To Admin') }}
+					{{ __('Sign In To Dashboard') }}
 				</h3>
 			</div>
 			<form class="m-login__form m-form" method="POST" action="{{ route('login') }}">
@@ -70,6 +70,7 @@
 		</div>
 	</div>
 </div>
+@if(config('app.name') !== 'mmenew')
 <div class="m-stack__item m-stack__item--center">
 	<div class="m-login__account">
 		<span class="m-login__account-msg">
@@ -81,4 +82,5 @@
 		</a>
 	</div>
 </div>
+@endif
 @endsection

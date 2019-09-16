@@ -66,7 +66,7 @@ class Form extends Model
 
     public function fields()
     {
-        return $this->belongsToMany('App\Models\Field', 'field_form', 'field_id', 'form_id');
+        return $this->belongsToMany('App\Models\Field', 'field_form', 'form_id', 'field_id');
     }
 
     public function scopeActive($query)

@@ -87,12 +87,10 @@ class BaseForm extends Form
             }
             // create select from enum options
             elseif($form_type === 'enum'){
-                if($this->model_name === 'User'){
-                    $option['choices'] = \App\Enums\UserStatus::data;
-                }
-                elseif($this->model_name === 'Block'){
-                    $option['choices'] = \App\Enums\BlockType::data;
-                }
+                $form_enum_class = $column['form_enum_class'];
+                $enum_class_name = 'App\\Enums\\' . $form_enum_class; 
+                $enum_class =  new $enum_class_name();
+                $option['choices'] = $enum_class::data;
                 $input_type = 'select';
                 $option['attr'] = ['class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker'];
             }
