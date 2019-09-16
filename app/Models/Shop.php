@@ -47,8 +47,9 @@ class Shop extends Model implements Commentable
     // keywords,
     // tags,
     // gallery,
-    // theme_name,
-    // theme_color,
+    // category_background_color,
+    // category_icon_color,
+    // products_background_color,
     // open_time
     // 'کافه نان دِنجا', 'Denja Bakery Café'
 
@@ -292,7 +293,7 @@ class Shop extends Model implements Commentable
             'table' => false,
         ],
         [
-            'name' => 'theme_name',
+            'name' => 'category_background_color',
             'type' => 'string',
             'database' => 'nullable',
             'rule' => '',
@@ -301,7 +302,16 @@ class Shop extends Model implements Commentable
             'table' => false,
         ],
         [
-            'name' => 'theme_color',
+            'name' => 'category_icon_color',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => '',
+            'help' => 'This field will managed by developers',
+            'form_type' => '',
+            'table' => false,
+        ],
+        [
+            'name' => 'products_background_color',
             'type' => 'string',
             'database' => 'nullable',
             'rule' => '',

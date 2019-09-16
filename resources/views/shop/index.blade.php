@@ -2,7 +2,7 @@
 @section('content')
 <div class="bgwrap"></div>
 <!-- begin category -->
-<div class="header" style="background: {{ $shop->theme_color ? $shop->theme_color : '#da315f' }}; color: black">
+<div class="header" style="background: {{ $shop->category_background_color ? $shop->category_background_color : '#da315f' }}; color: {{ $shop->category_icon_color }}">
     <div class="headertop">
         <header class="title">
             <h1>
@@ -12,7 +12,18 @@
     </div>
     <div class="categories">
         @foreach($categories as $category)
-            <div class="cat" id="batch{{$category->id}}cat" style="background-image: url({{$category->image}})">
+            @php
+                if($shop->category_icon_color === 'white')
+                {
+                    $svg_name = substr_replace($category->image, 2, -4, 0);
+                }
+                else
+                {
+                    $svg_name = $category->image;
+                }
+            @endphp
+            <div class="cat" id="batch{{$category->id}}cat" 
+                style="background-image: url({{$svg_name}})">
                 <span>
                     {{$category->title}}
                 </span>
@@ -21,7 +32,18 @@
     </div>
     <div class="showmore">
         همه دسته بندی ها
-        <span class="showmoreicon" style="background-image:url({{asset('images/icons/arrowdown2.svg')}});background-repeat: no-repeat;background-position: center bottom;">
+
+
+        @php
+            $icon_image = 'images/icons/arrowdown';
+            if($shop->category_icon_color === 'black')
+            {
+                $icon_image .= '2';
+            }
+            $icon_image .= '.svg';
+        @endphp
+
+        <span class="showmoreicon" style="background-image:url({{asset($icon_image)}});background-repeat: no-repeat;background-position: center bottom;">
         </span>
     </div>
 </div>
@@ -37,7 +59,7 @@
 </div>
 <!-- end closed -->
 
-<div class="content">
+<div class="content" style="background-color: {{$shop->products_background_color}}">
 
     <!-- begin loading -->
     <div class="indexloading"></div>
@@ -58,7 +80,7 @@
     </div>
     <div class="container">
         <div class="menushow">
-            <div class="detailsbox wrapclose">
+            <div class="detailsbox wrapclose"  style="background-color: {{$shop->products_background_color}}">
                 <div class="gotobottom">
                     <div class="icon"><i class="fas fa-angle-double-down"></i></div>
                 </div>
@@ -127,7 +149,7 @@
                                 */
                             @endphp
                             <section id="item{{$product->id}}"
-                                    class="menuitem {{$product->image_class}} {{$product->finished_class}} {{$product->discount_class}} {{$is_ordered}}"
+                                    class="menuitem {{!$product->image ? 'noimage' : ''}} {{$product->finished_class}} {{$product->discount_class}} {{$is_ordered}}"
                                     data-before="{{$product->price}}"
                                     data-discount="{{$product->discount_price}}" 
                                     data-gallery="{{ $product->gallery }}" 
@@ -233,7 +255,6 @@
             el: '.swiper-pagination',
         },
     });
-    console.log(mySwiper);
 
         setTimeout(function () {
             $('.indexloading').addClass('hide')
@@ -244,13 +265,12 @@
             $(window).load(function () {
                 setTimeout(function () {
                     $('.indexloading').addClass('hide')
-                }, 100)
+                }, 2000)
             })
 
             if (isMobile && isApple) {
                 //$('.menuitem .itemdetails .desc').addClass('apple');
             }
-
 
             setTimeout(function () {
                 $('.homeintro-overlay .intrologo').addClass('show')

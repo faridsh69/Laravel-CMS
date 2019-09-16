@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{!! $meta['title'] !!}  &bull; MeneW</title>
-    <meta name="theme-color" content="{{$shop->theme_color}}">
+    <meta name="theme-color" content="{{$shop->category_background_color}}">
 
     <meta name="keywords" content="{{ $meta['keywords'] }}">
     <meta name="description" content="{{ $meta['description'] }}">
