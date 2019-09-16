@@ -1,5 +1,106 @@
 @extends('layout.shop')
 @section('content')
+
+
+
+<div class="comment-dialog-triger" 
+    onclick="openCommentDialog()">
+    <i class="fas fa-angle-up" style="margin-top: 10px;"></i>
+    <br>
+    <span>
+    نظر دهید
+    </span>
+</div>
+<div class="comment-dialog-modal" id="comment-dialog" onclick="closeCommentDialog()">
+    <div class="comment-dialog-modal-container">
+        <br>
+        <div class="comment-dialog-images">
+            <img src="//www.cdn-farid.cms/storage/product/1002/0_thumbnail.jpg">
+            <img src="//www.cdn-farid.cms/storage/product/1003/0_thumbnail.jpg">
+            <img src="//www.cdn-farid.cms/storage/product/1004/0_thumbnail.jpg">
+            <img src="//www.cdn-farid.cms/storage/product/1005/0_thumbnail.jpg">
+            <img src="//www.cdn-farid.cms/storage/product/1007/0_thumbnail.jpg">
+        </div>
+        <br>
+        <h1  style="text-align: center; padding: 0px">
+        نظر سنجی
+        </h1>
+        <p style="text-align: center; padding: 20px">
+            نظرات شما برای ما مهم است. با ما در این 5 سوال همراه باشید...
+        </p>
+        <button class="comment-dialog-modal-start">
+            شروع کنید
+        </button>
+    </div>
+</div>
+
+@push('scripts')
+<script>
+    function openCommentDialog(){
+        console.log(1);
+        $('#comment-dialog').show();
+    }
+    function closeCommentDialog(){
+        console.log(2);
+        // $('#comment-dialog').hide();
+    }
+</script>
+@endpush
+<style>
+    .comment-dialog-images{
+        text-align: center;
+    }
+    .comment-dialog-images img{
+        width: 65px;
+        height: 65px;
+        border-radius: 100%;
+    }
+    .comment-dialog-triger{
+        position: fixed;
+        left: -15px;
+        top: 60%;
+        background-color: white;
+        transform: rotate(90deg);
+        color: black;
+        padding: 10px;
+        text-align: center;
+        padding-top: 0px;
+    }
+    .comment-dialog-modal{
+         position: fixed;
+        display: none;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1050;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: all .35s linear;
+    }
+    .comment-dialog-modal-container{
+        width: 400px;
+        background-color: white;
+        height: 330px;
+        margin: 30px auto;
+        box-shadow: 0px 0px 10px rgba(100, 100, 100, 0.7);
+        border-radius: 15px;
+        padding: 10px;
+        color: black;
+        text-align: center;
+    }
+    .comment-dialog-modal-start{
+        padding: 10px 40px;
+        background-color: red;
+        color: white;
+        border-radius: 25px;
+        text-align: center;
+        font-size: 16px;
+    }
+</style>
+
+
+
+
 <div class="bgwrap"></div>
 <!-- begin category -->
 <div class="header" style="background: {{ $shop->theme_color ? $shop->theme_color : '#da315f' }}; color: black">
@@ -43,10 +144,10 @@
     <div class="indexloading"></div>
     <!-- end loading -->
 
-    <div class="homeintro" data-jcmessage="{{__('messages.jc_message')}}"
+    <!-- <div class="homeintro" data-jcmessage="{{__('messages.jc_message')}}"
          data-activeorderingmsg="{{__('messages.activate_ordering_message')}}"
          data-disableconstruction="{{__('messages.disable_under_construction')}}"
-         style="background-image: url( {{ asset($shop->logo) }} ); display: none;" data-userid="laravel-method-getUserId"
+         style="background-image: url( {{ asset( '/images/intro/logo01.png') }} ); display: none;" data-userid="laravel-method-getUserId"
          data-versiontype="laravel-data-version_type">
         <div class="homeintro-overlay">
             <div class="intrologo" style="background-image: url(laravel-method-LogoImg);"></div>
@@ -55,7 +156,7 @@
                 <button class="menewlink">مشاهده مِ نیو</button>
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="container">
         <div class="menushow">
             <div class="detailsbox wrapclose">
@@ -232,8 +333,7 @@
         pagination: {
             el: '.swiper-pagination',
         },
-    });
-    console.log(mySwiper);
+    })
 
         setTimeout(function () {
             $('.indexloading').addClass('hide')

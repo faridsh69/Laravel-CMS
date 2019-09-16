@@ -3,12 +3,14 @@
 Route::get('', 'ShopController@getIndex')->name('index');
 Route::get('vue', 'ShopController@getVue')->name('vue');
 Route::get('comment', 'ShopController@getComment')->name('comment');
+Route::get('comment-ui', 'ShopController@getCommentUI')->name('comment');
 Route::post('comment', 'ShopController@postComment')->name('post-comment');
-// Route::get('image/product/{product_id?}/{width?}', 'ImageController@getProduct')->name('image');
+Route::get('image/product/{product_id?}/{width?}', 'ImageController@getProduct')->name('image');
 
 Route::get('login', 'DashboardController@getLogin')->name('login');
 Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'auth'], function () {
 	Route::get('', 'DashboardController@index')->name('index');
+	Route::get('comment', 'DashboardController@getComment')->name('comment');
 	Route::post('showItem/{id?}', 'DashboardController@showItem')->name('showItem');
 	Route::post('itemStore', 'DashboardController@itemStore')->name('item.store');
 	Route::post('batchStore', 'DashboardController@batchStore')->name('batch.store');

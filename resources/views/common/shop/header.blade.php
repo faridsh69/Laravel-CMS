@@ -65,9 +65,9 @@
     <link href="{{ asset('css/front/shops/main/fontawesome.css') }}" rel="stylesheet" />
     @endif
     <!--end::Base Styles -->
-    <style>
+    <!-- <style>
         .header .categories{
-            transition: 0.5s;
+            transition: all 1s;
         }
-    </style>
+    </style> -->
 </head>

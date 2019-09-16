@@ -18,7 +18,7 @@ class ImageService
         $path_model = 'storage/product/' . $model->id . '/';
         $path_storage = 'public/product/' . $model->id;
         $path_intervation = storage_path('app/public/product/' . $model->id . '/');
-
+    
 		$image_model = [
             'title' => $file->getClientOriginalName(),
             'imageable_type' => 'App\Models\Product', 
@@ -32,11 +32,11 @@ class ImageService
 
         Storage::putFileAs($path_storage, $file, $main_name);
         $intervation_image = Image::make($file);
-        $intervation_image->resize(450, null, function ($constraint) {
+        $intervation_image->resize(640, null, function ($constraint) {
             $constraint->aspectRatio();
         });
         $intervation_image->save($path_intervation . $main_name, 90);
-        $intervation_image->resize(150, null, function ($constraint) {
+        $intervation_image->resize(180, null, function ($constraint) {
             $constraint->aspectRatio();
         });
         $intervation_image->save($path_intervation . $thumbnail_name, 90);

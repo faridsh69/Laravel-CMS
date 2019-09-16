@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
+use App\Models\Answer;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Shop;
@@ -12,6 +13,25 @@ use Str;
 
 class DashboardController extends Controller
 {
+    public function getComment($shop_subdomain)
+    {
+        $shop = Shop::where('url', $shop_subdomain)->first();
+        abort_if(! $shop, 404);
+
+        $meta = [
+            'title' => $shop->title,
+            'description' => $shop->meta_description,
+            'keywords' => $shop->keywords,
+            'image' => $shop->logo,
+            'google_index' => 0,
+            'canonical_url' => url()->current(),
+        ];
+
+        $answers = Answer::where('shop_id', $shop->id)->get();
+
+        return view('shop.dashboard-comment', ['meta' => $meta, 'shop' => $shop, 'answers' => $answers]);
+    }
+
     public function getLogin($shop_subdomain)
     {        
         return view('auth.login');

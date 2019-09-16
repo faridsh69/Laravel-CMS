@@ -9,6 +9,29 @@ use Illuminate\Http\Request;
 
 class ShopController extends Controller
 {
+    public function getCommentUI($shop_subdomain)
+    {
+        $shop = Shop::where('url', $shop_subdomain)->first();
+        abort_if(! $shop, 404);
+
+        $meta = [
+            'title' => $shop->title,
+            'description' => $shop->meta_description,
+            'keywords' => $shop->keywords,
+            'image' => $shop->logo,
+            'google_index' => 0,
+            'canonical_url' => url()->current(),
+        ];
+
+        $form = \App\Models\Form::active()->first();
+        $categories = Category::where('shop_id', $shop->id)
+            ->active()
+            ->orderBy('order', 'asc')
+            ->get();
+
+        return view('shop.comment-ui', ['meta' => $meta, 'shop' => $shop, 'categories' => $categories, 'form' => $form]);
+    }
+
     public function getComment($shop_subdomain)
     {
         $shop = Shop::where('url', $shop_subdomain)->first();
@@ -30,7 +53,21 @@ class ShopController extends Controller
 
     public function postComment($shop_subdomain, Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
+        foreach($request->input('field') as $field_key => $field_value)
+        {
+            \App\Models\Answer::create(
+                [
+                    'shop_id' => $request->input('shop_id'),
+                    'form_id' => $request->input('form_id'),
+                    'user_id' => 1,
+                    'field_id' => $field_key,
+                    'content' => $field_value,
+                ]
+            );
+        }
+
+        return redirect()->back();
     }
 
     public function getVue()
