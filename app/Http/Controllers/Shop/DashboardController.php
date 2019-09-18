@@ -73,6 +73,7 @@ class DashboardController extends Controller
     {
         $product = Product::where('id', $id)->with('category')->first();
 
+        // dd($product->image_main); 
         return json_encode($product);
     }
 
@@ -132,9 +133,21 @@ class DashboardController extends Controller
 
     public function deleteMainPic($shop_subdomain, Request $request)
     {
-        $product = Product::where('id', $request->item_id)->first();
-        $product->image = null;
-        $product->save();
+        $image = \App\Models\Image::where('imageable_id', $request->item_id)->first();
+        if($image){
+            $image->delete();
+        }
+        return 'success';
+    }
+
+    public function removeItemGalleryFile($shop_subdomain, Request $request)
+    {
+        $image = \App\Models\Image::where('id', $request->image_id)->first();
+        if($image){
+            $image->delete();
+        }
+
+        return 'success';
     }
 
     public function changeCardSortInBatchPage($shop_subdomain, Request $request)

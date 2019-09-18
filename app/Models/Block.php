@@ -9,41 +9,48 @@ class Block extends Model
 {
     use SoftDeletes;
 
+    // widget_type, title, show_all_pages, pages_list, order, activated
     public $columns = [
         [
             'name' => 'widget_type',
             'type' => 'string',
             'database' => '',
             'rule' => 'required',
-                // in:
-                // 	menu, header, slider, featurs, counting, products, content, video, pricing, feedback, team, partners, subscribe, map, contact, footer,
             'help' => '',
             'form_type' => 'enum',
             'form_enum_class' => 'BlockType',
             'table' => true,
         ],
-    	[
-            'name' => 'page_id',
-            'type' => 'bigInteger',
-            'database' => 'unsigned',
-            'relation' => 'pages',
-            'rule' => 'numeric|exists:pages,id',
+        [
+            'name' => 'title',
+            'type' => 'string',
+            'database' => '',
+            'rule' => 'required',
+            'help' => 'title will used in folder name of widget.',
+            'form_type' => '',
+            'table' => true,
+        ],
+        [
+            'name' => 'show_all_pages',
+            'type' => 'boolean',
+            'database' => 'default',
+            'rule' => 'boolean',
+            'help' => 'If this ckecked this block will show in all pages except below pages list',
+            'form_type' => 'checkbox', // switch-m
+            'table' => false,
+        ],
+        [
+            'name' => 'pages_list',
+            'type' => 'array',
+            'database' => 'none',
+            'rule' => 'nullable',
             'help' => '',
             'form_type' => 'entity',
             'class' => 'App\Models\Page',
             'property' => 'title',
             'property_key' => 'id',
-            'multiple' => false,
+            'multiple' => true,
             'table' => false,
-        ],
-        [
-            'name' => 'page',
-            'type' => 'string',
-            'database' => 'none',
-            'rule' => '',
-            'help' => '',
-            'form_type' => 'none',
-            'table' => true,
         ],
         [
             'name' => 'order',
@@ -55,15 +62,6 @@ class Block extends Model
             'table' => true,
         ],
         [
-            'name' => 'column',
-            'type' => 'tinyInteger',
-            'database' => 'nullable',
-            'rule' => 'nullable|numeric',
-            'help' => 'Default value is 12, and each row has 12 columns',
-            'form_type' => '',
-            'table' => false,
-        ],
-        [
             'name' => 'activated',
             'type' => 'boolean',
             'database' => 'default',
@@ -72,29 +70,6 @@ class Block extends Model
             'form_type' => '', // switch-m
             'table' => false,
         ],
-                // [
-     //        'name' => 'widget_id',
-     //        'type' => 'bigInteger',
-     //        'database' => 'unsigned',
-     //        'relation' => 'widgets',
-     //        'rule' => 'numeric|exists:widgets,id',
-     //        'help' => '',
-     //        'form_type' => 'none', // 'entity',
-     //        'class' => 'App\Models\Widget',
-     //        'property' => 'title',
-     //        'property_key' => 'id',
-     //        'multiple' => false,
-     //        'table' => false,
-     //    ],
-        // [
-        //     'name' => 'theme',
-        //     'type' => 'string',
-        //     'database' => 'nullable',
-        //     'rule' => 'required',
-        //     'help' => 'Default theme is CA.',
-        //     'form_type' => 'none',
-        //     'table' => false,
-        // ],
     ];
 
     protected $guarded = [];
@@ -108,22 +83,22 @@ class Block extends Model
         return $this->columns;
     }
 
-    public static function getStaticTypes()
-    {
-        return [
-            'menu',
-            'header',
-            // 'features',
-            'content',
-            'subscribe',
-            'footer',
-            'loading',
-        ];
-    }
+    // public static function getStaticTypes()
+    // {
+    //     return [
+    //         'menu',
+    //         'header',
+    //         'features',
+    //         'content',
+    //         'subscribe',
+    //         'footer',
+    //         'loading',
+    //     ];
+    // }
 
-    public function page()
+    public function pages()
     {
-        return $this->belongsTo('App\Models\Page', 'page_id', 'id');
+        return $this->belongsToMany('App\Models\Page', 'block_page', 'block_id', 'page_id');
     }
 
     public function scopeActive($query)

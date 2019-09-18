@@ -80,16 +80,6 @@ class WidgetsTableSeeder extends Seeder
                 'title' => 'map',
             ],
         ];
-        // $widgets = [
-        //     [
-        //     	'title' => '',
-        //     	'url' => '',
-        //     	'description' => '',
-        //     	'content' => '',
-        //     	'image' => '',
-        //     	'activated' => 1,
-        //     ],
-        // ];
         foreach($widgets as $widget){
             	Widget::updateOrCreate(['id' => $widget['id']], $widget);
         }

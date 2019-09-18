@@ -26,7 +26,7 @@ class Menu extends Model
             'name' => 'url',
             'type' => 'string',
             'database' => '',
-            'rule' => 'required|max:80|regex:/^[a-z0-9-]+$/',
+            'rule' => 'required|max:80',
             'help' => 'Url should be unique, contain lowercase characters and numbers and -',
             'form_type' => '',
             'table' => true,
@@ -42,11 +42,12 @@ class Menu extends Model
         ],
         [
             'name' => 'location',
-            'type' => 'tinyInteger',
+            'type' => 'string',
             'database' => 'nullable',
             'rule' => '',
             'help' => '',
             'form_type' => 'enum',
+            'form_enum_class' => 'MenuType',
             'table' => false,
         ],
         [

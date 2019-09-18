@@ -1,3 +1,6 @@
+@php
+$blogs = \App\Models\Blog::active()->orderBy('id', 'desc')->paginate();
+@endphp
 <section class="our-Team-area bg-white section_padding_100_50 clearfix" id="team">
     <div class="container">
         <div class="row">

@@ -191,7 +191,7 @@ class Product extends Model implements Commentable
         'deleted_at',
     ];
 
-    // protected $appends = ['images'];
+    protected $appends = ['image_thumbnail', 'image_main'];
 
     public function canBeRated(): bool
     {

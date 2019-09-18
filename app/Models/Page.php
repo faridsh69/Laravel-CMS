@@ -38,6 +38,15 @@ class Page extends Model
             'table' => true,
         ],
         [
+            'name' => 'view_code_url',
+            'type' => 'text',
+            'database' => 'nullable',
+            'rule' => 'nullable',
+            'help' => 'Let this field empty if you are not developer, It will used for creating code content.',
+            'form_type' => '',
+            'table' => false,
+        ],
+        [
             'name' => 'meta_description',
             'type' => 'string',
             'database' => 'nullable',

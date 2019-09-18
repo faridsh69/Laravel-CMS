@@ -34,31 +34,26 @@ class PageController extends Controller
             'canonical_url' => $page->canonical_url ?: url()->current(),
         ];
 
-        $static_types = Block::getStaticTypes();
         $blocks = Block::active()
-            ->where(function($query) use ($page, $static_types) {
-                $query->where('page_id', $page->id)
-                    ->orWhereIn('widget_type', $static_types);
-            })
             ->orderBy('order', 'asc')
             ->get();
 
+        $output_blocks = [];
+        foreach($blocks as $block)
+        {
+            if($block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray()) === false){
+                $output_blocks[] = $block;
+            }
+
+            if(!$block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray()) !== false){
+                $output_blocks[] = $block;
+            }
+        }
+
+        $blocks = $output_blocks;
+
         return view('front.page', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta]);
     }
-
-    // public function getVideo()
-    // {
-    //     $meta = [
-    //         'title' => 'Video',
-    //         'description' => '',
-    //         'keywords' => '',
-    //         'image' => '',
-    //         'google_index' => 1,
-    //         'canonical_url' => url()->current(),
-    //     ];
-
-    //     return view('front.widgets.video.index', ['meta' => $meta]);
-    // }
 
     public function postSubscribe(Request $request)
     {

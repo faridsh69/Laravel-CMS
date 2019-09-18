@@ -12,7 +12,7 @@ class Shop extends Model implements Commentable
 {
     // for registeration
     // to storage ye folder besazam ke file hash o in user bezare inja
-    // copy migiram az file hae dakhele widgets o hame o vase theme jadid mirizam ke bad beshe taghir dad
+    // copy migiram az file hae dakhele  o hame o vase jadid mirizam ke bad beshe taghir dad
 
     // exec("php -q /home/faridsh/domains/mmenew.ir/add_subdomain.php xxqq");
 

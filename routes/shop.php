@@ -22,7 +22,7 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'au
 	Route::post('updateItem/{id}', 'DashboardController@updateItem')->name('updateItem');
 	Route::post('changeItemSort', 'DashboardController@changeItemSort')->name('changeItemSort');
 	Route::get('uploadGallery', 'DashboardController@uploadGallery')->name('uploadGallery');
-	Route::get('removeItemGalleryFile', 'DashboardController@removeItemGalleryFile')->name('removeItemGalleryFile');
+	Route::post('removeItemGalleryFile', 'DashboardController@removeItemGalleryFile')->name('removeItemGalleryFile');
 	Route::post('changeStatus/{id?}', 'DashboardController@changeStatus')->name('changeStatus');
 
 	Route::post('updateCard/{id?}', 'DashboardController@updateCard')->name('updateCard');

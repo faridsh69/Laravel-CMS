@@ -75,24 +75,24 @@
                                 </div>
                                 <div class="items max-height-items">
                                     <ul class="items_list">
-                                        @foreach($category->products()->orderby('order')->get() as $product)
-                                            <li class="item {{$product->status}} {{
-                                                !$product->activated ? 'hide' : ''}} {{$product->discount_enabled}}"
-                                                id="item{{$product->id}}"
-                                                data-url="{{route('shop.dashboard.showItem',
-                                                ['shop_subdomain' => $shop_subdomain, 'id' => $product->id]
-                                                  )}}"
-                                                data-itemgalleryresize="{{$product->gallery_resize}}"
-                                                data-galleryaddr="{{$product->gallery_address}}">
+@foreach($category->products()->orderby('order')->get() as $product)
+<li class="item {{$product->status}} {{
+!$product->activated ? 'hide' : ''}} {{$product->discount_enabled}}"
+id="item{{$product->id}}"
+data-url="{{route('shop.dashboard.showItem',
+['shop_subdomain' => $shop_subdomain, 'id' => $product->id]
+  )}}"
+data-itemgalleryresize="{{$product->gallery}}"
+data-galleryaddr="{{$product->gallery}}">
 
-                                                <img class="li_item_image @if(!$product->image) hidden @endif"
-                                                     src="{{$product->image_thumbnail}}" alt=""/>
-                                                <div class="name">
-                                                    <span class="inner_item_name">{{$product->title}}</span>
-                                                </div>
-                                                <div class="discounticon"><i class="fas fa-percent"></i></div>
-                                            </li>
-                                        @endforeach
+<img class="li_item_image @if(!$product->image_thumbnail) hidden @endif"
+     src="{{$product->image_thumbnail}}" alt=""/>
+<div class="name">
+    <span class="inner_item_name">{{$product->title}}</span>
+</div>
+<div class="discounticon"><i class="fas fa-percent"></i></div>
+</li>
+@endforeach
                                     </ul>
                                         <form name="" class="add_item_form"
                                           data-action="{{route('shop.dashboard.item.store', ['shop_subdomain' => $shop_subdomain])}}"
@@ -234,16 +234,16 @@
 
 
 
- <div class="msgBox" >
-    <div class="innerbox">
-        <div class="topSide">warning</div>
-        <div class="bottomSide"></div>
-        <div class="btns">
-            <div class="btn confirmBtn">Yep</div>
-            <div class="btn cancelBtn">Nope</div>
+     <div class="msgBox" >
+        <div class="innerbox">
+            <div class="topSide">warning</div>
+            <div class="bottomSide"></div>
+            <div class="btns">
+                <div class="btn confirmBtn">Yep</div>
+                <div class="btn cancelBtn">Nope</div>
+            </div>
         </div>
     </div>
-</div>
 
 
 
@@ -384,6 +384,7 @@
 
         function selectMainPicOfGallery() {
             $('.pic_item img').on('click', function () {
+                console.log(gallery_src);
                 var gallery_src = $(this).attr('src');
                 // var main_pic_src = $(".previewPic").attr('src');
                 var small_prefix_posision = gallery_src.indexOf("small_");
@@ -655,7 +656,7 @@
                 $("#price_input").val(mainData.price);
                 $("#item_short_description").val(mainData.content);
                 $("#item_description").val(mainData.content);
-                $('.previewPic').attr('src', mainData.image);
+                $('.previewPic').attr('src', mainData.image_main);
                 $("#quantity_input").val(mainData.count);
                 $("#main_pic").val("");
                 $(".item_detail_errors").html("");
@@ -701,13 +702,11 @@
 
             function setGalleryItems(mainData) {
 
-              var gallery_address = $('#item' + mainData.id).data('galleryaddr')
-              $('.dynamic_gallery').html('')
-              gallery_file_name = '_'
+              var gallery_address = $('#item' + mainData.id).data('galleryaddr');
+              $('.dynamic_gallery').html('');
+              gallery_file_name = '_';
               $.each(mainData.images, function (key, value) {
-                var image_name = value.file;
-
-
+                var image_name = value;
 
                 if(false) {
                     if (image_name.indexOf('.mp4') == -1 && image_name.indexOf('.webm') == -1) {
@@ -948,7 +947,7 @@
         }
 
         function imageGalleryPreview(file, divClass, file_id) {
-            return "<div class='pic_item " + divClass + "'><img src=" + file + "><span data-fileid='" + file_id + "' class='del rm_gallery_file'>-</span></div>";
+            return "<div class='pic_item " + divClass + "'><img src=" + file.src_main + "><span data-fileid='" + file.id + "' class='del rm_gallery_file'>-</span></div>";
         }
 
         function videoGalleryPreview(file, divClass, file_id) {
@@ -973,7 +972,7 @@
           is_mainpic = 0
         }
         if (file_id != 0) {
-          CallAjaxFunc('{{url(route('shop.dashboard.removeItemGalleryFile', ['shop_subdomain' => $shop_subdomain]))}}' + '/' + file_id, {'is_mainpic': is_mainpic}, galleryRmResult)
+          CallAjaxFunc('{{url(route('shop.dashboard.removeItemGalleryFile', ['shop_subdomain' => $shop_subdomain]))}}', {'image_id': file_id}, galleryRmResult)
         } else {
           deleteMainpicIfNeed()
           galleryElem.remove()
@@ -981,7 +980,7 @@
       })
 
       function galleryRmResult (data) {
-        if (data == 1) {
+        if (data == 'success') {
           galleryElem.remove()
         }
         deleteMainpicIfNeed()
@@ -1201,7 +1200,7 @@
         }
 
         function imageGalleryPreview (file, divClass, file_id) {
-          return '<div class=\'pic_item ' + divClass + '\'><img src=' + file + '><span data-fileid=\'' + file_id + '\' class=\'del rm_gallery_file\'>-</span></div>'
+          return '<div class=\'pic_item ' + divClass + '\'><img src=' + '/cdn/' + file.src_main + '><span data-fileid=\'' + file.id + '\' class=\'del rm_gallery_file\'>-</span></div>'
         }
         //start edit card and it's icon
         $(document).on('click', '.edit_card', function () {

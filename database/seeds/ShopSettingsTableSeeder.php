@@ -53,7 +53,6 @@ class ShopSettingsTableSeeder extends Seeder
 			'app_debug' => '1',
 			'app_env' => '1',
 			'theme' => 'capp',
-			// 'cdn_url' => 'http://www.mmenew.ir/cdn',
 			'throttle' => '15,0.2',
 			'lazy_loading' => '1',
 			'email_username' => 'farid.sh69@gmail.com',

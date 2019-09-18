@@ -27,14 +27,23 @@ class BlogController extends Controller
             'canonical_url' => $page->canonical_url ?: url()->current(),
         ];
 
-        $static_types = Block::getStaticTypes();
         $blocks = Block::active()
-            ->where(function($query) use ($page, $static_types) {
-                $query->where('page_id', $page->id)
-                    ->orWhereIn('widget_type', $static_types);
-            })
             ->orderBy('order', 'asc')
             ->get();
+
+        $output_blocks = [];
+        foreach($blocks as $block)
+        {
+            if($block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray()) === false){
+                $output_blocks[] = $block;
+            }
+
+            if(!$block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray()) !== false){
+                $output_blocks[] = $block;
+            }
+        }
+
+        $blocks = $output_blocks;
 
         return view('front.page', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta, 'blogs' => $blogs]);
     }
@@ -44,7 +53,7 @@ class BlogController extends Controller
         $blog = Blog::where('url', $blog_url)->active()->first();
         abort_if(! $blog, 404);
 
-        $page = Page::where('url', 'blogs')->active()->first();
+        $page = Page::where('url', 'blog')->active()->first();
         abort_if(! $page, 404);
 
         $meta = [
@@ -56,16 +65,25 @@ class BlogController extends Controller
             'canonical_url' => $blog->canonical_url ?: url()->current(),
         ];
 
-        $static_types = Block::getStaticTypes();
         $blocks = Block::active()
-            ->where(function($query) use ($page, $static_types) {
-                $query->where('page_id', $page->id)
-                    ->orWhereIn('widget_type', $static_types);
-            })
             ->orderBy('order', 'asc')
             ->get();
 
-        return view('front.page.index', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta, 'blog' => $blog]);
+        $output_blocks = [];
+        foreach($blocks as $block)
+        {
+            if($block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray()) === false){
+                $output_blocks[] = $block;
+            }
+
+            if(!$block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray()) !== false){
+                $output_blocks[] = $block;
+            }
+        }
+
+        $blocks = $output_blocks;
+
+        return view('front.page', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta, 'blog' => $blog]);
     }
 
     public function getCategories()
@@ -73,7 +91,7 @@ class BlogController extends Controller
         $categories = Category::get();
         $blogs = Blog::orderBy('id', 'desc')->paginate();
 
-        $page = Page::where('url', 'blogs')->active()->first();
+        $page = Page::where('url', 'blog')->active()->first();
         abort_if(! $page, 404);
 
         $meta = [
@@ -85,16 +103,25 @@ class BlogController extends Controller
             'canonical_url' => $page->canonical_url ?: url()->current(),
         ];
 
-        $static_types = Block::getStaticTypes();
         $blocks = Block::active()
-            ->where(function($query) use ($page, $static_types) {
-                $query->where('page_id', $page->id)
-                    ->orWhereIn('widget_type', $static_types);
-            })
             ->orderBy('order', 'asc')
             ->get();
 
-        return view('front.page.index', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta, 'blogs' => $blogs, 'categories' => $categories]);
+        $output_blocks = [];
+        foreach($blocks as $block)
+        {
+            if($block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray()) === false){
+                $output_blocks[] = $block;
+            }
+
+            if(!$block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray()) !== false){
+                $output_blocks[] = $block;
+            }
+        }
+
+        $blocks = $output_blocks;
+
+        return view('front.page', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta, 'blogs' => $blogs, 'categories' => $categories]);
     }
 
     public function getCategory($category_url)
@@ -105,7 +132,7 @@ class BlogController extends Controller
         $categories = Category::get();
         $blogs = Blog::where('category_id', $category->id)->orderBy('id', 'desc')->paginate();
 
-        $page = Page::where('url', 'blogs')->first();
+        $page = Page::where('url', 'blog')->first();
         abort_if(! $page, 404);
 
         $meta = [
@@ -117,16 +144,25 @@ class BlogController extends Controller
             'canonical_url' => $category->canonical_url ?: url()->current(),
         ];
 
-        $static_types = Block::getStaticTypes();
         $blocks = Block::active()
-            ->where(function($query) use ($page, $static_types) {
-                $query->where('page_id', $page->id)
-                    ->orWhereIn('widget_type', $static_types);
-            })
             ->orderBy('order', 'asc')
             ->get();
 
-        return view('front.page.index', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta, 'blogs' => $blogs, 'category' => $category, 'categories' => $categories]);
+        $output_blocks = [];
+        foreach($blocks as $block)
+        {
+            if($block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray()) === false){
+                $output_blocks[] = $block;
+            }
+
+            if(!$block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray()) !== false){
+                $output_blocks[] = $block;
+            }
+        }
+
+        $blocks = $output_blocks;
+
+        return view('front.page', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta, 'blogs' => $blogs, 'category' => $category, 'categories' => $categories]);
     }
 
     public function getTags()
@@ -134,7 +170,7 @@ class BlogController extends Controller
         $categories = Tag::get();
         $blogs = Blog::orderBy('id', 'desc')->paginate();
 
-        $page = Page::where('url', 'blogs')->active()->first();
+        $page = Page::where('url', 'blog')->active()->first();
         abort_if(! $page, 404);
 
         $meta = [
@@ -146,16 +182,25 @@ class BlogController extends Controller
             'canonical_url' => $page->canonical_url ?: url()->current(),
         ];
 
-        $static_types = Block::getStaticTypes();
         $blocks = Block::active()
-            ->where(function($query) use ($page, $static_types) {
-                $query->where('page_id', $page->id)
-                    ->orWhereIn('widget_type', $static_types);
-            })
             ->orderBy('order', 'asc')
             ->get();
 
-        return view('front.page.index', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta, 'blogs' => $blogs, 'categories' => $categories]);
+        $output_blocks = [];
+        foreach($blocks as $block)
+        {
+            if($block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray()) === false){
+                $output_blocks[] = $block;
+            }
+
+            if(!$block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray()) !== false){
+                $output_blocks[] = $block;
+            }
+        }
+
+        $blocks = $output_blocks;
+
+        return view('front.page', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta, 'blogs' => $blogs, 'categories' => $categories]);
     }
 
     public function getTag($tag_url)
@@ -165,7 +210,7 @@ class BlogController extends Controller
 
         $blogs = Blog::withAnyTag([$category->name])->orderBy('id', 'desc')->paginate();
 
-        $page = Page::where('url', 'blogs')->first();
+        $page = Page::where('url', 'blog')->first();
         abort_if(! $page, 404);
 
         $meta = [
@@ -177,15 +222,24 @@ class BlogController extends Controller
             'canonical_url' => $page->canonical_url ?: url()->current(),
         ];
 
-        $static_types = Block::getStaticTypes();
         $blocks = Block::active()
-            ->where(function($query) use ($page, $static_types) {
-                $query->where('page_id', $page->id)
-                    ->orWhereIn('widget_type', $static_types);
-            })
             ->orderBy('order', 'asc')
             ->get();
 
-        return view('front.page.index', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta, 'blogs' => $blogs, 'category' => $category]);
+        $output_blocks = [];
+        foreach($blocks as $block)
+        {
+            if($block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray()) === false){
+                $output_blocks[] = $block;
+            }
+
+            if(!$block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray()) !== false){
+                $output_blocks[] = $block;
+            }
+        }
+
+        $blocks = $output_blocks;
+
+        return view('front.page', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta, 'blogs' => $blogs, 'category' => $category]);
     }
 }

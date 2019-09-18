@@ -2,6 +2,6 @@
 
 @section('content')
 	@foreach($blocks as $block)
-		@includeIf('front.widgets.' . $block->widget_type . '.' . config('0-developer.theme'))
+		@includeIf('front.widgets.' . $block->title . '.' . config('0-developer.theme'))
 	@endforeach
 @endsection
