@@ -54,30 +54,25 @@
 	<div class="m-portlet__body">
 	    <div class="row" id="m_sortable_portlets">
 	    	@foreach($blocks as $block)
-			<div class="col-lg-{{ $block->column }}">
+			<div class="col-lg-12">
 				<!--begin::Portlet-->
 				<div class="m-portlet m-portlet--mobile m-portlet--sortable 
-					@if( array_search($block->widget_type, \App\Models\Block::getStaticTypes()) !== false)
-						m-portlet--danger
-					@else
-						m-portlet--brand
-					@endif
+					{{ !$block->show_all_pages ? 'm-portlet--brand' : 'm-portlet--danger' }}
+					
 					m-portlet--head-solid-bg" id="{{ $block->id }}">
 					<div class="m-portlet__head">
 						<div class="m-portlet__head-caption">
 							<div class="m-portlet__head-title">
 								<span class="m-portlet__head-icon">
-									{{ $block->id }} -
-									(
-									@if( array_search($block->widget_type, ['menu', 'content', 'header', 'footer', 'loading']) !== false )
-										*
-									@else
-										{{ $block->page->title }}
-									@endif
-									)
+									{{ $block->id }}
 								</span>
 								<h3 class="m-portlet__head-text">
-									{{ ucfirst($block->widget_type) }}
+									{{ ucfirst($block->title) }}
+									<small>
+										{{ ucfirst($block->widget_type) }}
+									-
+									{{ $block->show_all_pages ? 'All pages' : 'Some pages' }}
+									</small>
 								</h3>
 							</div>
 						</div>

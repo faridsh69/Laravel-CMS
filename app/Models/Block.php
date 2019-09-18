@@ -40,7 +40,7 @@ class Block extends Model
             'table' => false,
         ],
         [
-            'name' => 'pages_list',
+            'name' => 'pages',
             'type' => 'array',
             'database' => 'none',
             'rule' => 'nullable',
@@ -83,19 +83,6 @@ class Block extends Model
         return $this->columns;
     }
 
-    // public static function getStaticTypes()
-    // {
-    //     return [
-    //         'menu',
-    //         'header',
-    //         'features',
-    //         'content',
-    //         'subscribe',
-    //         'footer',
-    //         'loading',
-    //     ];
-    // }
-
     public function pages()
     {
         return $this->belongsToMany('App\Models\Page', 'block_page', 'block_id', 'page_id');
@@ -104,5 +91,25 @@ class Block extends Model
     public function scopeActive($query)
     {
         return $query->where('activated', 1);
+    }
+
+    public static function getPageBlocks($page_id)
+    {
+        $blocks = \App\Models\Block::active()
+            ->orderBy('order', 'asc')
+            ->get();
+
+        $output_blocks = [];
+        foreach($blocks as $block)
+        {
+            if($block->show_all_pages && array_search($page_id, $block->pages->pluck('id')->toArray()) === false){
+                $output_blocks[] = $block;
+            }
+
+            if(!$block->show_all_pages && array_search($page_id, $block->pages->pluck('id')->toArray()) !== false){
+                $output_blocks[] = $block;
+            }
+        }
+        return $output_blocks;
     }
 }

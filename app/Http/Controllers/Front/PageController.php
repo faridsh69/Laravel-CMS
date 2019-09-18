@@ -34,23 +34,7 @@ class PageController extends Controller
             'canonical_url' => $page->canonical_url ?: url()->current(),
         ];
 
-        $blocks = Block::active()
-            ->orderBy('order', 'asc')
-            ->get();
-
-        $output_blocks = [];
-        foreach($blocks as $block)
-        {
-            if($block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray()) === false){
-                $output_blocks[] = $block;
-            }
-
-            if(!$block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray()) !== false){
-                $output_blocks[] = $block;
-            }
-        }
-
-        $blocks = $output_blocks;
+        $blocks = Block::getPageBlocks($page->id);
 
         return view('front.page', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta]);
     }

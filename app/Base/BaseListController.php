@@ -138,8 +138,13 @@ class BaseListController extends Controller
         // blogs
         unset($data['tags']);
         unset($data['related_blogs']);
+        // forms
         unset($data['fields']);
-        
+        // products
+        unset($data['gallery']);
+        // blocks
+        unset($data['pages']);
+
         // comment
         if($this->model === 'Comment'){
             $blog = \App\Models\Blog::where('id', $data['commented_id'])->first();
@@ -311,8 +316,12 @@ class BaseListController extends Controller
         // blogs
         unset($data['tags']);
         unset($data['related_blogs']);
+        // forms
         unset($data['fields']);
+        // products
         unset($data['gallery']);
+        // blocks
+        unset($data['pages']);
 
         $model->update($data);
 
@@ -487,6 +496,7 @@ class BaseListController extends Controller
 
     private function _saveRelatedData($model, $data)
     {
+        // blogs
         if(isset($data['related_blogs']))
         {
             $model->related_blogs()->sync($data['related_blogs'], true);
@@ -497,9 +507,16 @@ class BaseListController extends Controller
             $model->retag($tag_names);
         }
 
+        // forms
         if(isset($data['fields']))
         {
             $model->fields()->sync($data['fields'], true);
+        }
+
+        // blocks
+        if(isset($data['pages']))
+        {
+            $model->pages()->sync($data['pages'], true);
         }
     }
 }
