@@ -30,7 +30,6 @@ class DatabaseSeeder extends Seeder
             $this->call(ServicesTableSeeder::class);
             $this->call(ShopFeaturesTableSeeder::class);
             $this->call(ShopSlidersTableSeeder::class);
-            $this->call(PagesTableSeeder::class);
         }
         elseif(config('app.name') === 'eric')
         {
@@ -51,8 +50,8 @@ class DatabaseSeeder extends Seeder
             $this->call(FeaturesTableSeeder::class);
             $this->call(ServicesTableSeeder::class);
             $this->call(TagsTableSeeder::class);
-            $this->call(PagesTableSeeder::class);
         }
+        $this->call(PagesTableSeeder::class);
         $this->call(BlocksTableSeeder::class);
         $this->call(RolesTableSeeder::class);
         $this->call(BaseSeeder::class);
