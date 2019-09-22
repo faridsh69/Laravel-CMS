@@ -16,7 +16,7 @@ class EricSettingsTableSeeder extends Seeder
     {
         $general_settings = [
 			'app_title' => 'Synergy Power',
-			'default_meta_title' => 'Synergy Power',
+			'default_meta_title' => 'Bay Area Solar Panels Install and Repair | Synergy Power Livermore CA',
 			'default_meta_description' => 'Bay Area Solar Panels Install and Repair | Synergy Power Livermore CA',
 			'logo' => 'http://www.synergypower.ir/cdn/css/front/capp/img/eric/logo.jpg',
 			'favicon' => 'http://www.synergypower.ir/cdn/storage/photos/shares/image001.png',
