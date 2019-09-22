@@ -24,6 +24,10 @@ Route::group(['prefix' => 'test-menew', 'as' => 'test.menew.'], function () {
 	Route::get('register-thank-you', 'TestMenewController@getRegisterThankYou')->name('register-thank-you');
 });
 
+Route::group(['prefix' => 'test-map', 'as' => 'test.map.'], function () {
+	Route::get('offline', 'TestMapController@getOffline')->name('offline');
+});
+
 Route::group(['prefix' => 'test-eric', 'as' => 'test.eric.'], function () {
 	Route::get('upload-image', 'TestController@getUploadImage')->name('upload-image');
 	Route::get('access-token', 'TestController@getAccessToken')->name('access-token');

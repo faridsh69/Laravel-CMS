@@ -7,8 +7,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="author" content="farid.sh69@gmail.com">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="theme-color" content="#4d2">
 
 	<title>{!! $meta['title'] !!}</title>
+
 	<meta name="keywords" content="{{ $meta['keywords'] }}">
 	<meta name="description" content="{{ $meta['description'] }}">
 	
