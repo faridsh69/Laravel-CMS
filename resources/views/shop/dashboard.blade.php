@@ -894,12 +894,13 @@ data-galleryaddr="{{$product->gallery}}">
                     alert("file must not be more than 80 mg");
                 } else {
 
-                    content = "<div class='pic_item dynamic_select_gallery galitemparent" + i + "'><img id='galitem" + i + "' class='dynamic_added_image' style = 'opacity:0.4;' src='{{asset('images/Loading_icon.gif')}}' ></div>";
-                    $("#add_gallery_label").before(content);
+                    // content = "<div class='pic_item dynamic_select_gallery galitemparent" + i + "'><img id='galitem" + i + "' class='dynamic_added_image' style = 'opacity:0.4;' src='{{asset('images/icons/Loading_icon.gif')}}' ></div>";
+                    // $("#add_gallery_label").before(content);
                     selectMainPicOfGallery();
                     temporary_ids.push(i);
                     formData.append('gallery[]', file);
                     formData.append('temporary_id[]', i);
+                    hideItemDetail();
                 }
             }
 
@@ -908,12 +909,13 @@ data-galleryaddr="{{$product->gallery}}">
 
 
         function addGalleryFiles(data) {
+            return 1;
             gallery_response = JSON.parse(data);
             if ($("#gallery_files").val() != '') {
                 gallery_files.push($("#gallery_files").val());//if it's filled before
             }
             $.each(gallery_response, function (key, value) {
-//                console.log(value);
+               console.log(value);
                 value = JSON.parse(value);
                 file_type = value.type;
                 if (value.error == 'none') {
@@ -1221,7 +1223,7 @@ data-galleryaddr="{{$product->gallery}}">
                 icon_name = simple_icon_name + '.svg';
                 // $(checked_icon).prop('checked', true);
             } else {
-              icon_name = '';
+              icon_name = '1.svg';
             }
 
         });

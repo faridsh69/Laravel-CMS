@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Shop;
 use App\Http\Controllers\Controller;
 use App\Models\Answer;
 use App\Models\Category;
+use App\Models\Image;
 use App\Models\Product;
 use App\Models\Shop;
+use App\Services\ImageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Str;
@@ -39,14 +41,12 @@ class DashboardController extends Controller
 
     public function index($shop_subdomain)
     {
-        // dd(Product::where('id', 2070)->first()->image);
         \App::setLocale('fa');
         $shop = Shop::where('url', $shop_subdomain)->first();
         abort_if(! $shop, 404);
 
         $categories = Category::where('shop_id', $shop->id)
-            // ->active()
-            // ->with('products')
+            ->active()
             ->orderBy('order', 'asc')
             ->get();
 
@@ -73,7 +73,6 @@ class DashboardController extends Controller
     {
         $product = Product::where('id', $id)->with('category')->first();
 
-        // dd($product->image_main); 
         return json_encode($product);
     }
 
@@ -133,7 +132,7 @@ class DashboardController extends Controller
 
     public function deleteMainPic($shop_subdomain, Request $request)
     {
-        $image = \App\Models\Image::where('imageable_id', $request->item_id)->first();
+        $image = Image::where('imageable_id', $request->item_id)->first();
         if($image){
             $image->delete();
         }
@@ -142,12 +141,24 @@ class DashboardController extends Controller
 
     public function removeItemGalleryFile($shop_subdomain, Request $request)
     {
-        $image = \App\Models\Image::where('id', $request->image_id)->first();
+        $image = Image::where('id', $request->image_id)->first();
         if($image){
             $image->delete();
         }
 
         return 'success';
+    }
+
+    public function uploadGallery($shop_subdomain, $product_id, Request $request)
+    {
+        $product = Product::where('id', $product_id)->first();
+        $image_service = new ImageService;
+        $uploaded_image = $request->file('gallery');
+        foreach($uploaded_image as $gallery_image){
+            $image_service->save($gallery_image, $product);
+        }
+
+        return json_encode($product->gallery);
     }
 
     public function changeCardSortInBatchPage($shop_subdomain, Request $request)

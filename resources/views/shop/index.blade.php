@@ -123,7 +123,7 @@
                 @if($category->products->count() > 0)
                     <div class="menucat" id="batch{{$category->id}}">
                         <div class="foldername">{{$category->title}}</div>
-                        @foreach($category->products as $product)
+                        @foreach($category->products()->where('activated', 1)->get() as $product)
                             @php
                                 $has_video = 0;
                                 $is_ordered = "";

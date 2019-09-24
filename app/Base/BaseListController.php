@@ -3,6 +3,7 @@
 namespace App\Base;
 
 use App\Http\Controllers\Controller;
+use App\Services\ImageService;
 use Auth;
 use Conner\Tagging\Model\Tag;
 use Illuminate\Http\Request;
@@ -176,7 +177,7 @@ class BaseListController extends Controller
 
         // product
         if($this->model === 'Product'){
-            $image_service = new \App\Services\ImageService; 
+            $image_service = new ImageService; 
             foreach($data['gallery'] as $gallery_image){
                 $image_service->save($gallery_image, $model);
             }

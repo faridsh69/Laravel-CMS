@@ -17,12 +17,12 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'au
 
 	// this link redirected to dashboard should fix
 	Route::post('deleteMainPic', 'DashboardController@deleteMainPic')->name('deleteMainPic');
+	Route::post('removeItemGalleryFile', 'DashboardController@removeItemGalleryFile')->name('removeItemGalleryFile');
+	Route::post('uploadGallery/{id?}', 'DashboardController@uploadGallery')->name('uploadGallery');
 	Route::post('changeCardSortInBatchPage', 'DashboardController@changeCardSortInBatchPage')->name('changeCardSortInBatchPage');
 	Route::post('test', 'DashboardController@test')->name('test');
 	Route::post('updateItem/{id}', 'DashboardController@updateItem')->name('updateItem');
 	Route::post('changeItemSort', 'DashboardController@changeItemSort')->name('changeItemSort');
-	Route::get('uploadGallery', 'DashboardController@uploadGallery')->name('uploadGallery');
-	Route::post('removeItemGalleryFile', 'DashboardController@removeItemGalleryFile')->name('removeItemGalleryFile');
 	Route::post('changeStatus/{id?}', 'DashboardController@changeStatus')->name('changeStatus');
 
 	Route::post('updateCard/{id?}', 'DashboardController@updateCard')->name('updateCard');
