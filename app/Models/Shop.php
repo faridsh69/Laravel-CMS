@@ -51,6 +51,7 @@ class Shop extends Model implements Commentable
     // category_icon_color,
     // products_background_color,
     // open_time
+    // money_unit
     // 'کافه نان دِنجا', 'Denja Bakery Café'
 
     public $columns = [
@@ -325,6 +326,15 @@ class Shop extends Model implements Commentable
             'database' => 'nullable',
             'rule' => '',
             'help' => 'For example: 10:00|23:00',
+            'form_type' => '',
+            'table' => false,
+        ],
+        [
+            'name' => 'money_unit',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => '',
+            'help' => 'تومان یا ریال',
             'form_type' => '',
             'table' => false,
         ],

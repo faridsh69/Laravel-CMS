@@ -34,6 +34,8 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'au
 	Route::get('setStore', 'DashboardController@setStore')->name('set.store');
 
 	Route::get('settings', 'DashboardController@settingsIndex')->name('settings.index');
+	Route::post('changeSetting', 'DashboardController@changeSetting')->name('changeSetting');
+
 	Route::get('releaseTable', 'DashboardController@releaseTable')->name('release.table');
 	Route::get('menumakerIndex', 'DashboardController@menumakerIndex')->name('menumaker.index');
 	Route::get('ordersInfo', 'DashboardController@ordersInfo')->name('orders.info');

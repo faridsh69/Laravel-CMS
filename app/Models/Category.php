@@ -123,7 +123,7 @@ class Category extends Model
             'property' => 'title',
             'property_key' => 'id',
             'multiple' => false,
-            'table' => false,
+            'table' => true,
         ],
     ];
 

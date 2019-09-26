@@ -1,6 +1,23 @@
 @extends('layout.shop')
 @section('content')
 <div class="bgwrap"></div>
+
+@if($shop->activated === 0)
+<div class="container">
+    <header class="pagetitle">در دست تعمیر</header>
+    <h1 style="text-align: center;padding: 9%;">
+        منوی دیجیتال رستوران در حال تغییر بوده و به زودی در معرض نمایش قرار میگیرد<br>
+        با تشکر از شکیبایی شما<br>
+        مدیریت رستوران
+    </h1>
+</div>
+@endif
+
+
+
+
+@if($shop->activated === 1)
+
 <!-- begin category -->
 <div class="header" style="background: {{ $shop->category_background_color ? $shop->category_background_color : '#da315f' }}; color: {{ $shop->category_icon_color }}">
     <div class="headertop">
@@ -219,7 +236,7 @@
         </div>
     </div>
 </div>
-<!-- <div class="msgBox">
+<div class="msgBox">
     <div class="innerbox">
         <div class="topSide">warning</div>
         <div class="bottomSide"></div>
@@ -228,7 +245,9 @@
             <div class="btn cancelBtn">Nope</div>
         </div>
     </div>
-</div> -->
+</div>
+
+@endif
 
 @endsection
 

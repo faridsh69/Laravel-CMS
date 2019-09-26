@@ -154,11 +154,22 @@ class DashboardController extends Controller
         $product = Product::where('id', $product_id)->first();
         $image_service = new ImageService;
         $uploaded_image = $request->file('gallery');
+
+        $razie_array_gallery_for_front = [];
         foreach($uploaded_image as $gallery_image){
             $image_service->save($gallery_image, $product);
+
+            $gallery = json_decode($product->gallery);
+            $razie_array_gallery_for_front[] = json_encode([
+                'temporary_id' => $request->temporary_id,
+                'file' => $gallery[count($gallery) - 1]->file,
+                'pure_filename' => '456678',
+                'error' => 'none',
+                'type' => 'image',
+            ]);
         }
 
-        return json_encode($product->gallery);
+        return json_encode($razie_array_gallery_for_front);
     }
 
     public function changeCardSortInBatchPage($shop_subdomain, Request $request)
@@ -241,8 +252,49 @@ class DashboardController extends Controller
         return redirect()->back();
     }
 
-    public function settingsIndex()
+    public function settingsIndex($shop_subdomain)
     {
+        \App::setLocale('fa');
+        $shop = Shop::where('url', $shop_subdomain)->first();
+        abort_if(! $shop, 404);
+
+        $meta = [
+            'title' => 'Dashboard ' . $shop->title_fa,
+            'description' => 'Dashboard ' . $shop->meta_description,
+            'keywords' => $shop->keywords,
+            'image' => $shop->logo,
+            'google_index' => 0,
+            'canonical_url' => url()->current(),
+        ];
+
+        return view('shop.dashboard-settings', [
+            'shop' => $shop,
+            'meta' => $meta,
+            'shop_subdomain' => $shop_subdomain,
+            'is_restaurant_close' => 0,
+            'under_construction' => 0, 
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function changeSetting($shop_subdomain, Request $request)
+    {
+        $shop = Shop::where('url', $shop_subdomain)->first();
+        abort_if(! $shop, 404);
+        $shop->title = $request->input('title');
+        $shop->title_fa = $request->input('title_fa');
+        $shop->category_background_color = $request->input('category_background_color');
+        $shop->products_background_color = $request->input('products_background_color');
+        $shop->category_icon_color = $request->input('category_icon_color');
+
+        if(null === $request->input('activated')){
+            $shop->activated = 1;
+        }else{
+            $shop->activated = 0;
+        }
+        $shop->save();
+
         return redirect()->back();
     }
 

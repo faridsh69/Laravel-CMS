@@ -209,7 +209,7 @@ data-galleryaddr="{{$product->gallery}}">
 <div class="footer">
     <ul class="owl-carousel owl-theme modules_panel">
         <a href="{{route('shop.dashboard.index', ['shop_subdomain' => $shop_subdomain])}}">
-            <li class="item {{ Request::is('admin/menumaker*') ? 'active' : '' }}" id="menumaker">
+            <li class="item {{ Request::is('dashboard') ? 'active' : '' }}" id="menumaker">
             منوساز</li>
         </a>
         @if(false && $fully_just_content == 0)
@@ -224,7 +224,7 @@ data-galleryaddr="{{$product->gallery}}">
         @endif
         @if(true)
         <a href="{{route('shop.dashboard.settings.index', ['shop_subdomain' => $shop_subdomain])}}">
-            <li class="item {{ Request::is('admin/settings*') ? 'active' : '' }}" id="settings">
+            <li class="item {{ Request::is('dashboard/settings*') ? 'active' : '' }}" id="settings">
                 تنظیمات
             </li>
         </a>
@@ -894,13 +894,12 @@ data-galleryaddr="{{$product->gallery}}">
                     alert("file must not be more than 80 mg");
                 } else {
 
-                    // content = "<div class='pic_item dynamic_select_gallery galitemparent" + i + "'><img id='galitem" + i + "' class='dynamic_added_image' style = 'opacity:0.4;' src='{{asset('images/icons/Loading_icon.gif')}}' ></div>";
-                    // $("#add_gallery_label").before(content);
+                    content = "<div class='pic_item dynamic_select_gallery galitemparent" + i + "'><img id='galitem" + i + "' class='dynamic_added_image' style = 'opacity:0.4;' src='{{asset('images/icons/Loading_icon.gif')}}' ></div>";
+                    $("#add_gallery_label").before(content);
                     selectMainPicOfGallery();
                     temporary_ids.push(i);
                     formData.append('gallery[]', file);
-                    formData.append('temporary_id[]', i);
-                    hideItemDetail();
+                    formData.append('temporary_id[]', i);                    
                 }
             }
 
@@ -909,7 +908,6 @@ data-galleryaddr="{{$product->gallery}}">
 
 
         function addGalleryFiles(data) {
-            return 1;
             gallery_response = JSON.parse(data);
             if ($("#gallery_files").val() != '') {
                 gallery_files.push($("#gallery_files").val());//if it's filled before
@@ -920,7 +918,7 @@ data-galleryaddr="{{$product->gallery}}">
                 file_type = value.type;
                 if (value.error == 'none') {
                     if (file_type == 'image' || file_type == 'gif_image') {
-                        $("#galitem" + value.temporary_id).attr('src', '{{url('/')}}' + "/" + value.file).css('opacity', 1).after("<span data-fileid='0' class='del rm_gallery_file'>-</span>");
+                        $("#galitem" + value.temporary_id).attr('src', value.file).css('opacity', 1).after("<span data-fileid='0' class='del rm_gallery_file'>-</span>");
                     } else {
                         $(".galitemparent" + value.temporary_id).html("<video id='galitem" + value.temporary_id + "' class='dynamic_added_image' width='100%' height='100%' controls><source class='gallery_video_src' src='{{url('/')}}/" + value.file + "' type='video/" + value.file.substr(value.file.lastIndexOf('.') + 1) + "'></video>").after("<span data-fileid='0' class='del rm_gallery_file'>-</span>");
                     }

@@ -19,10 +19,13 @@ class PageController extends Controller
 
         if(config('app.name') === 'mmenew'){
             $ip = $_SERVER['REMOTE_ADDR'];
-            $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}"));
-            if($details->ip === '127.0.0.1' || $details->country === 'IR'){
-                config(['0-developer.theme' => 'menew']);
+            try{
+                $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}"));
+                if($details->ip === '127.0.0.1' || $details->country === 'IR'){
+                    config(['0-developer.theme' => 'menew']);
+                }
             }
+            catch(Exception $e){}
         }
 
         $meta = [
