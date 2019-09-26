@@ -39,6 +39,12 @@ class DashboardController extends Controller
         return view('auth.login');
     }
 
+    public function postLogout()
+    {
+        auth()->logout();
+        return redirect()->back();
+    }
+
     public function index($shop_subdomain)
     {
         \App::setLocale('fa');

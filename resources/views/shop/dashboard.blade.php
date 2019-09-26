@@ -12,12 +12,11 @@
                 <span class="">
                     <a href="{{route('shop.index', ['shop_subdomain' => $shop_subdomain])}}" target="_blank">مشاهده منو</a>
                 </span> |
-                @if(!is_null(session('userid')))
-                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">خروج</a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">خروج</a>
+                <form id="logout-form" action="{{ route('shop.shop-logout', ['shop_subdomain' => $shop_subdomain])}}" method="post" style="display: none;">
                     {{ csrf_field() }}
                 </form>
-                @else
+                @if(false)
                     <span id="empty_super_license" data-nexturl="{{route('shop.index', ['shop_subdomain' => $shop_subdomain])}}" data-url="{{'admin.super-license'}}" style="cursor: pointer;">خروج</span>
                 @endif
             </div>
@@ -232,18 +231,16 @@ data-galleryaddr="{{$product->gallery}}">
     </ul>
 </div>
 
-
-
-     <div class="msgBox" >
-        <div class="innerbox">
-            <div class="topSide">warning</div>
-            <div class="bottomSide"></div>
-            <div class="btns">
-                <div class="btn confirmBtn">Yep</div>
-                <div class="btn cancelBtn">Nope</div>
-            </div>
+<div class="msgBox">
+    <div class="innerbox">
+        <div class="topSide">warning</div>
+        <div class="bottomSide"></div>
+        <div class="btns">
+            <div class="btn confirmBtn">Yep</div>
+            <div class="btn cancelBtn">Nope</div>
         </div>
     </div>
+</div>
 
 
 

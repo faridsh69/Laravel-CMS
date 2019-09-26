@@ -88,7 +88,7 @@ class ShopsTableSeeder extends Seeder
             ],
             [
                 'id' => 4,
-                'full_name' => 'Mr. fano',
+                'full_name' => 'Mahyar Shahab',
                 'title' => 'Fano',
                 'title_fa' => 'فانو',
                 'url' => 'fano',

@@ -260,7 +260,7 @@ $(document).ready(function () {
 
     //
     version = $("#header_user_info").data('updateversion');
-    if(version < 0.7) {
+    if(version < 0.7 && false) {
         update_url = $("#header_user_info").data('updateurl');
         ShowMessage('success', "سیستم بروزرسانی شد.", 'System Update', 'Ok', 'Cancel', true, false);
         $(".confirmBtn").click(function(e) {
