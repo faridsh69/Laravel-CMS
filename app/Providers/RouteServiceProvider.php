@@ -31,7 +31,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         $domain = config('app.url');
         $this->mapAdminRoutes($domain);
-        $this->mapShopRoutes($domain);
+        // $this->mapShopRoutes($domain);
         $this->mapApiRoutes();
         $this->mapAuthRoutes();
         $this->mapFrontRoutes($domain);
@@ -46,14 +46,14 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/admin.php'));
     }
 
-    protected function mapShopRoutes($domain)
-    {
-        Route::middleware(['web', 'throttle:35,0.1'])
-            ->domain('www.{shop_subdomain}.' . $domain)
-            ->as('shop.')
-            ->namespace($this->namespace . '\Shop')
-            ->group(base_path('routes/shop.php'));
-    }
+    // protected function mapShopRoutes($domain)
+    // {
+    //     Route::middleware(['web', 'throttle:35,0.1'])
+    //         ->domain('www.{shop_subdomain}.' . $domain)
+    //         ->as('shop.')
+    //         ->namespace($this->namespace . '\Shop')
+    //         ->group(base_path('routes/shop.php'));
+    // }
 
     protected function mapFrontRoutes($domain)
     {

@@ -13,17 +13,6 @@ Route::get('{page_url?}', 'PageController@getIndex')->name('page.index');
 
 
 
-
-
-
-
-// extra urls for custome tests
-Route::group(['prefix' => 'test-menew', 'as' => 'test.menew.'], function () {
-	Route::get('register-restaurant', 'TestMenewController@getRegisterRestaurant')->name('register-restaurant');
-	Route::post('register-restaurant', 'TestMenewController@postRegisterRestaurant')->name('post-register-restaurant');
-	Route::get('register-thank-you', 'TestMenewController@getRegisterThankYou')->name('register-thank-you');
-});
-
 Route::group(['prefix' => 'test-map', 'as' => 'test.map.'], function () {
 	Route::get('offline', 'TestMapController@getOffline')->name('offline');
 });

@@ -15,23 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MenusTableSeeder::class);
         $this->call(WidgetsTableSeeder::class);
         $this->call(ThemesTableSeeder::class);
-        if(config('app.name') === 'mmenew')
-        {
-            $this->call(ShopSettingsTableSeeder::class);
-            $this->call(ShopUsersTableSeeder::class);
-            $this->call(ShopThemesTableSeeder::class);
-            $this->call(ShopTagsTableSeeder::class);
-            $this->call(ShopCategoriesTableSeeder::class);
-            $this->call(ShopsTableSeeder::class);
-            $this->call(ShopProductsTableSeeder::class);
-
-            $this->call(FeedbacksTableSeeder::class);
-            $this->call(CountingsTableSeeder::class);
-            $this->call(ServicesTableSeeder::class);
-            $this->call(ShopFeaturesTableSeeder::class);
-            $this->call(ShopSlidersTableSeeder::class);
-        }
-        elseif(config('app.name') === 'eric')
+        if(config('app.name') === 'eric')
         {
             $this->call(EricSettingsTableSeeder::class);
             $this->call(EricFeedbacksTableSeeder::class);

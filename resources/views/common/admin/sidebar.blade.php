@@ -421,7 +421,7 @@
 		
 	];
 
-	if( env('APP_NAME') === 'mmenew' )
+	if( env('APP_NAME') === 'shop' )
     {
     	$sidebar_shop = [
 			[
