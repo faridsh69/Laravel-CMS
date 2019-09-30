@@ -19,7 +19,7 @@ class EricSettingsTableSeeder extends Seeder
 			'default_meta_title' => 'Bay Area Solar Panels Install and Repair | Synergy Power Livermore CA',
 			'default_meta_description' => 'Bay Area Solar Panels Install and Repair | Synergy Power Livermore CA',
 			'logo' => 'storage/files/shares/synergypower/logo.jpg',
-			'favicon' => 'storage/files/shares/synergypower/favicon.jpg',
+			'favicon' => 'storage/files/shares/synergypower/favicon.png',
 			'default_meta_image' => 'storage/files/shares/synergypower/default_meta_image.jpg',
 			'default_user_image' => 'storage/files/shares/synergypower/default_user_image.ico',
 			'default_product_image' => 'storage/files/shares/synergypower/default_product_image.png',

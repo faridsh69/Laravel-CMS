@@ -15,5 +15,5 @@
     </div>
 </section>
 @if(env('APP_NAME') === 'eric')
-    <img src="{{ asset('css/front/themes/1-original/img/bg-img/arm.jpg') }}" style="width: 100%" alt="logo">
+    <img src="{{ asset('storage/files/shares/synergypower/certificate.jpg') }}" style="width: 100%" alt="logo">
 @endif
