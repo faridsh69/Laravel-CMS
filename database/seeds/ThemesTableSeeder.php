@@ -13,27 +13,27 @@ class ThemesTableSeeder extends Seeder
     	$themes = [
             [
             	'id' => 1,
-            	'title' => 'capp',
+            	'title' => '1-original',
                 'description' => 'Colorlib app',
             	'activated' => 1,
             ],
             [
             	'id' => 2,
-            	'title' => 'kanox',
-                'description' => 'kanox',
-            	'activated' => 0,
+            	'title' => '2-persian',
+                'description' => 'persian',
+            	'activated' => 1,
             ],
             [
             	'id' => 3,
-            	'title' => 'stayhome',
+            	'title' => '3-home',
                 'description' => 'stayhome',
-            	'activated' => 0,
+            	'activated' => 1,
             ],
             [
                 'id' => 4,
-                'title' => 'persian',
-                'description' => 'persian',
-                'activated' => 0,
+                'title' => '4-windy',
+                'description' => 'windy',
+                'activated' => 1,
             ],
         ];
 

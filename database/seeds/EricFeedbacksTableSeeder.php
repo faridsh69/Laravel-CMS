@@ -19,7 +19,7 @@ class EricFeedbacksTableSeeder extends Seeder
             	'title' => '#137 Customer',
             	'full_name' => 'Farimah El',
             	'content' => '“ The Synergy Team headed by Eric did a great job on our solar installation. They were very efficient and knowledgeable and Eric explained how everything works. Our Solar panels are up and producing electricity thanks to Synergy Power. ”',
-            	'image' => asset('css/front/capp/img/bg-img/client-3.jpg'),
+            	'image' => 'storage/files/shares/synergypower/client-3.jpg',
             	'activated' => 1,
             ],
             [
@@ -27,7 +27,7 @@ class EricFeedbacksTableSeeder extends Seeder
             	'title' => 'Developer at Synergypower',
             	'full_name' => 'Farid Sh',
             	'content' => '“ I love to work for this company, because of they are professional and always make their customers and employees happy! ”',
-            	'image' => asset('css/front/capp/img/bg-img/client-4.jpg'),
+            	'image' => 'storage/files/shares/synergypower/client-4.jpg',
             	'activated' => 1,
             ],
             [
@@ -35,7 +35,7 @@ class EricFeedbacksTableSeeder extends Seeder
             	'title' => '#348 Customer',
             	'full_name' => 'Raj L.',
             	'content' => '“ We are loving this every day lots of saving on our PG&E bill. Your customer service is excellent! ”',
-            	'image' => asset('css/front/capp/img/bg-img/client-2.jpg'),
+            	'image' => 'storage/files/shares/synergypower/client-2.jpg',
             	'activated' => 1,
             ],
             [
@@ -43,7 +43,7 @@ class EricFeedbacksTableSeeder extends Seeder
             	'title' => 'Manager',
             	'full_name' => 'Eric',
             	'content' => '“ Solar is here to stay and we want to share this awesome technology with the world! Not only does solar power save you money, it saves the environment from nasty fossil fuels. Go green today. ”',
-            	'image' => asset('css/front/capp/img/bg-img/client-1.jpg'),
+            	'image' => 'storage/files/shares/synergypower/client-1.jpg',
             	'activated' => 1,
             ],
         ];

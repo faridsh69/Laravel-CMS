@@ -12,23 +12,23 @@ class SettingsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-        $general_settings = [
+	public function run()
+	{
+		$general_settings = [
 			'app_title' => 'laravel cms',
 			'default_meta_title' => 'laravel cms',
 			'default_meta_description' => 'https://github.com/faridsh69/cms is this cms github.',
-			'logo' => '//www.cms-laravel.com/cdn/images/logo.png',
-			'favicon' => '//www.cms-laravel.com/cdn/images/favicon.png',
-			'default_meta_image' => '//www.cms-laravel.com/cdn/images/logo.png',
-			'default_user_image' => '//www.cms-laravel.com/cdn/images/user.jpg',
-			'default_product_image' => '//www.cms-laravel.com/cdn/images/product.png',
+			'logo' => 'images/front/general/logo.png',
+			'favicon' => 'images/front/general/favicon.png',
+			'default_meta_image' => 'images/front/general/logo.png',
+			'default_user_image' => 'images/front/general/user.jpg',
+			'default_product_image' => 'images/front/general/product.png',
 			'google_index' => '1',
 			'pagination_number' => '10',
 			'android_application_url' => 'https://play.google.com/store/apps',
 			'ios_application_url' => 'https://sibapp.com/applications',
-			'introduce_video_url' => '//www.cms-laravel.com/cdn/images/video.mp4',
-			'introduce_video_cover_photo' => '//www.cms-laravel.com/cdn/images/video.jpg',
+			'introduce_video_url' => 'images/front/themes/1-original/video.mp4',
+			'introduce_video_cover_photo' => 'images/front/themes/1-original/video.jpg',
 			'subscribe_description' => 'Join our team.',
 			'contact_us_description' => 'Dont hesitate to cantact with us.',
         ];
@@ -52,7 +52,7 @@ class SettingsTableSeeder extends Seeder
         $developer_settings = [
 			'app_debug' => '1',
 			'app_env' => '1',
-			'theme' => 'capp',
+			'theme' => '1-original',
 			'throttle' => '15,0.2',
 			'lazy_loading' => '1',
 			'email_username' => 'farid.sh69@gmail.com',

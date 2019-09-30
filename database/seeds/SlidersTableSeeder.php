@@ -18,22 +18,21 @@ class SlidersTableSeeder extends Seeder
             	'id' => 1,
             	'title' => 'CMS',
             	'description' => '',
-            	'image' => asset('css/front/capp/img/bg-img/welcome-bg1.png'),
+            	'image' => 'images/front/themes/1-original/header-background.png',
             	'activated' => 1,
             ],
             [
             	'id' => 2,
             	'title' => 'Laravel CMS',
             	'description' => 'Everything You Need. To Start Selling Online Beautifully.',
-            	'image' => asset('css/front/capp/img/bg-img/welcome-img.png'),
+            	'image' => 'images/front/themes/1-original/header-slider.png',
             	'activated' => 1,
             ],
             [
             	'id' => 3,
             	'title' => 'Our Best Propositions for You!',
-            	'description' => 'When we create a model we can define type of column, type of input in forms, rules, help block, showing on table or not, ...
-We can tell laravel what we want in an static array then every other things will autogenerate!.',
-            	'image' => asset('css/front/capp/img/bg-img/special.png'),
+            	'description' => 'When we create a model we can define type of column, type of input in forms, rules, help block, showing on table or not, ... We can tell laravel what we want in an static array then every other things will autogenerate!.',
+            	'image' => 'images/front/themes/1-original/header-feature.png',
             	'activated' => 1,
             ],
         ];

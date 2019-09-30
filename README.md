@@ -2,10 +2,9 @@
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
-## Dont rewrite any code in your application!
-## Dont worry about admin panel!
+## Dont rewrite any admin code in your application any more!
 
-### This is a Laravel package that is very easy to develope. 
+### This is a Laravel CMS that handle migrations, forms, and admin panel with good structure for and theme and widgets. 
 ### You should just define an array in each model and define what you want from this application, 
 ### Then every thing will be ready also you can change everything as you need.
 

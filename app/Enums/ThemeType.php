@@ -7,10 +7,9 @@ use App\Base\BaseEnum;
 final class ThemeType extends BaseEnum
 {
     const data = [
-		'capp' => 'Original Theme',
-		'stayhome' => 'Real Estate Theme',
-		'kanox' => 'Kanox Theme',
-		'persian' => 'Bootstrap Theme',
-		'menew' => 'Menu Theme',
+		'1-original' => 'Original',
+		'3-home' => 'Rent Home',
+		'2-persian' => 'Persian',
+		'4-windy' => 'Windy',
 	];
 }

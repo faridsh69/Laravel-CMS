@@ -130,7 +130,7 @@
 			<li class="m-nav__item m-topbar__user-profile m-topbar__user-profile--img  m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--header-bg-fill m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" data-dropdown-toggle="click">
 				<a href="#" class="m-nav__link m-dropdown__toggle">
 					<span class="m-topbar__userpic">
-						<img class="m--img-rounded m--marginless m--img-centered" src="{{ Auth::user()->image }}"
+						<img class="m--img-rounded m--marginless m--img-centered" src="{{ asset(Auth::user()->image) }}"
 						/>
 					</span>
 					<span class="m-topbar__username m--hide">
@@ -144,7 +144,7 @@
 							style= "background: url( {{ asset('images/admin/user_profile_bg.jpg') }}); background-size: cover;">
 							<div class="m-card-user m-card-user--skin-dark">
 								<div class="m-card-user__pic">
-									<img class="m--img-rounded m--marginless" src="{{ Auth::user()->image }}"/>
+									<img class="m--img-rounded m--marginless" src="{{ asset(Auth::user()->image) }}"/>
 								</div>
 								<div class="m-card-user__details">
 									<span class="m-card-user__name m--font-weight-500">

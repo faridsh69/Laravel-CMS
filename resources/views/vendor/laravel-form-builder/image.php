@@ -22,11 +22,10 @@
 	<?php include 'help_block.php' ?>
 	<div class="image-form">
 		<?php if ($options['value']): ?>
-			<img src="<?php echo $options['value']; ?>" alt="image">
+			<img src="<?php echo asset($options['value']); ?>" alt="image">
 		<?php endif; ?>
 		<div id="holder<?php echo $name ?>"></div>
-	</div>		
-
+	</div>
 <?php endif; ?>
 
 <?php include 'errors.php' ?>
