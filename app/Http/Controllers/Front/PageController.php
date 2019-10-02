@@ -18,18 +18,19 @@ class PageController extends Controller
 
 
         if(config('app.name') === 'map'){
-            $ip = $_SERVER['REMOTE_ADDR'];
-            try{
-                if($ip === '127.0.0.1'){
-                    return view('front.test.map.offline-city');
-                }else{
-                    $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}"));
-                    if($details->country === 'IR'){
-                        return view('front.test.map.offline-city');
-                    }
-                }
-            }
-            catch(Exception $e){}
+            return view('front.test.map.offline-city');
+            // $ip = $_SERVER['REMOTE_ADDR'];
+            // try{
+            //     if($ip === '127.0.0.1'){
+            //         return view('front.test.map.offline-city');
+            //     }else{
+            //         $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}"));
+            //         if($details->country === 'IR'){
+                        
+            //         }
+            //     }
+            // }
+            // catch(Exception $e){}
         }
 
         $meta = [
