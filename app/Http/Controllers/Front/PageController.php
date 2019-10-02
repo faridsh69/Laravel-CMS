@@ -17,12 +17,16 @@ class PageController extends Controller
         abort_if(! $page, 404);
 
 
-        if(config('app.name') === 'mmenew'){
+        if(config('app.name') === 'map'){
             $ip = $_SERVER['REMOTE_ADDR'];
             try{
-                $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}"));
-                if($details->ip === '127.0.0.1' || $details->country === 'IR'){
-                    config(['0-developer.theme' => 'menew']);
+                if($ip === '127.0.0.1'){
+                    return view('front.test.map.offline-city');
+                }else{
+                    $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}"));
+                    if($details->country === 'IR'){
+                        return view('front.test.map.offline-city');
+                    }
                 }
             }
             catch(Exception $e){}

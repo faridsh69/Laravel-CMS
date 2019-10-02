@@ -204,7 +204,7 @@ google.maps.__gjsload__ = function (name, text) {
             0,
             null,
             null,
-            "/cdn/images/test/map/gmapcache/gstatic/",
+            "/cdn/images/front/themes/4-windy/map/gmapcache/gstatic/",
             "http://csi.gstatic.com",
             "https://maps.googleapis.com",
             "gmapcache/googleapis"

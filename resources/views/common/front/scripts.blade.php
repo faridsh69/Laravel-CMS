@@ -1,14 +1,5 @@
 @stack('scripts')
-
-@php
-    $server_ip = $_SERVER['REMOTE_ADDR'];
-    $server_ip_details = json_decode(file_get_contents("http://ipinfo.io/{$server_ip}"));
-@endphp
-
-@if($server_ip_details->ip !== '127.0.0.1')
 {!! config('0-developer.scripts') !!}
-@endif
-
 @if(false)
     <!-- hotjar codes -->
     <script>

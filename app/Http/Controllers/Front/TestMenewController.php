@@ -39,47 +39,47 @@ class TestMenewController extends Controller
         $this->model_columns = $this->repository->getColumns();
     }
 
-    public function getRegisterRestaurant()
-    {
-        $form = $this->form_builder->create($this->model_form, [
-            'method' => 'POST',
-            'url' => route('front.test.menew.post-register-restaurant'),
-            'class' => 'm-form m-form--state',
-            'id' =>  'admin_form',
-        ]);
+    // public function getRegisterRestaurant()
+    // {
+    //     $form = $this->form_builder->create($this->model_form, [
+    //         'method' => 'POST',
+    //         'url' => route('front.test.menew.post-register-restaurant'),
+    //         'class' => 'm-form m-form--state',
+    //         'id' =>  'admin_form',
+    //     ]);
 
-        return view('front.test.menew.register-restaurantnew', ['form' => $form]);
-    }
+    //     return view('front.test.menew.register-restaurantnew', ['form' => $form]);
+    // }
 
-    public function postRegisterRestaurant()
-    {
-        $form = $this->form_builder->create($this->model_form);
+    // public function postRegisterRestaurant()
+    // {
+    //     $form = $this->form_builder->create($this->model_form);
 
-        if (! $form->isValid()) {
-            return redirect()->back()->withErrors($form->getErrors())->withInput();
-        }
-        $data = $form->getFieldValues();
-        unset($data['tags']);
-        $data['url'] = Str::slug($data['title']);
+    //     if (! $form->isValid()) {
+    //         return redirect()->back()->withErrors($form->getErrors())->withInput();
+    //     }
+    //     $data = $form->getFieldValues();
+    //     unset($data['tags']);
+    //     $data['url'] = Str::slug($data['title']);
 
-        foreach(collect($this->model_columns)->where('type', 'boolean')->pluck('name') as $boolean_column)
-        {
-            if(! isset($data[$boolean_column]))
-            {
-                $data[$boolean_column] = 0;
-            }
-        }
+    //     foreach(collect($this->model_columns)->where('type', 'boolean')->pluck('name') as $boolean_column)
+    //     {
+    //         if(! isset($data[$boolean_column]))
+    //         {
+    //             $data[$boolean_column] = 0;
+    //         }
+    //     }
 
-        $this->repository->create($data);
+    //     $this->repository->create($data);
 
-        $this->request->session()->flash('alert-success', $this->model . ' Created Successfully!');
-        // exec('php -q /home/faridsh/domains/subdomain/add_subdomain.php ' . $data['url']);
+    //     $this->request->session()->flash('alert-success', $this->model . ' Created Successfully!');
+    //     // exec('php -q /home/faridsh/domains/subdomain/add_subdomain.php ' . $data['url']);
 
-        return redirect()->route('front.test.menew.register-thank-you');
-    }
+    //     return redirect()->route('front.test.menew.register-thank-you');
+    // }
 
-    public function getRegisterThankYou()
-    {
-        return view('front.test.menew.register-thank-you');
-    }
+    // public function getRegisterThankYou()
+    // {
+    //     return view('front.test.menew.register-thank-you');
+    // }
 }
