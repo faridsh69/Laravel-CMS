@@ -4,6 +4,7 @@
 	All rights reserved
 */
 ! function() {
+	var domain_name = 'http://www.eric.com';
     var y, w = Date.now(),
         b = {};
     window.windySentErrors = [], window.onerror = i.bind(null, "error");
