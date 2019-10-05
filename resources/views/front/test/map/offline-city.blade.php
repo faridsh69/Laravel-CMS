@@ -7,7 +7,7 @@
     <link rel="canonical" href="/">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-    <link href="{{ asset('js/front/themes/4-windy/windy/v/index.css') }}" rel="stylesheet" type="text/css">
+    <link href="/v/index.css" rel="stylesheet" type="text/css">
     <script>
         window.W = {
             version: "19.15.0",
@@ -24,12 +24,12 @@
     <meta name="model" content="ecmwf">
     <meta name="geoip" content="86.55.66.215,35.6961,51.4231,IR,">
     <meta name="token" content="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NjExNzU3NjUsImluZiI6eyJpcCI6Ijg2LjU1LjY2LjIxNSIsInVhIjoiTW96aWxsYVwvNS4wIChXaW5kb3dzIE5UIDYuMTsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXRcLzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZVwvNzUuMC4zNzcwLjEwMCBTYWZhcmlcLzUzNy4zNiJ9LCJleHAiOjE1NjEzNDg1NjV9.nm-0Hf82FnIjVTSxEOY3t33vSMcrRgpN66rtlDDGhFE">
-    <script src="{{ asset('js/front/themes/4-windy/windy/v/leaflet140_patched_tileLayer.v14.js') }}"></script>
+    <script src="/v/leaflet140_patched_tileLayer.v14.js"></script>
     <script>
         window.Promise || document.write('<script src="js/promise.v10.js"><\/script>')
     </script>
 
-    <script src="{{ asset('js/front/themes/4-windy/windy/v/index.js') }}"></script>
+    <script src="/v/index.js"></script>
     <link rel="dns-prefetch" href="https://node.windy.com">
     <link rel="dns-prefetch" href="https://tiles.windy.com">
     <link rel="dns-prefetch" href="https://ims.windy.com">

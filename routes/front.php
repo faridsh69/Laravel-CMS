@@ -21,6 +21,8 @@ Route::group(['prefix' => 'test-windy', 'as' => 'test.windy.'], function () {
 	Route::get('users/info', 'TestMapController@getUsersInfo')->name('users.info');
 	Route::get('sedlina/ga/{id}', 'TestMapController@getSedlinaGa')->name('sedlina.ga');
 	Route::get('node/forecast/v2.4/ecmwf/{lat}/{lng}', 'TestMapController@getNodeForecast')->name('node.forecast');
+	Route::get('forecast/citytile/v1.3/ecmwf/{zoom}/{lat}/{lng}', 'TestMapController@getForecastCitytile')->name('forecast.citytile');
+	
 	Route::get('node/capalerts/{lat}/{lng}', 'TestMapController@getNodeCapalerts')->name('node.capalerts');
 	Route::get('node/geoip', 'TestMapController@getNodeGeoip')->name('node.geoip');
 

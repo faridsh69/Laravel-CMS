@@ -4,12 +4,11 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>
-			@yield('title')
+			@yield('code') - @yield('title')
 		</title>
-		<meta name="description" content="Error 404 Page - nothing found">
+		<meta name="description" content="Error - @yield('title')">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
 		<style>
 			html{
@@ -45,7 +44,7 @@
 			}
 			.c-error-1-row{
 				flex: 1;
-				background-image: url("{{ asset('images/error.jpg') }}");
+				background-image: url("{{ asset('vendor/images/error.jpg') }}");
 				background-position: center;
 			    background-repeat: no-repeat;
 			    background-attachment: fixed;

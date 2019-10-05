@@ -9,12 +9,12 @@ use Str;
 
 class TestMapController extends Controller
 {
-	public function __construct()
-    {
-        if(config('app.name') !== 'map'){
-            return 1;
-        }
-    }
+	// public function __construct()
+ //    {
+ //        if(config('app.name') !== 'map'){
+ //            return 1;
+ //        }
+ //    }
 
 	public function getOffline()
 	{
@@ -28,13 +28,14 @@ class TestMapController extends Controller
 
 	public function getTitlesImages($zoom, $x, $y)
 	{
-		return 1;
-		return \Redirect::to('/cdn/images/front/themes/4-windy/map/tiles/' . $zoom . '_' . $x . '_' . $y);
+		// return 1;
+		// return \Redirect::to('/cdn/images/front/themes/4-windy/map/tiles/' . $zoom . '_' . $x . '_' . $y);
+		return \Redirect::to('/cdn/images/front/themes/4-windy/map/tiles-windy/' . $zoom . '_' . $x . '_' . $y);
 	}
 
 	public function getTitlesLabels($zoom, $x, $y)
 	{
-		return [];
+		return \Redirect::to('/cdn/images/front/themes/4-windy/map/labels-windy/' . $zoom . '_' . $x . '_' . $y);
 	}
 
 	public function getUsersInfo()
@@ -51,6 +52,11 @@ class TestMapController extends Controller
 	{
 		return null;
 		return 'getNodeForecast' . $lat . $lng;
+	}
+
+	public function getForecastCitytile()
+	{
+		return null;
 	}
 
 	public function getNodeCapalerts($lat, $lng)
