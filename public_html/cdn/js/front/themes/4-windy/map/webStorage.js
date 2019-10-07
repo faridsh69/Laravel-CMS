@@ -49,7 +49,7 @@ function loopCoordinates(zoom_index, images_array)
         if (coordinate_index < coordinate_length) {
             loopCoordinates(zoom_index, images_array);
         }
-    }, 100);
+    }, 200);
 }
 
 function saveImagesToLocal(init_zoom, maximum_zoom){
@@ -60,16 +60,27 @@ function saveImagesToLocal(init_zoom, maximum_zoom){
         }
         maximum_coordinate = maximum_coordinate - 1;
         images_array = [];
-        for(coordinate_x = 0; coordinate_x <= maximum_coordinate; coordinate_x ++){
-            for(coordinate_y = 0; coordinate_y <= maximum_coordinate; coordinate_y ++){
+
+        iran_matris = [[0.6, 0.7], [0.35, 0.45]];
+        iran_x_min = Math.floor(iran_matris[0][0] * maximum_coordinate);
+        iran_x_max = Math.floor(iran_matris[0][1] * maximum_coordinate);
+        iran_y_min = Math.floor(iran_matris[1][0] * maximum_coordinate);
+        iran_y_max = Math.floor(iran_matris[1][1] * maximum_coordinate);
+        
+        for(coordinate_x = iran_x_min; coordinate_x <= iran_x_max; coordinate_x ++){
+            for(coordinate_y = iran_y_min; coordinate_y <= iran_y_max; coordinate_y ++){
                 images_array.push(coordinate_x + '_' + coordinate_y);
             }
         }
+        console.log(images_array);
 
         loopCoordinates(zoom_index, images_array);
     }
 }
-// saveImagesToLocal(7, 8);
+
+
+
+
 
 function saveJson(urlJsonLable, fileName) 
 {
@@ -111,7 +122,7 @@ function loopCoordinatesJson(zoom_index, json_array)
         if (coordinate_index < coordinate_length) {
             loopCoordinatesJson(zoom_index, json_array);
         }
-    }, 200);
+    }, 100);
 }
 
 function saveLabelsToLocal(init_zoom, maximum_zoom){
@@ -121,19 +132,26 @@ function saveLabelsToLocal(init_zoom, maximum_zoom){
             maximum_coordinate = maximum_coordinate * 2;
         }
         maximum_coordinate = maximum_coordinate - 1;
+
+        iran_matris = [[0.6, 0.7], [0.35, 0.45]];
+        iran_x_min = Math.floor(iran_matris[0][0] * maximum_coordinate);
+        iran_x_max = Math.floor(iran_matris[0][1] * maximum_coordinate);
+        iran_y_min = Math.floor(iran_matris[1][0] * maximum_coordinate);
+        iran_y_max = Math.floor(iran_matris[1][1] * maximum_coordinate);
+
         json_array = [];
-        for(coordinate_x = 0; coordinate_x <= maximum_coordinate; coordinate_x ++){
-            for(coordinate_y = 0; coordinate_y <= maximum_coordinate; coordinate_y ++){
+        for(coordinate_x = iran_x_min; coordinate_x <= iran_x_max; coordinate_x ++){
+            for(coordinate_y = iran_y_min; coordinate_y <= iran_y_max; coordinate_y ++){
                 json_array.push(coordinate_x + '_' + coordinate_y);
                 // this command will save images with browser
                 // saveJsonToLocal(zoom_index, coordinate_x, coordinate_y);
             }
         }
+        console.log(json_array);
 
         loopCoordinatesJson(zoom_index, json_array);
     }
 }
-saveLabelsToLocal(5, 6);
 
 function getServerTilesImageSource(coord, zoom) {
     // return "/cdn/images/front/themes/4-windy/map/tiles/" 
@@ -155,4 +173,6 @@ function initMap() {
         maxZoom: 15
     }));
 }
-// initMap();
+// saveLabelsToLocal(9, 10);
+// saveImagesToLocal(9, 10);
+initMap();

@@ -113,7 +113,7 @@
     </ul>
     <div id="logo-wrapper" class="top-border left-border right-border">
         <a id="logo" target="_top" class="clickable noselect notap" data-do="title">
-            <div class="w-sprite"></div><img class="text" alt="Windy.com" src="img/logo201802/logo-text-windycom-white.svg"></a>
+            <div class="w-sprite" style="display: none;"></div><img class="text" alt="Windy.com" src="img/logo201802/logo-text-windycom-white.png"></a>
     </div>
     <a id="open-in-app" data-do="openapp" class="top-border" data-t="MENU_MOBILE"></a>
     <div id="plugins" class="shy"></div>
