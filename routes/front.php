@@ -26,7 +26,7 @@ Route::group(['prefix' => 'test-windy', 'as' => 'test.windy.'], function () {
 	Route::get('node/capalerts/{lat}/{lng}', 'TestMapController@getNodeCapalerts')->name('node.capalerts');
 	Route::get('node/geoip', 'TestMapController@getNodeGeoip')->name('node.geoip');
 
-	Route::get('ims/ecmwf-hres/{year}/{param1}/{param2}/{param3}/{param4}/{param5}/{param6}/wind-surface.jpg', 'TestMapController@getWindSurface')->name('ims.ecmwf-hres');
+	Route::get('ims/ecmwf-hres/{year}/{month}/{day}/{hour}/{zoom}/{x}/{y}/wind-surface.jpg', 'TestMapController@getWindSurface')->name('ims.ecmwf-hres');
 });
 
 Route::group(['prefix' => 'test-eric', 'as' => 'test.eric.'], function () {

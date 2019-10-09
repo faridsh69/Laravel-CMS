@@ -78,10 +78,6 @@ function saveImagesToLocal(init_zoom, maximum_zoom){
     }
 }
 
-
-
-
-
 function saveJson(urlJsonLable, fileName) 
 {
     var xhttp = new XMLHttpRequest();
@@ -112,7 +108,7 @@ function saveJsonToLocalLoop(zoom_index, json_array, coordinate_index)
     saveJsonToLocal(zoom_index, x, y);
 }
 
-var coordinate_index = 0;
+var coordinate_index = 1900;
 function loopCoordinatesJson(zoom_index, json_array)
 {
     coordinate_length = json_array.length;
@@ -122,7 +118,7 @@ function loopCoordinatesJson(zoom_index, json_array)
         if (coordinate_index < coordinate_length) {
             loopCoordinatesJson(zoom_index, json_array);
         }
-    }, 100);
+    }, 400);
 }
 
 function saveLabelsToLocal(init_zoom, maximum_zoom){
@@ -153,6 +149,97 @@ function saveLabelsToLocal(init_zoom, maximum_zoom){
     }
 }
 
+
+
+function saveWindSurfaceImage(wind_images_array, )
+{
+    var wind_images_item = wind_images_array[wind_images_array_index];
+    var date_year = wind_images_item[0];
+    var date_month = wind_images_item[1];
+    var date_day = wind_images_item[2];
+    var date_hour =wind_images_item[3];
+    var m1 = wind_images_item[4];
+    var m2 = wind_images_item[5];
+    var m3 = wind_images_item[6];
+
+    var extra_url = date_year + '/' + date_month + '/' + date_day + '/' + date_hour + '/'
+        + m1 + '/' + m2 + '/' + m3 + '/' + 'wind-surface.jpg';
+    var wind_surface_url = 'https://ims.windy.com/ecmwf-hres/' + extra_url;
+    var fileName = extra_url;
+        
+    var image = new Image();
+    image.crossOrigin = "Anonymous";
+    image.onload = function() {
+        saveBase64AsFile(imageToBase64(image), fileName);
+    };
+    image.src = wind_surface_url;
+}
+
+var wind_images_array_index = 0;
+function loopWindSurfaceImages(wind_images_array)
+{
+    wind_images_array_length = wind_images_array.length;
+    setTimeout(function(){
+        saveWindSurfaceImage(wind_images_array, wind_images_array_index);
+        wind_images_array_index ++;
+        if (wind_images_array_index < wind_images_array_length) {
+            loopWindSurfaceImages(wind_images_array);
+        }
+    }, 500);
+}
+function setZero(integer){
+    if(integer < 10){
+        return '0' + integer;
+    }
+    return integer;
+}
+
+var date = new Date();
+var years = [date.getFullYear()]; // just this year
+var months = [setZero(date.getMonth() + 1)]; // just this month
+var days = []; // 10 days later
+for(i=1;i < 6; i++){
+    days.push(setZero(date.getDate() + i));
+}
+days = ['10'];
+months = ['10'];
+var hours = ['00', '03', '06', '09', '12', '15', '18', '21']; // just after now to 6 days
+// var hours = ['00', '06', '12', '18']; // just after now 6 - 10 days
+// var hours = ['12']; // just after now 6 - 10 days
+var zooms = ['257w2', '257w3', '257w4']; // 257w2 -> zoom ta 4 257w3 zoom ta 7  
+var coordinates_257w2 = [0,1,2,3];
+var coordinates_257w3 = [0,1,2,3,4,5,6,7];
+var coordinates_257w4 = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+
+function saveWindSurfaceImageToLocal(init_zoom, maximum_zoom){
+    wind_images_array = [];
+    years.forEach(function(year){
+        months.forEach(function(month){
+            days.forEach(function(day){
+                hours.forEach(function(hour){
+                    zooms.forEach(function(zoom){
+                        if(zoom === '257w2'){
+                            coordinates = coordinates_257w2;
+                        }else if(zoom === '257w3'){
+                            coordinates = coordinates_257w3;
+                        }else if(zoom === '257w4'){
+                            coordinates = coordinates_257w4;
+                        }
+                        coordinates.forEach(function(coordiante_x){
+                            coordinates.forEach(function(coordiante_y){
+                                wind_images_array.push([year, month, day, hour, zoom, coordiante_x, coordiante_y]);
+                            });
+                        });
+                    });
+                });
+            });
+        });
+    });
+    console.log(wind_images_array);
+    loopWindSurfaceImages(wind_images_array);
+}
+
+
 function getServerTilesImageSource(coord, zoom) {
     // return "/cdn/images/front/themes/4-windy/map/tiles/" 
     return "/cdn/images/front/themes/4-windy/map/tiles-windy/" 
@@ -173,6 +260,7 @@ function initMap() {
         maxZoom: 15
     }));
 }
-// saveLabelsToLocal(9, 10);
-// saveImagesToLocal(9, 10);
-initMap();
+saveLabelsToLocal(9, 10) ;
+// saveImagesToLocal(10, 11);
+// saveWindSurfaceImageToLocal(1, 2);
+// initMap();

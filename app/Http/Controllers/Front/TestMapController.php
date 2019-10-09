@@ -16,6 +16,22 @@ class TestMapController extends Controller
  //        }
  //    }
 
+	public function getWindSurface($year, $month, $day, $hour, $m1, $m2, $m3)
+	{
+		$year = '2019';
+		$month = '10';
+		$day = '10';
+		$hour = '12';
+		// $m1 = '257w3';
+		return \Redirect::to('/cdn/images/front/themes/4-windy/map/wind/' 
+			. $year . '_' . $month . '_' . $day . '_' . $hour . '_' . $m1 . '_' . $m2 . '_' . $m3 . '_' . 
+			'wind-surface.jpg');
+
+		return \Redirect::to('img/wind/wind-surface.jpg');
+		// return "<img src ='http://www.eric.com/img/wind-surface.jpg'>";
+		// return \File::get(storage_path() . '/app/public/wind-surface.jpg');
+	}
+
 	public function getOffline()
 	{
 		return view('front.test.map.offline');
@@ -69,10 +85,5 @@ class TestMapController extends Controller
 		return null;
 	}
 
-	public function getWindSurface()
-	{
-		return \Redirect::to('img/wind/wind-surface.jpg');
-		// return "<img src ='http://www.eric.com/img/wind-surface.jpg'>";
-		// return \File::get(storage_path() . '/app/public/wind-surface.jpg');
-	}
+	
 }
