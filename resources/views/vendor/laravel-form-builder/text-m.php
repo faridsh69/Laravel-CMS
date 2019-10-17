@@ -10,7 +10,7 @@
 
 <?php if ($showField): ?>
 
-	<div class="m-input-icon m-input-icon--left m-input-icon--right">
+	<div class="m-input-icon m-input-icon--left m-input-icon--right" style="height: 37px">
 		<?= Form::input(isset($options['attr']['type']) ? $options['attr']['type'] : 'text', $name, $options['value'], $options['attr']) ?>
 		<span class="m-input-icon__icon m-input-icon__icon--left">
 			<span>

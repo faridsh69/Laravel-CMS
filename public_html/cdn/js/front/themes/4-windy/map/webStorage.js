@@ -260,7 +260,7 @@ function initMap() {
         maxZoom: 15
     }));
 }
-saveLabelsToLocal(9, 10) ;
+// saveLabelsToLocal(9, 10) ;
 // saveImagesToLocal(10, 11);
 // saveWindSurfaceImageToLocal(1, 2);
 // initMap();

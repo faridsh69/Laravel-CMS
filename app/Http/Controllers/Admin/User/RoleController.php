@@ -57,9 +57,12 @@ class RoleController extends BaseListController
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
         $data = $form->getFieldValues();
-        $role = Role::create(['name' => $data['name']]);
-        $permissions = Permission::whereIn('id', $data['permissions'])->get();
-        $role->syncPermissions($permissions);
+
+        $role = Role::updateOrCreate(['name' => $data['name']], ['name' => $data['name']]);
+        if( isset($data['permissions']) ){
+            $permissions = Permission::whereIn('id', $data['permissions'])->get();
+            $role->syncPermissions($permissions);
+        }
         if(isset($data['users'])){
             $users = User::whereIn('id', $data['users'])->get();
             foreach($users as $user){
@@ -126,8 +129,11 @@ class RoleController extends BaseListController
         })->get();
         $model->name = $data['name'];
         $model->save();
-        $permissions = Permission::whereIn('id', $data['permissions'])->get();
-        $model->syncPermissions($permissions);
+        if( isset($data['permissions']) ){
+            $permissions = Permission::whereIn('id', $data['permissions'])->get();
+            $model->syncPermissions($permissions);
+        }
+
         if(isset($data['users'])){
             foreach($old_users as $old_user){
                 $old_user->removeRole($model->name);
@@ -163,7 +169,7 @@ class RoleController extends BaseListController
         $model->delete();
         $this->request->session()->flash('alert-success', $this->model . ' Deleted Successfully!');
 
-        return redirect()->route('admin.' . $this->model_sm . '.list.index');
+        return redirect()->route('admin.user.' . $this->model_sm . '.index');
     }
 
     public function getDatatable()

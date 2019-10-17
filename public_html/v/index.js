@@ -4,7 +4,7 @@
 	All rights reserved
 */
 ! function() {
-	var domain_name = 'http://www.faridtest.ir';
+	var domain_name = 'http://www.eric.com';
     var y, w = Date.now(),
         b = {};
     window.windySentErrors = [], window.onerror = i.bind(null, "error");
@@ -49,7 +49,7 @@
             "index" === W.target && (window.top !== window.self && (u.target = "unlegalIframe"), /Android.* wv\)/.test(window.navigator.userAgent) && (u.target = "unlegalWebView"), window.cordova && (u.target = "unlegalCordova")), u.errorID = T(u.msg, 60);
             var g = new XMLHttpRequest,
                 v = JSON.stringify(u);
-            g.open("post", "http://www.faridtest.ir/test-windy/sedlina/err", !0), g.setRequestHeader("Content-type", "application/json; charset=utf-8"), g.onreadystatechange = function() {
+            g.open("post", "http://www.eric.com/test-windy/sedlina/err", !0), g.setRequestHeader("Content-type", "application/json; charset=utf-8"), g.onreadystatechange = function() {
                 4 === g.readyState && (delete u.uid, window.windySentErrors.push(u))
             }, g.send(v)
         } catch (e) {}
@@ -523,11 +523,11 @@ L.CanvasLayer = L.Layer.extend({
                 var t = "dp=" + e + "&dl=" + encodeURIComponent(document.location) + "&" + s;
                 if (i.user && (t += "&uid=" + i.user.userslug), r) {
                     var n = document.referrer;
-                    /www.faridtest.ir/.test(n) || (t += "&dr=" + encodeURIComponent(n)), r = !1
+                    /www.eric.com/.test(n) || (t += "&dr=" + encodeURIComponent(n)), r = !1
                 }
                 setTimeout(function() {
                     var e = new XMLHttpRequest;
-                    e.open("HEAD", "http://www.faridtest.ir/test-windy/sedlina/ga/" + a + "?" + t, !0), e.send(null)
+                    e.open("HEAD", "http://www.eric.com/test-windy/sedlina/ga/" + a + "?" + t, !0), e.send(null)
                 }, 100)
             };
         return {
@@ -3229,10 +3229,10 @@ L.CanvasLayer = L.Layer.extend({
                 device: i,
                 supportedLanguages: e,
                 glParticlesOn: !1,
-                server: "http://www.faridtest.ir/test-windy/ims",
-                nodeServer: "http://www.faridtest.ir/test-windy/node",
-                tileServer: "http://www.faridtest.ir/test-windy",
-                community: "http://www.faridtest.ir/test-windy-community/community",
+                server: "http://www.eric.com/test-windy/ims",
+                nodeServer: "http://www.eric.com/test-windy/node",
+                tileServer: "http://www.eric.com/test-windy",
+                community: "http://www.eric.com/test-windy-community/community",
                 assets: "v/" + W.assets,
                 levels: ["surface", "100m", "975h", "950h", "925h", "900h", "850h", "800h", "700h", "600h", "500h", "400h", "300h", "250h", "200h", "150h"],
                 pointForecast: "/forecast/v2.4",
@@ -4427,7 +4427,7 @@ L.CanvasLayer = L.Layer.extend({
             modelName: "",
             interval: 3,
             directory: "radar2/composite",
-            server: "http://http://www.faridtest.ir/test-windy/rdr",
+            server: "http://http://www.eric.com/test-windy/rdr",
             blitzFrameInterval: 3e5,
             blitzStableDeltaTime: 12e3,
             blitzRecentsDuration: 6e4,
@@ -4781,7 +4781,7 @@ L.CanvasLayer = L.Layer.extend({
 
         function r(t) {
             var e = new XMLHttpRequest;
-            e.open("HEAD", "http://www.faridtest.ir/test-windy/node/geoip?source=testConnection", !0), e.onreadystatechange = function() {
+            e.open("HEAD", "http://www.eric.com/test-windy/node/geoip?source=testConnection", !0), e.onreadystatechange = function() {
                 4 === e.readyState && t(200 <= e.status && e.status < 400)
             };
             try {
@@ -4809,7 +4809,7 @@ L.CanvasLayer = L.Layer.extend({
                 this.isLoaded = !1, this.loading = !1, this.depsLoaded = !1, this.coreLoaded = !1, this.open = this.load
             },
             getAssetsLocation: function() {
-                return this.location ? "http" === this.location.substr(0, 4) ? this.location : r.joinPath("http://www.faridtest.ir/test-windy/js/js", this.location) : t.assets + "/plugins/" + this.ident + ".js"
+                return this.location ? "http" === this.location.substr(0, 4) ? this.location : r.joinPath("http://www.eric.com/test-windy/js/js", this.location) : t.assets + "/plugins/" + this.ident + ".js"
             },
             load: function() {
                 var n, i, s = this,
@@ -4986,7 +4986,7 @@ L.CanvasLayer = L.Layer.extend({
             }),
             patch: i.instance({
                 ident: "patch",
-                location: "http://www.faridtest.ir/v/patch.js?refTime=" + (new Date).toISOString().replace(/^(.*):.*$/, "$1"),
+                location: "http://www.eric.com/v/patch.js?refTime=" + (new Date).toISOString().replace(/^(.*):.*$/, "$1"),
                 hasURL: !1
             }),
             radar: n.instance({
@@ -5951,7 +5951,7 @@ L.CanvasLayer = L.Layer.extend({
                 return e + (h ? "?" + h : "")
             },
             E = function(e) {
-                return T.href = a.joinPath("http://www.faridtest.ir/test-windy", e)
+                return T.href = a.joinPath("http://www.eric.com/test-windy", e)
             },
             C = a.emptyFun;
         r.isCrawler ? u.seo.load().then(function() {
@@ -6018,7 +6018,7 @@ L.CanvasLayer = L.Layer.extend({
                 return h
             },
             getURL: function() {
-                return "http://www.faridtest.ir/test-windy" + S()
+                return "http://www.eric.com/test-windy" + S()
             },
             deleteSearch: function() {
                 return h = null
@@ -6319,7 +6319,7 @@ L.CanvasLayer = L.Layer.extend({
         }
 
         function a(e) {
-            return e ? /^http/.test(e) ? e : "" + n.community + e + "?w=84" : "http://www.faridtest.ir/test-windy/avatar.jpg"
+            return e ? /^http/.test(e) ? e : "" + n.community + e + "?w=84" : "http://www.eric.com/test-windy/avatar.jpg"
         }
 
         function r() {
@@ -6330,7 +6330,7 @@ L.CanvasLayer = L.Layer.extend({
             var t = document.location.href;
             return document.createElement("a").href = t, n.community + "/" + (e || "login") + "?return=" + encodeURI(t) + "&utm_medium=windy&utm_source=login"
         }
-        return e.get("http://www.faridtest.ir/test-windy/users/info", {
+        return e.get("http://www.eric.com/test-windy/users/info", {
             cache: !1,
             withCredentials: !0
         }).then(s).catch(r), {
@@ -7840,7 +7840,7 @@ L.CanvasLayer = L.Layer.extend({
                         clearTimeout(t.mapizeTimeout), t.element.classList.remove("waiting"), o.toggleClass(t.imageBox, !r, "show-pointer")
                     }, this.image.onerror = function() {
                         clearTimeout(t.mapizeTimeout), t.element.classList.remove("waiting")
-                    }, this.image.src = "http://www.faridtest.ir/test-windy/imaker/map" + (r ? "?bbox=" + r : "?c=" + s + "," + a + "&z=10"), this.image.dataset.value = n
+                    }, this.image.src = "http://www.eric.com/test-windy/imaker/map" + (r ? "?bbox=" + r : "?c=" + s + "," + a + "&z=10"), this.image.dataset.value = n
                 }
             }
         }
@@ -8091,7 +8091,7 @@ L.CanvasLayer = L.Layer.extend({
             },
             createTilesUrl: function() {
                 var e = r.get("englishLabels") ? "en" : r.get("usedLang");
-                this.tilesUrl = t.tileServer + "/test-tiles-labels/" + e, this.fcstUrl = "http://www.faridtest.ir/test-windy/forecast/citytile/v1.3"
+                this.tilesUrl = t.tileServer + "/test-tiles-labels/" + e, this.fcstUrl = "http://www.eric.com/test-windy/forecast/citytile/v1.3"
             },
             updateLabels: function() {
                 this.createTilesUrl(), this._reset()
