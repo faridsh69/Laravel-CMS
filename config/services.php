@@ -68,6 +68,10 @@ $output = [
             'service',
             'form',
             'field',
+            'role',
+            'permission',
+            'shop',
+            'product',
         ],
         'seeder' => [
             'blog',
@@ -107,6 +111,10 @@ $output = [
             'pricing',
             'service',
             'activity',
+            'role',
+            'permission',
+            'shop',
+            'product',
         ],
         'permissions' => [
             'blog',
@@ -136,25 +144,14 @@ $output = [
             'pricing',
             'service',
             'activity',
+            'role',
+            'permission',
+            'shop',
+            'product',
         ],
     ],
 ];
 
-if(env('APP_NAME') === 'mmenew'){
-    $output['models']['factory'][] = 'shop';
-    $output['models']['factory'][] = 'product';
-
-    // $output['models']['seeder'][] = 'shop';
-    // $output['models']['seeder'][] = 'product';
-
-    $output['models']['admin_routes'][] = 'shop';
-    $output['models']['admin_routes'][] = 'product';
-
-    $output['models']['permissions'][] = 'shop';
-    $output['models']['permissions'][] = 'product';
-
-    $output['models']['platform'] = 'shop';
-}
 foreach($output['social_companies'] as $social_company){
     $output[strtolower($social_company)] = [
         'client_id' => env($social_company . '_CLIENT_ID'),

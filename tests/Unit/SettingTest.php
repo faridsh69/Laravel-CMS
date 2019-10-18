@@ -19,7 +19,7 @@ class SettingTest extends TestCase
         'setting.api',
         'setting.seo.crowl',
         'setting.seo.content-rules',
-        // 'report.index',
+        'report.index',
         'dashboard.index',
         'media.list.index',
         'user.permission.index',

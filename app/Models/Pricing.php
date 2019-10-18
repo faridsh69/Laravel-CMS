@@ -24,7 +24,7 @@ class Pricing extends Model
             'name' => 'price',
             'type' => 'integer',
             'database' => 'nullable',
-            'rule' => 'numeric',
+            'rule' => 'nullable|numeric',
             'help' => '',
             'form_type' => '',
             'table' => true,

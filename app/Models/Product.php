@@ -107,7 +107,7 @@ class Product extends Model implements Commentable
             'type' => 'bigInteger',
             'database' => 'unsigned',
             'relation' => 'shops',
-            'rule' => 'nullable|exists:shops,id',
+            'rule' => 'exists:shops,id',
             'help' => '',
             'form_type' => 'entity',
             'class' => 'App\Models\Shop',
@@ -175,6 +175,19 @@ class Product extends Model implements Commentable
             'table' => false,
         ],
         [
+            'name' => 'related_products',
+            'type' => 'array',
+            'database' => 'none',
+            'rule' => 'nullable',
+            'help' => '',
+            'form_type' => 'entity',
+            'class' => 'App\Models\Product',
+            'property' => 'title',
+            'property_key' => 'id',
+            'multiple' => true,
+            'table' => false,
+        ],
+        [
             'name' => 'ready_time',
             'type' => 'integer',
             'database' => 'nullable',
@@ -230,7 +243,6 @@ class Product extends Model implements Commentable
             return asset($gallery->first()->src_thumbnail);
         }
         return null;
-        // return asset('images/product/' . $this->id . '-thumbnail.jpg');
     }
 
     public function getImageMainAttribute()
@@ -240,7 +252,6 @@ class Product extends Model implements Commentable
             return asset($gallery->first()->src_main);
         }
         return null;
-        // return asset('images/product/' . $this->id . '-main.jpg');
     }
 
     public function getGalleryAttribute()
@@ -253,20 +264,8 @@ class Product extends Model implements Commentable
         return json_encode($gallery);
     }
 
-    // public function getImageAttribute($image)
-    // {
-    //     if(isset($image)) {
-    //         return $image; 
-    //     }
-
-    //     return null;
-    // }
-
-    // public function getImagesAttribute($image)
-    // {
-    //     return collect([
-    //         ['file' => asset('images/product/' . $this->id . '-thumbnail.jpg')], 
-    //         ['file' => config('0-general.default_product_image')],
-    //     ]);
-    // }
+    public function related_products()
+    {
+        return $this->belongsToMany('App\Models\Product', 'related_products', 'product_id', 'related_product_id');
+    }
 }

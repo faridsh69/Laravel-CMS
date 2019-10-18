@@ -135,66 +135,149 @@ class BaseListController extends Controller
         }
         $data = $form->getFieldValues();
         $main_data = $data;
-
-        // blogs
-        unset($data['tags']);
-        unset($data['related_blogs']);
-        // forms
-        unset($data['fields']);
-        // products
-        unset($data['gallery']);
-        // blocks
-        unset($data['pages']);
-
-        // comment
-        if($this->model === 'Comment'){
-            $blog = \App\Models\Blog::where('id', $data['commented_id'])->first();
-
-            Auth::user()->comment($blog, $data['comment'], $rate = 0);
-            $blog->comments[0]->approve();
-
-            if(env('APP_ENV') !== 'testing'){
-                activity($this->model)
-                    ->performedOn($blog)
-                    ->causedBy(Auth::user())
-                    ->log($this->model . ' Created');
-            }
-
-            $this->request->session()->flash('alert-success', $this->model . ' Created Successfully!');
-
-            return redirect()->route('admin.' . $this->model_sm . '.list.index');
-        }
-
-        // users
-        if($this->model === 'User'){
-            if(isset($data['password'])) {
-                $data['password'] = \Hash::make($data['password']);
-            }
-        }
-        unset($data['password_confirmation']);
+        $data = $this->_changeDataBeforeCreate($this->model, $data);
 
         $model = $this->repository->create($data);
+        
+        $this->_saveRelatedDataAfterCreate($this->model, $main_data, $model);
 
-        // product
-        if($this->model === 'Product'){
+        if(env('APP_ENV') !== 'testing'){
+            activity($this->model)->performedOn($model)->causedBy(Auth::user())
+                ->log($this->model . ' Created');
+        }
+        $this->request->session()->flash('alert-success', $this->model . ' Created Successfully!');
+
+        return redirect()->route('admin.' . $this->model_sm . '.list.index');
+    }
+
+    private function _changeDataBeforeCreate($model_name, $data)
+    {
+        foreach(collect($this->model_columns)->where('type', 'boolean')->pluck('name') as $boolean_column) {
+            if(!isset($data[$boolean_column]))
+            {
+                $data[$boolean_column] = 0;
+            }
+        }
+        // Blog
+        unset($data['tags']);
+        unset($data['related_blogs']);
+        // Product
+        unset($data['tags']);
+        unset($data['gallery']);
+        unset($data['related_products']);
+        // Form
+        unset($data['fields']);
+        // Block
+        unset($data['pages']);
+        // Role
+        unset($data['users']);
+        unset($data['permissions']);
+        // Comment
+        // User
+
+        return $data;
+        
+
+        // // comment
+        // if($this->model === 'Comment'){
+        //     $model->commentable_id = $data['commented_id'];
+        //     $model->comment = $data['comment'];
+        //     $model->update();
+
+        //     if(env('APP_ENV') !== 'testing'){
+        //         activity($this->model)
+        //             ->performedOn($model)
+        //             ->causedBy(Auth::user())
+        //             ->log($this->model . ' Updated');
+        //     }
+        //     $this->request->session()->flash('alert-success', $this->model . ' Updated Successfully!');
+
+        //     return redirect()->route('admin.' . $this->model_sm . '.list.index');
+        // }
+
+        // // users
+        // if($this->model === 'User'){
+        //     if(isset($data['password'])) {
+        //         $data['password'] = \Hash::make($data['password']);
+        //     }
+        //     else{
+        //         $data['password'] = $model->password;
+        //     }
+        // }
+        // unset($data['password_confirmation']);
+
+
+
+        // // comment
+        // if($this->model === 'Comment'){
+        //     $blog = \App\Models\Blog::where('id', $data['commented_id'])->first();
+
+        //     Auth::user()->comment($blog, $data['comment'], $rate = 0);
+        //     $blog->comments[0]->approve();
+
+        //     if(env('APP_ENV') !== 'testing'){
+        //         activity($this->model)
+        //             ->performedOn($blog)
+        //             ->causedBy(Auth::user())
+        //             ->log($this->model . ' Created');
+        //     }
+
+        //     $this->request->session()->flash('alert-success', $this->model . ' Created Successfully!');
+
+        //     return redirect()->route('admin.' . $this->model_sm . '.list.index');
+        // }
+
+        // // users
+        // if($this->model === 'User'){
+        //     if(isset($data['password'])) {
+        //         $data['password'] = \Hash::make($data['password']);
+        //     }
+        // }
+        // unset($data['password_confirmation']);
+    }
+
+    private function _saveRelatedDataAfterCreate($model_name, $data, $model)
+    {
+        // Blog
+        if($model_name === 'Blog')
+        {
+            $model->related_blogs()->sync($data['related_blogs'], true);
+            if(!isset($data['tags'])){
+                $data['tags'] = [];
+            }
+            $tag_names = Tag::whereIn('id', $data['tags'])->pluck('name')->toArray();
+            $model->retag($tag_names);
+        }
+
+        // Product
+        if($model_name === 'Product')
+        {
+            $model->related_products()->sync($data['related_products'], true);
+            if(!isset($data['tags'])){
+                $data['tags'] = [];
+            }
+            $tag_names = Tag::whereIn('id', $data['tags'])->pluck('name')->toArray();
+            $model->retag($tag_names);
+            if(!isset($data['gallery'])){
+                $data['gallery'] = [];
+            }
             $image_service = new ImageService; 
             foreach($data['gallery'] as $gallery_image){
                 $image_service->save($gallery_image, $model);
             }
         }
-        
-        $this->_saveRelatedData($model, $main_data);
 
-        if(env('APP_ENV') !== 'testing'){
-            activity($this->model)
-                ->performedOn($model)
-                ->causedBy(Auth::user())
-                ->log($this->model . ' Created');
+        // Form
+        if($model_name === 'Form')
+        {
+            $model->fields()->sync($data['fields'], true);
         }
 
-        $this->request->session()->flash('alert-success', $this->model . ' Created Successfully!');
-
-        return redirect()->route('admin.' . $this->model_sm . '.list.index');
+        // Block
+        if($model_name === 'Block')
+        {
+            $model->pages()->sync($data['pages'], true);
+        }
     }
 
     /**
@@ -269,72 +352,16 @@ class BaseListController extends Controller
         }
         $data = $form->getFieldValues();
         $main_data = $data;
-
-        foreach(collect($this->model_columns)->where('type', 'boolean')->pluck('name') as $boolean_column)
-        {
-            if(! isset($data[$boolean_column]))
-            {
-                $data[$boolean_column] = 0;
-            }
-        }
-
-        // product
-        if($this->model === 'Product'){
-            $image_service = new \App\Services\ImageService; 
-            foreach($data['gallery'] as $gallery_image){
-                $image_service->save($gallery_image, $model);
-            }
-        }
-
-        // comment
-        if($this->model === 'Comment'){
-            $model->commentable_id = $data['commented_id'];
-            $model->comment = $data['comment'];
-            $model->update();
-
-            if(env('APP_ENV') !== 'testing'){
-                activity($this->model)
-                    ->performedOn($model)
-                    ->causedBy(Auth::user())
-                    ->log($this->model . ' Updated');
-            }
-            $this->request->session()->flash('alert-success', $this->model . ' Updated Successfully!');
-
-            return redirect()->route('admin.' . $this->model_sm . '.list.index');
-        }
-
-        // users
-        if($this->model === 'User'){
-            if(isset($data['password'])) {
-                $data['password'] = \Hash::make($data['password']);
-            }
-            else{
-                $data['password'] = $model->password;
-            }
-        }
-        unset($data['password_confirmation']);
-
-        // blogs
-        unset($data['tags']);
-        unset($data['related_blogs']);
-        // forms
-        unset($data['fields']);
-        // products
-        unset($data['gallery']);
-        // blocks
-        unset($data['pages']);
+        $data = $this->_changeDataBeforeCreate($model, $data);
 
         $model->update($data);
 
-        $this->_saveRelatedData($model, $main_data);
+        $this->_saveRelatedDataAfterCreate($this->model, $main_data, $model);
 
         if(env('APP_ENV') !== 'testing'){
-            activity($this->model)
-                ->performedOn($model)
-                ->causedBy(Auth::user())
+            activity($this->model)->performedOn($model)->causedBy(Auth::user())
                 ->log($this->model . ' Updated');
         }
-
         $this->request->session()->flash('alert-success', $this->model . ' Updated Successfully!');
 
         return redirect()->route('admin.' . $this->model_sm . '.list.index');
@@ -493,31 +520,5 @@ class BaseListController extends Controller
     public function getRedirect()
     {
         return redirect()->route('admin.' . $this->model_sm . '.list.index');
-    }
-
-    private function _saveRelatedData($model, $data)
-    {
-        // blogs
-        if(isset($data['related_blogs']))
-        {
-            $model->related_blogs()->sync($data['related_blogs'], true);
-        }
-
-        if(isset($data['tags'])){
-            $tag_names = Tag::whereIn('id', $data['tags'])->pluck('name')->toArray();
-            $model->retag($tag_names);
-        }
-
-        // forms
-        if(isset($data['fields']))
-        {
-            $model->fields()->sync($data['fields'], true);
-        }
-
-        // blocks
-        if(isset($data['pages']))
-        {
-            $model->pages()->sync($data['pages'], true);
-        }
     }
 }

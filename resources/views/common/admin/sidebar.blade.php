@@ -89,6 +89,44 @@
 			],
 		],
 		[
+			'title' => 'Business',
+			'type' => 'section',
+		],
+		[
+			'id' => 23,
+			'title' => 'Shop',
+			'route' => 'shop',
+			'type' => 'submenu',
+			'icon' => 'flaticon-business',
+			'children' => [	
+				[
+					'title' => 'Shop list',
+					'route' => 'admin.shop.list.index',
+				],
+				[
+					'title' => 'Create New Shop',
+					'route' => 'admin.shop.list.create',
+				],
+			],
+		],
+		[
+			'id' => 24,
+			'title' => 'Product',
+			'route' => 'product',
+			'type' => 'submenu',
+			'icon' => 'flaticon-tool',
+			'children' => [	
+				[
+					'title' => 'Product list',
+					'route' => 'admin.product.list.index',
+				],
+				[
+					'title' => 'Create New Product',
+					'route' => 'admin.product.list.create',
+				],
+			],
+		],
+		[
 			'id' => 6,
 			'title' => 'Comment',
 			'route' => 'comment',
@@ -98,6 +136,32 @@
 				[
 					'title' => 'Comment list',
 					'route' => 'admin.comment.list.index',
+				],
+			],
+		],
+		[
+			'id' => 15,
+			'title' => 'Form',
+			'route' => 'form',
+			'type' => 'submenu',
+			'icon' => 'flaticon-edit',
+			'children' => [	
+				[
+					'title' => 'Form list',
+					'route' => 'admin.form.list.index',
+				],
+			],
+		],
+		[
+			'id' => 15,
+			'title' => 'Field',
+			'route' => 'field',
+			'type' => 'submenu',
+			'icon' => 'flaticon-comment',
+			'children' => [	
+				[
+					'title' => 'Field list',
+					'route' => 'admin.field.list.index',
 				],
 			],
 		],
@@ -171,19 +235,37 @@
 			'title' => 'User',
 			'route' => 'user',
 			'type' => 'submenu',
-			'icon' => 'flaticon-user',
+			'icon' => 'flaticon-users',
 			'children' => [	
 				[
 					'title' => 'User List',
 					'route' => 'admin.user.list.index',
 				],
+			],
+		],
+		[
+			'id' => 8,
+			'title' => 'Role',
+			'route' => 'role',
+			'type' => 'submenu',
+			'icon' => 'flaticon-user',
+			'children' => [	
 				[
-					'title' => 'Role',
-					'route' => 'admin.user.role.index',
+					'title' => 'Role list',
+					'route' => 'admin.role.list.index',
 				],
+			],
+		],
+		[
+			'id' => 8,
+			'title' => 'Permission',
+			'route' => 'permission',
+			'type' => 'submenu',
+			'icon' => 'flaticon-interface-9',
+			'children' => [	
 				[
-					'title' => 'Permission',
-					'route' => 'admin.user.permission.index',
+					'title' => 'Permission list',
+					'route' => 'admin.permission.list.index',
 				],
 			],
 		],
@@ -223,32 +305,6 @@
 				[
 					'title' => 'User Activity list',
 					'route' => 'admin.activity.list.index',
-				],
-			],
-		],
-		[
-			'id' => 15,
-			'title' => 'Form',
-			'route' => 'form',
-			'type' => 'submenu',
-			'icon' => 'flaticon-edit',
-			'children' => [	
-				[
-					'title' => 'Form list',
-					'route' => 'admin.form.list.index',
-				],
-			],
-		],
-		[
-			'id' => 15,
-			'title' => 'Field',
-			'route' => 'field',
-			'type' => 'submenu',
-			'icon' => 'flaticon-comment',
-			'children' => [	
-				[
-					'title' => 'Field list',
-					'route' => 'admin.field.list.index',
 				],
 			],
 		],
@@ -418,58 +474,8 @@
 				],
 			],
 		],
-		
 	];
 
-	if( env('APP_NAME') === 'shop' )
-    {
-    	$sidebar_shop = [
-			[
-				'title' => 'Business',
-				'type' => 'section',
-			],
-			[
-				'id' => 23,
-				'title' => 'Shop',
-				'route' => 'shop',
-				'type' => 'submenu',
-				'icon' => 'flaticon-business',
-				'children' => [	
-					[
-						'title' => 'Shop list',
-						'route' => 'admin.shop.list.index',
-					],
-					[
-						'title' => 'Create New Shop',
-						'route' => 'admin.shop.list.create',
-					],
-				],
-			],
-			[
-				'id' => 24,
-				'title' => 'Product',
-				'route' => 'product',
-				'type' => 'submenu',
-				'icon' => 'flaticon-tool',
-				'children' => [	
-					[
-						'title' => 'Product list',
-						'route' => 'admin.product.list.index',
-					],
-					[
-						'title' => 'Create New Product',
-						'route' => 'admin.product.list.create',
-					],
-				],
-			],
-			[
-				'title' => 'Dashboard',
-				'type' => 'section',
-			],
-		];
-
-		$sidebar = array_merge($sidebar_shop, $sidebar);
-    }
     $auth_user = Auth::user();
     $new_sidebar = [];
     foreach($sidebar as $item)
