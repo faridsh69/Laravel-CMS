@@ -145,7 +145,7 @@ class Product extends Model implements Commentable
         ],
         [
             'name' => 'gallery',
-            'type' => 'string',
+            'type' => 'files_array',
             'database' => 'none',
             'rule' => '',
             'help' => 'select all image files you want to upload',

@@ -135,7 +135,7 @@ class BaseListController extends Controller
         }
         $data = $form->getFieldValues();
         $main_data = $data;
-        $data = $this->_changeDataBeforeCreate($this->model, $data);
+        $data = $this->_changeDataBeforeCreate($this->model, $data, null);
 
         $model = $this->repository->create($data);
         
@@ -150,7 +150,7 @@ class BaseListController extends Controller
         return redirect()->route('admin.' . $this->model_sm . '.list.index');
     }
 
-    private function _changeDataBeforeCreate($model_name, $data)
+    private function _changeDataBeforeCreate($model_name, $data, $model)
     {
         foreach(collect($this->model_columns)->where('type', 'boolean')->pluck('name') as $boolean_column) {
             if(!isset($data[$boolean_column]))
@@ -172,8 +172,36 @@ class BaseListController extends Controller
         // Role
         unset($data['users']);
         unset($data['permissions']);
-        // Comment
+        if($model_name === 'Role')
+        {
+            // remove role from old users in update mode
+            if($model){
+                $role_name = $model->name;
+                $old_users = \App\Models\User::whereHas('roles', function($q) use($role_name){
+                    $q->where('name', $role_name);
+                })->get();
+                foreach($old_users as $old_user){
+                    $old_user->removeRole($role_name);
+                }
+            }
+        }
+
         // User
+        unset($data['password_confirmation']);
+        if($model_name === 'User'){
+            if(isset($data['password'])) {
+                $data['password'] = \Hash::make($data['password']);
+            }
+            else{
+                if($model){ // update mode
+                    $data['password'] = $model->password;
+                }
+                else{ // create mode
+                    $data['password'] = \Hash::make('123456');
+                }
+            }
+        }
+        // Comment
 
         return $data;
         
@@ -193,18 +221,7 @@ class BaseListController extends Controller
         //     $this->request->session()->flash('alert-success', $this->model . ' Updated Successfully!');
 
         //     return redirect()->route('admin.' . $this->model_sm . '.list.index');
-        // }
-
-        // // users
-        // if($this->model === 'User'){
-        //     if(isset($data['password'])) {
-        //         $data['password'] = \Hash::make($data['password']);
-        //     }
-        //     else{
-        //         $data['password'] = $model->password;
-        //     }
-        // }
-        // unset($data['password_confirmation']);
+        // }        
 
 
 
@@ -227,13 +244,6 @@ class BaseListController extends Controller
         //     return redirect()->route('admin.' . $this->model_sm . '.list.index');
         // }
 
-        // // users
-        // if($this->model === 'User'){
-        //     if(isset($data['password'])) {
-        //         $data['password'] = \Hash::make($data['password']);
-        //     }
-        // }
-        // unset($data['password_confirmation']);
     }
 
     private function _saveRelatedDataAfterCreate($model_name, $data, $model)
@@ -277,6 +287,26 @@ class BaseListController extends Controller
         if($model_name === 'Block')
         {
             $model->pages()->sync($data['pages'], true);
+        }
+
+        // Role
+        if($model_name === 'Role')
+        {
+            if(!isset($data['permissions'])){
+                $data['permissions'] = [];
+            }
+            $permissions = \App\Models\Permission::whereIn('id', $data['permissions'])->get();
+            $model->syncPermissions($permissions);
+
+            if(!isset($data['users'])){
+                $data['users'] = [];
+            }
+
+            // add role to new selected users
+            $users = \App\Models\User::whereIn('id', $data['users'])->get();
+            foreach($users as $user){
+                $user->assignRole($model->name);
+            }
         }
     }
 
@@ -352,7 +382,7 @@ class BaseListController extends Controller
         }
         $data = $form->getFieldValues();
         $main_data = $data;
-        $data = $this->_changeDataBeforeCreate($model, $data);
+        $data = $this->_changeDataBeforeCreate($this->model, $data, $model);
 
         $model->update($data);
 
@@ -381,12 +411,9 @@ class BaseListController extends Controller
         $model->delete();
 
         if(env('APP_ENV') !== 'testing'){
-            activity($this->model)
-                ->performedOn($model)
-                ->causedBy(Auth::user())
+            activity($this->model)->performedOn($model)->causedBy(Auth::user())
                 ->log($this->model . ' Deleted');
         }
-
         $this->request->session()->flash('alert-success', $this->model . ' Deleted Successfully!');
 
         return redirect()->route('admin.' . $this->model_sm . '.list.index');
@@ -400,12 +427,9 @@ class BaseListController extends Controller
         $model->restore();
 
         if(env('APP_ENV') !== 'testing'){
-            activity($this->model)
-                ->performedOn($model)
-                ->causedBy(Auth::user())
+            activity($this->model)->performedOn($model)->causedBy(Auth::user())
                 ->log($this->model . ' Restored');
         }
-
         $this->request->session()->flash('alert-success', $this->model . ' Deleted Successfully!');
 
         return redirect()->route('admin.' . $this->model_sm . '.list.index');
@@ -492,11 +516,20 @@ class BaseListController extends Controller
                 return null;
             });
         }
+        elseif($this->model === 'Role') {
+            $datatable->addColumn('permissions', function($model) {
+                return implode(',<br>', $model->permissions()->pluck('name')->toArray());
+            })
+            ->addColumn('users', function($model) {
+                return implode(',<br>', \App\Models\User::role($model->name)->select('email')->pluck('email')->toArray());
+            });
+        }
+
         $datatable->addColumn('image', function($model) {
-            return '<img style="width:80%" src="' . $model->image . '">';
+            return '<img style="width:80%" src="' . asset($model->image) . '">';
         }); 
 
-        return $datatable->rawColumns(['id', 'image', 'content', 'order'])
+        return $datatable->rawColumns(['id', 'image', 'content', 'order', 'users', 'permissions'])
             ->toJson();
     }
 

@@ -124,7 +124,7 @@ class User extends Authenticatable
             'rule' => 'nullable|max:191',
             'help' => '',
             'form_type' => 'image',
-            'table' => false,
+            'table' => true,
         ],
         [
             'name' => 'activated',

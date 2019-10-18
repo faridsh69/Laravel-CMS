@@ -86,6 +86,8 @@ $output = [
             'feature',
             'field',
             'form',
+            'shop',
+            'product',
         ],
         'admin_routes' => [
             'blog',

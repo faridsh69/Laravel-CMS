@@ -30,7 +30,7 @@ class BaseFactory
                     $database = isset($column['database']) ? $column['database'] : null;
 
                     // if database column is nullable its not neccessary to fill it
-                    if($database === 'nullable' || $database === 'none'){
+                    if($database === 'nullable' || $database === 'none1'){
                         continue;
                     }
                     elseif($name === 'password'){
@@ -61,7 +61,14 @@ class BaseFactory
                     elseif($type === 'string'){
                         $fake_data = 'Fake ' . $faker->realText(20);
                     }
-
+                    elseif($type === 'array'){
+                        $fake_data = [1];
+                    }
+                    elseif($type === 'files_array'){
+                        $fake_data = [];
+                    }
+                    
+                    
                     $output[$name] = $fake_data;
                 }
 
@@ -75,22 +82,3 @@ class BaseFactory
         }
     }
 }
-
-// 'name' => $faker->name,
-// 'email' => $faker->unique()->safeEmail,
-// 'email_verified_at' => now(),
-// 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-// 'remember_token' => Str::random(10),
-
-
-// 'title' => $faker->uuid,
-// 'url' => $faker->uuid,
-// 'short_content' => $faker->address,
-// 'content' => $faker->text,
-// 'meta_description' => $faker->address . $faker->address,
-// 'keywords' => null,
-// 'meta_image' => null,
-// 'published' => true,
-// 'google_index' => true,
-// // 'creator_id' => 1,
-// // 'editor_id' => 1,
