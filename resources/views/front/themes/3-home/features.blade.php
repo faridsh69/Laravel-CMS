@@ -2,47 +2,27 @@
 			<div class="container">
 				<div class="row justify-content-center pb-5">
           <div class="col-md-12 heading-section text-center ftco-animate">
-            <h2 class="mb-4">Our Services</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+            <h2 class="mb-4">Why Is It Special</h2>
           </div>
         </div>
         <div class="row">
+          @php
+              $features = \App\Models\Feature::active()->get();
+          @endphp
+          @foreach($features as $feature)
         	<div class="col-md d-flex align-self-stretch ftco-animate">
             <div class="media block-6 services text-center d-block">
-              <div class="icon justify-content-center align-items-center d-flex"><span class="flaticon-pin"></span></div>
+              <div class="icon justify-content-center align-items-center d-flex">
+                <span class="flaticon-pin"></span>
+                <i class="{{ $feature['icon'] }}" aria-hidden="true"></i>
+              </div>
               <div class="media-body">
-                <h3 class="heading mb-3">Find Places Anywhere in the World</h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                <h3 class="heading mb-3">{{ $feature['title'] }}</h3>
+                <p>{{ $feature['description'] }}</p>
               </div>
             </div>      
-          </div>
-          <div class="col-md d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services text-center d-block mt-lg-5 pt-lg-4">
-              <div class="icon justify-content-center align-items-center d-flex"><span class="flaticon-detective"></span></div>
-              <div class="media-body">
-                <h3 class="heading mb-3">We have agents</h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              </div>
-            </div>      
-          </div>
-          <div class="col-md d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services text-center d-block">
-              <div class="icon justify-content-center align-items-center d-flex"><span class="flaticon-house"></span></div>
-              <div class="media-body">
-                <h3 class="heading mb-3">Buy &amp; Rent Modern Properties</h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              </div>
-            </div>      
-          </div>
-          <div class="col-md d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services text-center d-block mt-lg-5 pt-lg-4">
-              <div class="icon justify-content-center align-items-center d-flex"><span class="flaticon-purse"></span></div>
-              <div class="media-body">
-                <h3 class="heading mb-3">Making Money</h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              </div>
-            </div>      
-          </div>
+          </div>  
+          @endforeach   
         </div>
 			</div>
 		</section>

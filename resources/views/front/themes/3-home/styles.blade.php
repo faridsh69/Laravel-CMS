@@ -1,14 +1,10 @@
-<link rel="stylesheet" href="{{ asset('css/front/stayhome/css/open-iconic-bootstrap.min.css') }}">
-<link rel="stylesheet" href="{{ asset('css/front/stayhome/css/animate.css') }}">
-
-<link rel="stylesheet" href="{{ asset('css/front/stayhome/css/owl.carousel.min.css') }}">
-<link rel="stylesheet" href="{{ asset('/css/front/stayhome/css/owl.theme.default.min.css') }}">
-<link rel="stylesheet" href="{{ asset('/css/front/stayhome/css/magnific-popup.css') }}">
-
-<link rel="stylesheet" href="{{ asset('css/front/stayhome/css/aos.css') }}">
-
-<link rel="stylesheet" href="{{ asset('css/front/stayhome/css/ionicons.min.css') }}">
-
-<link rel="stylesheet" href="{{ asset('css/front/stayhome/css/flaticon.css') }}">
-<link rel="stylesheet" href="{{ asset('css/front/stayhome/css/icomoon.css') }}">
-<link rel="stylesheet" href="{{ asset('css/front/stayhome/css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('css/front/themes/3-home/css/open-iconic-bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/front/themes/3-home/css/animate.css') }}">
+<link rel="stylesheet" href="{{ asset('css/front/themes/3-home/css/owl.carousel.min.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/front/themes/3-home/css/owl.theme.default.min.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/front/themes/3-home/css/magnific-popup.css') }}">
+<link rel="stylesheet" href="{{ asset('css/front/themes/3-home/css/aos.css') }}">
+<link rel="stylesheet" href="{{ asset('css/front/themes/3-home/css/ionicons.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/front/themes/3-home/css/flaticon.css') }}">
+<link rel="stylesheet" href="{{ asset('css/front/themes/3-home/css/icomoon.css') }}">
+<link rel="stylesheet" href="{{ asset('css/front/themes/3-home/css/style.css') }}">

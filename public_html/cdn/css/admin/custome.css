@@ -70,6 +70,9 @@
 .m-login.m-login--1 .m-login__aside{
 	padding: 2rem 3rem;
 }
+.m-login.m-login--1 .m-login__content{
+	background-attachment: initial;
+}
 .display-none{
 	display: none !important;
 }

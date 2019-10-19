@@ -29,7 +29,7 @@ class SettingDeveloper extends Model
             'rule' => 'required',
             'form_type' => 'enum',
             'form_enum_class' => 'ThemeType',
-            'help' => 'capp is only theme of this cms',
+            'help' => 'Select your site theme',
         ],
         [
             'name' => 'throttle',

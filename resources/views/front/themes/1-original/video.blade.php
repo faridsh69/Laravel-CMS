@@ -1,9 +1,7 @@
-<!-- ***** Video Area Start ***** -->
 <div class="video-section">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <!-- Video Area Start -->
                 <div class="video-area" style="background-image: url( 
                     {{ asset(\Config::get('0-general.introduce_video_cover_photo')) }});">
                     <div class="video-play-btn">
@@ -14,4 +12,3 @@
         </div>
     </div>
 </div>
-<!-- ***** Video Area End ***** -->

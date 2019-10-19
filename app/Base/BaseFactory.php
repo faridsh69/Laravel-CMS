@@ -24,9 +24,7 @@ class BaseFactory
 
                     $name = $column['name'];
                     $type = $column['type'];
-                    $rule = $column['rule'];
                     $form_type = $column['form_type'];
-                    $help = isset($column['help']) ? $column['help'] : ' ';
                     $database = isset($column['database']) ? $column['database'] : null;
 
                     // if database column is nullable its not neccessary to fill it

@@ -11,12 +11,6 @@
                     <p>
                     {!! config('0-general.contact_us_description') !!}
                     </p>
-                    <span class="display-none">
-                        <p>Our Promise <br>
-                        We hate spam and would never mishandle the information you share with us.  
-                        Our mission is to help with your solar needs with quality, 
-                        expert service and nothing more.
-                    </span>
                 </div>
                 <div class="address-text">
                     <p><span>Address:</span>{{ config('0-contact.address') }}</p>
@@ -25,7 +19,7 @@
                     <p><span>Phone:</span>{{ config('0-contact.phone') }}</p>
                 </div>
                 <div class="email-text">
-                    <p><span>Email:</span> {{ config('0-contact.email') }} </p>
+                    <p><span>Email:</span>{{ config('0-contact.email') }}</p>
                 </div>
             </div>
             <div class="col-md-6">
