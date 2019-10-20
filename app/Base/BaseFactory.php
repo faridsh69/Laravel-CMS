@@ -28,7 +28,7 @@ class BaseFactory
                     $database = isset($column['database']) ? $column['database'] : null;
 
                     // if database column is nullable its not neccessary to fill it
-                    if($database === 'nullable' || $database === 'none1'){
+                    if($database === 'nullable' || $database === 'none'){
                         continue;
                     }
                     elseif($name === 'password'){
@@ -60,13 +60,11 @@ class BaseFactory
                         $fake_data = 'Fake ' . $faker->realText(20);
                     }
                     elseif($type === 'array'){
-                        $fake_data = [1];
+                        $fake_data = [];
                     }
                     elseif($type === 'files_array'){
                         $fake_data = [];
                     }
-                    
-                    
                     $output[$name] = $fake_data;
                 }
 

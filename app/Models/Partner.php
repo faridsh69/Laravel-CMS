@@ -2,13 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Base\BaseModel;
 
-class Partner extends Model
+class Partner extends BaseModel
 {
-    use SoftDeletes;
-
     // title, full_name, content, image, activated
     public $columns = [
         [
@@ -57,20 +54,4 @@ class Partner extends Model
             'table' => false,
         ],
     ];
-
-    protected $guarded = [];
-
-    protected $hidden = [
-        'deleted_at',
-    ];
-
-    public function getColumns()
-    {
-        return $this->columns;
-    }
-
-    public function scopeActive($query)
-    {
-        return $query->where('activated', 1);
-    }
 }

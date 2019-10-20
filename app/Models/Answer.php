@@ -2,15 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Base\BaseModel;
 
-class Answer extends Model
-{
-    use SoftDeletes;
-    
-    // answer, user_id, field_id, form_id, shop_id,
-
+class Answer extends BaseModel
+{    
+    // content, user_id, field_id, form_id, shop_id,
     public $columns = [
         [
             'name' => 'content',
@@ -71,17 +67,6 @@ class Answer extends Model
             'table' => false,
         ],
     ];
-
-    protected $guarded = [];
-
-    protected $hidden = [
-        'deleted_at',
-    ];
-
-    public function getColumns()
-    {
-        return $this->columns;
-    }
 
     public function shop()
     {

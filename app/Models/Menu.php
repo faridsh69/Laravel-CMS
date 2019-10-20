@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Base\BaseModel;
 use Kalnoy\Nestedset\NodeTrait;
 
-class Menu extends Model
+class Menu extends BaseModel
 {
     use NodeTrait;
-    use SoftDeletes;
 
     // title, url, activated, location, parent_id
     public $columns = [
@@ -62,21 +60,10 @@ class Menu extends Model
         ],
     ];
 
-    protected $guarded = [];
-
-    protected $hidden = [
-        'deleted_at',
-    ];
-
     protected $appends = ['text'];
 
     public function getTextAttribute()
     {
         return $this->title;
-    }
-
-    public function getColumns()
-    {
-        return $this->columns;
     }
 }

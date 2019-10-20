@@ -2,13 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Base\BaseModel;
 
-class Field extends Model
-{
-    use SoftDeletes;
-    
+class Field extends BaseModel
+{    
     // title, type, required, activated, options, order
     public $columns = [
         [
@@ -66,24 +63,8 @@ class Field extends Model
         ],
     ];
 
-    protected $guarded = [];
-
-    protected $hidden = [
-        'deleted_at',
-    ];
-
-    public function getColumns()
-    {
-        return $this->columns;
-    }
-
     public function fields()
     {
         return $this->belongsToMany('App\Models\Field', 'field_form', 'form_id', 'field_id');
-    }
-
-    public function scopeActive($query)
-    {
-        return $query->where('activated', 1);
     }
 }

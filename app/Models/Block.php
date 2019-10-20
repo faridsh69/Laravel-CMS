@@ -2,13 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Base\BaseModel;
 
-class Block extends Model
+class Block extends BaseModel
 {
-    use SoftDeletes;
-
     // widget_type, title, show_all_pages, pages_list, order, activated
     public $columns = [
         [
@@ -72,25 +69,9 @@ class Block extends Model
         ],
     ];
 
-    protected $guarded = [];
-
-    protected $hidden = [
-        'deleted_at',
-    ];
-
-    public function getColumns()
-    {
-        return $this->columns;
-    }
-
     public function pages()
     {
         return $this->belongsToMany('App\Models\Page', 'block_page', 'block_id', 'page_id');
-    }
-
-    public function scopeActive($query)
-    {
-        return $query->where('activated', 1);
     }
 
     public static function getPageBlocks($page_id)

@@ -2,13 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Base\BaseModel;
 
-class Address extends Model
+class Address extends BaseModel
 {
-    use SoftDeletes;
-
     public $columns = [
         [
             'name' => 'title',
@@ -96,17 +93,6 @@ class Address extends Model
             'relation' => 'users',
         ],
     ];
-
-    protected $guarded = [];
-
-    protected $hidden = [
-        'deleted_at',
-    ];
-
-    public function getColumns()
-    {
-        return $this->columns;
-    }
 
     public function user()
     {

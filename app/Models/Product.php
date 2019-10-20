@@ -5,12 +5,10 @@ namespace App\Models;
 use Actuallymab\LaravelComment\Contracts\Commentable;
 use Actuallymab\LaravelComment\HasComments;
 use Conner\Tagging\Taggable;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Base\BaseModel;
 
-class Product extends Model implements Commentable
+class Product extends BaseModel implements Commentable
 {
-	use SoftDeletes;
     use Taggable;
     use HasComments;
 
@@ -198,12 +196,6 @@ class Product extends Model implements Commentable
         ],
     ];
 
-    protected $guarded = [];
-
-    protected $hidden = [
-        'deleted_at',
-    ];
-
     protected $appends = ['image_thumbnail', 'image_main'];
 
     public function canBeRated(): bool
@@ -216,19 +208,9 @@ class Product extends Model implements Commentable
         return false;
     }
 
-    public function getColumns()
-    {
-        return $this->columns;
-    }
-
     public function category()
     {
         return $this->belongsTo('App\Models\Category', 'category_id', 'id');
-    }
-
-    public function scopeActive($query)
-    {
-        return $query->where('activated', 1);
     }
 
     public function images()

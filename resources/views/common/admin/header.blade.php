@@ -3,14 +3,14 @@
 		<meta name="robots" content="noindex">
 	@endif
 	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="author" content="farid shahidi">
-	<meta name="csrf-token" content="{{ csrf_token() }}">
-
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>{{ $meta['title'] }}</title>
 	<meta name="keywords" content="{{ $meta['keywords'] }}">
 	<meta name="description" content="{{ $meta['description'] }}">
+	<meta name="image" content="{{ $meta['image'] }}">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="farid shahidi">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	
 	<meta itemprop="name" content="{{ $meta['title'] }}">
 	<meta itemprop="description" content="{{ $meta['description'] }}">

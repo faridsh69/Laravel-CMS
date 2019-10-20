@@ -31,7 +31,7 @@ class SlidersTableSeeder extends Seeder
             [
             	'id' => 3,
             	'title' => 'Our Best Propositions for You!',
-            	'description' => 'When we create a model we can define type of column, type of input in forms, rules, help block, showing on table or not, ... We can tell laravel what we want in an static array then every other things will autogenerate!.',
+            	'description' => 'When we create a model we can define type of column, type of input in forms, rules, help block, showing on table or not, ...',
             	'image' => 'images/front/themes/1-original/header-feature.png',
             	'activated' => 1,
             ],

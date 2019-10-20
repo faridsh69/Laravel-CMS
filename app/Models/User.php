@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Actuallymab\LaravelComment\CanComment;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
@@ -195,19 +195,4 @@ class User extends Authenticatable
 
         return config('0-general.default_user_image');
     }
-
-    // public static function boot()
-    // {
-    //     parent::boot();
-
-    //     self::creating(function($model){
-    //         $model->activated = $model->activated ? 1 : 0;
-    //         $model->is_male = $model->is_male ? 1 : 0;
-    //     });
-
-    //     self::updating(function($model){
-    //         $model->activated = $model->activated ? 1 : 0;
-    //         $model->is_male = $model->is_male ? 1 : 0;
-    //     });
-    // }
 }

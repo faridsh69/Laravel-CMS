@@ -2,13 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Base\BaseModel;
 
-class Image extends Model
+class Image extends BaseModel
 {
-    use SoftDeletes;
-
     // title, imageable_type, imageable_id, src_main, src_thumbnail, width, height
     public $columns = [
         [
@@ -75,17 +72,6 @@ class Image extends Model
             'table' => true,
         ],
     ];
-
-    protected $guarded = [];
-
-    protected $hidden = [
-        'deleted_at',
-    ];
-
-    public function getColumns()
-    {
-        return $this->columns;
-    }
 
     public function imageable()
     {

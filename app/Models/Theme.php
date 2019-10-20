@@ -2,13 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Base\BaseModel;
 
-class Theme extends Model
+class Theme extends BaseModel
 {
-    use SoftDeletes;
-
 	public $columns = [
         [
             'name' => 'title',
@@ -38,15 +35,4 @@ class Theme extends Model
             'table' => false,
         ],
     ];
-
-    protected $guarded = [];
-
-    protected $hidden = [
-        'deleted_at',
-    ];
-
-    public function getColumns()
-    {
-        return $this->columns;
-    }
 }

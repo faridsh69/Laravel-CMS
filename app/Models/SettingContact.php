@@ -2,15 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Base\BaseModel;
 
-class SettingContact extends Model
+class SettingContact extends BaseModel
 {
-    use SoftDeletes;
-
-    public $guarded = [];
-
     public $columns = [
         [
             'name' => 'email',
@@ -93,13 +88,4 @@ class SettingContact extends Model
             'form_type' => '',
         ],
     ];
-
-    protected $hidden = [
-        'deleted_at',
-    ];
-
-    public function getColumns()
-    {
-        return $this->columns;
-    }
 }

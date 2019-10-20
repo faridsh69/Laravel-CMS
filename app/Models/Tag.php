@@ -57,7 +57,7 @@ class Tag extends TagSpatie
 
     public function getTitleAttribute()
     {
-        return "{$this->name}";
+        return $this->name;
     }
 
     public function getColumns()

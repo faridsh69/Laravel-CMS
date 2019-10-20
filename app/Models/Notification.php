@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Base\BaseModel;
 
-class Notification extends Model
+class Notification extends BaseModel
 {
     public $incrementing = false;
 
@@ -60,24 +60,12 @@ class Notification extends Model
         ],
     ];
 
-    protected $guarded = [];
-
-    protected $hidden = [
-        'deleted_at',
-    ];
-
     public function getDataAttribute($data)
     {
         if(isset($data) && $data !== '[]'){
-            // dd(json_decode($data)->data);
             return json_decode($data)->data;
         }
         return '-';
-    }
-
-    public function getColumns()
-    {
-        return $this->columns;
     }
 
     public function user()

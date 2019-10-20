@@ -2,17 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Kalnoy\Nestedset\NodeTrait;
+use App\Base\BaseModel;
 
-class Category extends Model
+class Category extends BaseModel
 {
     use NodeTrait;
-    use SoftDeletes;
 
-    // title, url, description, meta_description, image, activated, google_index, canonical_url, parent_id, _rgt, _lft, shop_id,
-
+    // title, url, description, meta_description, image, activated, google_index, canonical_url, parent_id, shop_id,
     public $columns = [
         [
             'name' => 'title',
@@ -87,14 +84,6 @@ class Category extends Model
             'table' => false,
         ],
         [
-            'name' => '_rgt',
-            'type' => 'integer',
-            'database' => 'none',
-            'rule' => 'nullable',
-            'form_type' => 'none',
-            'table' => false,
-        ],
-        [
             'name' => 'order',
             'type' => 'integer',
             'database' => '',
@@ -127,26 +116,11 @@ class Category extends Model
         ],
     ];
 
-    protected $fillable = [
-        'title', 'url', 'description', 'meta_description', 'image', 'activated', 'google_index', 'canonical_url', 'parent_id', '_rgt', '_lft', 'shop_id', 'order',
-    ];
-
     protected $appends = ['text'];
-
-    protected $guarded = [];
-
-    protected $hidden = [
-        'deleted_at',
-    ];
 
     public function getTextAttribute()
     {
         return $this->title;
-    }
-
-    public function getColumns()
-    {
-        return $this->columns;
     }
 
     public function products()
@@ -158,19 +132,5 @@ class Category extends Model
     public function shop()
     {
         return $this->belongsTo('App\Models\Shop', 'shop_id', 'id');
-    }
-
-    public function scopeActive($query)
-    {
-        return $query->where('activated', 1);
-    }
-
-    public function getImageAttribute($image)
-    {
-        if(isset($image)) {
-            return $image; 
-        }
-
-        return config('0-general.default_product_image');
     }
 }

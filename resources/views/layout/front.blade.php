@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="{{ config('app.locale') }}">
 @include('common.front.header')
 <body>
 	@yield('content')

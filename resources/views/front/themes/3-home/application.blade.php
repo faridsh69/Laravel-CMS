@@ -1,5 +1,5 @@
 @php
-    $slider = \App\Models\Slider::where('id', 3)->first();
+    $slider = \App\Models\Slider::where('id', 2)->first();
 @endphp
 <section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb">
 	<div class="container">
