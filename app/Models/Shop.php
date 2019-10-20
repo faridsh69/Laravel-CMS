@@ -255,15 +255,6 @@ class Shop extends BaseModel implements Commentable
             'table' => true,
         ],
         [
-            'name' => 'meta_description',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => 'nullable',
-            'help' => 'Meta description should have minimum 30 and maximum 191 characters.',
-            'form_type' => 'textarea',
-            'table' => false,
-        ],
-        [
             'name' => 'keywords',
             'type' => 'string',
             'database' => 'nullable',

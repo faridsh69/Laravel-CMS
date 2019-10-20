@@ -22,35 +22,26 @@ class BaseModel extends Model
                 'name' => 'title',
                 'type' => 'string',
                 'database' => '',
-                'rule' => 'required|max:60|min:5|unique:blogs,title,',
-                'help' => 'Title should be unique, minimum 5 and maximum 60 characters. read https://moz.com/learn/seo/title-tag',
+                'rule' => 'required|min:10|max:60',
+                'help' => 'Title should be unique, minimum 10 characters, maximum 60 characters.',
                 'form_type' => '',
                 'table' => true,
             ],
             'url' => [
                 'name' => 'url',
                 'type' => 'string',
-                'database' => 'nullable',
-                'rule' => '',
-                'help' => 'Url should be unique, contain lowercase characters and numbers and -',
+                'database' => 'nullable', // blog, page, menu is required
+                'rule' => 'nullable|min:5|max:80|regex:/^[a-z0-9-]+$/',
+                'help' => 'Url should be unique, contain [a-z, 0-9, -], maximum 80 characters',
                 'form_type' => '',
                 'table' => false,
             ],
             'description' => [
                 'name' => 'description',
-                'type' => 'string',
+                'type' => 'text',
                 'database' => 'nullable',
-                'rule' => 'nullable|max:191',
-                'help' => 'Description will show in lists instead of content.',
-                'form_type' => 'textarea',
-                'table' => false,
-            ],
-            'meta_description' => [
-                'name' => 'meta_description',
-                'type' => 'string',
-                'database' => 'nullable',
-                'rule' => 'nullable|max:191|min:70',
-                'help' => 'Meta description should have minimum 70 and maximum 191 characters.',
+                'rule' => 'nullable',
+                'help' => 'Title should have 50 characters, maximum 160 characters.',
                 'form_type' => 'textarea',
                 'table' => false,
             ],
@@ -58,9 +49,18 @@ class BaseModel extends Model
                 'name' => 'content',
                 'type' => 'text',
                 'database' => '',
-                'rule' => 'required', // 'required|seo_header',
+                'rule' => 'required|seo_header', // only page and blog need seo_header
                 'help' => '',
                 'form_type' => 'ckeditor',
+                'table' => true,
+            ],
+            'image' => [
+                'name' => 'image',
+                'type' => 'string',
+                'database' => 'nullable',
+                'rule' => 'nullable|max:191',
+                'help' => 'Select main image.',
+                'form_type' => 'image',
                 'table' => true,
             ],
             'keywords' => [
@@ -68,17 +68,8 @@ class BaseModel extends Model
                 'type' => 'string',
                 'database' => 'nullable',
                 'rule' => 'nullable|max:191',
-                'help' => 'Its not important for google anymore',
+                'help' => 'Keywords is optional and is not important for google',
                 'form_type' => '',
-                'table' => false,
-            ],
-            'image' => [
-                'name' => 'image',
-                'type' => 'string',
-                'database' => 'nullable',
-                'rule' => 'nullable|max:191',
-                'help' => 'Meta image shows when this page is shared in social networks.',
-                'form_type' => 'image',
                 'table' => false,
             ],
             'activated' => [
@@ -87,7 +78,7 @@ class BaseModel extends Model
                 'database' => 'default',
                 'rule' => 'boolean',
                 'help' => '',
-                'form_type' => '', // switch-m
+                'form_type' => 'switch-m', // switch-m, checkbox, switch-bootstrap-m
                 'table' => false,
             ],
             'google_index' => [
@@ -95,7 +86,7 @@ class BaseModel extends Model
                 'type' => 'boolean',
                 'database' => 'default',
                 'rule' => 'boolean',
-                'help' => 'Google will index this page.',
+                'help' => 'Shows google robots will follow this link.',
                 'form_type' => 'checkbox',
                 'table' => false,
             ],
@@ -103,38 +94,12 @@ class BaseModel extends Model
                 'name' => 'canonical_url',
                 'type' => 'string',
                 'database' => 'nullable',
-                'rule' => 'nullable|max:191|url',
-                'help' => 'Canonical url just used for seo redirect duplicate contents.',
+                'rule' => 'nullable|max:191',
+                'help' => 'Canonical url is neccessary if one content will show from two different urls.',
                 'form_type' => '',
                 'table' => false,
             ],
         ];
-
-        // title, 'https://moz.com/learn/seo/title-tag'
-        // url, 'https://moz.com/learn/seo/url'
-        // description 50–155 -> use in summary;
-        // content, h1 h2 
-        // keywords
-        // image
-        // activated
-        // google_index
-        // canonical_url
-        // category_id
-        // tags
-        // related_blogs
-
-        // title, 60 'https://moz.com/learn/seo/title-tag'
-        // url, 'https://moz.com/learn/seo/url'
-        // description 50–155 -> use in summary;
-        // content, h1 h2 
-        // keywords
-        // image
-        // activated
-        // google_index
-        // canonical_url
-        // category_id
-        // tags
-        // related_blogs
 
         $columns = $this->columns;
         foreach($columns as $key => $column)
@@ -152,21 +117,13 @@ class BaseModel extends Model
         return $query->where('activated', 1);
     }
 
-    public function getMetaImageAttribute($value)
-    {
-        if($value){
-            return $value;
-        }
-        return config('0-general.default_meta_image');
-    }
-
     public function getImageAttribute($image)
     {
         if(isset($image)) {
             return $image; 
         }
 
-        return config('0-general.default_product_image');
+        return config('0-general.default_meta_image');
     }
 
 }

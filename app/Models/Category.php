@@ -9,7 +9,7 @@ class Category extends BaseModel
 {
     use NodeTrait;
 
-    // title, url, description, meta_description, image, activated, google_index, canonical_url, parent_id, shop_id,
+    // title, url, description, image, activated, google_index, canonical_url, parent_id, shop_id,
     public $columns = [
         [
             'name' => 'title',
@@ -35,15 +35,6 @@ class Category extends BaseModel
             'database' => 'nullable',
             'rule' => 'nullable|max:191',
             'help' => 'Brief description about this category.',
-            'form_type' => 'textarea',
-            'table' => false,
-        ],
-        [
-            'name' => 'meta_description',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => 'nullable|max:191|min:70',
-            'help' => 'Meta description should have minimum 70 and maximum 191 characters.',
             'form_type' => 'textarea',
             'table' => false,
         ],
