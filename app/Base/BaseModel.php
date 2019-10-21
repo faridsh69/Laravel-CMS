@@ -22,8 +22,8 @@ class BaseModel extends Model
                 'name' => 'title',
                 'type' => 'string',
                 'database' => '',
-                'rule' => 'required|min:10|max:60',
-                'help' => 'Title should be unique, minimum 10 characters, maximum 60 characters.',
+                'rule' => 'required|min:3|max:60',
+                'help' => 'Title should be unique, minimum 3 characters, maximum 60 characters.',
                 'form_type' => '',
                 'table' => true,
             ],
@@ -31,7 +31,7 @@ class BaseModel extends Model
                 'name' => 'url',
                 'type' => 'string',
                 'database' => 'nullable', // blog, page, menu is required
-                'rule' => 'nullable|min:5|max:80|regex:/^[a-z0-9-]+$/',
+                'rule' => 'nullable|max:80|regex:/^[a-z0-9-]+$/',
                 'help' => 'Url should be unique, contain [a-z, 0-9, -], maximum 80 characters',
                 'form_type' => '',
                 'table' => false,
@@ -49,7 +49,7 @@ class BaseModel extends Model
                 'name' => 'content',
                 'type' => 'text',
                 'database' => '',
-                'rule' => 'required|seo_header', // only page and blog need seo_header
+                'rule' => 'required', // only page and blog need seo_header
                 'help' => '',
                 'form_type' => 'ckeditor',
                 'table' => true,
