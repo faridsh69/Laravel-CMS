@@ -50,6 +50,7 @@ class AppServiceProvider extends ServiceProvider
         config(['0-contact' => $contact_settings]);
         config(['app.debug' => config('0-developer.app_debug') ]);
         config(['app.env' => config('0-developer.app_env') ]);
+        config(['app.locale' => config('0-developer.app_language') ]);
 
         // Validator::extend('seo_header', '\App\Rules\SeoHeading@passes');
     }

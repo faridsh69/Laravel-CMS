@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
+<html lang="{{ config('app.locale') }}" dir="{{ config('0-developer.direction') }}">
 	<head>
 		<meta name="robots" content="noindex">
 		@if(!config('0-general.google_index'))
