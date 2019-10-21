@@ -63,6 +63,10 @@ class EricSettingsTableSeeder extends Seeder
 			'email_password' => '********',
 			'email_default_ccc' => 'farid.sh69@gmail.com',
 			'email_default_subject' => 'Laravel Cms',
+			'seo_title_min' => '3',
+			'seo_title_max' => '60',
+			'seo_url_max' => '80',
+			'seo_url_regex' => '/^[a-z0-9-]+$/',
 			'scripts' => '<!-- Call Tracking start  --> 
 <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script> 
 <script async custom-element="amp-call-tracking" src="https://cdn.ampproject.org/v0/amp-call-tracking-0.1.js"></script>

@@ -1,12 +1,10 @@
-# Laravel CMS
+# Laravel CMS - Full Feature, Seo Friendly
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
-## Dont rewrite any admin code in your application any more!
+## Dont rewrite any code in your application!
 
-### This is a Laravel CMS that handle migrations, forms, and admin panel with good structure for and theme and widgets. 
-### You should just define an array in each model and define what you want from this application, 
-### Then every thing will be ready also you can change everything as you need.
+#### This is a Laravel CMS that handle migrations, forms, seeders, factory, policies, routes, controllers, unit tests, tables, export to pdf excel print... with specific structure that there is no duplicate codes. You should just define an array in each model and define what you want from this application, Then every thing will be ready with capabality to custome it in every sections of code.
 
 Auto generate:
 

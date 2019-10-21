@@ -129,5 +129,33 @@ class SettingGeneral extends BaseModel
             'form_type' => 'textarea',
             'database' => 'nullable',
         ],
+        [
+            'name' => 'site_verification_google_code',
+            'type' => 'text',
+            'rule' => '',
+            'form_type' => 'textarea',
+            'database' => 'nullable',
+        ],
+        [
+            'name' => 'google_analytics_id',
+            'type' => 'string',
+            'rule' => '',
+            'help' => 'ID of Google Analytics.',
+            'form_type' => '',
+        ],
+        [
+            'name' => 'hotjar_id',
+            'type' => 'string',
+            'rule' => '',
+            'help' => 'ID of Hotjar.',
+            'form_type' => '',
+        ],
+        [
+            'name' => 'crisp_id',
+            'type' => 'string',
+            'rule' => '',
+            'help' => 'ID of crisp chat.',
+            'form_type' => '',
+        ],
     ];
 }
