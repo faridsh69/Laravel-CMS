@@ -26,10 +26,10 @@ class SettingDeveloper extends BaseModel
         [
             'name' => 'app_language',
             'type' => 'string',
+            'database' => 'nullable',
             'rule' => 'required',
-            'form_type' => 'enum',
-            'form_enum_class' => 'DirectionType',
-            'help' => 'Select direction for texts',
+            'form_type' => '',
+            'help' => 'Specify application language.',
         ],  
         [
             'name' => 'theme',

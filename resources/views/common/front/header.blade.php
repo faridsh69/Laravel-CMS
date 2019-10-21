@@ -34,7 +34,6 @@
 	<meta property="twitter:creator" content="farid shahidi">
 	<meta property="twitter:image" content="{{ $meta['image'] }}">
 	<meta property="twitter:domain" content="{{ url('/') }}">
-	
 
 	@include('common.front.styles')
 </head>
