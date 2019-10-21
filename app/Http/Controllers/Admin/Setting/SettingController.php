@@ -16,8 +16,6 @@ class SettingController extends BaseAdminController
     {
         $this->meta['title'] = __(ucfirst($this->section) . ' Setting Manager');
         $this->authorize('index', $this->model_class);
-    	// Artisan::call('config:clear');
-        // $model = Config::get('0-' . $this->section);
         $model = $this->repository->first();
         $form = $this->form_builder->create($this->model_form, [
             'method' => 'PUT',
@@ -33,7 +31,6 @@ class SettingController extends BaseAdminController
     public function putSettingForm()
     {
         $this->authorize('index', $this->model_class);
-        // $model = Config::get('0-' . $this->section);
         $model = $this->repository->first();
 
         $form = $this->form_builder->create($this->model_form, [
@@ -66,8 +63,8 @@ class SettingController extends BaseAdminController
             ->log(json_encode($model));
             
         $this->request->session()->flash('alert-success', $this->model . ' Updated Successfully!');
-        // Artisan::call('config:clear');
-        // sleep(1);
+        Artisan::call('config:cache');
+        sleep(1);
 
         return redirect()->route('admin.setting.' . $this->section);
     }

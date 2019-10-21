@@ -23,6 +23,8 @@ class BaseTest extends TestCase
 
     public function resourceTest()
     {
+
+
         $class_name = 'App\\Models\\' . $this->model;
         $model_class = new $class_name();
 

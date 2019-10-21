@@ -35,6 +35,9 @@ class EricSettingsTableSeeder extends Seeder
                         We hate spam and would never mishandle the information you share with us.  
                         Our mission is to help with your solar needs with quality, 
                         expert service and nothing more.</p>',
+        	'google_analytics_id' => '',
+			'hotjar_id' => '',
+			'crisp_id' => '',
         ];
 
         $contact_settings = [
@@ -55,7 +58,7 @@ class EricSettingsTableSeeder extends Seeder
 
         $developer_settings = [
 			'app_debug' => '1',
-			'app_env' => '1',
+			'app_env' => 'production',
 			'theme' => '1-original',
 			'throttle' => '15,0.2',
 			'lazy_loading' => '1',

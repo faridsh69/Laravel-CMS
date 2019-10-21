@@ -31,6 +31,9 @@ class SettingsTableSeeder extends Seeder
 			'introduce_video_cover_photo' => 'images/front/themes/1-original/video.jpg',
 			'subscribe_description' => 'Join our team.',
 			'contact_us_description' => 'Dont hesitate to cantact with us.',
+			'google_analytics_id' => '',
+			'hotjar_id' => '',
+			'crisp_id' => '',
         ];
 
         $contact_settings = [
@@ -51,7 +54,7 @@ class SettingsTableSeeder extends Seeder
 
         $developer_settings = [
 			'app_debug' => '1',
-			'app_env' => '1',
+			'app_env' => 'production',
 			'theme' => '1-original',
 			'throttle' => '15,0.2',
 			'lazy_loading' => '1',

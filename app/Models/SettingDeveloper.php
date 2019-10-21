@@ -16,9 +16,12 @@ class SettingDeveloper extends BaseModel
         ],
         [
             'name' => 'app_env',
-            'type' => 'boolean',
-            'rule' => 'boolean',
-            'form_type' => 'switch-bootstrap-m',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => '',
+            'help' => 'Select Production always',
+            'form_type' => 'enum',
+            'form_enum_class' => 'AppEnvType',
         ],
         [
             'name' => 'theme',

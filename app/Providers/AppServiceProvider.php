@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $seconds = 1;
+        $seconds = 10000;
         if(!Schema::hasTable('setting_generals') || SettingGeneral::first() === null){
             return 1;
         }
@@ -44,6 +44,7 @@ class AppServiceProvider extends ServiceProvider
             if($developer_setings_database) {return $developer_setings_database->toArray();}
             return [];
         });
+
         config(['0-general' => $general_settings]);
         config(['0-developer' => $developer_settings]);
         config(['0-contact' => $contact_settings]);

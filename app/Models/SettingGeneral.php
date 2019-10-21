@@ -139,6 +139,7 @@ class SettingGeneral extends BaseModel
         [
             'name' => 'google_analytics_id',
             'type' => 'string',
+            'database' => 'nullable',
             'rule' => '',
             'help' => 'ID of Google Analytics.',
             'form_type' => '',
@@ -146,6 +147,7 @@ class SettingGeneral extends BaseModel
         [
             'name' => 'hotjar_id',
             'type' => 'string',
+            'database' => 'nullable',
             'rule' => '',
             'help' => 'ID of Hotjar.',
             'form_type' => '',
@@ -153,6 +155,7 @@ class SettingGeneral extends BaseModel
         [
             'name' => 'crisp_id',
             'type' => 'string',
+            'database' => 'nullable',
             'rule' => '',
             'help' => 'ID of crisp chat.',
             'form_type' => '',
