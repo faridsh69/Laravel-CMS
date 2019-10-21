@@ -80,5 +80,33 @@ class SettingDeveloper extends BaseModel
             'form_type' => 'textarea',
             'database' => 'nullable',
         ],
+        [
+            'name' => 'seo_title_min',
+            'type' => 'string',
+            'rule' => '',
+            'form_type' => '',
+            'database' => 'nullable',
+        ],
+        [
+            'name' => 'seo_title_max',
+            'type' => 'string',
+            'rule' => '',
+            'form_type' => '',
+            'database' => 'nullable',
+        ],
+        [
+            'name' => 'seo_url_max',
+            'type' => 'string',
+            'rule' => '',
+            'form_type' => '',
+            'database' => 'nullable',
+        ],
+        [
+            'name' => 'seo_url_regex',
+            'type' => 'string',
+            'rule' => '',
+            'form_type' => '',
+            'database' => 'nullable',
+        ],
     ];
 }

@@ -60,6 +60,10 @@ class SettingsTableSeeder extends Seeder
 			'email_default_ccc' => 'farid.sh69@gmail.com',
 			'email_default_subject' => 'Laravel Cms',
 			'scripts' => '<script> console.log("Script is running..."); </script>',
+			'seo_title_min' => '3',
+			'seo_title_max' => '60',
+			'seo_url_max' => '80',
+			'seo_url_regex' => '/^[a-z0-9-]+$/',
         ];
 
         SettingGeneral::updateOrCreate(['id' => 1], $general_settings);

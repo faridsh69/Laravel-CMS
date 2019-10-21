@@ -19,6 +19,6 @@ class SeoController extends BaseAdminController
 		$this->authorize('index_settingdeveloper');
 		$this->meta['title'] = 'Seo Content Rules';
 
-		return view('admin.setting.seo.rules', ['meta' => $this->meta]);
+		return view('admin.setting.seo.content-rules', ['meta' => $this->meta]);
 	}
 }

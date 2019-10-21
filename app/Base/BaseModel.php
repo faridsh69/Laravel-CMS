@@ -22,8 +22,9 @@ class BaseModel extends Model
                 'name' => 'title',
                 'type' => 'string',
                 'database' => '',
-                'rule' => 'required|min:3|max:60',
-                'help' => 'Title should be unique, minimum 3 characters, maximum 60 characters.',
+                'rule' => 'required|min:' . config('0-developer.seo_title_min')
+                . '|max:' . config('0-developer.seo_title_max'),
+                'help' => 'Title should be unique.',
                 'form_type' => '',
                 'table' => true,
             ],
@@ -31,8 +32,9 @@ class BaseModel extends Model
                 'name' => 'url',
                 'type' => 'string',
                 'database' => 'nullable', // blog, page, menu is required
-                'rule' => 'nullable|max:80|regex:/^[a-z0-9-]+$/',
-                'help' => 'Url should be unique, contain [a-z, 0-9, -], maximum 80 characters',
+                'rule' => 'nullable|max:' . config('0-developer.seo_url_max') 
+                .'|regex:/^[a-z0-9-]+$/',
+                'help' => 'Url should be unique, contain [a-z, 0-9, -]',
                 'form_type' => '',
                 'table' => false,
             ],
