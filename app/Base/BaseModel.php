@@ -30,7 +30,7 @@ class BaseModel extends Model
                     . '|max:' . config('0-developer.seo_title_max'),
                     'help' => 'Title should be unique.',
                     'form_type' => '',
-                    'table' => false,
+                    'table' => true,
                 ],
                 'url' => [
                     'name' => 'url',
@@ -40,7 +40,7 @@ class BaseModel extends Model
                     .'|regex:/^[a-z0-9-]+$/',
                     'help' => 'Url should be unique, contain [a-z, 0-9, -]',
                     'form_type' => '',
-                    'table' => false,
+                    'table' => true,
                 ],
                 'description' => [
                     'name' => 'description',
@@ -49,7 +49,7 @@ class BaseModel extends Model
                     'rule' => 'nullable',
                     'help' => 'Title should have 50 characters, maximum 160 characters.',
                     'form_type' => 'textarea',
-                    'table' => false,
+                    'table' => true,
                 ],
                 'content' => [
                     'name' => 'content',
@@ -58,7 +58,7 @@ class BaseModel extends Model
                     'rule' => 'required', // only page and blog need seo_header
                     'help' => '',
                     'form_type' => 'ckeditor',
-                    'table' => true,
+                    'table' => false,
                 ],
                 'image' => [
                     'name' => 'image',

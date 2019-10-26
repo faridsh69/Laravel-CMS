@@ -5,7 +5,7 @@
             <div class="col-12 text-center">
                 <!-- Heading Text  -->
                 <div class="section-heading">
-                    <h2>Services</h2>
+                    <h2>{{ __('services_title') }}</h2>
                     <div class="line-shape"></div>
                 </div>
             </div>

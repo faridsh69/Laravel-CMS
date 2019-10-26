@@ -21,6 +21,6 @@
         </nav>
     </div>
     <div class="copyright-text">
-        <p>Copyright ©2019. Designed by farid.sh69@gmail.com</p>
+        <p>{{ __('copy_right') }}</p>
     </div>
 </footer>

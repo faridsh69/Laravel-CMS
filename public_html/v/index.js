@@ -4,58 +4,57 @@
 	All rights reserved
 */
 ! function() {
-	var domain_name = 'http://www.eric.com';
-    var y, w = Date.now(),
-        b = {};
+    var e, t = Date.now(),
+        n = {};
     window.windySentErrors = [], window.onerror = i.bind(null, "error");
     try {
         new Float32Array(100)
     } catch (e) {
-        return i("startup", "Type Array not supported", null, null, null, e, "errorLogger"), document.addEventListener("DOMContentLoaded", function() {
+        return i("startup", "Type Array not supported", null, null, null, e, "errorLogger"), void document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("not-supported").style.display = "block"
         })
     }
 
-    function i(e, t, n, i, s, a, r) {
-        var o, l, c = W.rootScope,
-            d = Date.now();
+    function i(i, a, r, o, l, c, d) {
+        var u, h, f = W.rootScope,
+            m = Date.now();
         try {
-            "error" === e && "object" == typeof t ? (t = (l = t).message, n = n || l.filename, i = i || l.lineno, s = s || l.colno, o = l.error && l.error.stack) : a && "object" == typeof a && (n = n || a.fileName || a.sourceURL, t = (t && "string" == typeof t ? t : "") + ": " + a.message, o = a.stack, i = i || a.lineNumber || a.line, s = s || a.columNumber || a.column);
-            var u = {
-                    runningMs: d - w,
-                    type: e,
-                    module: r,
-                    msg: t,
-                    line: i,
-                    col: s,
+            "error" === i && "object" == typeof a ? (a = (h = a).message, r = r || h.filename, o = o || h.lineno, l = l || h.colno, u = h.error && h.error.stack) : c && "object" == typeof c && (r = r || c.fileName || c.sourceURL, a = (a && "string" == typeof a ? a : "") + ": " + c.message, u = c.stack, o = o || c.lineNumber || c.line, l = l || c.columNumber || c.column);
+            var p = {
+                    runningMs: m - t,
+                    type: i,
+                    module: d,
+                    msg: a,
+                    line: o,
+                    col: l,
                     url: window.location.href,
-                    script: n && n.replace(/.*\//, ""),
+                    script: r && r.replace(/.*\//, ""),
                     ver: W.version,
                     target: W.target,
-                    stack: o
+                    stack: u
                 },
-                h = T(u.msg, 20) || "universal-key",
-                m = 0;
-            if ((m = h in b ? b[h]++ : b[h] = 0) % 10 || 100 < m) return;
-            if (0 < m && (u.msg = "(" + m + "x) " + u.msg, u.repeated = m), i && u.script && (u.scriptLine = T(u.script, 10) + "-" + i), W.latestBcasts && W.latestBcasts.length) {
-                u.latestBcast = "";
-                for (var f = 0; f < W.latestBcasts.length; f++) u.latestBcast += W.latestBcasts[f].txt + " (" + (d - W.latestBcasts[f].ts) + "ms. ago)\n"
+                g = s(p.msg, 20) || "universal-key",
+                v = 0;
+            if ((v = g in n ? n[g]++ : n[g] = 0) % 10 || v > 100) return;
+            if (v > 0 && (p.msg = "(" + v + "x) " + p.msg, p.repeated = v), o && p.script && (p.scriptLine = s(p.script, 10) + "-" + o), W.latestBcasts && W.latestBcasts.length) {
+                p.latestBcast = "";
+                for (var y = 0; y < W.latestBcasts.length; y++) p.latestBcast += W.latestBcasts[y].txt + " (" + (m - W.latestBcasts[y].ts) + "ms. ago)\n"
             }
-            if (c) {
-                u.uid = c.user && c.user.username;
-                var p = W.store && W.store.get("country") || "xx";
-                y || (y = p + "-" + (u.uid ? u.uid : c.sessionCounter)), u.sessionName = y, u.sessionCounter = c.sessionCounter, u.lang = W.store && W.store.get("usedLang"), u.retina = c.isRetina, u.size = window.screen.width + "x" + window.screen.height, u.glParticles = c.glParticlesOn, u.platform = c.platform
+            if (f) {
+                p.uid = f.user && f.user.username;
+                var w = W.store && W.store.get("country") || "xx";
+                e || (e = w + "-" + (p.uid ? p.uid : f.sessionCounter)), p.sessionName = e, p.sessionCounter = f.sessionCounter, p.lang = W.store && W.store.get("usedLang"), p.retina = f.isRetina, p.size = window.screen.width + "x" + window.screen.height, p.glParticles = f.glParticlesOn, p.platform = f.platform
             }
-            "index" === W.target && (window.top !== window.self && (u.target = "unlegalIframe"), /Android.* wv\)/.test(window.navigator.userAgent) && (u.target = "unlegalWebView"), window.cordova && (u.target = "unlegalCordova")), u.errorID = T(u.msg, 60);
-            var g = new XMLHttpRequest,
-                v = JSON.stringify(u);
-            g.open("post", "http://www.eric.com/test-windy/sedlina/err", !0), g.setRequestHeader("Content-type", "application/json; charset=utf-8"), g.onreadystatechange = function() {
-                4 === g.readyState && (delete u.uid, window.windySentErrors.push(u))
-            }, g.send(v)
+            "index" === W.target && (window.top !== window.self && (p.target = "unlegalIframe"), /Android.* wv\)/.test(window.navigator.userAgent) && (p.target = "unlegalWebView"), window.cordova && (p.target = "unlegalCordova")), p.errorID = s(p.msg, 60);
+            var b = new XMLHttpRequest,
+                T = JSON.stringify(p);
+            b.open("post", "http://www.eric.com/test-windy/sedlina/err", !0), b.setRequestHeader("Content-type", "application/json; charset=utf-8"), b.onreadystatechange = function() {
+                4 === b.readyState && (delete p.uid, window.windySentErrors.push(p))
+            }, b.send(T)
         } catch (e) {}
     }
 
-    function T(e, t) {
+    function s(e, t) {
         return e ? e.toString().substr(0, t).toLowerCase().replace(/[^\w\s-]/g, "").replace(/[\s_-]+/g, "-").replace(/^-+|-+$/g, "") : ""
     }
     window.wError = function(e, t, n) {
@@ -65,49 +64,49 @@
 /*!
 Adrian Cooney <cooney.adrian@gmail.com> License: MIT */
 function(e) {
-    var s = {};
+    var t = {};
 
-    function a(n) {
-        var i = [];
-        n.dependencies.forEach(function(e) {
-            var t = s[e];
-            if (!t) throw new Error("DI error: Module " + e + " not defined. Required by: " + n.name);
-            t.wasLoaded ? i.push(t.loaded) : i.push(a(t))
+    function n(i) {
+        var s = [];
+        i.dependencies.forEach(function(e) {
+            var a = t[e];
+            if (!a) throw new Error("DI error: Module " + e + " not defined. Required by: " + i.name);
+            a.wasLoaded ? s.push(a.loaded) : s.push(n(a))
         });
         try {
-            n.loaded = n.callback.apply(null, i), n.wasLoaded = !0
+            i.loaded = i.callback.apply(null, s), i.wasLoaded = !0
         } catch (e) {
-            window.wError("tinyrequire", "DI error: Can not resolve " + n.name + " module", e)
+            window.wError("tinyrequire", "DI error: Can not resolve " + i.name + " module", e)
         }
-        return n.name && (n.name in e ? window.wError("tinyrequire", "DI error: Object W." + n.name + " already exists") : e[n.name] = n.loaded), n.loaded
+        return i.name && (i.name in e ? window.wError("tinyrequire", "DI error: Object W." + i.name + " already exists") : e[i.name] = i.loaded), i.loaded
     }
-    var r = {};
+    var i = {};
     e.require = function(e) {
         if ("string" == typeof e) {
-            var t = s[e];
-            return t.wasLoaded ? t.loaded : a(t)
+            var i = t[e];
+            return i.wasLoaded ? i.loaded : n(i)
         }
-        Array.isArray(e) && a({
+        Array.isArray(e) && n({
             dependencies: e,
             callback: function() {}
         })
-    }, e.define = function(e, t, n) {
-        if (s[e]) throw new Error("DI conflict: Module " + e + " already defined.");
-        s[e] = {
+    }, e.define = function(e, n, i) {
+        if (t[e]) throw new Error("DI conflict: Module " + e + " already defined.");
+        t[e] = {
             name: e,
-            dependencies: t,
-            callback: n,
+            dependencies: n,
+            callback: i,
             loaded: null,
             wasLoaded: !1
         }
-    }, e.tag = function(e, t, n, i, s) {
-        r[e] = {
+    }, e.tag = function(e, t, n, s, a) {
+        i[e] = {
             html: t,
             css: n,
-            callback: s
+            callback: a
         }
-    }, e.tags = r, e.loadOrphanedModules = function() {
-        for (var e in s) s[e].wasLoaded || a(s[e])
+    }, e.tags = i, e.loadOrphanedModules = function() {
+        for (var e in t) t[e].wasLoaded || n(t[e])
     }
 }(window.W),
 /*! */
@@ -119,7 +118,8 @@ L.CanvasLayer = L.Layer.extend({
             return this.failed = !1, e.addLayer(this), this
         },
         onAdd: function(e) {
-            var t = (this._map = e).getSize(),
+            this._map = e;
+            var t = e.getSize(),
                 n = e.options.zoomAnimation && L.Browser.any3d;
             if (this._canvas = L.DomUtil.create("canvas", "leaflet-canvas"), this.onResizeCanvas(t.x, t.y), L.DomUtil.addClass(this._canvas, "leaflet-layer leaflet-zoom-" + (n ? "animated" : "hide")), e.getPanes()[this.targetPane].appendChild(this._canvas), !this.onCreateCanvas(this._canvas)) return this.failed = !0, void this.onCanvasFailed();
             e.on("resize", this._resize, this), e.on("zoomanim", this._animateZoom, this), e.on("zoom", this._onZoom, this), e.on("zoomstart", this._onZoomStart, this), e.on("zoomend", this._onZoomEnd, this), this.options.disableAutoReset || e.on("moveend", this._moveEnd, this), this._reset(), this._redraw()
@@ -189,7 +189,8 @@ L.CanvasLayer = L.Layer.extend({
         },
         onCanvasFailed: function() {},
         onRemoveCanvas: function() {},
-        onMoveEnd: function() {}
+        onMoveEnd: function() {},
+        onZoomEnd: function() {}
     }), L.PoisOverlay = L.Layer.extend({
         initialize: function(e) {
             this.className = e
@@ -242,11 +243,11 @@ L.CanvasLayer = L.Layer.extend({
     W.define("Class", [], function() {
         return {
             extend: function() {
-                var e, t, n, i, s = arguments,
-                    a = Object.create(this);
-                for (t = 0, n = arguments.length; t < n; t++)
-                    for (e in i = s[t]) a[e] = i[e];
-                return a
+                for (var e = arguments, t = Object.create(this), n = 0; n < arguments.length; n++) {
+                    var i = e[n];
+                    for (var s in i) t[s] = i[s]
+                }
+                return t
             },
             instance: function() {
                 var e = this.extend.apply(this, arguments);
@@ -257,25 +258,25 @@ L.CanvasLayer = L.Layer.extend({
     W.define("Evented", ["Class"], function(e) {
         /*!
         Copyright(c) 2011 Daniel Lamb <daniellmb.com> MIT Licensed */
-        var l = [];
-        return W.latestBcasts = l, e.extend({
+        var t = [];
+        return W.latestBcasts = t, e.extend({
             _init: function() {
                 this.latestId = 1, this._eventedCache = {}, this.trigger = this.emit, this.fire = this.emit
             },
-            emit: function(t, e, n, i, s) {
-                var a, r;
-                if (function(e, t, n) {
-                        l.push({
-                            ts: Date.now(),
-                            txt: e + ": " + t + ("string" == typeof n ? " " + n : "")
-                        }), 5 < l.length && l.shift()
-                    }(this.ident, t, e), a = this._eventedCache[t])
-                    for (var o = a.length; o--;) {
-                        r = a[o];
+            emit: function(e, n, i, s, a) {
+                var r, o, l;
+                r = this.ident, o = e, l = n, t.push({
+                    ts: Date.now(),
+                    txt: r + ": " + o + ("string" == typeof l ? " " + l : "")
+                }), t.length > 5 && t.shift();
+                var c = this._eventedCache[e];
+                if (c)
+                    for (var d = c.length; d--;) {
+                        var u = c[d];
                         try {
-                            r.callback.call(r.context, e, n, i, s), r.once && this.off(r.id)
-                        } catch (e) {
-                            window.wError("Evented", "Failed to call " + t, e)
+                            u.callback.call(u.context, n, i, s, a), u.once && this.off(u.id)
+                        } catch (t) {
+                            window.wError("Evented", "Failed to call " + e, t)
                         }
                     }
             },
@@ -291,98 +292,108 @@ L.CanvasLayer = L.Layer.extend({
                 return this.on(e, t, n, !0)
             },
             off: function(e, t, n) {
-                var i, s;
-                if ("number" == typeof e) {
-                    for (var a in this._eventedCache)
-                        if (i = this._eventedCache[a]) {
-                            for (s = i.length; s--;) i[s].id === e && i.splice(s, 1);
-                            0 === i.length && delete this._eventedCache[a]
+                if ("number" == typeof e)
+                    for (var i in this._eventedCache) {
+                        var s = this._eventedCache[i];
+                        if (s) {
+                            for (var a = s.length; a--;) s[a].id === e && s.splice(a, 1);
+                            0 === s.length && delete this._eventedCache[i]
                         }
-                } else if (i = this._eventedCache[e]) {
-                    if (i = this._eventedCache[e])
-                        for (s = i.length; s--;) i[s].callback !== t || n && n !== i[s].context || i.splice(s, 1);
-                    0 === i.length && delete this._eventedCache[e]
-                }
+                    } else {
+                        var r = this._eventedCache[e];
+                        if (r) {
+                            for (var o = r.length; o--;) r[o].callback !== t || n && n !== r[o].context || r.splice(o, 1);
+                            0 === r.length && delete this._eventedCache[e]
+                        }
+                    }
             }
         })
     }), /*! */
-    W.define("http", ["lruCache", "rootScope", "utils", "broadcast"], function(e, d, u, h) {
-        var m = new e(50),
-            f = "",
-            p = 0,
-            s = null,
-            t = function(e, t) {
-                var n = document.head.querySelector('meta[name="token"]'),
-                    i = {
-                        token: n && n.content,
-                        token2: d.userToken || t || "pending",
-                        uid: s,
-                        sc: d.sessionCounter,
+    W.define("http", ["lruCache", "rootScope", "utils", "broadcast"], function(e, t, n, i) {
+        var s = new e(50),
+            a = "",
+            r = 0,
+            o = null,
+            l = function(e, i) {
+                var s = document.head.querySelector('meta[name="token"]'),
+                    r = {
+                        token: s && s.content,
+                        token2: t.userToken || i || "pending",
+                        uid: o,
+                        sc: t.sessionCounter,
                         pr: +e,
-                        v: d.version
+                        v: t.version
                     };
-                f = u.qs(i)
+                a = n.qs(r)
             };
-        t(), h.on("tokenRecieved", t.bind(null, !1)), h.on("provisionaryToken", t.bind(null, !0)), h.on("identityCreated", function(e) {
-            s = e, t()
+        l(), i.on("tokenRecieved", l.bind(null, !1)), i.on("provisionaryToken", l.bind(null, !0)), i.on("identityCreated", function(e) {
+            o = e, l()
         });
-        var g = function(e) {
+        var c = function(e) {
                 return {
                     headers: e.headers,
                     status: e.status,
                     data: e.data && e.isJSON ? JSON.parse(e.data) : e.data
                 }
             },
-            v = "application/json binary/" + (W.assets || "").replace(/\./g, ""),
-            n = function(e, t, r) {
-                void 0 === r && (r = {});
-                var n, i;
-                if ("object" == typeof r.qs) {
-                    var s = u.qs(r.qs);
-                    s && (t = u.addQs(t, s))
+            d = "application/json binary/" + (W.assets || "").replace(/\./g, ""),
+            u = function(e, o, l) {
+                var u, h;
+                if (void 0 === l && (l = {}), "object" == typeof l.qs) {
+                    var f = n.qs(l.qs);
+                    f && (o = n.addQs(o, f))
                 }
-                var a = /^\/?users\//.test(t) || r.withCredentials,
-                    o = t;
-                if (void 0 === r.cache && "get" === e && (r.cache = !0), r.cache && (n = m.get(t))) return Promise.resolve(n) == n ? n : Promise.resolve(g(n));
-                var l = new XMLHttpRequest;
-                /^http/.test(t) || /^v\/\d+/.test(t) || (t = u.joinPath(d.nodeServer, t), /node\.windy/.test(t) && (t = u.addQs(t, f + "&poc=" + ++p))), t = encodeURI(t), l.open(e, t, !0), r.binary && (l.responseType = "arraybuffer"), a && (l.withCredentials = !0), l.setRequestHeader("Accept", v), i = new Promise(function(t, n) {
-                    var i, s = {},
-                        a = {};
-                    l.onreadystatechange = function() {
-                        if (4 === l.readyState)
-                            if (r.parseHeaders && l.getAllResponseHeaders().split(/\n/).forEach(function(e) {
-                                    (i = e.match(/(.*:?): (.*)/)) && (s[i[1].toLowerCase()] = i[2])
-                                }), 200 <= l.status && l.status < 300 || 304 === l.status) {
-                                a = {
-                                    status: l.status,
-                                    headers: s
-                                }, r.binary ? a.data = l.response : (a.isJSON = /json/.test(l.getResponseHeader("Content-Type")), a.data = l.responseText), r.cache && m.put(o, a);
-                                var e = g(a);
-                                t(e)
-                            } else 0 === l.status && h.emit("noConnection", "http"), r.cache && m.remove(o), n(l.status)
+                var m = /^\/?users\//.test(o) || l.withCredentials,
+                    p = o;
+                if (void 0 === l.cache && "get" === e && (l.cache = !0), l.cache && (u = s.get(o))) return Promise.resolve(u) == u ? u : Promise.resolve(c(u));
+                var g = new XMLHttpRequest,
+                    v = !1;
+                if (!/^http/.test(o) && !/^v\/\d+/.test(o) && (o = n.joinPath(t.nodeServer, o), /node\.windy/.test(o) && (o = n.addQs(o, a + "&poc=" + ++r)), /^\/?forecast\//.test(p))) {
+                    var y = /^(.+)\/forecast\/([^\/]+)\/([^\/]+)\/(.+)$/.exec(o),
+                        w = y[1],
+                        b = y[2],
+                        T = y[3],
+                        L = b + "/" + T + "/" + y[4];
+                    o = w + "/" + ("Zm9yZWNhc3Q/" + window.btoa(T).replace(/=/g, "")) + "/" + window.btoa(L).replace(/=/g, ""), v = !0
+                }
+                o = encodeURI(o), g.open(e, o, !0), l.binary && (g.responseType = "arraybuffer"), m && (g.withCredentials = !0), g.setRequestHeader("Accept", d), h = new Promise(function(e, t) {
+                    var n, a = {},
+                        r = {};
+                    g.onreadystatechange = function() {
+                        if (4 === g.readyState)
+                            if (l.parseHeaders && g.getAllResponseHeaders().split(/\n/).forEach(function(e) {
+                                    (n = e.match(/(.*:?): (.*)/)) && (a[n[1].toLowerCase()] = n[2])
+                                }), g.status >= 200 && g.status < 300 || 304 === g.status) {
+                                r = {
+                                    status: g.status,
+                                    headers: a
+                                }, l.binary ? r.data = g.response : v ? (r.isJSON = !0, r.data = window.atob(g.responseText)) : (r.isJSON = /json/.test(g.getResponseHeader("Content-Type")), r.data = g.responseText), l.cache && s.put(p, r);
+                                var o = c(r);
+                                e(o)
+                            } else 0 === g.status && i.emit("noConnection", "http"), l.cache && s.remove(p), t(g.status)
                     }
                 });
-                var c = null;
-                "post" !== e && "put" !== e || (l.setRequestHeader("Content-type", "application/json; charset=utf-8"), c = JSON.stringify(r.data));
+                var S = null;
+                "post" !== e && "put" !== e || (g.setRequestHeader("Content-type", "application/json; charset=utf-8"), S = JSON.stringify(l.data));
                 try {
-                    l.send(c)
+                    g.send(S)
                 } catch (e) {
-                    return h.emit("noConnection", "http"), Promise.reject(e)
+                    return i.emit("noConnection", "http"), Promise.reject(e)
                 }
-                return r.cache && m.put(o, i), i
+                return l.cache && s.put(p, h), h
             };
         return {
-            get: n.bind(null, "get"),
-            delete: n.bind(null, "delete"),
-            post: n.bind(null, "post"),
-            put: n.bind(null, "put"),
+            get: u.bind(null, "get"),
+            delete: u.bind(null, "delete"),
+            post: u.bind(null, "post"),
+            put: u.bind(null, "put"),
             resetCache: function() {
-                return m.removeAll()
+                return s.removeAll()
             }
         }
     }), /*! */
-    W.define("storage", ["rootScope", "http", "utils"], function(r, o, e) {
-        var t, n = {
+    W.define("storage", ["rootScope", "http", "utils"], function(e, t, n) {
+        var i, s = {
             isAvbl: !0,
             put: function(e, t) {
                 return window.localStorage.setItem(e, JSON.stringify(t))
@@ -396,42 +407,42 @@ L.CanvasLayer = L.Layer.extend({
             remove: function(e) {
                 return window.localStorage.removeItem(e)
             },
-            getFile: function(i, s) {
-                var a = this;
-                void 0 === s && (s = {});
-                var e = this.get(i);
-                return e && (s.aboluteURL || e.version === r.version) && (!s.test || e.data && e.data[s.test]) ? Promise.resolve(e.data) : new Promise(function(t, n) {
-                    o.get(s.aboluteURL ? i : r.assets + "/" + i).then(function(e) {
-                        e.version = s.aboluteURL ? "notAplicable" : r.version, !s.test || s.test in e.data ? (a.put(i, e), t(e.data)) : n("File did not passed the test")
+            getFile: function(n, i) {
+                var s = this;
+                void 0 === i && (i = {});
+                var a = this.get(n);
+                return a && (i.aboluteURL || a.version === e.version) && (!i.test || a.data && a.data[i.test]) ? Promise.resolve(a.data) : new Promise(function(a, r) {
+                    t.get(i.aboluteURL ? n : e.assets + "/" + n).then(function(t) {
+                        t.version = i.aboluteURL ? "notAplicable" : e.version, !i.test || i.test in t.data ? (s.put(n, t), a(t.data)) : r("File did not passed the test")
                     }).catch(function(e) {
-                        window.wError("storage", "Failed to load lang file as .json", e), n(e)
+                        window.wError("storage", "Failed to load lang file as .json", e), r(e)
                     })
                 })
             }
         };
         try {
             if (window.localStorage.setItem("test", "bar"), "bar" !== window.localStorage.getItem("test")) throw new Error("Comparsion failed");
-            window.localStorage.removeItem("test"), t = n
+            window.localStorage.removeItem("test"), i = s
         } catch (e) {
-            var i = {},
-                s = {
+            var a = {},
+                r = {
                     isAvbl: !1,
                     put: function(e, t) {
-                        return i[e] = t
+                        return a[e] = t
                     },
                     hasKey: function(e) {
-                        return e in i
+                        return e in a
                     },
                     get: function(e) {
-                        return e in i ? i[e] : null
+                        return e in a ? a[e] : null
                     },
                     remove: function(e) {
-                        return delete i[e]
+                        return delete a[e]
                     }
                 };
-            s.getFile = n.getFile.bind(s), t = s
+            r.getFile = s.getFile.bind(r), i = r
         }
-        return t
+        return i
     }), /*! */
     W.define("$", [], function() {
         return function(e, t) {
@@ -448,14 +459,20 @@ L.CanvasLayer = L.Layer.extend({
                 key: e,
                 value: t
             };
-            if (this._keymap[e] = n, this.tail ? (this.tail.newer = n).older = this.tail : this.head = n, this.tail = n, this.size === this.limit) return this.shift();
+            if (this._keymap[e] = n, this.tail ? (this.tail.newer = n, n.older = this.tail) : this.head = n, this.tail = n, this.size === this.limit) return this.shift();
             this.size++
+        }, e.prototype.toJSON = function() {
+            for (var e = [], t = this.head; t;) e.push({
+                key: t.key,
+                value: t.value
+            }), t = t.newer;
+            return e
         }, e.prototype.shift = function() {
             var e = this.head;
             return e && (this.head.newer ? (this.head = this.head.newer, this.head.older = void 0) : this.head = void 0, e.newer = e.older = void 0, delete this._keymap[e.key]), e
         }, e.prototype.get = function(e, t) {
             var n = this._keymap[e];
-            if (void 0 !== n) return n === this.tail || (n.newer && (n === this.head && (this.head = n.newer), n.newer.older = n.older), n.older && (n.older.newer = n.newer), n.newer = void 0, n.older = this.tail, this.tail && (this.tail.newer = n), this.tail = n), t ? n : n.value
+            if (void 0 !== n) return n === this.tail ? t ? n : n.value : (n.newer && (n === this.head && (this.head = n.newer), n.newer.older = n.older), n.older && (n.older.newer = n.newer), n.newer = void 0, n.older = this.tail, this.tail && (this.tail.newer = n), this.tail = n, t ? n : n.value)
         }, e.prototype.remove = function(e) {
             var t = this._keymap[e];
             if (t) return delete this._keymap[t.key], t.newer && t.older ? (t.older.newer = t.newer, t.newer.older = t.older) : t.newer ? (t.newer.older = void 0, this.head = t.newer) : t.older ? (t.older.newer = void 0, this.tail = t.older) : this.head = this.tail = void 0, this.size--, t.value
@@ -463,14 +480,14 @@ L.CanvasLayer = L.Layer.extend({
             this.head = this.tail = void 0, this.size = 0, this._keymap = {}
         }, e
     }), /*! */
-    W.define("log", ["ga", "utils", "broadcast", "storage", "store", "rootScope", "seoParser", "router"], function(t, e, n, i, s, a, r, o) {
+    W.define("log", ["ga", "utils", "broadcast", "storage", "store", "rootScope", "seoParser", "router"], function(e, t, n, i, s, a, r, o) {
         var l = {},
             c = i.get("log2018") || {},
-            d = e.debounce(function() {
+            d = t.debounce(function() {
                 return i.put("log2018", c)
             }, 5e3),
-            u = function(e) {
-                e in l || (l[e] = 1, t.pageview(e), h(e))
+            u = function(t) {
+                t in l || (l[t] = 1, e.pageview(t), h(t))
             },
             h = function(e) {
                 var t = e.split("/"),
@@ -498,14 +515,14 @@ L.CanvasLayer = L.Layer.extend({
             clientLog: c
         }
     }), /*! */
-    W.define("ga", ["rootScope", "store", "utils"], function(i, e, t) {
-        var n = window.screen,
-            s = t.qs({
-                ul: i.prefLang,
-                sr: n.width + "x" + n.height,
-                cid: e.getDeviceID(),
+    W.define("ga", ["rootScope", "store", "utils"], function(e, t, n) {
+        var i = window.screen,
+            s = n.qs({
+                ul: e.prefLang,
+                sr: i.width + "x" + i.height,
+                cid: t.getDeviceID(),
                 an: "Windy",
-                av: i.version
+                av: e.version
             }),
             a = 1;
         /utm_/.test(window.location.search) && (s += "&" + function(e) {
@@ -519,251 +536,251 @@ L.CanvasLayer = L.Layer.extend({
             return s.join("&")
         }(window.location.search));
         var r = !0,
-            o = function(e) {
-                var t = "dp=" + e + "&dl=" + encodeURIComponent(document.location) + "&" + s;
-                if (i.user && (t += "&uid=" + i.user.userslug), r) {
-                    var n = document.referrer;
-                    /www.eric.com/.test(n) || (t += "&dr=" + encodeURIComponent(n)), r = !1
+            o = function(t) {
+                var n = "dp=" + t + "&dl=" + encodeURIComponent(document.location) + "&" + s;
+                if (e.user && (n += "&uid=" + e.user.userslug), r) {
+                    var i = document.referrer;
+                    /www.windy.com/.test(i) || (n += "&dr=" + encodeURIComponent(i)), r = !1
                 }
                 setTimeout(function() {
                     var e = new XMLHttpRequest;
-                    e.open("HEAD", "http://www.eric.com/test-windy/sedlina/ga/" + a + "?" + t, !0), e.send(null)
+                    e.open("HEAD", "http://www.eric.com/test-windy/sedlina/ga/" + a + "?" + n, !0), e.send(null)
                 }, 100)
             };
         return {
             pageview: o
         }
     }), /*! */
-    W.define("utils", ["rootScope"], function(t) {
-        var r = {
+    W.define("utils", ["rootScope"], function(e) {
+        var t = {
             tsMinute: 6e4
         };
-        r.tsHour = 60 * r.tsMinute;
+        t.tsHour = 60 * t.tsMinute;
         var n = "bcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789a",
             i = n.split("");
-        return r.num2char = function(e) {
-            for (var t = ""; t = n.charAt(e % 60) + t, e = Math.floor(e / 60););
+        return t.num2char = function(e) {
+            var t = "";
+            do {
+                t = n.charAt(e % 60) + t, e = Math.floor(e / 60)
+            } while (e);
             return t
-        }, r.char2num = function(e) {
+        }, t.char2num = function(e) {
             for (var t = 0, n = 0; n < e.length; n++) t = 60 * t + i.indexOf(e.charAt(n));
             return t
-        }, r.latLon2str = function(e) {
-            var t = Math.floor(100 * (e.lat + 90)),
-                n = Math.floor(100 * (e.lon + 180));
-            return r.num2char(t) + "a" + r.num2char(n)
-        }, r.str2latLon = function(e) {
-            var t = e.split("a");
+        }, t.latLon2str = function(e) {
+            var n = Math.floor(100 * (e.lat + 90)),
+                i = Math.floor(100 * (e.lon + 180));
+            return t.num2char(n) + "a" + t.num2char(i)
+        }, t.str2latLon = function(e) {
+            var n = e.split("a");
             return {
-                lat: r.char2num(t[0]) / 100 - 90,
-                lon: r.char2num(t[1]) / 100 - 180
+                lat: t.char2num(n[0]) / 100 - 90,
+                lon: t.char2num(n[1]) / 100 - 180
             }
-        }, r.toggleClass = function(e, t, n) {
+        }, t.toggleClass = function(e, t, n) {
             return e.classList[t ? "add" : "remove"](n)
-        }, r.emptyFun = function() {}, r.emptyGIF = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==", r.contains = function(e, t) {
-            return e && -1 < e.indexOf(t)
-        }, r.isValidLatLonObj = function(e) {
+        }, t.emptyFun = function() {}, t.emptyGIF = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==", t.isValidLatLonObj = function(e) {
             return e && "object" == typeof e && "lat" in e && "lon" in e && !isNaN(+e.lat) && !isNaN(+e.lon)
-        }, r.normalizeLatLon = function(e) {
+        }, t.normalizeLatLon = function(e) {
             return parseFloat(e).toFixed(3)
-        }, r.replaceClass = function(e, t, n) {
+        }, t.replaceClass = function(e, t, n) {
             void 0 === n && (n = document.body);
             var i = n.className;
             e.test(i) ? n.className = i.replace(e, t) : n.classList.add(t)
-        }, r.each = function(e, t) {
+        }, t.each = function(e, t) {
             for (var n in e) t(e[n], n)
-        }, r.clone = function(e, t) {
-            var n;
-            if (null === e || "object" != typeof e) n = e;
-            else if (e instanceof Date)(n = new Date).setTime(e.getTime());
+        }, t.clone = function(e, n) {
+            var i;
+            if (null === e || "object" != typeof e) i = e;
+            else if (e instanceof Date)(i = new Date).setTime(e.getTime());
             else if (e instanceof Array) {
-                n = [];
-                for (var i = 0, s = e.length; i < s; i++) n[i] = r.clone(e[i])
+                i = [];
+                for (var s = 0, a = e.length; s < a; s++) i[s] = t.clone(e[s])
             } else if (e instanceof Object)
-                for (var a in n = {}, e) !e.hasOwnProperty(a) || t && !r.contains(t, a) || (n[a] = r.clone(e[a]));
+                for (var r in i = {}, e) !e.hasOwnProperty(r) || n && !n.includes(r) || (i[r] = t.clone(e[r]));
             else console.warn("Unable to copy obj! Its type isn't supported.");
-            return n
-        }, r.isArray = function(e) {
-            return Array.isArray(e) || e instanceof Array
-        }, r.include = function(e, t) {
-            for (var n in t) e[n] = t[n];
-            return e
-        }, r.compare = function(t, n, e) {
-            return e || (e = Object.keys(t)), !e.filter(function(e) {
-                return t[e] !== n[e]
+            return i
+        }, t.compare = function(e, t, n) {
+            return n || (n = Object.keys(e)), !n.filter(function(n) {
+                return e[n] !== t[n]
             }).length
-        }, r.deg2rad = function(e) {
+        }, t.deg2rad = function(e) {
             return e * Math.PI / 180
-        }, r.debounce = function(i, s, a) {
-            var r;
+        }, t.degToRad = .017453292, t.radToDeg = 57.2957795, t.debounce = function(e, t, n) {
+            var i;
             return function() {
-                var e = this,
-                    t = arguments,
-                    n = a && !r;
-                clearTimeout(r), r = setTimeout(function() {
-                    r = null, a || i.apply(e, t)
-                }, s), n && i.apply(e, t)
+                var s = arguments,
+                    a = this;
+
+                function r() {
+                    i = null, n || e.apply(a, s)
+                }
+                var o = n && !i;
+                clearTimeout(i), i = setTimeout(r, t), o && e.apply(a, s)
             }
-        }, r.throttle = function(e, t) {
-            var n, i, s = this,
-                a = function() {
-                    n = !1, i && (r.apply(s, i), i = !1)
-                },
-                r = function() {
-                    n ? i = arguments : (e.apply(s, arguments), setTimeout(a, t), n = !0)
-                };
+        }, t.throttle = function(e, t) {
+            var n, i, s = this;
+
+            function a() {
+                n = !1, i && (r.apply(s, i), i = !1)
+            }
+
+            function r() {
+                n ? i = arguments : (e.apply(s, arguments), setTimeout(a, t), n = !0)
+            }
             return r
-        }, r.pad = function(e, t) {
+        }, t.pad = function(e, t) {
             for (var n = String(e); n.length < (t || 2);) n = "0" + n;
             return n
-        }, r.template = function(e, n) {
-            return e ? e.replace(/\{\{?\s*(.+?)\s*\}?\}/g, function(e, t) {
-                return void 0 === n[t] ? "" : n[t]
+        }, t.template = function(e, t) {
+            return e ? e.replace(/\{\{?\s*(.+?)\s*\}?\}/g, function(e, n) {
+                return void 0 === t[n] ? "" : t[n]
             }) : ""
-        }, r.wind2obj = function(e) {
+        }, t.wind2obj = function(e) {
             return {
                 wind: Math.sqrt(e[0] * e[0] + e[1] * e[1]),
                 dir: 10 * Math.floor(18 + 18 * Math.atan2(e[0], e[1]) / Math.PI)
             }
-        }, r.wave2obj = function(e) {
+        }, t.wave2obj = function(e) {
             return {
                 period: Math.sqrt(e[0] * e[0] + e[1] * e[1]),
                 dir: 10 * Math.floor(18 + 18 * Math.atan2(e[0], e[1]) / Math.PI),
                 size: e[2]
             }
-        }, r.hasDirection = function(e) {
-            return "number" == typeof + e.dir && e.dir <= 360 && null != e.dir && 0 < e.wind
-        }, r.windDir2html = function(e) {
-            return r.hasDirection(e) ? '<div class="iconfont" style="transform: rotate(' + e.dir + "deg); -webkit-transform:rotate(" + e.dir + 'deg);">"</div>' : ""
-        }, r.isNear = function(e, t) {
-            return Math.abs(+e.lat - +t.lat) < .01 && Math.abs(+e.lon - +t.lon < .01)
-        }, r.bound = function(e, t, n) {
+        }, t.hasDirection = function(e) {
+            return "number" == typeof + e.dir && e.dir <= 360 && null != e.dir && e.wind > 0
+        }, t.windDir2html = function(e) {
+            return t.hasDirection(e) ? '<div class="iconfont" style="transform: rotate(' + e.dir + "deg); -webkit-transform:rotate(" + e.dir + 'deg);">"</div>' : ""
+        }, t.isNear = function(e, t) {
+            return Math.abs(+e.lat - +t.lat) < .01 && Math.abs(+e.lon - +t.lon) < .01
+        }, t.bound = function(e, t, n) {
             return Math.max(Math.min(e, n), t)
-        }, r.smoothstep = function(e, t, n) {
-            var i = r.bound((n - e) / (t - e), 0, 1);
-            return i * i * i * (i * (6 * i - 15) + 10)
-        }, r.lonDegToXUnit = function(e) {
+        }, t.smoothstep = function(e, n, i) {
+            var s = t.bound((i - e) / (n - e), 0, 1);
+            return s * s * s * (s * (6 * s - 15) + 10)
+        }, t.lonDegToXUnit = function(e) {
             return .5 + .00277777777777777 * e
-        }, r.latDegToYUnit = function(e) {
-            return r.lat01ToYUnit(.5 - .00555555555555555 * e)
-        }, r.lat01ToYUnit = function(e) {
+        }, t.latDegToYUnit = function(e) {
+            return t.lat01ToYUnit(.5 - .00555555555555555 * e)
+        }, t.lat01ToYUnit = function(e) {
             return (Math.PI - Math.log(Math.tan(.5 * (1 - e) * Math.PI))) / (2 * Math.PI)
-        }, r.unitXToLonDeg = function(e) {
+        }, t.unitXToLonDeg = function(e) {
             return 360 * (e - .5)
-        }, r.unitYToLatDeg = function(e) {
+        }, t.unitYToLatDeg = function(e) {
             return Math.atan(Math.exp(Math.PI - e * (2 * Math.PI))) / (.5 * Math.PI) * 180 - 90
-        }, window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame, window.cancelAnimationFrame = window.cancelAnimationFrame || window.webkitCancelAnimationFrame || window.mozCancelAnimationFrame, window.requestAnimationFrame && window.cancelAnimationFrame || (window.requestAnimationFrame = function(e) {
-            return window.setTimeout(e, 40)
-        }, window.cancelAnimationFrame = window.clearTimeout), Math.log2 || (Math.log2 = function(e) {
-            return Math.log(e) * Math.LOG2E
-        }), r.nowDeltaTS = 0, r.getAdjustedNow = function(e) {
-            var t, n = Date.now() - r.nowDeltaTS;
-            return e && ((t = n - e) < 0 && (r.nowDeltaTS += t), 1e4 < t && (r.nowDeltaTS += t)), n
-        }, r.isValidLang = function(e) {
-            return r.contains(t.supportedLanguages, e)
-        }, r.joinPath = function(e, t) {
+        }, t.nowDeltaTS = 0, t.getAdjustedNow = function(e) {
+            var n, i = Date.now() - t.nowDeltaTS;
+            return e && ((n = i - e) < 0 && (t.nowDeltaTS += n), n > 1e4 && (t.nowDeltaTS += n)), i
+        }, t.isValidLang = function(t) {
+            return e.supportedLanguages.includes(t)
+        }, t.joinPath = function(e, t) {
             return e + ("/" === t.charAt(0) ? "" : "/") + t
-        }, r.addQs = function(e, t) {
+        }, t.addQs = function(e, t) {
             return e + (/\?/.test(e) ? "&" : "?") + t
-        }, r.qs = function(e) {
+        }, t.qs = function(e) {
             var n = [];
-            return r.each(e, function(e, t) {
+            return t.each(e, function(e, t) {
                 return void 0 !== e && n.push(t + "=" + e)
             }), n.join("&")
-        }, r.loadScript = function(i) {
-            return new Promise(function(e, t) {
-                var n = document.createElement("script");
-                n.type = "text/javascript", n.async = !0, n.onload = e, n.onerror = t, document.head.appendChild(n), n.src = i
+        }, t.getFcstUrl = function(t, n, i, s) {
+            var a = n.lat,
+                r = n.lon;
+            return "/forecast/point/" + t + "/" + e.pointForecast + "/" + a + "/" + r + "?source=" + i + (s ? "&" + s : "")
+        }, t.loadScript = function(e) {
+            return new Promise(function(t, n) {
+                var i = document.createElement("script");
+                i.type = "text/javascript", i.async = !0, i.onload = t, i.onerror = n, document.head.appendChild(i), i.src = e
             })
-        }, r.copy2clipboard = function(e) {
+        }, t.copy2clipboard = function(e) {
             var t = document.createElement("textarea");
             t.value = e, document.body.appendChild(t), t.select(), document.execCommand("copy"), document.body.removeChild(t)
-        }, r.download = function(e, t, n) {
+        }, t.download = function(e, t, n) {
             var i = document.createElement("a"),
                 s = e instanceof Blob ? e : new Blob([e], {
                     type: t
                 });
             i.style.display = "none", document.body.appendChild(i), i.href = window.URL.createObjectURL(s), i.setAttribute("download", n), i.click(), window.URL.revokeObjectURL(i.href), document.body.removeChild(i)
-        }, r
+        }, t
     }), /*! */
-    W.define("format", ["trans", "store", "utils"], function(a, e, r) {
-        var t = {},
-            n = function(e, t) {
-                return "" + (e % 12 || 12) + (t = null != t ? ":" + r.pad(t) : "") + (12 <= e ? " PM" : " AM")
+    W.define("format", ["trans", "store", "utils"], function(e, t, n) {
+        var i = {},
+            s = function(e, t) {
+                return "" + (e % 12 || 12) + (t = null != t ? ":" + n.pad(t) : "") + (e >= 12 ? " PM" : " AM")
             },
-            i = function(e, t) {
-                return e + ":" + (null != t ? r.pad(t) : "00")
+            a = function(e, t) {
+                return e + ":" + (null != t ? n.pad(t) : "00")
             };
-        t.getHoursFunction = function() {
-            return e.is12hFormat() ? n : i
-        }, t.hourUTC = function(e) {
-            return r.pad(new Date(e).getUTCHours()) + ":00Z"
-        }, t.hourMinuteUTC = function(e) {
+        i.getHoursFunction = function() {
+            return t.is12hFormat() ? s : a
+        }, i.hourUTC = function(e) {
+            return n.pad(new Date(e).getUTCHours()) + ":00Z"
+        }, i.hourMinuteUTC = function(e) {
             var t = new Date(e);
-            return r.pad(t.getUTCHours()) + ":" + r.pad(t.getUTCMinutes()) + "Z"
-        }, t.thousands = function(e) {
+            return n.pad(t.getUTCHours()) + ":" + n.pad(t.getUTCMinutes()) + "Z"
+        }, i.thousands = function(e) {
             return e ? e.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : ""
         };
-        var s = ["N", "NE", "E", "SE", "S", "SW", "W", "NW", "N"],
-            o = function(e) {
-                var t = Math.floor((+e + 22.5) / 45);
-                return a["DIRECTION_" + s[t]] || "-"
+        var r = ["N", "NE", "E", "SE", "S", "SW", "W", "NW", "N"],
+            o = function(t) {
+                var n = Math.floor((+t + 22.5) / 45);
+                return e["DIRECTION_" + r[n]] || "-"
             },
             l = function(e) {
                 return e + "°"
             };
-        t.getDirFunction = function() {
-            return e.get("numDirection") ? l : o
-        }, t.obsoleteClass = function(e, t) {
+        i.getDirFunction = function() {
+            return t.get("numDirection") ? l : o
+        }, i.obsoleteClass = function(e, t) {
             void 0 === t && (t = 30);
             var n = (Date.now() / 1e3 - e) / 60;
             return n < .3 * t ? "fresh" : n < t ? "normal" : "obsolete"
-        }, t.howOld = function(e) {
-            var t = !1,
-                n = -1;
-            if ("diffMin" in e) n = +e.diffMin;
-            else if ("ts" in e) n = Math.floor((Date.now() - +e.ts) / 6e4);
-            else if ("min" in e) n = Math.floor(Date.now() / 6e4 - +e.min);
+        }, i.howOld = function(t) {
+            var i = !1,
+                s = -1;
+            if ("diffMin" in t) s = +t.diffMin;
+            else if ("ts" in t) s = Math.floor((Date.now() - +t.ts) / 6e4);
+            else if ("min" in t) s = Math.floor(Date.now() / 6e4 - +t.min);
             else {
-                if (!("ux" in e)) return "";
-                n = Math.floor((Date.now() / 1e3 - +e.ux) / 60)
+                if (!("ux" in t)) return "";
+                s = Math.floor((Date.now() / 1e3 - +t.ux) / 60)
             }
-            if (n < 0) {
-                if (e.translate) return "";
-                n = Math.abs(n), t = !0
+            if (s < 0) {
+                if (t.translate) return "";
+                s = Math.abs(s), i = !0
             }
-            if (e && e.translate) {
-                if (0 === n) return a.NOW;
-                if (n < 60) return r.template(a.METAR_MIN_AGO, {
-                    DURATION: n
+            if (t && t.translate) {
+                if (0 === s) return e.NOW;
+                if (s < 60) return n.template(e.METAR_MIN_AGO, {
+                    DURATION: s
                 });
-                if (n < 240) {
-                    var i = Math.floor(n / 60),
-                        s = n - 60 * i;
-                    return r.template(a.METARS_H_M_AGO, {
-                        DURATION: i,
-                        DURATIONM: s
+                if (s < 240) {
+                    var a = Math.floor(s / 60),
+                        r = s - 60 * a;
+                    return n.template(e.METARS_H_M_AGO, {
+                        DURATION: a,
+                        DURATIONM: r
                     })
                 }
-                return n < 1440 ? r.template(a.METAR_HOURS_AGO, {
-                    DURATION: Math.floor(n / 60)
-                }) : r.template(a.METARS_DAYS_AGO, {
-                    DURATION: Math.floor(n / 1440)
+                return s < 1440 ? n.template(e.METAR_HOURS_AGO, {
+                    DURATION: Math.floor(s / 60)
+                }) : n.template(e.METARS_DAYS_AGO, {
+                    DURATION: Math.floor(s / 1440)
                 })
             }
-            return (e.useAgo && t ? "in " : "") + (n < 60 ? Math.floor(n) + "m" : Math.floor(n / 60) + "h " + Math.floor(n % 60) + "m") + (e.useAgo && !t ? " ago" : "")
+            return (t.useAgo && i ? "in " : "") + (s < 60 ? Math.floor(s) + "m" : Math.floor(s / 60) + "h " + Math.floor(s % 60) + "m") + (t.useAgo && !i ? " ago" : "")
         };
         var c = function(e) {
             return [Math.abs(0 | e), "°", 0 | (e < 0 ? e = -e : e) % 1 * 60, "'", 0 | 60 * e % 1 * 60, '"'].join("")
         };
-        return t.DD2DMS = function(e, t) {
+        return i.DD2DMS = function(e, t) {
             return [e < 0 ? "S" : "N", c(e), ", ", t < 0 ? "W" : "E", c(t)].join("")
-        }, t.utcOffsetStr = function(e) {
-            return (e < 0 ? "-" : "+") + r.pad(Math.abs(Math.round(e))) + ":00"
-        }, t.seoString = function(e) {
-            return e.replace(/[/,.]/g, " ").replace(/₂/g, "2").replace(/₃/g, "3").replace(/\s+/g, "-").replace(/-+/g, "-")
-        }, t.seoLang = function(e) {
+        }, i.utcOffsetStr = function(e) {
+            return (e < 0 ? "-" : "+") + n.pad(Math.abs(Math.round(e))) + ":00"
+        }, i.seoString = function(e) {
+            return e.replace(/[\/,.]/g, " ").replace(/₂/g, "2").replace(/₃/g, "3").replace(/\s+/g, "-").replace(/-+/g, "-")
+        }, i.seoLang = function(e) {
             return "en" === e ? "" : e + "/"
-        }, t
+        }, i
     }), /*! */
     W.define("langEn", [], function() {
         return {
@@ -811,6 +828,11 @@ L.CanvasLayer = L.Layer.extend({
             MENU_MOBILE: "Download App",
             MENU_FAVS: "Favorites",
             MENU_FEEDBACK: "Feedback",
+            MENU_UPLOAD: "Upload KML, GPX or geoJSON file",
+            MENU_VIDEO: "Create video or animated GIF",
+            MENU_PLUGIN: "Install Windy plugin",
+            MENU_ERROR: "Error console",
+            MENU_NEWS: "Weather news",
             SHOW_PICKER: "Show weather picker",
             TOOLBOX_INFO: "info",
             TOOLBOX_ANIMATION: "animation",
@@ -829,12 +851,14 @@ L.CanvasLayer = L.Layer.extend({
             GUSTACCU: "Wind accumulation",
             WIND_DIR: "Wind dir.",
             TEMP: "Temperature",
+            DISTANCE: "Distance",
             PRESS: "Pressure",
             CLOUDS: "Clouds, rain",
             CLOUDS2: "Clouds",
             CLOUD_ALT: "Cloud base",
             RADAR: "Weather radar",
             RADAR_BLITZ: "Radar, lightning",
+            SATELLITE: "Satellite",
             TOTAL_CLOUDS: "Total clouds",
             LOW_CLOUDS: "Low clouds",
             MEDIUM_CLOUDS: "Medium clouds",
@@ -851,9 +875,9 @@ L.CanvasLayer = L.Layer.extend({
             HEAVY_THUNDER: "Heavy thunder",
             SNOW: "Snow",
             OZONE: "Ozone layer",
-            GTCO3: "Ozone layer",
             PM2P5: "PM2.5",
-            NO2: "Air quality - NO₂",
+            AIR_QUALITY: "Air quality",
+            NO22: "NO₂",
             AOD550: "Aerosol",
             SHOW_GUST: "force of wind gusts",
             RH: "Humidity",
@@ -876,10 +900,13 @@ L.CanvasLayer = L.Layer.extend({
             SST2: "Sea temperature",
             CURRENT: "Currents",
             VISIBILITY: "Visibility",
+            SURFACE_VISIBILITY: "Surface visibility",
             ACTUAL_TEMP: "Actual temperature",
             SSTAVG: "Average sea temperature",
             AVAIL_FOR: "Available for:",
             DEW_POINT: "Dew point",
+            DEW_POINT_SPREAD: "Dew point spread",
+            ISA_DIFFERENCE: "ISA difference",
             SLP: "Pressure (sea l.)",
             QFE: "Station pressure",
             SNOWDEPTH: "Snow depth",
@@ -898,12 +925,14 @@ L.CanvasLayer = L.Layer.extend({
             FLOOD: "Flood",
             FIRE: "Fire",
             EFORECAST: "Extreme forecast",
+            RADAR_SAT: "Radar & Satellite",
             FZ_RAIN: "Freezing rain",
             MX_ICE: "Mixed ice",
             WET_SN: "Wet snow",
             RA_SN: "Rain with snow",
             PELLETS: "Ice pellets",
             HAIL: "Hail",
+            ELEVATION: "Elevation",
             MORE_LAYERS: "More layers...",
             NONE: "None",
             ACC_LAST_DAYS: "Last {{num}} days",
@@ -1018,8 +1047,6 @@ L.CanvasLayer = L.Layer.extend({
             PASSWD: "Password",
             LOGIN: "Login",
             LOGIN_FAILED: "Login Unsuccessful",
-            ALERTS_PROMO: "Never miss a BIG day.",
-            ALERTS_LINK: "Set-up Windy Alert for this spot.",
             ALERTS_LINK_SHORT: "Alert for this spot",
             MY_ALERTS: "My Alerts",
             DIRECTION_N: "N",
@@ -1057,7 +1084,7 @@ L.CanvasLayer = L.Layer.extend({
             PRIVACY: "Privacy protection",
             SOUNDING: "Sounding",
             SOUND_ON: "Sound",
-            BLITZ_ON: "Show lightnings",
+            BLITZ_ON: "Show lightning",
             WFORECAST: "weather forecast",
             TITLE: "Wind map & weather forecast",
             HURR_TRACKER: "Hurricane tracker",
@@ -1066,19 +1093,22 @@ L.CanvasLayer = L.Layer.extend({
             SEARCH_LAYER: "Search layer...",
             CANCEL_SEARCH: "Cancel search",
             NOT_FOUND: "Nothing to be found",
-            P_LOGIN_SYNC: "Please <b>login</b> or <b>register</b> to synchrinize all your favourites and settings with all your devices.",
+            P_LOGIN_SYNC: "Please <b>login</b> or <b>register</b> to synchronize all your favourites and settings with all your devices.",
             P_LOGIN_CLOUD: "Please <b>login</b> or <b>register</b> to backup all your favourites and settings to the cloud.",
             P_LOCATION: "Please allow Windy to use location services (GPS) while using the app, so we can show weather at your location. We do not store your location at our servers.",
             DONE: "Done",
-            HMAP: "Outdoor map"
+            HMAP: "Outdoor map",
+            LICENCE: "Licence",
+            LIST: "list",
+            GALLERY: "gallery"
         }
     }),
     /*! */
     W.define("supportedLanguages", [], function() {
-        return ["en", "zh-TW", "zh", "ja", "fr", "ko", "it", "ru", "nl", "cs", "tr", "pl", "sv", "fi", "ro", "el", "hu", "hr", "ca", "da", "ar", "fa", "hi", "ta", "sk", "uk", "bg", "he", "is", "lt", "et", "vi", "sl", "sr", "id", "th", "sq", "pt", "nb", "es", "de"]
+        return ["en", "zh-TW", "zh", "ja", "fr", "ko", "it", "ru", "nl", "cs", "tr", "pl", "sv", "fi", "ro", "el", "hu", "hr", "ca", "da", "ar", "fa", "hi", "ta", "sk", "uk", "bg", "he", "is", "lt", "et", "vi", "sl", "sr", "id", "th", "sq", "pt", "nb", "es", "de", "bn"]
     }), /*! */
-    W.define("Calendar", ["format", "utils", "trans", "Class"], function(e, r, a, t) {
-        return t.extend({
+    W.define("Calendar", ["format", "utils", "trans", "Class"], function(e, t, n, i) {
+        return i.extend({
             weekdays: ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"],
             calendarHours: 240,
             numOfHours: 240,
@@ -1106,12 +1136,12 @@ L.CanvasLayer = L.Layer.extend({
                 for (var l = 1; l < this.paths.length; l++) this.interTimestamps.push(this.timestamps[l - 1] + Math.floor((this.timestamps[l] - this.timestamps[l - 1]) / 2));
                 return this
             },
-            add: function(e, t, n) {
-                var i = new Date(e.getTime());
-                return i.setTime(e.getTime() + ("days" === n ? 24 : 1) * t * r.tsHour), i
+            add: function(e, n, i) {
+                var s = new Date(e.getTime());
+                return s.setTime(e.getTime() + ("days" === i ? 24 : 1) * n * t.tsHour), s
             },
             boundTs: function(e) {
-                return r.bound(e, this.start, this.end)
+                return t.bound(e, this.start, this.end)
             },
             getMidnight: function() {
                 var e = new Date;
@@ -1129,21 +1159,21 @@ L.CanvasLayer = L.Layer.extend({
                 return e && "object" == typeof e && e.ref && (e.dst || e.dstTime) ? (this.refTime = e.ref.replace(/(\d+)-(\d+)-(\d+)T(\d+):.*/, "$1$2$3$4"), this.refTimeTxt = e.ref, this.updateTxt = e.update, this.refTimeTs = new Date(e.ref).getTime(), this.updateTs = new Date(e.update).getTime(), !0) : (window.wError("Calendar", "Invalid format of minifest " + (e.dst ? "2.0" : "3.0")), !1)
             },
             createTimestampsFromMinifest: function(e) {
-                var i = this;
+                var n = this;
                 if (!this.prepareTimesFromMinifest(e)) return !1;
                 if (e.dst) {
-                    var s = r.tsHour,
-                        t = Math.min(12, this.numOfHours / 24),
-                        a = this.add(this.startOfTimeline, t, "days").getTime();
+                    var i = t.tsHour,
+                        s = Math.min(12, this.numOfHours / 24),
+                        a = this.add(this.startOfTimeline, s, "days").getTime();
                     e.dst.forEach(function(e) {
                         for (var t = e[1]; t <= e[2]; t += e[0]) {
-                            var n = i.refTimeTs + t * s;
-                            n <= a && (i.timestamps.push(n), i.paths.push(i.date2path(new Date(n))))
+                            var s = n.refTimeTs + t * i;
+                            s <= a && (n.timestamps.push(s), n.paths.push(n.date2path(new Date(s))))
                         }
                     })
                 } else e.dstTime.forEach(function(e) {
                     var t = new Date(e);
-                    i.timestamps.push(t.getTime()), i.paths.push(t.toISOString().replace(/(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):.*/, "$1$2$3$4"))
+                    n.timestamps.push(t.getTime()), n.paths.push(t.toISOString().replace(/(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):.*/, "$1$2$3$4"))
                 });
                 return !0
             },
@@ -1161,33 +1191,33 @@ L.CanvasLayer = L.Layer.extend({
             },
             ts2string: function(e) {
                 var t = new Date(e),
-                    n = t.getDay(),
-                    i = t.getDate(),
-                    s = this.localeHours(t.getHours());
-                return a[this.weekdays[n]] + " " + i + " - " + s
+                    i = t.getDay(),
+                    s = t.getDate(),
+                    a = this.localeHours(t.getHours());
+                return n[this.weekdays[i]] + " " + s + " - " + a
             }
         })
     }), /*! */
-    W.define("Metric", ["store", "broadcast", "Class"], function(t, n, e) {
-        return e.extend({
+    W.define("Metric", ["store", "broadcast", "Class"], function(e, t, n) {
+        return n.extend({
             separator: "",
             defaults: [null, null],
             _init: function() {
-                this.key = "metric_" + this.ident, t.insert(this.key, {
+                this.key = "metric_" + this.ident, e.insert(this.key, {
                     def: this.getDefault(),
                     save: !0,
                     sync: !0,
                     allowed: Object.keys(this.conv)
-                }), this.metric = t.get(this.key), t.on(this.key, this.onMetricChanged, this), t.once("isImperial", this.setDefault, this)
+                }), this.metric = e.get(this.key), e.on(this.key, this.onMetricChanged, this), e.once("isImperial", this.setDefault, this)
             },
             onMetricChanged: function(e) {
-                this.metric = e, n.emit("metricChanged", this.ident, e)
+                this.metric = e, t.emit("metricChanged", this.ident, e)
             },
             getDefault: function() {
-                return t.get("isImperial") && 1 < this.defaults.length ? this.defaults[1] : this.defaults[0]
+                return e.get("isImperial") && this.defaults.length > 1 ? this.defaults[1] : this.defaults[0]
             },
             setDefault: function() {
-                t.setDefault(this.key, this.getDefault())
+                e.setDefault(this.key, this.getDefault())
             },
             convertValue: function(e, t) {
                 return void 0 === e ? "" : this.convertNumber(e) + (t || this.separator) + (this.conv[this.metric].label || this.metric)
@@ -1203,8 +1233,8 @@ L.CanvasLayer = L.Layer.extend({
             howManyMetrics: function() {
                 return this.listMetrics().length
             },
-            setMetric: function(e) {
-                t.set(this.key, e)
+            setMetric: function(t) {
+                e.set(this.key, t)
             },
             cycleMetric: function() {
                 var e = this.description.indexOf(this.metric) + 1;
@@ -1222,43 +1252,43 @@ L.CanvasLayer = L.Layer.extend({
                 l.push(c, c, c);
                 for (var d = '<span style="width:' + o + '%">' + this.metric + "</span>", u = 0; u < a; u++) {
                     var h = s[u][0],
-                        m = s[Math.min(u + 1, a - 1)][0],
-                        f = e.color(h),
-                        p = e.color(.5 * (h + m));
-                    l.push(f, p), d += '<span style="width: ' + o + '%">' + s[u][1 + r] + "</span>"
+                        f = s[Math.min(u + 1, a - 1)][0],
+                        m = e.color(h),
+                        p = e.color(.5 * (h + f));
+                    l.push(m, p), d += '<span style="width: ' + o + '%">' + s[u][1 + r] + "</span>"
                 }
-                t.dataset.overlay = this.ident, t.classList[1 < this.howManyMetrics() ? "remove" : "add"]("one-metric"), t.style.background = "linear-gradient(to right, " + l.join(",") + ")", t.innerHTML = d
+                t.dataset.overlay = this.ident, t.classList[this.howManyMetrics() > 1 ? "remove" : "add"]("one-metric"), t.style.background = "linear-gradient(to right, " + l.join(",") + ")", t.innerHTML = d
             }
         })
     }), /*! */
-    W.define("Color", ["utils", "store", "Class"], function(c, n, e) {
-        return e.extend({
+    W.define("Color", ["utils", "store", "Class"], function(e, t, n) {
+        return n.extend({
             prepare: !1,
             save: !0,
             sync: !0,
             opaque: !0,
             _init: function() {
-                this.key = "color2_" + this.ident, n.insert(this.key, {
+                this.key = "color2_" + this.ident, t.insert(this.key, {
                     def: this.default,
                     save: this.save,
                     sync: this.sync,
                     allowed: this.checkValidity
-                }), n.on(this.key, this.colorChanged, this), this.prepare && this.getColor()
+                }), t.on(this.key, this.colorChanged, this), this.prepare && this.getColor()
             },
             checkValidity: function(e) {
-                if (!c.isArray(e)) return !1;
+                if (!Array.isArray(e)) return !1;
                 for (var t = 0; t < e.length; t++)
-                    if (!c.isArray(e[t])) return !1;
+                    if (!Array.isArray(e[t])) return !1;
                 return !0
             },
             colorChanged: function(e) {
                 e && this.colors && this.forceGetColor()
             },
-            changeColor: function(e, t) {
-                n.set(this.key, e, t)
+            changeColor: function(e, n) {
+                t.set(this.key, e, n)
             },
             toDefault: function() {
-                n.remove(this.key)
+                t.remove(this.key)
             },
             setMinMax: function() {
                 this.min = this.gradient[0][0], this.max = this.gradient[this.gradient.length - 1][0]
@@ -1304,9 +1334,9 @@ L.CanvasLayer = L.Layer.extend({
                 if (i) {
                     var a = this.vec2size(e[1], e[2]),
                         r = this.vec2size(t[1], t[2]);
-                    if (.05 < a && .05 < r) {
+                    if (a > .05 && r > .05) {
                         var o = this.vec2size(s[1], s[2]);
-                        if (.01 < o) {
+                        if (o > .01) {
                             var l = (a * (1 - n) + r * n) / o;
                             s[1] *= l, s[2] *= l
                         }
@@ -1327,14 +1357,16 @@ L.CanvasLayer = L.Layer.extend({
             },
             createGradientArray: function(e, t, n) {
                 void 0 === e && (e = !0), void 0 === t && (t = !1), void 0 === n && (n = 1);
-                for (var i = new Uint8Array(this.steps + 1 << 2), s = (this.max - this.min) / this.steps, a = 0, r = this.gradient, o = 1, l = r[0], c = r[o++], d = 0; d < this.steps; d++) {
-                    var u = (this.min + s * d) * n;
-                    u > c[0] && o < r.length && (l = c, c = r[o++]);
-                    var h = (u - l[0]) / (c[0] - l[0]),
-                        m = this.getGradientColorYUVA(l[1], c[1], h);
-                    t && this.makePremultiplied(m), i[a++] = m[0], i[a++] = m[1], i[a++] = m[2], i[a++] = e ? 255 : m[3]
-                }
-                return this.neutralGrayIndex = a, i[a++] = i[a++] = i[a++] = 128, i[a++] = 255, i
+                var i, s, a, r, o = this.steps + 1,
+                    l = new Uint8Array(o << 2),
+                    c = (this.max - this.min) / this.steps,
+                    d = 0,
+                    u = this.gradient,
+                    h = 1,
+                    f = u[0],
+                    m = u[h++];
+                for (r = 0; r < this.steps; r++)(i = (this.min + c * r) * n) > m[0] && h < u.length && (f = m, m = u[h++]), a = (i - f[0]) / (m[0] - f[0]), s = this.getGradientColorYUVA(f[1], m[1], a), t && this.makePremultiplied(s), l[d++] = Math.round(s[0]), l[d++] = Math.round(s[1]), l[d++] = Math.round(s[2]), l[d++] = e ? 255 : Math.round(s[3]);
+                return this.neutralGrayIndex = d, l[d++] = l[d++] = l[d++] = 128, l[d++] = 255, l
             },
             createSteppedArray: function(e, t, n) {
                 n || (n = t);
@@ -1344,24 +1376,24 @@ L.CanvasLayer = L.Layer.extend({
                 }
                 return a
             },
-            combinedArray: function(e, t, n, i) {
-                void 0 === n && (n = .5), void 0 === i && (i = .5);
-                for (var s, a, r = e.length, o = new Uint8Array(r), l = 0; l < r;) {
-                    for (a = n * ((a = (.299 * e[l] + .587 * e[l + 1] + .114 * e[l + 2]) / (.299 * t[l] + .587 * t[l + 1] + .114 * t[l + 2])) - 1), a += 1, s = 0; s < 3; s++) o[l + s] = c.bound(Math.round(a * t[l + s] * (1 - i) + i * e[l + s]), 0, 255);
-                    o[l + 3] = e[l + 3], l += 4
+            combinedArray: function(t, n, i, s) {
+                void 0 === i && (i = .5), void 0 === s && (s = .5);
+                for (var a, r, o = t.length, l = new Uint8Array(o), c = 0; c < o;) {
+                    for (r = i * ((r = (.299 * t[c] + .587 * t[c + 1] + .114 * t[c + 2]) / (.299 * n[c] + .587 * n[c + 1] + .114 * n[c + 2])) - 1), r += 1, a = 0; a < 3; a++) l[c + a] = e.bound(Math.round(r * n[c + a] * (1 - s) + s * t[c + a]), 0, 255);
+                    l[c + 3] = t[c + 3], c += 4
                 }
-                return o
+                return l
             },
             getColor: function() {
-                var t = this;
-                return this.colors || (this.gradient = n.get(this.key), this.setMinMax(), this.colors = this.createGradientArray(this.opaque), this.startingValue = this.min, this.maxIndex = this.steps - 1 << 2, this.step = (this.max - this.startingValue) / this.steps, this.value2index = function(e) {
-                    return isNaN(e) ? t.neutralGrayIndex : Math.max(0, Math.min(t.maxIndex, (e - t.startingValue) / t.step << 2))
-                }), this
+                var e = this;
+                return this.colors ? this : (this.gradient = t.get(this.key), this.setMinMax(), this.colors = this.createGradientArray(this.opaque), this.startingValue = this.min, this.maxIndex = this.steps - 1 << 2, this.step = (this.max - this.startingValue) / this.steps, this.value2index = function(t) {
+                    return isNaN(t) ? e.neutralGrayIndex : Math.max(0, Math.min(e.maxIndex, (t - e.startingValue) / e.step << 2))
+                }, this)
             }
         })
     }), /*! */
-    W.define("Product", ["utils", "$", "rootScope", "http", "store", "Class", "Calendar", "Window", "rhMessage"], function(e, t, a, r, i, n, s, o, l) {
-        return n.extend({
+    W.define("Product", ["utils", "rootScope", "http", "store", "Class", "Calendar", "Window", "rhMessage"], function(e, t, n, i, s, a, r, o) {
+        return s.extend({
             ident: null,
             initPromise: null,
             maxTileZoom: 10,
@@ -1381,9 +1413,10 @@ L.CanvasLayer = L.Layer.extend({
             labelsTemp: !0,
             imVersion: 2,
             logo: void 0,
+            overlays: [],
             _init: function() {
                 var e;
-                this.productExpires = 0, this.minifest = {}, this.pathGenerator = ((e = {})[2] = "{server}/{directory}/{path}/257w<z>/<y>/<x>/{filename}-{level}.{fileSuffix}", e[3] = "{server}/im/v3.0/forecast/{directory}/{refTime}/{path}/wm_grid_257/<z>/<x>/<y>/{filename}-{level}.{fileSuffix}", e)[this.imVersion]
+                this.productExpires = 0, this.minifest = {}, this.pathGenerator = (e = {}, e[2] = "{server}/{directory}/{path}/257w<z>/<y>/<x>/{filename}-{level}.{fileSuffix}", e[3] = "{server}/im/v3.0/forecast/{directory}/{refTime}/{path}/wm_grid_257/<z>/<x>/<y>/{filename}-{level}.{fileSuffix}", e)[this.imVersion]
             },
             refTime: function() {
                 return this.calendar ? this.calendar.refTime : ""
@@ -1397,38 +1430,50 @@ L.CanvasLayer = L.Layer.extend({
             setExpireTime: function() {
                 this.productExpires = Date.now() + 5 * e.tsMinute
             },
+            moveTs: function(t, n) {
+                if (void 0 === n && (n = !1), n) {
+                    var s = this.acTimes.indexOf(i.get("acTime"));
+                    if (s > -1) return s = e.bound(s + (t ? 1 : -1), 0, this.acTimes.length), i.set("acTime", this.acTimes[s]), !0
+                } else {
+                    var a = this.calendar,
+                        r = a.paths,
+                        o = a.timestamps,
+                        l = r.indexOf(i.get("path"));
+                    if (l > -1) return l = e.bound(l + (t ? 1 : -1), 0, r.length), i.set("timestamp", o[l]), !0
+                }
+            },
             loadMinifest: function(e) {
-                var t = (new Date).toISOString().replace(/.*T(\d+):(\d+).*/, "$1$2"),
-                    n = this.server || a.server,
-                    i = this.directory,
-                    s = 3 === this.imVersion ? n + "/im/v3.0/forecast/" + i + "/info.json?" + t : n + "/" + i + "/minifest2.json?" + t;
-                return r.get(s, {
+                var i = (new Date).toISOString().replace(/.*T(\d+):(\d+).*/, "$1$2"),
+                    s = this.server || t.server,
+                    a = this.directory,
+                    r = 3 === this.imVersion ? s + "/im/v3.0/forecast/" + a + "/info.json?" + i : s + "/" + a + "/minifest2.json?" + i;
+                return n.get(r, {
                     cache: !e
                 })
             },
             open: function() {
-                var n = this;
-                return a.isMobileOrTable || this.printLogo(), this.loadingPromise ? this.loadingPromise : Date.now() < this.productExpires ? Promise.resolve(this.calendar) : (this.loadingPromise = new Promise(function(e) {
-                    n.loadMinifest().then(function(e) {
-                        var t = e.data;
-                        t.refTime && (t.ref = t.refTime, delete t.refTime), n.minifest.ref !== t.ref && (n.minifest = t, n.calendar = s.instance({
-                            numOfHours: n.forecastSize,
-                            minifestFile: n.minifest
-                        }), i.set("lastModified", new Date(n.minifest.ref).getTime()))
-                    }).catch(function(e) {
-                        n.createBackupMinifest(), window.wError("Product", "Minifest load/parsing failed", e)
+                var e = this;
+                return t.isMobileOrTable || this.printLogo(), this.loadingPromise ? this.loadingPromise : Date.now() < this.productExpires ? Promise.resolve(this.calendar) : (this.loadingPromise = new Promise(function(t) {
+                    e.loadMinifest().then(function(t) {
+                        var n = t.data;
+                        n.refTime && (n.ref = n.refTime, delete n.refTime), e.minifest.ref !== n.ref && (e.minifest = n, e.calendar = a.instance({
+                            numOfHours: e.forecastSize,
+                            minifestFile: e.minifest
+                        }), i.set("lastModified", new Date(e.minifest.ref).getTime()))
+                    }).catch(function(t) {
+                        e.createBackupMinifest(), window.wError("Product", "Minifest load/parsing failed", t)
                     }).then(function() {
-                        n.setExpireTime(), n.loadingPromise = null, e(n.calendar)
+                        e.setExpireTime(), e.loadingPromise = null, t(e.calendar)
                     })
                 }), this.loadingPromise)
             },
             close: function() {
-                a.isMobileOrTable || this.removeLogo()
+                t.isMobileOrTable || this.removeLogo()
             },
             createBackupMinifest: function() {
-                if (3 <= this.imVersion) {
+                if (this.imVersion >= 3) {
                     var e = "Cannot get info.json from ims server.";
-                    throw o.instance({
+                    throw r.instance({
                         ident: "message",
                         className: "bg-error",
                         html: "<span>" + e + "</span>"
@@ -1442,7 +1487,7 @@ L.CanvasLayer = L.Layer.extend({
                         [3, 3, 144],
                         [6, 150, 240]
                     ]
-                }, this.calendar = s.instance({
+                }, this.calendar = a.instance({
                     numOfHours: this.forecastSize,
                     minifestFile: this.minifest
                 })
@@ -1454,10 +1499,10 @@ L.CanvasLayer = L.Layer.extend({
                 return !this.bounds || +e.lon > this.bounds.west && +e.lon < this.bounds.east && +e.lat < this.bounds.north && +e.lat > this.bounds.south
             },
             printLogo: function() {
-                this.logo && (this.logoEl = document.createElement("div"), this.logoEl.innerHTML = this.logo, this.logoEl.className = "rh-absoluted rh-transparent", l.insert(this.logoEl))
+                o.clear(), this.logo && (this.logoEl || (this.logoEl = document.createElement("div"), this.logoEl.innerHTML = this.logo, this.logoEl.className = "rh-absoluted rh-transparent"), o.insert(this.logoEl))
             },
             removeLogo: function() {
-                this.logoEl && this.logo && l.remove(this.logoEl)
+                this.logoEl && this.logo && o.remove(this.logoEl)
             }
         })
     }), /*! */
@@ -1473,7 +1518,7 @@ L.CanvasLayer = L.Layer.extend({
             }
         })
     }), /*! */
-    W.define("Layer", ["Class", "products", "utils", "rootScope", "store"], function(e, r, o, l, c) {
+    W.define("Layer", ["Class", "products", "utils", "rootScope", "store"], function(e, t, n, i, s) {
         return e.extend({
             c: null,
             m: null,
@@ -1490,42 +1535,46 @@ L.CanvasLayer = L.Layer.extend({
             getColor: function() {
                 return this.c.getColor()
             },
-            getParams: function(e, t) {
-                var n = o.clone(e),
-                    i = r[this.product || t],
-                    s = this.levels || i.levels;
-                if (n = o.include(n, {
+            getParams: function(e, a) {
+                var r = n.clone(e),
+                    o = t[this.product || a],
+                    l = this.levels || o.levels,
+                    c = Object.assign(r, {
                         layer: this.ident,
-                        server: this.server || i.server || l.server,
-                        JPGtransparency: this.JPGtransparency || i.JPGtransparency,
-                        PNGtransparency: this.PNGtransparency || i.PNGtransparency,
-                        maxTileZoom: this.maxTileZoom || i.maxTileZoom,
+                        server: this.server || o.server || i.server,
+                        JPGtransparency: this.JPGtransparency || o.JPGtransparency,
+                        PNGtransparency: this.PNGtransparency || o.PNGtransparency,
+                        maxTileZoom: this.maxTileZoom || o.maxTileZoom,
                         transformR: this.transformR || null,
                         transformG: this.transformG || null,
                         transformB: this.transformB || null,
-                        directory: i.directory,
-                        imVersion: i.imVersion,
+                        directory: o.directory,
+                        imVersion: o.imVersion,
                         filename: this.filename || e.overlay || this.ident,
-                        fileSuffix: this.fileSuffix || i.fileSuffix,
-                        dataQuality: this.dataQuality || i.dataQuality,
-                        upgradeDataQuality: o.contains(this.betterDataQuality || i.betterDataQuality, this.ident)
-                    }), W.overlays[n.overlay].hasMoreLevels ? o.contains(s, n.level) || (n.level = s[0]) : n.level = "surface", "100m" === n.level && "wind" !== n.overlay && (n.level = "surface"), this.renderParams && (n = o.include(n, this.renderParams)), n.refTime = i.refTime(), this.product && /^cams/.test(t) && this.product !== t) {
-                    var a = r.ecmwf.calendar;
-                    n.path = a.ts2path(c.get("timestamp")), n.refTime = a.refTime, n.level = this.levels && this.levels[0] || n.level
+                        fileSuffix: this.fileSuffix || o.fileSuffix,
+                        dataQuality: this.dataQuality || o.dataQuality,
+                        upgradeDataQuality: (this.betterDataQuality || o.betterDataQuality || []).includes(this.ident)
+                    });
+                if (c.hasMoreLevels ? l.includes(c.level) || (c.level = l[0]) : c.level = "surface", "100m" === c.level && "wind" !== c.overlay && (c.level = "surface"), this.renderParams && (c = Object.assign(c, this.renderParams)), c.refTime = o.refTime(), this.product && /^cams/.test(a) && this.product !== a) {
+                    var d = t.ecmwf.calendar;
+                    c.path = d.ts2path(s.get("timestamp")), c.refTime = d.refTime, c.level = this.levels && this.levels[0] || c.level
                 }
-                return n.fullPath = o.template(this.pathGenerator || i.pathGenerator, n), n.imVersion < 3 && (n.fullPath = o.addQs(n.fullPath, "reftime=" + n.refTime)), n
+                return c.fullPath = n.template(this.pathGenerator || o.pathGenerator, c), c.imVersion < 3 && (c.fullPath = n.addQs(c.fullPath, "reftime=" + c.refTime)), c
             }
         })
     }), /*! */
-    W.define("Overlay", ["layers", "trans", "Class"], function(n, e, t) {
-        return t.extend({
+    W.define("Overlay", ["layers", "trans", "Class"], function(e, t, n) {
+        return n.extend({
             ident: "",
             trans: null,
             hasMoreLevels: !1,
+            poiInCities: !0,
             _init: function() {
-                var e = n[this.ident],
-                    t = e && e.m;
-                t && (this.convertValue = t.convertValue.bind(t), this.convertNumber = t.convertNumber.bind(t), this.setMetric = t.setMetric.bind(t), this.cycleMetric = t.cycleMetric.bind(t), this.listMetrics = t.listMetrics.bind(t), this.c = e.c, this.m = t, this.l = e.l)
+                var t = e[this.ident];
+                if (t) {
+                    var n = t.m;
+                    n && (this.convertValue = n.convertValue.bind(n), this.convertNumber = n.convertNumber.bind(n), this.setMetric = n.setMetric.bind(n), this.cycleMetric = n.cycleMetric.bind(n), this.listMetrics = n.listMetrics.bind(n), this.m = n), this.c = t.c, this.l = t.l
+                }
             },
             paintLegend: function(e) {
                 this.m && this.m.description ? this.m.renderLegend(this.c, e, this.l || this.m) : e.innerHTML = ""
@@ -1534,7 +1583,7 @@ L.CanvasLayer = L.Layer.extend({
                 return this.c && this.c.getColor()
             },
             getName: function() {
-                return e[this.trans] || this.ident
+                return t[this.trans] || this.ident
             }
         })
     }), /*! */
@@ -1575,6 +1624,7 @@ L.CanvasLayer = L.Layer.extend({
             ident: "gustAccu",
             trans: "GUSTACCU",
             icon: "",
+            isAccu: !0,
             layers: ["windParticles", "gustAccu"]
         }), i.rh = e.instance({
             parentMenu: "temp",
@@ -1636,12 +1686,14 @@ L.CanvasLayer = L.Layer.extend({
             ident: "snowAccu",
             trans: "NEWSNOW",
             icon: "",
+            isAccu: !0,
             layers: ["snowAccu"]
         }), i.rainAccu = e.instance({
             parentMenu: "rain",
             ident: "rainAccu",
             trans: "RACCU",
             icon: "9",
+            isAccu: !0,
             layers: ["rainAccu"]
         }), i.waves = e.instance({
             ident: "waves",
@@ -1690,6 +1742,18 @@ L.CanvasLayer = L.Layer.extend({
             trans: "VISIBILITY",
             icon: "c",
             layers: ["windParticles", "visibility"]
+        }), i.fog = e.instance({
+            parentMenu: "clouds",
+            ident: "fog",
+            trans: "FOG",
+            icon: "d",
+            layers: ["fog"]
+        }), i.thunder = e.instance({
+            parentMenu: "rain",
+            ident: "thunder",
+            trans: "THUNDER",
+            icon: "",
+            layers: ["windParticles", "thunder"]
         }), i.snowcover = e.instance({
             parentMenu: "rain",
             ident: "snowcover",
@@ -1708,43 +1772,49 @@ L.CanvasLayer = L.Layer.extend({
             trans: "FREEZING",
             icon: "",
             layers: ["windParticles", "deg0"]
+        }), i.airQ = e.instance({
+            ident: "airQ",
+            trans: "AIR_QUALITY",
+            icon: "",
+            virtual: !0
         }), i.gtco3 = e.instance({
-            parentMenu: "no2",
+            parentMenu: "airQ",
             ident: "gtco3",
-            trans: "GTCO3",
+            trans: "OZONE",
             icon: "",
             layers: ["ecmwfWindParticles150h", "gtco3"]
         }), i.pm2p5 = e.instance({
-            parentMenu: "no2",
+            parentMenu: "airQ",
             ident: "pm2p5",
             trans: "PM2P5",
             icon: "",
             layers: ["ecmwfWindParticles", "pm2p5"]
         }), i.no2 = e.instance({
+            parentMenu: "airQ",
             ident: "no2",
-            trans: "NO2",
-            icon: "",
+            trans: "NO22",
+            icon: "",
             layers: ["ecmwfWindParticles", "no2"]
         }), i.aod550 = e.instance({
-            parentMenu: "no2",
+            parentMenu: "airQ",
             ident: "aod550",
             trans: "AOD550",
             icon: "",
             layers: ["ecmwfWindParticles600h", "aod550"]
         }), i.cosc = e.instance({
-            parentMenu: "no2",
+            parentMenu: "airQ",
             ident: "cosc",
             trans: "COSC",
             icon: "",
             layers: ["ecmwfWindParticles", "cosc"]
         }), i.so2sm = e.instance({
-            parentMenu: "no2",
+            parentMenu: "airQ",
             ident: "so2sm",
             trans: "SO2SM",
             icon: "",
             layers: ["ecmwfWindParticles", "so2sm"]
         }), i.dustsm = e.instance({
-            parentMenu: "no2",
+            parentMenu: "airQ",
             ident: "dustsm",
             trans: "DUSTSM",
             icon: "",
@@ -1761,29 +1831,38 @@ L.CanvasLayer = L.Layer.extend({
         }), i.gh = e.instance({
             ident: "gh",
             layers: ["gh"]
+        }), i.radarSat = e.instance({
+            ident: "radarSat",
+            virtual: !0,
+            trans: "RADAR_SAT",
+            icon: "O"
         }), i.radar = e.instance({
+            parentMenu: "radarSat",
+            allwaysOn: !0,
+            poiInCities: !1,
             ident: "radar",
-            trans: "RADAR_BLITZ",
+            trans: "RADAR",
             icon: "",
-            hasMoreLevels: !1,
             layers: ["radar"]
+        }), i.satellite = e.instance({
+            parentMenu: "radarSat",
+            allwaysOn: !0,
+            poiInCities: !1,
+            ident: "satellite",
+            trans: "SATELLITE",
+            icon: "",
+            layers: ["satellite"]
+        }), i.satelliteIRBT = e.instance({
+            ident: "satellite",
+            trans: "SATELLITE",
+            trans2: "INFRA+",
+            hideFromList: !0,
+            icon: ""
         }), i.capAlerts = e.instance({
             ident: "capAlerts",
             trans: "WX_WARNINGS",
-            icon: "",
+            icon: "",
             layers: ["capAlerts"]
-        }), i.fog = e.instance({
-            parentMenu: "clouds",
-            ident: "fog",
-            trans: "FOG",
-            icon: "d",
-            layers: ["fog"]
-        }), i.thunder = e.instance({
-            parentMenu: "rain",
-            ident: "thunder",
-            trans: "THUNDER",
-            icon: "",
-            layers: ["windParticles", "thunder"]
         }), i.map = e.instance({
             ident: "map",
             trans: "HMAP",
@@ -1796,12 +1875,17 @@ L.CanvasLayer = L.Layer.extend({
         });
         return i.efiWind = s.instance({
             ident: "efiWind",
+            trans2: "WIND",
             layers: ["efiWind"]
         }), i.efiTemp = s.instance({
             ident: "efiTemp",
+            trans2: "TEMP",
+            hideFromList: !0,
             layers: ["efiTemp"]
         }), i.efiRain = s.instance({
             ident: "efiRain",
+            trans2: "RAIN",
+            hideFromList: !0,
             layers: ["efiRain"]
         }), i
     }), /*! */
@@ -1809,7 +1893,23 @@ L.CanvasLayer = L.Layer.extend({
         var n = function(e) {
                 return e
             },
-            i = {
+            i = function(e) {
+                return {
+                    "°C": {
+                        conversion: function(e) {
+                            return e - 273.15
+                        },
+                        precision: e
+                    },
+                    "°F": {
+                        conversion: function(e) {
+                            return 9 * e / 5 - 459.67
+                        },
+                        precision: e
+                    }
+                }
+            },
+            s = {
                 "%": {
                     conversion: function(e) {
                         return Math.round(100 * e)
@@ -1822,20 +1922,7 @@ L.CanvasLayer = L.Layer.extend({
                 ident: "temp",
                 separator: "",
                 defaults: ["°C", "°F"],
-                conv: {
-                    "°C": {
-                        conversion: function(e) {
-                            return e - 273.15
-                        },
-                        precision: 0
-                    },
-                    "°F": {
-                        conversion: function(e) {
-                            return 9 * e / 5 - 459.67
-                        },
-                        precision: 0
-                    }
-                },
+                conv: i(0),
                 description: ["°C", "°F"],
                 lines: [
                     [252, -20, -5],
@@ -1846,6 +1933,13 @@ L.CanvasLayer = L.Layer.extend({
                     [302, 30, 85],
                     [313, 40, 100]
                 ]
+            }),
+            dewpointSpread: e.instance({
+                ident: "dewpointSpread",
+                separator: "",
+                defaults: ["°C", "°F"],
+                conv: i(1),
+                description: ["°C", "°F"]
             }),
             wind: e.instance({
                 ident: "wind",
@@ -2263,6 +2357,31 @@ L.CanvasLayer = L.Layer.extend({
                     [16e3, "VFR", 16, 10]
                 ]
             }),
+            visibilityNoRules: e.instance({
+                ident: "visibilityNoRules",
+                defaults: ["km", "sm"],
+                conv: {
+                    km: {
+                        conversion: function(e) {
+                            return e / 1e3
+                        },
+                        precision: 1
+                    },
+                    sm: {
+                        conversion: function(e) {
+                            return .00328 * e
+                        },
+                        precision: 1
+                    }
+                },
+                description: ["km", "sm"],
+                lines: [
+                    [0, ".8", ".5"],
+                    [3e3, 2.7, 1.5],
+                    [7e3, 6, 4],
+                    [16e3, 16, 10]
+                ]
+            }),
             so2: e.instance({
                 ident: "so2",
                 defaults: ["µg/m³"],
@@ -2336,6 +2455,26 @@ L.CanvasLayer = L.Layer.extend({
                     [70, 70]
                 ]
             }),
+            satellite: e.instance({
+                ident: "satellite",
+                defaults: ["K"],
+                conv: {
+                    K: {
+                        conversion: function(e) {
+                            return -.5 * e + 320
+                        },
+                        precision: 0
+                    }
+                },
+                description: ["K", "K"],
+                lines: [
+                    [160, 240],
+                    [180, 230],
+                    [200, 220],
+                    [220, 210],
+                    [240, 200]
+                ]
+            }),
             ptype: e.instance({
                 ident: "ptype",
                 defaults: ["ptype"],
@@ -2363,13 +2502,13 @@ L.CanvasLayer = L.Layer.extend({
                 convertNumber: function(e) {
                     return t[this.ptype2text[e]]
                 },
-                renderLegend: function(t, e) {
+                renderLegend: function(e, t) {
                     var n = this;
-                    t.getColor();
-                    var i = [1, 3, 4, 5, 6, 7, 8].map(function(e) {
-                        return '<span style="background: ' + t.colorDark(e, 50) + ';">' + n.convertNumber(e) + "</span>"
+                    e.getColor();
+                    var i = [1, 3, 4, 5, 6, 7, 8].map(function(t) {
+                        return '<span style="background: ' + e.colorDark(t, 50) + ';">' + n.convertNumber(t) + "</span>"
                     }).join("");
-                    e.style.background = null, e.dataset.overlay = "ptype", e.innerHTML = i
+                    t.style.background = null, t.dataset.overlay = "ptype", t.innerHTML = i
                 }
             }),
             gh: e.instance({
@@ -2419,7 +2558,7 @@ L.CanvasLayer = L.Layer.extend({
             efiWind: e.instance({
                 ident: "efiWind",
                 defaults: ["%"],
-                conv: i,
+                conv: s,
                 description: ["%", "%"],
                 lines: [
                     [-1, "unusually"],
@@ -2432,7 +2571,7 @@ L.CanvasLayer = L.Layer.extend({
             efiTemp: e.instance({
                 ident: "efiTemp",
                 defaults: ["%"],
-                conv: i,
+                conv: s,
                 description: ["%", "%"],
                 lines: [
                     [-1, "extreme"],
@@ -2446,7 +2585,7 @@ L.CanvasLayer = L.Layer.extend({
             efiRain: e.instance({
                 ident: "efiRain",
                 defaults: ["%"],
-                conv: i,
+                conv: s,
                 description: ["%", "%"],
                 lines: [
                     [-1, "very dry"],
@@ -2477,7 +2616,7 @@ L.CanvasLayer = L.Layer.extend({
         }), s.tempIsolines = n.instance({
             ident: "tempIsolines",
             renderer: "isolines",
-            levels: ["950h", "925h", "900h", "850h", "800h", "700h", "600h", "500h", "400h", "300h", "250h", "200h", "150h"]
+            levels: ["surface", "950h", "925h", "900h", "850h", "800h", "700h", "600h", "500h", "400h", "300h", "250h", "200h", "150h"]
         }), s.deg0Isolines = n.instance({
             ident: "deg0Isolines",
             renderer: "isolines",
@@ -2557,7 +2696,9 @@ L.CanvasLayer = L.Layer.extend({
             m: t.wind
         }), s.gustAccu = n.instance({
             ident: "gustAccu",
-            pathGenerator: "{server}/{directory}/next10d/257w<z>/<y>/<x>/gust-surface.jpg?acc=maxip",
+            fileSuffix: "jpg",
+            JPGtransparency: !0,
+            pathGenerator: "{server}/{directory}/{acTime}/257w<z>/<y>/<x>/gust-surface.jpg?acc=maxip",
             c: e.wind,
             m: t.wind
         }), s.rh = n.instance({
@@ -2658,6 +2799,8 @@ L.CanvasLayer = L.Layer.extend({
             c: e.snow,
             m: t.snow,
             transformR: a,
+            fileSuffix: "png",
+            PNGtransparency: !0,
             pathGenerator: "{server}/{directory}/{acTime}/257w<z>/<y>/<x>/snowaccumulationlog-surface.png",
             renderParams: {
                 interpolate: "interpolateOverlay"
@@ -2665,6 +2808,8 @@ L.CanvasLayer = L.Layer.extend({
         }), s.rainAccu = n.instance({
             ident: "rainAccu",
             transformR: a,
+            fileSuffix: "png",
+            PNGtransparency: !0,
             pathGenerator: "{server}/{directory}/{acTime}/257w<z>/<y>/<x>/rainaccumulationlog-surface.png",
             renderParams: {
                 interpolate: "interpolateOverlay"
@@ -2763,6 +2908,11 @@ L.CanvasLayer = L.Layer.extend({
             renderer: "radar",
             c: e.radar,
             m: t.radar
+        }), s.satellite = n.instance({
+            ident: "satellite",
+            renderer: "satellite",
+            c: e.satellite,
+            m: t.satellite
         }), s.gtco3 = n.instance({
             ident: "gtco3",
             c: e.gtco3,
@@ -2783,8 +2933,12 @@ L.CanvasLayer = L.Layer.extend({
             }
         }), s.aod550 = n.instance({
             ident: "aod550",
+            filename: "aod550_log",
             c: e.aod550,
-            m: t.aod550
+            m: t.aod550,
+            transformR: function(e) {
+                return Math.pow(2, e) - .001
+            }
         }), s.gh = n.instance({
             ident: "gh",
             m: t.gh
@@ -2811,65 +2965,65 @@ L.CanvasLayer = L.Layer.extend({
             m: t.efiRain
         }), s
     }), /*! */
-    W.define("models", ["store", "broadcast", "$", "utils", "rootScope", "products", "layers", "overlays"], function(s, e, t, a, r, o, n, i) {
-        var l = t('meta[name="model"]');
-        l && l.content && a.contains(r.globalProducts, l.content) && "ecmwf" !== l.content && s.set("product", l.content);
-        var c = {},
-            d = {},
-            u = Object.keys(o);
-        Object.keys(n).forEach(function(e) {
+    W.define("models", ["store", "broadcast", "$", "rootScope", "products", "layers", "overlays"], function(e, t, n, i, s, a, r) {
+        var o = n('meta[name="model"]');
+        o && o.content && i.globalProducts.includes(o.content) && "ecmwf" !== o.content && e.set("product", o.content);
+        var l = {},
+            c = {},
+            d = Object.keys(s);
+        Object.keys(a).forEach(function(e) {
+            l[e] = [];
+            for (var t = 0; t < d.length; t++) s[d[t]].overlays.includes(e) && l[e].push(d[t])
+        }), Object.keys(r).forEach(function(e) {
             c[e] = [];
-            for (var t = 0; t < u.length; t++) a.contains(o[u[t]].overlays, e) && c[e].push(u[t])
-        }), Object.keys(i).forEach(function(e) {
-            d[e] = [];
-            for (var t = 0; t < u.length; t++) a.contains(o[u[t]].overlays, e) && d[e].push(u[t])
-        }), e.once("paramsChanged", function() {
-            h(), e.on("mapChanged", h)
+            for (var t = 0; t < d.length; t++) s[d[t]].overlays.includes(e) && c[e].push(d[t])
+        }), t.once("paramsChanged", function() {
+            u(), t.on("mapChanged", u)
         });
-        var h = function() {
-                var e = m(r.map).concat(r.globalProducts);
-                if (s.set("visibleProducts", e) && !a.contains(e, s.get("product"))) {
-                    var t = s.get("prefferedProduct"),
-                        n = s.get("overlay");
-                    if (a.contains(o[t].overlays, n)) return s.set("product", t);
-                    var i = e.filter(function(e) {
-                        return a.contains(o[e].overlays, n)
+        var u = function() {
+                var t = h(i.map).concat(i.globalProducts);
+                if (e.set("visibleProducts", t) && !t.includes(e.get("product"))) {
+                    var n = e.get("prefferedProduct"),
+                        a = e.get("overlay");
+                    if (s[n].overlays.includes(a)) return e.set("product", n);
+                    var r = t.filter(function(e) {
+                        return s[e].overlays.includes(a)
                     });
-                    i.length && s.set("product", i[0])
+                    r.length && e.set("product", r[0])
                 }
             },
-            m = function(e, t) {
-                var n, i, s = t ? r.localPointProducts : r.localProducts,
-                    a = [];
-                for (i = 0; i < s.length; i++) n = s[i], o[n].pointIsInBounds(e) && a.push(n);
-                return a
+            h = function(e, t) {
+                var n, a, r = t ? i.localPointProducts : i.localProducts,
+                    o = [];
+                for (a = 0; a < r.length; a++) n = r[a], s[n].pointIsInBounds(e) && o.push(n);
+                return o
             };
         return {
-            betterProducts: m,
-            getProduct: function(e, t) {
-                var n = c[e],
-                    i = s.get("prefferedProduct");
-                return 2 === n.length && a.contains(n, "cams") ? o.camsEu.pointIsInBounds(r.map) ? "camsEu" : "cams" : a.contains(n, t) ? t : a.contains(n, i) ? i : a.contains(n, "ecmwfWaves") && "ecmwf" === i ? "ecmwfWaves" : a.contains(n, "gfsWaves") && "gfs" === i ? "gfsWaves" : n[0]
+            betterProducts: h,
+            getProduct: function(t, n) {
+                var a = l[t],
+                    r = e.get("prefferedProduct");
+                return 2 === a.length && a.includes("cams") ? s.camsEu.pointIsInBounds(i.map) ? "camsEu" : "cams" : a.includes(n) ? n : a.includes(r) ? r : a.includes("ecmwfWaves") && "ecmwf" === r ? "ecmwfWaves" : a.includes("gfsWaves") && "gfs" === r ? "gfsWaves" : a[0]
             },
-            layer2product: c,
-            overlay2product: d,
+            layer2product: l,
+            overlay2product: c,
             getPointProducts: function(e) {
-                return r.globalPointProducts.concat(m(e, !0))
+                return i.globalPointProducts.concat(h(e, !0))
             }
         }
     }), /*! */
-    W.define("products", ["Product", "StaticProduct", "Calendar", "$", "radar", "rootScope"], function(n, e, i, s, t, a) {
-        var r = {},
-            o = "© 2016 ECMWF: This service is based on data and products of the European Centre for Medium-range Weather Forecasts",
-            l = "© Generated using Copernicus Atmosphere Monitoring Service Information [2019]. Neither the European Commission nor ECMWF is responsible for any use of this information.";
-        r.ecmwf = n.instance({
+    W.define("products", ["Product", "StaticProduct", "Calendar", "$", "rootScope", "radar", "satellite"], function(e, t, n, i, s, a, r) {
+        var o = {},
+            l = "© 2016 ECMWF: This service is based on data and products of the European Centre for Medium-range Weather Forecasts",
+            c = "© Generated using Copernicus Atmosphere Monitoring Service Information [2019]. Neither the European Commission nor ECMWF is responsible for any use of this information.";
+        o.ecmwf = e.instance({
             ident: "ecmwf",
             directory: "ecmwf-hres",
             modelName: "ECMWF",
             modelResolution: 9,
             provider: "ECMWF",
             interval: 720,
-            copy: o,
+            copy: l,
             dataQuality: "normal",
             betterDataQuality: ["rain", "clouds", "lclouds", "mclouds", "hclouds", "cbase", "snowAccu", "rainAccu", "snowcover", "ptype", "sst"],
             levels: ["surface", "100m", "950h", "925h", "900h", "850h", "800h", "700h", "600h", "500h", "400h", "300h", "250h", "200h", "150h"],
@@ -2877,12 +3031,12 @@ L.CanvasLayer = L.Layer.extend({
             acTimes: ["next12h", "next24h", "next3d", "next5d", "next10d"],
             isolines: ["pressure", "gh", "temp", "deg0"],
             _init: function() {
-                n._init.call(this);
+                e._init.call(this);
                 try {
-                    var e = s('meta[name="minifest-' + this.directory + '"]'),
-                        t = e && e.content;
-                    if (!t) throw "noMinifestStr";
-                    if (this.minifest = JSON.parse(t), this.calendar = i.instance({
+                    var t = i('meta[name="minifest-' + this.directory + '"]'),
+                        s = t && t.content;
+                    if (!s) throw "noMinifestStr";
+                    if (this.minifest = JSON.parse(s), this.calendar = n.instance({
                             numOfHours: this.forecastSize,
                             minifestFile: this.minifest
                         }), !this.calendar.minifestValid) throw "minifestNotValid";
@@ -2891,11 +3045,11 @@ L.CanvasLayer = L.Layer.extend({
                     window.wError("products", "Cant create ecmwf calendar from meta tag", e), this.createBackupMinifest()
                 }
             }
-        }), r.cams = n.instance({
+        }), o.cams = e.instance({
             ident: "cams",
             provider: "Copernicus",
             interval: 1440,
-            copy: l,
+            copy: c,
             PNGtransparency: !0,
             imVersion: 3,
             modelName: "CAMS",
@@ -2909,11 +3063,11 @@ L.CanvasLayer = L.Layer.extend({
             isolines: [],
             labelsTemp: !1,
             logo: '<a href="https://atmosphere.copernicus.eu/" target="_blank"><img style="max-width:150px;height:auto;" src="img/providers/copernicus-white.svg" /></a>'
-        }), r.camsEu = n.instance({
+        }), o.camsEu = e.instance({
             ident: "camsEu",
             provider: "Copernicus",
             interval: 1440,
-            copy: l,
+            copy: c,
             PNGtransparency: !0,
             imVersion: 3,
             modelName: "CAMS EU",
@@ -2934,7 +3088,7 @@ L.CanvasLayer = L.Layer.extend({
             isolines: [],
             labelsTemp: !1,
             logo: '<a class="mobilehide" href="https://atmosphere.copernicus.eu/" target="_blank"><img style="max-width:150px;height:auto;" src="img/providers/copernicus-white.svg" /></a>'
-        }), r.gfs = n.instance({
+        }), o.gfs = e.instance({
             ident: "gfs",
             provider: "NOAA",
             interval: 360,
@@ -2948,7 +3102,7 @@ L.CanvasLayer = L.Layer.extend({
             overlays: ["wind", "temp", "pressure", "clouds", "rh", "gust", "dewpoint", "rain", "lclouds", "mclouds", "hclouds", "snowAccu", "rainAccu", "ptype", "gustAccu", "cape"],
             acTimes: ["next12h", "next24h", "next3d", "next5d", "next10d"],
             isolines: ["pressure", "gh", "temp"]
-        }), r.iconEu = n.instance({
+        }), o.iconEu = e.instance({
             ident: "iconEu",
             provider: "DWD",
             interval: 360,
@@ -2970,7 +3124,7 @@ L.CanvasLayer = L.Layer.extend({
             overlays: ["snowcover", "wind", "temp", "pressure", "clouds", "lclouds", "mclouds", "hclouds", "rh", "gust", "cape", "dewpoint", "rain", "deg0", "snowAccu", "rainAccu", "ptype", "gustAccu"],
             acTimes: ["next12h", "next24h", "next2d", "next3d", "next5d"],
             isolines: ["pressure", "gh", "temp"]
-        }), r.arome = n.instance({
+        }), o.arome = e.instance({
             ident: "arome",
             provider: "MF",
             interval: 360,
@@ -2978,7 +3132,7 @@ L.CanvasLayer = L.Layer.extend({
             modelResolution: 2,
             JPGtransparency: !0,
             animation: !0,
-            dataQuality: "radar",
+            dataQuality: "ultra",
             betterDataQuality: [],
             directory: "arome",
             labelsTemp: !1,
@@ -2993,7 +3147,7 @@ L.CanvasLayer = L.Layer.extend({
             overlays: ["wind", "temp", "clouds", "lclouds", "mclouds", "hclouds", "rh", "gust", "cape", "dewpoint", "rain", "ptype"],
             acTimes: [],
             isolines: []
-        }), r.iconGlobal = n.instance({
+        }), o.iconGlobal = e.instance({
             ident: "iconGlobal",
             provider: "DWD",
             interval: 360,
@@ -3005,7 +3159,7 @@ L.CanvasLayer = L.Layer.extend({
             forecastSize: 144,
             overlays: ["fog"],
             levels: ["surface"]
-        }), r.nems = n.instance({
+        }), o.nems = e.instance({
             ident: "nems",
             modelName: "NEMS",
             modelResolution: 4,
@@ -3025,13 +3179,13 @@ L.CanvasLayer = L.Layer.extend({
                 south: 33
             },
             levels: ["surface", "975h", "950h", "925h", "900h", "850h"],
-            overlays: ["wind", "temp", "clouds", "rh", "gust", "dewpoint", "rain", "ptype"],
+            overlays: ["wind", "temp", "clouds", "rh", "gust", "dewpoint", "rain"],
             logo: '<a class="mobilehide" href="https://www.meteoblue.com/" target="_blank">NEMS4 model by <img style="max-width:90px;height:auto;" src="img/logo-mb.svg" /></a>'
-        }), r.mblue = e.instance({
+        }), o.mblue = t.instance({
             ident: "mblue",
-            modelName: a.isMobile ? "MBLUE" : "METEOBLUE"
+            modelName: s.isMobile ? "MBLUE" : "METEOBLUE"
         });
-        var c = n.extend({
+        var d = e.extend({
             provider: "NOAA",
             interval: 360,
             modelName: "NAM",
@@ -3042,10 +3196,10 @@ L.CanvasLayer = L.Layer.extend({
             animationSpeed: 2e3,
             levels: ["surface", "975h", "950h", "925h", "900h", "850h", "800h", "700h", "600h", "500h", "400h", "300h", "250h", "200h", "150h"],
             overlays: ["wind", "temp", "clouds", "rh", "gust", "pressure", "dewpoint", "rain", "lclouds", "hclouds", "mclouds", "snowAccu", "rainAccu", "ptype", "gustAccu"],
-            acTimes: ["next12h", "next24h", "next2d", "next3d"],
+            acTimes: ["next12h", "next24h", "next48h", "next60h"],
             isolines: ["pressure", "temp"]
         });
-        return r.namConus = c.instance({
+        return o.namConus = d.instance({
             ident: "namConus",
             modelResolution: 5,
             directory: "nam-conus",
@@ -3055,7 +3209,7 @@ L.CanvasLayer = L.Layer.extend({
                 north: 53,
                 south: 20
             }
-        }), r.namHawaii = c.instance({
+        }), o.namHawaii = d.instance({
             ident: "namHawaii",
             modelResolution: 3,
             directory: "nam-hawaii",
@@ -3065,7 +3219,7 @@ L.CanvasLayer = L.Layer.extend({
                 north: 30,
                 south: 14
             }
-        }), r.namAlaska = c.instance({
+        }), o.namAlaska = d.instance({
             ident: "namAlaska",
             modelResolution: 6,
             directory: "nam-alaska",
@@ -3075,20 +3229,20 @@ L.CanvasLayer = L.Layer.extend({
                 north: 80,
                 south: 53
             }
-        }), r.ecmwfWaves = n.instance({
+        }), o.ecmwfWaves = e.instance({
             ident: "ecmwfWaves",
             modelName: "ECMWF WAM",
             modelResolution: 13,
             provider: "ECMWF",
             interval: 720,
-            copy: o,
+            copy: l,
             labelsTemp: !1,
             directory: "ecmwf-wam",
             fileSuffix: "png",
             dataQuality: "normal",
             overlays: ["waves", "swell1", "swell2", "swell3", "wwaves"],
             levels: ["surface"]
-        }), r.gfsWaves = n.instance({
+        }), o.gfsWaves = e.instance({
             ident: "gfsWaves",
             modelName: "Wavewatch 3",
             modelResolution: 22,
@@ -3100,7 +3254,7 @@ L.CanvasLayer = L.Layer.extend({
             dataQuality: "low",
             overlays: ["waves", "swell1", "swell2", "wwaves"],
             levels: ["surface"]
-        }), r.sea = e.instance({
+        }), o.sea = t.instance({
             ident: "sea",
             animation: !1,
             modelName: "NESDIS",
@@ -3112,7 +3266,7 @@ L.CanvasLayer = L.Layer.extend({
             overlays: ["currents"],
             levels: ["surface"],
             pathGenerator: "{server}/sst/latest/257w<z>/<y>/<x>/{filename}.png"
-        }), r.geos5 = n.instance({
+        }), o.geos5 = e.instance({
             ident: "geos5",
             modelName: "NASA GEOS-5",
             modelResolution: 22,
@@ -3123,7 +3277,7 @@ L.CanvasLayer = L.Layer.extend({
             dataQuality: "normal",
             overlays: ["cosc", "dustsm", "so2sm"],
             levels: ["surface"]
-        }), r.radar = t, r.capAlerts = e.instance({
+        }), o.radar = a, o.satellite = r, o.capAlerts = t.instance({
             ident: "capAlerts",
             productReady: !0,
             labelsTemp: !1,
@@ -3131,7 +3285,7 @@ L.CanvasLayer = L.Layer.extend({
             interval: 0,
             provider: "National weather institutes",
             overlays: ["capAlerts"]
-        }), r.map = e.instance({
+        }), o.map = t.instance({
             ident: "map",
             productReady: !0,
             labelsTemp: !1,
@@ -3139,11 +3293,11 @@ L.CanvasLayer = L.Layer.extend({
             interval: 0,
             provider: "Seznam.cz",
             overlays: ["map"]
-        }), r.efi = n.instance({
+        }), o.efi = e.instance({
             ident: "efi",
             provider: "ECMWF",
             interval: 720,
-            copy: o,
+            copy: l,
             imVersion: 3,
             modelName: "ECMWF",
             modelResolution: 9,
@@ -3152,7 +3306,7 @@ L.CanvasLayer = L.Layer.extend({
             dataQuality: "normal",
             levels: ["surface"],
             overlays: ["efiWind", "efiTemp", "efiRain"]
-        }), r
+        }), o
     }), /*! */
     W.define("legends", [], function() {
         return {
@@ -3210,7 +3364,7 @@ L.CanvasLayer = L.Layer.extend({
     W.define("detectDevice", [], function() {
         var e, t, n, i, s = window.navigator.userAgent,
             a = /android/i.test(s) ? "android" : /(iPhone|iPod|iPad)/i.test(s) ? "ios" : /windows phone/i.test(s) ? "wphone" : "desktop",
-            r = (e = window.screen.width, t = window.screen.height, n = Math.max(e, t), i = Math.min(e, t), n <= 600 || n <= 960 && i <= 600 ? "mobile" : n <= 1024 || 1024 === i && "ios" == a ? "tablet" : "desktop");
+            r = (e = window.screen.width, t = window.screen.height, n = Math.max(e, t), i = Math.min(e, t), n <= 600 || n <= 960 && i <= 600 ? "mobile" : n <= 1024 || 1024 === i && "ios" === a ? "tablet" : "desktop");
         return window.addEventListener("load", function() {
             document.body.classList.add("platform-" + a), document.documentElement.id = "device-" + r
         }), {
@@ -3229,19 +3383,19 @@ L.CanvasLayer = L.Layer.extend({
                 device: i,
                 supportedLanguages: e,
                 glParticlesOn: !1,
-                server: "http://www.eric.com/test-windy/ims",
-                nodeServer: "http://www.eric.com/test-windy/node",
+                server: "http://www.eric.com/test-windy",
+                nodeServer: "http://www.eric.com/test-windy",
                 tileServer: "http://www.eric.com/test-windy",
-                community: "http://www.eric.com/test-windy-community/community",
+                community: "http://www.eric.com/test-windy",
                 assets: "v/" + W.assets,
                 levels: ["surface", "100m", "975h", "950h", "925h", "900h", "850h", "800h", "700h", "600h", "500h", "400h", "300h", "250h", "200h", "150h"],
-                pointForecast: "/forecast/v2.4",
+                pointForecast: "v2.5",
                 iconsDir: "img/icons4",
-                overlays: ["radar", "wind", "gust", "gustAccu", "rain", "rainAccu", "snowAccu", "snowcover", "ptype", "thunder", "temp", "dewpoint", "rh", "deg0", "clouds", "hclouds", "mclouds", "lclouds", "fog", "cloudtop", "cbase", "visibility", "cape", "waves", "swell1", "swell2", "swell3", "wwaves", "sst", "currents", "no2", "pm2p5", "aod550", "gtco3", "cosc", "dustsm", "so2sm", "pressure", "efiWind", "efiTemp", "efiRain", "capAlerts", "map"],
-                acTimes: ["next12h", "next24h", "next2d", "next3d", "next5d", "next10d"],
+                overlays: ["radarSat", "radar", "satellite", "wind", "gust", "gustAccu", "rain", "rainAccu", "snowAccu", "snowcover", "ptype", "thunder", "temp", "dewpoint", "rh", "deg0", "clouds", "hclouds", "mclouds", "lclouds", "fog", "cloudtop", "cbase", "visibility", "cape", "waves", "swell1", "swell2", "swell3", "wwaves", "sst", "currents", "airQ", "no2", "pm2p5", "aod550", "gtco3", "cosc", "dustsm", "so2sm", "pressure", "efiWind", "efiTemp", "efiRain", "capAlerts", "map"],
+                acTimes: ["next12h", "next24h", "next2d", "next48h", "next60h", "next3d", "next5d", "next10d"],
                 isolines: ["off", "pressure", "gh", "temp", "deg0"],
                 localProducts: ["nems", "namConus", "namHawaii", "namAlaska", "iconEu", "arome", "camsEu"],
-                globalProducts: ["gfs", "ecmwf", "sea", "geos5", "radar", "ecmwfWaves", "gfsWaves", "iconGlobal", "capAlerts", "cams", "map", "efi"],
+                globalProducts: ["gfs", "ecmwf", "sea", "geos5", "radar", "ecmwfWaves", "gfsWaves", "iconGlobal", "capAlerts", "cams", "map", "efi", "satellite"],
                 seaProducts: ["sea", "ecmwfWaves", "gfsWaves"],
                 camsProducts: ["cams", "camsEu"],
                 localPointProducts: ["namConus", "namHawaii", "namAlaska", "iconEu", "arome"],
@@ -3250,8 +3404,7 @@ L.CanvasLayer = L.Layer.extend({
                 isMobile: "mobile" === i,
                 isTablet: "tablet" === i,
                 isMobileOrTablet: "mobile" === i || "tablet" === i,
-                isTouch: window.L && L.Browser.touch,
-                isRetina: window.devicePixelRatio && 1 < window.devicePixelRatio,
+                isRetina: window.devicePixelRatio && window.devicePixelRatio > 1,
                 prefLang: s.languages ? s.languages[0] : s.language || s.browserLanguage || s.systemLanguage || s.userLanguage || "en",
                 map: {},
                 hereMapsID: "app_id=Ps0PWVjNew3jM9lpFHFG&app_code=eEg9396D7_C6NCcM1DUK2A",
@@ -3290,10 +3443,10 @@ L.CanvasLayer = L.Layer.extend({
             };
         return a.products = a.globalProducts.concat(a.localProducts).concat(a.camsProducts), a
     }), /*! */
-    W.define("trans", ["utils", "storage", "broadcast", "rootScope", "store", "seoParser", "langEn"], function(l, c, n, e, d, t, i) {
-        var u = {
+    W.define("trans", ["utils", "storage", "rootScope", "store", "seoParser", "langEn"], function(e, t, n, i, s, a) {
+        var r = {
                 main: {
-                    loaded: !0,
+                    loaded: "en",
                     filename: "lang/{lang}.json",
                     test: "MON"
                 },
@@ -3318,171 +3471,171 @@ L.CanvasLayer = L.Layer.extend({
                     test: "DON_ONETIME"
                 }
             },
-            h = i,
-            s = "en",
-            a = d.get("lang"),
-            r = t.lang || e.prefLang;
+            o = a,
+            l = "en",
+            c = i.get("lang"),
+            d = s.lang || n.prefLang;
 
-        function o(a) {
-            return /\|/.test(a) ? a.replace(/(\w+)\|(\w+):(\w+)/, function(e, t, n, i) {
-                var s = h[t];
-                return s && i ? s.replace(/\{\{[^}]+\}\}/g, i) : a
-            }) : h[a] || a
+        function u(e) {
+            return /\|/.test(e) ? e.replace(/(\w+)\|(\w+):(\w+)/, function(t, n, i, s) {
+                var a = o[n];
+                return a && s ? a.replace(/\{\{[^}]+\}\}/g, s) : e
+            }) : o[e] || e
         }
-        "auto" !== a && l.isValidLang(a) && (r = a), h.loadLangFile = function(a, r, o) {
-            return new Promise(function(t, e) {
-                if (r = r || d.get("usedLang"), !o && "en" === r) return u[a].loaded = !0, void t();
-                var n = u[a],
-                    i = n.filename,
-                    s = n.test;
-                i = l.template(i, {
-                    lang: r
-                }), c.getFile(i, {
-                    aboluteURL: !1,
-                    test: s
-                }).then(function(e) {
-                    l.include(h, e), u[a].loaded = !0, t(e)
-                }).catch(e)
-            })
-        }, h.mergeAndLoad = function(t, e) {
-            l.include(h, e), h.loadLangFile(t).then(function(e) {
-                e && n.emit("langFileLoaded", t)
+        "auto" !== c && e.isValidLang(c) && (d = c), o.loadLangFile = function(n, s) {
+            return void 0 === s && (s = i.get("usedLang")), new Promise(function(i, a) {
+                if (r[n].loaded !== s) {
+                    var l = r[n],
+                        c = l.filename,
+                        d = l.test;
+                    c = e.template(c, {
+                        lang: s
+                    }), t.getFile(c, {
+                        aboluteURL: !1,
+                        test: d
+                    }).then(function(e) {
+                        Object.assign(o, e), r[n].loaded = s, i(e)
+                    }).catch(a)
+                } else i()
             })
         };
-        var m = ["title", "placeholder", "t", "afterbegin", "beforeend", "tooltipsrc"];
+        var h = ["title", "placeholder", "t", "afterbegin", "beforeend", "tooltipsrc"];
 
-        function f(t, n) {
-            var e = Object.keys(u).filter(function(e) {
-                return u[e].loaded
-            }).map(function(e) {
-                return h.loadLangFile(e, t, n)
+        function f(e) {
+            var t = Object.keys(r).filter(function(e) {
+                return r[e].loaded
+            }).map(function(t) {
+                return o.loadLangFile(t, e)
             });
-            Promise.all(e).then(function() {
-                h.translateDocument(document.body), d.set("usedLang", t), document.documentElement.lang = t
+            Promise.all(t).then(function() {
+                o.translateDocument(document.body), i.set("usedLang", e), document.documentElement.lang = e
             })
         }
-        h.translateDocument = function(r) {
-            m.forEach(function(e) {
-                for (var t, n, i = r.querySelectorAll("[data-" + e + "]"), s = 0, a = i.length; s < a; s++) switch (n = o((t = i[s]).dataset[e]), e) {
+        o.translateDocument = function(e) {
+            h.forEach(function(t) {
+                for (var n, i, s = e.querySelectorAll("[data-" + t + "]"), a = 0, r = s.length; a < r; a++) switch (i = u((n = s[a]).dataset[t]), t) {
                     case "t":
-                        /</.test(n) ? t.innerHTML = n : t.textContent = n;
+                        /</.test(i) ? n.innerHTML = i : n.textContent = i;
                         break;
                     case "title":
                     case "placeholder":
-                        void 0 !== t[e] && (t[e] = n);
+                        void 0 !== n[t] && (n[t] = i);
                         break;
                     case "tooltipsrc":
-                        t.dataset.tooltip = n;
+                        n.dataset.tooltip = i;
                         break;
                     case "afterbegin":
-                        3 == t.firstChild.nodeType && t.removeChild(t.firstChild), t.insertAdjacentHTML(e, n);
+                        3 == n.firstChild.nodeType && n.removeChild(n.firstChild), n.insertAdjacentHTML(t, i);
                         break;
                     case "beforeend":
-                        3 == t.lastChild.nodeType && t.removeChild(t.lastChild), t.insertAdjacentHTML(e, n)
+                        3 == n.lastChild.nodeType && n.removeChild(n.lastChild), n.insertAdjacentHTML(t, i)
                 }
             })
-        }, r && (l.isValidLang(r) ? s = r : (r = r.replace(/-\S+$/, "")) !== (s = l.isValidLang(r) ? r : "en") && (e.missingLang = r));
-        var p = function() {
-            h.translateDocument(document.body), f(s), d.on("lang", function(e) {
-                "auto" !== e && e !== d.get("usedLang") && f(e, !0)
+        }, d && (e.isValidLang(d) ? l = d : (d = d.replace(/-\S+$/, "")) !== (l = e.isValidLang(d) ? d : "en") && (n.missingLang = d));
+        var m = function() {
+            o.translateDocument(document.body), f(l), i.on("lang", function(e) {
+                "auto" !== e && e !== i.get("usedLang") && f(e)
             })
         };
-        return "loading" !== document.readyState ? p() : document.addEventListener("DOMContentLoaded", p), h
+        return "loading" !== document.readyState ? m() : document.addEventListener("DOMContentLoaded", m), o
     }), /*! */
-    W.define("store", ["dataSpecifications", "utils", "storage", "rootScope", "Evented", "broadcast"], function(r, n, a, o, e, t) {
-        var l = {},
-            c = e.instance({
+    W.define("store", ["dataSpecifications", "storage", "rootScope", "Evented", "broadcast"], function(e, t, n, i, s) {
+        var a = {},
+            r = i.instance({
                 ident: "store"
             }),
-            d = function(e, t, n) {
-                return t.compare ? !t.compare(n, m(e)) : e in l ? l[e] !== n : f(e) !== n
+            o = function(e, t, n) {
+                return t.compare ? !t.compare(n, h(e)) : e in a ? a[e] !== n : f(e) !== n
             },
-            u = function(t, e) {
-                return "function" == typeof t.allowed ? t.allowed(e) : n.isArray(t.def) ? n.isArray(e) && e.every(function(e) {
-                    return n.contains(t.allowed, e)
-                }) : n.contains(t.allowed, e)
+            l = function(e, t) {
+                return "function" == typeof e.allowed ? e.allowed(t) : Array.isArray(e.def) ? Array.isArray(t) && t.every(function(t) {
+                    return e.allowed.includes(t)
+                }) : e.allowed.includes(t)
             },
-            i = function(e, t) {
-                r[e].def = t, delete l[e]
+            c = function(t, n) {
+                e[t].def = n, delete a[t]
             },
-            s = function(t, n, i) {
+            d = function(t, n, i) {
                 void 0 === i && (i = {});
-                var s = r[t];
+                var s = e[t];
                 if (s) {
-                    if (!i.doNotCheckValidity && !u(s, n)) return s.asyncSet ? Promise.reject() : void 0;
-                    if (s.syncSet && (i.forceChange || d(t, s, n))) {
-                        var e = s.syncSet(n);
-                        if (i.forceChange || d(t, s, e)) return h(t, s, i, e), !0
+                    if (!i.doNotCheckValidity && !l(s, n)) return s.asyncSet ? Promise.reject() : void 0;
+                    if (s.syncSet && (i.forceChange || o(t, s, n))) {
+                        var a = s.syncSet(n);
+                        if (i.forceChange || o(t, s, a)) return u(t, s, i, a), !0
                     } else {
                         if (s.asyncSet) {
-                            if (i.forceChange || d(t, s, n)) {
-                                var a = s.asyncSet(n);
-                                return a.then(function(e) {
-                                    (i.forceChange || d(t, s, e)) && h(t, s, i, e)
+                            if (i.forceChange || o(t, s, n)) {
+                                var r = s.asyncSet(n);
+                                return r.then(function(e) {
+                                    (i.forceChange || o(t, s, e)) && u(t, s, i, e)
                                 }).catch(function(e) {
                                     return window.wError("store", "Unable to change store value " + t + ", " + n, e)
-                                }), a
+                                }), r
                             }
                             return Promise.resolve(n)
                         }
-                        if (i.forceChange || d(t, s, n)) return h(t, s, i, n), !0
+                        if (i.forceChange || o(t, s, n)) return u(t, s, i, n), !0
                     }
                 } else window.wError("store", "Trying to set dataSpec. ident:", t)
             },
-            h = function(e, t, n, i) {
-                if (null === i ? delete l[e] : l[e] = i, t.save && !n.doNotStore && a.isAvbl) {
-                    var s = n.update || Date.now();
-                    a.put("settings_" + e, i), t.sync && (a.put("settings_" + e + "_ts", s), a.put("lastSyncableUpdatedItem", s)), o.user && t.sync && !n.doNotSaveToCloud && c.emit("_cloudSync")
+            u = function(e, i, s, o) {
+                if (null === o ? delete a[e] : a[e] = o, i.save && !s.doNotStore && t.isAvbl) {
+                    var l = s.update || Date.now();
+                    t.put("settings_" + e, o), i.sync && (t.put("settings_" + e + "_ts", l), t.put("lastSyncableUpdatedItem", l)), n.user && i.sync && !s.doNotSaveToCloud && r.emit("_cloudSync")
                 }
-                c.emit(e, null === i ? t.def : i, n.UIident)
+                r.emit(e, null === o ? i.def : o, s.UIident)
             },
-            m = function(e) {
-                if (e in l) return l[e];
-                var t, n = r[e];
-                return n ? (n.save && a.isAvbl ? null === (t = a.get("settings_" + e)) ? t = n.def : u(n, t) || (window.wError("store", "Attempt to get invalid value from localStorage", e), t = n.def) : t = n.def, l[e] = t) : (window.wError("Trying to get invalid dataSpec. ident:", e), null)
+            h = function(n) {
+                if (n in a) return a[n];
+                var i, s = e[n];
+                return s ? (s.save && t.isAvbl ? null === (i = t.get("settings_" + n)) ? i = s.def : l(s, i) || (window.wError("store", "Attempt to get invalid value from localStorage", n), i = s.def) : i = s.def, a[n] = i, i) : (window.wError("Trying to get invalid dataSpec. ident:", n), null)
             },
-            f = function(e) {
-                return r[e].def
+            f = function(t) {
+                return e[t].def
             };
-        c.once("country", function(e) {
-            i("hourFormat", /us|uk|ph|ca|au|nz|in|eg|sa|co|pk|my/.test(e) ? "12h" : "24h"), s("isImperial", /us|my|lr/.test(e))
+        r.once("country", function(e) {
+            c("hourFormat", /us|uk|ph|ca|au|nz|in|eg|sa|co|pk|my/.test(e) ? "12h" : "24h"), d("isImperial", /us|my|lr/.test(e))
         });
-        var p, g = a.get("UUID");
-        g || (g = (p = function() {
+        var m, p = t.get("UUID");
+        p || (p = (m = function() {
             return Math.floor(65536 * (1 + Math.random())).toString(16).substring(1)
-        })() + p() + "-" + p() + "-" + p() + "-" + p() + "-" + p() + p() + p(), a.put("UUID", g));
-        return m("firstUserSession") || s("firstUserSession", Date.now()), o.sessionCounter = m("sessionCounter201803") + 1, s("sessionCounter201803", o.sessionCounter), t.emit("identityCreated", g), t.emit("provisionaryToken", a.get("userToken")), t.on("tokenRecieved", function(e) {
-            return a.put("userToken", e)
-        }), n.include(c, {
-            get: m,
-            set: s,
+        })() + m() + "-" + m() + "-" + m() + "-" + m() + "-" + m() + m() + m(), t.put("UUID", p));
+        return h("firstUserSession") || d("firstUserSession", Date.now()), n.sessionCounter = h("sessionCounter201803") + 1, d("sessionCounter201803", n.sessionCounter), s.emit("identityCreated", p), s.emit("provisionaryToken", t.get("userToken")), s.on("tokenRecieved", function(e) {
+            return t.put("userToken", e)
+        }), Object.assign(r, {
+            get: h,
+            set: d,
             remove: function(e, t) {
                 void 0 === t && (t = {
                     doNotCheckValidity: !0
-                }), s(e, null, t)
+                }), d(e, null, t)
             },
-            insert: function(e, t) {
-                return r[e] = t
+            insert: function(t, n) {
+                return e[t] = n
             },
-            defineProperty: function(e, t, n) {
-                return r[e][t] = n
+            defineProperty: function(t, n, i) {
+                return e[t][n] = i
             },
-            setDefault: i,
+            getProperty: function(t) {
+                return e[t]
+            },
+            setDefault: c,
             is12hFormat: function() {
-                return "12h" === m("hourFormat")
+                return "12h" === h("hourFormat")
             },
             getDeviceID: function() {
-                return g
+                return p
             },
             getAll: function() {
-                Object.keys(r).map(function(e) {
-                    return console.log(e + ":", m(e))
+                Object.keys(e).map(function(e) {
+                    return console.log(e + ":", h(e))
                 })
             },
             getDefault: f,
-            getAllowed: function(e) {
-                var t = r[e].allowed;
-                return t && n.isArray(t) ? t : "Allowed values are checked by function"
+            getAllowed: function(t) {
+                var n = e[t].allowed;
+                return n && Array.isArray(n) ? n : "Allowed values are checked by function"
             }
         })
     }), /*! */
@@ -3539,17 +3692,17 @@ L.CanvasLayer = L.Layer.extend({
             },
             availProducts: {
                 def: ["ecmwf"],
-                allowed: t.isArray,
+                allowed: Array.isArray,
                 compare: o
             },
             visibleProducts: {
                 def: ["ecmwf"],
-                allowed: t.isArray,
+                allowed: Array.isArray,
                 compare: o
             },
             availAcTimes: {
                 def: ["next12h"],
-                allowed: t.isArray
+                allowed: Array.isArray
             },
             prefferedProduct: {
                 def: "ecmwf",
@@ -3609,10 +3762,10 @@ L.CanvasLayer = L.Layer.extend({
                 sync: !0
             },
             favOverlays: {
-                def: ["radar", "wind", "gust", "rain", "rainAccu", "snowAccu", "thunder", "temp", "rh", "clouds", "lclouds", "cbase", "visibility", "waves", "swell1", "swell2", "sst", "no2", "gtco3", "aod550", "pm2p5"],
-                allowed: t.isArray,
+                def: ["radar", "satellite", "wind", "gust", "rain", "rainAccu", "snowAccu", "thunder", "temp", "rh", "clouds", "lclouds", "cbase", "visibility", "waves", "swell1", "swell2", "sst", "no2", "gtco3", "aod550", "pm2p5"],
+                allowed: Array.isArray,
                 save: !0,
-                sync: !0
+                sync: !1
             },
             hourFormat: {
                 def: "24h",
@@ -3657,7 +3810,7 @@ L.CanvasLayer = L.Layer.extend({
                 def: !1,
                 allowed: n,
                 save: !0,
-                sync: !0
+                sync: !1
             },
             lhpaneSwitch: {
                 def: "tools",
@@ -3677,7 +3830,7 @@ L.CanvasLayer = L.Layer.extend({
                     var t;
                     if (!e || "object" != typeof e) return !1;
                     for (var n in this.def)
-                        if ("number" != typeof(t = e[n]) || 2 < t || t < 0) return !1;
+                        if ("number" != typeof(t = e[n]) || t > 2 || t < 0) return !1;
                     return !0
                 }
             },
@@ -3762,7 +3915,7 @@ L.CanvasLayer = L.Layer.extend({
             },
             detailAvailProducts: {
                 def: ["ecmwf"],
-                allowed: t.isArray,
+                allowed: Array.isArray,
                 compare: o
             },
             detailExtended: {
@@ -3799,8 +3952,7 @@ L.CanvasLayer = L.Layer.extend({
             },
             radarAnimation: {
                 def: !1,
-                allowed: n,
-                save: !0
+                allowed: n
             },
             blitzOn: {
                 def: !0,
@@ -3808,8 +3960,31 @@ L.CanvasLayer = L.Layer.extend({
             },
             blitzSoundOn: {
                 def: !0,
-                allowed: n,
-                save: !0
+                allowed: n
+            },
+            satelliteRange: {
+                def: "-2",
+                allowed: ["-12", "-6", "-2"]
+            },
+            satelliteTimestamp: {
+                def: Date.now(),
+                allowed: i
+            },
+            satelliteCalendar: {
+                def: {},
+                allowed: s
+            },
+            satelliteAnimation: {
+                def: !1,
+                allowed: n
+            },
+            satelliteMode: {
+                def: "VISIR",
+                allowed: ["VISIR", "IR", "IRBT"]
+            },
+            satelliteSpeed: {
+                def: "medium",
+                allowed: ["slow", "medium", "fast"]
             },
             hpShown: {
                 def: !1,
@@ -3824,7 +3999,7 @@ L.CanvasLayer = L.Layer.extend({
             favPois: {
                 def: ["favs", "wind", "temp", "cities", "metars", "cams", "pgspots"],
                 allowed: function(e) {
-                    return t.isArray(e) && e.length < 8
+                    return Array.isArray(e) && e.length < 8
                 },
                 save: !0,
                 sync: !0
@@ -3845,7 +4020,7 @@ L.CanvasLayer = L.Layer.extend({
             },
             donations: {
                 def: [],
-                allowed: t.isArray,
+                allowed: Array.isArray,
                 compare: o,
                 save: !0,
                 sync: !0
@@ -3857,10 +4032,20 @@ L.CanvasLayer = L.Layer.extend({
             },
             plugins: {
                 def: [],
-                allowed: t.isArray,
+                allowed: Array.isArray,
                 compare: o,
                 save: !0,
                 sync: !0
+            },
+            rplannerDir: {
+                def: "horizontal",
+                allowed: ["horizontal", "vertical", "north"],
+                save: !0
+            },
+            stationsSort: {
+                def: "profi",
+                allowed: ["profi", "distance"],
+                save: !0
             }
         }
     }), /*! */
@@ -3924,6 +4109,72 @@ L.CanvasLayer = L.Layer.extend({
                     [10, [254, 174, 0, 255]],
                     [19, [254, 0, 150, 255]],
                     [100, [151, 50, 222, 255]]
+                ]
+            }),
+            wavesDetail: e.instance({
+                ident: "wavesDetail",
+                steps: 256,
+                default: [
+                    [0, [255, 255, 255, 0]],
+                    [.1, [255, 255, 255, 0]],
+                    [1, [180, 180, 255, 255]],
+                    [2.5, [254, 174, 0, 255]],
+                    [20, [255, 255, 255, 255]]
+                ]
+            }),
+            periodDetail: e.instance({
+                ident: "periodDetail",
+                steps: 256,
+                default: [
+                    [0, [255, 255, 255, 0]],
+                    [5, [255, 255, 255, 0]],
+                    [10, [255, 237, 180, 255]],
+                    [20, [180, 255, 180, 255]]
+                ]
+            }),
+            altitudeDetail: e.instance({
+                ident: "altitudeDetail",
+                steps: 256,
+                default: [
+                    [0, [255, 197, 254, 256]],
+                    [129, [255, 199, 254, 256]],
+                    [149, [255, 167, 179, 256]],
+                    [279, [255, 177, 179, 256]],
+                    [299, [175, 203, 255, 256]],
+                    [879, [157, 194, 255, 256]],
+                    [914, [159, 255, 170, 256]],
+                    [1499, [163, 255, 172, 256]],
+                    [7999, [255, 255, 255, 256]]
+                ]
+            }),
+            visibilityDetail: e.instance({
+                ident: "visibilityDetail",
+                steps: 256,
+                default: [
+                    [0, [251, 180, 251, 256]],
+                    [1600, [253, 173, 255, 256]],
+                    [2200, [255, 175, 176, 256]],
+                    [5e3, [255, 165, 165, 256]],
+                    [6e3, [179, 187, 255, 256]],
+                    [8e3, [169, 182, 255, 256]],
+                    [9e3, [179, 255, 187, 256]],
+                    [15e3, [178, 255, 171, 255]],
+                    [20004, [255, 255, 255, 256]]
+                ]
+            }),
+            dewpointSpreadDetail: e.instance({
+                ident: "dewpointSpreadDetail",
+                steps: 256,
+                default: [
+                    [0, [251, 180, 251, 256]],
+                    [.1, [253, 173, 255, 256]],
+                    [.25, [255, 175, 176, 256]],
+                    [.5, [255, 165, 165, 256]],
+                    [1, [179, 187, 255, 256]],
+                    [2, [169, 182, 255, 256]],
+                    [3, [179, 255, 187, 256]],
+                    [4, [178, 255, 171, 255]],
+                    [5, [255, 255, 255, 256]]
                 ]
             }),
             rh: e.instance({
@@ -4248,7 +4499,7 @@ L.CanvasLayer = L.Layer.extend({
             }),
             aod550: e.instance({
                 ident: "aod550",
-                steps: 1024,
+                steps: 8e3,
                 default: [
                     [0, [0, 102, 151, 256]],
                     [.25, [125, 182, 209, 256]],
@@ -4274,7 +4525,7 @@ L.CanvasLayer = L.Layer.extend({
             }),
             no2: e.instance({
                 ident: "no2",
-                steps: 1024,
+                steps: 4096,
                 default: [
                     [0, [0, 102, 151, 256]],
                     [1.5, [125, 182, 209, 256]],
@@ -4365,6 +4616,27 @@ L.CanvasLayer = L.Layer.extend({
                     [1, [140, 130, 20, 200]]
                 ]
             }),
+            satellite: e.instance({
+                ident: "satellite",
+                steps: 256,
+                opaque: !1,
+                save: !1,
+                sync: !1,
+                default: [
+                    [0, [0, 0, 0, 255]],
+                    [159, [240, 240, 240, 255]],
+                    [160, [0, 0, 128, 255]],
+                    [170, [0, 0, 255, 255]],
+                    [180, [0, 128, 255, 255]],
+                    [190, [0, 255, 255, 255]],
+                    [200, [128, 255, 128, 255]],
+                    [210, [255, 255, 0, 255]],
+                    [220, [255, 128, 0, 255]],
+                    [230, [255, 0, 0, 255]],
+                    [240, [128, 0, 0, 255]],
+                    [256, [128, 0, 0, 255]]
+                ]
+            }),
             fog: e.instance({
                 ident: "fog",
                 steps: 512,
@@ -4427,13 +4699,7 @@ L.CanvasLayer = L.Layer.extend({
             modelName: "",
             interval: 3,
             directory: "radar2/composite",
-            server: "http://http://www.eric.com/test-windy/rdr",
-            blitzFrameInterval: 3e5,
-            blitzStableDeltaTime: 12e3,
-            blitzRecentsDuration: 6e4,
-            blitzFlashMaxDelay: 12e3,
-            blitzWriteRecentsToFrameMaxDelay: 1e4,
-            blitzCompletedDeltaTime: 24e3,
+            server: "https://rdr.windy.com",
             dataQuality: "radar",
             labelsTemp: !1,
             overlays: ["radar"],
@@ -4443,42 +4709,62 @@ L.CanvasLayer = L.Layer.extend({
             }
         })
     }), /*! */
-    W.define("geolocation", ["$", "utils", "http", "store", "broadcast", "router"], function(e, a, t, r, o, n) {
-        var l = function(e) {
+    W.define("satellite", ["StaticProduct", "Evented", "rootScope"], function(e, t, n) {
+        return e.instance(t, {
+            ident: "satellite",
+            animation: !1,
+            modelName: "EUMETSAT",
+            provider: "EUMETSAT",
+            interval: 3,
+            directory: "satellite/composite",
+            server: "https://sat.windy.com",
+            fileName: "satellite.jpg?mosaic=true",
+            dataQuality: 0,
+            labelsTemp: !1,
+            overlays: ["satellite"],
+            levels: ["surface"],
+            logo: '<a class="size-m uiyellow inlined" href="http://www.eric.com/test-windy/topic/8820" data-icon-after=">">This is <b>testing version</b> of our Satellite layer. Let us know how you like it</a>\n\n\t<a href="https://www.eumetsat.int/" target="_blank"><img src="img/providers/eumetsat2.svg" /></a>\n\t<div class="uiyellow size-m clickable inlined" data-do="rqstOpen,animate" data-icon="&#xe047;">Create video</div>',
+            open: function() {
+                return n.isMobileOrTable || this.once("loadedAll", this.printLogo.bind(this)), this.loadMinifest(), Promise.resolve()
+            }
+        })
+    }), /*! */
+    W.define("geolocation", ["$", "utils", "http", "store", "broadcast", "router"], function(e, t, n, i, s, a) {
+        var r = function(e) {
                 return void 0 === e && (e = {
                     enableHighAccuracy: !1,
                     timeout: 7e3
-                }), navigator.geolocation ? new Promise(function(n) {
+                }), navigator.geolocation ? new Promise(function(t) {
                     navigator.geolocation.getCurrentPosition(function(e) {
-                        var t = {
+                        var n = {
                             lat: e.coords.latitude,
                             lon: e.coords.longitude,
                             source: "gps",
                             ts: Date.now()
                         };
-                        r.set("gpsLocation", t), o.emit("newLocation", t), n(t)
+                        i.set("gpsLocation", n), s.emit("newLocation", n), t(n)
                     }, function(e) {
-                        n(d())
+                        t(c())
                     }, e)
-                }) : Promise.resolve(d())
+                }) : Promise.resolve(c())
             },
-            c = function(e, t) {
+            o = function(e, t) {
                 return parseFloat(e).toFixed(2) + ", " + parseFloat(t).toFixed(2)
             },
-            i = function(e, t, n, i, s) {
-                n && (n = n.toLowerCase(), r.set("country", n));
-                var a = {
+            l = function(e, t, n, a, r) {
+                n && (n = n.toLowerCase(), i.set("country", n));
+                var l = {
                     ts: Date.now(),
-                    source: s,
+                    source: r,
                     lat: parseFloat(e),
                     lon: parseFloat(t),
-                    name: i || c(e, t)
+                    name: a || o(e, t)
                 };
-                r.set("ipLocation", a), o.emit("newLocation", a)
+                i.set("ipLocation", l), s.emit("newLocation", l)
             },
-            d = function() {
-                var e = r.get("ipLocation"),
-                    t = r.get("gpsLocation");
+            c = function() {
+                var e = i.get("ipLocation"),
+                    t = i.get("gpsLocation");
                 return e && t ? e.ts > t.ts ? e : t : t || (e || {
                     lat: 0,
                     lon: -1 * (new Date).getTimezoneOffset() / 4,
@@ -4489,267 +4775,301 @@ L.CanvasLayer = L.Layer.extend({
                 })
             };
         try {
-            var s, u = e('meta[name="geoip"]');
-            if (u && u.content && (s = u.content.split(","))) {
-                var h = s[1],
-                    m = s[2],
-                    f = s[3],
-                    p = s[4];
-                i(h, m, f, p, "meta")
-            } else t.get("/node/geoip").then(function(e) {
+            var d, u = e('meta[name="geoip"]');
+            if (u && u.content && (d = u.content.split(","))) {
+                var h = d[1],
+                    f = d[2],
+                    m = d[3],
+                    p = d[4];
+                l(h, f, m, p, "meta")
+            } else n.get("/node/umisteni").then(function(e) {
                 var t = e.data;
-                i(t.ll[0], t.ll[1], t.country, t.city, "api")
-            }).catch(window.wError.bind(null, "geolocation", "Unable to load||parse /node/geoip"))
+                l(t.ll[0], t.ll[1], t.country, t.city, "api")
+            }).catch(window.wError.bind(null, "geolocation", "Unable to load||parse /node/umisteni"))
         } catch (e) {
             window.wError("geolocation", "Module initialization failed", e)
         }
         return {
-            getFallbackName: c,
-            getGPSlocation: l,
-            getMyLatestPos: d,
+            getFallbackName: o,
+            getGPSlocation: r,
+            getMyLatestPos: c,
             getHomeLocation: function(e) {
-                var t = r.get("startUp"),
-                    n = Date.now();
-                if ("location" === t) e(r.get("homeLocation"));
-                else if ("ip" === t) {
-                    var i = d();
-                    "fallback" === i.source || n - i.ts > 12 * a.tsHour ? o.once("newLocation", e) : e(i)
+                var n = i.get("startUp"),
+                    a = Date.now();
+                if ("location" === n) e(i.get("homeLocation"));
+                else if ("ip" === n) {
+                    var o = c();
+                    "fallback" === o.source || a - o.ts > 12 * t.tsHour ? s.once("newLocation", e) : e(o)
                 } else {
-                    var s = r.get("gpsLocation");
-                    s && "gps" === s.source && n - s.ts < a.tsHour ? e(s) : l().then(e)
+                    var l = i.get("gpsLocation");
+                    l && "gps" === l.source && a - l.ts < t.tsHour ? e(l) : r().then(e)
                 }
             }
         }
     }), /*! */
-    W.define("params", ["store", "models", "overlays", "utils", "broadcast", "products", "router", "renderCtrl"], function(s, i, n, a, r, o, e, t) {
-        var l = a.debounce(d, 100);
+    W.define("params", ["store", "models", "overlays", "utils", "broadcast", "products", "router", "renderCtrl"], function(e, t, n, i, s, a, r, o) {
+        var l = i.debounce(d, 100);
 
         function c() {
-            ["acTime", "level", "isolines", "path", "overlay", "product"].forEach(function(e) {
-                s.on(e, l.bind(null, e))
+            ["acTime", "level", "isolines", "path", "overlay", "product"].forEach(function(t) {
+                e.on(t, l.bind(null, t))
             })
         }
 
-        function d(e) {
-            var t = {
-                acTime: s.get("acTime"),
-                level: s.get("level"),
-                isolines: s.get("isolines"),
-                path: s.get("path"),
-                overlay: s.get("overlay"),
-                product: s.get("product")
-            };
-            r.emit("paramsChanged", t, e)
+        function d(t) {
+            var i = e.get("overlay"),
+                a = {
+                    overlay: i,
+                    hasMoreLevels: n[i].hasMoreLevels,
+                    acTime: e.get("acTime"),
+                    level: e.get("level"),
+                    isolines: e.get("isolines"),
+                    path: e.get("path"),
+                    product: e.get("product")
+                };
+            s.emit("paramsChanged", a, t)
         }
-        var u = o.ecmwf.calendar;
-        s.setDefault("calendar", u), s.setDefault("path", u.ts2path(Date.now())), s.defineProperty("timestamp", "syncSet", function(e) {
-            e = parseInt(e);
-            var t = s.get("calendar");
-            return t && (e = t.boundTs(e), s.set("path", t.ts2path(e))), e
-        }), s.defineProperty("product", "asyncSet", function(i) {
-            return new Promise(function(t, e) {
-                var n = o[i];
-                o[s.get("product")].close(), n.open().then(function(e) {
-                    a.replaceClass(/product-\S+/, "product-" + i), e && (s.set("calendar", e), s.set("timestamp", a.bound(s.get("timestamp"), e.start, e.end), {
+        var u = a.ecmwf.calendar;
+        e.setDefault("calendar", u), e.setDefault("path", u.ts2path(Date.now())), e.defineProperty("timestamp", "syncSet", function(t) {
+            t = parseInt(t);
+            var n = e.get("calendar");
+            return n && (t = n.boundTs(t), e.set("path", n.ts2path(t))), t
+        }), e.defineProperty("product", "asyncSet", function(t) {
+            return new Promise(function(n, s) {
+                var r = a[t];
+                a[e.get("product")].close(), r.open().then(function(s) {
+                    i.replaceClass(/product-\S+/, "product-" + t), s && (e.set("calendar", s), e.set("timestamp", i.bound(e.get("timestamp"), s.start, s.end), {
                         forceChange: !0
-                    })), n.levels && (s.set("availLevels", n.levels), a.contains(n.levels, s.get("level")) || s.set("level", "surface")), n.acTimes && (s.set("availAcTimes", n.acTimes), a.contains(n.acTimes, s.get("acTime")) || s.set("acTime", n.acTimes[0])), /^gfs/.test(i) ? s.set("prefferedProduct", "gfs") : /^ecmwf/.test(i) && s.set("prefferedProduct", "ecmwf"), t(i)
-                }).catch(e)
+                    })), r.levels && (e.set("availLevels", r.levels), r.levels.includes(e.get("level")) || e.set("level", "surface")), r.acTimes && (e.set("availAcTimes", r.acTimes), r.acTimes.includes(e.get("acTime")) || e.set("acTime", r.acTimes[0])), /^gfs/.test(t) ? e.set("prefferedProduct", "gfs") : /^ecmwf/.test(t) && e.set("prefferedProduct", "ecmwf"), n(t)
+                }).catch(s)
             })
         });
-        var h, m = function(e) {
-            var t = n[e];
-            a.replaceClass(/overlay-\S+/, "overlay-" + e), a.toggleClass(document.body, t && t.hasMoreLevels, "has-more-levels"), s.set("availProducts", i.overlay2product[e])
+        var h, f = function(s) {
+            var a = n[s];
+            i.replaceClass(/overlay-\S+/, "overlay-" + s), i.toggleClass(document.body, a && a.hasMoreLevels, "has-more-levels"), e.set("availProducts", t.overlay2product[s])
         };
-        s.defineProperty("overlay", "asyncSet", function(t) {
-            var n = i.getProduct(t, s.get("product"));
-            return n === s.get("product") ? (m(t), Promise.resolve(t)) : new Promise(function(e) {
-                s.set("product", n).then(function() {
-                    m(t), e(t)
+        e.defineProperty("overlay", "asyncSet", function(n) {
+            var i = t.getProduct(n, e.get("product"));
+            return i === e.get("product") ? (f(n), Promise.resolve(n)) : new Promise(function(t) {
+                e.set("product", i).then(function() {
+                    f(n), t(n)
                 })
             })
         }), h = {
             forceChange: !0
-        }, s.set("product", s.get("product"), h).then(function() {
-            s.set("overlay", s.get("overlay"), h).then(function() {
+        }, e.set("product", e.get("product"), h).then(function() {
+            e.set("overlay", e.get("overlay"), h).then(function() {
                 d(), c()
             })
-        }).catch(function(e) {
-            window.wError("params", "failed to launch params change", e), s.set("product", "ecmwf", h), s.set("overlay", "wind", h), setTimeout(function() {
+        }).catch(function(t) {
+            window.wError("params", "failed to launch params change", t), e.set("product", "ecmwf", h), e.set("overlay", "wind", h), setTimeout(function() {
                 d(), c()
             }, 500)
         })
     }), /*! */
-    W.define("reverseName", ["http", "store", "map", "geolocation"], function(i, s, a, e) {
-        var v = e.getFallbackName;
+    W.define("reverseName", ["http", "store", "map", "geolocation"], function(e, t, n, i) {
+        var s = i.getFallbackName;
         return {
-            get: function(e, t) {
-                var f = e.lat,
-                    p = e.lon,
-                    g = s.get("usedLang"),
-                    n = t || a.getZoom();
-                return new Promise(function(m) {
-                    i.get("/reverse/v3/" + f + "/" + p + "/" + n + "?lang=" + g).then(function(e) {
-                        var t = e.data,
-                            n = t.locality,
-                            i = t.suburb,
-                            s = t.city,
-                            a = t.county,
-                            r = t.district,
-                            o = t.state,
-                            l = t.country,
-                            c = t.island,
-                            d = a || r || o || "",
-                            u = i || n,
-                            h = u && s && u !== s ? u + ", " + s : u || i || s || c || d || o && o + ", " + l || l;
-                        m({
-                            lat: f,
-                            lon: p,
-                            lang: g,
-                            region: d,
-                            country: l || "",
-                            name: h || v(f, p),
-                            nameValid: !!h
+            get: function(i, a) {
+                var r = i.lat,
+                    o = i.lon,
+                    l = t.get("usedLang"),
+                    c = a || n.getZoom();
+                return new Promise(function(t) {
+                    e.get("/reverse/v3/" + r + "/" + o + "/" + c + "?lang=" + l).then(function(e) {
+                        var n = e.data,
+                            i = n.locality,
+                            a = n.suburb,
+                            c = n.city,
+                            d = n.county,
+                            u = n.district,
+                            h = n.state,
+                            f = n.country,
+                            m = n.island,
+                            p = d || u || h || "",
+                            g = a || i,
+                            v = g && c && g !== c ? g + ", " + c : g || a || c || m || p || h && h + ", " + f || f;
+                        t({
+                            lat: r,
+                            lon: o,
+                            lang: l,
+                            region: p,
+                            country: f || "",
+                            name: v || s(r, o),
+                            nameValid: !!v
                         })
                     }).catch(function(e) {
-                        m({
-                            lat: f,
-                            lon: p,
-                            lang: g,
-                            name: v(f, p)
+                        t({
+                            lat: r,
+                            lon: o,
+                            lang: l,
+                            name: s(r, o)
                         })
                     })
                 })
             }
         }
     }), /*! */
-    W.define("router", ["store", "utils", "broadcast", "rootScope", "storage", "plugins", "seoParser"], function(a, r, e, o, n, t, i) {
-        var l, c, s, d, u = !1;
+    W.define("router", ["store", "utils", "broadcast", "rootScope", "plugins", "seoParser"], function(e, t, n, i, s, a) {
+        var r, o, l, c, d = !1;
 
-        function h() {
-            var e = r.tsHour,
-                t = n.get("cordovaLastTimestamp") || 0;
-            return Date.now() - +t < e
+        function u(e) {
+            var t;
+            return (t = /^\/(-?\d+\.\d+)\/(-?\d+\.\d+)(?:\/(meteogram|airgram|waves|wind))?(?:\/(\w+)-([^\/]+))?/.exec(e)) ? {
+                plugin: "detail",
+                params: {
+                    lat: +t[1],
+                    lon: +t[2],
+                    source: "url",
+                    display: t[3]
+                }
+            } : (t = /^\/distance\/?(vfr|ifr|car|boat|airgram)?\/?(.*)/.exec(e)) ? {
+                plugin: i.isMobileOrTablet ? "distance" : "rplanner",
+                params: i.isMobileOrTablet ? t[2] || "" : {
+                    coords: t[2] || "",
+                    view: t[1] || "elevation"
+                }
+            } : (t = /^\/([^\/]+)\/(-?\d+\.\d+)\/(-?\d+\.\d+)$/.exec(e)) && t[1] in s ? {
+                plugin: t[1],
+                params: {
+                    lat: +t[2],
+                    lon: +t[3],
+                    source: "url"
+                }
+            } : (t = /^\/([^\/]+)\/([^\/]+)$/.exec(e)) && t[1] in s ? {
+                plugin: t[1],
+                params: t[2]
+            } : (t = /^\/([^\/]+)$/.exec(e)) && t[1] in s ? {
+                plugin: t[1]
+            } : (t = /^\/(\w\w\w\w)$/.exec(e)) ? {
+                plugin: "airport",
+                params: {
+                    icao: t[1].toUpperCase(),
+                    source: "url"
+                }
+            } : void(e && e.length > 3 && (d = !0))
         }
-        s = i.purl;
-        var m = (d = decodeURIComponent(window.location.search.substring(1)) || "") ? d.replace(/&.*$/, "") : "";
-        m && 10 < m.length && function(e) {
-            for (var t, n = e.split(","), i = 0; i < n.length; i++) {
-                var s;
-                t = n[i], /^-?\d+\.\d+$/.test(t) && /^-?\d+\.\d+$/.test(n[i + 1]) && /^\d+$/.test(n[i + 2]) && (l = {
-                    lat: parseFloat(t),
-                    lon: parseFloat(n[i + 1]),
-                    zoom: parseInt(n[i + 2])
-                }, i += 2), r.contains(o.products, t) && a.set("product", t), r.contains(o.levels, t) && a.set("level", t), r.contains(o.overlays, t) && a.set("overlay", t), r.contains(o.acTimes, t) && a.set("acTime", t), (s = /^(\d\d\d\d)-(\d\d)-(\d\d)-(\d\d)$/.exec(t)) && a.set("timestamp", Date.UTC(+s[1], +s[2] - 1, +s[3], +s[4], 0, 0, 0)), (s = /^(a:?[a-zA-Z0-9]{5})/.exec(t)) && (o.customAnimation = s[1]), (s = /^m:([a-zA-Z0-9]{5,})/.exec(t)) && (c = r.str2latLon(s[1])), (s = /^i:([a-z0-9]{3,})/.exec(t)) && a.set("isolines", s[1]), (s = /^p:([a-z]+)/.exec(t)) && a.set("particlesAnim", s[1]), (s = /^d:picker/.exec(t)) && (c = l)
+
+        function h(n) {
+            for (var s, a = n.split(","), l = 0; l < a.length; l++) {
+                var c;
+                if (s = a[l], /^-?\d+\.\d+$/.test(s) && /^-?\d+\.\d+$/.test(a[l + 1]) && /^\d+$/.test(a[l + 2]) && (r = {
+                        lat: parseFloat(s),
+                        lon: parseFloat(a[l + 1]),
+                        zoom: parseInt(a[l + 2])
+                    }, l += 2), i.products.includes(s) && e.set("product", s), i.levels.includes(s) && e.set("level", s), i.overlays.includes(s) && e.set("overlay", s), i.acTimes.includes(s) && e.set("acTime", s), (c = /^(\d\d\d\d)-(\d\d)-(\d\d)-(\d\d)$/.exec(s)) && e.set("timestamp", Date.UTC(+c[1], +c[2] - 1, +c[3], +c[4], 0, 0, 0)), (c = /^(a:?[a-zA-Z0-9]{5})/.exec(s)) && (i.customAnimation = c[1]), (c = /^m:([a-zA-Z0-9]{5,})/.exec(s)) && (o = t.str2latLon(c[1])), (c = /^i:([a-z0-9]{3,})/.exec(s)) && e.set("isolines", c[1]), (c = /^d:picker/.exec(s)) && (o = r), c = /^(\w{3,20}):(\S+)/.exec(s)) {
+                    var d = e.getProperty(c[1]);
+                    !d || d.save || d.sync || e.set(c[1], c[2])
+                }
             }
-        }(m);
-        var f, p, g = (p = /^\/(-?\d+\.\d+)\/(-?\d+\.\d+)(?:\/(meteogram|airgram|waves|wind))?(?:\/(\w+)-([^/]+))?/.exec(f = s)) ? {
-            plugin: "detail",
-            params: {
-                lat: +p[1],
-                lon: +p[2],
-                source: "url",
-                display: p[3]
+            return {
+                sharedCoords: r,
+                pickerCoords: o
             }
-        } : (p = /^\/([^/]+)\/(-?\d+\.\d+)\/(-?\d+\.\d+)$/.exec(f)) && p[1] in t ? {
-            plugin: p[1],
-            params: {
-                lat: +p[2],
-                lon: +p[3],
-                source: "url"
-            }
-        } : (p = /^\/([^/]+)\/([^/]+)$/.exec(f)) && p[1] in t ? {
-            plugin: p[1],
-            params: p[2]
-        } : (p = /^\/([^/]+)$/.exec(f)) && p[1] in t ? {
-            plugin: p[1]
-        } : (p = /^\/(\w\w\w\w)$/.exec(f)) ? {
-            plugin: "airport",
-            params: {
-                icao: p[1].toUpperCase(),
-                source: "url"
-            }
-        } : void(f && 3 < f.length && (u = !0));
-        return s = g ? (e.once("paramsChanged", e.emit.bind(e, "rqstOpen", g.plugin, g.params)), o.startupDetail = g.params || g.plugin, i.startupUrl) : "", g && g.plugin || !c || !l || (c.noEmit = !0, e.once("redrawFinished", e.emit.bind(e, "rqstOpen", "picker", c))), {
-            url: s,
-            newerThan: h,
-            url404: u,
-            sharedCoords: l
+        }
+        l = a.purl;
+        var f = (c = decodeURIComponent(window.location.search.substring(1)) || "") ? c.replace(/&.*$/, "") : "";
+        f && f.length > 10 && h(f);
+        var m = function(e) {
+                var t = /\/qs:([^\/]+)$/.exec(e);
+                if (t) {
+                    for (var n = t[1].split("&"), i = {}, s = 0; s < n.length; s++) {
+                        var a = n[s].split("=");
+                        i[decodeURIComponent(a[0])] = decodeURIComponent(a[1] || "")
+                    }
+                    return {
+                        purl: e = e.replace(/\/qs:(\S+)$/, ""),
+                        qs: i
+                    }
+                }
+                return {
+                    purl: e
+                }
+            }(l),
+            p = m.qs,
+            g = u(m.purl);
+        return g ? (n.once("paramsChanged", n.emit.bind(n, "rqstOpen", g.plugin, p || g.params)), i.startupDetail = g.params || g.plugin, l = a.startupUrl) : l = "", g && g.plugin || !o || !r || (o.noEmit = !0, n.once("redrawFinished", n.emit.bind(n, "rqstOpen", "picker", o))), {
+            url: l,
+            url404: d,
+            sharedCoords: r,
+            parseSearch: h,
+            resolveRoute: u
         }
     }), /*! */
     W.define("seoParser", ["utils", "store"], function(e, t) {
         var n, i, s, a = decodeURIComponent(window.location.pathname),
             r = null,
             o = a;
-        return (n = /^\/(zh-TW|[a-z]{2})(\/.*)?$/.exec(a)) && e.isValidLang(n[1]) && (r = n[1], a = n[2]), (i = /^\/-(?:[^0-9/][^/]+)(?:-(\w+))(?:[^/]*)$/.exec(a)) ? (s = i[1], a = "/", t.set("overlay", s)) : (i = /^\/-(?:[^0-9/][^/]+)?(\/.+)$/.exec(a)) && (a = i[1]), {
+        return (n = /^\/(zh-TW|[a-z]{2})(\/.*)?$/.exec(a)) && e.isValidLang(n[1]) && (r = n[1], a = n[2]), (i = /^\/-(?:[^0-9\/][^\/]+)(?:-(\w+))(?:[^\/]*)$/.exec(a)) ? (s = i[1], a = "/", t.set("overlay", s)) : (i = /^\/-(?:[^0-9\/][^\/]+)?(\/.+)$/.exec(a)) && (a = i[1]), {
             lang: r,
             purl: a,
             startupUrl: o,
             overlay: s
         }
     }), /*! */
-    W.define("cloudSync", ["dataSpecifications", "storage", "store", "http", "utils", "broadcast", "rootScope", "colors", "metrics", "user"], function(o, l, c, n, e, d, i, t, s, a) {
-        var r = e.debounce(function() {
-            var e = f();
-            if (e && 0 < Object.keys(e).length) {
-                var t = Date.now();
-                l.put("storedSettings", t), n.post("/users/settings", {
+    W.define("cloudSync", ["dataSpecifications", "storage", "store", "http", "utils", "broadcast", "rootScope", "colors", "metrics", "user"], function(e, t, n, i, s, a, r, o, l, c) {
+        var d = s.debounce(function() {
+            var e = m();
+            if (e && Object.keys(e).length > 0) {
+                var n = Date.now();
+                t.put("storedSettings", n), i.post("/users/settings", {
                     data: {
                         version: 3,
-                        user: i.user.userslug,
+                        user: r.user.userslug,
                         data: e,
-                        storeTs: t
+                        storeTs: n
                     }
                 })
             }
         }, 3e3);
-        d.on("userLoggedIn", function() {
-            var i = l.get("storedSettings") || 0,
-                s = l.get("lastSyncableUpdatedItem") || 0;
-            n.get("/users/settings?storeTs=" + i, {
+        a.on("userLoggedIn", function() {
+            var s = t.get("storedSettings") || 0,
+                r = t.get("lastSyncableUpdatedItem") || 0;
+            i.get("/users/settings?storeTs=" + s, {
                 cache: !1
-            }).then(function(e) {
-                var t = e.status,
-                    n = e.data;
-                i < s && r(), 304 !== t && n && n.data && 1 < n.version && (function(e) {
-                    var t = !1;
-                    for (var n in o)
-                        if (m(n) && u(n) in e) {
-                            var i = h(n),
-                                s = e[i],
-                                a = l.get(i);
-                            if (!a || a < s) {
-                                var r = e[u(n)];
-                                null === r ? c.remove(n, {
+            }).then(function(i) {
+                var o = i.status,
+                    l = i.data;
+                r > s && d(), 304 !== o && l && l.data && l.version > 1 && (! function(i) {
+                    var s = !1;
+                    for (var r in e)
+                        if (f(r) && u(r) in i) {
+                            var o = h(r),
+                                l = i[o],
+                                c = t.get(o);
+                            if (!c || c < l) {
+                                var d = i[u(r)];
+                                null === d ? n.remove(r, {
                                     doNotCheckValidity: !0,
                                     doNotSaveToCloud: !0
-                                }) : c.set(n, r, {
-                                    update: s,
+                                }) : n.set(r, d, {
+                                    update: l,
                                     doNotSaveToCloud: !0
-                                }), /color_/.test(n) && (t = !0)
+                                }), /color_/.test(r) && (s = !0)
                             }
                         }
-                    t && d.emit("redrawLayers")
-                }(n.data), n.storeTs > i && l.put("storedSettings", n.storeTs))
+                    s && a.emit("redrawLayers")
+                }(l.data), l.storeTs > s && t.put("storedSettings", l.storeTs))
             }).catch(window.wError.bind(null, "settings", "Cant load/merge settings from cloud"))
-        }), c.on("_cloudSync", r);
+        }), n.on("_cloudSync", d);
         var u = function(e) {
                 return "settings_" + e
             },
             h = function(e) {
                 return u(e) + "_ts"
             },
-            m = function(e) {
-                return e in o && "object" == typeof o[e] && o[e] && o[e].sync
+            f = function(t) {
+                return t in e && "object" == typeof e[t] && e[t] && e[t].sync
             },
-            f = function() {
-                var e = {};
-                for (var t in o) m(t) && l.hasKey(u(t)) && (e[u(t)] = l.get(u(t)), e[h(t)] = l.get(h(t)));
-                return e
+            m = function() {
+                var n = {};
+                for (var i in e) f(i) && t.hasKey(u(i)) && (n[u(i)] = t.get(u(i)), n[h(i)] = t.get(h(i)));
+                return n
             }
     }), /*! */
     W.define("settingsCtrl", ["broadcast", "rootScope", "storage", "utils", "plugins"], function(e, t, n, i, s) {
         var a = n.get("settingsLastSaved") || 0;
-        n.isAvbl && ("index" !== t.target || 1 < t.sessionCounter) && Date.now() - a > 24 * i.tsHour && (e.once("redrawFinished", function() {
+        n.isAvbl && ("index" !== t.target || t.sessionCounter > 1) && Date.now() - a > 24 * i.tsHour && (e.once("redrawFinished", function() {
             var e = Date.now();
             n.put("settingsLastSaved", e), t.renderedTime = e, s["store-settings"].load().then(function() {
                 return W.require("store-settings")
@@ -4779,29 +5099,32 @@ L.CanvasLayer = L.Layer.extend({
             }, 500)) : setTimeout(r.bind(null, a), 2e3)
         }
 
-        function r(t) {
-            var e = new XMLHttpRequest;
-            e.open("HEAD", "http://www.eric.com/test-windy/node/geoip?source=testConnection", !0), e.onreadystatechange = function() {
-                4 === e.readyState && t(200 <= e.status && e.status < 400)
+        function r(e) {
+            var t = new XMLHttpRequest;
+            t.open("HEAD", "http://www.eric.com/test-windy/node/connection", !0), t.onreadystatechange = function() {
+                4 === t.readyState && e(t.status >= 200 && t.status < 400)
             };
             try {
-                e.send(null)
-            } catch (e) {
-                t(!1)
+                t.send(null)
+            } catch (t) {
+                e(!1)
             }
         }
-        e.on("noConnection", function() {
-            if (!n || i) return;
-            i = !0, r(function(e) {
-                i = !1, e || (n = !1, s = t.instance({
-                    ident: "message",
-                    className: "bg-error",
-                    html: '<span data-t="MSG_OFFLINE"></span>'
-                }).open(), r(a))
-            })
-        })
+        return e.on("noConnection", function() {
+                if (!n || i) return;
+                i = !0, r(function(e) {
+                    i = !1, e || (n = !1, s = t.instance({
+                        ident: "message",
+                        className: "bg-error",
+                        html: '<span data-t="MSG_OFFLINE"></span>'
+                    }).open(), r(a))
+                })
+            }),
+            function() {
+                return n
+            }
     }), /*! */
-    W.define("Plugin", ["Class", "rootScope", "utils"], function(e, t, r) {
+    W.define("Plugin", ["Class", "rootScope", "utils", "trans"], function(e, t, n, i) {
         return e.extend({
             ident: "",
             dependencies: [],
@@ -4809,24 +5132,28 @@ L.CanvasLayer = L.Layer.extend({
                 this.isLoaded = !1, this.loading = !1, this.depsLoaded = !1, this.coreLoaded = !1, this.open = this.load
             },
             getAssetsLocation: function() {
-                return this.location ? "http" === this.location.substr(0, 4) ? this.location : r.joinPath("http://www.eric.com/test-windy/js/js", this.location) : t.assets + "/plugins/" + this.ident + ".js"
+                return this.location ? "http" === this.location.substr(0, 4) ? this.location : n.joinPath("https://www.windy.com/js", this.location) : t.assets + "/plugins/" + this.ident + ".js"
             },
             load: function() {
-                var n, i, s = this,
-                    a = [];
-                return this.isLoaded ? Promise.resolve(!0) : (this.loading || (this.loading = !0, this.promise = new Promise(function(e, t) {
-                    for (i = 0; i < s.dependencies.length; i++)(n = W.plugins[s.dependencies[i]]) && !n.isLoaded && a.push(n.load());
-                    Promise.all(a).then(function() {
-                        if (s.depsLoaded = !0, s.coreLoaded) return s.isLoaded = !0, void e();
-                        r.loadScript(s.getAssetsLocation()).then(function() {
-                            s.coreLoaded = !0, s.isLoaded = !0, s.loading = !1, e()
+                var e = this;
+                return this.isLoaded ? Promise.resolve(!0) : this.loading ? this.promise : (this.loading = !0, this.promise = new Promise(function(t, s) {
+                    for (var a = [], r = 0; r < e.dependencies.length; r++) {
+                        var o = e.dependencies[r],
+                            l = W.plugins[o],
+                            c = l.load();
+                        l && !l.isLoaded && a.push(c)
+                    }
+                    e.langFile && a.push(i.loadLangFile(e.langFile)), Promise.all(a).then(function() {
+                        if (e.depsLoaded = !0, e.coreLoaded) return e.isLoaded = !0, void t();
+                        n.loadScript(e.getAssetsLocation()).then(function() {
+                            e.coreLoaded = !0, e.isLoaded = !0, e.loading = !1, t()
                         }).catch(function() {
-                            window.wError("plugin", "Failed to load plugin: " + s.ident), s.loading = !1, t(s)
+                            window.wError("plugin", "Failed to load plugin: " + e.ident), e.loading = !1, s(e)
                         })
-                    }).catch(function(e) {
-                        window.wError("plugin", "Plugin error: " + s.ident, e), t()
+                    }).catch(function(t) {
+                        window.wError("plugin", "Plugin error: " + e.ident, t), s()
                     })
-                })), this.promise)
+                }), this.promise)
             },
             open: function() {},
             close: function() {},
@@ -4836,13 +5163,14 @@ L.CanvasLayer = L.Layer.extend({
     W.define("TagPlugin", ["Plugin", "Window", "trans"], function(e, t, n) {
         return e.extend(t, {
             iAm: "plugin",
+            unmountOnClose: !1,
             exclusive: null,
             hasURL: !0,
             _init: function() {
                 t._init.call(this), this.isLoaded = !1, this.loading = !1, this.isMounted = !1, this.cssInserted = !1, this.bodyClass = "on" + this.ident
             },
             _unmount: function() {
-                this.node.style.display = "none"
+                this.unmountOnClose ? (this.node.parentNode.removeChild(this.node), this.isMounted = !1) : this.node.style.display = "none"
             },
             open: function(e) {
                 var t = this;
@@ -4864,7 +5192,7 @@ L.CanvasLayer = L.Layer.extend({
             }
         })
     }), /*! */
-    W.define("RiotPlugin", ["TagPlugin", "broadcast"], function(e, i) {
+    W.define("RiotPlugin", ["TagPlugin", "broadcast"], function(e, t) {
         return e.extend({
             dependencies: ["riot"],
             _init: function() {
@@ -4876,16 +5204,19 @@ L.CanvasLayer = L.Layer.extend({
             _mount: function() {
                 this.createNode('<span data-is="' + this.ident + '"></span>'), this.isMounted = !0
             },
+            _unmount: function() {
+                this.unmountOnClose && this.riotTag ? (this.riotTag.unmount(), this.node.parentNode.removeChild(this.node), this.isMounted = this.riotTag = !1) : this.node.style.display = "none"
+            },
             _open: function(e) {
-                var t = this,
-                    n = this.isOpen;
+                var n = this,
+                    i = this.isOpen;
                 if (!this.isOpen) {
                     if (this.riotTag || (this.riotTag = riot.mount(this.ident)[0]), this.addHooks(), !this.riotTag) return void window.wError("plugin", "Unable to _open riot tag: ", this.ident);
                     document.body.classList.add("on" + this.ident), this.node.style.display = "block", setTimeout(function() {
-                        t.node.classList.add("open"), i.emit("pluginOpened", t.ident)
+                        n.node.classList.add("open"), t.emit("pluginOpened", n.ident)
                     }, 0), this.isOpen = !0
                 }
-                this.riotTag.onopen && this.riotTag.onopen(e, n), this.riotTag.onurl && (this.onurl = this.riotTag.onurl), this.hasURL && this.url(e)
+                this.riotTag.onopen && this.riotTag.onopen(e, i), this.riotTag.onurl && (this.onurl = this.riotTag.onurl), this.hasURL && this.url(e)
             }
         })
     }), /*! */
@@ -4894,20 +5225,6 @@ L.CanvasLayer = L.Layer.extend({
             riot: t.instance({
                 ident: "riot",
                 location: "riot.v0312.js"
-            }),
-            React: t.instance({
-                ident: "React",
-                location: "react-16.8.4.js"
-            }),
-            ReactDOM: t.instance({
-                ident: "ReactDOM",
-                location: "react-dom-16.8.4.js",
-                dependencies: ["React"]
-            }),
-            Formik: t.instance({
-                ident: "Formik",
-                location: "formik-1.5.1.js",
-                dependencies: ["React"]
             }),
             geodesic: t.instance({
                 ident: "geodesic",
@@ -4929,10 +5246,6 @@ L.CanvasLayer = L.Layer.extend({
                 ident: "nouislider",
                 location: "nouislider.v0805.js"
             }),
-            "map-paint": i.instance({
-                ident: "map-paint",
-                location: "mapPaint.js"
-            }),
             airgram: t.instance({
                 ident: "airgram",
                 dependencies: ["detail-render"]
@@ -4942,6 +5255,9 @@ L.CanvasLayer = L.Layer.extend({
             }),
             "gl-particles": t.instance({
                 ident: "gl-particles"
+            }),
+            gestures: i.instance({
+                ident: "gestures"
             }),
             particles: t.instance({
                 ident: "particles"
@@ -4986,7 +5302,11 @@ L.CanvasLayer = L.Layer.extend({
             }),
             patch: i.instance({
                 ident: "patch",
-                location: "http://www.eric.com/v/patch.js?refTime=" + (new Date).toISOString().replace(/^(.*):.*$/, "$1"),
+                location: "https://www.windy.com/patch/index/latest/patch.js?refTime=" + (new Date).toISOString().replace(/^(.*):.*$/, "$1"),
+                hasURL: !1
+            }),
+            "radar-sat": i.instance({
+                ident: "radar-sat",
                 hasURL: !1
             }),
             radar: n.instance({
@@ -4995,6 +5315,16 @@ L.CanvasLayer = L.Layer.extend({
                 hasURL: !1,
                 exclusive: "neverClose",
                 className: "shy left-border right-border notap",
+                dependencies: ["radar-sat"],
+                noCloseOnBackButton: !0
+            }),
+            satellite: n.instance({
+                ident: "satellite",
+                title: "SATELLITE",
+                hasURL: !1,
+                exclusive: "neverClose",
+                className: "shy left-border right-border notap",
+                dependencies: ["radar-sat"],
                 noCloseOnBackButton: !0
             }),
             "cap-alerts": n.instance({
@@ -5029,7 +5359,7 @@ L.CanvasLayer = L.Layer.extend({
             overlays: n.instance({
                 title: "S_ADD_OVERLAYS",
                 ident: "overlays",
-                className: "plugin-rhpane plugin-mobile-rhpane",
+                className: "plugin-rhpane top-border plugin-mobile-rhpane",
                 exclusive: "rhpane"
             }),
             "hp-weather": n.instance({
@@ -5060,6 +5390,13 @@ L.CanvasLayer = L.Layer.extend({
                 dependencies: ["nearest"],
                 className: "detail plugin-mobile-bottom-red bottom-border bg-white",
                 hasURL: !0
+            }),
+            "nearest-stations": n.instance({
+                ident: "nearest-stations",
+                dependencies: ["nearest"],
+                className: "drop-down-window left boxshadow",
+                hasURL: !1,
+                unmountOnClose: !0
             }),
             rhpane: i.instance({
                 ident: "rhpane",
@@ -5098,7 +5435,7 @@ L.CanvasLayer = L.Layer.extend({
             }),
             menu: n.instance({
                 ident: "menu",
-                className: "plugin-rhpane plugin-mobile-rhpane",
+                className: "plugin-rhpane top-border plugin-mobile-rhpane",
                 exclusive: "rhpane-mobile",
                 title: "MENU"
             }),
@@ -5118,8 +5455,9 @@ L.CanvasLayer = L.Layer.extend({
             "user-menu": n.instance({
                 ident: "user-menu",
                 className: "drop-down-window right menu-items",
-                closeOnClick: !0,
-                attachPoint: e.isMobileOrTablet ? '[data-plugin="user-menu-mobile"]' : "#user",
+                closeOnClick: !e.isMobile,
+                unmountOnClose: !0,
+                attachPoint: e.isMobileOrTablet ? ".lhpane-user-line" : "#user",
                 hasURL: !1
             }),
             "promo-mobile-intro": n.instance({
@@ -5145,77 +5483,101 @@ L.CanvasLayer = L.Layer.extend({
                 title: "SHOW_ON_MAP",
                 ident: "map",
                 hasURL: !0,
-                className: "plugin-rhpane plugin-mobile-rhpane",
+                className: "plugin-rhpane top-border plugin-mobile-rhpane",
                 exclusive: "rhpane"
             }),
             articles: n.instance({
                 ident: "articles",
-                className: "plugin-lhpane plugin-mobile-fullscreen-no-header",
-                dependencies: ["annotation"],
+                className: "plugin-lhpane top-border plugin-mobile-fullscreen-no-header",
                 exclusive: "lhpane",
-                hasURL: !0
-            }),
-            annotation: n.instance({
-                ident: "annotation",
                 hasURL: !0
             }),
             screenshot: n.instance({
                 ident: "screenshot",
-                dependencies: ["annotation", "upload"],
+                dependencies: ["upload"],
                 hasURL: !0
             }),
-            commons: t.instance({
-                ident: "commons",
-                dependencies: ["riot"]
-            }),
-            settings: t.instance({
+            settings: n.instance({
                 ident: "settings",
-                openedBy: "lhpane",
-                dependencies: ["riot"]
+                langFile: "settings",
+                hasURL: !0,
+                title: "MENU_SETTINGS",
+                exclusive: "lhpane",
+                unmountOnClose: !0,
+                className: "plugin-lhpane top-border plugin-mobile-fullscreen",
+                dependencies: e.isMobileOrTablet ? [] : ["favs", "tools"]
             }),
-            favs: t.instance({
+            tools: n.instance({
+                ident: "tools",
+                hasURL: !0,
+                unmountOnClose: !0,
+                title: "MENU",
+                exclusive: "lhpane",
+                className: "plugin-lhpane top-border",
+                dependencies: e.isMobileOrTablet ? [] : ["favs", "settings"]
+            }),
+            favs: n.instance({
                 ident: "favs",
-                openedBy: "lhpane",
-                dependencies: ["riot", "favs-extended"]
+                title: "MENU_FAVS",
+                hasURL: !0,
+                keyboard: !0,
+                unmountOnClose: !0,
+                exclusive: "lhpane",
+                className: "plugin-lhpane top-border plugin-mobile-fullscreen",
+                dependencies: e.isMobileOrTablet ? ["gestures", "favs-extended"] : ["gestures", "settings", "tools", "favs-extended"]
             }),
-            colors: t.instance({
+            alerts: s.instance({
+                ident: "alerts",
+                langFile: "alerts",
+                exclusive: "lhpane",
+                hasURL: !1,
+                keyboard: !0,
+                unmountOnClose: !0,
+                title: "MY_ALERTS",
+                className: "plugin-lhpane top-border plugin-mobile-fullscreen",
+                dependencies: ["riot", "nouislider", "favs-extended"]
+            }),
+            colors: s.instance({
                 ident: "colors",
-                openedBy: "lhpane",
+                className: "plugin-lhpane top-border plugin-mobile-fullscreen",
+                exclusive: "lhpane",
+                hasURL: !0,
+                unmountOnClose: !0,
+                keyboard: !0,
+                title: "S_COLORS",
                 dependencies: ["riot", "colorpicker"]
             }),
-            alerts: t.instance({
-                ident: "alerts",
-                openedBy: "lhpane",
-                dependencies: ["riot", "commons", "nouislider", "favs-extended"]
-            }),
-            tools: t.instance({
-                ident: "tools",
-                openedBy: "lhpane",
-                dependencies: ["riot", "commons"]
-            }),
-            privacy: t.instance({
+            privacy: s.instance({
                 ident: "privacy",
-                openedBy: "lhpane",
+                exclusive: "lhpane",
+                hasURL: !0,
+                keyboard: !0,
+                unmountOnClose: !0,
+                title: "PRIVACY",
+                className: "plugin-lhpane top-border plugin-mobile-fullscreen",
                 dependencies: ["riot"]
             }),
-            hurricanes: t.instance({
+            hurricanes: s.instance({
                 ident: "hurricanes",
-                openedBy: "lhpane",
+                exclusive: "lhpane",
+                hasURL: !0,
+                unmountOnClose: !0,
+                title: "HURR_TRACKER",
+                className: "plugin-lhpane top-border plugin-mobile-fullscreen",
                 dependencies: ["riot"]
             }),
-            debug: t.instance({
+            debug: s.instance({
                 ident: "debug",
-                openedBy: "lhpane",
+                exclusive: "lhpane",
+                hasURL: !0,
+                unmountOnClose: !0,
+                className: "plugin-lhpane top-border plugin-mobile-fullscreen",
                 dependencies: ["riot"]
-            }),
-            plugins: t.instance({
-                ident: "plugins",
-                openedBy: "lhpane",
-                dependencies: ["riot", "plugin-data-loader"]
             }),
             donate: s.instance({
                 ident: "donate",
-                className: "plugin-lhpane plugin-mobile-fullscreen-no-header",
+                langFile: "donate",
+                className: "plugin-lhpane top-border plugin-mobile-fullscreen-no-header",
                 exclusive: "all",
                 keyboard: !0,
                 title: "DONATE"
@@ -5226,21 +5588,14 @@ L.CanvasLayer = L.Layer.extend({
                 className: "drop-down-window down",
                 closeOnClick: !e.isMobileOrTablet,
                 hasURL: !1,
+                unmountOnClose: !0,
                 exclusive: "middle-mobile",
                 attachPoint: e.isMobileOrTablet ? "#plugins" : "#info-icon"
             }),
-            lhpane: s.instance({
-                ident: "lhpane",
-                className: "plugin-lhpane plugin-mobile-fullscreen",
-                exclusive: "lhpane",
-                dependencies: ["riot", "commons"],
-                keyboard: !0,
-                hasURL: !1
-            }),
             "cap-alert": s.instance({
                 ident: "cap-alert",
-                dependencies: ["riot", "cap-utils", "commons", "detail-render"],
-                className: "plugin-lhpane plugin-mobile-fullscreen",
+                dependencies: ["riot", "cap-utils", "detail-render"],
+                className: "plugin-lhpane top-border plugin-mobile-fullscreen",
                 exclusive: "lhpane",
                 hasURL: !1,
                 title: "WX_WARNINGS"
@@ -5254,28 +5609,22 @@ L.CanvasLayer = L.Layer.extend({
                 className: "plugin-mobile-bottom-red bottom-border",
                 dependencies: ["riot", "geodesic"]
             }),
-            annotate: s.instance({
-                ident: "annotate",
-                exclusive: "all",
-                keyboard: !0,
-                dependencies: ["map-paint", "riot"]
-            }),
             animate: s.instance({
                 ident: "animate",
                 exclusive: "all",
                 keyboard: !0,
                 title: "Create Animation"
             }),
-            airport: s.instance({
+            airport: n.instance({
                 ident: "airport",
-                className: "plugin-lhpane plugin-mobile-fullscreen",
+                className: "plugin-lhpane top-border plugin-mobile-fullscreen",
                 exclusive: "lhpane",
                 hasURL: !1,
-                dependencies: ["riot", "commons", "detail-render"]
+                dependencies: ["detail-render", "gestures"]
             }),
             tides: s.instance({
                 ident: "tides",
-                className: "plugin-rhpane plugin-mobile-fullscreen",
+                className: "plugin-rhpane top-border plugin-mobile-fullscreen",
                 exclusive: "rhpane",
                 dependencies: ["riot", "pois"]
             }),
@@ -5288,9 +5637,10 @@ L.CanvasLayer = L.Layer.extend({
             widgets: s.instance({
                 ident: "widgets",
                 exclusive: "all",
+                langFile: "widgets",
                 title: "EMBED",
                 keyboard: !0,
-                className: "plugin-rhpane plugin-mobile-fullscreen"
+                className: "plugin-rhpane top-border plugin-mobile-fullscreen"
             }),
             multimodel: s.instance({
                 ident: "multimodel",
@@ -5299,85 +5649,110 @@ L.CanvasLayer = L.Layer.extend({
             }),
             login: s.instance({
                 ident: "login",
-                className: "plugin-rhpane plugin-mobile-fullscreen",
+                className: "plugin-rhpane top-border plugin-mobile-fullscreen",
                 exclusive: "all",
                 keyboard: !0
             }),
             register: s.instance({
                 ident: "register",
-                className: "plugin-rhpane plugin-mobile-fullscreen",
+                langFile: "register",
+                className: "plugin-rhpane top-border plugin-mobile-fullscreen",
                 exclusive: "all",
                 keyboard: !0
             }),
             "article-publisher": n.instance({
                 ident: "article-publisher",
-                dependencies: ["React", "ReactDOM", "Formik", "flatpickr"],
-                className: "plugin-rhpane left-border",
-                hasURL: !1,
+                dependencies: ["flatpickr"],
+                className: "plugin-rhpane top-border left-border",
+                hasURL: !0,
+                title: "Windy Article publisher",
                 keyboard: !0
+            }),
+            rplanner: n.instance({
+                ident: "rplanner",
+                onurl: function() {
+                    return {
+                        url: "distance",
+                        title: null
+                    }
+                },
+                _unmount: function() {
+                    this.node.parentNode.removeChild(this.node), this.isMounted = !1
+                },
+                exclusive: "all",
+                dependencies: e.isMobileOrTablet ? ["geodesic"] : ["geodesic", "rhpane"],
+                className: "detail plugin-mobile-bottom-red bottom-border bg-white",
+                hasURL: !0,
+                attachPoint: e.isMobileOrTablet ? '[data-plugin="detail-rhpane"]' : '[data-plugin="rplanner"]'
             }),
             uploader: n.instance({
                 ident: "uploader",
-                className: "plugin-lhpane plugin-mobile-fullscreen-no-header",
+                className: "plugin-lhpane top-border plugin-mobile-fullscreen-no-header",
                 dependencies: ["upload"],
                 exclusive: "lhpane",
                 hasURL: !0,
+                title: "Upload KML, GPX or geoJSON file",
                 keyboard: !0
             }),
             upload: n.instance({
                 ident: "upload",
-                hasURL: !0
+                hasURL: !1
+            }),
+            plugins: n.instance({
+                ident: "plugins",
+                className: "plugin-lhpane top-border plugin-mobile-fullscreen-no-header",
+                dependencies: ["plugin-data-loader"],
+                exclusive: "lhpane",
+                hasURL: !0,
+                title: "Install Windy plugin",
+                keyboard: !0
             })
         }
     }), /*! */
-    W.define("pluginsCtrl", ["rootScope", "plugins", "broadcast", "utils"], function(s, a, e, r) {
-        function o(n, i) {
-            r.each(a, function(e, t) {
-                e.exclusive && e.exclusive === i && e.isOpen && t !== n && e.close()
+    W.define("pluginsCtrl", ["rootScope", "plugins", "broadcast", "utils"], function(e, t, n, i) {
+        function s(e, n) {
+            i.each(t, function(t, i) {
+                t.exclusive && t.exclusive === n && t.isOpen && i !== e && t.close()
             })
         }
 
-        function i(n, e) {
-            var t = a[n] && a[n].openedBy;
-            t && (e = {
-                pane: n,
-                origParams: e
-            }, n = t);
-            var i = a[n];
-            i && (i.exclusive && ("all" === i.exclusive ? r.each(a, function(e, t) {
-                e.isOpen && t !== n && l(t)
-            }) : "rhpane" !== i.exclusive && "lhpane" !== i.exclusive || (a.detail.close(), a.station.close(), s.isMobile ? (o(n, "rhpane"), o(n, "lhpane")) : o(n, i.exclusive))), i.open(e))
+        function a(n, a) {
+            "rplanner" === n && e.isMobileOrTablet ? n = "distance" : "distance" !== n || e.isMobileOrTablet || (n = "rplanner");
+            var o = t[n];
+            o && (o.exclusive && ("all" === o.exclusive ? i.each(t, function(e, t) {
+                e.isOpen && t !== n && r(t)
+            }) : "rhpane" !== o.exclusive && "lhpane" !== o.exclusive || (t.detail.close(), t.rplanner.close(), t.station.close(), e.isMobile ? (s(n, "rhpane"), s(n, "lhpane")) : s(n, o.exclusive))), o.open(a))
         }
 
-        function l(e, t) {
-            var n = a[e];
-            n && "neverClose" !== n.exclusive && n.close(t)
+        function r(e, n) {
+            var i = t[e];
+            i && "neverClose" !== i.exclusive && i.close(n)
         }
-        e.on("rqstOpen", i), e.on("rqstClose", l), e.on("toggle", function(e, t) {
-            var n = a[e];
-            if (!n) return;
-            n.isOpen ? l(e) : i(e, t)
-        }), e.on("closeAll", function() {
-            r.each(a, function(e, t) {
-                e.isOpen && l(t)
+        n.on("rqstOpen", a), n.on("rqstClose", r), n.on("closeAll", function() {
+            i.each(t, function(e, t) {
+                e.isOpen && r(t)
             })
+        }), n.on("toggle", function(e, n) {
+            var i = t[e];
+            if (!i) return;
+            i.isOpen ? r(e) : a(e, n)
         })
     }), /*! */
-    W.define("Bar", ["$", "utils", "Drag", "GhostBox", "Resizable"], function(e, n, t, i, s) {
-        return s.extend(t, i, {
+    W.define("Bar", ["$", "utils", "Drag", "GhostBox", "Resizable", "rootScope"], function(e, t, n, i, s, a) {
+        return s.extend(n, i, {
             offset: 0,
             borderOffset: 0,
             jumpingGhost: !0,
             bcastLimit: 100,
             jumpingWidth: 140,
             _init: function() {
-                this.left = 0, this.calendarHours = 0, this.timestamp = Date.now(), this.resizableEl = this.progressBar, this.el = this.timecode = e(".main-timecode", this.progressBar), this.text = e(".box", this.timecode), this.progressLine = e(".progress-line", this.progressBar), this.b = e(".progress-line i", this.progressBar), this.played = e(".progress-line .played", this.progressBar), this.ghost = e(".ghost-timecode", this.progressBar), this.ghostTxt = e(".box", this.ghost), t._init.call(this), s._init.call(this), i._init.call(this), this.progressLine.addEventListener("mouseup", this.click.bind(this)), this.ondragend = this.bcast.bind(this), this.throttledBcast = n.throttle.call(this, this.bcast, this.bcastLimit)
+                this.left = 0, this.calendarHours = 0, this.timestamp = Date.now(), this.resizableEl = this.progressBar, this.el = this.timecode = e(".main-timecode", this.progressBar), this.text = e(".box", this.timecode), this.progressLine = e(".progress-line", this.progressBar), this.b = e(".progress-line i", this.progressBar), this.played = e(".progress-line .played", this.progressBar), this.ghost = e(".ghost-timecode", this.progressBar), this.ghostTxt = e(".box", this.ghost), n._init.call(this), s._init.call(this), a.isMobile || i._init.call(this), this.progressLine.addEventListener("mouseup", this.click.bind(this)), this.ondragend = this.bcast.bind(this), this.throttledBcast = t.throttle.call(this, this.bcast, this.bcastLimit)
             },
             ondrag: function(e) {
                 this.update(e + 20 - this.offset), this.throttledBcast()
             },
             update: function(e) {
-                return this.left = n.bound(e, 0, this.maxWidth), this.timecode.style.left = this.left + this.offset + "px", this.text.textContent = this.createText(this.text), this.played && (this.played.style.width = this.left + "px"), this.left
+                return this.left = t.bound(e, 0, this.maxWidth), this.timecode.style.left = this.left + this.offset + "px", this.text.textContent = this.createText(this.text), this.played && (this.played.style.width = this.left + "px"), this.left
             },
             createText: function() {},
             createGhostText: function() {},
@@ -5400,8 +5775,8 @@ L.CanvasLayer = L.Layer.extend({
             click: function(e) {
                 if (!this.dragging) {
                     this.addAnimation();
-                    var t = n.bound(e.pageX - this.offset - this.borderOffset, 0, this.maxWidth);
-                    this.timestamp = this.pos2ts(t), this.update(t), this.bcast(), this.removeAnimation()
+                    var n = t.bound(e.pageX - this.offset - this.borderOffset, 0, this.maxWidth);
+                    this.timestamp = this.pos2ts(n), this.update(n), this.bcast(), this.removeAnimation()
                 }
             },
             set: function(e) {
@@ -5412,7 +5787,7 @@ L.CanvasLayer = L.Layer.extend({
             },
             onresize: function() {
                 if (this.calendar) {
-                    if (this.progressWidth = this.progressBar.offsetWidth - this.offset, this.pxRatio = this.progressWidth / (this.calendar.endOfCal - this.calendar.start), this.maxWidth = this.ts2pos(this.calendar.end), this.progressLine.style.width = n.bound(this.maxWidth, 0, this.progressWidth) + "px", this.borderOffset = this.elLeft, this.b) {
+                    if (this.progressWidth = this.progressBar.offsetWidth - this.offset, this.pxRatio = this.progressWidth / (this.calendar.endOfCal - this.calendar.start), this.maxWidth = this.ts2pos(this.calendar.end), this.progressLine.style.width = t.bound(this.maxWidth, 0, this.progressWidth) + "px", this.borderOffset = this.elLeft, this.b) {
                         var e = this.ts2pos(Date.now());
                         this.b.style.left = e + "px"
                     }
@@ -5420,45 +5795,45 @@ L.CanvasLayer = L.Layer.extend({
                 }
             },
             updateGhost: function(e) {
-                var t = n.bound(e.clientX - this.offset - this.borderOffset, 0, this.maxWidth);
-                this.ghost.style.left = t + this.offset + "px", this.jumpingGhost && (this.ghost.style["margin-top"] = this.left - t < 40 && t - this.left < this.jumpingWidth ? "-25px" : "0px"), this.ghostTxt.textContent = this.createGhostText(t)
+                var n = t.bound(e.clientX - this.offset - this.borderOffset, 0, this.maxWidth);
+                this.ghost.style.left = n + this.offset + "px", this.jumpingGhost && (this.ghost.style["margin-top"] = this.left - n < 40 && n - this.left < this.jumpingWidth ? "-25px" : "0px"), this.ghostTxt.textContent = this.createGhostText(n)
             }
         })
     }), /*! */
-    W.define("BindedCheckbox", ["store", "Class"], function(t, e) {
-        return e.extend({
+    W.define("BindedCheckbox", ["store", "Class"], function(e, t) {
+        return t.extend({
             onValue: !0,
             offValue: !1,
             _init: function() {
-                this.set(t.get(this.bindStore)), this.el.onclick = this.toggle.bind(this), t.on(this.bindStore, this.set, this)
+                this.set(e.get(this.bindStore)), this.el.onclick = this.toggle.bind(this), e.on(this.bindStore, this.set, this)
             },
             unmount: function() {
-                t.off(this.bindStore, this.set, this)
+                e.off(this.bindStore, this.set, this)
             },
             toggle: function() {
-                var e = t.get(this.bindStore);
-                t.set(this.bindStore, e === this.onValue ? this.offValue : this.onValue)
+                var t = e.get(this.bindStore);
+                e.set(this.bindStore, t === this.onValue ? this.offValue : this.onValue)
             },
             set: function(e) {
                 this.el.classList[e === this.onValue ? "remove" : "add"]("off")
             }
         })
     }), /*! */
-    W.define("BindedSwitch", ["$", "store", "Switch"], function(i, n, e) {
-        return e.extend({
+    W.define("BindedSwitch", ["$", "store", "Switch"], function(e, t, n) {
+        return n.extend({
             _init: function() {
-                this.initValue = n.get(this.bindStore), n.on(this.bindStore, this.set, this), "function" == typeof this.render && n.on("usedLang", this.render, this), e._init.call(this)
+                this.initValue = t.get(this.bindStore), t.on(this.bindStore, this.set, this), "function" == typeof this.render && t.on("usedLang", this.render, this), n._init.call(this)
             },
             unmount: function() {
-                n.off(this.bindStore, this.set, this), "function" == typeof this.render && n.off("usedLang", this.render, this)
+                t.off(this.bindStore, this.set, this), "function" == typeof this.render && t.off("usedLang", this.render, this)
             },
-            set: function(e) {
-                var t = i(".selected", this.el),
-                    n = this.getEl(e);
-                t && t.classList.remove("selected"), n && n.classList.add("selected")
+            set: function(t) {
+                var n = e(".selected", this.el),
+                    i = this.getEl(t);
+                n && n.classList.remove("selected"), i && i.classList.add("selected")
             },
-            click: function(e, t) {
-                "set" === e ? n.set(this.bindStore, t) : "function" == typeof this[e] && this[e](t)
+            click: function(e, n) {
+                "set" === e ? t.set(this.bindStore, n) : "function" == typeof this[e] && this[e](n)
             }
         })
     }), /*! */
@@ -5466,25 +5841,33 @@ L.CanvasLayer = L.Layer.extend({
         return e.extend({
             supportTouch: !0,
             preventDefault: !0,
+            passiveListener: !0,
             _init: function() {
-                this.el.addEventListener("mousedown", this.startDrag.bind(this)), this.supportTouch && this.el.addEventListener("touchstart", this.startDrag.bind(this)), this.dragging = !1, this.bindedDrag = this._drag.bind(this), this.bindedEndDrag = this.endDrag.bind(this)
+                this.dragging = !1, this.bindedDrag = this._drag.bind(this), this.bindedEndDrag = this.endDrag.bind(this), this.bindedStart = this.startDrag.bind(this), this.el.addEventListener("mousedown", this.bindedStart), this.supportTouch && this.el.addEventListener("touchstart", this.bindedStart)
+            },
+            destroy: function() {
+                this.el.removeEventListener("mousedown", this.bindedStart), this.supportTouch && this.el.removeEventListener("touchstart", this.bindedStart)
             },
             getXY: function(e) {
                 return e.touches ? [e.touches[0].pageX, e.touches[0].pageY] : [e.pageX, e.pageY]
             },
             startDrag: function(e) {
-                this.preventDefault && e.preventDefault(), this.startXY = this.getXY(e), this.offsetX = -this.el.offsetLeft, this.offsetY = -this.el.offsetTop, this.dragging = !0, this.ondragstart && this.ondragstart.call(this, this.startXY), window.addEventListener("mousemove", this.bindedDrag), window.addEventListener("mouseup", this.bindedEndDrag), this.supportTouch && (window.addEventListener("touchmove", this.bindedDrag), window.addEventListener("touchend", this.bindedEndDrag), window.addEventListener("touchcancel", this.bindedEndDrag))
+                this.preventDefault && e.preventDefault(), this.startXY = this.getXY(e), this.offsetX = -this.el.offsetLeft, this.offsetY = -this.el.offsetTop, this.dragging = !0, this.ondragstart && this.ondragstart.call(this, this.startXY), window.addEventListener("mousemove", this.bindedDrag), window.addEventListener("mouseup", this.bindedEndDrag), this.supportTouch && (window.addEventListener("touchmove", this.bindedDrag, this.passiveListener ? void 0 : {
+                    passive: !1
+                }), window.addEventListener("touchend", this.bindedEndDrag), window.addEventListener("touchcancel", this.bindedEndDrag))
             },
             _drag: function(e) {
                 var t = this.getXY(e);
                 this.ondrag(t[0] - this.startXY[0] - this.offsetX, t[1] - this.startXY[1] - this.offsetY, e)
             },
             endDrag: function(e) {
-                window.removeEventListener("mousemove", this.bindedDrag), window.removeEventListener("touchmove", this.bindedDrag), window.removeEventListener("mouseup", this.bindedEndDrag), window.removeEventListener("touchend", this.bindedEndDrag), window.removeEventListener("touchcancel", this.bindedEndDrag), this.ondragend && this.ondragend(e), this.dragging = !1
+                window.removeEventListener("mousemove", this.bindedDrag), window.removeEventListener("touchmove", this.bindedDrag, this.passiveListener ? void 0 : {
+                    passive: !1
+                }), window.removeEventListener("mouseup", this.bindedEndDrag), window.removeEventListener("touchend", this.bindedEndDrag), window.removeEventListener("touchcancel", this.bindedEndDrag), this.ondragend && this.ondragend(e), this.dragging = !1
             }
         })
     }), /*! */
-    W.define("DraggableDiv", ["Class", "utils"], function(e, m) {
+    W.define("DraggableDiv", ["Class", "utils"], function(e, t) {
         return e.extend({
             _init: function() {
                 this.scrollEl.addEventListener("mousedown", this.startDrag.bind(this))
@@ -5493,39 +5876,40 @@ L.CanvasLayer = L.Layer.extend({
                 return e.touches ? e.touches[0].pageX : e.pageX
             },
             startDrag: function(e) {
-                var s = this;
+                var n = this;
                 e.preventDefault();
-                var n = this.getX(e),
-                    a = 0,
-                    r = Date.now(),
-                    i = 0,
+                var i = this.getX(e),
+                    s = 0,
+                    a = Date.now(),
+                    r = 0,
                     o = 0,
                     l = this.scrollEl.scrollLeft,
-                    t = function() {
+                    c = function() {
                         var e = Date.now(),
-                            t = e - r,
-                            n = s.scrollEl.scrollLeft,
-                            i = 1e3 * (n - l) / (1 + t);
-                        r = e, l = n, a = m.bound(.8 * i + .2 * a, -500, 500)
+                            i = e - a,
+                            r = n.scrollEl.scrollLeft,
+                            o = 1e3 * (r - l) / (1 + i);
+                        a = e, l = r, s = t.bound(.8 * o + .2 * s, -500, 500)
                     },
-                    c = setInterval(t, 100);
-                t(), window.cancelAnimationFrame(this.inertiaAnim);
-                var d = function() {
-                        clearInterval(c), window.removeEventListener("mousemove", h), window.removeEventListener("mouseup", d), 10 < Math.abs(a) && (i = .6 * a, o = s.scrollEl.scrollLeft + i, r = Date.now(), s.inertiaAnim = window.requestAnimationFrame(u)), e.preventDefault(), e.stopPropagation()
+                    d = setInterval(c, 100);
+                c(), window.cancelAnimationFrame(this.inertiaAnim);
+                var u = function() {
+                        clearInterval(d), window.removeEventListener("mousemove", f), window.removeEventListener("mouseup", u), Math.abs(s) > 10 && (r = .6 * s, o = n.scrollEl.scrollLeft + r, a = Date.now(), n.inertiaAnim = window.requestAnimationFrame(h)), e.preventDefault(), e.stopPropagation()
                     },
-                    u = function() {
-                        var e = Date.now() - r,
-                            t = -i * Math.exp(-e / 325);.5 < Math.abs(t) && e < 3e3 && (s.scrollEl.scrollLeft = o + t, s.inertiaAnim = window.requestAnimationFrame(u))
+                    h = function() {
+                        var e = Date.now() - a,
+                            t = -r * Math.exp(-e / 325);
+                        Math.abs(t) > .5 && e < 3e3 && (n.scrollEl.scrollLeft = o + t, n.inertiaAnim = window.requestAnimationFrame(h))
                     },
-                    h = function(e) {
-                        var t = s.getX(e);
-                        s.scrollEl.scrollLeft += n - t, n = t, e.preventDefault(), e.stopPropagation()
+                    f = function(e) {
+                        var t = n.getX(e);
+                        n.scrollEl.scrollLeft += i - t, i = t, e.preventDefault(), e.stopPropagation()
                     };
-                window.addEventListener("mousemove", h), window.addEventListener("mouseup", d)
+                window.addEventListener("mousemove", f), window.addEventListener("mouseup", u)
             }
         })
     }), /*! */
-    W.define("ClickHandler", ["Class", "broadcast"], function(e, n) {
+    W.define("ClickHandler", ["Class", "broadcast"], function(e, t) {
         return e.extend({
             _init: function() {
                 this.el.addEventListener("click", this.onevent.bind(this))
@@ -5540,16 +5924,16 @@ L.CanvasLayer = L.Layer.extend({
                     n = n.parentNode
                 }
             },
-            defaultClickHandlers: function(e, t) {
-                switch (t[0]) {
+            defaultClickHandlers: function(e, n) {
+                switch (n[0]) {
                     case "rqstOpen":
-                    case "rqstClose":
                     case "toggle":
-                        return n.emit.apply(n, t), e.stopPropagation(), !0;
+                    case "rqstClose":
+                        return t.emit.apply(t, n), e.stopPropagation(), !0;
                     case "url":
-                        return window.location.href = t[1], e.stopPropagation(), !0;
+                        return n.shift(), window.location.href = n.join(","), e.stopPropagation(), !0;
                     case "share":
-                        return n.emit("rqstOpen", "share"), !0;
+                        return t.emit("rqstOpen", "share"), !0;
                     case "login":
                         return W.user.login(), !0
                 }
@@ -5573,76 +5957,88 @@ L.CanvasLayer = L.Layer.extend({
             }
         })
     }), /*! */
-    W.define("OverlaysMenu", ["overlays", "store", "trans", "rootScope", "utils", "BindedSwitch", "format"], function(u, s, a, h, m, r, f) {
-        return r.extend({
+    W.define("OverlaysMenu", ["overlays", "store", "trans", "rootScope", "utils", "BindedSwitch", "format"], function(e, t, n, i, s, a, r) {
+        return a.extend({
             bindStore: "overlay",
             _init: function() {
-                r._init.call(this), s.on("favOverlays", this.render, this), s.on("expertMode", this.render, this)
+                a._init.call(this), t.on("favOverlays", this.render, this), t.on("expertMode", this.render, this)
             },
             render: function() {
-                this._render(), this.resize(), this.set(s.get("overlay"))
+                this._render(), this.resize(), this.set(t.get("overlay"))
             },
             resize: function() {},
             set: function(e) {
-                r.set.call(this, e);
-                for (var t = u[e], n = t && t.parentMenu || e, i = this.el.querySelectorAll("[data-parent]"), s = 0; s < i.length; s++) {
-                    var a = i[s];
-                    m.toggleClass(a, a.dataset.parent === n, "menu-unfold")
+                this.unfold(e), a.set.call(this, e)
+            },
+            unfold: function(t) {
+                for (var n = e[t], i = n && n.parentMenu || t, a = this.el.querySelectorAll("[data-parent]"), r = 0; r < a.length; r++) {
+                    var o = a[r];
+                    s.toggleClass(o, o.dataset.parent === i, "menu-unfold")
                 }
             },
             _render: function() {
-                var r = s.get("favOverlays"),
-                    o = s.get("expertMode"),
-                    e = s.get("usedLang"),
-                    l = {},
-                    c = f.seoLang(e),
-                    d = 1,
-                    t = 0;
-                m.contains(r, "radar") || r.push("radar");
-                var n = h.overlays.map(function(e) {
-                    var t = u[e],
-                        n = m.contains(r, e);
-                    if (!(t && t.trans && t.icon && n)) return "";
-                    var i = t.parentMenu,
-                        s = i && m.contains(r, i);
-                    i ? i in l ? l[i]++ : l[i] = 1 : d++;
-                    var a = t.getName();
-                    return '<a data-do="set,' + t.ident + '" data-parent="' + (i || "isParent") + '"\n\t\t\t\t\t\t' + (h.isCrawler ? 'href="' + c + "-" + f.seoString(a) + "-" + t.ident + '"' : "") + "\n\t\t\t\t\t\t" + (!o && i && s ? 'class="sub-menu"' : "") + '>\n\t\t\t\t\t\t<div class="iconfont noselect notap">' + t.icon + '</div>\n\t\t\t\t\t\t<div class="menu-text noselect notap">' + a + "</div>\n\t\t\t\t\t</a>"
+                var a = t.get("favOverlays"),
+                    o = t.get("expertMode"),
+                    l = t.get("usedLang"),
+                    c = {},
+                    d = r.seoLang(l),
+                    u = {},
+                    h = 1,
+                    f = 0;
+                o || s.each(e, function(t, n) {
+                    var i = t.virtual,
+                        s = t.parentMenu;
+                    i || !s || !a.includes(n) || !e[s].virtual || s in u || (u[s] = !0)
+                });
+                var m = i.overlays.map(function(t) {
+                    var n = e[t],
+                        s = n.allwaysOn,
+                        l = n.icon,
+                        f = n.trans,
+                        m = n.parentMenu,
+                        p = n.virtual,
+                        g = t in u,
+                        v = a.includes(t) || s || g;
+                    if (!n || !f || !l || !v || o && p) return "";
+                    var y = m && (a.includes(m) || u[m]);
+                    m ? m in c ? c[m]++ : c[m] = 1 : h++;
+                    var w = n.getName();
+                    return '<a data-do="' + (p ? "unfold" : "set") + "," + t + '" data-parent="' + (m || "isParent") + '"\n\t\t\t\t\t\t' + (i.isCrawler ? 'href="' + d + "-" + r.seoString(w) + "-" + t + '"' : "") + "\n\t\t\t\t\t\t" + (!o && m && y ? 'class="sub-menu"' : "") + '>\n\t\t\t\t\t\t<div class="iconfont noselect notap">' + l + '</div>\n\t\t\t\t\t\t<div class="menu-text noselect notap">' + w + "</div>\n\t\t\t\t\t</a>"
                 }).join("");
-                for (var i in n += '<a data-do="toggle,overlays" id="ovr-menu"\n\t\t\t\t\t' + (h.isCrawler ? 'href="' + c + "-" + f.seoString(a.S_ADD_OVERLAYS) + '/overlays"' : "") + '\n\t\t\t\t\tclass="sub-menu menu-unfold">\n\t\t\t\t\t\t<div class="iconfont noselect notap">&lt;</div>\n\t\t\t\t\t\t<div class="menu-text noselect notap">' + a.MORE_LAYERS + "</div>\n\t\t\t\t\t</a>", l) t = Math.max(t, l[i]);
-                this.iconNum = o ? 1 + r.length : d + t, this.el.innerHTML = n
+                for (var p in m += '<a data-do="toggle,overlays" id="ovr-menu"\n\t\t\t\t\t' + (i.isCrawler ? 'href="' + d + "-" + r.seoString(n.S_ADD_OVERLAYS) + '/overlays"' : "") + '\n\t\t\t\t\tclass="menu-unfold">\n\t\t\t\t\t\t<div class="iconfont noselect notap">&lt;</div>\n\t\t\t\t\t\t<div class="menu-text noselect notap">' + n.MORE_LAYERS + "</div>\n\t\t\t\t\t</a>", c) f = Math.max(f, c[p]);
+                this.iconNum = o ? 1 + a.length : h + f, this.el.innerHTML = m
             }
         })
     }), /*! */
-    W.define("ProductSwitch", ["BindedSwitch", "products", "store", "rootScope", "utils"], function(e, c, t, d, u) {
+    W.define("ProductSwitch", ["BindedSwitch", "products", "store", "rootScope", "utils"], function(e, t, n, i, s) {
         return e.extend({
             bindStore: "product",
             showResolution: !0,
             menu: ["arome", "nems", "iconEu", "namConus", "namHawaii", "namAlaska", "ecmwf", "ecmwfWaves", "gfs", "gfsWaves", "cams", "camsEu"],
             _init: function() {
-                e._init.call(this), t.on("availProducts", this.redraw, this), t.on("visibleProducts", this.redraw, this), this.redraw()
+                e._init.call(this), n.on("availProducts", this.redraw, this), n.on("visibleProducts", this.redraw, this), this.redraw()
             },
             redraw: function() {
-                var s = this,
-                    a = t.get("availProducts"),
-                    r = t.get("visibleProducts"),
-                    e = t.get("product"),
-                    o = u.contains(d.seaProducts, e),
-                    l = u.contains(d.camsProducts, e);
-                this.el.innerHTML = this.menu.map(function(e) {
-                    var t = u.contains(d.seaProducts, e),
-                        n = u.contains(d.camsProducts, e),
-                        i = c[e];
-                    return u.contains(r, e) && o === t && l === n ? '<div data-do="set,' + e + '"' + (u.contains(a, e) ? "" : 'class="disabled"') + ">" + i.modelName + (s.showResolution && i.modelResolution ? "<small>" + i.modelResolution + "km</small>" : "") + "</div>" : ""
-                }).join(""), this.set(e)
+                var e = this,
+                    s = n.get("availProducts"),
+                    a = n.get("visibleProducts"),
+                    r = n.get("product"),
+                    o = i.seaProducts.includes(r),
+                    l = i.camsProducts.includes(r);
+                this.el.innerHTML = this.menu.map(function(n) {
+                    var r = i.seaProducts.includes(n),
+                        c = i.camsProducts.includes(n),
+                        d = t[n];
+                    return a.includes(n) && o === r && l === c ? '<div data-do="set,' + n + '"' + (s.includes(n) ? "" : 'class="disabled"') + ">" + d.modelName + (e.showResolution && d.modelResolution ? "<small>" + d.modelResolution + "km</small>" : "") + "</div>" : ""
+                }).join(""), this.set(r)
             }
         })
     }), /*! */
-    W.define("Resizable", ["utils", "broadcast", "Class"], function(t, e, n) {
+    W.define("Resizable", ["utils", "broadcast", "Class"], function(e, t, n) {
         return n.extend({
             resizableEl: null,
             _init: function() {
-                window.addEventListener("resize", t.debounce(this.resize.bind(this), 300)), e.on("pluginOpened", this.uiChanged, this), e.on("pluginClosed", this.uiChanged, this), e.on("detailRendered", this.resize, this), e.on("uiChanged", this.uiChanged, this), this.rects = {
+                window.addEventListener("resize", e.debounce(this.resize.bind(this), 300)), t.on("pluginOpened", this.uiChanged, this), t.on("pluginClosed", this.uiChanged, this), t.on("detailRendered", this.resize, this), t.on("uiChanged", this.uiChanged, this), this.rects = {
                     left: -1
                 }, this.resize()
             },
@@ -5650,13 +6046,13 @@ L.CanvasLayer = L.Layer.extend({
                 setTimeout(this.resize.bind(this), 200), setTimeout(this.resize.bind(this), 500), setTimeout(this.resize.bind(this), 1500)
             },
             resize: function() {
-                var e = this.resizableEl.getBoundingClientRect();
-                t.compare(e, this.rects, ["left", "right", "top", "bottom"]) || (this.height = Math.max(1, e.height), this.width = Math.max(1, e.width), this.rects = e, this.elTop = e.top, this.elBottom = e.bottom, this.elLeft = e.left, this.elRight = e.right, this.onresize(this.rects))
+                var t = this.resizableEl.getBoundingClientRect();
+                e.compare(t, this.rects, ["left", "right", "top", "bottom"]) || (this.height = Math.max(1, t.height), this.width = Math.max(1, t.width), this.rects = t, this.elTop = t.top, this.elBottom = t.bottom, this.elLeft = t.left, this.elRight = t.right, this.onresize(this.rects))
             },
             onresize: function() {}
         })
     }), /*! */
-    W.define("Scrollable", ["Class", "utils"], function(e, o) {
+    W.define("Scrollable", ["Class", "utils"], function(e, t) {
         return e.extend({
             _init: function() {
                 this.scrollTicking = !1, this.scrollEndTimer = 0, this.scrollEl.addEventListener("scroll", this.scrollFired.bind(this))
@@ -5665,16 +6061,16 @@ L.CanvasLayer = L.Layer.extend({
                 this.scrollTicking || (window.requestAnimationFrame(this.onscroll.bind(this, e)), clearTimeout(this.scrollEndTimer), this.scrollEndTimer = setTimeout(this.onscrollend.bind(this), 100), this.scrollTicking = !0)
             },
             scrollTo: function(e) {
-                var t = this,
-                    n = this.scrollEl.scrollLeft,
-                    i = Date.now(),
-                    s = e - n,
-                    a = i + Math.max(500, 1.2 * Math.abs(s)),
-                    r = function() {
+                var n = this,
+                    i = this.scrollEl.scrollLeft,
+                    s = Date.now(),
+                    a = e - i,
+                    r = s + Math.max(500, 1.2 * Math.abs(a)),
+                    o = function() {
                         var e = Date.now();
-                        t.scrollEl.scrollLeft = o.smoothstep(i, a, e) * s + n, e < a && window.requestAnimationFrame(r)
+                        n.scrollEl.scrollLeft = t.smoothstep(s, r, e) * a + i, e < r && window.requestAnimationFrame(o)
                     };
-                r()
+                o()
             },
             onscroll: function() {},
             onscrollend: function() {}
@@ -5696,12 +6092,12 @@ L.CanvasLayer = L.Layer.extend({
             touchEnd: function(e) {
                 var t = this.xDown - this.xFinal,
                     n = this.yDown - this.yFinal;
-                Math.abs(t) > Math.abs(n) && Math.abs(t) > this._swipeTresholdX && Math.abs(n / t) < .2 ? this.onswipe(0 < t ? "left" : "right", t, e) : Math.abs(n) > this._swipeTresholdY && Math.abs(t / n) < .2 && this.onswipe(0 < n ? "up" : "down", n, e)
+                Math.abs(t) > Math.abs(n) && Math.abs(t) > this._swipeTresholdX && Math.abs(n / t) < .2 ? this.onswipe(t > 0 ? "left" : "right", t, e) : Math.abs(n) > this._swipeTresholdY && Math.abs(t / n) < .2 && this.onswipe(n > 0 ? "up" : "down", n, e)
             },
             onswipe: function(e, t, n) {}
         })
     }), /*! */
-    W.define("Switch", ["$", "ClickHandler"], function(a, t) {
+    W.define("Switch", ["$", "ClickHandler"], function(e, t) {
         return t.extend({
             el: null,
             initValue: null,
@@ -5710,24 +6106,24 @@ L.CanvasLayer = L.Layer.extend({
                 var e;
                 this.el && this.initValue && (e = this.getEl(this.initValue)) && e.classList.add("selected"), this.selected = this.initValue, t._init.call(this)
             },
-            getEl: function(e) {
-                return a('*[data-do="set,' + e + '"]', this.el)
+            getEl: function(t) {
+                return e('*[data-do="set,' + t + '"]', this.el)
             },
             set: function(e, t) {
                 this.click("set", e, t)
             },
-            click: function(e, t, n) {
-                if ("set" === e) {
-                    var i = a(".selected", this.el),
-                        s = this.getEl(t);
-                    i && i.classList.remove("selected"), s && s.classList.add("selected"), n || t !== this.selected && this.onset(t), this.selected = t
-                } else "function" == typeof this[e] && this[e](t)
+            click: function(t, n, i) {
+                if ("set" === t) {
+                    var s = e(".selected", this.el),
+                        a = this.getEl(n);
+                    s && s.classList.remove("selected"), a && a.classList.add("selected"), i || n !== this.selected && this.onset(n), this.selected = n
+                } else "function" == typeof this[t] && this[t](n)
             },
             onset: function() {}
         })
     }), /*! */
-    W.define("Webcams", ["store", "map", "trans", "http", "format", "ClickHandler", "broadcast"], function(e, t, l, s, c, n, i) {
-        return n.extend({
+    W.define("Webcams", ["store", "map", "trans", "http", "format", "ClickHandler", "broadcast"], function(e, t, n, i, s, a, r) {
+        return a.extend({
             maxAmount: 5,
             imgRatio: 400 / 224,
             data: [],
@@ -5739,11 +6135,13 @@ L.CanvasLayer = L.Layer.extend({
                 this.hasListener && (e.off("webcamsDaylight", this.render, this), this.hasListener = !1), this.removeMarker()
             },
             load: function(e) {
-                var i = this;
+                var t = this;
                 return this.removeMarker(), new Promise(function(n) {
-                    s.get("/node/webcams2/" + e.lat + "/" + e.lon).then(function(e) {
-                        var t = e.data;
-                        i.daylight = !1, 0 < t.length ? (i.data = t.slice(0, i.maxAmount), i.render()) : (i.data = [], i.el && (i.el.innerHTML = "")), n(i.data)
+                    i.get("/node/webcams2/" + e.lat + "/" + e.lon, {
+                        cache: !e.forceReload
+                    }).then(function(e) {
+                        var i = e.data;
+                        t.daylight = !1, i.length > 0 ? (t.data = i.slice(0, t.maxAmount), t.render()) : (t.data = [], t.el && (t.el.innerHTML = "")), n(t.data)
                     })
                 })
             },
@@ -5762,17 +6160,17 @@ L.CanvasLayer = L.Layer.extend({
             render: function() {
                 var t = this;
                 if (this.data && this.data.length) {
-                    var o = e.get("webcamsDaylight");
+                    var i = e.get("webcamsDaylight");
                     this.el.innerHTML = this.data.map(function(e, t) {
-                        var n = e.distance,
-                            i = e.image,
-                            s = e.title,
-                            a = o ? l.D_DAYLIGHT : c.howOld({
-                                ux: +i.update,
+                        var a = e.distance,
+                            r = e.image,
+                            o = e.title,
+                            l = i ? n.D_DAYLIGHT : s.howOld({
+                                ux: +r.update,
                                 translate: !0
                             }),
-                            r = 0 < n ? ", " + l.D_DISTANCE + " " + n.toFixed(1) + " km, " + ((.62 * n).toFixed(1) + l.D_MILES) : "";
-                        return '<div class="webcam" data-do="webcam,' + t + '" data-webcam="' + t + '"\n\t\t\tstyle="background-image: url( img/ajax-loader.gif );">\n\t\t\t<div class="iconfont" data-do="lookr,' + t + '" data-tooltip="' + l.D_WEBCAMS_24 + '">&#xe041;</div>\n\t\t\t<div class="wbcm-name noselect">' + s + '</div>\n\t\t\t<small class="noselect fresh-title ' + c.obsoleteClass(+i.update) + '">' + a + r + "</small>\n\t\t\t</div>"
+                            c = a > 0 ? ", " + n.D_DISTANCE + " " + a.toFixed(1) + " km, " + ((.62 * a).toFixed(1) + n.D_MILES) : "";
+                        return '<div class="webcam" data-do="webcam,' + t + '" data-webcam="' + t + '"\n\t\t\tstyle="background-image: url( img/ajax-loader.gif );">\n\t\t\t<div class="iconfont" data-do="lookr,' + t + '" data-tooltip="' + n.D_WEBCAMS_24 + '">&#xe041;</div>\n\t\t\t<div class="wbcm-name noselect">' + o + '</div>\n\t\t\t<small class="noselect fresh-title ' + s.obsoleteClass(+r.update) + '">' + l + c + "</small>\n\t\t\t</div>"
                     }).join(""), this.useHover && this.el.querySelectorAll("div[data-webcam]").forEach(function(e) {
                         e.onmouseover = t.addMarker.bind(t, +e.dataset.webcam), e.onmouseout = t.removeMarker.bind(t)
                     })
@@ -5781,21 +6179,21 @@ L.CanvasLayer = L.Layer.extend({
             forEach: function(e) {
                 for (var t = this.el.querySelectorAll(".webcam"), n = 0; n < t.length; n++) e(t[n], n)
             },
-            setWH: function(t, n) {
-                this.forEach(function(e) {
-                    e.style.width = t + "px", e.style.height = n + "px"
+            setWH: function(e, t) {
+                this.forEach(function(n) {
+                    n.style.width = e + "px", n.style.height = t + "px"
                 })
             },
             loadImages: function() {
-                var i = this,
-                    s = e.get("webcamsDaylight");
-                this.forEach(function(e, t) {
-                    var n = i.data[t].image[s ? "daylight" : "current"].preview;
-                    e.style["background-image"] = "url(" + n + "), url( img/ajax-loader.gif )", e.classList.add("loaded")
+                var t = this,
+                    n = e.get("webcamsDaylight");
+                this.forEach(function(e, i) {
+                    var s = t.data[i].image[n ? "daylight" : "current"].preview;
+                    e.style["background-image"] = "url(" + s + "), url( img/ajax-loader.gif )", e.classList.add("loaded")
                 })
             },
             click: function(e, t) {
-                "lookr" === e && i.emit("rqstOpen", "lookr", this.data[t])
+                "lookr" === e && r.emit("rqstOpen", "lookr", this.data[t])
             }
         })
     }), /*! */
@@ -5830,8 +6228,8 @@ L.CanvasLayer = L.Layer.extend({
             createGhostText: function() {}
         })
     }), /*! */
-    W.define("Window", ["$", "trans", "Class", "broadcast"], function(n, e, t, i) {
-        return t.extend({
+    W.define("Window", ["$", "trans", "Class", "broadcast"], function(e, t, n, i) {
+        return n.extend({
             iAm: "window",
             domEl: null,
             attachPoint: "#plugins",
@@ -5859,10 +6257,14 @@ L.CanvasLayer = L.Layer.extend({
             keyCatcher: function(e) {
                 e.stopPropagation()
             },
-            createNode: function(e) {
-                this.node = this.el = this.element = document.createElement("div"), this.node.id = this.htmlID || this.iAm + "-" + this.ident, this.className && (this.node.className = this.className), this.node.innerHTML = '<div class="closing-x"></div>' + e;
-                var t = this.domEl || n(this.attachPoint);
-                this.replaceMountingPoint ? t.parentElement.replaceChild(this.node, t) : t.appendChild(this.node), n(".closing-x", this.node).onclick = this.bindedClose
+            createNode: function(t) {
+                this.node = this.el = this.element = document.createElement("div"), this.node.id = this.htmlID || this.iAm + "-" + this.ident, this.className && (this.node.className = this.className), this.node.innerHTML = '<div class="closing-x"></div>' + t;
+                var n = this.domEl || e(this.attachPoint);
+                this.replaceMountingPoint ? n.parentElement.replaceChild(this.node, n) : n.appendChild(this.node), e(".closing-x", this.node).onclick = this.bindedClose
+            },
+            setContent: function(t) {
+                if (!this.node) return this.createNode(t);
+                this.node.innerHTML = '<div class="closing-x"></div>' + t, e(".closing-x", this.node).onclick = this.bindedClose
             },
             open: function(e) {
                 return this.closingTimer && clearTimeout(this.closingTimer), this.timeoutTimer && clearTimeout(this.timeoutTimer), this.isOpen || (this._mount(), this._open(e)), this
@@ -5875,7 +6277,7 @@ L.CanvasLayer = L.Layer.extend({
                 }
             },
             _mount: function() {
-                this.createNode(this.html), e.translateDocument(this.node), this.attachRefs()
+                this.createNode(this.html), t.translateDocument(this.node), this.attachRefs()
             },
             _unmount: function() {
                 this.node.parentNode.removeChild(this.node)
@@ -5894,24 +6296,24 @@ L.CanvasLayer = L.Layer.extend({
             onurl: function() {
                 return {
                     url: this.ident,
-                    title: e[this.title] || this.title || null
+                    title: t[this.title] || this.title || null
                 }
             },
             onopen: function() {},
             onclose: function() {}
         })
     }), /*! */
-    W.define("DropDown", ["Switch", "$"], function(n, e) {
-        return n.extend({
+    W.define("DropDown", ["Switch", "$"], function(e, t) {
+        return e.extend({
             _init: function() {
-                n._init.call(this), this.opened = !1, this.switch = e("ul", this.el), this.el.addEventListener("click", this.toggle.bind(this)), this.bindedClose = this.close.bind(this), this.fill()
+                e._init.call(this), this.opened = !1, this.switch = t("ul", this.el), this.el.addEventListener("click", this.toggle.bind(this)), this.bindedClose = this.close.bind(this), this.fill()
             },
             fill: function() {
                 var e = this.getEl(this.selected);
                 e && (this.el.dataset.content = e.textContent)
             },
-            set: function(e, t) {
-                n.set.call(this, e, t), this.fill()
+            set: function(t, n) {
+                e.set.call(this, t, n), this.fill()
             },
             toggle: function() {
                 this.opened ? (this.fill(), this.close()) : this.open()
@@ -5924,253 +6326,299 @@ L.CanvasLayer = L.Layer.extend({
             }
         })
     }), /*! */
-    W.define("BindedDropDown", ["BindedSwitch", "DropDown", "store"], function(t, e, n) {
-        return e.extend(t, {
+    W.define("BindedDropDown", ["BindedSwitch", "DropDown", "store"], function(e, t, n) {
+        return t.extend(e, {
             _init: function() {
-                this.initValue = n.get(this.bindStore), n.on(this.bindStore, this.set, this), "function" == typeof this.render && n.on("usedLang", this.render, this), e._init.call(this)
+                this.initValue = n.get(this.bindStore), n.on(this.bindStore, this.set, this), "function" == typeof this.render && n.on("usedLang", this.render, this), t._init.call(this)
             },
-            set: function(e) {
-                t.set.call(this, e), this.selected = e, this.fill()
+            set: function(t) {
+                e.set.call(this, t), this.selected = t, this.fill()
             }
         })
     }), /*! */
-    W.define("location", ["trans", "store", "$", "utils", "broadcast", "rootScope", "storage", "router", "picker", "overlays", "format", "plugins"], function(e, s, t, a, n, r, i, o, l, c, d, u) {
-        var h, m = d.seoString,
-            f = d.seoLang,
-            p = o.url,
-            g = Date.now(),
-            v = "Windy: " + e.TITLE,
-            y = t('meta[name="description"]') || {},
-            w = y && y.content,
-            b = !1,
-            T = t('link[rel="canonical"]'),
-            L = null,
-            A = null;
-        "/" === p && (p = "");
-        var S = function(e) {
-                return e + (h ? "?" + h : "")
-            },
-            E = function(e) {
-                return T.href = a.joinPath("http://www.eric.com/test-windy", e)
-            },
-            C = a.emptyFun;
-        r.isCrawler ? u.seo.load().then(function() {
-            A = W.require("seo"), C = A.showURL
-        }) : window.history && window.history.replaceState && (C = a.debounce(function() {
-            try {
-                var e = M();
-                window.history.replaceState({
-                    url: p,
-                    search: h
-                }, "", S(e)), E(e)
-            } catch (e) {}
-        }, 200));
-        var M = function() {
-                if ("" !== p) return /overlays|settings|privacy|tools|widgets|favs|hurricanes/.test(p) && L ? a.joinPath(x(), p) : p;
-                var e = s.get("overlay");
-                return "wind" !== e && L ? x() + "-" + e : ""
-            },
-            x = function() {
-                return f(s.get("usedLang")) + "-" + m(L)
-            },
-            _ = a.debounce(function() {
-                if (!P) return;
-                var e, t = r.map,
-                    n = [a.normalizeLatLon(t.lat), a.normalizeLatLon(t.lon), t.zoom],
-                    i = s.get("timestamp");
-                "accumulations" === P.product && "next24h" !== P.acTime ? n.unshift(P.acTime) : P.path && 65e6 < Math.abs(g - i) && n.unshift(P.path.replace(/\//g, "-"));
-                "wind" !== P.overlay && n.unshift(P.overlay);
-                "surface" !== P.level && n.unshift(P.level);
-                !/^ecmwf/.test(P.product) && function(e) {
-                    return W.models && 1 < W.models.layer2product[e].length
-                }(P.overlay) && n.unshift(P.product);
-                "off" !== (e = s.get("isolines")) && n.push("i:" + e);
-                r.picker && n.push("m:" + a.latLon2str(r.picker));
-                r.customAnimation && n.push(r.customAnimation);
-                "on" !== (e = s.get("particlesAnim")) && n.push("p:" + e);
-                h = n.join(","), C()
-            }, 300),
-            P = null;
-
-        function D() {
-            if (!b) {
-                var e = s.get("overlay"),
-                    t = c[e].getName();
-                document.title = "wind" === e ? (L = null, v) : "Windy: " + (L = t)
-            }
-        }
-        return n.on("paramsChanged", function(e) {
-            P = e, _()
-        }), n.on("mapChanged", _), n.on("detailRendered", _), l.on("pickerOpened", _), l.on("pickerMoved", _), l.on("pickerClosed", _), s.on("particlesAnim", _), s.on("overlay", D), s.on("usedLang", D), {
-            description: function(e) {
-                return y.content = e
-            },
-            setCanonical: E,
-            getFrag: S,
-            titleWithLang: x,
-            getPath: function() {
-                return p
-            },
-            getTitle: function() {
-                return L
-            },
-            getSearch: function() {
-                return h
-            },
-            getURL: function() {
-                return "http://www.eric.com/test-windy" + S()
-            },
-            deleteSearch: function() {
-                return h = null
-            },
-            url: function(e) {
-                p = e, C()
-            },
-            title: function(e) {
-                L = e, document.title = "Windy: " + e, b = !0
-            },
-            reset: function() {
-                b = !1, y && (y.content = w), p = "", D(), C()
-            }
-        }
-    }), /*! */
-    W.define("components", ["radar", "products", "trans", "store", "query", "$", "utils", "rootScope", "broadcast", "overlays", "Class", "ClickHandler", "BindedSwitch", "BindedBar", "BindedCheckbox", "format"], function(e, r, s, o, t, n, i, l, a, c, d, u, h, m, f, p) {
-        h.instance({
-            el: n("#accumulations .ui-switch"),
-            bindStore: "acTime",
-            _init: function() {
-                h._init.call(this), o.on("availAcTimes", this.render, this)
-            },
-            render: function() {
-                var e = o.get("availAcTimes");
-                this.el.innerHTML = e.map(function(e) {
-                    var t = /next(\d+)(h|d)/.exec(e);
-                    return '<div data-do="set,' + e + '">' + i.template("h" === t[2] ? s.ACC_NEXT_HOURS : s.ACC_NEXT_DAYS, {
-                        num: t[1]
-                    }) + "</div>"
-                }).join(""), this.set(o.get("acTime"))
-            }
-        }), f.instance({
-            el: l.isMobile ? n("#playpause-mobile") : n("#playpause"),
-            bindStore: "animation"
-        }), l.isMobile || m.instance({
-            progressBar: n("#progress-bar"),
-            offset: 45,
-            borderOffset: 10,
-            UIident: "main",
+    W.define("TimestampBar", ["BindedBar", "format", "trans"], function(e, t, n) {
+        return e.extend({
             bindTimestamp: "timestamp",
             bindCalendar: "calendar",
             bindAnimation: "animation",
             createText: function(e) {
-                var t = Math.floor(this.numberOfHours * this.left / (24 * this.progressWidth)),
-                    n = this.calendar.days[t],
-                    i = n ? "" + s[this.zuluMode ? n.display : n.displayLong] + (n.day && " " + n.day) + " - " : "";
-                return this.zuluMode && (e.dataset.zulu = p.hourUTC(this.timestamp)), i + this.displayHour(Math.round(this.numberOfHours * this.left / this.progressWidth) % 24)
+                var i = Math.floor(this.numberOfHours * this.left / (24 * this.progressWidth)),
+                    s = this.calendar.days[i],
+                    a = s ? "" + n[this.zuluMode ? s.display : s.displayLong] + (s.day && " " + s.day) + " - " : "";
+                return this.zuluMode && (e.dataset.zulu = t.hourUTC(this.timestamp)), "" + a + this.displayHour(Math.round(this.numberOfHours * this.left / this.progressWidth) % 24)
             },
             createGhostText: function(e) {
                 var t = parseInt(e / this.progressWidth * this.numberOfHours) % 24;
                 return this.displayHour(t)
             }
-        }), l.isMobileOrTablet ? (d.instance({
-            el: n("#legend-mobile"),
+        })
+    }), /*! */
+    W.define("location", ["trans", "store", "$", "utils", "broadcast", "rootScope", "router", "picker", "overlays", "format", "plugins"], function(e, t, n, i, s, a, r, o, l, c, d) {
+        var u, h = c.seoString,
+            f = c.seoLang,
+            m = r.url,
+            p = Date.now(),
+            g = "Windy: " + e.TITLE,
+            v = n('meta[name="description"]') || {},
+            y = v && v.content,
+            w = !1,
+            b = n('link[rel="canonical"]'),
+            T = null,
+            L = null;
+        "/" === m && (m = "");
+        var S = function(e) {
+                return W.models && W.models.layer2product[e].length > 1
+            },
+            A = function(e) {
+                return e + (u ? "?" + u : "")
+            },
+            E = function(e) {
+                return b.href = i.joinPath("https://www.windy.com", e)
+            },
+            C = i.emptyFun;
+        a.isCrawler ? d.seo.load().then(function() {
+            L = W.require("seo"), C = L.showURL
+        }) : window.history && window.history.replaceState && (C = i.debounce(function() {
+            try {
+                var e = M();
+                window.history.replaceState({
+                    url: m,
+                    search: u
+                }, "", A(e)), E(e)
+            } catch (e) {}
+        }, 200));
+        var M = function() {
+                if ("" === m) {
+                    var e = t.get("overlay");
+                    return "wind" !== e && T ? x() + "-" + e : ""
+                }
+                return /overlays|settings|privacy|tools|widgets|favs|hurricanes/.test(m) && T ? i.joinPath(x(), m) : m
+            },
+            x = function() {
+                return f(t.get("usedLang")) + "-" + h(T)
+            },
+            _ = i.debounce(function() {
+                if (!P) return;
+                var e, n = a.map,
+                    s = [i.normalizeLatLon(n.lat), i.normalizeLatLon(n.lon), n.zoom],
+                    r = t.get("timestamp");
+                "accumulations" === P.product && "next24h" !== P.acTime ? s.unshift(P.acTime) : P.path && Math.abs(p - r) > 65e6 && s.unshift(P.path.replace(/\//g, "-"));
+                "wind" !== P.overlay && s.unshift(P.overlay);
+                "surface" !== P.level && s.unshift(P.level);
+                !/^ecmwf/.test(P.product) && S(P.overlay) && s.unshift(P.product);
+                "off" !== (e = t.get("isolines")) && s.push("i:" + e);
+                a.picker && s.push("m:" + i.latLon2str(a.picker));
+                a.customAnimation && s.push(a.customAnimation);
+                u = s.join(","), C()
+            }, 300),
+            P = null;
+
+        function D() {
+            if (!w) {
+                var e = t.get("overlay"),
+                    n = l[e].getName();
+                "wind" === e ? (T = null, document.title = g) : (T = n, document.title = "Windy: " + n)
+            }
+        }
+        return s.on("paramsChanged", function(e) {
+            P = e, _()
+        }), s.on("mapChanged", _), s.on("detailRendered", _), o.on("pickerOpened", _), o.on("pickerMoved", _), o.on("pickerClosed", _), t.on("particlesAnim", _), t.on("overlay", D), t.on("usedLang", D), {
+            description: function(e) {
+                return v.content = e
+            },
+            setCanonical: E,
+            getFrag: A,
+            titleWithLang: x,
+            getPath: function() {
+                return m
+            },
+            getTitle: function() {
+                return T
+            },
+            getSearch: function() {
+                return u
+            },
+            getURL: function() {
+                return "https://www.windy.com/" + A()
+            },
+            deleteSearch: function() {
+                return u = null
+            },
+            url: function(e) {
+                m = e, C()
+            },
+            title: function(e) {
+                T = e, document.title = "Windy: " + e, w = !0
+            },
+            reset: function() {
+                w = !1, v && (v.content = y), m = "", D(), C()
+            }
+        }
+    }), /*! */
+    W.define("components", ["radar", "products", "trans", "store", "query", "$", "utils", "rootScope", "broadcast", "overlays", "Class", "ClickHandler", "BindedSwitch", "BindedCheckbox", "TimestampBar"], function(e, t, n, i, s, a, r, o, l, c, d, u, h, f, m) {
+        var p;
+        h.instance({
+            el: a("#accumulations .ui-switch"),
+            bindStore: "acTime",
             _init: function() {
-                o.on("overlay", this.render, this), a.on("metricChanged", this.render, this), this.render()
+                h._init.call(this), i.on("availAcTimes", this.render, this)
             },
             render: function() {
-                var e = o.get("overlay");
+                var e = i.get("availAcTimes");
+                this.el.innerHTML = e.map(function(e) {
+                    var t = /next(\d+)(h|d)/.exec(e);
+                    return '<div data-do="set,' + e + '">' + r.template("h" === t[2] ? n.ACC_NEXT_HOURS : n.ACC_NEXT_DAYS, {
+                        num: t[1]
+                    }) + "</div>"
+                }).join(""), this.set(i.get("acTime"))
+            }
+        }), f.instance({
+            el: o.isMobile ? a("#playpause-mobile") : a("#playpause"),
+            bindStore: "animation"
+        }), o.isMobile || m.instance({
+            progressBar: a("#progress-bar"),
+            offset: 45,
+            borderOffset: 10,
+            UIident: "main"
+        }), o.isMobileOrTablet ? (d.instance({
+            el: a("#legend-mobile"),
+            _init: function() {
+                i.on("overlay", this.render, this), l.on("metricChanged", this.render, this), this.render()
+            },
+            render: function() {
+                var e = i.get("overlay");
                 c[e].paintLegend(this.el)
             }
         }), d.instance({
-            el: n("#mobile-ovr-info"),
+            el: a("#mobile-ovr-info"),
             _init: function() {
-                this.debouncedRedraw = i.debounce(this.render.bind(this), 50), o.on("usedLang", this.render, this), o.on("level", this.debouncedRedraw), o.on("overlay", this.debouncedRedraw), o.on("product", this.debouncedRedraw), e.on("providerChanged", this.render, this), this.render()
+                this.debouncedRedraw = r.debounce(this.render.bind(this), 50), i.on("usedLang", this.render, this), i.on("level", this.debouncedRedraw), i.on("overlay", this.debouncedRedraw), i.on("product", this.debouncedRedraw), e.on("providerChanged", this.render, this), this.render()
             },
             render: function() {
-                var e = o.get("overlay"),
-                    t = c[e],
-                    n = r[o.get("product")],
-                    i = o.get("level"),
-                    s = [];
-                t.hasMoreLevels && "surface" !== i && s.push(l.levelsData[i][0].replace(/Pa/, "")), !/ecmwf/.test(n.ident) && n.modelName && n.modelName.length && s.push(n.modelName);
-                var a = '<span class="uiyellow"\n\t\t\t\t' + (s.length ? 'data-notes="' + s.join(" ") + '"' : "") + "\n\t\t\t\t>" + t.getName() + "</span>";
-                a != this.lastString && (this.el.innerHTML = a, this.el.dataset.icon = t.icon, this.lastString = a)
+                var e = i.get("overlay"),
+                    n = c[e],
+                    s = t[i.get("product")],
+                    a = i.get("level"),
+                    r = [];
+                n.hasMoreLevels && "surface" !== a && r.push(o.levelsData[a][0].replace(/Pa/, "")), !/ecmwf/.test(s.ident) && s.modelName && s.modelName.length && r.push(s.modelName);
+                var l = '<span class="uiyellow"\n\t\t\t\t' + (r.length ? 'data-notes="' + r.join(" ") + '"' : "") + "\n\t\t\t\t>" + n.getName() + "</span>";
+                l != this.lastString && (this.el.innerHTML = l, this.el.dataset.icon = n.icon, this.lastString = l)
             }
-        })) : a.once("dependenciesResolved", a.emit.bind(a, "rqstOpen", "rhpane")), u.instance({
+        }), p = u.instance({
+            el: a("#mm-radar"),
+            nameEl: a("#mm-radar nav"),
+            timer: null,
+            _init: function() {
+                h.instance({
+                    el: this.nameEl,
+                    bindStore: "overlay"
+                }), u._init.call(this)
+            },
+            click: function() {
+                this.scheduleClose.call(this, 1500)
+            },
+            scheduleClose: function(e) {
+                this.timer && clearTimeout(this.timer), this.timer = setTimeout(this.close.bind(this), e)
+            },
+            open: function() {
+                var e = this;
+                this.nameEl.style.display = "block", setTimeout(function() {
+                    return e.nameEl.style.opacity = "1"
+                }, 50), this.scheduleClose(3e3)
+            },
+            close: function() {
+                var e = this;
+                this.nameEl.style.opacity = "0", setTimeout(function() {
+                    return e.nameEl.style.display = "none"
+                }, 200)
+            }
+        })) : l.once("dependenciesResolved", l.emit.bind(l, "rqstOpen", "rhpane")), u.instance({
             el: document.body,
             click: function(e) {
                 switch (e) {
                     case "openapp":
-                        window.location.href = "ios" === l.platform ? "https://itunes.apple.com/us/app/windytv-windyty/id1161387262?mt=8" : "https://play.google.com/store/apps/details?id=com.windyty.android&utm_source=menu&utm_medium=windy&utm_campaign=openAppLink&utm_content=openAppLink";
+                        window.location.href = "ios" === o.platform ? "https://apps.apple.com/app/apple-store/id1161387262?pt=118417623&ct=webapp&mt=8" : "https://play.google.com/store/apps/details?id=com.windyty.android&utm_source=menu&utm_medium=windy&utm_campaign=openAppLink&utm_content=openAppLink";
                         break;
                     case "title":
-                        a.emit("back2home");
+                        l.emit("back2home");
                         break;
                     case "search":
-                        a.emit("closeAll"), t.set(""), a.emit("focusRqstd");
+                        l.emit("closeAll"), s.set(""), l.emit("focusRqstd");
+                        break;
+                    case "openRadarSat":
+                        p.open.call(p);
+                        break;
+                    case "hamburgerMenu":
+                        l.emit("rqstOpen", i.get("lhpaneSwitch"));
                         break;
                     default:
-                        a.emit(e)
+                        l.emit(e)
                 }
             }
         })
     }), /*! */
-    W.define("keyboard", ["utils", "products", "broadcast", "store", "rootScope"], function(u, e, h, m, f) {
-        document.body.addEventListener("keydown", function(e) {
-            var t = e.keyCode,
-                n = !1;
-            if (37 !== t && 39 !== t || !p())
-                if (38 === t || 40 === t) {
-                    for (var i = m.get("favOverlays"), s = m.get("overlay"), a = f.overlays.indexOf(s), r = f.overlays.length; 0 <= a && a < r;)
-                        if (a += 38 === t ? -1 : 1, u.contains(i, f.overlays[a])) return void m.set("overlay", f.overlays[a]);
-                    n = !0
-                } else if (33 !== t && 34 !== t || !g()) 9 === t || 70 === t ? (h.emit("closeAll"), h.emit("focusRqstd"), n = !0) : 187 === t ? (h.emit("zoomIn"), n = !0) : 189 === t && (h.emit("zoomOut"), n = !0);
+    W.define("keyboard", ["utils", "products", "overlays", "broadcast", "store", "rootScope"], function(e, t, n, i, s, a) {
+        document.body.addEventListener("keydown", function(t) {
+            var n, c = t.keyCode,
+                d = !1;
+            if (37 !== c && 39 !== c || !(n = r()))
+                if (38 === c || 40 === c) {
+                    for (var u = s.get("favOverlays"), h = s.get("overlay"), f = a.overlays.indexOf(h), m = a.overlays.length; f >= 0 && f < m;)
+                        if (f += 38 === c ? -1 : 1, u.includes(a.overlays[f])) return void s.set("overlay", a.overlays[f]);
+                    d = !0
+                } else if (33 !== c && 34 !== c || !l()) 9 === c || 70 === c ? (i.emit("closeAll"), i.emit("focusRqstd"), d = !0) : 187 === c ? (i.emit("zoomIn"), d = !0) : 189 === c && (i.emit("zoomOut"), d = !0);
             else {
-                var o = m.get("availLevels"),
-                    l = o.indexOf(m.get("level")); - 1 < l && (l = u.bound(l + (33 === t ? 1 : -1), 0, o.length), m.set("level", o[l])), n = !0
+                var p = s.get("availLevels"),
+                    g = p.indexOf(s.get("level"));
+                g > -1 && (g = e.bound(g + (33 === c ? 1 : -1), 0, p.length), s.set("level", p[g])), d = !0
             } else {
-                var c = m.get("calendar"),
-                    d = c.paths.indexOf(m.get("path")); - 1 < d && (d = u.bound(d + (39 === t ? 1 : -1), 0, c.paths.length), m.set("timestamp", c.timestamps[d])), n = !0
+                var v = 39 === c;
+                n.moveTs.call(n, v, o()), d = !0
             }
-            n && e.preventDefault()
+            d && event.preventDefault()
         });
-        var p = function() {
-                return e[m.get("product")].calendar
+        var r = function() {
+                var e = t[s.get("product")];
+                return "calendar" in e ? e : null
             },
-            g = function() {
-                return /wind|rh|temp/.test(m.get("overlay"))
+            o = function() {
+                return n[s.get("overlay")].isAccu
+            },
+            l = function() {
+                return /wind|rh|temp/.test(s.get("overlay"))
             }
     }), /*! */
-    W.define("calendarUI", ["$", "utils", "rootScope", "trans", "store", "format", "Scrollable"], function(d, u, e, h, m, f, t) {
-        e.isMobile && t.instance({
-            scrollEl: d("#days"),
-            box: d("#mobile_box"),
-            nowBar: d("#now-bar"),
+    W.define("calendarUI", ["$", "utils", "rootScope", "trans", "store", "format", "Scrollable"], function(e, t, n, i, s, a, r) {
+        n.isMobile && r.instance({
+            scrollEl: e("#days"),
+            box: e("#mobile_box"),
+            nowBar: e("#now-bar"),
             hoursHtml: "",
             scrolling: !1,
             noAnimation: !1,
             scrollTimer: null,
             ticking: !1,
-            tsPx: 3 * u.tsHour / 20,
+            tsPx: 3 * t.tsHour / 20,
             UIident: "botomCal",
             _init: function() {
-                t._init.call(this), m.on("timestamp", this.set, this), m.on("hourFormat", this.render, this), m.on("calendar", this.render, this), m.on("usedLang", this.render, this), m.on("zuluMode", this.render, this), window.addEventListener("resize", setTimeout.bind(null, this.render.bind(this), 500)), setInterval(this.render.bind(this), u.tsHour), this.render(), this.set(m.get("timestamp"))
+                r._init.call(this), s.on("timestamp", this.set, this), s.on("hourFormat", this.render, this), s.on("calendar", this.render, this), s.on("usedLang", this.render, this), s.on("zuluMode", this.render, this), window.addEventListener("resize", setTimeout.bind(null, this.render.bind(this), 500)), setInterval(this.render.bind(this), t.tsHour), this.render(), this.set(s.get("timestamp"))
             },
             render: function() {
-                var t = this;
-                if (this.calendar = m.get("calendar"), this.zuluMode = m.get("zuluMode"), this.localeHours = f.getHoursFunction(), this.timestamp = 0, this.calendar) {
-                    for (var e = this.calendar.days.filter(function(e) {
-                            return e.start < t.calendar.end
-                        }), n = "<b></b>", i = m.is12hFormat(), s = "", a = 1; a < 24; a += 3) {
-                        var r = i ? (a + 11) % 12 + 1 : a;
-                        s += "<li>" + u.pad(r) + "</li>"
+                var n = this;
+                if (this.calendar = s.get("calendar"), this.zuluMode = s.get("zuluMode"), this.localeHours = a.getHoursFunction(), this.timestamp = 0, this.calendar) {
+                    for (var r = this.calendar.days.filter(function(e) {
+                            return e.start < n.calendar.end
+                        }), o = "<b></b>", l = s.is12hFormat(), c = "", d = 1; d < 24; d += 3) {
+                        var u = l ? (d + 11) % 12 + 1 : d;
+                        c += "<li>" + t.pad(u) + "</li>"
                     }
-                    for (var o = 0; o < e.length; o++) {
-                        var l = e[o];
-                        n += "<div>&nbsp;&nbsp;" + h[l.displayLong] + "&nbsp;" + l.day + "<ul>" + s + "</ul></div>"
+                    for (var h = 0; h < r.length; h++) {
+                        var f = r[h];
+                        o += "<div>&nbsp;&nbsp;" + i[f.displayLong] + "&nbsp;" + f.day + "<ul>" + c + "</ul></div>"
                     }
-                    this.scrollEl.innerHTML = n;
-                    var c = m.get("timestamp");
-                    delete this.box.dataset.zulu, this.set(c), this.renderBox(), d("b", this.scrollEl).style.left = window.innerWidth / 2 + (Date.now() - this.calendar.start) / this.tsPx + "px"
+                    this.scrollEl.innerHTML = o;
+                    var m = s.get("timestamp");
+                    delete this.box.dataset.zulu, this.set(m), this.renderBox(), e("b", this.scrollEl).style.left = window.innerWidth / 2 + (Date.now() - this.calendar.start) / this.tsPx + "px"
                 }
             },
             slideUp: function() {
@@ -6180,67 +6628,68 @@ L.CanvasLayer = L.Layer.extend({
                 this.slideUp(), this.timestamp = this.tsPx * e.target.scrollLeft + this.calendar.start, this.renderBox(), this.scrollTicking = !1
             },
             renderBox: function() {
-                this.zuluMode && (this.box.dataset.zulu = f.hourUTC(this.timestamp)), this.box.textContent = this.localeHours(new Date(this.timestamp).getHours())
+                this.zuluMode && (this.box.dataset.zulu = a.hourUTC(this.timestamp)), this.box.textContent = this.localeHours(new Date(this.timestamp).getHours())
             },
             onscrollend: function() {
                 this.scrolling = !1, this.scrollTimer = null;
-                var e = u.bound(this.timestamp, this.calendar.start, this.calendar.end);
-                m.set("timestamp", e, {
+                var e = t.bound(this.timestamp, this.calendar.start, this.calendar.end);
+                s.set("timestamp", e, {
                     UIident: this.UIident
                 }), document.body.classList.remove("mobile-scroll")
             },
             set: function(e, t) {
                 if (this.calendar && t !== this.UIident) {
-                    var n = ((this.timestamp = e) - this.calendar.start) / this.tsPx;
+                    this.timestamp = e;
+                    var n = (e - this.calendar.start) / this.tsPx;
                     this.noAnimation = !0, this.scrollEl.scrollLeft = n
                 }
             }
         })
     }), /*! */
-    W.define("calendarUIdesktop", ["store", "$", "trans", "rootScope", "ClickHandler", "Resizable"], function(c, e, t, n, i, s) {
-        if (!n.isMobile) {
-            var a = e("#calendar");
-            i.instance(s, {
-                el: a,
-                resizableEl: a,
+    W.define("calendarUIdesktop", ["store", "$", "trans", "rootScope", "ClickHandler", "Resizable"], function(e, t, n, i, s, a) {
+        if (!i.isMobile) {
+            var r = t("#calendar");
+            s.instance(a, {
+                el: r,
+                resizableEl: r,
                 stopPropagation: !0,
                 _init: function() {
-                    i._init.call(this), s._init.call(this), c.on("calendar", this.render, this), c.on("usedLang", this.render, this), this.onresize = this.render.bind(this), this.click = c.set.bind(c, "timestamp"), this.render()
+                    s._init.call(this), a._init.call(this), e.on("calendar", this.render, this), e.on("usedLang", this.render, this), this.onresize = this.render.bind(this), this.click = e.set.bind(e, "timestamp"), this.render()
                 },
                 render: function() {
-                    var e = c.get("calendar");
-                    if (e) {
-                        var t, n = "",
-                            i = e.end,
-                            s = e.days.length,
-                            a = this.width / s,
-                            r = 100 / s;
-                        if (100 < a) t = this.createDayStringLong;
-                        else if (60 < a) t = this.createDayString;
+                    var t = e.get("calendar");
+                    if (t) {
+                        var n, i = "",
+                            s = t.end,
+                            a = t.days.length,
+                            r = this.width / a,
+                            o = 100 / a;
+                        if (r > 100) n = this.createDayStringLong;
+                        else if (r > 60) n = this.createDayString;
                         else {
-                            if (!(40 < a)) return void(this.el.innerHTML = "");
-                            t = this.createDayStringShort
+                            if (!(r > 40)) return void(this.el.innerHTML = "");
+                            n = this.createDayStringShort
                         }
-                        for (var o = 0; o < s; o++) {
-                            var l = e.days[o];
-                            n += '<div data-do="' + Math.min(l.middayTs, i) + '"\n\t\t\t\t\tclass="uiyellow' + (l.middayTs < i ? " clickable" : " disabled") + '"\n\t\t\t\t\tstyle="width: ' + r + '%;">' + t(l) + "</div>"
+                        for (var l = 0; l < a; l++) {
+                            var c = t.days[l];
+                            i += '<div data-do="' + Math.min(c.middayTs, s) + '"\n\t\t\t\t\tclass="uiyellow' + (c.middayTs < s ? " clickable" : " disabled") + '"\n\t\t\t\t\tstyle="width: ' + o + '%;">' + n(c) + "</div>"
                         }
-                        this.el.innerHTML = n
+                        this.el.innerHTML = i
                     }
                 },
                 createDayStringLong: function(e) {
-                    return t[e.displayLong] + (e.day ? " " + e.day : "")
+                    return n[e.displayLong] + (e.day ? " " + e.day : "")
                 },
                 createDayString: function(e) {
-                    return t[e.display] + (e.day ? " " + e.day : "")
+                    return n[e.display] + (e.day ? " " + e.day : "")
                 },
                 createDayStringShort: function(e) {
-                    return "" + t[e.display]
+                    return "" + n[e.display]
                 }
             })
         }
     }), /*! */
-    W.define("promo", ["utils", "$", "rootScope", "broadcast", "storage", "plugins", "geolocation", "log"], function(e, n, i, t, s, a, r, o) {
+    W.define("promo", ["utils", "$", "rootScope", "broadcast", "storage", "plugins", "geolocation", "log"], function(e, t, n, i, s, a, r, o) {
         var l = s.get("promos2") || {},
             c = e.debounce(function() {
                 s.put("promos2", l)
@@ -6252,26 +6701,40 @@ L.CanvasLayer = L.Layer.extend({
                 l[e + "_ts"] = n || Date.now(), l[e] = t, c()
             },
             h = a.patch;
-        t.once("dependenciesResolved", h.load.bind(h));
-        return t.once("dependenciesResolved", function() {
-            if (setInterval(function() {
-                    document.body.classList.add("animate-logo"), setTimeout(function() {
-                        return document.body.classList.remove("animate-logo")
-                    }, 2e3)
-                }, 3e4), i.isMobile && ("ios" === i.platform || "android" === i.platform)) {
-                var e = ["#d49500", "#d40000", "#d4009b", "#8400d4", "#2200d4", "#0d869a", "#177900", "#ad7100"],
-                    t = 0;
-                setInterval(function() {
-                    ++t >= e.length && (t = 0), n("#open-in-app").style["background-color"] = e[t]
-                }, 12e3)
-            }
-        }), i.isMobile && s.isAvbl && (i.sessionCounter < 20 || 20 <= i.sessionCounter && !o.has("pl/menu")) && t.once("hpHidden", function() {
-            i.user || (document.body.classList.add("mm-show"), setTimeout(function() {
-                return document.body.classList.add("mm-smaller")
-            }, 3e3), setTimeout(function() {
-                return document.body.classList.remove("mm-show")
-            }, 1e4))
-        }), {
+        i.once("dependenciesResolved", h.load.bind(h));
+        if (i.once("dependenciesResolved", function() {
+                if (setInterval(function() {
+                        document.body.classList.add("animate-logo"), setTimeout(function() {
+                            return document.body.classList.remove("animate-logo")
+                        }, 2e3)
+                    }, 3e4), n.isMobile && ("ios" === n.platform || "android" === n.platform)) {
+                    var e = ["#d49500", "#d40000", "#d4009b", "#8400d4", "#2200d4", "#0d869a", "#177900", "#ad7100"],
+                        i = 0;
+                    setInterval(function() {
+                        ++i >= e.length && (i = 0), t("#open-in-app").style["background-color"] = e[i]
+                    }, 12e3)
+                }
+            }), n.isMobile && s.isAvbl) {
+            var f = document.body.classList;
+            n.sessionCounter < 20 || n.sessionCounter >= 20 && !o.has("pl/menu") ? i.once("hpHidden", function() {
+                n.user || (f.add("mm-show"), f.remove("mm-hide"), setTimeout(function() {
+                    return f.add("mm-smaller")
+                }, 3e3), setTimeout(function() {
+                    return f.remove("mm-show")
+                }, 1e4), setTimeout(function() {
+                    return f.add("mm-hide")
+                }, 13e3))
+            }) : o.has("ov/satellite") || o.has("ov/radar") || i.once("hpHidden", function() {
+                f.add("mm-radar-promo"), f.add("mm-smaller"), setTimeout(function() {
+                    return f.remove("mm-smaller")
+                }, 2e3), setTimeout(function() {
+                    return f.add("mm-smaller")
+                }, 6e3), setTimeout(function() {
+                    return f.remove("mm-radar-promo")
+                }, 8e3)
+            })
+        }
+        return {
             getCounter: s.isAvbl ? d : function() {
                 return 1e3
             },
@@ -6290,7 +6753,7 @@ L.CanvasLayer = L.Layer.extend({
                 }
             },
             hitCounter: function(e) {
-                u(e, d(e) + 1), t.emit("log", "promo/" + e)
+                u(e, d(e) + 1), i.emit("log", "promo/" + e)
             },
             neverSee: function(e) {
                 return u(e, 1e3)
@@ -6312,25 +6775,25 @@ L.CanvasLayer = L.Layer.extend({
             }.bind(null, t), 200))
         }), e.on("redrawFinished", s), e.on("loadingFailed", s), e.on("noConnection", s)
     }), /*! */
-    W.define("user", ["rootScope", "broadcast", "http", "storage"], function(n, i, e, t) {
-        function s(e) {
-            var t = e.data;
-            t && "object" == typeof t && (t.token && (n.userToken = t.token, i.emit("tokenRecieved", t.token)), t.auth && t.username ? (n.user = t, n.user.avatar = a(t.avatar), i.emit("rqstOpen", "user", t)) : r())
+    W.define("user", ["rootScope", "broadcast", "http", "storage"], function(e, t, n, i) {
+        function s(n) {
+            var i = n.data;
+            i && "object" == typeof i && (i.token && (e.userToken = i.token, t.emit("tokenRecieved", i.token)), i.auth && i.username ? (e.user = i, e.user.avatar = a(i.avatar), t.emit("rqstOpen", "user", i)) : r())
         }
 
-        function a(e) {
-            return e ? /^http/.test(e) ? e : "" + n.community + e + "?w=84" : "http://www.eric.com/test-windy/avatar.jpg"
+        function a(t) {
+            return t ? /^http/.test(t) ? t : "" + e.community + t + "?w=84" : "https://www.windy.com/img/avatar.jpg"
         }
 
         function r() {
-            delete n.user, i.emit("rqstClose", "user")
+            delete e.user, t.emit("rqstClose", "user")
         }
 
-        function o(e) {
-            var t = document.location.href;
-            return document.createElement("a").href = t, n.community + "/" + (e || "login") + "?return=" + encodeURI(t) + "&utm_medium=windy&utm_source=login"
+        function o(t) {
+            var n = document.location.href;
+            return document.createElement("a").href = n, e.community + "/" + (t || "login") + "?return=" + encodeURI(n) + "&utm_medium=windy&utm_source=login"
         }
-        return e.get("http://www.eric.com/test-windy/users/info", {
+        return n.get("http://www.eric.com/test-windy/users/info", {
             cache: !1,
             withCredentials: !0
         }).then(s).catch(r), {
@@ -6342,88 +6805,89 @@ L.CanvasLayer = L.Layer.extend({
             loginURL: o
         }
     }), /*! */
-    W.define("timeAnimation", ["utils", "store", "products", "broadcast"], function(t, n, i, s) {
-        var a, r, o = !1,
+    W.define("timeAnimation", ["utils", "store", "products", "broadcast"], function(e, t, n, i) {
+        var s, a, r = !1,
+            o = null,
             l = null,
-            c = null,
-            d = 2,
-            u = !1,
-            h = 50;
-        n.on("animation", function(e) {
-            e !== o && (e ? function() {
-                if (!(c = i[n.get("product")]).animation) return g();
-                o = !0, r = a = n.get("path"), d = 2, n.on("visibility", m), n.on("product", g), n.on("overlay", p), s.on("redrawFinished", f), s.on("paramsChanged", v), s.on("pluginOpened", g), y(), s.emit("animationStarted")
-            }() : (o = !1, clearTimeout(l), n.off("visibility", m), n.off("product", g), n.off("overlay", p), s.off("redrawFinished", f), s.off("paramsChanged", v), s.off("pluginOpened", g)))
+            c = 2,
+            d = !1,
+            u = 50;
+        t.on("animation", function(e) {
+            e !== r && (e ? function() {
+                if (!(l = n[t.get("product")]).animation) return void p();
+                r = !0, a = s = t.get("path"), c = 2, t.on("visibility", h), t.on("product", p), t.on("overlay", m), i.on("redrawFinished", f), i.on("paramsChanged", g), i.on("pluginOpened", p), v(), i.emit("animationStarted")
+            }() : (r = !1, clearTimeout(o), t.off("visibility", h), t.off("product", p), t.off("overlay", m), i.off("redrawFinished", f), i.off("paramsChanged", g), i.off("pluginOpened", p)))
         });
-        var m = function(e) {
-                e || g()
+        var h = function(e) {
+                e || p()
             },
             f = function(e) {
-                return a = e.path
+                return s = e.path
             },
-            p = function(e) {
-                return /Accu$/.test(e) && g()
+            m = function(e) {
+                return /Accu$/.test(e) && p()
             },
-            g = function() {
-                return n.set("animation", !1)
+            p = function() {
+                return t.set("animation", !1)
             },
-            v = function(e) {
-                u = r !== a, r = e.path
+            g = function(e) {
+                d = a !== s, a = e.path
             };
 
-        function y() {
-            d = t.bound(d + (u ? -.25 : .1), .8, 3);
-            var e = n.get("timestamp") + h * c.animationSpeed * d;
-            e < c.calendar.end ? (n.set("timestamp", e), l = setTimeout(y, h)) : g()
+        function v() {
+            c = e.bound(c + (d ? -.25 : .1), .8, 3);
+            var n = t.get("timestamp") + u * l.animationSpeed * c;
+            n < l.calendar.end ? (t.set("timestamp", n), o = setTimeout(v, u)) : p()
         }
     }), /*! */
-    W.define("hp", ["map", "utils", "store", "query", "rootScope", "geolocation", "http", "broadcast", "storage"], function(t, i, s, n, a, r, o, l, e) {
+    W.define("hp", ["map", "utils", "store", "query", "rootScope", "geolocation", "http", "broadcast", "storage"], function(e, t, n, i, s, a, r, o, l) {
         var c = !1,
             d = !1,
-            u = s.get("showWeather"),
-            h = t.getContainer();
-
-        function m() {
-            a.isMobile || n.showLoader(), setTimeout(function() {
-                return n.hideLoader()
-            }, 3e3), f(), r.getHomeLocation(g)
-        }
+            u = n.get("showWeather"),
+            h = e.getContainer();
 
         function f() {
+            s.isMobile || i.showLoader(), setTimeout(function() {
+                return i.hideLoader()
+            }, 3e3), m(), a.getHomeLocation(g)
+        }
+
+        function m() {
             document.body.addEventListener("mousedown", p, !1), document.body.addEventListener("touchstart", p, !1), document.body.addEventListener("keydown", p, !1), h.addEventListener("click", p, !0), h.addEventListener("touchstart", p, !0), d = !0
         }
 
         function p(e) {
             if (e && e.target) {
                 if ("mm-home" === e.target.id || "logo" === e.target.id) return;
-                if ("search-my-loc" === e.target.id) return n.showLoader(), void r.getGPSlocation().then(g).catch(n.hideLoader.bind(n))
+                if ("search-my-loc" === e.target.id) return i.showLoader(), void a.getGPSlocation().then(g).catch(i.hideLoader.bind(i))
             }
-            document.body.removeEventListener("mousedown", p, !1), document.body.removeEventListener("touchstart", p, !1), document.body.removeEventListener("keydown", p, !1), h.removeEventListener("click", p, !0), h.removeEventListener("touchstart", p, !0), c = !(d = !1), l.emit("rqstClose", "hp-weather", e)
+            document.body.removeEventListener("mousedown", p, !1), document.body.removeEventListener("touchstart", p, !1), document.body.removeEventListener("keydown", p, !1), h.removeEventListener("click", p, !0), h.removeEventListener("touchstart", p, !0), d = !1, c = !0, o.emit("rqstClose", "hp-weather", e)
         }
 
         function g(e) {
             if (!c) {
-                d || f();
-                var t = i.normalizeLatLon(e.lat) + "/" + i.normalizeLatLon(e.lon),
-                    n = {
-                        wx: o.get(a.pointForecast + "/ecmwf/" + t + "?setup=summary&includeNow=true&source=hp", {
+                d || m();
+                var i = t.normalizeLatLon(e.lat) + "/" + t.normalizeLatLon(e.lon),
+                    s = t.getFcstUrl("ecmwf", e, "hp", "setup=summary&includeNow=true"),
+                    a = {
+                        wx: r.get(s, {
                             cache: !1
                         }),
-                        capAlerts: o.get("/capalerts/" + t + "?lang=" + s.get("usedLang"), {
+                        capAlerts: r.get("/capalerts/" + i + "?lang=" + n.get("usedLang"), {
                             cache: !1
                         })
                     };
-                l.emit("rqstOpen", "hp-weather", {
+                o.emit("rqstOpen", "hp-weather", {
                     coords: e,
-                    promises: n
+                    promises: a
                 })
             }
         }
-        return a.isResumed || !u || a.startupDetail ? document.body.classList.remove("onweather") : m(), l.on("back2home", function() {
-            l.emit("closeAll"), s.set("timestamp", Date.now()), c = !1, r.getHomeLocation(function(e) {
-                g(e), e.zoom = 5, t.center(e)
+        return s.isResumed || !u || s.startupDetail ? document.body.classList.remove("onweather") : f(), o.on("back2home", function() {
+            o.emit("closeAll"), n.set("timestamp", Date.now()), c = !1, a.getHomeLocation(function(t) {
+                g(t), t.zoom = 5, e.center(t)
             })
-        }), l.emit("log", "weather/" + (u ? s.get("startUp") : "userDisabled")), {
+        }), o.emit("log", "weather/" + (u ? n.get("startUp") : "userDisabled")), {
             cancelShow: function() {
                 return c
             },
@@ -6437,34 +6901,38 @@ L.CanvasLayer = L.Layer.extend({
         })
     }), /*! */
     W.define("rhMessage", ["$"], function(e) {
-        var n = function() {
+        var t = function() {
             return e("#rh-bottom-messages")
         };
         return {
             insert: function(e) {
-                var t = n();
-                t && !t.contains(e) && t.appendChild(e)
+                var n = t();
+                n && !n.contains(e) && n.appendChild(e)
             },
             remove: function(e) {
-                var t = n();
-                t && t.contains(e) && t.removeChild(e)
+                var n = t();
+                n && n.contains(e) && n.removeChild(e)
+            },
+            clear: function() {
+                var e = t();
+                e && (e.innerHTML = "")
             }
         }
     }), /*! */
-    W.define("Renderer", ["plugins", "Class"], function(i, e) {
-        return e.extend({
+    W.define("Renderer", ["plugins", "Class"], function(e, t) {
+        return t.extend({
             _init: function() {
                 this.isMounted = !1, this.isLoaded = !(this.dependency && this.dependency.length)
             },
             open: function(t) {
                 var n = this;
-                return this.isMounted ? Promise.resolve() : this.isLoaded ? (this.onopen(t), this.isMounted = !0, Promise.resolve()) : (this.loadingPromise || (this.loadingPromise = new Promise(function(e) {
-                    i[n.dependency].open(t).then(function() {
-                        n.isLoaded = !0, n.onopen(t), n.isMounted = !0, e()
+                return this.isMounted ? Promise.resolve() : this.isLoaded ? (this.onopen(t), this.isMounted = !0, Promise.resolve()) : this.loadingPromise ? this.loadingPromise : (this.loadingPromise = new Promise(function(i) {
+                    e[n.dependency].open(t).then(function() {
+                        n.isLoaded = !0, n.onopen(t), n.isMounted = !0, i()
                     }).catch(window.wError.bind(null, "renderers", "Failed to load/open " + n.dependency)).then(function() {
                         n.loadingPromise = null
                     })
-                })), this.loadingPromise)
+                }), this.loadingPromise)
             },
             onopen: function() {},
             close: function(e) {
@@ -6475,90 +6943,93 @@ L.CanvasLayer = L.Layer.extend({
             redraw: function() {}
         })
     }), /*! */
-    W.define("DataTiler", ["utils", "map", "dataLoader", "render", "Class", "rootScope"], function(v, y, e, w, t, b) {
-        return t.extend({
+    W.define("DataTiler", ["utils", "map", "dataLoader", "render", "Class", "rootScope"], function(e, t, n, i, s, a) {
+        return s.extend({
             _tag: "DataTiler",
-            loader: e,
+            loader: n,
             syncCounter: 0,
-            getTiles: function(i) {
-                var s = this;
-                this.syncCounter++;
-                for (var e = y.getPixelBounds(), t = y.getZoom(), n = [], a = e.min.x >> 8, r = e.max.x >> 8, o = e.min.y >> 8, l = e.max.y >> 8, c = o; c <= l; c++)
-                    for (var d = a; d <= r; d++) {
-                        var u = y.baseLayer._wrapCoords.call(y.baseLayer, {
-                            x: d,
-                            y: c,
-                            z: t
-                        });
-                        n.push(u)
-                    }
-                var h = v.clone(b.map),
-                    m = w.getDataZoom(i, t),
-                    f = v.include(h, {
-                        pixelOriginX: e.min.x,
-                        pixelOriginY: e.min.y,
-                        dZoom: m,
-                        origTiles: {
-                            minX: a,
-                            minY: o,
-                            maxX: r,
-                            maxY: l
+            getTiles: function(n) {
+                var s = this,
+                    r = t.getZoom();
+                if (Math.floor(r) === r) {
+                    this.syncCounter++;
+                    for (var o = t.getPixelBounds(), l = [], c = o.min.x >> 8, d = o.max.x >> 8, u = o.min.y >> 8, h = o.max.y >> 8, f = u; f <= h; f++)
+                        for (var m = c; m <= d; m++) {
+                            var p = t.baseLayer._wrapCoords.call(t.baseLayer, {
+                                x: m,
+                                y: f,
+                                z: r
+                            });
+                            l.push(p)
                         }
-                    }),
-                    p = {},
-                    g = [];
-                n.forEach(function(e) {
-                    var t = w.whichTile(e, i);
-                    if ((t = s.processTile(t, i)) && !p[t.url]) {
-                        p[t.url] = 1;
-                        var n = s.loader.loadTile(t);
-                        g.push(n)
-                    }
-                }), Promise.all(g).then(this.postProcess.bind(this, this.syncCounter, f, i))
+                    var g = e.clone(a.map),
+                        v = i.getDataZoom(n, r),
+                        y = Object.assign(g, {
+                            pixelOriginX: o.min.x,
+                            pixelOriginY: o.min.y,
+                            dZoom: v,
+                            origTiles: {
+                                minX: c,
+                                minY: u,
+                                maxX: d,
+                                maxY: h
+                            }
+                        }),
+                        w = {},
+                        b = [];
+                    l.forEach(function(e) {
+                        var t = i.whichTile(e, n);
+                        if ((t = s.processTile(t, n)) && !w[t.url]) {
+                            w[t.url] = 1;
+                            var a = s.loader.loadTile(t);
+                            b.push(a)
+                        }
+                    }), Promise.all(b).then(this.postProcess.bind(this, this.syncCounter, y, n))
+                }
             },
             processTile: function(e) {
                 return e
             },
-            postProcess: function(e, t, n, i) {
+            postProcess: function(e, t, n, s) {
                 if (e === this.syncCounter) {
-                    var s = this.sortTiles(t, n, i);
-                    this.trans = 0 | w.getTrans(t.zoom, t.dZoom), this.shift = 0 | Math.log2(this.trans), this.lShift = 0 | Math.log2(this.trans * this.trans);
-                    var a = t.pixelOriginX / this.trans % 256,
-                        r = t.pixelOriginY / this.trans % 256;
-                    a < 0 && (a = 256 + a), this.offsetX = a * this.trans | 0, this.offsetY = r * this.trans | 0, this.offset = 2056, this.width = t.width, this.height = t.height, this.w = w.getWTable(this.trans), this.tilesReady.call(this, s, t, n)
+                    var a = this.sortTiles(t, n, s);
+                    this.trans = 0 | i.getTrans(t.zoom, t.dZoom), this.shift = 0 | Math.log2(this.trans), this.lShift = 0 | Math.log2(this.trans * this.trans);
+                    var r = t.pixelOriginX / this.trans % 256,
+                        o = t.pixelOriginY / this.trans % 256;
+                    r < 0 && (r = 256 + r), this.offsetX = r * this.trans | 0, this.offsetY = o * this.trans | 0, this.offset = 2056, this.width = t.width, this.height = t.height, this.w = i.getWTable(this.trans), this.tilesReady.call(this, a, t, n)
                 }
             },
-            sortTiles: function(a, s, r) {
-                function o(e, t, n) {
-                    var i = y.baseLayer._wrapCoords.call(y.baseLayer, {
+            sortTiles: function(e, n, s) {
+                function a(e, s, a) {
+                    var r = t.baseLayer._wrapCoords.call(t.baseLayer, {
                         x: e,
-                        y: t,
-                        z: n.zoom
+                        y: s,
+                        z: a.zoom
                     });
-                    return w.whichTile(i, s)
+                    return i.whichTile(r, n)
                 }
-                for (var l, c, d = [], e = function(e) {
-                        var t = o(a.origTiles.minX, e, a);
-                        if (!t || t.y !== c) {
-                            l = null;
-                            for (var n = [], i = a.origTiles.minX; i <= a.origTiles.maxX; i++)
-                                if ((t = o(i, e, a)) && t.x !== l) {
-                                    var s = r.filter(function(e) {
-                                        return e.x === t.x && e.y === t.y
+                for (var r, o, l = [], c = function(t) {
+                        var n = a(e.origTiles.minX, t, e);
+                        if (!n || n.y !== o) {
+                            r = null;
+                            for (var i = [], c = e.origTiles.minX; c <= e.origTiles.maxX; c++)
+                                if ((n = a(c, t, e)) && n.x !== r) {
+                                    var d = s.filter(function(e) {
+                                        return e.x === n.x && e.y === n.y
                                     })[0];
-                                    n.push(s), l = t.x, c = t.y
+                                    i.push(d), r = n.x, o = n.y
                                 }
-                            0 < n.length && d.push(n)
+                            i.length > 0 && l.push(i)
                         }
-                    }, t = a.origTiles.minY; t <= a.origTiles.maxY; t++) e(t);
-                return d
+                    }, d = e.origTiles.minY; d <= e.origTiles.maxY; d++) c(d);
+                return l
             }
         })
     }), /*! */
-    W.define("Particles", ["Class", "store"], function(e, n) {
+    W.define("Particles", ["Class", "store"], function(e, t) {
         return e.extend({
             configurable: !1,
-            config: n.get("particles"),
+            config: t.get("particles"),
             animation: "dot",
             stylesBlue: ["rgba(200,0,150,1)", "rgba(200,0,150,1)", "rgba(200,0,150,1)", "rgba(200,0,150,1)"],
             lineWidth: [.6, .6, .6, 1, 1.2, 1.6, 1.8, 2, 2.2, 2.4, 2.4, 2.4, 2.4, 2.6, 2.8, 3, 3, 3, 3, 3, 3, 3, 3, 3],
@@ -6594,9 +7065,9 @@ L.CanvasLayer = L.Layer.extend({
                 }
             },
             _init: function() {
-                var t = this;
-                n.on("particles", function(e) {
-                    return t.config = e
+                var e = this;
+                t.on("particles", function(t) {
+                    return e.config = t
                 })
             },
             getVelocityFun: function(e) {
@@ -6622,7 +7093,7 @@ L.CanvasLayer = L.Layer.extend({
             },
             getStyles: function(e) {
                 var t = this.configurable ? this.config.opacity : 1;
-                if (12 <= e.zoom) return this.stylesBlue;
+                if (e.zoom >= 12) return this.stylesBlue;
                 if (t <= 1) return this.colors[0].map(function(e) {
                     return "rgba(" + e + "," + e + "," + e + "," + t.toFixed(1) + ")"
                 });
@@ -6640,7 +7111,7 @@ L.CanvasLayer = L.Layer.extend({
             }
         })
     }), /*! */
-    W.define("TileLayerCanvas", ["rootScope", "render", "utils", "dataLoader", "renderTile"], function(e, r, t, o, n) {
+    W.define("TileLayerCanvas", ["rootScope", "render", "utils", "dataLoader", "renderTile"], function(e, t, n, i, s) {
         return L.GridLayer.extend({
             latestParams: {},
             options: {
@@ -6659,7 +7130,7 @@ L.CanvasLayer = L.Layer.extend({
                 L.GridLayer.prototype.onAdd.call(this, e), e.on("movestart", this.onMoveStart, this), e.on("moveend", this.onMoveEnd, this), this.on("load", this.checkLoaded, this)
             },
             onRemove: function(e) {
-                e.off("movestart", this.onMoveStart, this), e.off("moveend", this.onMoveEnd, this), this.off("load", this.checkLoaded, this), L.GridLayer.prototype.onRemove.call(this, e), this.hasSea = !1, document.body.classList.remove("sea"), r.emit("toggleSeaMask", this.hasSea)
+                e.off("movestart", this.onMoveStart, this), e.off("moveend", this.onMoveEnd, this), this.off("load", this.checkLoaded, this), L.GridLayer.prototype.onRemove.call(this, e), this.hasSea = !1, document.body.classList.remove("sea"), t.emit("toggleSeaMask", this.hasSea)
             },
             onMoveStart: function() {
                 this.inMotion = !0
@@ -6678,14 +7149,17 @@ L.CanvasLayer = L.Layer.extend({
                     s = n.divideBy(256)._floor(),
                     a = i.divideBy(256)._floor(),
                     r = L.bounds(s, a),
-                    o = e.getZoom();
-                this.removeOtherTiles(o, r);
-                var l = this.sortTilesFromCenterOut(r);
-                this._tilesToLoad = l.length;
-                for (var c = 0; c < l.length; c++) {
-                    var d = l[c],
-                        u = this._tileCoordsToKey(d);
-                    u in this._tiles && this.redrawTile(this._tiles[u])
+                    o = Math.round(e.getZoom());
+                if (o > 11) this.redrawFinished();
+                else {
+                    this.removeOtherTiles(o, r);
+                    var l = this.sortTilesFromCenterOut(r);
+                    this._tilesToLoad = l.length;
+                    for (var c = 0; c < l.length; c++) {
+                        var d = l[c],
+                            u = this._tileCoordsToKey(d);
+                        u in this._tiles ? this.redrawTile(this._tiles[u]) : --this._tilesToLoad || this.redrawFinished()
+                    }
                 }
             },
             removeOtherTiles: function(e, t) {
@@ -6698,17 +7172,17 @@ L.CanvasLayer = L.Layer.extend({
                     (+a[2] !== e || +r < n.x || +r > i.x || +o < n.y || +o > i.y) && this._removeTile(s)
                 }
             },
-            redrawTile: function(t) {
+            redrawTile: function(e) {
                 var n = this;
-                t.coords = this._wrapCoords(t.coords);
-                var i = r.whichTile(t.coords, this.latestParams),
-                    s = this.syncCounter;
-                o.loadTile(i).then(function(e) {
-                    n.renderTile.call(n, 2, t.el, s, i, e), --n._tilesToLoad || n.redrawFinished()
+                e.coords = this._wrapCoords(e.coords);
+                var s = t.whichTile(e.coords, this.latestParams),
+                    a = this.syncCounter;
+                i.loadTile(s).then(function(t) {
+                    n.renderTile.call(n, 2, e.el, a, s, t), --n._tilesToLoad || n.redrawFinished()
                 }).catch(console.error)
             },
             paramsChanged: function(e) {
-                e.fullPath === this.latestParams.fullPath && e.layer === this.latestParams.layer || (this.latestParams = t.clone(e), this.syncCounter++, this.redrawLayer())
+                e.fullPath === this.latestParams.fullPath && e.layer === this.latestParams.layer || (this.latestParams = n.clone(e), this.syncCounter++, this.redrawLayer())
             },
             sortTilesFromCenterOut: function(e) {
                 var t, n, i = [],
@@ -6724,78 +7198,78 @@ L.CanvasLayer = L.Layer.extend({
                 }), i
             },
             redrawFinished: function() {
-                this.latestParams.sea !== this.hasSea && (t.toggleClass(document.body, this.latestParams.sea, "sea"), this.hasSea = this.latestParams.sea, r.emit("toggleSeaMask", this.hasSea)), r.emit("rendered", "tileLayer")
+                this.latestParams.sea !== this.hasSea && (n.toggleClass(document.body, this.latestParams.sea, "sea"), this.hasSea = this.latestParams.sea, t.emit("toggleSeaMask", this.hasSea)), t.emit("rendered", "tileLayer")
             },
-            createTile: function(e, t) {
-                var n = this;
+            createTile: function(e, n) {
+                var s = this;
                 e = this._wrapCoords(e);
-                var i = r.whichTile(e, this.latestParams),
-                    s = L.DomUtil.create("canvas"),
-                    a = this.syncCounter;
-                return s.width = s.height = 256, o.loadTile(i).then(function(e) {
-                    s.style.width = s.style.height = "256px", n.renderTile.call(n, 2, s, a, i, e), t(void 0, s)
-                }).catch(t), s
+                var a = t.whichTile(e, this.latestParams),
+                    r = L.DomUtil.create("canvas"),
+                    o = this.syncCounter;
+                return r.width = r.height = 256, i.loadTile(a).then(function(e) {
+                    r.style.width = r.style.height = "256px", s.renderTile.call(s, 2, r, o, a, e), n(void 0, r)
+                }).catch(n), r
             },
             init: function(e) {
-                this.latestParams = t.clone(e)
+                this.latestParams = n.clone(e)
             },
-            renderTile: n
+            renderTile: s
         })
     }), /*! */
     W.define("dataLoader", ["store", "lruCache", "rootScope", "utils", "broadcast"], function(e, t, n, i, s) {
         var a = new t(50),
-            u = 0,
-            r = n.isMobile ? 3 : 6;
-        var h = document.createElement("canvas"),
-            m = h.getContext("2d");
+            r = 0,
+            o = n.isMobile ? 3 : 6;
+        var l = document.createElement("canvas"),
+            c = l.getContext("2d");
 
-        function o(e, t) {
+        function d(e, t) {
             return this.url = e, this.status = "undefined", this.data = null, this.x = t.x, this.y = t.y, this.z = t.z, this.transformR = t.transformR, this.transformG = t.transformG, this.transformB = t.transformB, this
         }
-        return o.prototype.load = function() {
-            var d = this;
-            return this.status = "loading", this.promise = new Promise(function(l, e) {
-                var c = new Image;
-                c.crossOrigin = "Anonymous", c.onload = function() {
-                    h.width = c.width, h.height = c.height, m.drawImage(c, 0, 0, c.width, c.height);
-                    var e = m.getImageData(0, 0, c.width, c.height);
-                    d.data = e.data, d.status = "loaded";
-                    var t = function(e, t) {
+        return d.prototype.load = function() {
+            var e = this;
+            return this.status = "loading", this.promise = new Promise(function(t, n) {
+                var a = new Image;
+                a.crossOrigin = "Anonymous", a.onload = function() {
+                    l.width = a.width, l.height = a.height, c.drawImage(a, 0, 0, a.width, a.height);
+                    var n = c.getImageData(0, 0, a.width, a.height);
+                    e.data = n.data, e.status = "loaded";
+                    var i = function(e, t) {
                             var n, i, s, a, r = new ArrayBuffer(28),
                                 o = new Uint8Array(r),
                                 l = new Float32Array(r),
                                 c = 4 * t * 4 + 8;
                             for (a = 0; a < 28; a++) n = e[c], i = e[c + 1], s = e[c + 2], n = Math.round(n / 64), i = Math.round(i / 16), s = Math.round(s / 64), o[a] = (n << 6) + (i << 2) + s, c += 16;
                             return l
-                        }(d.data, 257),
-                        n = t[0],
-                        i = (t[1] - t[0]) / 255,
-                        s = t[2],
-                        a = (t[3] - t[2]) / 255,
-                        r = t[4],
-                        o = (t[5] - t[4]) / 255;
-                    d.decodeR = d.transformR ? function(e) {
-                        return d.transformR(e * i + n)
+                        }(e.data, 257),
+                        s = i[0],
+                        o = (i[1] - i[0]) / 255,
+                        d = i[2],
+                        u = (i[3] - i[2]) / 255,
+                        h = i[4],
+                        f = (i[5] - i[4]) / 255;
+                    e.decodeR = e.transformR ? function(t) {
+                        return e.transformR(t * o + s)
                     } : function(e) {
-                        return e * i + n
-                    }, d.decodeG = d.transformG ? function(e) {
-                        return d.transformG(e * a + s)
+                        return e * o + s
+                    }, e.decodeG = e.transformG ? function(t) {
+                        return e.transformG(t * u + d)
                     } : function(e) {
-                        return e * a + s
-                    }, d.decodeB = d.transformB ? function(e) {
-                        return d.transformB(e * o + r)
+                        return e * u + d
+                    }, e.decodeB = e.transformB ? function(t) {
+                        return e.transformB(t * f + h)
                     } : function(e) {
-                        return e * o + r
-                    }, u = 0, l(d)
-                }, c.onerror = function() {
-                    d.status = "failed", s.emit("loadingFailed", d.url), ++u > r && (s.emit("noConnection"), u = 0), e("Failed to load tile")
-                }, c.src = d.url, (c.complete || void 0 === c.complete) && (c.src = i.emptyGIF, c.src = d.url)
+                        return e * f + h
+                    }, r = 0, t(e)
+                }, a.onerror = function() {
+                    e.status = "failed", s.emit("loadingFailed", e.url), ++r > o && (s.emit("noConnection"), r = 0), n("Failed to load tile")
+                }, a.src = e.url, (a.complete || void 0 === a.complete) && (a.src = i.emptyGIF, a.src = e.url)
             }), this.promise
         }, {
             loadTile: function(e) {
                 var t = e.url,
                     n = a.get(t);
-                if (!n) return n = new o(t, e), a.put(t, n), n.load();
+                if (!n) return n = new d(t, e), a.put(t, n), n.load();
                 switch (n.status) {
                     case "loaded":
                         return Promise.resolve(n);
@@ -6808,123 +7282,125 @@ L.CanvasLayer = L.Layer.extend({
         }
     }), /*! */
     W.define("render", ["Evented"], function(e) {
-        var u = e.instance({
+        var t = e.instance({
             ident: "render"
         });
-        u.zoom2zoom = {
-            radar: [0, 0, 1, 2, 3, 4, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
+        t.zoom2zoom = {
             ultra: [0, 0, 0, 2, 3, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
             high: [0, 0, 0, 2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
             normal: [0, 0, 0, 2, 2, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
             low: [0, 0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
-        }, u.getTrans = function(e, t) {
-            return u.tileW(e) / u.tileW(t)
-        }, u.tileW = function(e) {
+        }, t.getTrans = function(e, n) {
+            return t.tileW(e) / t.tileW(n)
+        }, t.tileW = function(e) {
             return Math.pow(2, e)
         };
-        var i = Object.keys(u.zoom2zoom);
-        u.getDataZoom = function(e, t) {
-            var n = e.upgradeDataQuality ? i[Math.max(i.indexOf(e.dataQuality) - 1, 0)] : e.dataQuality;
-            return Math.min(e.maxTileZoom, u.zoom2zoom[n][t])
-        }, u.whichTile = function(e, t) {
-            var n = e.z,
-                i = u.getDataZoom(t, n),
-                s = u.getTrans(n, i),
-                a = Math.floor(e.x / s),
-                r = Math.floor(e.y / s),
-                o = e.x % s,
-                l = e.y % s,
-                c = t.fullPath.replace("<z>", i).replace("<y>", r).replace("<x>", a),
-                d = u.tileW(i);
-            return a < 0 || r < 0 || d <= a || d <= r ? null : {
-                url: c,
-                x: a,
-                y: r,
-                z: i,
-                intX: o,
-                intY: l,
-                trans: s,
-                transformR: t.transformR || null,
-                transformG: t.transformG || null,
-                transformB: t.transformB || null
+        var n = Object.keys(t.zoom2zoom);
+        t.getDataZoom = function(e, i) {
+            var s = e.dataQuality;
+            if (Number.isInteger(s)) return Math.min(e.maxTileZoom, i - s);
+            var a = e.upgradeDataQuality ? n[Math.max(n.indexOf(s) - 1, 0)] : s;
+            return Math.min(e.maxTileZoom, t.zoom2zoom[a][i])
+        }, t.whichTile = function(e, n) {
+            if (!n.fullPath) return null;
+            var i = e.z,
+                s = t.getDataZoom(n, i),
+                a = t.getTrans(i, s),
+                r = Math.floor(e.x / a),
+                o = Math.floor(e.y / a),
+                l = e.x % a,
+                c = e.y % a,
+                d = n.fullPath.replace("<z>", s).replace("<y>", o).replace("<x>", r),
+                u = t.tileW(s);
+            return r < 0 || o < 0 || r >= u || o >= u ? null : {
+                url: d,
+                x: r,
+                y: o,
+                z: s,
+                intX: l,
+                intY: c,
+                trans: a,
+                transformR: n.transformR || null,
+                transformG: n.transformG || null,
+                transformB: n.transformB || null
             }
-        }, u.testJPGtransparency = function(e, t) {
+        }, t.testJPGtransparency = function(e, t) {
             return 192 & e[t + 2] || 192 & e[t + 6] || 192 & e[t + 1030] || 192 & e[t + 1034]
-        }, u.testPNGtransparency = function(e, t) {
+        }, t.testPNGtransparency = function(e, t) {
             return !(e[t + 3] && e[t + 7] && e[t + 1028 + 3] && e[t + 1028 + 7])
-        }, u.wTables = {}, u.getWTable = function(e) {
-            if (e in u.wTables) return u.wTables[e];
-            var t, n, i, s = 0;
+        }, t.wTables = {}, t.getWTable = function(e) {
+            if (e in t.wTables) return t.wTables[e];
+            var n, i, s, a = 0;
             if (!(e <= 32)) return null;
-            for (t = new Uint16Array(4 * e * e), i = 0; i < e; i++)
-                for (n = 0; n < e; n++) t[s++] = (e - i) * (e - n), t[s++] = (e - i) * n, t[s++] = i * (e - n), t[s++] = n * i;
-            return u.wTables[e] = t
-        }, u.createCombinedFillFun = function(s, e, t, f) {
-            var p = e.colors,
-                g = t.colors,
-                v = e.value2index.bind(e),
-                y = t.value2index.bind(t),
-                w = u.createFillFun(s, 2, e),
-                b = u.createFillFun(s, 2, t),
-                T = function(e, t, n, i) {
-                    s[e] = t, s[e + 1] = n, s[e + 2] = i
+            for (n = new Uint16Array(4 * e * e), s = 0; s < e; s++)
+                for (i = 0; i < e; i++) n[a++] = (e - s) * (e - i), n[a++] = (e - s) * i, n[a++] = s * (e - i), n[a++] = i * s;
+            return t.wTables[e] = n, n
+        }, t.createCombinedFillFun = function(e, n, i, s) {
+            var a = n.colors,
+                r = i.colors,
+                o = n.value2index.bind(n),
+                l = i.value2index.bind(i),
+                c = t.createFillFun(e, 2, n),
+                d = t.createFillFun(e, 2, i),
+                u = function(t, n, i, s) {
+                    e[t] = n, e[t + 1] = i, e[t + 2] = s
                 };
             return function(e, t, n, i) {
-                var s = f(n, i);
-                if (0 < s && s < 4) var a = (t << 8) + e << 2,
-                    r = v(n),
-                    o = y(i),
-                    l = p[r++],
-                    c = p[r++],
-                    d = p[r++],
-                    u = g[o++],
-                    h = g[o++],
-                    m = g[o++];
-                switch (s) {
+                var h = s(n, i);
+                if (h > 0 && h < 4) var f = (t << 8) + e << 2,
+                    m = o(n),
+                    p = l(i),
+                    g = a[m++],
+                    v = a[m++],
+                    y = a[m++],
+                    w = r[p++],
+                    b = r[p++],
+                    T = r[p++];
+                switch (h) {
                     case 0:
-                        w(e, t, n);
+                        c(e, t, n);
                         break;
                     case 1:
-                        T(a, u, h, m), T(a + 4, l, c, d), T(a + 1024, l, c, d), T(a + 1028, l, c, d);
+                        u(f, w, b, T), u(f + 4, g, v, y), u(f + 1024, g, v, y), u(f + 1028, g, v, y);
                         break;
                     case 2:
-                        T(a, u, h, m), T(a + 4, u, h, m), T(a + 1024, l, c, d), T(a + 1028, l, c, d);
+                        u(f, w, b, T), u(f + 4, w, b, T), u(f + 1024, g, v, y), u(f + 1028, g, v, y);
                         break;
                     case 3:
-                        T(a, u, h, m), T(a + 4, u, h, m), T(a + 1024, u, h, m), T(a + 1028, l, c, d);
+                        u(f, w, b, T), u(f + 4, w, b, T), u(f + 1024, w, b, T), u(f + 1028, g, v, y);
                         break;
                     case 4:
-                        b(e, t, i)
+                        d(e, t, i)
                 }
             }
-        }, u.createFillFun = function(l, e, t) {
-            var c = t.colors,
-                d = t.value2index.bind(t);
-            switch (e) {
+        }, t.createFillFun = function(e, t, n) {
+            var i = n.colors,
+                s = n.value2index.bind(n);
+            switch (t) {
                 case 1:
-                    return function(e, t, n) {
-                        var i = (t << 8) + e << 2,
-                            s = d(n);
-                        l[i++] = c[s++], l[i++] = c[s++], l[i] = c[s]
+                    return function(t, n, a) {
+                        var r = (n << 8) + t << 2,
+                            o = s(a);
+                        e[r++] = i[o++], e[r++] = i[o++], e[r] = i[o]
                     };
                 case 2:
-                    return function(e, t, n) {
-                        var i = (t << 8) + e << 2,
-                            s = d(n),
-                            a = c[s++],
-                            r = c[s++],
-                            o = c[s];
-                        l[i] = l[i + 4] = a, l[i + 1] = l[i + 5] = r, l[i + 2] = l[i + 6] = o, l[i += 1024] = l[i + 4] = a, l[i + 1] = l[i + 5] = r, l[i + 2] = l[i + 6] = o
+                    return function(t, n, a) {
+                        var r = (n << 8) + t << 2,
+                            o = s(a),
+                            l = i[o++],
+                            c = i[o++],
+                            d = i[o];
+                        e[r] = e[r + 4] = l, e[r + 1] = e[r + 5] = c, e[r + 2] = e[r + 6] = d, e[r += 1024] = e[r + 4] = l, e[r + 1] = e[r + 5] = c, e[r + 2] = e[r + 6] = d
                     }
             }
         };
-        var t = document.createElement("canvas"),
-            n = t.getContext("2d");
-        return t.width = t.height = 256, n.fillStyle = "black", n.fillRect(0, 0, 256, 256), u.imgData = n.getImageData(0, 0, 256, 256), u.interpolateNearest = function(e, t, n, i, s, a, r, o, l, c) {
+        var i = document.createElement("canvas"),
+            s = i.getContext("2d");
+        return i.width = i.height = 256, s.fillStyle = "black", s.fillRect(0, 0, 256, 256), t.imgData = s.getImageData(0, 0, 256, 256), t.interpolateNearest = function(e, t, n, i, s, a, r, o, l, c) {
             null !== e && (r = e[t], o = e[t + 1], l = e[t + 2], c = e[t + 3]);
             var d = Math.max(r, o, l, c);
             return d === r ? n : d === o ? i : d === l ? s : d === c ? a : void 0
-        }, u
+        }, t
     }), /*! */
     W.define("renderers", ["Renderer", "testWebGl", "map", "plugins", "tileLayer", "utils", "tileInterpolator"], function(e, t, n, i, s, a, r) {
         var o = e.extend({
@@ -6935,7 +7411,7 @@ L.CanvasLayer = L.Layer.extend({
                 paramsChanged: s.paramsChanged.bind(s),
                 redraw: s.redrawLayer.bind(s),
                 onclose: function(e) {
-                    a.contains(e, "tileLayer") || a.contains(e, "tileLayerPatternator") || n.removeLayer.call(n, s)
+                    e.includes("tileLayer") || e.includes("tileLayerPatternator") || e.includes("efi") || n.removeLayer.call(n, s)
                 }
             }),
             l = {};
@@ -6949,14 +7425,19 @@ L.CanvasLayer = L.Layer.extend({
             onopen: function() {
                 this.onopen = i.radar.onopen, this.onclose = i.radar.onclose, this.redraw = i.radar.onredraw, this.interpolator = W.require("radarInterpolator")
             }
+        }), l.satellite = e.instance({
+            dependency: "satellite",
+            onopen: function() {
+                this.onopen = i.satellite.onopen, this.onclose = i.satellite.onclose, this.redraw = i.satellite.onredraw, this.interpolator = W.require("satelliteInterpolator")
+            }
         }), l.capAlerts = e.instance({
             dependency: "cap-alerts",
             onopen: function() {
-                var t = i["cap-alerts"];
-                this.onopen = function(e) {
-                    t.onopen(e), t.isOpen = !0
+                var e = i["cap-alerts"];
+                this.onopen = function(t) {
+                    e.onopen(t), e.isOpen = !0
                 }, this.onclose = function() {
-                    t.onclose(), t.isOpen = !1
+                    e.onclose(), e.isOpen = !1
                 }
             }
         }), l.isolines = e.instance({
@@ -6990,57 +7471,60 @@ L.CanvasLayer = L.Layer.extend({
             dependency: "extreme-forecast",
             onopen: function(e) {
                 o.onopen.call(this, e), i["extreme-forecast"].onopen()
+            },
+            onclose: function(e) {
+                o.onclose.call(this, e), i["extreme-forecast"].onclose()
             }
         }), l
     }), /*! */
-    W.define("renderCtrl", ["renderers", "layers", "overlays", "broadcast", "utils", "render"], function(a, r, o, e, t, n) {
-        var l = Object.keys(a),
-            c = {},
-            d = 0,
-            u = 0;
-        e.on("paramsChanged", function(n) {
-            c = n, h();
-            var e = o[n.overlay].layers.slice(),
-                i = [];
-            "off" !== n.isolines && e.unshift(n.isolines + "Isolines");
-            var t = e.map(function(e) {
-                var t = r[e];
-                return i.push(t.renderer), {
-                    renderer: t.renderer,
-                    params: t.getParams.call(t, n, n.product)
+    W.define("renderCtrl", ["renderers", "layers", "overlays", "broadcast", "utils", "render"], function(e, t, n, i, s, a) {
+        var r = Object.keys(e),
+            o = {},
+            l = 0,
+            c = 0;
+        i.on("paramsChanged", function(i) {
+            o = i, u();
+            var s = n[i.overlay].layers.slice(),
+                a = [];
+            "off" !== i.isolines && s.unshift(i.isolines + "Isolines");
+            var d = s.map(function(e) {
+                var n = t[e];
+                return a.push(n.renderer), {
+                    renderer: n.renderer,
+                    params: n.getParams.call(n, i, i.product)
                 }
             });
-            l.forEach(function(e) {
-                var t = a[e];
-                i.indexOf(e) < 0 && t.isMounted && t.close.call(t, i)
+            r.forEach(function(t) {
+                var n = e[t];
+                a.indexOf(t) < 0 && n.isMounted && n.close.call(n, a)
             });
-            var s = [];
-            t.forEach(function(e) {
-                var t = a[e.renderer];
-                t.isMounted ? t.paramsChanged.call(t, e.params) : s.push(t.open.call(t, e.params))
-            }), 0 < s.length && Promise.all(s).catch(window.wError.bind(null, "renderCtrl", "Unable to load render"));
-            d = t.length, u = setTimeout(m, 5e3)
-        }), e.on("movestart", function() {
-            var e = o[c.overlay];
-            d = e && e.layers.length
-        }), e.on("redrawLayers", function() {
-            d = 0, t.each(a, function(e) {
-                e.isMounted && (e.redraw(), d++)
+            var f = [];
+            d.forEach(function(t) {
+                var n = e[t.renderer];
+                n.isMounted ? n.paramsChanged.call(n, t.params) : f.push(n.open.call(n, t.params))
+            }), f.length > 0 && Promise.all(f).catch(window.wError.bind(null, "renderCtrl", "Unable to load render"));
+            l = d.length, c = setTimeout(h, 5e3)
+        }), i.on("movestart", function() {
+            var e = n[o.overlay];
+            l = e && e.layers.length
+        }), i.on("redrawLayers", function() {
+            l = 0, s.each(e, function(e) {
+                e.isMounted && (e.redraw(), l++)
             })
-        }), n.on("rendered", function() {
+        }), a.on("rendered", function() {
             0;
-            --d <= 0 && (h(), i())
+            --l <= 0 && (u(), d())
         });
-        var i = t.debounce(function() {
-            return e.emit.call(e, "redrawFinished", c)
+        var d = s.debounce(function() {
+            return i.emit.call(i, "redrawFinished", o)
         }, 200);
 
-        function h() {
-            clearTimeout(u), u = 0
+        function u() {
+            clearTimeout(c), c = 0
         }
 
-        function m() {
-            d = 0, e.emit("redrawFinished", c)
+        function h() {
+            l = 0, i.emit("redrawFinished", o)
         }
     }), /*! */
     W.define("particles", ["Particles"], function(e) {
@@ -7125,72 +7609,72 @@ L.CanvasLayer = L.Layer.extend({
             })
         }
     }), /*! */
-    W.define("interpolator", ["renderers"], function(n) {
-        var i = function() {
+    W.define("interpolator", ["renderers"], function(e) {
+        var t = function() {
             return null
         };
-        return function(e) {
-            var t = function() {
-                for (var e in n) {
-                    var t = n[e];
-                    if (t.isMounted && "interpolator" in t) return t.interpolator
+        return function(n) {
+            var i = function() {
+                for (var t in e) {
+                    var n = e[t];
+                    if (n.isMounted && "interpolator" in n) return n.interpolator
                 }
             }();
-            t ? t.createFun(e) : e(i, i, !1)
+            i ? i.createFun(n) : n(t, t, !1)
         }
     }), /*! */
-    W.define("tileInterpolator", ["map", "render", "tileLayer", "DataTiler"], function(o, I, t, e) {
-        return e.instance({
+    W.define("tileInterpolator", ["map", "render", "tileLayer", "DataTiler"], function(e, t, n, i) {
+        return i.instance({
             createFun: function(e) {
-                return this.cb = e, this.getTiles(t.latestParams)
+                return this.cb = e, this.getTiles(n.latestParams)
             },
-            tilesReady: function(N, e, k) {
-                var W = this,
-                    r = function(e, t) {
-                        var n = t + W.offsetY >> W.shift,
-                            i = n >> 8,
-                            s = n - (i << 8),
-                            a = s % W.trans,
-                            r = e + W.offsetX >> W.shift,
+            tilesReady: function(n, i, s) {
+                var a = this,
+                    r = function(e, i) {
+                        var r = i + a.offsetY >> a.shift,
                             o = r >> 8,
                             l = r - (o << 8),
-                            c = l % W.trans,
-                            d = W.trans,
-                            u = N && N[i] && N[i][o];
-                        if (!u) return console.warn("interpolator: Undefined dTile"), NaN;
-                        var h = u.data,
-                            m = W.offset + l + (s << 8) + s << 2;
-                        if (k.PNGtransparency && I.testPNGtransparency(h, m)) return NaN;
-                        if (k.JPGtransparency && I.testJPGtransparency(h, m)) return NaN;
-                        var f = h[m],
-                            p = h[m + 4],
-                            g = h[m + 1],
-                            v = h[m + 5],
-                            y = h[m + 2],
-                            w = h[m + 6],
-                            b = h[m += 1028],
-                            T = h[m + 4],
-                            L = h[m + 1],
-                            A = h[m + 5],
-                            S = h[m + 2],
-                            E = h[m + 6],
-                            C = (d - a) * (d - c),
-                            M = (d - a) * c,
-                            x = a * (d - c),
-                            _ = c * a,
-                            P = d * d,
-                            D = (f * C + p * M + b * x + T * _) / P,
-                            R = k.interpolateNearestG ? I.interpolateNearest(null, 0, g, v, L, A, C, M, x, _) : (g * C + v * M + L * x + A * _) / P,
-                            O = (y * C + w * M + S * x + E * _) / P;
-                        return [u.decodeR(D), u.decodeG(R), u.decodeB(O)]
+                            c = l % a.trans,
+                            d = e + a.offsetX >> a.shift,
+                            u = d >> 8,
+                            h = d - (u << 8),
+                            f = h % a.trans,
+                            m = a.trans,
+                            p = n && n[o] && n[o][u];
+                        if (!p) return console.warn("interpolator: Undefined dTile"), NaN;
+                        var g = p.data,
+                            v = a.offset + h + (l << 8) + l << 2;
+                        if (s.PNGtransparency && t.testPNGtransparency(g, v)) return NaN;
+                        if (s.JPGtransparency && t.testJPGtransparency(g, v)) return NaN;
+                        var y = g[v],
+                            w = g[v + 4],
+                            b = g[v + 1],
+                            T = g[v + 5],
+                            L = g[v + 2],
+                            S = g[v + 6],
+                            A = g[v += 1028],
+                            E = g[v + 4],
+                            C = g[v + 1],
+                            M = g[v + 5],
+                            x = g[v + 2],
+                            _ = g[v + 6],
+                            P = (m - c) * (m - f),
+                            D = (m - c) * f,
+                            R = c * (m - f),
+                            O = f * c,
+                            N = m * m,
+                            k = (y * P + w * D + A * R + E * O) / N,
+                            I = s.interpolateNearestG ? t.interpolateNearest(null, 0, b, T, C, M, P, D, R, O) : (b * P + T * D + C * R + M * O) / N,
+                            W = (L * P + S * D + x * R + _ * O) / N;
+                        return [p.decodeR(k), p.decodeG(I), p.decodeB(W)]
                     };
-                this.cb(function(e) {
-                    var t = e.lat,
-                        n = e.lon,
-                        i = o.latLngToContainerPoint([t, n]),
-                        s = i.x,
-                        a = i.y;
-                    return s < 0 || a < 0 || s > W.width || a > W.height ? null : r.call(W, s, a)
+                this.cb(function(t) {
+                    var n = t.lat,
+                        i = t.lon,
+                        s = e.latLngToContainerPoint([n, i]),
+                        o = s.x,
+                        l = s.y;
+                    return o < 0 || l < 0 || o > a.width || l > a.height ? null : r.call(a, o, l)
                 }, r)
             }
         })
@@ -7198,36 +7682,34 @@ L.CanvasLayer = L.Layer.extend({
     W.define("tileLayer", ["TileLayerCanvas"], function(e) {
         return new e
     }), /*! */
-    W.define("renderTile", ["render", "layers"], function(te, ne) {
-        return function(e, t, n, i, s) {
-            if (n === this.syncCounter) {
+    W.define("renderTile", ["render", "layers"], function(e, t) {
+        return function(n, i, s, a, r) {
+            if (s === this.syncCounter) {
                 Date.now();
-                e |= 0;
-                var a = this.latestParams,
-                    r = a.isMultiColor,
-                    o = s.data,
-                    l = t.getContext("2d"),
-                    c = te.imgData.data,
-                    d = void 0;
-                "png" === a.fileSuffix ? a.PNGtransparency && (d = te.testPNGtransparency) : a.JPGtransparency && (d = te.testJPGtransparency);
-                var u, h, m, f, p, g, v, y, w, b, T, L, A = !1,
-                    S = 0 | i.trans,
-                    E = 0 | Math.log2(S),
-                    C = 0 | Math.log2(S * S),
-                    M = 0 | i.intX,
-                    x = 0 | i.intY,
-                    _ = 256 >> E,
-                    P = te.getWTable(S),
-                    D = 0,
-                    R = 0,
-                    O = M * _ | 0,
-                    N = x * _ | 0,
-                    k = 0,
-                    I = 0,
-                    U = 256,
+                n |= 0;
+                var o = this.latestParams,
+                    l = o.isMultiColor,
+                    c = r.data,
+                    d = i.getContext("2d"),
+                    u = e.imgData.data,
+                    h = void 0;
+                "png" === o.fileSuffix ? o.PNGtransparency && (h = e.testPNGtransparency) : o.JPGtransparency && (h = e.testJPGtransparency);
+                var f, m, p, g, v, y, w, b, T, L, S, A, E = !1,
+                    C = 0 | a.trans,
+                    M = 0 | Math.log2(C),
+                    x = 0 | Math.log2(C * C),
+                    _ = 0 | a.intX,
+                    P = 0 | a.intY,
+                    D = 256 >> M,
+                    R = e.getWTable(C),
+                    O = 0,
+                    N = 0,
+                    k = _ * D | 0,
+                    I = P * D | 0,
+                    U = 0,
                     F = 0,
+                    G = 256,
                     z = 0,
-                    G = 0,
                     H = 0,
                     B = 0,
                     j = 0,
@@ -7236,28 +7718,31 @@ L.CanvasLayer = L.Layer.extend({
                     Y = 0,
                     Z = 0,
                     X = 0,
-                    $ = ne[a.layer],
-                    Q = "B" === a.renderFrom,
-                    J = "RG" === a.renderFrom,
-                    K = s.decodeR,
-                    ee = s.decodeG;
-                for (r ? (w = te.createCombinedFillFun(c, $.getColor(), $.getColor2(), $.getAmountByColor), b = te.createFillFun(c, e, $.getColor())) : w = b = te.createFillFun(c, e, $.getColor()), Q && (K = s.decodeB), L = 0; L < 256; L += e)
-                    for (G = L - ((I = L >> E) << E), T = 0; T < 256; T += e) z = T - ((k = T >> E) << E), U !== k && (R = 2056 + k + O + (((F = I + N) << 8) + F) << 2, void 0 !== d && (A = d(o, R)), !0 == Q && (R += 2), H = o[R], B = o[R + 4], j = o[R + 1028], V = o[R + 1032], !0 == J && (q = o[R + 1], Y = o[R + 5], Z = o[R + 1029], X = o[R + 1033]), U = k), A ? b(T, L, NaN) : (v = K(null !== P ? H * P[D = z + (G << E) << 2] + B * P[D + 1] + j * P[D + 2] + V * P[D + 3] >> C : H * (u = (1 - (p = z / S)) * (1 - (g = G / S))) + B * (h = p * (1 - g)) + j * (m = g * (1 - p)) + V * (f = p * g)), !0 == J && (y = ee(null !== P ? q * P[D] + Y * P[D + 1] + Z * P[D + 2] + X * P[D + 3] >> C : q * u + Y * h + Z * m + X * f)), r ? w(T, L, v, y) : w(T, L, J ? Math.sqrt(v * v + y * y) : v));
-                l.putImageData(te.imgData, 0, 0), "pattern" in a && a.pattern in W && W[a.pattern].addPattern(l, S, o, 2056, O, N, _, K, ee)
+                    $ = 0,
+                    Q = 0,
+                    J = t[o.layer],
+                    K = "B" === o.renderFrom,
+                    ee = "RG" === o.renderFrom,
+                    te = r.decodeR,
+                    ne = r.decodeG;
+                for (l ? (T = e.createCombinedFillFun(u, J.getColor(), J.getColor2(), J.getAmountByColor), L = e.createFillFun(u, n, J.getColor())) : T = L = e.createFillFun(u, n, J.getColor()), K && (te = r.decodeB), A = 0; A < 256; A += n)
+                    for (B = A - ((F = A >> M) << M), S = 0; S < 256; S += n) H = S - ((U = S >> M) << M), G !== U && (N = 2056 + U + k + (((z = F + I) << 8) + z) << 2, void 0 !== h && (E = h(c, N)), !0 === K && (N += 2), j = c[N], V = c[N + 4], q = c[N + 1028], Y = c[N + 1032], !0 === ee && (Z = c[N + 1], X = c[N + 5], $ = c[N + 1029], Q = c[N + 1033]), G = U), E ? L(S, A, NaN) : (w = te(null !== R ? j * R[O = H + (B << M) << 2] + V * R[O + 1] + q * R[O + 2] + Y * R[O + 3] >> x : j * (f = (1 - (v = H / C)) * (1 - (y = B / C))) + V * (m = v * (1 - y)) + q * (p = y * (1 - v)) + Y * (g = v * y)), !0 === ee && (b = ne(null !== R ? Z * R[O] + X * R[O + 1] + $ * R[O + 2] + Q * R[O + 3] >> x : Z * f + X * m + $ * p + Q * g)), l ? T(S, A, w, b) : T(S, A, ee ? Math.sqrt(w * w + b * b) : w));
+                d.putImageData(e.imgData, 0, 0), "pattern" in o && o.pattern in W && W[o.pattern].addPattern(d, C, c, 2056, k, I, D, te, ne)
             }
         }
     }), /*! */
     W.define("GlObj", [], function() {
-        function t(e, t) {
+        function e(e, t) {
             void 0 === e && (e = !1), void 0 === t && (t = !1), this.keepRefs = e, this.keepRefsShaders = t, this.reset()
         }
-        return t.getNextPowerOf2Size = function(e) {
+        var t;
+        return e.getNextPowerOf2Size = function(e) {
             return 1 << Math.floor(Math.log2(e + e - 1))
-        }, t.removeFromArray = function(e, t) {
+        }, e.removeFromArray = function(e, t) {
             var n, i = -1;
             for (n = 0; n < t.length; n++) t[n] === e && (i = n);
-            return -1 < i && t.splice(i, 1), i
-        }, t.prototype = {
+            return i > -1 && t.splice(i, 1), i
+        }, e.littleEndian = (t = new ArrayBuffer(2), new DataView(t).setInt16(0, 256, !0), 256 === new Int16Array(t)[0]), e.prototype = {
             reset: function() {
                 this.framebuffers = [], this.buffers = [], this.shaders = [], this.programs = [], this.textures = [], this.gl = null, this.canvas = null
             },
@@ -7273,9 +7758,11 @@ L.CanvasLayer = L.Layer.extend({
             createShader: function(e, t, n) {
                 var i = this.get(),
                     s = i.createShader(t ? i.VERTEX_SHADER : i.FRAGMENT_SHADER);
-                if (this.keepRefsShaders && this.shaders.push(s), i.shaderSource(s, e), i.compileShader(s), i.getShaderParameter(s, i.COMPILE_STATUS)) return s;
-                var a = new Error(i.getShaderInfoLog(s));
-                throw a.contextLost = i.isContextLost(), a.isVertexShader = t, a.name = n, a.full = "ERROR compileShader! name: " + a.name + "; " + (a.isVertexShader ? "VS" : "FS") + "; " + (a.contextLost ? "contextLost" : "NOT contextLost") + "; msg: " + a.message, a
+                if (this.keepRefsShaders && this.shaders.push(s), i.shaderSource(s, e), i.compileShader(s), !i.getShaderParameter(s, i.COMPILE_STATUS)) {
+                    var a = new Error(i.getShaderInfoLog(s));
+                    throw a.contextLost = i.isContextLost(), a.isVertexShader = t, a.name = n, a.full = "ERROR compileShader! name: " + a.name + "; " + (a.isVertexShader ? "VS" : "FS") + "; " + (a.contextLost ? "contextLost" : "NOT contextLost") + "; msg: " + a.message, a
+                }
+                return s
             },
             createProgramObj: function(e, t, n, i) {
                 var s, a, r = this.get(),
@@ -7285,37 +7772,46 @@ L.CanvasLayer = L.Layer.extend({
                     },
                     c = "";
                 if (!o) throw (a = new Error).full = "gl.createProgram() is null; name: " + i, a;
-                if (this.keepRefs && this.programs.push(o), o.name = i, n && 0 < n.length)
+                if (this.keepRefs && this.programs.push(o), o.name = i, n && n.length > 0)
                     for (s = 0; s < n.length; s++) c += "#define " + n[s] + "\n";
                 var d = this.createShader(c + e, !0, i),
                     u = this.createShader(c + t, !1, i);
                 if (r.attachShader(o, d), r.attachShader(o, u), r.linkProgram(o), !r.getProgramParameter(o, r.LINK_STATUS)) throw (a = new Error(r.getProgramInfoLog(o))).contextLost = r.isContextLost(), a.name = i, a.full = "ERROR linkProgram! name: " + a.name + "; " + (a.contextLost ? "contextLost" : "NOT contextLost") + "; msg: " + a.message, a;
                 var h = r.getProgramParameter(o, r.ACTIVE_ATTRIBUTES);
                 for (s = 0; s < h; s++) {
-                    var m = r.getActiveAttrib(o, s);
-                    l[m.name] = r.getAttribLocation(o, m.name)
+                    var f = r.getActiveAttrib(o, s);
+                    l[f.name] = r.getAttribLocation(o, f.name)
                 }
-                var f = r.getProgramParameter(o, r.ACTIVE_UNIFORMS);
-                for (s = 0; s < f; s++) {
+                var m = r.getProgramParameter(o, r.ACTIVE_UNIFORMS);
+                for (s = 0; s < m; s++) {
                     var p = r.getActiveUniform(o, s);
                     l[p.name] = r.getUniformLocation(o, p.name)
                 }
                 return l
             },
-            deleteProgramObj: function(e) {
-                t.removeFromArray(e, this.programs), this.get().deleteProgram(e)
+            deleteProgramObj: function(t) {
+                e.removeFromArray(t, this.programs), this.get().deleteProgram(t)
             },
             bindAttribute: function(e, t, n, i, s, a, r) {
                 var o = this.get();
                 o.bindBuffer(o.ARRAY_BUFFER, e), o.enableVertexAttribArray(t), o.vertexAttribPointer(t, n, i, s, a, r)
+            },
+            createTextureFromBase64: function(e, t, n, i) {
+                var s = this,
+                    a = this.get(),
+                    r = new Image,
+                    o = this.createTexture2D(e, t, n, null, 1, 1, a.RGBA);
+                return r.onload = function() {
+                    s.resizeTexture2D(o, r, r.width, r.height, a.RGBA)
+                }, r.src = i, o
             },
             createTexture2D: function(e, t, n, i, s, a, r) {
                 var o = this.get(),
                     l = o.createTexture();
                 return this.keepRefs && this.textures.push(l), l._width = s, l._height = a, o.bindTexture(o.TEXTURE_2D, l), this.setBindedTexture2DParams(e, t, n), this.resizeTexture2D(l, i, s, a, r)
             },
-            deleteTexture2D: function(e) {
-                t.removeFromArray(e, this.textures), this.get().deleteTexture(e)
+            deleteTexture2D: function(t) {
+                e.removeFromArray(t, this.textures), this.get().deleteTexture(t)
             },
             bindTexture2D: function(e, t, n) {
                 var i = this.get();
@@ -7323,7 +7819,7 @@ L.CanvasLayer = L.Layer.extend({
             },
             resizeTexture2D: function(e, t, n, i, s) {
                 var a = this.get();
-                return s = s || a.RGBA, e._width = n, e._height = i, a.bindTexture(a.TEXTURE_2D, e), null === t || t instanceof Uint8Array ? a.texImage2D(a.TEXTURE_2D, 0, s, n, i, 0, s, a.UNSIGNED_BYTE, t) : a.texImage2D(a.TEXTURE_2D, 0, s, s, a.UNSIGNED_BYTE, t), a.bindTexture(a.TEXTURE_2D, null), e
+                return s = s || a.RGBA, e._width = n, e._height = i, e._format = s, a.bindTexture(a.TEXTURE_2D, e), null === t || t instanceof Uint8Array ? a.texImage2D(a.TEXTURE_2D, 0, s, n, i, 0, s, a.UNSIGNED_BYTE, t) : a.texImage2D(a.TEXTURE_2D, 0, s, s, a.UNSIGNED_BYTE, t), a.bindTexture(a.TEXTURE_2D, null), e
             },
             setBindedTexture2DParams: function(e, t, n) {
                 var i = this.get();
@@ -7333,8 +7829,8 @@ L.CanvasLayer = L.Layer.extend({
                 var t = this.get().createBuffer();
                 return this.keepRefs && this.buffers.push(t), this.setBufferData(t, e), t
             },
-            deleteBuffer: function(e) {
-                t.removeFromArray(e, this.buffers), this.get().deleteBuffer(e)
+            deleteBuffer: function(t) {
+                e.removeFromArray(t, this.buffers), this.get().deleteBuffer(t)
             },
             setBufferData: function(e, t) {
                 var n = this.get();
@@ -7349,8 +7845,8 @@ L.CanvasLayer = L.Layer.extend({
                 var e = this.get().createFramebuffer();
                 return this.keepRefs && this.framebuffers.push(e), e
             },
-            deleteFramebuffer: function(e) {
-                t.removeFromArray(e, this.framebuffers), this.get().deleteFramebuffer(e)
+            deleteFramebuffer: function(t) {
+                e.removeFromArray(t, this.framebuffers), this.get().deleteFramebuffer(t)
             },
             bindFramebuffer: function(e, t) {
                 var n = this.get();
@@ -7369,9 +7865,9 @@ L.CanvasLayer = L.Layer.extend({
                     this.reset()
                 }
             }
-        }, t
+        }, e
     }), /*! */
-    W.define("testWebGl", ["GlObj", "store", "storage", "rootScope"], function(e, a, r, o) {
+    W.define("testWebGl", ["GlObj", "store", "storage", "rootScope"], function(e, t, n, i) {
         return {
             shRectVS: "\n\tattribute vec2 aPos;\n\tvarying vec2 vTc;\n\tvoid main(void) {\n\t\tgl_Position = vec4( aPos, 0.0, 1.0 );\n\t\tvTc = aPos.xy * 0.5 + 0.5;\n\t}\n",
             shEncodeDecodeFS: "\n\tprecision highp float;\n\tuniform vec4 uPars;\n\tuniform sampler2D sTex0;\n\tvarying vec2 vTc;\n\tvoid main(void) {\n\t\tvec4 tex0 = texture2D( sTex0, vTc );\n\t\tvec2 pos = tex0.ba + tex0.rg * uPars.x;\n\t\tvec2 rg = fract( pos * uPars.y + uPars.z );\n\t\tgl_FragColor.ba = pos + rg * uPars.w;\n\t\tgl_FragColor.rg = rg;\n\t}\n",
@@ -7387,18 +7883,17 @@ L.CanvasLayer = L.Layer.extend({
                 return this.glo.release(), e
             },
             useRadarInner: function() {
-                var t = this,
-                    n = "radarTest01",
-                    e = r.get(n),
+                var e = this,
+                    t = n.get("radarTest01"),
                     i = window.navigator.userAgent,
                     s = function() {
-                        var e = t.runRadarTest();
-                        return r.put(n, {
-                            status: e,
+                        var t = e.runRadarTest();
+                        return n.put("radarTest01", {
+                            status: t,
                             ua: i
-                        }), e === t.retOk
+                        }), t === e.retOk
                     };
-                return e && e.ua === i ? e.status === this.retOk : s()
+                return t && t.ua === i ? t.status === this.retOk : s()
             },
             runRadarTest: function() {
                 return this.status = "error-unspecified", this.status
@@ -7413,18 +7908,18 @@ L.CanvasLayer = L.Layer.extend({
                 return this.glo.release(), e
             },
             useGLparticlesInner: function() {
-                var t = this,
-                    e = a.get("disableWebGL"),
-                    n = r.get("webGLtest3"),
-                    i = window.navigator.userAgent,
-                    s = function() {
-                        var e = t.runParticlesTest();
-                        return r.put("webGLtest3", {
-                            status: e,
-                            ua: i
-                        }), e === t.retOk
+                var e = this,
+                    s = t.get("disableWebGL"),
+                    a = n.get("webGLtest3"),
+                    r = window.navigator.userAgent,
+                    o = function() {
+                        var t = e.runParticlesTest();
+                        return n.put("webGLtest3", {
+                            status: t,
+                            ua: r
+                        }), t === e.retOk
                     };
-                return "desktop" === o.platform && "embed2" !== W.target && (!e && (n && n.ua === i ? n.status === this.retOk : s()))
+                return "desktop" === i.platform && "embed2" !== W.target && (!s && (a && a.ua === r ? a.status === this.retOk : o()))
             },
             runParticlesTest: function() {
                 this.it = {}, this.status = "error-unspecified";
@@ -7467,19 +7962,19 @@ L.CanvasLayer = L.Layer.extend({
                         alpha: !0,
                         premultipliedAlpha: !0,
                         preserveDrawingBuffer: !1
-                    }, "testWebGl"), (this.it.gl = e) ? this.it.framebuffer = this.glo.createFramebuffer() : window.WebGLRenderingContext ? this.status = "error-no-WebGL-context" : this.status = "error-no-WebGL-browser"
+                    }, "testWebGl"), this.it.gl = e, e ? this.it.framebuffer = this.glo.createFramebuffer() : window.WebGLRenderingContext ? this.status = "error-no-WebGL-context" : this.status = "error-no-WebGL-browser"
                 } catch (e) {
                     window.wError("testWebGl", "initWebGl exception: " + e)
                 }
                 return e
             },
             startParticleUpdateTest: function() {
-                return this.renderParticleUpdateTest(1 / 255.5, 255, .125 / 255, -1 / 255), 1e3 < this.compareDataFast(this.it.data0, this.it.data1) ? "no-particles-update" : this.retOk
+                return this.renderParticleUpdateTest(1 / 255.5, 255, .125 / 255, -1 / 255), this.compareDataFast(this.it.data0, this.it.data1) > 1e3 ? "no-particles-update" : this.retOk
             },
             initParticleUpdateTest: function() {
                 var e = this.glo,
                     t = e.get();
-                if (this.shaderErrors = 0, this.it.shEncodeDecode = this.compileShader(this.shRectVS, this.shEncodeDecodeFS, null, "EncodeDecode", "glParticlesTest"), 0 < this.shaderErrors) return !(this.status = "error-shader-compilation");
+                if (this.shaderErrors = 0, this.it.shEncodeDecode = this.compileShader(this.shRectVS, this.shEncodeDecodeFS, null, "EncodeDecode", "glParticlesTest"), this.shaderErrors > 0) return this.status = "error-shader-compilation", !1;
                 this.it.vertexBufferRect = e.createBuffer(new Float32Array([-1, -1, 1, -1, 1, 1, -1, 1])), this.it.w = 128, this.it.h = 256, this.it.data0 = new Uint8Array(this.it.w * this.it.h * 4), this.it.data1 = new Uint8Array(this.it.w * this.it.h * 4);
                 var n, i, s = 0;
                 for (i = 0; i < this.it.h; i++)
@@ -7512,13 +8007,16 @@ L.CanvasLayer = L.Layer.extend({
                 return n[1] <= t[1] && e[1] <= t[1] || n[1] >= t[1] && e[1] >= t[1] || (i = n[1] - e[1]), [.2 * (n[0] - e[0]) + t[0], .2 * i + t[1]]
             },
             createGradient: function(e, t, n) {
-                for (var i, s, a = this.fillColors.length, r = this.fillColors[0][0], o = this.fillColors[a - 1][0], l = 1 / (o - r), c = this.h / (e - t), d = c * (o - t), u = c * (r - t), h = this.ctx.createLinearGradient(0, u, 0, d), m = 0; m < a; ++m) s = this.fillColors[m][1], i = l * (this.fillColors[m][0] - r), h.addColorStop(i, "rgba( " + s[0] + ", " + s[1] + ", " + s[2] + ", " + n + " )");
+                for (var i, s, a = this.fillColors.length, r = this.fillColors[0][0], o = this.fillColors[a - 1][0], l = 1 / (o - r), c = this.h / (e - t), d = c * (o - t), u = c * (r - t), h = this.ctx.createLinearGradient(0, u, 0, d), f = 0; f < a; ++f) s = this.fillColors[f][1], i = l * (this.fillColors[f][0] - r), h.addColorStop(i, "rgba( " + s[0] + ", " + s[1] + ", " + s[2] + ", " + n + " )");
                 return h
             },
             maskEnds: function(e) {
                 var t = this.ctx,
                     n = t.createLinearGradient(0, 0, e, 0);
                 return t.globalCompositeOperation = "destination-out", n.addColorStop(0, "rgba(255,255,255,1)"), n.addColorStop(1, "rgba(255,255,255,0)"), t.fillStyle = n, t.fillRect(0, 0, e, this.h), (n = t.createLinearGradient(this.w - e, 0, this.w, 0)).addColorStop(0, "rgba(255,255,255,0)"), n.addColorStop(1, "rgba(255,255,255,1)"), t.fillStyle = n, t.fillRect(this.w - e, 0, this.w, this.h), this
+            },
+            setViewport: function(e, t) {
+                return this.viewport = [e, t], this
             },
             findMinMax: function(e) {
                 return [Math.min.apply(Math, e), Math.max.apply(Math, e)]
@@ -7532,17 +8030,17 @@ L.CanvasLayer = L.Layer.extend({
                     l = this.h,
                     c = [],
                     d = -r - o,
-                    u = this.findMinMax(e),
+                    u = this.viewport || this.findMinMax(e),
                     h = u[0],
-                    m = u[1];
-                for (i = 0; i < a + 4; ++i) n = e[Math.max(0, Math.min(i - 2, a - 1))], c.push([d, this.getY(n, h, m, l), n]), d += r;
+                    f = u[1];
+                for (i = 0; i < a + 4; ++i) n = e[Math.max(0, Math.min(i - 2, a - 1))], c.push([d, this.getY(n, h, f, l), n]), d += r;
                 for (i = 0; i < a; ++i) c[i + 2][1] = .6 * c[i + 2][1] + .15 * (c[i + 1][1] + c[i + 3][1]) + .05 * (c[i][1] + c[i + 4][1]);
                 for (s.beginPath(), s.moveTo(c[1][0], l), s.lineTo(c[1][0], c[1][1]), i = 0; i < a + 1; ++i) {
-                    var f = this.getControlPoint(c[i], c[i + 1], c[i + 2]),
+                    var m = this.getControlPoint(c[i], c[i + 1], c[i + 2]),
                         p = this.getControlPoint(c[i + 3], c[i + 2], c[i + 1]);
-                    s.bezierCurveTo(f[0], f[1], p[0], p[1], c[i + 2][0], c[i + 2][1])
+                    s.bezierCurveTo(m[0], m[1], p[0], p[1], c[i + 2][0], c[i + 2][1])
                 }
-                return s.lineTo(c[a + 2][0], l), this.fillColors ? (s.fillStyle = this.createGradient(h, m, t), s.fill()) : (s.lineWidth = this.lineWidth, s.strokeStyle = this.strokeStyle, s.stroke()), this.bottomWhitten && this.whiteBottom(s, t), this
+                return s.lineTo(c[a + 2][0], l), this.fillColors ? (s.fillStyle = this.createGradient(h, f, t), s.fill()) : (s.lineWidth = this.lineWidth, s.strokeStyle = this.strokeStyle, s.stroke()), this.bottomWhitten && this.whiteBottom(s, t), this
             },
             whiteBottom: function(e, t) {
                 var n = .5 * this.h,
@@ -7551,7 +8049,7 @@ L.CanvasLayer = L.Layer.extend({
             }
         })
     }), /*! */
-    W.define("ImageMaker", ["utils", "Class"], function(t, e) {
+    W.define("ImageMaker", ["Class"], function(e) {
         return e.extend({
             canvasRatio: Math.min(window.devicePixelRatio || 1, 2),
             getPixelRatioAdjustedSize: function(e) {
@@ -7562,7 +8060,7 @@ L.CanvasLayer = L.Layer.extend({
                 return this.num = t, this.canvas = e, this.ctx = this.canvas.getContext("2d"), this.tdWidth = n, this.w = s, this.h = i, this.canvas.width = t * this.getPixelRatioAdjustedSize(n), this.canvas.height = this.getPixelRatioAdjustedSize(i), this.canvas.style.width = s + "px", this.canvas.style.height = i + "px", this.resetCanvas()
             },
             mixinCanvas: function(e) {
-                return t.include(this, e), this
+                return Object.assign(this, e), this
             },
             setHeight: function(e) {
                 return this.h = e, this
@@ -7624,8 +8122,8 @@ L.CanvasLayer = L.Layer.extend({
             })
         }
     }), /*! */
-    W.define("weatherRender", ["rootScope", "$", "iMaker", "utils", "trans", "overlays", "colors", "Class"], function(r, l, c, n, d, o, t, e) {
-        return e.extend({
+    W.define("weatherRender", ["rootScope", "$", "iMaker", "trans", "overlays", "colors", "Class"], function(e, t, n, i, s, a, r) {
+        return r.extend({
             weatherData: function(e, t) {
                 var n = t.days;
                 void 0 === n && (n = 7);
@@ -7645,52 +8143,54 @@ L.CanvasLayer = L.Layer.extend({
                 }
             },
             renderSliderDays: function() {
-                var i = this,
-                    s = "",
-                    a = this.options.iconSize || 25;
-                return this.giveMeDays(function(e, t) {
-                    var n = e.warning && /^[SE]/.test(e.warning) ? "_alert" : "";
-                    s += '<td width="' + 100 * t / i.dataLength + '%"', s += 3 < t ? ' data-afterbegin="' + e.weekday + '2"><img\n\t\t\t\tsrc="' + r.iconsDir + "/png_" + a + "px/" + e.icon + n + '.png"\n\t\t\t\tsrcset="' + r.iconsDir + "/png_" + a + "@2x/" + e.icon + n + '.png 2x"><big>\n\t\t\t\t' + o.temp.convertNumber(e.tempMax) + "°</big></td>" : ">&nbsp;</td>"
-                }), s
+                var t = this,
+                    n = "",
+                    i = this.options.iconSize || 25;
+                return this.giveMeDays(function(a, r) {
+                    var o = a.warning && /^[SE]/.test(a.warning) ? "_alert" : "";
+                    n += '<td width="' + 100 * r / t.dataLength + '%"', n += r > 3 ? ' data-afterbegin="' + a.weekday + '2"><img\n\t\t\t\tsrc="' + e.iconsDir + "/png_" + i + "px/" + a.icon + o + '.png"\n\t\t\t\tsrcset="' + e.iconsDir + "/png_" + i + "@2x/" + a.icon + o + '.png 2x"><big>\n\t\t\t\t' + s.temp.convertNumber(a.tempMax) + "°</big></td>" : ">&nbsp;</td>"
+                }), n
             },
             renderSlider: function() {
-                var e = t.windDetail.getColor.call(t.windDetail).color.bind(t.windDetail);
+                var e = a.windDetail.getColor.call(a.windDetail).color.bind(a.windDetail);
                 return "linear-gradient(to right, " + this.data.wind.map(e).join(", ") + " )"
             },
             renderRainSnow: function() {
                 for (var e = this.dataLength, t = "", n = this.data.snow, i = this.data.mm, s = 0; s < e; s++) {
                     var a = null;
-                    n[s] && .1 < i[s] ? a = "&#xe000" : !n[s] && .5 < i[s] && (a = "&#xe006"), a && (t += '<i style="left: ' + s / e * 100 + '%">' + a + "</i>")
+                    n[s] && i[s] > .1 ? a = "&#xe000" : !n[s] && i[s] > .5 && (a = "&#xe006"), a && (t += '<i style="left: ' + s / e * 100 + '%">' + a + "</i>")
                 }
                 return t
             },
-            renderAlert: function(t) {
-                return "linear-gradient(to right, " + this.data.ts.map(function(e) {
-                    return n.contains(t, e) ? "rgba(208, 4, 0, 0.65)" : "transparent"
+            renderAlert: function(e) {
+                return "linear-gradient(to right, " + this.data.ts.map(function(t) {
+                    return e.includes(t) ? "rgba(208, 4, 0, 0.65)" : "transparent"
                 }).join(", ") + " )"
             },
-            renderFragment: function(e, t, n) {
-                void 0 === n && (n = {}), this.options = n, t && this.weatherData(t, n);
-                var i = l("table", e),
-                    s = i.clientWidth / this.dataLength;
-                c.temp.init(l("canvas", e), this.dataLength, s, n.bgHeight).render(this.data.temp, .5).maskEnds(10), l(".slider", e).style.background = this.renderSlider(), i.innerHTML = "<tr> " + this.renderSliderDays() + "</tr>";
-                var a = l(".alerts-line", e);
-                if (n.timestamps && a ? (a.style.background = this.renderAlert(n.timestamps), a.style.display = "block") : a && (a.style.display = "none"), n.addRain) {
-                    var r = this.renderRainSnow(),
-                        o = l(".slider-rain", e);
-                    r && o ? (o.innerHTML = r, o.style.display = "block") : o && (o.style.display = "none")
+            renderFragment: function(e, s, a) {
+                void 0 === a && (a = {}), this.options = a, s && this.weatherData(s, a);
+                var r = t("table", e),
+                    o = r.clientWidth / this.dataLength;
+                n.temp.init(t("canvas", e), this.dataLength, o, a.bgHeight).render(this.data.temp, .5).maskEnds(10), t(".slider", e).style.background = this.renderSlider(), r.innerHTML = "<tr> " + this.renderSliderDays() + "</tr>";
+                var l = t(".alerts-line", e);
+                if (a.timestamps && l ? (l.style.background = this.renderAlert(a.timestamps), l.style.display = "block") : l && (l.style.display = "none"), a.addRain) {
+                    var c = this.renderRainSnow(),
+                        d = t(".slider-rain", e);
+                    c && d ? (d.innerHTML = c, d.style.display = "block") : d && (d.style.display = "none")
                 }
-                d.translateDocument(e)
+                i.translateDocument(e)
             }
         })
     }), /*! */
     W.define("searchCtrl", ["$", "broadcast", "results", "query", "utils"], function(e, t, n, i, s) {
         var a = e("#search .delete");
         a.onmousedown = c, e("#search .cancel-search").onmousedown = o, i.element.onblur = o, i.element.onfocus = function() {
-            r.hasFocus = !0, i.element.addEventListener("keydown", d), i.element.addEventListener("keyup", l), 3 < i.element.value.length && a.classList.add("show");
+            r.hasFocus = !0, i.element.addEventListener("keydown", d), i.element.addEventListener("keyup", l), i.element.value.length > 3 && a.classList.add("show");
             t.emit("closeAll"), document.body.classList.add("onsearch"), n.show()
         }, t.on("focusRqstd", function() {
             return i.element.focus()
+        }), t.on("searchClose", function() {
+            i.set(""), i.element.blur(), o()
         });
         var r = {
             hasFocus: !1,
@@ -7698,12 +8198,12 @@ L.CanvasLayer = L.Layer.extend({
         };
 
         function o() {
-            r.hasFocus = !1, n.hide(), i.element.removeEventListener("keydown", d), i.element.removeEventListener("keyup", l), a.classList.remove("show"), document.body.classList.remove("onsearch"), t.emit("searchBlur")
+            r.hasFocus = !1, n.hide(), i.element.removeEventListener("keydown", d), i.element.removeEventListener("keyup", l), a.classList.remove("show"), document.body.classList.remove("onsearch")
         }
 
         function l(e) {
             var t = e.target.value;
-            i.value !== t && (s.toggleClass(a, 2 < t.length, "show"), i.put(t), n.show())
+            i.value !== t && (s.toggleClass(a, t.length > 2, "show"), i.put(t), n.show())
         }
 
         function c(e) {
@@ -7716,9 +8216,9 @@ L.CanvasLayer = L.Layer.extend({
         }
         return r
     }), /*! */
-    W.define("results", ["store", "$", "utils", "rootScope", "broadcast", "map", "recents", "query", "http", "geolocation", "Favs"], function(c, a, o, i, s, l, r, d, u, n, h) {
+    W.define("results", ["store", "$", "utils", "rootScope", "broadcast", "map", "recents", "query", "http", "geolocation", "Favs"], function(e, t, n, i, s, a, r, o, l, c, d) {
         return {
-            el: a("#search"),
+            el: t("#search"),
             marker: null,
             isOpen: !1,
             index: -1,
@@ -7729,22 +8229,22 @@ L.CanvasLayer = L.Layer.extend({
             data: [],
             clickTimer: null,
             maxResults: 10,
-            element: a("#search .results"),
-            elementData: a("#search .results-data"),
-            image: a('#search img[data-do="hit"]'),
-            imageBox: a("#search .results-img"),
-            onkeypress: function(e, t) {
-                var n;
+            element: t("#search .results"),
+            elementData: t("#search .results-data"),
+            image: t('#search img[data-do="hit"]'),
+            imageBox: t("#search .results-img"),
+            onkeypress: function(e, n) {
+                var i;
                 switch (e) {
                     case 40:
-                        this.colorize(1), t.preventDefault(), t.stopPropagation();
+                        this.colorize(1), n.preventDefault(), n.stopPropagation();
                         break;
                     case 38:
-                        this.colorize(-1), t.preventDefault(), t.stopPropagation();
+                        this.colorize(-1), n.preventDefault(), n.stopPropagation();
                         break;
                     case 9:
                     case 13:
-                        (n = a(".active", this.element)) ? this.doAction(n, t): (this.colorize(null, 0), setTimeout(this.doAction.bind(this, a(".active", this.element), t), 1e3))
+                        (i = t(".active", this.element)) ? this.doAction(i, n): (this.colorize(null, 0), setTimeout(this.doAction.bind(this, t(".active", this.element), n), 1e3))
                 }
             },
             doAction: function(e, t) {
@@ -7752,23 +8252,23 @@ L.CanvasLayer = L.Layer.extend({
                 e && e.dataset && (n = e.dataset.name, i = e.dataset.value, t && (t.preventDefault(), t.stopPropagation()), "next" === n ? this.show(this.data, parseInt(i)) : this.fireAction(this.data[i]))
             },
             fireAction: function(e) {
-                var t = d.get();
+                var t = o.get();
                 e.zoom = 7, e.name = e.name || e.title, e.source = "search";
-                var n = "wx" === e.type ? "station" : e.icao ? "airport" : "detail";
-                s.emit("rqstOpen", n, o.clone(e)), this.hide(), d.element.blur(), s.emit("log", "search/" + (e.key ? "recents" : "results")), r.addItem(e, t), u.post("/search/v3.0/stats/" + e.id, {
+                var a = "wx" === e.type ? "station" : e.icao ? "airport" : "detail";
+                s.emit("rqstOpen", a, n.clone(e)), this.hide(), o.element.blur(), s.emit("log", "search/" + (e.key ? "recents" : "results")), r.addItem(e, t), l.post("/search/v3.0/stats/" + e.id, {
                     data: {
                         query: t,
                         lang: i.prefLang
                     }
                 })
             },
-            colorize: function(e, t) {
-                var n = this.element.querySelectorAll("a", this.element);
-                if (n.length) {
-                    this.index = e ? Math.min(Math.max(this.index + e, 0), n.length - 1) : t;
-                    var i = n[this.index],
-                        s = a(".active", this.element);
-                    s && s.classList.remove("active"), i.classList.add("active"), this.mapize(i)
+            colorize: function(e, n) {
+                var i = this.element.querySelectorAll("a", this.element);
+                if (i.length) {
+                    this.index = e ? Math.min(Math.max(this.index + e, 0), i.length - 1) : n;
+                    var s = i[this.index],
+                        a = t(".active", this.element);
+                    a && a.classList.remove("active"), s.classList.add("active"), this.mapize(s)
                 }
             },
             newItem: function(e, t, n, i, s) {
@@ -7785,72 +8285,72 @@ L.CanvasLayer = L.Layer.extend({
                 }, r
             },
             load: function() {
-                var n = this;
-                d.showLoader(), this.element.classList.add("waiting"), u.get("/search/v3.0/" + this.pos.lat + "/" + this.pos.lon + "/" + d.get().replace(/\//g, " ") + "?lang=" + this.lang).then(function(e) {
-                    var t = e.data;
-                    void 0 === t && (t = {}), d.hideLoader(), n.hits = t.data, "2airports" === (t.header && t.header.type) ? s.emit("rqstOpen", "distance", n.hits) : n.display()
-                }).catch(d.hideLoader)
+                var e = this;
+                o.showLoader(), this.element.classList.add("waiting"), l.get("/search/v3.0/" + this.pos.lat + "/" + this.pos.lon + "/" + o.get().replace(/\//g, " ") + "?lang=" + this.lang).then(function(t) {
+                    var n = t.data;
+                    void 0 === n && (n = {}), o.hideLoader(), e.hits = n.data, "2airports" === (n.header && n.header.type) ? s.emit("rqstOpen", "distance", e.hits) : e.display()
+                }).catch(o.hideLoader)
             },
             show: function() {
-                var e = this,
-                    t = d.get();
-                this.pos = n.getMyLatestPos(), this.lang = c.get("usedLang"), this.recents = r.loadRecents(t), this.hits = [], this.element.classList.remove("wide"), this.index = -1, this.display(), this.element.style.display = "block", this.element.classList.add("show"), this.isOpen = !0, this.clickTimer && clearTimeout(this.clickTimer), 1 < t.length && (this.clickTimer = setTimeout(function() {
-                    return e.load(t)
+                var t = this,
+                    n = o.get();
+                this.pos = c.getMyLatestPos(), this.lang = e.get("usedLang"), this.recents = r.loadRecents(n), this.hits = [], this.element.classList.remove("wide"), this.index = -1, this.display(), this.element.style.display = "block", this.element.classList.add("show"), this.isOpen = !0, this.clickTimer && clearTimeout(this.clickTimer), n.length > 1 && (this.clickTimer = setTimeout(function() {
+                    return t.load(n)
                 }, 300))
             },
             display: function() {
-                var e = c.get("country"),
-                    t = this.mixRatio[d.get().length] || 1;
-                if (this.elementData.innerHTML = "", this.recents = this.recents.slice(0, t), this.hits.length && this.recents.length) {
-                    var n = this.recents.map(function(e) {
+                var t = e.get("country"),
+                    n = this.mixRatio[o.get().length] || 1;
+                if (this.elementData.innerHTML = "", this.recents = this.recents.slice(0, n), this.hits.length && this.recents.length) {
+                    var i = this.recents.map(function(e) {
                         return e.key
                     });
                     this.hits = this.hits.filter(function(e) {
-                        return n.indexOf(h.key(e)) < 0
+                        return i.indexOf(d.key(e)) < 0
                     })
                 }
                 this.data = this.recents.concat(this.hits);
-                for (var i = 0, s = Math.min(this.data.length, this.maxResults); i < s; i++) {
-                    var a = this.data[i],
-                        r = a.title,
-                        o = void 0;
-                    r === a.region && (a.region = null), (r === a.country || "us" !== a.cc && e === a.cc) && (a.country = null), a.icao ? o = a.icao : "wx" === a.type && a.stationId ? (o = a.stationId.replace(/^.*-/, ""), r = "Wx station: " + (r || o)) : o = a.region && a.country ? a.region + ", " + a.country : a.country || a.region || "";
-                    var l = this.newItem("hit", i, i, a.type, r + (o ? " <span>" + o + "</span>" : ""));
-                    l.style.opacity = this.opacity[i], this.elementData.appendChild(l)
+                for (var s = 0, a = Math.min(this.data.length, this.maxResults); s < a; s++) {
+                    var r = this.data[s],
+                        l = r.title,
+                        c = void 0;
+                    l === r.region && (r.region = null), (l === r.country || "us" !== r.cc && t === r.cc) && (r.country = null), r.icao ? c = r.icao : "wx" === r.type && r.stationId ? (c = r.stationId.replace(/^.*-/, ""), l = "Wx station: " + (l || c)) : c = r.region && r.country ? r.region + ", " + r.country : r.country || r.region || "";
+                    var u = this.newItem("hit", s, s, r.type, l + (c ? " <span>" + c + "</span>" : ""));
+                    u.style.opacity = this.opacity[s], this.elementData.appendChild(u)
                 }
             },
             hide: function() {
-                this.isOpen = !1, this.element.classList.remove("show"), this.element.style.display = "none", this.element.classList.remove("wide"), this.marker && l.removeLayer(this.marker), this.image.src = o.emptyGIF
+                this.isOpen = !1, this.element.classList.remove("show"), this.element.style.display = "none", this.element.classList.remove("wide"), this.marker && a.removeLayer(this.marker), this.image.src = n.emptyGIF
             },
             mapizeTimeout: null,
             mapize: function(e) {
                 var t = this;
                 if (e && "hit" === e.dataset.name) {
-                    this.marker && l.removeLayer(this.marker);
-                    var n = e.dataset.value,
-                        i = this.data[n],
-                        s = +i.lat,
-                        a = +i.lon,
-                        r = i.bounds;
-                    this.marker = L.marker([s, a], {
-                        icon: l.myMarkers.icon
-                    }).addTo(l), this.element.classList.add("wide"), clearTimeout(this.mapizeTimeout), this.mapizeTimeout = setTimeout(function() {
+                    this.marker && a.removeLayer(this.marker);
+                    var i = e.dataset.value,
+                        s = this.data[i],
+                        r = +s.lat,
+                        o = +s.lon,
+                        l = s.bounds;
+                    this.marker = L.marker([r, o], {
+                        icon: a.myMarkers.icon
+                    }).addTo(a), this.element.classList.add("wide"), clearTimeout(this.mapizeTimeout), this.mapizeTimeout = setTimeout(function() {
                         t.element.classList.add("waiting")
                     }, 300), this.image.onload = function() {
-                        clearTimeout(t.mapizeTimeout), t.element.classList.remove("waiting"), o.toggleClass(t.imageBox, !r, "show-pointer")
+                        clearTimeout(t.mapizeTimeout), t.element.classList.remove("waiting"), n.toggleClass(t.imageBox, !l, "show-pointer")
                     }, this.image.onerror = function() {
                         clearTimeout(t.mapizeTimeout), t.element.classList.remove("waiting")
-                    }, this.image.src = "http://www.eric.com/test-windy/imaker/map" + (r ? "?bbox=" + r : "?c=" + s + "," + a + "&z=10"), this.image.dataset.value = n
+                    }, this.image.src = "https://node-s.windy.com/imaker/map" + (l ? "?bbox=" + l : "?c=" + r + "," + o + "&z=10"), this.image.dataset.value = i
                 }
             }
         }
     }), /*! */
-    W.define("recents", ["Favs", "favs"], function(e, s) {
+    W.define("recents", ["Favs", "favs"], function(e, t) {
         return e.instance({
             ident: "recents4",
             loadRecents: function(e) {
-                var t, n, i;
-                return n = this.get(2, e, "timestamp"), t = this.get(7, e, "counter", n), n = n.concat(t), i = s.get(7, e, "counter", n), n.concat(i)
+                var n, i, s;
+                return i = this.get(2, e, "timestamp"), n = this.get(7, e, "counter", i), i = i.concat(n), s = t.get(7, e, "counter", i), i.concat(s)
             },
             _init: function() {
                 this.load()
@@ -7934,17 +8434,17 @@ L.CanvasLayer = L.Layer.extend({
             redraw: function() {}
         })
     }), /*! */
-    W.define("Favs", ["storage", "utils", "Class"], function(e, d, t) {
-        return t.extend({
+    W.define("Favs", ["storage", "utils", "Class"], function(e, t, n) {
+        return n.extend({
             ident: null,
             key: function(e) {
-                return "string" == typeof e ? e : e.key ? e.key : "station" === e.type ? e.id : "airport" === e.type || e.icao ? e.icao : "alert" === e.type || e.alertId ? e.alertId : d.normalizeLatLon(e.lat) + "/" + d.normalizeLatLon(e.lon)
+                return "string" == typeof e ? e : e.key ? e.key : "station" === e.type ? e.id : "airport" === e.type || e.icao ? e.icao : "alert" === e.type || e.alertId ? e.alertId : t.normalizeLatLon(e.lat) + "/" + t.normalizeLatLon(e.lon)
             },
             add: function(e) {
-                if (!d.isValidLatLonObj(e)) return !1;
-                var t = this.key(e),
-                    n = {
-                        key: t,
+                if (!t.isValidLatLonObj(e)) return !1;
+                var n = this.key(e),
+                    i = {
+                        key: n,
                         lat: +e.lat,
                         lon: +e.lon,
                         name: e.name || e.lat + ", " + e.lon,
@@ -7952,7 +8452,7 @@ L.CanvasLayer = L.Layer.extend({
                         timestamp: Date.now(),
                         counter: 1
                     };
-                return "alert" === e.type ? n.alertId = e.alertId : "airport" === e.type ? n.icao = e.icao : "station" === e.type && (n.stationId = e.stationId || e.id || e.key), this.data[t] = n, this.onchange(), this.save(), !0
+                return "alert" === e.type ? i.alertId = e.alertId : "airport" === e.type ? i.icao = e.icao : "station" === e.type && (i.stationId = e.stationId || e.id || e.key), this.data[n] = i, this.onchange(), this.save(), !0
             },
             isFav: function(e) {
                 return !!this.data[this.key(e)]
@@ -7961,7 +8461,7 @@ L.CanvasLayer = L.Layer.extend({
                 this.lastModified = Date.now(), e.put(this.ident, this.data), e.put(this.ident + "_ts", this.lastModified), e.put(this.ident + "_trash", this.trash)
             },
             load: function() {
-                this.data = e.get(this.ident) || {}, this.trash = e.get(this.ident + "_trash") || {}, d.each(this.data, function(e, t) {
+                this.data = e.get(this.ident) || {}, this.trash = e.get(this.ident + "_trash") || {}, t.each(this.data, function(e, t) {
                     e.type || (e.type = "fav"), e.key = t
                 })
             },
@@ -7983,10 +8483,10 @@ L.CanvasLayer = L.Layer.extend({
                 var t = this.data[this.key(e)];
                 t && (t.counter ? t.counter++ : t.counter = 1, t.timestamp = Date.now(), this.save())
             },
-            sortFavs: function(e, n, t) {
+            sortFavs: function(e, t, n) {
                 var i = this,
                     s = Object.keys(this.data);
-                if (n = n || "counter", e) try {
+                if (t = t || "counter", e) try {
                     var a = new RegExp("(?: |^)" + e, "i");
                     s = s.filter(function(e) {
                         return a.test(i.data[e].name) || a.test(i.data[e].icao) || a.test(i.data[e].query)
@@ -7994,21 +8494,21 @@ L.CanvasLayer = L.Layer.extend({
                 } catch (e) {
                     console.error(e)
                 }
-                return t && (s = s.filter(function(e) {
-                    return !d.contains(t, e)
-                })), s = s.sort(function(e, t) {
-                    return i.data[t][n] - i.data[e][n]
+                return n && (s = s.filter(function(e) {
+                    return !n.includes(e)
+                })), s = s.sort(function(e, n) {
+                    return i.data[n][t] - i.data[e][t]
                 })
             },
-            get: function(e, t, n, i) {
-                for (var s, a, r = [], o = i ? i.map(function(e) {
+            get: function(e, n, i, s) {
+                for (var a, r, o = [], l = s ? s.map(function(e) {
                         return e.key
-                    }) : null, l = this.sortFavs(t, n, o), c = 0; c < Math.min(e, l.length); c++) a = l[c], (s = d.clone(this.data[a])).title || (s.title = s.name), r[c] = s;
-                return r
+                    }) : null, c = this.sortFavs(n, i, l), d = 0; d < Math.min(e, c.length); d++) r = c[d], (a = t.clone(this.data[r])).title || (a.title = a.name), o[d] = a;
+                return o
             }
         })
     }), /*! */
-    W.define("WindyMap", ["utils", "rootScope"], function(o, s) {
+    W.define("WindyMap", ["utils", "rootScope"], function(e, t) {
         return L.Map.extend({
             minZoom: 3,
             myMarkers: {
@@ -8036,19 +8536,19 @@ L.CanvasLayer = L.Layer.extend({
                     iconAnchor: [5, 5]
                 })
             },
-            center: function(e, t) {
-                void 0 === t && (t = !1);
-                var n = e.zoom ? o.bound(e.zoom, this.minZoom, 20) : this.getZoom();
-                if (e.paddingLeft || e.paddingTop) {
-                    var i = e.paddingLeft || 0,
-                        s = e.paddingTop || 0,
-                        a = this.project([e.lat, e.lon], n).subtract([i / 2, s / 2]),
-                        r = this.unproject(a, n);
-                    this.setView(r, n, {
-                        animate: t
+            center: function(t, n) {
+                void 0 === n && (n = !1);
+                var i = t.zoom ? e.bound(t.zoom, this.minZoom, 20) : this.getZoom();
+                if (t.paddingLeft || t.paddingTop) {
+                    var s = t.paddingLeft || 0,
+                        a = t.paddingTop || 0,
+                        r = this.project([t.lat, t.lon], i).subtract([s / 2, a / 2]),
+                        o = this.unproject(r, i);
+                    this.setView(o, i, {
+                        animate: n
                     })
-                } else this.setView([e.lat, e.lon], n, {
-                    animate: t
+                } else this.setView([t.lat, t.lon], i, {
+                    animate: n
                 });
                 return this
             },
@@ -8056,9 +8556,9 @@ L.CanvasLayer = L.Layer.extend({
                 var i = this.latLngToContainerPoint([e, t]).x;
                 i < n && this.panBy([i - n, 0])
             },
-            ensurePointVisibleY: function(e, t, n) {
-                var i = this.latLngToContainerPoint([e, t]).y;
-                i > s.map.height - n && this.panBy([0, i - (s.map.height - n)])
+            ensurePointVisibleY: function(e, n, i) {
+                var s = this.latLngToContainerPoint([e, n]).y;
+                s > t.map.height - i && this.panBy([0, s - (t.map.height - i)])
             },
             setZoomCenter: function(e, t) {
                 return this._zoomCenter = L.point(e, t), this
@@ -8068,7 +8568,7 @@ L.CanvasLayer = L.Layer.extend({
             }
         })
     }), /*! */
-    W.define("LabelsLayer", ["products", "http", "rootScope", "utils", "overlays", "store", "broadcast", "singleclick"], function(s, a, t, E, e, r, o, n) {
+    W.define("LabelsLayer", ["products", "http", "rootScope", "utils", "overlays", "store", "broadcast", "singleclick"], function(e, t, n, i, s, a, r, o) {
         return L.GridLayer.extend({
             options: {
                 minZoom: 3,
@@ -8077,31 +8577,31 @@ L.CanvasLayer = L.Layer.extend({
                 className: "labels-layer",
                 updateWhenIdle: !0,
                 updateWhenZooming: !1,
-                keepBuffer: t.isMobileOrTablet ? 2 : 4
+                keepBuffer: n.isMobileOrTablet ? 2 : 4
             },
-            tempConverter: e.temp.convertNumber,
+            tempConverter: s.temp.convertNumber,
             cityDivs: {},
             latestTs: 0,
             latestIndex: 0,
-            ts: r.get("timestamp"),
+            ts: a.get("timestamp"),
             hasHooks: !1,
             syncCounter: 0,
             onAdd: function() {
-                this.hasHooks || (this.updateProduct(), this.createTilesUrl(), n.on("poi-label", this.onClick, this), r.on("timestamp", this.onTsChange, this), r.on("usedLang", this.updateLabels, this), r.on("englishLabels", this.updateLabels, this), r.on("product", this.updateProduct.bind(this, "refresh")), o.on("metricChanged", this.refreshWeather, this), this.hasHooks = !0), L.GridLayer.prototype.onAdd.call(this)
+                this.hasHooks || (this.updateProduct(), this.createTilesUrl(), o.on("poi-label", this.onClick, this), a.on("timestamp", this.onTsChange, this), a.on("usedLang", this.updateLabels, this), a.on("englishLabels", this.updateLabels, this), a.on("product", this.updateProduct.bind(this, "refresh")), r.on("metricChanged", this.refreshWeather, this), this.hasHooks = !0), L.GridLayer.prototype.onAdd.call(this)
             },
             createTilesUrl: function() {
-                var e = r.get("englishLabels") ? "en" : r.get("usedLang");
-                this.tilesUrl = t.tileServer + "/test-tiles-labels/" + e, this.fcstUrl = "http://www.eric.com/test-windy/forecast/citytile/v1.3"
+                var e = a.get("englishLabels") ? "en" : a.get("usedLang");
+                this.tilesUrl = n.tileServer + "/labels/v1.3/" + e, this.fcstUrl = "http://www.eric.com/test-windy/forecast/citytile/v1.3"
             },
             updateLabels: function() {
                 this.createTilesUrl(), this._reset()
             },
-            updateProduct: function(e) {
-                var t = r.get("product");
-                s[t].labelsTemp || (t = "ecmwf");
-                var n = s[t].refTime();
-                if ((this.product !== t || this.refTime !== n) && (this.product = t, this.refTime = n, e))
-                    for (var i in this.cityDivs) this.loadFcstTile(this.cityDivs[i])
+            updateProduct: function(t) {
+                var n = a.get("product");
+                e[n].labelsTemp || (n = "ecmwf");
+                var i = e[n].refTime();
+                if ((this.product !== n || this.refTime !== i) && (this.product = n, this.refTime = i, t))
+                    for (var s in this.cityDivs) this.loadFcstTile(this.cityDivs[s])
             },
             onClick: function(e, t) {
                 var n = t.id,
@@ -8109,10 +8609,10 @@ L.CanvasLayer = L.Layer.extend({
                 if (n) {
                     var s = n.split("/"),
                         a = s[0],
-                        r = s[1];
-                    o.emit("rqstOpen", "detail", {
+                        o = s[1];
+                    r.emit("rqstOpen", "detail", {
                         lat: a,
-                        lon: r,
+                        lon: o,
                         name: i,
                         source: "label",
                         sourceEl: e
@@ -8120,7 +8620,7 @@ L.CanvasLayer = L.Layer.extend({
                 }
             },
             onTsChange: function(e) {
-                Math.abs(e - this.ts) > 1.5 * E.tsHour && (this.ts = e, this.refreshWeather())
+                Math.abs(e - this.ts) > 1.5 * i.tsHour && (this.ts = e, this.refreshWeather())
             },
             toArray: function() {
                 var e = [];
@@ -8138,7 +8638,7 @@ L.CanvasLayer = L.Layer.extend({
                 this.redraw()
             },
             loadFcstTile: function(e) {
-                e.labels.length && a.get(this.fcstUrl + "/" + this.product + "/" + e.urlFrag).then(this.onFcstLoaded.bind(this, this.syncCounter, e)).catch(function(e) {
+                e.labels.length && t.get(this.fcstUrl + "/" + this.product + "/" + e.urlFrag).then(this.onFcstLoaded.bind(this, this.syncCounter, e)).catch(function(e) {
                     0
                 })
             },
@@ -8158,88 +8658,87 @@ L.CanvasLayer = L.Layer.extend({
                     })
                 }
             },
-            createTile: function(e, t) {
-                var n = this,
-                    i = e.z + "/" + e.x + "/" + e.y,
-                    s = L.DomUtil.create("div", "leaflet-tile");
-                return s.style.width = s.style.height = this.getTileSize() + "px", s.onselectstart = s.onmousemove = L.Util.falseFn, a.get(this.tilesUrl + "/" + i + ".json").then(this.onTileLoaded.bind(this, this.syncCounter, e, s)).then(function(e) {
-                    e && (e.urlFrag = i, n.loadFcstTile(e), t(void 0, s))
-                }).catch(t), s
+            createTile: function(e, n) {
+                var i = this,
+                    s = e.z + "/" + e.x + "/" + e.y,
+                    a = L.DomUtil.create("div", "leaflet-tile");
+                return a.style.width = a.style.height = this.getTileSize() + "px", a.onselectstart = a.onmousemove = L.Util.falseFn, t.get(this.tilesUrl + "/" + s + ".json").then(this.onTileLoaded.bind(this, this.syncCounter, e, a)).then(function(e) {
+                    e && (e.urlFrag = s, i.loadFcstTile(e), n(void 0, a))
+                }).catch(n), a
             },
             renderTile: function(e, t, n) {
-                for (var i = this._getTilePos(t), s = i.x, a = i.y, r = this._map.getPixelOrigin(), o = r.x, l = r.y, c = 256 << t.z, d = [], u = 0; u < n.length; ++u) {
-                    var h = n[u],
-                        m = h[0],
-                        f = h[1],
-                        p = h[2],
-                        g = h[3],
-                        v = h[4],
-                        y = h[5],
-                        w = h[6],
-                        b = "ci" !== p.substr(0, 2),
-                        T = b ? m : v.toFixed(2) + "/" + g.toFixed(2),
-                        L = Math.floor(E.lonDegToXUnit(g) * c - o - y / 2) - s,
-                        A = Math.floor(E.latDegToYUnit(v) * c - l - w / 2) - a,
-                        S = document.createElement("div");
-                    S.textContent = S.dataset.label = f, S.dataset.id = T, S.dataset.poi = "label", S.className = p, S.style.transform = "translate(" + L + "px, " + A + "px)", S.style.width = y + "px", b || d.push({
-                        id: T,
-                        el: S
-                    }), e.appendChild(S)
+                for (var s = this._getTilePos(t), a = s.x, r = s.y, o = this._map.getPixelOrigin(), l = o.x, c = o.y, d = 256 << t.z, u = [], h = 0; h < n.length; ++h) {
+                    var f = n[h],
+                        m = f[0],
+                        p = f[1],
+                        g = f[2],
+                        v = f[3],
+                        y = f[4],
+                        w = f[5],
+                        b = f[6],
+                        T = "ci" !== g.substr(0, 2),
+                        L = T ? m : y.toFixed(2) + "/" + v.toFixed(2),
+                        S = Math.floor(i.lonDegToXUnit(v) * d - l - w / 2) - a,
+                        A = Math.floor(i.latDegToYUnit(y) * d - c - b / 2) - r,
+                        E = document.createElement("div");
+                    E.textContent = E.dataset.label = p, E.dataset.id = L, E.dataset.poi = "label", E.className = g, E.style.transform = "translate(" + S + "px, " + A + "px)", E.style.width = w + "px", T || u.push({
+                        id: L,
+                        el: E
+                    }), e.appendChild(E)
                 }
                 return {
-                    labels: d
+                    labels: u
                 }
             },
             renderWeather: function(e, t, n) {
-                var i = n.el,
-                    s = n.data;
-                if (i)
-                    if (s && s.length) {
-                        var a = this.ts - e,
-                            r = Math.round(a / (t * E.tsHour));
-                        0 <= r && r < s.length ? i.dataset.temp = this.tempConverter(s[r]) + "°" : delete i.dataset.temp
-                    } else delete i.dataset.temp
+                var s = n.el,
+                    a = n.data;
+                if (s)
+                    if (a && a.length) {
+                        var r = this.ts - e,
+                            o = Math.round(r / (t * i.tsHour));
+                        o >= 0 && o < a.length ? s.dataset.temp = this.tempConverter(a[o]) + "°" : delete s.dataset.temp
+                    } else delete s.dataset.temp
             }
         })
     }), /*! */
-    W.define("map", ["render", "plugins", "WindyMap", "rootScope", "utils", "store", "broadcast", "geolocation", "router"], function(e, t, n, r, s, o, a, i, l) {
+    W.define("map", ["render", "plugins", "WindyMap", "rootScope", "utils", "store", "broadcast", "geolocation", "router"], function(e, t, n, i, s, a, r, o, l) {
         L.GridLayer.prototype.options.zIndex = void 0;
         var c, d = 0,
-            u = "location" === o.get("startUp") ? o.get("homeLocation") : l.sharedCoords || i.getMyLatestPos();
-        "fallback" === u.source && a.once("newLocation", function(e) {
+            u = "location" === a.get("startUp") ? a.get("homeLocation") : l.sharedCoords || o.getMyLatestPos();
+        "fallback" === u.source && r.once("newLocation", function(e) {
             e.zoom = 5, c.center(e, !0)
         });
-        var h = s.contains(["vn", "in"], o.get("country")),
-            m = h ? 11 : 18,
-            f = {
-                sznmap: r.sznMap,
+        var h = ["vn", "in"].includes(a.get("country")),
+            f = h ? 11 : 18,
+            m = {
+                sznmap: i.sznMap,
                 winter: "https://mapserver.mapy.cz/winter-m/{z}-{x}-{y}",
-                sat: "https://{s}.aerial.maps.api.here.com/maptile/2.1/maptile/newest/satellite.day/{z}/{x}/{y}/256/jpg?" + r.hereMapsID
+                sat: "https://{s}.aerial.maps.api.here.com/maptile/2.1/maptile/newest/satellite.day/{z}/{x}/{y}/256/jpg?" + i.hereMapsID
             };
         c = new n("map-container", {
-
-            zoomControl: true,
+            zoomControl: !1,
             keyboard: !1,
             worldCopyJump: !0,
             zoomAnimationThreshold: 3,
             fadeAnimation: !1,
-            center: [35.7, 51.3],
-            zoom: 4,
+            center: [+u.lat, +u.lon],
+            zoom: +u.zoom || 5,
             minZoom: 3,
-            maxZoom: m,
+            maxZoom: f,
             maxBounds: [
                 [-90, -720],
                 [90, 720]
             ]
-        }), v(), y(), g(o.get("graticule")), c.on("moveend", v), c.on("movestart", a.emit.bind(a, "movestart")), a.on("zoomIn", c.zoomIn, c), a.on("zoomOut", c.zoomOut, c), a.on("updateBasemap", y), o.on("map", y), o.on("graticule", g), e.on("toggleSeaMask", function(e) {
-            e && !c.seaLayer ? (c.seaLayer = L.tileLayer(r.tileServer + "/tiles/v9.0/grayland/{z}/{x}/{y}.png", {
+        }), v(), y(), g(a.get("graticule")), c.on("moveend", v), c.on("movestart", r.emit.bind(r, "movestart")), r.on("zoomIn", c.zoomIn, c), r.on("zoomOut", c.zoomOut, c), r.on("updateBasemap", y), a.on("map", y), a.on("graticule", g), e.on("toggleSeaMask", function(e) {
+            e && !c.seaLayer ? (c.seaLayer = L.tileLayer(i.tileServer + "/tiles/v9.0/grayland/{z}/{x}/{y}.png", {
                 minZoom: 3,
                 maxZoom: 11,
-                updateWhenIdle: !!r.isMobileOrTablet,
+                updateWhenIdle: !!i.isMobileOrTablet,
                 updateWhenZooming: !1,
-                keepBuffer: r.isMobileOrTablet ? 1 : 4
+                keepBuffer: i.isMobileOrTablet ? 1 : 4
             }).addTo(c), c.seaLayer.getContainer().classList.add("sea-mask-layer")) : !e && c.seaLayer && (c.removeLayer(c.seaLayer), c.seaLayer = null)
-        }), c.on("contextmenu", a.emit.bind(a, "rqstOpen", "contextmenu"));
+        }), c.on("contextmenu", r.emit.bind(r, "rqstOpen", "contextmenu"));
         var p = null;
 
         function g(e) {
@@ -8252,8 +8751,8 @@ L.CanvasLayer = L.Layer.extend({
             var e = c.getCenter(),
                 t = c.getBounds(),
                 n = c.getSize(),
-                i = Math.round(c.getZoom());
-            r.map = {
+                a = Math.round(c.getZoom());
+            i.map = {
                 source: "maps",
                 lat: e.lat,
                 lon: e.wrap().lng,
@@ -8263,35 +8762,34 @@ L.CanvasLayer = L.Layer.extend({
                 west: t._southWest.lng,
                 width: n.x,
                 height: n.y,
-                zoom: i
-            }, i !== d && (s.replaceClass(/zoom\d+/, "zoom" + i), d = i), a.emit("mapChanged", r.map)
+                zoom: a
+            }, a !== d && (s.replaceClass(/zoom\d+/, "zoom" + a), d = a), r.emit("mapChanged", i.map)
         }
 
         function y() {
-            var e = r.tileServer + "/test-tiles" + (r.isRetina ? "-retina" : "") + "/{z}/{x}/{y}.png",
-                t = o.get("map"),
-                n = "basemap-layer",
-                i = {
-                    url: f[t] || f.sznmap,
+            var e = i.tileServer + "/tiles/v9.0/darkmap" + (i.isRetina ? "-retina" : "") + "/{z}/{x}/{y}.png",
+                t = a.get("map"),
+                n = {
+                    url: m[t] || m.sznmap,
                     subdomains: "1234"
                 },
-                s = "map" === o.get("overlay"),
-                a = s && !h ? {
-                    18: i
+                s = "map" === a.get("overlay"),
+                r = s && !h ? {
+                    18: n
                 } : {
                     11: {
                         url: e
                     },
-                    18: i
+                    18: n
                 };
-            c.baseLayer && c.removeLayer(c.baseLayer), c.baseLayer = L.tileLayerMulti(a, {
+            c.baseLayer && c.removeLayer(c.baseLayer), c.baseLayer = L.tileLayerMulti(r, {
                 detectRetina: !1,
                 minZoom: 3,
                 maxZoom: 18,
-                updateWhenIdle: !!r.isMobileOrTablet,
+                updateWhenIdle: !!i.isMobileOrTablet,
                 updateWhenZooming: !1,
-                className: n,
-                keepBuffer: r.isMobileOrTablet ? 1 : 4
+                className: "basemap-layer",
+                keepBuffer: i.isMobileOrTablet ? 1 : 4
             }), document.body.dataset.map = t, c.baseLayer.addTo(c)
         }
         return c
@@ -8301,14 +8799,14 @@ L.CanvasLayer = L.Layer.extend({
             ident: "picker"
         })
     }), /*! */
-    W.define("singleclick", ["map", "Evented", "rootScope", "store", "broadcast", "plugins"], function(e, t, n, i, r, o) {
-        var s = n.isMobile;
+    W.define("singleclick", ["map", "Evented", "rootScope", "store", "broadcast", "plugins"], function(e, t, n, i, s, a) {
+        var r = n.isMobile;
         return t.instance({
             ident: "singleclick",
             hpJustClosed: !1,
-            priorities: ["detail", "sounding", "distance", "cap-alerts"],
+            priorities: ["detail", "sounding", "distance", "rplanner", "cap-alerts"],
             _init: function() {
-                t._init.call(this), e.on("singleclick", this.opener, this), s && i.on("hpShown", this.hpShown, this)
+                t._init.call(this), e.on("singleclick", this.opener, this), r && i.on("hpShown", this.hpShown, this)
             },
             hpShown: function(e) {
                 var t = this;
@@ -8331,11 +8829,11 @@ L.CanvasLayer = L.Layer.extend({
                         n = t && t.dataset;
                     if (n && n.poi) this.emit("poi-" + n.poi, t, n);
                     else {
-                        for (var i = this.parseEvent(e), s = 0; s < this.priorities.length; s++) {
-                            var a = this.priorities[s];
-                            if (o[a].isOpen) return void this.emit(a, i)
+                        for (var i = this.parseEvent(e), r = 0; r < this.priorities.length; r++) {
+                            var o = this.priorities[r];
+                            if (a[o].isOpen) return void this.emit(o, i)
                         }
-                        r.emit("rqstOpen", "picker", i)
+                        s.emit("rqstOpen", "picker", i)
                     }
                 }
             }
@@ -8346,6 +8844,7 @@ L.CanvasLayer = L.Layer.extend({
             ident: "favs",
             latestParams: {},
             triggeredAlerts: 0,
+            types: ["alert", "station", "fav", "airport"],
             _init: function() {
                 o._init.call(this), this.load(), this.debouncedUpdate = a.debounce(this.update.bind(this), 200), this.onchange = a.debounce(this.emitChange.bind(this), 1e3), s.once("dependenciesResolved", this.checkAlerts, this), t.on("detailLocation", this.debouncedUpdate), s.on("airportLoaded", this.debouncedUpdate), s.on("stationLoaded", this.debouncedUpdate), n.on("pickerOpened", this.debouncedUpdate), n.on("pickerMoved", this.debouncedUpdate)
             },
@@ -8356,18 +8855,18 @@ L.CanvasLayer = L.Layer.extend({
                 return (e = this.getAlert(e)) && e.alertProps && e.alertProps.timestamps || null
             },
             add: function(e) {
-                e.type && !/^(fav|alert|airport|station)$/.test(e.type) && delete e.type, r.add.call(this, e)
+                e.type && !this.types.includes(e.type) && delete e.type, r.add.call(this, e)
             },
-            getAlert: function(t) {
-                if ("string" == typeof t) return this.data[t];
-                this.getArray().filter(function(e) {
-                    return "alert" === e.type && a.isNear(t, e)
+            getAlert: function(e) {
+                if ("string" == typeof e) return this.data[e];
+                this.getArray().filter(function(t) {
+                    return "alert" === t.type && a.isNear(e, t)
                 })
             },
             getArray: function() {
-                var t = this;
-                return Object.keys(this.data).map(function(e) {
-                    return t.data[e]
+                var e = this;
+                return Object.keys(this.data).map(function(t) {
+                    return e.data[t]
                 })
             },
             updateCSS: function() {
@@ -8381,16 +8880,16 @@ L.CanvasLayer = L.Layer.extend({
                 n ? (n.alertProps = t, this.onchange(), this.save()) : window.wError("favExtended", "Missing fav in setAlertProps " + JSON.stringify(e))
             },
             checkAlerts: function() {
-                var t = Date.now(),
-                    n = 12 * a.tsHour,
-                    e = this.getArray().filter(function(e) {
+                var e = Date.now(),
+                    t = 12 * a.tsHour,
+                    n = this.getArray().filter(function(e) {
                         return "alert" === e.type
                     });
-                if (e.length) {
-                    var i = e.filter(function(e) {
-                        return !e.alertProps || t - e.alertProps.checked > n
+                if (n.length) {
+                    var i = n.filter(function(n) {
+                        return !n.alertProps || e - n.alertProps.checked > t
                     }).map(this.checkAlert.bind(this));
-                    i.length ? Promise.all(i).then(this.onAlertsChecked.bind(this, e)) : this.onAlertsChecked(e)
+                    i.length ? Promise.all(i).then(this.onAlertsChecked.bind(this, n)) : this.onAlertsChecked(n)
                 }
             },
             onAlertsChecked: function(e) {
@@ -8398,35 +8897,35 @@ L.CanvasLayer = L.Layer.extend({
                     return e.alertProps && e.alertProps.triggered
                 }).length, this.emit("alertsChecked", this.triggeredAlerts)
             },
-            checkAlert: function(r) {
-                var o = this;
-                return new Promise(function(a) {
-                    i.get("/users/alertCheck/" + r.alertId, {
+            checkAlert: function(e) {
+                var t = this;
+                return new Promise(function(n) {
+                    i.get("/users/alertCheck/" + e.alertId, {
                         cache: !1
-                    }).then(function(e) {
-                        var t = e.data,
-                            n = !1;
-                        if ("missing" === t.status) console.warn("Deleting the fav", r.alertId), o.remove(r.alertId);
+                    }).then(function(i) {
+                        var s = i.data,
+                            a = !1;
+                        if ("missing" === s.status) console.warn("Deleting the fav", e.alertId), t.remove(e.alertId);
                         else {
-                            var i = t.alert,
-                                s = t.timestamps || [];
-                            n = 0 < s.length, o.setAlertProps(r, {
-                                suspended: i.suspended,
+                            var r = s.alert,
+                                o = s.timestamps || [];
+                            a = o.length > 0, t.setAlertProps(e, {
+                                suspended: r.suspended,
                                 checked: Date.now(),
                                 seen: 0,
-                                triggered: n,
-                                timestamps: s
+                                triggered: a,
+                                timestamps: o
                             })
                         }
-                        a()
+                        n()
                     })
                 })
             }
         })
     }), /*! */
-    W.define("pois", ["Poi", "utils", "broadcast", "favs", "singleclick"], function(e, o, l, c, t) {
-        var n = {};
-        return n.empty = e.instance({
+    W.define("pois", ["Poi", "utils", "broadcast", "favs", "singleclick"], function(e, t, n, i, s) {
+        var a = {};
+        return a.empty = e.instance({
             ident: "empty",
             displayed: !1,
             _init: function() {},
@@ -8436,7 +8935,7 @@ L.CanvasLayer = L.Layer.extend({
             delete: function() {},
             activate: function() {},
             deactivate: function() {}
-        }), n.favs = e.instance({
+        }), a.favs = e.instance({
             ident: "favs",
             displayed: !1,
             items: 5,
@@ -8447,19 +8946,19 @@ L.CanvasLayer = L.Layer.extend({
                 fav: "k"
             },
             _init: function() {
-                e._init.call(this), c.on("favsChanged", this.repaint, this), t.on("poi-favs", this.onclick, this)
+                e._init.call(this), i.on("favsChanged", this.repaint, this), s.on("poi-favs", this.onclick, this)
             },
             repaint: function() {
                 this.isActive && (this.delete(), this.data = [], this.download())
             },
             download: function() {
-                var r = this;
-                this.data.length || (o.each(c.getAll(), function(e, t) {
-                    var n = e.lat,
-                        i = e.lon,
-                        s = e.type,
-                        a = e.name;
-                    r.data.push(t, +n, +i, s, a)
+                var e = this;
+                this.data.length || (t.each(i.getAll(), function(t, n) {
+                    var i = t.lat,
+                        s = t.lon,
+                        a = t.type,
+                        r = t.name;
+                    e.data.push(n, +i, +s, a, r)
                 }), this.render())
             },
             display: function(e, t) {
@@ -8467,42 +8966,42 @@ L.CanvasLayer = L.Layer.extend({
                     attrs: ['data-icon="' + (this.type2icon[this.data[t + 3]] || "k") + '"', 'data-text="' + (this.data[t + 4] || "") + '"', 'data-id="' + e + '"', 'data-poi="favs"']
                 }
             },
-            onclick: function(e, t) {
-                var n = t.id,
-                    i = c.getAll(),
-                    s = o.clone(i[n]),
-                    a = s.type,
-                    r = "airport" === a || "station" === a ? a : "detail";
-                s.source = "poi-icon", l.emit("rqstOpen", r, s)
+            onclick: function(e, s) {
+                var a = s.id,
+                    r = i.getAll(),
+                    o = t.clone(r[a]),
+                    l = o.type,
+                    c = "airport" === l || "station" === l ? l : "detail";
+                o.source = "poi-icon", n.emit("rqstOpen", c, o)
             },
             cancel: function() {}
-        }), n
+        }), a
     }), /*! */
-    W.define("poisCtrl", ["pois", "store", "utils", "broadcast", "plugins"], function(t, n, i, s, e) {
+    W.define("poisCtrl", ["pois", "store", "utils", "broadcast", "plugins"], function(e, t, n, i, s) {
         var a = "empty";
 
-        function r(t) {
-            "favs" !== t && "empty" !== t ? (n.off("pois", r), e.pois.open().then(function() {
-                o(t);
-                var e = i.debounce(c, 1500);
-                s.on("paramsChanged", e), s.on("mapChanged", e), s.on("metricChanged", l), n.on("pois", o)
-            })) : o(t)
+        function r(e) {
+            "favs" !== e && "empty" !== e ? (t.off("pois", r), s.pois.open().then(function() {
+                o(e);
+                var s = n.debounce(c, 1500);
+                i.on("paramsChanged", s), i.on("mapChanged", s), i.on("metricChanged", l), t.on("pois", o)
+            })) : o(e)
         }
 
-        function o(e) {
-            i.replaceClass(/selectedpois-\S+/, "selectedpois-" + e), t[a].deactivate(), t[e].activate(), "empty" === e && t.favs.isActive ? t.favs.deactivate() : "empty" === e || t.favs.isActive || t.favs.activate(), a = e
+        function o(t) {
+            n.replaceClass(/selectedpois-\S+/, "selectedpois-" + t), e[a].deactivate(), e[t].activate(), "empty" === t && e.favs.isActive ? e.favs.deactivate() : "empty" === t || e.favs.isActive || e.favs.activate(), a = t
         }
 
         function l() {
-            t[n.get("pois")].redraw(!0)
+            e[t.get("pois")].redraw(!0)
         }
 
         function c() {
-            t[n.get("pois")].redraw()
+            e[t.get("pois")].redraw()
         }
-        s.once("redrawFinished", function() {
-            var e = n.get("pois");
-            "favs" === e || "empty" === e ? (o(e), n.on("pois", r)) : r(e)
+        i.once("redrawFinished", function() {
+            var e = t.get("pois");
+            "favs" === e || "empty" === e ? (o(e), t.on("pois", r)) : r(e)
         })
     }), /*! */
     W.define("labelsLayer", ["LabelsLayer", "map"], function(e, t) {

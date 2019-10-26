@@ -10,10 +10,10 @@
     <link href="/v/index.css" rel="stylesheet" type="text/css">
     <script>
         window.W = {
-            version: "19.15.0",
-            assets: "19.15.0.ind.4a35",
+            version: "21.4.2",
+            assets: "20",// "19.15.0.ind.4a35", // 21.4.2.ind.f3ff
             target: "index",
-            build: "2019-06-19, 06:12",
+            build: "2019-10-25, 09:12",
             startTs: Date.now()
         };
         try {

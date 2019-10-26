@@ -13,9 +13,12 @@ class PageController extends Controller
 {
     public function getIndex($page_url = '/')
     {
+        if(config('app.name') === 'map'){
+            return view('front.test.map.offline-city');
+        }
+
         $page = Page::where('url', $page_url)->active()->first();
         abort_if(! $page, 404);
-
 
         if(config('app.name') === 'map'){
             return view('front.test.map.offline-city');

@@ -1,12 +1,9 @@
-<!-- ***** Header Area Start ***** -->
 <header class="header_area animated header_area_custome">
     <div class="container-fluid">
         <div class="row align-items-center">
-            <!-- Menu Area Start -->
             <div class="col-12 col-lg-10">
                 <div class="menu_area">
                     <nav class="navbar navbar-expand-lg navbar-light">
-                        <!-- Logo -->
                         <a class="navbar-brand" href="{{ route('front.page.index', '/') }}">
                             <img style="max-height: 40px;" src="{{ asset(config('0-general.logo')) }}" alt="L">
                         </a>
@@ -38,8 +35,7 @@
                     </nav>
                 </div>
             </div>
-            <!-- Signup btn -->
-            <div class="col-12 col-lg-2">
+            <div class="col-12 col-lg-2 display-none">
                 <div class="sing-up-button d-none d-lg-block">
                     <a href="{{ route('front.page.index') }}">Home Page</a>
                 </div>
@@ -47,4 +43,3 @@
         </div>
     </div>
 </header>
-<!-- ***** Header Area End ***** -->
