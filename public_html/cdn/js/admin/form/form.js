@@ -71,7 +71,7 @@ jQuery(document).ready(function() {
     BootstrapDatepicker.init();
     BootstrapSelect.init();
     $("#admin_form").validate({});
-    $('.lfm').filemanager('file');
+    $('.lfm').filemanager('image');
 });
 
 // bootstrap ckeditor
