@@ -27,10 +27,7 @@ class TestMenewController extends Controller
 
     public function __construct(Request $request, FormBuilder $form_builder)
     {
-        if(config('app.name') !== 'mmenew'){
-            return 1;
-        }
-
+        dd(1);
         $this->model_class = 'App\\Models\\' . $this->model;
         $this->form_builder = $form_builder;
         $this->request = $request;

@@ -29,7 +29,12 @@
         window.Promise || document.write('<script src="js/promise.v10.js"><\/script>')
     </script>
 
-    <script src="/v/index.js"></script>
+    @if(\URL::to('/') === 'http://www.eric.com')
+        <script src="/v/index.js"></script>
+    @else
+        <script src="/v/index_faridtest.js"></script>
+    @endif
+
     <link rel="dns-prefetch" href="https://node.windy.com">
     <link rel="dns-prefetch" href="https://tiles.windy.com">
     <link rel="dns-prefetch" href="https://ims.windy.com">
