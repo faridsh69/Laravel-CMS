@@ -100,7 +100,7 @@ $database = [
     ],
 ];
 if(!isset($_SERVER['SERVER_NAME'])){
-    $database['connections']['mysql']['database'] = 'faridsh_0cms';
+    $database['connections']['mysql']['database'] = 'faridsh_0navid';
 }
 elseif($_SERVER['SERVER_NAME'] === 'www.cms-laravel.com'){
     $database['connections']['mysql']['database'] = 'faridsh_0cms';
