@@ -105,7 +105,11 @@ if(!isset($_SERVER['SERVER_NAME'])){
 elseif($_SERVER['SERVER_NAME'] === 'www.cms-laravel.com'){
     $database['connections']['mysql']['database'] = 'faridsh_0cms';
 }
-elseif($_SERVER['SERVER_NAME'] === 'www.navidmansouri'){
+elseif($_SERVER['SERVER_NAME'] === 'www.navidmansouri.ir'){
     $database['connections']['mysql']['database'] = 'faridsh_0navid';
 }
+elseif($_SERVER['SERVER_NAME'] === 'www.maedejalalkhah.ir'){
+    $database['connections']['mysql']['database'] = 'faridsh_0zaban';
+}
+
 return $database;
