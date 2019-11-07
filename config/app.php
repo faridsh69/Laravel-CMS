@@ -63,7 +63,6 @@ return [
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         Propaganistas\LaravelPhone\PhoneServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         /*
          * Application Service Providers...
@@ -132,6 +131,5 @@ return [
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 ];

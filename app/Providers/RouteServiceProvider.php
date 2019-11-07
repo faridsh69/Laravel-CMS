@@ -29,54 +29,44 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
-        $domain = config('app.url');
-        $this->mapAdminRoutes($domain);
-        // $this->mapShopRoutes($domain);
+        $this->mapAdminRoutes();
         $this->mapApiRoutes();
         $this->mapAuthRoutes();
-        $this->mapFrontRoutes($domain);
+        $this->mapFrontRoutes();
     }
 
-    protected function mapAdminRoutes($domain)
+    protected function mapAdminRoutes()
     {
-        Route::middleware(['web', 'throttle:25,0.1', 'auth'])
-            ->domain('www.admin.' . $domain)
+        Route::namespace($this->namespace . '\Admin')
             ->as('admin.')
-            ->namespace($this->namespace . '\Admin')
+            ->prefix('admin')
+            ->middleware(['web', 'auth'])
             ->group(base_path('routes/admin.php'));
-    }
-
-    // protected function mapShopRoutes($domain)
-    // {
-    //     Route::middleware(['web', 'throttle:35,0.1'])
-    //         ->domain('www.{shop_subdomain}.' . $domain)
-    //         ->as('shop.')
-    //         ->namespace($this->namespace . '\Shop')
-    //         ->group(base_path('routes/shop.php'));
-    // }
-
-    protected function mapFrontRoutes($domain)
-    {
-        Route::middleware(['web'])
-            ->domain('www.' . $domain)
-            ->as('front.')
-            ->namespace($this->namespace . '\Front')
-            ->group(base_path('routes/front.php'));
     }
 
     protected function mapApiRoutes()
     {
-        Route::prefix('api')
+        Route::namespace($this->namespace . '\Api')
             ->as('api.')
-            ->middleware(['api', 'throttle:15,0.3'])
-            ->namespace($this->namespace . '\Api')
+            ->prefix('api')
+            ->middleware(['api', 'throttle:15,1'])
             ->group(base_path('routes/api.php'));
     }
 
     protected function mapAuthRoutes()
     {
-        Route::middleware('web')
-            ->namespace($this->namespace)
+        Route::namespace($this->namespace)
+            ->as('auth.')
+            ->prefix('auth')
+            ->middleware('web')
             ->group(base_path('routes/auth.php'));
+    }
+
+    protected function mapFrontRoutes()
+    {
+        Route::namespace($this->namespace . '\Front')
+            ->as('front.')
+            ->middleware('web')
+            ->group(base_path('routes/front.php'));
     }
 }

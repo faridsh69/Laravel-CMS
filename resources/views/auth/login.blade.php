@@ -14,7 +14,7 @@
 					{{ __('Sign In To Dashboard') }}
 				</h3>
 			</div>
-			<form class="m-login__form m-form" method="POST" action="{{ route('login') }}">
+			<form class="m-login__form m-form" method="POST" action="{{ route('auth.login') }}">
 				@csrf
 				<div class="form-group m-form__group">
 					<input class="form-control m-input" type="email" placeholder="{{ __('E-Mail Address') }}" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -36,7 +36,7 @@
 						</label>
 					</div>
 					<div class="col m--align-right">
-						<a href="{{ route('password.request') }}" id="m_login_forget_password" class="m-link">
+						<a href="{{ route('auth.password.request') }}" id="m_login_forget_password" class="m-link">
 							{{ __('Forgot Your Password?') }}
 						</a>
 					</div>
@@ -60,7 +60,7 @@
 							$class = 'brand';
 						}
 					@endphp
-				<a href="{{ route('login-social', $social) }}" 
+				<a href="{{ route('auth.login-social', $social) }}" 
 					class="btn btn-outline-{{ $class }} m-btn m-btn--custom m-btn--outline-2x mb-1 text-center">
 					<i class="fa fa-{{$social}}"></i>
 				</a>
@@ -77,7 +77,7 @@
 			{{ __('Do you have any account yet?') }}
 		</span>
 		&nbsp;&nbsp;
-		<a href="{{ route('register') }}" id="m_login_signup" class="m-link m-link--focus m-login__account-link">
+		<a href="{{ route('auth.register') }}" id="m_login_signup" class="m-link m-link--focus m-login__account-link">
 			{{ __('Register') }}
 		</a>
 	</div>

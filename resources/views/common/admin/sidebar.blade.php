@@ -522,7 +522,7 @@
 			</li>
 			@elseif($item['type'] == 'submenu')
 			<li class="m-menu__item m-menu__item--submenu  
-				@if(Request::segment(1) == $item['route']) m-menu__item--open m-menu__item--expanded @endif" aria-haspopup="true" data-menu-submenu-toggle="hover">
+				@if(Request::segment(2) == $item['route']) m-menu__item--open m-menu__item--expanded @endif" aria-haspopup="true" data-menu-submenu-toggle="hover">
 				<a href="javascript:void(0)" class="m-menu__link m-menu__toggle">
 					<i class="m-menu__link-icon {{ $item['icon'] }}"></i>
 					<span class="m-menu__link-title">
@@ -554,7 +554,7 @@
 						@foreach($item['children'] as $submenu_item)
 						@if( isset($submenu_item['type']))
 						<li class="m-menu__item  m-menu__item--submenu
-						@if(Request::segment(2) == $submenu_item['route']) m-menu__item--open m-menu__item--expanded @endif
+						@if(Request::segment(3) == $submenu_item['route']) m-menu__item--open m-menu__item--expanded @endif
 						" aria-haspopup="true"  data-menu-submenu-toggle="hover">
 							<a href="javascript::void(0)" class="m-menu__link m-menu__toggle">
 								<i class="m-menu__link-bullet m-menu__link-bullet--dot">

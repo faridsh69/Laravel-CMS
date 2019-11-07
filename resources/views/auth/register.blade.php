@@ -14,7 +14,7 @@
 					{{ __('Register') }}
 				</h3>
 			</div>
-			<form class="m-login__form m-form margin-top-20" method="POST" action="{{ route('register') }}">
+			<form class="m-login__form m-form margin-top-20" method="POST" action="{{ route('auth.register') }}">
 				@csrf
 				<!-- <div class="form-group m-form__group">
 					<input class="form-control m-input" type="text" placeholder="{{ __('Name') }}" name="name" value="{{ isset($name) ? $name : old('name') }}" required autocomplete="name" autofocus>
@@ -75,7 +75,7 @@
 			{{ __('Already have account?') }}
 		</span>
 		&nbsp;&nbsp;
-		<a href="{{ route('login') }}" id="m_login_signup" class="m-link m-link--focus m-login__account-link">
+		<a href="{{ route('auth.login') }}" id="m_login_signup" class="m-link m-link--focus m-login__account-link">
 			{{ __('Login') }}
 		</a>
 	</div>
