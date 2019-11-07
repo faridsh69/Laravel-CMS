@@ -100,12 +100,12 @@ $database = [
     ],
 ];
 if(!isset($_SERVER['SERVER_NAME'])){
-    $database['connections']['mysql']['database'] = 'cms';
+    $database['connections']['mysql']['database'] = 'faridsh_0cms';
 }
-elseif($_SERVER['SERVER_NAME'] === 'www.eric.com'){
-    $database['connections']['mysql']['database'] = 'cms';
+elseif($_SERVER['SERVER_NAME'] === 'www.cms-laravel.com'){
+    $database['connections']['mysql']['database'] = 'faridsh_0cms';
 }
-elseif($_SERVER['SERVER_NAME'] === 'www.eric1.com'){
-    $database['connections']['mysql']['database'] = 'cms2';
+elseif($_SERVER['SERVER_NAME'] === 'www.navidmansouri'){
+    $database['connections']['mysql']['database'] = 'faridsh_0navid';
 }
 return $database;
