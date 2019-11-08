@@ -99,17 +99,10 @@ $database = [
         ],
     ],
 ];
-if(!isset($_SERVER['SERVER_NAME'])){
-    $database['connections']['mysql']['database'] = 'faridsh_0zaban';
-}
-elseif($_SERVER['SERVER_NAME'] === 'www.cms-laravel.com'){
-    $database['connections']['mysql']['database'] = 'faridsh_0cms';
-}
-elseif($_SERVER['SERVER_NAME'] === 'www.navidmansouri.ir'){
-    $database['connections']['mysql']['database'] = 'faridsh_0navid';
-}
-elseif($_SERVER['SERVER_NAME'] === 'www.maedejalalkhah.ir'){
-    $database['connections']['mysql']['database'] = 'faridsh_0zaban';
+if(isset($_SERVER['SERVER_NAME'])){
+    $server_name = $_SERVER['SERVER_NAME'];
+    $database_name = 'faridsh_' . substr($server_name, 4, 5);
+    $database['connections']['mysql']['database'] = $database_name;
 }
 
 return $database;
