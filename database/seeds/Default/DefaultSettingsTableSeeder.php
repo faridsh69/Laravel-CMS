@@ -58,11 +58,11 @@ class DefaultSettingsTableSeeder extends Seeder
         $developer_settings = [
 			'app_debug' => '1',
 			'app_env' => 'production',
-			'app_language' => 'en',
+			'app_language' => 'fa',
 			'theme' => '1-original',
 			'theme_color_1' => '#48f',
 			'theme_color_2' => '#444',
-			'direction' => 'ltr',
+			'direction' => 'rtl',
 			'throttle' => '15,0.2',
 			'lazy_loading' => '1',
 			'email_username' => 'farid.sh69@gmail.com',

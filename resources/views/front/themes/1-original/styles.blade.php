@@ -4,6 +4,6 @@
 <link rel="stylesheet" href="{{ asset('/css/front/themes/1-original/custome/eric.css') }}">
 @endif
 
-@if(config('0-developer.direction') === 'rtl')
+@if(config('app.locale') === 'fa')
 <link rel="stylesheet" href="{{ asset('/css/front/themes/1-original/css/rtl.css') }}">
 @endif
