@@ -10,8 +10,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(BlocksTableSeeder::class);
         $this->call(PagesTableSeeder::class);
+        $this->call(BlocksTableSeeder::class);
         if(config('app.name') === 'eric') {
             $this->call(EricDatabaseSeeder::class);
         }

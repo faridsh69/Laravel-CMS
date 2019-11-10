@@ -14,16 +14,16 @@ class DefaultCategoriesTableSeeder extends Seeder
         $blog_categories = [
             [
                 'id' => 1,
-                'title' => 'Cms',
+                'title' => 'Blog Category Title 1',
                 'children' => [
-                    ['id' => 2, 'title' => 'Cms features'],
-                    ['id' => 3, 'title' => 'How to use it'],
-                    ['id' => 4, 'title' => 'Contribute'],
+                    ['id' => 2, 'title' => 'Blog Category Title 2'],
+                    ['id' => 3, 'title' => 'Blog Category Title 3'],
+                    ['id' => 4, 'title' => 'Blog Category Title 4'],
                     [
                         'id' => 5,
-                        'title' => 'Cms author',
+                        'title' => 'Blog Category Title 5',
                         'children' => [
-                            ['id' => 6, 'title' => 'CV'],
+                            ['id' => 6, 'title' => 'Blog Category Title 6'],
                         ],
                     ],
                 ],

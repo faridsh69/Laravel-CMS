@@ -16,21 +16,21 @@ class DefaultFeaturesTableSeeder extends Seeder
         $features = [
             [
                 'id' => 1,
-                'title' => 'Easy to use',
+                'title' => 'Feature Title 1',
                 'icon' => 'ti-mobile',
-                'description' => 'We build pretty complex tools and this allows us to take designs and turn them into functional quickly and easily',
+                'description' => 'Feature Description 1, ti-mobile, Feature Description 1, ti-mobile, Feature Description 1, ti-mobile, Feature Description 1, ti-mobile, Feature Description 1, ti-mobile, ',
             ],
             [
                 'id' => 2,
-                'title' => 'Powerful Design',
+                'title' => 'Feature Title 2',
                 'icon' => 'ti-money',
-                'description' => 'We build awsome code for developers who its is start for coding visual for creating a website!',
+                'description' => 'Feature Description 2 - ti-money - Feature Description 2 - ti-money - Feature Description 2 - ti-money - Feature Description 2 - ti-money - Feature Description 2 - ti-money',
             ],
             [
                 'id' => 3,
-                'title' => 'Customizability',
+                'title' => 'Feature Title 3',
                 'icon' => 'ti-settings',
-                'description' => 'In this CMS every little details can changed without damage to another part of code.',
+                'description' => 'Feature description 3 - ti-settings, Feature description 3 - ti-settings, Feature description 3 - ti-settings, Feature description 3 - ti-settings, Feature description 3 - ti-settings',
             ],
         ];
 

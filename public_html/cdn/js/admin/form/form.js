@@ -78,8 +78,8 @@ jQuery(document).ready(function() {
 var ckeditorOptions = {
     filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
     filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
-    filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-    filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token=',
+    filebrowserBrowseUrl: '/laravel-filemanager?type=Images',
+    filebrowserUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
     skin: 'moonocolor,skins/kama/',
     language: 'en',
 };

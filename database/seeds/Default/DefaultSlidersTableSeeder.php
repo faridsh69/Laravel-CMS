@@ -16,22 +16,22 @@ class DefaultSlidersTableSeeder extends Seeder
         $sliders = [
             [
             	'id' => 1,
-            	'title' => 'CMS',
-            	'description' => '',
+            	'title' => 'Slider Title 1',
+            	'description' => 'Slider Description 1',
             	'image' => 'images/front/themes/1-original/header-background.png',
             	'activated' => 1,
             ],
             [
             	'id' => 2,
-            	'title' => 'Laravel CMS',
-            	'description' => 'Everything You Need. To Start Selling Online Beautifully.',
+            	'title' => 'Slider Title 2',
+            	'description' => 'Slider Description 2',
             	'image' => 'images/front/themes/1-original/header-slider.png',
             	'activated' => 1,
             ],
             [
             	'id' => 3,
-            	'title' => 'Our Best Propositions for You!',
-            	'description' => 'When we create a model we can define type of column, type of input in forms, rules, help block, showing on table or not, ...',
+            	'title' => 'Slider Title 3',
+            	'description' => 'Slider Description 3',
             	'image' => 'images/front/themes/1-original/header-feature.png',
             	'activated' => 1,
             ],

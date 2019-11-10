@@ -12,7 +12,6 @@ class DefaultServicesTableSeeder extends Seeder
      */
     public function run()
     {
-        // title, description, image, activated
         $services = [
             [
             	'id' => 1,
