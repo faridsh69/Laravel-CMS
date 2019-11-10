@@ -14,7 +14,7 @@ class DefaultSettingsTableSeeder extends Seeder
      */
 	public function run()
 	{
-	    $database_name = $database['connections']['mysql']['database'];
+	    $database_name = config('database.connections.mysql.database');
 	    $folder_name = substr($database_name, 9, 6);
 	    $image_folder_name = '/storage/photos/shares/' . $folder_name . '/';
 		$general_settings = [
@@ -58,7 +58,7 @@ class DefaultSettingsTableSeeder extends Seeder
         $developer_settings = [
 			'app_debug' => '1',
 			'app_env' => 'production',
-			'app_language' => 'fa',
+			'app_language' => 'en',
 			'theme' => '1-original',
 			'theme_color_1' => '#48f',
 			'theme_color_2' => '#444',

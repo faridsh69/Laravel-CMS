@@ -27,8 +27,8 @@ class SettingDeveloper extends BaseModel
             'name' => 'app_language',
             'type' => 'string',
             'database' => 'nullable',
-            'rule' => 'required',
-            'form_type' => '',
+            'rule' => 'nullable',
+            'form_type' => 'none',
             'help' => 'Specify application language.',
         ],  
         [

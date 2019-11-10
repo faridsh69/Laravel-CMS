@@ -12,40 +12,43 @@ class DefaultServicesTableSeeder extends Seeder
      */
     public function run()
     {
+        $database_name = config('database.connections.mysql.database');
+        $folder_name = substr($database_name, 9, 6);
+        $image_folder_name = '/storage/photos/shares/' . $folder_name . '/';
         $services = [
             [
             	'id' => 1,
             	'title' => '',
             	'description' => '',
-            	'image' => 'images/front/themes/1-original/service-1.jpg',
+            	'image' => $image_folder_name . '6-service-1.png',
             	'activated' => 1,
             ],
             [
                 'id' => 2,
                 'title' => '',
                 'description' => '',
-                'image' => 'images/front/themes/1-original/service-2.jpg',
+                'image' => $image_folder_name . '6-service-2.png',
                 'activated' => 1,
             ],
             [
                 'id' => 3,
                 'title' => '',
                 'description' => '',
-                'image' => 'images/front/themes/1-original/service-3.jpg',
+                'image' => $image_folder_name . '6-service-3.png',
                 'activated' => 1,
             ],
             [
                 'id' => 4,
                 'title' => '',
                 'description' => '',
-                'image' => 'images/front/themes/1-original/service-4.jpg',
+                'image' => $image_folder_name . '6-service-4.png',
                 'activated' => 1,
             ],
             [
                 'id' => 5,
                 'title' => '',
                 'description' => '',
-                'image' => 'images/front/themes/1-original/service-5.jpg',
+                'image' => $image_folder_name . '6-service-5.png',
                 'activated' => 1,
             ],
         ];
