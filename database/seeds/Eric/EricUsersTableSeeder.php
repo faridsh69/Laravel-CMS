@@ -3,7 +3,7 @@
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
-class UsersTableSeeder extends Seeder
+class EricUsersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

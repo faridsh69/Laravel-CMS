@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Models\Slider;
 
-class SlidersTableSeeder extends Seeder
+class DefaultSlidersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

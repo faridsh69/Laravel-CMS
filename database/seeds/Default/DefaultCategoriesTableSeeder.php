@@ -4,7 +4,7 @@ use App\Models\Category;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
-class CategoriesTableSeeder extends Seeder
+class DefaultCategoriesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,17 +14,16 @@ class CategoriesTableSeeder extends Seeder
         $blog_categories = [
             [
                 'id' => 1,
-                'title' => 'Solar',
+                'title' => 'Cms',
                 'children' => [
-                    ['id' => 2, 'title' => 'Solar eClips'],
-                    ['id' => 3, 'title' => 'Solar for Business'],
-                    ['id' => 4, 'title' => 'Solar for Homeowners'],
-                    ['id' => 5, 'title' => 'FAQ'],
+                    ['id' => 2, 'title' => 'Cms features'],
+                    ['id' => 3, 'title' => 'How to use it'],
+                    ['id' => 4, 'title' => 'Contribute'],
                     [
-                        'id' => 6,
-                        'title' => 'test6',
+                        'id' => 5,
+                        'title' => 'Cms author',
                         'children' => [
-                            ['id' => 7, 'title' => 'test7'],
+                            ['id' => 6, 'title' => 'CV'],
                         ],
                     ],
                 ],

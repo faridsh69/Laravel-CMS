@@ -3,7 +3,7 @@
 use Conner\Tagging\Model\Tag;
 use Illuminate\Database\Seeder;
 
-class TagsTableSeeder extends Seeder
+class CmsTagsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

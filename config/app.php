@@ -1,11 +1,12 @@
 <?php
 
 return [
-    'name' => env('APP_NAME', 'cms-laravel'),
+    'name' => env('APP_NAME', 'cms'),
 
-    'url' => env('APP_URL', 'cms-laravel.com'),
+    // 'url' => env('APP_URL', 'cms-laravel.com'),
+    // 'asset_url' => env('ASSET_URL', '//' . env('APP_URL') . '/cdn'),
 
-    'asset_url' => env('ASSET_URL', '//' . env('APP_URL') . '/cdn'),
+    'asset_url' => env('ASSET_URL', '//cms-laravel.com/cdn'),
 
     'env' => env('APP_ENV', config('0-developer.app_env')),
 
@@ -61,7 +62,7 @@ return [
         Conner\Tagging\Providers\TaggingServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
-        Propaganistas\LaravelPhone\PhoneServiceProvider::class,
+        // Propaganistas\LaravelPhone\PhoneServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         /*

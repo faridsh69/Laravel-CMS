@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Models\Feedback;
 
-class FeedbacksTableSeeder extends Seeder
+class CmsFeedbacksTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

@@ -4,7 +4,7 @@ use App\Models\Menu;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
-class MenusTableSeeder extends Seeder
+class CmsMenusTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

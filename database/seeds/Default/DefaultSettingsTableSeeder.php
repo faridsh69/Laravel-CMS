@@ -5,7 +5,7 @@ use App\Models\SettingDeveloper;
 use App\Models\SettingGeneral;
 use Illuminate\Database\Seeder;
 
-class SettingsTableSeeder extends Seeder
+class DefaultSettingsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

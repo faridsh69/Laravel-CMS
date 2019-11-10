@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Models\Feature;
 
-class FeaturesTableSeeder extends Seeder
+class CmsFeaturesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

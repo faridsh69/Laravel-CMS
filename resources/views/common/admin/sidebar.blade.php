@@ -326,37 +326,6 @@
 			],
 		],
 		[
-			'id' => 12,
-			'title' => 'Theme',
-			'route' => 'theme',
-			'type' => 'submenu',
-			'icon' => 'flaticon-visible',
-			'children' => [	
-				[
-					'title' => 'Theme list',
-					'route' => 'admin.theme.list.index',
-				],
-			],
-		],
-		[
-			'id' => 13,
-			'title' => 'Widget',
-			'route' => 'widget',
-			'type' => 'submenu',
-			'icon' => 'flaticon-imac',
-			'children' => [	
-				[
-					'title' => 'Widget list',
-					'route' => 'admin.widget.list.index',
-				],
-			],
-		],
-		[
-			'title' => 'WIDGET',
-			'type' => 'section',
-		],
-		
-		[
 			'id' => 21,
 			'title' => 'Slider',
 			'route' => 'slider',

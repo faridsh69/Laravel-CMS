@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Models\Counting;
 
-class CountingsTableSeeder extends Seeder
+class DefaultCountingsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
