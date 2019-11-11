@@ -2,7 +2,6 @@
 
 Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
 	Route::get('', 'BlogController@index')->name('index');
-
 	Route::get('categories', 'BlogController@getCategories')->name('categories');
 	Route::get('categories/{category_url}', 'BlogController@getCategory')->name('category');
 	Route::get('tags', 'BlogController@getTags')->name('tags');

@@ -14,26 +14,28 @@
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12 col-md">
+                @if(false)
                 <div class="hero-app-1 custom-animation">
                     <img src="{{ asset('css/front/themes/1-original/img/animate_icon/icon_1.png') }}" alt="animated image"></div>
                 <div class="hero-app-5 custom-animation2">
                     <img src="{{ asset('css/front/themes/1-original/img/animate_icon/icon_3.png') }}" alt="animated image"></div>
+                @endif
                 <div class="wellcome-heading">
-                    <h2>{{ $second_slider->title }}</h2>
-                    <h3>{{ $first_slider->title }}</h3>
-                    <p>{{ $second_slider->description }}</p>
+                    <h2>{{ $first_slider->title }}</h2>
+                    <h3>{{ $second_slider->title }}</h3>
+                    <p>{{ $first_slider->description }}</p>
                 </div>
                 @include('front.themes.' . config("0-developer.theme") . '.form')
             </div>
         </div>
     </div>
-    <!-- Welcome thumb -->
     <div class="welcome-thumb wow fadeInDown" data-wow-delay="0.5s">
         <img src="{{ asset($second_slider->image) }}" alt="{{ $second_slider->title }}">
-    </div>    
+    </div>
+    @if(false)
     <div class="hero-app-7 custom-animation3">
         <img src="{{ asset('css/front/themes/1-original/img/animate_icon/icon_2.png') }}" alt="animated image"></div>
     <div class="hero-app-8 custom-animation">
         <img src="{{ asset('css/front/themes/1-original/img/animate_icon/icon_4.png') }}" alt="animated image"></div>
+    @endif
 </section>
-<!-- ***** Wellcome Area End ***** -->

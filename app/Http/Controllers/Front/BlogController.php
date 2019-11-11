@@ -48,9 +48,9 @@ class BlogController extends Controller
         return view('front.page', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta, 'blogs' => $blogs]);
     }
 
-    public function show($blog_url)
+    public function show($blog_id)
     {
-        $blog = Blog::where('url', $blog_url)->active()->first();
+        $blog = Blog::where('id', $blog_id)->active()->first();
         abort_if(! $blog, 404);
 
         $page = Page::where('url', 'blog')->active()->first();

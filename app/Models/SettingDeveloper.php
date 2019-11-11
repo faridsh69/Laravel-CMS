@@ -46,7 +46,7 @@ class SettingDeveloper extends BaseModel
             'database' => 'nullable',
             'rule' => 'required',
             'form_type' => 'color',
-            'help' => 'Select Color 1 of your theme',
+            'help' => 'Select Color 1 of your theme - default #884bdf',
         ],
         [
             'name' => 'theme_color_2',
@@ -54,7 +54,7 @@ class SettingDeveloper extends BaseModel
             'database' => 'nullable',
             'rule' => 'required',
             'form_type' => 'color',
-            'help' => 'Select Color 2 of your theme',
+            'help' => 'Select Color 2 of your theme - default #fb397d',
         ],
         [
             'name' => 'direction',
