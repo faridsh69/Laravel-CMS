@@ -4,21 +4,20 @@
             <div class="col-md-6 rtl-text-right">
                 <div class="section-heading">
                     <h2>{{ __('contact_title') }}</h2>
-                    <div class="line-shape"></div>
                 </div>
-                <div class="footer-text">
-                    <p>
+                <div class="footer-text" style="display: none;">
+                    <p class="text-center">
                     {!! config('0-general.contact_us_description') !!}
                     </p>
                 </div>
                 <div class="address-text">
-                    <p><span>{{ __('address') }}:</span>{{ config('0-contact.address') }}</p>
+                    <p><span>{{ __('address') }}</span><br>{{ config('0-contact.address') }}</p>
                 </div>
                 <div class="phone-text">
-                    <p><span>{{ __('phone') }}:</span>{{ config('0-contact.phone') }}</p>
+                    <p><span>{{ __('phone') }}</span><br>{{ config('0-contact.phone') }}</p>
                 </div>
                 <div class="email-text">
-                    <p><span>{{ __('email') }}:</span>{{ config('0-contact.email') }}</p>
+                    <p><span>{{ __('email') }}</span><br>{{ config('0-contact.email') }}</p>
                 </div>
             </div>
             <div class="col-md-6">
@@ -34,7 +33,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="phone" id="email" placeholder="{{ __('Phone') }}" required>
+                                        <input type="text" class="form-control" name="phone" id="email" placeholder="{{ __('phone') }}" required>
                                     </div>
                                 </div>
                                 <div class="col-12">

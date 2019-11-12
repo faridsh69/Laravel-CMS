@@ -8,7 +8,7 @@
     <form action="{{ route('front.page.subscribe') }}" method="post" class="form-inline">
         @csrf
         <div class="get-started-button wow bounceInDown" data-wow-delay="0.5s">
-            <input type="text" class="form-control email" placeholder="{{ __('Phone Number') }}" name="phone" style="background-color: white">
+            <input type="text" class="form-control email" placeholder="{{ __('phone') }}" name="phone" style="background-color: white">
             <input type="submit" class="submit" value="{{ __('start') }}" style="min-width: 140px">
         </div>
     </form>

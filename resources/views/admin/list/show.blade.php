@@ -63,18 +63,21 @@
 	<div class="m-portlet__body">
 		<div class="m-list-timeline">
 			<div class="m-list-timeline__items">
+				<br>
 				@foreach($data as $key => $value)
 				<div class="m-list-timeline__item">
 					<span class="m-list-timeline__badge m-list-timeline__badge--brand"></span>
-					<span class="m-list-timeline__icon flaticon-exclamation-1"></span>
-					<span class="m-list-timeline__text">
+					<div style="color: white;width: 150px; display: inline-block;border-right: 1px solid white; margin-right: 10px">
+						<span>
+							{!! $key !!}
+						</span>
+					</div>
+					<span class="m-list-" style="color: white">
 						{!! $value !!}
-					</span>
-					<span class="m-list-timeline__time">
-						{!! $key !!}
 					</span>
 				</div>
 				@endforeach
+				<br>
 			</div>
 		</div>
 		<!--end::Section-->
