@@ -4,6 +4,9 @@
 <link rel="stylesheet" href="{{ asset('/css/front/themes/1-original/css/locale-fa.css') }}">
 @endif
 <style>
+	.wellcome_area{
+		height: 750px;
+	}
 	.wellcome-heading h3{
 		overflow: hidden;
 		white-space: nowrap;
