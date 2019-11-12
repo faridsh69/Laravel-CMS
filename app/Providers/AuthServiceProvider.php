@@ -12,6 +12,7 @@ use App\Policies\FeaturePolicy;
 use App\Policies\FeedbackPolicy;
 use App\Policies\FieldPolicy;
 use App\Policies\FormPolicy;
+use App\Policies\ImagePolicy;
 use App\Policies\MenuPolicy;
 use App\Policies\NotificationPolicy;
 use App\Policies\PagePolicy;
@@ -49,6 +50,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Feedback' => FeedbackPolicy::class,
         'App\Models\Field' => FieldPolicy::class,
         'App\Models\Form' => FormPolicy::class,
+        'App\Models\Image' => ImagePolicy::class,
         'App\Models\Notification' => NotificationPolicy::class,
         'App\Models\Menu' => MenuPolicy::class,
         'App\Models\Partner' => PartnerPolicy::class,

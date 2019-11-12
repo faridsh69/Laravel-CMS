@@ -26,7 +26,7 @@ class DefaultSlidersTableSeeder extends Seeder
             [
             	'id' => 2,
             	'title' => 'Slider Title 2',
-            	'description' => 'Slider Description 2',
+            	'description' => '',
             	'image' => $image_folder_name . '7-slider-2.png',
             	'activated' => 1,
             ],

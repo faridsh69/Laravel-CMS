@@ -118,7 +118,7 @@ $output = [
             'settingcontact',
             'settingdeveloper',
             'tag',
-            'media',
+            'image',
             'report',
             'notification',
             'menu',

@@ -77,7 +77,7 @@
 		],
 		[
 			'id' => 5,
-			'title' => 'Media',
+			'title' => 'Image',
 			'route' => 'media',
 			'type' => 'submenu',
 			'icon' => 'flaticon-open-box',
