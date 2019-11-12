@@ -23,7 +23,8 @@
             </div>
             <div class="col-md-6">
                 <div class="contact_from">
-                    <form action="#" method="post">
+                    <form action="{{ route('front.page.subscribe') }}" method="post">
+                        @csrf
                         <div class="contact_input_area">
                             <div class="row">
                                 <div class="col-md-12">
@@ -33,7 +34,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" name="email" id="email" placeholder="{{ __('email') }}" required>
+                                        <input type="text" class="form-control" name="phone" id="email" placeholder="{{ __('Phone') }}" required>
                                     </div>
                                 </div>
                                 <div class="col-12">

@@ -55,14 +55,16 @@ class PageController extends Controller
         $date = Carbon::now()->format('Y/d/m');
         $time = Carbon::now()->format('H:i');
         $phone = $request->input('phone');
+        $message = $request->input('message');
 
         if(! User::where('phone', $phone)->first()){
             User::create([
                 'first_name' => $date,
                 'last_name' => $time,
                 'phone' => $phone,
+                'bio' => $message,
                 'status' => 0,
-                'password' => 'PAss@X' . rand(200, 1000),
+                'password' => 'Password-' . rand(100,999),
             ]);
         }
 

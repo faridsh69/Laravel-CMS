@@ -109,6 +109,15 @@ class User extends Authenticatable
             'table' => false,
         ],
         [
+            'name' => 'bio',
+            'type' => 'text',
+            'database' => 'nullable',
+            'rule' => 'nullable',
+            'help' => '',
+            'form_type' => 'textarea',
+            'table' => false,
+        ],
+        [
             'name' => 'email_verified_at',
             'type' => 'timestamp',
             'database' => 'nullable',
