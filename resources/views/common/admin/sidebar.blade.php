@@ -154,7 +154,7 @@
 		],
 		[
 			'id' => 7,
-			'title' => 'Setting',
+			'title' => 'SettingGeneral',
 			'route' => 'setting',
 			'type' => 'submenu',
 			'icon' => 'flaticon-cogwheel',
@@ -481,7 +481,11 @@
 					<span class="m-menu__link-title">
 						<span class="m-menu__link-wrap">
 							<span class="m-menu__link-text">
-								{{ $item['title'] }}
+								@if($item['title'] === 'SettingGeneral')
+									Setting
+								@else
+									{{ $item['title'] }}
+								@endif
 							</span>
 							<i class="m-menu__ver-arrow la la-angle-right"></i>
 						</span>
