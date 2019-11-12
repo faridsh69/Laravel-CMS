@@ -144,8 +144,8 @@ class BlocksTableSeeder extends Seeder
             	'id' => 17,
                 'order' => 51,
             	'widget_type' => 'contact',
-                'show_all_pages' => 0,
-                'pages_list' => [1],
+                'show_all_pages' => 1,
+                'pages_list' => [],
                 'activated' => 1,
             ],
             [

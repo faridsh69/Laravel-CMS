@@ -38,7 +38,7 @@ class BaseModel extends Model
                     'database' => 'nullable', // blog, page, menu is required
                     'rule' => 'nullable|max:' . config('0-developer.seo_url_max') 
                     .'|regex:/^[a-z0-9-]+$/',
-                    'help' => 'Url should be unique, contain [a-z, 0-9, -]',
+                    'help' => 'Url should be unique, contain [a-z, 0-9, -], required for seo',
                     'form_type' => '',
                     'table' => true,
                 ],

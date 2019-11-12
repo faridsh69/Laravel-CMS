@@ -82,4 +82,8 @@
 		min-height: 220px;
 		text-align: center;
 	}
+	.member-image img{
+		height: 100px;
+		max-width: 100%;
+	}
 </style>

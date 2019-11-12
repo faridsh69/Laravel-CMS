@@ -16,7 +16,7 @@
                     </div>
                     <div class="member-text">
                         <a href="{{ route('front.blog.show', $blog->id) }}">
-                            <h4>{{ $blog->title }}</h4>
+                            <h6>{{ $blog->title }}</h6>
                             <p>{{ $blog->description }}</p>
                         </a>
                     </div>
@@ -42,6 +42,11 @@
             @endforeach
         @elseif(isset($blog))
             <div class="col-12">
+                <br>
+                {!! $blog->content !!}
+                <br>
+                <br>
+                <br>
                 <span class="mr-3 text-info"><b>Date:</b> {{ $blog->created_at }}</span>
                 <span class="mr-3 text-info"><b>Category:</b>
                     <a href="{{ route('front.blog.category', $blog->category->url)  }}"> 
@@ -49,12 +54,9 @@
                     </a>
                 </span>
                 <hr>
-                <br>
-                {!! $blog->content !!}
-                <br>
-                <br>
-                <br>
                 @if( count($blog->tags) > 0 )
+                <br>
+                <br>
                 <div class="row">
                     <div class="col-12 text-center">
                         <div class="section-heading">
@@ -91,11 +93,11 @@
                     <div class="col-12 col-md-6 col-lg-3">
                         <div class="single-team-member">
                             <div class="member-image">
-                                <img src="{{ asset($blog->meta_image) }}" alt="">
+                                <img src="{{ asset($blog->image) }}" alt="{{ $blog->title }}">
                             </div>
                             <div class="member-text">
                                 <a href="{{ route('front.blog.show', $blog->id) }}">
-                                    <h4>{{ $blog->title }}</h4>
+                                    <h6>{{ $blog->title }}</h6>
                                     <p>{{ $blog->description }}</p>
                                 </a>
                             </div>
