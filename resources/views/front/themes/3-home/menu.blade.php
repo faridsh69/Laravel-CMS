@@ -28,7 +28,7 @@
 
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav nav ml-auto">
-          @foreach(\App\Models\Menu::get()->toTree() as $menu_item)
+          @foreach(\App\Models\Menu::active()->get()->toTree() as $menu_item)
           <li class="nav-item">
             <a href="{{ route('front.page.index', $menu_item->url) }}" class="nav-link">
               <span>{{ $menu_item->title }}</span>

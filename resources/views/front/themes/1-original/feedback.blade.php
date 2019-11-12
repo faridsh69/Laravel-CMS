@@ -4,7 +4,7 @@
             <div class="col-12 col-md-10">
                 <div class="slider slider-for">
                     @php
-                        $feedbacks = \App\Models\Feedback::get(); 
+                        $feedbacks = \App\Models\Feedback::active()->take(7)->get(); 
                     @endphp
                     @foreach($feedbacks as $feedback)
                     <div class="client-feedback-text text-center">

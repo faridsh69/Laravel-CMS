@@ -26,9 +26,7 @@ use App\Policies\ShopPolicy;
 use App\Policies\SliderPolicy;
 use App\Policies\TagPolicy;
 use App\Policies\TeamPolicy;
-use App\Policies\ThemePolicy;
 use App\Policies\UserPolicy;
-use App\Policies\WidgetPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Passport\Passport;
@@ -67,9 +65,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Slider' => SliderPolicy::class,
         'App\Models\Tag' => TagPolicy::class,
         'App\Models\Team' => TeamPolicy::class,
-        'App\Models\Theme' => ThemePolicy::class,
         'App\Models\User' => UserPolicy::class,
-        'App\Models\Widget' => WidgetPolicy::class,
     ];
 
     /**

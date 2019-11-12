@@ -27,7 +27,7 @@ class DefaultSettingsTableSeeder extends Seeder
 			'default_user_image' => $image_folder_name . '3-user.png',
 			'default_product_image' => $image_folder_name . '1-logo.png',
 			'google_index' => '1',
-			'pagination_number' => '10',
+			'pagination_number' => '8',
 			'android_application_url' => 'https://play.google.com/store/apps',
 			'ios_application_url' => 'https://sibapp.com/applications',
 			'introduce_video_url' => $image_folder_name . '5-video.mp4',

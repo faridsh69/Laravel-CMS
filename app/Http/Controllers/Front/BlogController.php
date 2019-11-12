@@ -13,7 +13,7 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $blogs = Blog::orderBy('id', 'desc')->active()->paginate();
+        $blogs = Blog::orderBy('id', 'desc')->active()->paginate(config('0-general.pagination_number'));
         $page = Page::where('url', 'blog')->active()->first();
         abort_if(! $page, 404);
 
@@ -129,7 +129,7 @@ class BlogController extends Controller
         abort_if(! $category, 404);
 
         $categories = Category::get();
-        $blogs = Blog::where('category_id', $category->id)->orderBy('id', 'desc')->paginate();
+        $blogs = Blog::where('category_id', $category->id)->orderBy('id', 'desc')->paginate(config('0-general.pagination_number'));
 
         $page = Page::where('url', 'blog')->first();
         abort_if(! $page, 404);
@@ -167,7 +167,7 @@ class BlogController extends Controller
     public function getTags()
     {
         $categories = Tag::get();
-        $blogs = Blog::orderBy('id', 'desc')->paginate();
+        $blogs = Blog::orderBy('id', 'desc')->paginate(config('0-general.pagination_number'));
 
         $page = Page::where('url', 'blog')->active()->first();
         abort_if(! $page, 404);
@@ -207,7 +207,7 @@ class BlogController extends Controller
         $category = Tag::where('slug', $tag_url)->first();
         abort_if(! $category, 404);
 
-        $blogs = Blog::withAnyTag([$category->name])->orderBy('id', 'desc')->paginate();
+        $blogs = Blog::withAnyTag([$category->name])->orderBy('id', 'desc')->paginate(config('0-general.pagination_number'));
 
         $page = Page::where('url', 'blog')->first();
         abort_if(! $page, 404);

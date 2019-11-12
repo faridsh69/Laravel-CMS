@@ -78,10 +78,6 @@ class BaseListController extends Controller
         }
         $this->meta['link_name'] = __('Create New ' . $this->model);
         $this->meta['search'] = 1;
-        if($this->model === 'Theme'){
-            $this->meta['link_route'] = route('admin.setting.developer');
-            $this->meta['link_name'] = __('Change Theme');
-        }
 
         $columns = [];
         foreach(collect($this->model_columns)->where('table', true) as $column)
@@ -508,7 +504,7 @@ class BaseListController extends Controller
         elseif($this->model === 'Block') {
             $datatable->addColumn('page', function($model) {
                 if($model->page_id){
-                    if(array_search($model->widget_type, \App\Models\Block::getStaticTypes(), true) !== false) {
+                    if(array_search($model->type, \App\Models\Block::getStaticTypes(), true) !== false) {
                         return '*';
                     }
                     return $model->page->title;

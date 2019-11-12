@@ -110,7 +110,7 @@ class BaseModel extends Model
                     'type' => 'string',
                     'database' => 'nullable',
                     'rule' => '',
-                    'help' => 'Select Icon.',
+                    'help' => 'Select Icon from https://themify.me/themify-icons',
                     'form_type' => '',
                     'table' => true,
                 ],

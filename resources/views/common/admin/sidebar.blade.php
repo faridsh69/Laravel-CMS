@@ -93,28 +93,11 @@
 			'type' => 'section',
 		],
 		[
-			'id' => 23,
-			'title' => 'Shop',
-			'route' => 'shop',
-			'type' => 'submenu',
-			'icon' => 'flaticon-business',
-			'children' => [	
-				[
-					'title' => 'Shop list',
-					'route' => 'admin.shop.list.index',
-				],
-				[
-					'title' => 'Create New Shop',
-					'route' => 'admin.shop.list.create',
-				],
-			],
-		],
-		[
 			'id' => 24,
 			'title' => 'Product',
 			'route' => 'product',
 			'type' => 'submenu',
-			'icon' => 'flaticon-tool',
+			'icon' => 'flaticon-business',
 			'children' => [	
 				[
 					'title' => 'Product list',

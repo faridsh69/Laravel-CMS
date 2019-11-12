@@ -10,7 +10,7 @@
       <div class="col-md-12">
         <div class="carousel-testimony owl-carousel ftco-owl">
           @php
-              $feedbacks = \App\Models\Feedback::get(); 
+              $feedbacks = \App\Models\Feedback::active()->get(); 
           @endphp
           @foreach($feedbacks as $feedback)
           <div class="item">

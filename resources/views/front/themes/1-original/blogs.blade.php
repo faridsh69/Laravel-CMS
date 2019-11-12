@@ -9,7 +9,7 @@
                 </div>
             </div>
             @each('front.themes.1-original.blog-card', $blogs, 'blog')
-            <div class="col-12 text-center" style="text-align: center;"> 
+            <div class="col-12"> 
                 {{ $blogs->links() }}
             </div>
         @elseif(isset($categories))

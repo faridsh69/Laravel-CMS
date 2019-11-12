@@ -13,7 +13,7 @@
     <div class="footer-menu">
         <nav>
             <ul>
-                @foreach(\App\Models\Page::take(5)->get() as $page)
+                @foreach(\App\Models\Page::active()->take(5)->get() as $page)
                     <li><a href="{{ route('front.page.index', $page->url) }}">{{ $page->title }}</a></li>
                 @endforeach
             </ul>

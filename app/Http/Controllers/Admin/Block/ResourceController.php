@@ -26,7 +26,7 @@ class ResourceController extends BaseListController
             ];
         }
         $blocks = Block::orderBy('order', 'asc')
-            ->where('widget_type', '!=', 'loading')
+            ->where('type', '!=', 'loading')
             ->get();
 
         return view('admin.list.sortable-table', ['meta' => $this->meta, 'columns' => $columns, 'blocks' => $blocks]);
