@@ -41,14 +41,14 @@ class DefaultSlidersTableSeeder extends Seeder
                 'id' =>4,
                 'title' => 'Slider Title 4',
                 'description' => 'Slider Description 4',
-                'image' => $image_folder_name . '7-slider-3.png',
+                'image' => $image_folder_name . '7-slider-4.png',
                 'activated' => 1,
             ],
             [
                 'id' => 5,
                 'title' => 'Slider Title 5',
                 'description' => 'Slider Description 5',
-                'image' => $image_folder_name . '7-slider-3.png',
+                'image' => $image_folder_name . '7-slider-5.png',
                 'activated' => 1,
             ],
         ];

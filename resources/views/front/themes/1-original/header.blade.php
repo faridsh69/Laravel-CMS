@@ -1,8 +1,8 @@
 @php 
-    $sliders = \App\Models\Slider::orderBy('id', 'asc')->get();
-    if( isset($sliders[0]) ){
+    $sliders = \App\Models\Slider::orderBy('id', 'asc')->active()->get();
+    if( isset($sliders[1]) ){
         $first_slider = \App\Models\Slider::orderBy('id', 'asc')->get()[0];
-        $second_slider = \App\Models\Slider::orderBy('id', 'asc')->get()[1];
+        $second_slider = \App\Models\Slider::orderBy('id', 'asc')->active()->get()[1];
     }else{
         $first_slider = new \App\Models\Slider();
         $second_slider = new \App\Models\Slider();
