@@ -22,6 +22,15 @@ class DefaultUsersTableSeeder extends Seeder
             ],
             [
                 'id' => 2,
+                'first_name' => 'Navid',
+                'last_name' => 'Mansouri',
+                'url' => 'navid-mansouri',
+                'email' => 'navidmansourishsh@gmail.com',
+                'password' => bcrypt('123456'),
+                'activated' => 1,
+            ],
+            [
+                'id' => 3,
                 'first_name' => 'Admin',
                 'last_name' => 'Cms',
                 'url' => 'admin-cms',
