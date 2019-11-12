@@ -54,19 +54,19 @@ class PageController extends Controller
     {
         $date = Carbon::now()->format('Y/d/m');
         $time = Carbon::now()->format('H:i');
-        $email = $request->input('email');
+        $phone = $request->input('phone');
 
-        if(! User::where('email', $email)->first()){
+        if(! User::where('phone', $phone)->first()){
             User::create([
                 'first_name' => $date,
                 'last_name' => $time,
-                'email' => $email,
-                'status' => 2,
-                'password' => 'farid123SS!@#%#@$FDSAddd' . rand(200, 1000),
+                'phone' => $phone,
+                'status' => 0,
+                'password' => 'PAss@X' . rand(200, 1000),
             ]);
         }
 
-        $request->session()->flash('alert-success', 'Congratulation, you will go solar soon!');
+        $request->session()->flash('alert-success', 'Congratulation, We Will Contact You Soon!');
 
         return redirect()->route('front.page.index', '/');
     }

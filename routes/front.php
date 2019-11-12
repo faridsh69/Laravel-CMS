@@ -10,8 +10,10 @@ Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
 });
 Route::post('subscribe', 'PageController@postSubscribe')->name('page.subscribe')->middleware('throttle:4,2');
 Route::get('{page_url?}', 'PageController@getIndex')->name('page.index');
-Route::get('distance/{coordinate}', 'PageController@getIndex')->name('distance.coordinate');
 
+
+// windy map
+Route::get('distance/{coordinate}', 'PageController@getIndex')->name('distance.coordinate');
 Route::group(['prefix' => 'test-windy', 'as' => 'test.windy.'], function () {
 	Route::get('offline', 'TestMapController@getOffline')->name('offline');
 	Route::get('offline-city', 'TestMapController@getOfflineCity')->name('offline-city');
@@ -35,12 +37,12 @@ Route::group(['prefix' => 'test-windy', 'as' => 'test.windy.'], function () {
 	Route::get('rplanner/v1/elevation/{coordinate}', 'TestMapController@getAltitude')->name('altitude');
 });
 
-Route::group(['prefix' => 'test-eric', 'as' => 'test.eric.'], function () {
-	Route::get('upload-image', 'TestController@getUploadImage')->name('upload-image');
-	Route::get('access-token', 'TestController@getAccessToken')->name('access-token');
-	Route::get('new-job', 'TestController@getNewJob')->name('new-job');
-	Route::post('new-job', 'TestController@postNewJob')->name('post-new-job');
-	Route::get('url-parameter', 'TestController@getParameter')->name('url-parameter');
-	Route::get('thank-you', 'TestController@getThankYou')->name('thank-you');
-	Route::get('redirected', 'TestController@getRedirected')->name('redirected');
-});
+// Route::group(['prefix' => 'test-eric', 'as' => 'test.eric.'], function () {
+// 	Route::get('upload-image', 'TestController@getUploadImage')->name('upload-image');
+// 	Route::get('access-token', 'TestController@getAccessToken')->name('access-token');
+// 	Route::get('new-job', 'TestController@getNewJob')->name('new-job');
+// 	Route::post('new-job', 'TestController@postNewJob')->name('post-new-job');
+// 	Route::get('url-parameter', 'TestController@getParameter')->name('url-parameter');
+// 	Route::get('thank-you', 'TestController@getThankYou')->name('thank-you');
+// 	Route::get('redirected', 'TestController@getRedirected')->name('redirected');
+// });

@@ -39,14 +39,14 @@ class User extends Authenticatable
         [
             'name' => 'email',
             'type' => 'string',
-            'database' => 'unique',
+            'database' => 'nullable',
             'rule' => 'required|unique:users,email,',
             'help' => '',
             'form_type' => 'email',
             'table' => true,
         ],
         [
-            'name' => 'mobile',
+            'name' => 'telephone',
             'type' => 'string',
             'database' => 'nullable',
             'rule' => 'nullable|numeric|digits_between:5,16',
@@ -61,7 +61,7 @@ class User extends Authenticatable
             'rule' => 'nullable|numeric|digits_between:5,16',
             'help' => '',
             'form_type' => 'none',
-            'table' => false,
+            'table' => true,
         ],
         [
             'name' => 'gender',
@@ -124,7 +124,7 @@ class User extends Authenticatable
             'rule' => 'nullable|max:191',
             'help' => '',
             'form_type' => 'image',
-            'table' => true,
+            'table' => false,
         ],
         [
             'name' => 'activated',
