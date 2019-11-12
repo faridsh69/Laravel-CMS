@@ -8,15 +8,8 @@ class Field extends BaseModel
 {    
     // title, type, required, activated, options, order
     public $columns = [
-        [
-            'name' => 'title',
-            'type' => 'string',
-            'database' => '',
-            'rule' => 'required',
-            'help' => '',
-            'form_type' => '',
-            'table' => true,
-        ],
+        ['name' => 'title'],
+        ['name' => 'activated'],
         [
             'name' => 'type',
             'type' => 'string',
@@ -35,15 +28,6 @@ class Field extends BaseModel
             'help' => '',
             'form_type' => 'switch-bootstrap-m', // switch-m
             'table' => true,
-        ],
-        [
-            'name' => 'activated',
-            'type' => 'boolean',
-            'database' => 'default',
-            'rule' => 'boolean',
-            'help' => '',
-            'form_type' => '', // switch-m
-            'table' => false,
         ],
         [
             'name' => 'order',

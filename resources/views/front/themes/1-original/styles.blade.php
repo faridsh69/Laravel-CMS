@@ -16,6 +16,9 @@
 	.get-start-area .submit{
 		background-color: {{ config('0-developer.theme_color_2') }};
 	}
+	.get-start-area .form-control{
+		box-shadow: 0px 0px 3px {{ config('0-developer.theme_color_2') }} !important;
+	}
 	.special_description_content h2{
 		color: {{ config('0-developer.theme_color_1') }} !important;
 	}

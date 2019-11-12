@@ -13,8 +13,7 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $blogs = Blog::orderBy('id', 'desc')->paginate();
-
+        $blogs = Blog::orderBy('id', 'desc')->active()->paginate();
         $page = Page::where('url', 'blog')->active()->first();
         abort_if(! $page, 404);
 
@@ -88,8 +87,8 @@ class BlogController extends Controller
 
     public function getCategories()
     {
-        $categories = Category::get();
-        $blogs = Blog::orderBy('id', 'desc')->paginate();
+        $categories = Category::active()->get();
+        $blogs = null;
 
         $page = Page::where('url', 'blog')->active()->first();
         abort_if(! $page, 404);

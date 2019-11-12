@@ -12,7 +12,7 @@
                             <i class="fa fa-quote-left" aria-hidden="true"></i>
                         </div>
                         <div class="client-description text-center">
-                            <p>{{ $feedback->content }}</p>
+                            <p>{{ $feedback->description }}</p>
                         </div>
                         <div class="star-icon text-center">
                             <i class="ion-ios-star"></i>

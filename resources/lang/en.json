@@ -9,5 +9,9 @@
   	"phone" : "Phone",
   	"message" : "Message",
   	"send" : "Send",
+	"blogs" : "Blogs",
+	"tags" : "Tags",
+	"related_blogs" : "Related Blogs",
+	"categories" : "Categories",
   	"copy_right" : "Copyright ©2019. Designed by https://github.com/faridsh69"
 }

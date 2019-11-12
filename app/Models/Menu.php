@@ -9,35 +9,10 @@ class Menu extends BaseModel
 {
     use NodeTrait;
 
-    // title, url, activated, location, parent_id
     public $columns = [
-        [
-            'name' => 'title',
-            'type' => 'string',
-            'database' => '',
-            'rule' => 'required|max:60|min:2',
-            'help' => 'Title should be minimum 2 and maximum 60 characters.',
-            'form_type' => '',
-            'table' => true,
-        ],
-        [
-            'name' => 'url',
-            'type' => 'string',
-            'database' => '',
-            'rule' => 'required|max:80',
-            'help' => 'Url should be unique, contain lowercase characters and numbers and -',
-            'form_type' => '',
-            'table' => true,
-        ],
-        [
-            'name' => 'activated',
-            'type' => 'boolean',
-            'database' => 'default',
-            'rule' => 'boolean',
-            'help' => '',
-            'form_type' => '',
-            'table' => false,
-        ],
+        ['name' => 'title'],
+        ['name' => 'url'],
+        ['name' => 'activated'],
         [
             'name' => 'location',
             'type' => 'string',

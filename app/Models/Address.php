@@ -7,24 +7,8 @@ use App\Base\BaseModel;
 class Address extends BaseModel
 {
     public $columns = [
-        [
-            'name' => 'title',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => '',
-            'help' => 'Determin home or company or ...',
-            'form_type' => '',
-            'table' => false,
-        ],
-        [
-            'name' => 'content',
-            'type' => 'string',
-            'database' => '',
-            'rule' => 'required',
-            'help' => 'Specify street and building number',
-            'form_type' => '',
-            'table' => true,
-        ],
+        ['name' => 'title'],
+        ['name' => 'description'],
         // [
         //     'name' => 'country_id',
         //     'type' => 'integer',

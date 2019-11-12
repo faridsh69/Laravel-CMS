@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function getIndex($page_url = '/')
+    public function getIndex($page_url = '')
     {
         if(config('app.name') === 'map'){
             return view('front.test.map.offline-city');

@@ -4,39 +4,35 @@
         @if(isset($blogs))
             <div class="col-12 text-center">
                 <div class="section-heading">
-                    <h2>Blogs</h2>
+                    <h2>{{ __('blogs') }}</h2>
                     <div class="line-shape"></div>
                 </div>
             </div>
-            @foreach($blogs as $blog)
-            <div class="col-12 col-md-6 col-lg-3">
-                <div class="single-team-member">
-                    <div class="member-image">
-                        <img src="{{ asset($blog->image) }}" alt="{{ $blog->title }}">
-                    </div>
-                    <div class="member-text">
-                        <a href="{{ route('front.blog.show', $blog->id) }}">
-                            <h6>{{ $blog->title }}</h6>
-                            <p>{{ $blog->description }}</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            @endforeach
+            @each('front.themes.1-original.blog-card', $blogs, 'blog')
             <div class="col-12 text-center" style="text-align: center;"> 
                 {{ $blogs->links() }}
             </div>
         @elseif(isset($categories))
+            <br>
+            <br>
+            <div class="col-12 text-center">
+                <div class="section-heading">
+                    <h2>{{ __('categories') }}</h2>
+                    <div class="line-shape"></div>
+                </div>
+            </div>
             @foreach($categories as $category)
-            <div class="col-lg-3 col-md-4 col-12">
-                <div class="card p-3"> 
-                    @if($category->url)
-                    <a href="{{ route('front.blog.tag', $category->url) }}">
-                    @else
-                    <a href="{{ route('front.blog.category', $category->url) }}">
-                    @endif
-                    {{$category->title}}
-                    </a>
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="single-team-member">
+                    <div class="member-image">
+                        <img src="{{ asset($category->image) }}" alt="{{ $category->title }}">
+                    </div>
+                    <div class="member-text">
+                        <a href="{{ route('front.blog.category', $category->url) }}">
+                            <h6>{{ $category->title }}</h6>
+                            <p>{{ $category->description }}</p>
+                        </a>
+                    </div>
                 </div>
             </div>
             @endforeach
@@ -47,8 +43,10 @@
                 <br>
                 <br>
                 <br>
-                <span class="mr-3 text-info"><b>Date:</b> {{ $blog->created_at }}</span>
-                <span class="mr-3 text-info"><b>Category:</b>
+                <hr>
+                <span class="mr-3 text-info"><b>{{ __('date') }}:</b> {{ $blog->created_at }}</span>
+                <br>
+                <span class="mr-3 text-info"><b>{{ __('category') }}:</b>
                     <a href="{{ route('front.blog.category', $blog->category->url)  }}"> 
                         {{ $blog->category->title }}
                     </a>
@@ -60,7 +58,7 @@
                 <div class="row">
                     <div class="col-12 text-center">
                         <div class="section-heading">
-                            <h2>Tags</h2>
+                            <h2>{{ __('tags') }}</h2>
                             <div class="line-shape"></div>
                         </div>
                     </div>
@@ -83,27 +81,11 @@
                 <div class="row">
                     <div class="col-12 text-center">
                         <div class="section-heading">
-                            <h2>Related Blogs</h2>
+                            <h2>{{ __('related_blogs') }}</h2>
                             <div class="line-shape"></div>
                         </div>
                     </div>
-                </div>
-                <div class="row"> 
-                    @foreach($blog->related_blogs as $blog)
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="single-team-member">
-                            <div class="member-image">
-                                <img src="{{ asset($blog->image) }}" alt="{{ $blog->title }}">
-                            </div>
-                            <div class="member-text">
-                                <a href="{{ route('front.blog.show', $blog->id) }}">
-                                    <h6>{{ $blog->title }}</h6>
-                                    <p>{{ $blog->description }}</p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
+                    @each('front.themes.1-original.blog-card', $blog->related_blogs, 'blog')
                 </div>
                 @endif
             </div>

@@ -60,7 +60,7 @@ var output =
 		                timeout: 30000,
                 	},
                 },
-                pageSize:6, 
+                pageSize:5, 
                 saveState: {
                     cookie: false,
                     webstorage: true,
@@ -71,7 +71,7 @@ var output =
                 theme: "default",
                 class: "table m-table m-table--head-separator-primary", 
                 scroll: true, 
-                footer: true,
+                footer: false,
             }, 
             sortable: true, 
         	pagination: true, 

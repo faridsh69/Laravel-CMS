@@ -6,25 +6,18 @@ use App\Base\BaseModel;
 
 class Block extends BaseModel
 {
-    // widget_type, title, show_all_pages, pages_list, order, activated
+    // type, title, show_all_pages, pages_list, order, activated
     public $columns = [
+        ['name' => 'title'],
+        ['name' => 'activated'],
         [
-            'name' => 'widget_type',
+            'name' => 'type',
             'type' => 'string',
             'database' => '',
             'rule' => 'required',
             'help' => '',
             'form_type' => 'enum',
             'form_enum_class' => 'BlockType',
-            'table' => true,
-        ],
-        [
-            'name' => 'title',
-            'type' => 'string',
-            'database' => '',
-            'rule' => 'required',
-            'help' => 'title will used in folder name of widget.',
-            'form_type' => '',
             'table' => true,
         ],
         [
@@ -57,15 +50,6 @@ class Block extends BaseModel
             'help' => 'Order of block, lower is on top',
             'form_type' => '',
             'table' => true,
-        ],
-        [
-            'name' => 'activated',
-            'type' => 'boolean',
-            'database' => 'default',
-            'rule' => 'boolean',
-            'help' => '',
-            'form_type' => '', // switch-m
-            'table' => false,
         ],
     ];
 

@@ -14,7 +14,7 @@ class BlocksTableSeeder extends Seeder
             [
             	'id' => 1,
                 'order' => 3,
-                'widget_type' => 'menu',
+                'type' => 'menu',
                 'show_all_pages' => 1,
             	'pages_list' => [],
             	'activated' => 1,
@@ -22,7 +22,7 @@ class BlocksTableSeeder extends Seeder
             [
             	'id' => 2,
                 'order' => 6,
-            	'widget_type' => 'header',
+            	'type' => 'header',
                 'show_all_pages' => 0,
                 'pages_list' => [1],
             	'activated' => 1,
@@ -30,7 +30,7 @@ class BlocksTableSeeder extends Seeder
             [
                 'id' => 3,
                 'order' => 9,
-                'widget_type' => 'header',
+                'type' => 'header',
                 'title' => 'header-page',
                 'show_all_pages' => 1,
                 'pages_list' => [1],
@@ -39,15 +39,15 @@ class BlocksTableSeeder extends Seeder
             [
                 'id' => 4,
                 'order' => 12,
-                'widget_type' => 'blogs',
+                'type' => 'blogs',
                 'show_all_pages' => 0,
-                'pages_list' => [6],
+                'pages_list' => [4],
                 'activated' => 1,
             ],
             [
                 'id' => 5,
                 'order' => 15,
-                'widget_type' => 'features',
+                'type' => 'features',
                 'show_all_pages' => 0,
                 'pages_list' => [1],
                 'activated' => 1,
@@ -55,7 +55,7 @@ class BlocksTableSeeder extends Seeder
             [
             	'id' => 6,
                 'order' => 18,
-            	'widget_type' => 'content',
+            	'type' => 'content',
                 'show_all_pages' => 1,
                 'pages_list' => [1],
                 'activated' => 1,
@@ -63,7 +63,7 @@ class BlocksTableSeeder extends Seeder
             [
                 'id' => 7,
                 'order' => 21,
-                'widget_type' => 'application',
+                'type' => 'application',
                 'show_all_pages' => 0,
                 'pages_list' => [1],
                 'activated' => 1,
@@ -71,7 +71,7 @@ class BlocksTableSeeder extends Seeder
             [
             	'id' => 8,
                 'order' => 24,
-            	'widget_type' => 'video',
+            	'type' => 'video',
                 'show_all_pages' => 0,
                 'pages_list' => [1],
                 'activated' => 1,
@@ -79,7 +79,7 @@ class BlocksTableSeeder extends Seeder
             [
             	'id' => 9,
                 'order' => 27,
-            	'widget_type' => 'counting',
+            	'type' => 'counting',
                 'show_all_pages' => 0,
                 'pages_list' => [1],
                 'activated' => 1,
@@ -87,7 +87,7 @@ class BlocksTableSeeder extends Seeder
             [
             	'id' => 10,
                 'order' => 30,
-            	'widget_type' => 'products',
+            	'type' => 'products',
                 'show_all_pages' => 0,
                 'pages_list' => [1],
                 'activated' => 1,
@@ -95,7 +95,7 @@ class BlocksTableSeeder extends Seeder
             [
             	'id' => 11,
                 'order' => 33,
-            	'widget_type' => 'pricing',
+            	'type' => 'pricing',
                 'show_all_pages' => 0,
                 'pages_list' => [1],
                 'activated' => 0,
@@ -103,7 +103,7 @@ class BlocksTableSeeder extends Seeder
             [
             	'id' => 12,
                 'order' => 36,
-            	'widget_type' => 'feedback',
+            	'type' => 'feedback',
                 'show_all_pages' => 0,
                 'pages_list' => [1],
                 'activated' => 1,
@@ -111,7 +111,7 @@ class BlocksTableSeeder extends Seeder
             [
                 'id' => 13,
                 'order' => 39,
-                'widget_type' => 'learn',
+                'type' => 'learn',
                 'show_all_pages' => 0,
                 'pages_list' => [1],
                 'activated' => 1,
@@ -119,7 +119,7 @@ class BlocksTableSeeder extends Seeder
             [
             	'id' => 14,
                 'order' => 42,
-            	'widget_type' => 'subscribe',
+            	'type' => 'subscribe',
                 'show_all_pages' => 1,
                 'pages_list' => [],
                 'activated' => 1,
@@ -127,7 +127,7 @@ class BlocksTableSeeder extends Seeder
             [
             	'id' => 15,
                 'order' => 45,
-            	'widget_type' => 'team',
+            	'type' => 'team',
                 'show_all_pages' => 0,
                 'pages_list' => [],
                 'activated' => 0,
@@ -135,7 +135,7 @@ class BlocksTableSeeder extends Seeder
             [
                 'id' => 16,
                 'order' => 48,
-                'widget_type' => 'map',
+                'type' => 'map',
                 'show_all_pages' => 0,
                 'pages_list' => [1],
                 'activated' => 0,
@@ -143,7 +143,7 @@ class BlocksTableSeeder extends Seeder
             [
             	'id' => 17,
                 'order' => 51,
-            	'widget_type' => 'contact',
+            	'type' => 'contact',
                 'show_all_pages' => 1,
                 'pages_list' => [],
                 'activated' => 1,
@@ -151,7 +151,7 @@ class BlocksTableSeeder extends Seeder
             [
             	'id' => 18,
                 'order' => 54,
-            	'widget_type' => 'footer',
+            	'type' => 'footer',
                 'show_all_pages' => 1,
                 'pages_list' => [],
                 'activated' => 1,
@@ -159,7 +159,7 @@ class BlocksTableSeeder extends Seeder
             [
             	'id' => 19,
                 'order' => 57,
-            	'widget_type' => 'loading',
+            	'type' => 'loading',
                 'show_all_pages' => 1,
                 'pages_list' => [],
                 'activated' => 1,
@@ -169,9 +169,9 @@ class BlocksTableSeeder extends Seeder
         foreach($blocks as $block){
             $block_model = Block::updateOrCreate(['id' => $block['id']], 
                 [
-                    'title' => isset($block['title']) ? $block['title'] : $block['widget_type'],
+                    'title' => isset($block['title']) ? $block['title'] : $block['type'],
                     'order' => $block['order'],
-                    'widget_type' => $block['widget_type'],
+                    'type' => $block['type'],
                     'show_all_pages' => $block['show_all_pages'],
                     'activated' => $block['activated'],
                 ]

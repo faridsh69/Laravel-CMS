@@ -34,11 +34,6 @@ class DefaultMenusTableSeeder extends Seeder
             ],
             [
                 'id' => 5,
-                'title' => 'FAQ',
-                'url' => 'faq',
-            ],
-            [
-                'id' => 6,
                 'title' => 'Contact Us',
                 'url' => 'contact-us',
             ],

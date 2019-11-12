@@ -10,7 +10,7 @@ class Comment extends CommentSpatie
 	use SoftDeletes;
 
     public $columns = [
-        // blogs
+        // blog id
         [
 	        'name' => 'commented_id',
 	        'type' => 'bigInteger',
@@ -25,7 +25,7 @@ class Comment extends CommentSpatie
             'multiple' => false,
 	        'table' => false,
 	    ],
-        // user who created comment
+        // user id
         [
             'name' => 'commentable_id',
             'type' => 'bigInteger',
@@ -36,14 +36,7 @@ class Comment extends CommentSpatie
             'form_type' => 'none',
             'table' => false,
         ],
-        [
-            'name' => 'blog_url',
-            'type' => 'string',
-            'database' => 'none',
-            'rule' => '',
-            'form_type' => 'none',
-            'table' => true,
-        ],
+        // comment
         [
             'name' => 'comment',
             'type' => 'text',
@@ -53,6 +46,16 @@ class Comment extends CommentSpatie
             'form_type' => 'textarea',
             'table' => true,
         ],
+        // blog url show in admin table
+        [
+            'name' => 'blog_url',
+            'type' => 'string',
+            'database' => 'none',
+            'rule' => '',
+            'form_type' => 'none',
+            'table' => true,
+        ],
+        // user name show in admin table
         [
             'name' => 'author',
             'type' => 'string',
@@ -68,7 +71,7 @@ class Comment extends CommentSpatie
             'database' => 'default',
             'rule' => 'boolean',
             'help' => '',
-            'form_type' => 'none', // switch-m
+            'form_type' => 'none',
             'table' => false,
         ],
     ];

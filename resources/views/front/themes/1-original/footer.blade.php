@@ -13,10 +13,9 @@
     <div class="footer-menu">
         <nav>
             <ul>
-                <li><a href="{{ route('front.page.index', 'about-us') }}">About Us</a></li>
-                <li><a href="{{ route('front.page.index', 'services') }}">Services</a></li>
-                <li><a href="{{ route('front.page.index', 'blog') }}">Blog</a></li>
-                <li><a href="{{ route('front.page.index', 'contact-us') }}">Contact Us</a></li>
+                @foreach(\App\Models\Page::take(5)->get() as $page)
+                    <li><a href="{{ route('front.page.index', $page->url) }}">{{ $page->title }}</a></li>
+                @endforeach
             </ul>
         </nav>
     </div>

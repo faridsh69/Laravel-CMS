@@ -20,7 +20,7 @@ class BaseModel extends Model
     {
         $table_name = $this->getTable();
         $seconds = 1;
-        return Cache::remember('models.' . $table_name, $seconds, function () {
+        return Cache::remember('models1.' . $table_name, $seconds, function () {
             $default_columns = [
                 'title' => [
                     'name' => 'title',
@@ -28,26 +28,26 @@ class BaseModel extends Model
                     'database' => '',
                     'rule' => 'required|min:' . config('0-developer.seo_title_min')
                     . '|max:' . config('0-developer.seo_title_max'),
-                    'help' => 'Title should be unique.',
+                    'help' => 'Title should be unique and must not be same with H1.',
                     'form_type' => '',
                     'table' => true,
                 ],
                 'url' => [
                     'name' => 'url',
                     'type' => 'string',
-                    'database' => 'nullable', // blog, page, menu is required
-                    'rule' => 'nullable|max:' . config('0-developer.seo_url_max') 
+                    'database' => '',
+                    'rule' => 'required|max:' . config('0-developer.seo_url_max') 
                     .'|regex:/^[a-z0-9-]+$/',
                     'help' => 'Url should be unique, contain [a-z, 0-9, -], required for seo',
                     'form_type' => '',
-                    'table' => true,
+                    'table' => false,
                 ],
                 'description' => [
                     'name' => 'description',
                     'type' => 'text',
                     'database' => 'nullable',
                     'rule' => 'nullable',
-                    'help' => 'Title should have 50 characters, maximum 160 characters.',
+                    'help' => 'Description should be 50 - 70 characters, maximum 160 characters.',
                     'form_type' => 'textarea',
                     'table' => true,
                 ],
@@ -104,6 +104,24 @@ class BaseModel extends Model
                     'help' => 'Canonical url is neccessary if one content will show from two different urls.',
                     'form_type' => '',
                     'table' => false,
+                ],
+                'icon' => [
+                    'name' => 'icon',
+                    'type' => 'string',
+                    'database' => 'nullable',
+                    'rule' => '',
+                    'help' => 'Select Icon.',
+                    'form_type' => '',
+                    'table' => true,
+                ],
+                'full_name' => [
+                    'name' => 'full_name',
+                    'type' => 'string',
+                    'database' => 'nullable',
+                    'rule' => '',
+                    'help' => '',
+                    'form_type' => '',
+                    'table' => true,
                 ],
             ];
 

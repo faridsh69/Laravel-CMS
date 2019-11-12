@@ -68,7 +68,6 @@ $output = [
             'field',
             'role',
             'permission',
-            'shop',
             'product',
         ],
         'seeder' => [
@@ -82,7 +81,6 @@ $output = [
             'feature',
             'field',
             'form',
-            'shop',
             'product',
         ],
         'admin_routes' => [
@@ -109,7 +107,6 @@ $output = [
             'activity',
             'role',
             'permission',
-            'shop',
             'product',
         ],
         'permissions' => [
@@ -140,7 +137,6 @@ $output = [
             'activity',
             'role',
             'permission',
-            'shop',
             'product',
         ],
     ],

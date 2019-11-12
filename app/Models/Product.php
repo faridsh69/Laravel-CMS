@@ -19,7 +19,6 @@ class Product extends BaseModel implements Commentable
     // order,
     // url,
     // category_id,
-    // shop_id,
     // description,
     // content,
     // image,
@@ -29,18 +28,14 @@ class Product extends BaseModel implements Commentable
 
     // comment,
     // rate,
-	// gallery
+    // gallery
 
     public $columns = [
-        [
-            'name' => 'title',
-            'type' => 'string',
-            'database' => '',
-            'rule' => 'required|max:90|min:2',
-            'help' => '',
-            'form_type' => '',
-            'table' => true,
-        ],
+        ['name' => 'title'],
+        ['name' => 'url'],
+        ['name' => 'description'],
+        ['name' => 'content'],
+        ['name' => 'image'],
         [
             'name' => 'price',
             'type' => 'integer',
@@ -78,15 +73,6 @@ class Product extends BaseModel implements Commentable
             'table' => false,
         ],
         [
-            'name' => 'url',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => 'nullable|max:80|min:2',
-            'help' => 'Url should Contain lowercase characters and numbers and -',
-            'form_type' => '',
-            'table' => true,
-        ],
-        [
             'name' => 'category_id',
             'type' => 'bigInteger',
             'database' => 'unsigned',
@@ -101,47 +87,6 @@ class Product extends BaseModel implements Commentable
             'table' => false,
         ],
         [
-            'name' => 'shop_id',
-            'type' => 'bigInteger',
-            'database' => 'unsigned',
-            'relation' => 'shops',
-            'rule' => 'exists:shops,id',
-            'help' => '',
-            'form_type' => 'entity',
-            'class' => 'App\Models\Shop',
-            'property' => 'title',
-            'property_key' => 'id',
-            'multiple' => false,
-            'table' => false,
-        ],
-        [
-            'name' => 'description',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => 'nullable|max:191',
-            'help' => 'Description will show in lists instead of content.',
-            'form_type' => 'textarea',
-            'table' => false,
-        ],
-        [
-            'name' => 'content',
-            'type' => 'text',
-            'database' => 'nullable',
-            'rule' => 'nullable',
-            'help' => '',
-            'form_type' => 'ckeditor',
-            'table' => true,
-        ],
-        [
-            'name' => 'image',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => 'nullable|max:191',
-            'help' => 'Should have rate 1*1',
-            'form_type' => 'none',
-            'table' => false,
-        ],
-        [
             'name' => 'gallery',
             'type' => 'files_array',
             'database' => 'none',
@@ -150,15 +95,7 @@ class Product extends BaseModel implements Commentable
             'form_type' => 'gallery',
             'table' => false,
         ],
-        [
-            'name' => 'activated',
-            'type' => 'boolean',
-            'database' => 'default',
-            'rule' => 'boolean',
-            'help' => '',
-            'form_type' => '', // switch-m
-            'table' => false,
-        ],
+        ['name' => 'activated'],
         [
             'name' => 'tags',
             'type' => 'array',

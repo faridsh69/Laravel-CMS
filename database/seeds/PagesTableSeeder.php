@@ -14,7 +14,7 @@ class PagesTableSeeder extends Seeder
             [
             	'id' => 1,
             	'title' => 'Home',
-            	'url' => '/',
+            	'url' => '',
             	'content' => '',
             	'description' => '',
             	'activated' => 1,
@@ -42,17 +42,7 @@ class PagesTableSeeder extends Seeder
             	'image' => '',
             ],
             [
-            	'id' => 4,
-            	'title' => 'FAQ',
-            	'url' => 'faq',
-            	'content' => '<h1>CMS FAQ</h1><h2>CMS FAQ</h2>',
-            	'description' => 'description about FAQ page',
-            	'activated' => 1,
-            	'google_index' => 1,
-            	'image' => '',
-            ],
-            [
-                'id' => 6,
+                'id' => 4,
                 'title' => 'Blog',
                 'url' => 'blog',
                 'content' => ' ',
@@ -71,6 +61,16 @@ class PagesTableSeeder extends Seeder
             	'google_index' => 1,
             	'image' => '',
             ],
+            // [
+            //  'id' => 4,
+            //  'title' => 'FAQ',
+            //  'url' => 'faq',
+            //  'content' => '<h1>CMS FAQ</h1><h2>CMS FAQ</h2>',
+            //  'description' => 'description about FAQ page',
+            //  'activated' => 1,
+            //  'google_index' => 1,
+            //  'image' => '',
+            // ],
         ];
 
         foreach($pages as $page){

@@ -27,22 +27,21 @@ class BaseFactory
                     $form_type = $column['form_type'];
                     $database = isset($column['database']) ? $column['database'] : null;
 
-                    // if database column is nullable its not neccessary to fill it
-                    if($database === 'nullable' || $database === 'none'){
+                    if($name === 'url'){
+                        $fake_data = 'fake-' . $faker->numberBetween($min = 1000, $max = 9999);
+                    }
+                    elseif($name === 'description'){
+                        $fake_data = $faker->realText(100);
+                    }
+                    elseif($database === 'nullable' || $database === 'none'){
                         continue;
                     }
                     elseif($name === 'password'){
                         $password = $faker->realText(10);
                         $fake_data = $password;
                     }
-                    elseif($name === 'url'){
-                        $fake_data = 'fake-' . $faker->numberBetween($min = 1000, $max = 900000);
-                    }
                     elseif($name === 'content'){
                         $fake_data = '<h1>Fake h1</h1><h2>Fake h2</h2>' . $faker->realText(400);
-                    }
-                    elseif($name === 'meta_description'){
-                        $fake_data = $faker->realText(100);
                     }
                     elseif($form_type === 'email'){
                         $fake_data = $faker->unique()->safeEmail;
