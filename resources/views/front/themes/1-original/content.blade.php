@@ -1,4 +1,4 @@
-<section class="special-area bg-white" style="color: #5b32b4; padding:90px 0px;">
+<section class="special-area bg-white" style="color: #5b32b4; padding:70px 0px;">
 	<div class="container">
 		<div class="row">
 			<div class="col-12"> 
