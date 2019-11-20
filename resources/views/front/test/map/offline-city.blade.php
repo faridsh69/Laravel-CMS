@@ -2,7 +2,7 @@
 <html lang="en" id="device-mobile">
 
 <head>
-    <title>Windy: Wind map &amp; weather forecast</title>
+    <title id="nahaja-title">Nahaja Map</title>
     <base href="/">
     <link rel="canonical" href="/">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -29,8 +29,8 @@
         window.Promise || document.write('<script src="js/promise.v10.js"><\/script>')
     </script>
 
-    @if(\URL::to('/') === 'http://www.eric.com')
-        <script src="/v/index.js"></script>
+    @if(\URL::to('/') === 'http://www.advaned-offline.map')
+        <script src="/v/index_map.js"></script>
     @else
         <script src="/v/index_faridtest.js"></script>
     @endif

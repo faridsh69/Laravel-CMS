@@ -35,6 +35,8 @@ Route::group(['prefix' => 'test-windy', 'as' => 'test.windy.'], function () {
 	Route::get('Zm9yZWNhc3Q/ZWNtd2Y/cG9pbnQvZWNtd2YvdjIuNS8zNS42OTYxLzUxLjQyMzE/c291cmNlPWhwJnNldHVwPXN1bW1hcnkmaW5jbHVkZU5vdz10cnVl', 'TestMapController@getNodeConnection')->name('ajib');
 	Route::get('payments/total', 'TestMapController@getNodeConnection')->name('node.connection');
 	Route::get('rplanner/v1/elevation/{coordinate}', 'TestMapController@getAltitude')->name('altitude');
+	// Route::post('sedlina/err', 'TestMapController@getNodeConnection')->name('sedlina.err');
+	 
 });
 
 // Route::group(['prefix' => 'test-eric', 'as' => 'test.eric.'], function () {
