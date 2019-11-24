@@ -13,7 +13,7 @@ class PagesTableSeeder extends Seeder
     	$pages = [
             [
             	'id' => 1,
-            	'title' => 'Home',
+            	'title' => 'خانه',
             	'url' => '',
             	'content' => '',
             	'description' => '',
@@ -23,9 +23,9 @@ class PagesTableSeeder extends Seeder
             ],
             [
             	'id' => 2,
-            	'title' => 'About Us',
+            	'title' => 'درباره ما',
             	'url' => 'about-us',
-            	'content' => '<h1>About us</h1><h2>CMS About us details</h2>',
+            	'content' => '<h1>درباره ما</h1>',
             	'description' => 'description about about us page',
             	'activated' => 1,
             	'google_index' => 1,
@@ -33,9 +33,9 @@ class PagesTableSeeder extends Seeder
             ],
             [
             	'id' => 3,
-            	'title' => 'Services',
+            	'title' => 'خدمات',
             	'url' => 'services',
-            	'content' => '<h1>CMS Services</h1><h2>CMS Services</h2>',
+            	'content' => '<h1>خدمات ما</h1>',
             	'description' => 'description about Services page',
             	'activated' => 1,
             	'google_index' => 1,
@@ -43,9 +43,9 @@ class PagesTableSeeder extends Seeder
             ],
             [
                 'id' => 4,
-                'title' => 'Blog',
+                'title' => 'مقالات',
                 'url' => 'blog',
-                'content' => ' ',
+                'content' => '',
                 'description' => 'description about BLOGS page',
                 'activated' => 1,
                 'google_index' => 1,
@@ -53,9 +53,9 @@ class PagesTableSeeder extends Seeder
             ],
             [
             	'id' => 5,
-            	'title' => 'Contact Us',
+            	'title' => 'تماس با ما',
             	'url' => 'contact-us',
-            	'content' => '<h1>CMS Contact us</h1><h2>CMS Contact us</h2>',
+            	'content' => '<h1>تماس با ما</h1>',
             	'description' => 'description about contact us page',
             	'activated' => 1,
             	'google_index' => 1,

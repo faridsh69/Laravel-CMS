@@ -14,27 +14,27 @@ class DefaultMenusTableSeeder extends Seeder
         $menus = [
             [
                 'id' => 1,
-                'title' => 'Home',
+                'title' => 'خانه',
                 'url' => '/',
             ],
             [
                 'id' => 2,
-                'title' => 'About Us',
+                'title' => 'درباره ما',
                 'url' => 'about-us',
             ],
             [
                 'id' => 3,
-                'title' => 'Services',
+                'title' => 'خدمات',
                 'url' => 'services',
             ],
             [
                 'id' => 4,
-                'title' => 'Blog',
+                'title' => 'مقالات',
                 'url' => 'blog',
             ],
             [
                 'id' => 5,
-                'title' => 'Contact Us',
+                'title' => 'تماس با ما',
                 'url' => 'contact-us',
             ],
         ];
