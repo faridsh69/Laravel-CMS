@@ -8,9 +8,8 @@ Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
 	Route::get('tags/{tag_url}', 'BlogController@getTag')->name('tag');
 	Route::get('{blog_url}', 'BlogController@show')->name('show');
 });
-Route::post('subscribe', 'PageController@postSubscribe')->name('page.subscribe')->middleware('throttle:4,2');
+Route::post('subscribe', 'PageController@postSubscribe')->name('page.subscribe')->middleware('throttle:2,1');
 Route::get('{page_url?}', 'PageController@getIndex')->name('page.index');
-
 
 // windy map
 Route::get('distance/{coordinate}', 'PageController@getIndex')->name('distance.coordinate');

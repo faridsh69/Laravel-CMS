@@ -23,3 +23,12 @@
         <p>{{ __('copy_right') }}</p>
     </div>
 </footer>
+<div class="whatsapp-icon">
+    <a target="_blank" href="tel:{{ config('0-contact.mobile') }}" title="call">
+        <img src="{{ asset('/images/front/general/phone.png') }}" width="50px" style="margin-left: 6px; margin-bottom: 10px">
+    </a>
+    <br>
+    <a target="_blank" href="https://wa.me/{{ config('0-contact.mobile') }}/?text=help" title="whatsapp">
+        <img src="{{ asset('/images/front/general/whatsapp.png') }}"  width="60px">
+    </a>
+</div>

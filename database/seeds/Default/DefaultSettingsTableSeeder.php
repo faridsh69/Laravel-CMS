@@ -12,14 +12,6 @@ class DefaultSettingsTableSeeder extends Seeder
      *
      * @return void
      */
-
-    private function random_color_part() {
-	    return str_pad( dechex( mt_rand( 0, 255 ) ), 2, '0', STR_PAD_LEFT);
-	}
-	private function random_color() {
-	    return '#' . $this->random_color_part() . $this->random_color_part() . $this->random_color_part();
-	}
-
 	public function run()
 	{
 	    $database_name = config('database.connections.mysql.database');
@@ -40,7 +32,7 @@ class DefaultSettingsTableSeeder extends Seeder
 			'ios_application_url' => 'https://sibapp.com/applications',
 			'introduce_video_url' => $image_folder_name . '5-video.mp4',
 			'introduce_video_cover_photo' => $image_folder_name . '4-video.png',
-			'subscribe_description' => 'General Setting Subscibe Description.',
+			'subscribe_description' => 'General Setting Subscribe Description.',
 			'contact_us_description' => 'General Setting Contactus Description.',
 			'google_analytics_id' => '',
 			'hotjar_id' => '',
@@ -52,7 +44,7 @@ class DefaultSettingsTableSeeder extends Seeder
 			'mobile' => '+989120568203',
 			'phone' => '+989120568203',
 			'fax' => '+989120568203',
-			'address' => 'Iran, Tehran, Zaferanieh St, Asef alley, Laravel Company',
+			'address' => 'تهران - زعفرانیه - خیابان آصف - پلاک 93 - واحد 1',
 			'latitude' => '35.751138',
 			'longitude' => '51.323043',
 			'google_plus' => 'farid.sh69',
@@ -77,7 +69,7 @@ class DefaultSettingsTableSeeder extends Seeder
 			'email_password' => 'email@password',
 			'email_default_ccc' => 'farid.sh69@gmail.com',
 			'email_default_subject' => 'Laravel Cms',
-			'scripts' => '<script> console.log("Script is running..."); </script>',
+			'scripts' => '<script> console.log("Laravel is running..."); </script>',
 			'seo_title_min' => '2',
 			'seo_title_max' => '70',
 			'seo_url_max' => '80',
@@ -88,4 +80,11 @@ class DefaultSettingsTableSeeder extends Seeder
         SettingDeveloper::updateOrCreate(['id' => 1], $developer_settings);
         SettingContact::updateOrCreate(['id' => 1], $contact_settings);
     }
+
+    private function random_color_part() {
+	    return str_pad( dechex( mt_rand( 0, 255 ) ), 2, '0', STR_PAD_LEFT);
+	}
+	private function random_color() {
+	    return '#' . $this->random_color_part() . $this->random_color_part() . $this->random_color_part();
+	}
 }

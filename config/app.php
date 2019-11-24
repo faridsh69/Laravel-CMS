@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'name' => env('APP_NAME', 'cms'),
+    'name' => env('APP_NAME', 'laravel-cms'),
 
     // 'url' => env('APP_URL', 'cms-laravel.com'),
     // 'asset_url' => env('ASSET_URL', '//' . env('APP_URL') . '/cdn'),

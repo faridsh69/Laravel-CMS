@@ -50,7 +50,6 @@
 }
 body {
     font-family: 'IRANSans',"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 13px;
 }
 .line-shape{
     margin-right: calc(50% - 40px);
@@ -59,5 +58,8 @@ body {
     direction: ltr;
 }
 .rtl-text-right{
+    text-align: right;
+}
+.special_description_content{
     text-align: right;
 }
