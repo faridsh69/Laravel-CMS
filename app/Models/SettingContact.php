@@ -21,13 +21,13 @@ class SettingContact extends BaseModel
             'rule' => 'nullable|numeric',
             'form_type' => '',
         ],
-        [
-            'name' => 'whatsapp',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => 'nullable|numeric',
-            'form_type' => '',
-        ],
+        // [
+        //     'name' => 'whatsapp',
+        //     'type' => 'string',
+        //     'database' => 'nullable',
+        //     'rule' => 'nullable|numeric',
+        //     'form_type' => '',
+        // ],
         [
             'name' => 'phone',
             'type' => 'string',

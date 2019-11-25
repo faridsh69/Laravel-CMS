@@ -10,7 +10,7 @@
                 <div class="col-lg-6 col-xl-5 ml-xl-auto">
                     <div class="special_description_content">
                         <h2>{{ $slider->title }}</h2>
-                        <p>{{ $slider->description }}</p>
+                        <p>{!! $slider->description !!}</p>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -27,7 +27,7 @@
                 <div class="col-lg-6 col-xl-5 ml-xl-auto">
                     <div class="special_description_content">
                         <h2>{{ $slider->title }}</h2>
-                        <p>{{ $slider->description }}</p>
+                        <p>{!! $slider->description !!}</p>
                         @if($slider->id === 3)
                         <div class="app-download-area">
                             <div class="app-download-btn wow fadeInUp" data-wow-delay="0.2s">
