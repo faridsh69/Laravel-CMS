@@ -17,9 +17,12 @@ File list:
 .navbar-brand img{max-height: 60px;margin-top: 5px;}
 .whatsapp-icon{
 	position: fixed;
-	left: 0px;
+	left: 10px;
 	bottom: 10px;
 	z-index: 99;
+}
+.welcome-thumb{
+	bottom: -114px;
 }
 #scrollUp{
     right: 83px !important;
