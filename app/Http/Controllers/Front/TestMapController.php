@@ -36,6 +36,8 @@ class TestMapController extends Controller
 		if($m1 === '257w1' || $m1 === '257w0'){
 			$m1 = '257w3';
 		}
+		$m1 = '257w3';
+		
 		return \Redirect::to('/cdn/images/front/themes/4-windy/map/wind/' 
 			. $year . '_' . $month . '_' . $day . '_' . $hour . '_' . $m1 . '_' . $m2 . '_' . $m3 . '_' . 
 			'wind-surface.jpg');
