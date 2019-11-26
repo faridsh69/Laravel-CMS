@@ -50,7 +50,7 @@ class MapWeather extends Command
             '257w3' => 7,
             // '257w4' => 15,
         ]; // 257w2 -> zoom ta 4 // 257w3 -> zoom ta 7  
-        $hights = ['surface', '100', 
+        $hights = ['surface', '100m', 
             // '950h', '925h', '900h', '850h', '800h', '700h', '600h', '500h', '400h', '300h', 
             // '250h', '200h', '150h'
         ];
@@ -61,9 +61,9 @@ class MapWeather extends Command
             // 'cloudsrain',
         ];
         $years = ['2019'];
-        $months = ['07'];
-        $days = ['01'];
-        $hours = ['12'];
+        $months = ['11'];
+        $days = ['26'];
+        $hours = ['21'];
         $points = [];
         foreach($hights as $height){
             foreach($years as $year){

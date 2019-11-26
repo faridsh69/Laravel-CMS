@@ -15,7 +15,8 @@
             startTs: Date.now()
         };
     </script>
-    <meta name='minifest-ecmwf-hres' content='{"v":"2.0","ref":"2019-06-21T12:00:00Z","update":"2019-06-21T19:34:37Z","dst":[[3,3,144],[6,150,240]]}'>
+    <meta name='minifest-ecmwf-hres' content='{"v":"2.0","ref":"2019-11-26T00:00:00Z","update":"2019-11-26T07:34:48Z","dst":[[3,3,144],[6,150,240]]}'>
+    <!-- <meta name='minifest-ecmwf-hres' content='{"v":"2.0","ref":"2019-06-21T12:00:00Z","update":"2019-06-21T19:34:37Z","dst":[[3,3,144],[6,150,240]]}'> -->
     <meta name="model" content="ecmwf">
     <meta name="geoip" content="86.55.66.215,35.6961,51.4231,IR,">
     <meta name="token" content="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NjExNzU3NjUsImluZiI6eyJpcCI6Ijg2LjU1LjY2LjIxNSIsInVhIjoiTW96aWxsYVwvNS4wIChXaW5kb3dzIE5UIDYuMTsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXRcLzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZVwvNzUuMC4zNzcwLjEwMCBTYWZhcmlcLzUzNy4zNiJ9LCJleHAiOjE1NjEzNDg1NjV9.nm-0Hf82FnIjVTSxEOY3t33vSMcrRgpN66rtlDDGhFE">
