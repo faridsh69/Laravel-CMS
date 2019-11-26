@@ -23,7 +23,11 @@
     <script>
         window.Promise || document.write('<script src="js/promise.v10.js"><\/script>')
     </script>
-    <script src="/v/index_map.js"></script>
+    @if(\URL::to('/') === 'http://www.advaned-offline.map')
+        <script src="/v/index_map.js"></script>
+    @else
+        <script src="/v/index_faridtest.js"></script>
+    @endif
     <link rel="shortcut icon" href="img/favicon.ico">
     <style>
         .progress-bar{
