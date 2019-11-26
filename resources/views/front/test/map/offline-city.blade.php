@@ -11,11 +11,13 @@
             version: "20", // 21.4.2
             assets: "20",// "19.15.0.ind.4a35", // 21.4.2.ind.f3ff
             target: "index",
-            build: "2019-10-25, 09:12",
+            build: "2019-11-25, 09:12",
             startTs: Date.now()
         };
     </script>
-    <meta name='minifest-ecmwf-hres' content='{"v":"2.0","ref":"2019-11-26T00:00:00Z","update":"2019-11-26T07:34:48Z","dst":[[3,3,144],[6,150,240]]}'>
+    <meta name='minifest-ecmwf-hres' content='{"v":"2.0","ref":"2019-11-26T18:00:00Z","update":"2019-11-29T20:00:00Z","dst":[[3,3,144],[6,150,240]]}'>
+
+    <!-- <meta name='minifest-ecmwf-hres' content='{"v":"2.0","ref":"2019-11-26T00:00:00Z","update":"2019-11-26T07:34:48Z","dst":[[3,3,144],[6,150,240]]}'> -->
     <!-- <meta name='minifest-ecmwf-hres' content='{"v":"2.0","ref":"2019-06-21T12:00:00Z","update":"2019-06-21T19:34:37Z","dst":[[3,3,144],[6,150,240]]}'> -->
     <meta name="model" content="ecmwf">
     <meta name="geoip" content="86.55.66.215,35.6961,51.4231,IR,">

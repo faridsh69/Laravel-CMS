@@ -3019,6 +3019,7 @@ L.CanvasLayer = L.Layer.extend({
         o.ecmwf = e.instance({
             ident: "ecmwf",
             directory: "/../../cdn/storage/ecmwf-hres",
+            directoryMeta: "ecmwf-hres",
             modelName: "ECMWF",
             modelResolution: 9,
             provider: "ECMWF",
@@ -3033,7 +3034,7 @@ L.CanvasLayer = L.Layer.extend({
             _init: function() {
                 e._init.call(this);
                 try {
-                    var t = i('meta[name="minifest-' + this.directory + '"]'),
+                    var t = i('meta[name="minifest-' + this.directoryMeta + '"]'),
                         s = t && t.content;
                     if (!s) throw "noMinifestStr";
                     if (this.minifest = JSON.parse(s), this.calendar = n.instance({
