@@ -13,7 +13,7 @@ class TestMapController extends Controller
 	public function getImage()
 	{
 		$init_zoom = 0;
-		$max_zoom = 2;
+		$max_zoom = 5;
 		$tile_url = 'https://tiles.windy.com/tiles/v9.0/darkmap/';
 		$points = [];
 		for($zoom = $init_zoom; $zoom < $max_zoom; $zoom ++){
@@ -31,12 +31,10 @@ class TestMapController extends Controller
 		foreach($points as $point){
 			$image_src = $tile_url . $point['zoom']. '/'. $point['x']. '/'. $point['y']. '.png';
 	        $image_file = file_get_contents($image_src); 
-			dd($image_file);
-	        $directory_path = storage_path() . '/tiles/'. $point['zoom']. '/'. $point['x']. '/'. $point['y'];
+	        $directory_path = storage_path() . '/tiles/'. $point['zoom']. '/'. $point['x'];
 	        File::makeDirectory($directory_path, 0777, true, true);
 			$file_path = $directory_path . '/' . $point['y']. '.png';
 	        file_put_contents($file_path, $image_file);
-	        dd($file_path);
 		}
 		dd('end');
 		// $img_src = 0/0/0.png';
