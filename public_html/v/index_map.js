@@ -8571,7 +8571,7 @@ L.CanvasLayer = L.Layer.extend({
             },
             createTilesUrl: function() {
                 var e = a.get("englishLabels") ? "en" : a.get("usedLang");
-                this.tilesUrl = n.tileServer + "/labels/v1.3/" + e, this.fcstUrl = "http://www.advaned-offline.map/test-windy/forecast/citytile/v1.3"
+                this.tilesUrl = n.tileServer + "/../cdn/storage/labels", this.fcstUrl = "http://www.advaned-offline.map/test-windy/forecast/citytile/v1.3"
             },
             updateLabels: function() {
                 this.createTilesUrl(), this._reset()

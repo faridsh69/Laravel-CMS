@@ -10,61 +10,6 @@ use File;
 
 class TestMapController extends Controller
 {
-	public function getImage()
-	{
-		$init_zoom = 0;
-		$max_zoom = 5;
-		$tile_url = 'https://tiles.windy.com/tiles/v9.0/darkmap/';
-		$points = [];
-		for($zoom = $init_zoom; $zoom <= $max_zoom; $zoom ++){
-			$max_coordinate = pow(2, $zoom) - 1;
-			for($x = 0; $x <= $max_coordinate; $x ++){
-				for($y = 0; $y <= $max_coordinate; $y ++){
-					$points[] = [
-						'zoom' => $zoom,
-						'x' => $x,
-						'y' => $y,
-					];
-				}
-			}
-		}
-		foreach($points as $point){
-			$image_src = $tile_url . $point['zoom']. '/'. $point['x']. '/'. $point['y']. '.png';
-	        $directory_path = storage_path() . '/app/public/tiles/'. $point['zoom']. '/'. $point['x'];
-			$file_path = $directory_path . '/' . $point['y']. '.png';
-	        if(!file_exists($file_path))
-	        {
-		        File::makeDirectory($directory_path, 0777, true, true);
-	        	$image_file = file_get_contents($image_src); 
-	        	file_put_contents($file_path, $image_file);
-	        	// sleep(0.1);
-	        }
-		}
-		dd('end');
-		// $img_src = 0/0/0.png';
-        // } catch (Exception $e) {
-        //     Log::error('upload file error');
-        //     Log::error($e);
-        // }
-        var_dump(3);
-        $art_work = \App\Models\ArtWork::firstOrCreate([
-            'name' => $title,
-            'year' => $html->find('div.painting-desc')[0]->find('ul')[0]->find('li')[0],
-            'tecnique' => $html->find('div.painting-desc')[0]->find('ul')[0]->find('li')[1],
-            'material' => $html->find('div.painting-desc')[0]->find('ul')[0]->find('li')[2],
-            'sabk' => $html->find('div.painting-desc')[0]->find('ul')[0]->find('li')[3],
-            'frame' => $html->find('div.painting-desc')[0]->find('ul')[0]->find('li')[4],
-            'size' => $html->find('div.painting-desc')[0]->find('ul')[0]->find('li')[5],
-            'size' => $html->find('h4.panel-title') ? $html->find('h4.panel-title')[0]->innertext()
-                : 0  ,
-            'type_id' => 1,
-            'user_id' => $user->id,
-            'image_id' => $image->id,
-            ]);
-        sleep(0.1);
-    }
-
-
 	// temp
 	public function getTempSurface($year, $month, $day, $hour, $m1, $m2, $m3)
 	{
@@ -83,6 +28,7 @@ class TestMapController extends Controller
 		return \Redirect::to('/cdn/images/front/themes/4-windy/map/cloud/cloudsrain-surface.jpg');
 	}
 
+	// wind
 	public function getWindSurface($year, $month, $day, $hour, $m1, $m2, $m3)
 	{
 		$year = '2019';
@@ -103,16 +49,49 @@ class TestMapController extends Controller
 		// return \File::get(storage_path() . '/app/public/wind-surface.jpg');
 	}
 
+	// public function getImage()
+	// {
+	// 	$init_zoom = 0;
+	// 	$max_zoom = 5;
+	// 	$tile_url = 'https://tiles.windy.com/tiles/v9.0/darkmap/';
+	// 	$points = [];
+	// 	for($zoom = $init_zoom; $zoom <= $max_zoom; $zoom ++){
+	// 		$max_coordinate = pow(2, $zoom) - 1;
+	// 		for($x = 0; $x <= $max_coordinate; $x ++){
+	// 			for($y = 0; $y <= $max_coordinate; $y ++){
+	// 				$points[] = [
+	// 					'zoom' => $zoom,
+	// 					'x' => $x,
+	// 					'y' => $y,
+	// 				];
+	// 			}
+	// 		}
+	// 	}
+	// 	foreach($points as $point){
+	// 		$image_src = $tile_url . $point['zoom']. '/'. $point['x']. '/'. $point['y']. '.png';
+	//         $directory_path = storage_path() . '/app/public/tiles/'. $point['zoom']. '/'. $point['x'];
+	// 		$file_path = $directory_path . '/' . $point['y']. '.png';
+	//         if(!file_exists($file_path))
+	//         {
+	// 	        File::makeDirectory($directory_path, 0777, true, true);
+	//         	$image_file = file_get_contents($image_src); 
+	//         	file_put_contents($file_path, $image_file);
+	//         	// sleep(0.1);
+	//         }
+	// 	}
+	// 	dd('end');
+ //    }
+
 	// public function getTitlesImages($zoom, $x, $y)
 	// {
 	// 	// return \Redirect::to('/cdn/images/front/themes/4-windy/map/tiles/' . $zoom . '_' . $x . '_' . $y);
 	// 	return \Redirect::to('/cdn/images/front/themes/4-windy/map/tiles-windy/' . $zoom . '_' . $x . '_' . $y);
 	// }
 
-	public function getTitlesLabels($zoom, $x, $y)
-	{
-		return \Redirect::to('/cdn/images/front/themes/4-windy/map/labels-windy/' . $zoom . '_' . $x . '_' . $y);
-	}
+	// public function getTitlesLabels($zoom, $x, $y)
+	// {
+	// 	return \Redirect::to('/cdn/images/front/themes/4-windy/map/labels-windy/' . $zoom . '_' . $x . '_' . $y);
+	// }
 
 	public function getMinifest2Ecmwf()
 	{

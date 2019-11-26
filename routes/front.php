@@ -12,7 +12,7 @@ Route::post('subscribe', 'PageController@postSubscribe')->name('page.subscribe')
 Route::get('{page_url?}', 'PageController@getIndex')->name('page.index');
 
 Route::group(['prefix' => 'test-windy', 'as' => 'test.windy.'], function () {
-	Route::get('image', 'TestMapController@getImage')->name('images');
+	// Route::get('image', 'TestMapController@getImage')->name('images');
 	
 	Route::group(['prefix' => 'ecmwf-hres/{year}/{month}/{day}/{hour}/{zoom}/{x}/{y}/'], function () {
 		Route::get('wind-surface.jpg', 'TestMapController@getWindSurface')->name('wind');
