@@ -12,6 +12,14 @@ Route::post('subscribe', 'PageController@postSubscribe')->name('page.subscribe')
 Route::get('{page_url?}', 'PageController@getIndex')->name('page.index');
 
 Route::group(['prefix' => 'test-windy', 'as' => 'test.windy.'], function () {
+	Route::group(['prefix' => 'ecmwf-hres/{year}/{month}/{day}/{hour}/{zoom}/{x}/{y}/'], function () {
+		Route::get('wind-surface.jpg', 'TestMapController@getWindSurface')->name('wind');
+		Route::get('temp-surface.jpg', 'TestMapController@getTempSurface')->name('temp');
+		Route::get('pressure-surface.png', 'TestMapController@getPressureSurface')->name('pressure');
+		Route::get('pressure-surface.json', 'TestMapController@getPressureSurface')->name('pressure');
+		Route::get('cloudsrain-surface.jpg', 'TestMapController@getCloudSurface')->name('cloud');
+	});
+	// /siw0/0/0/pressure-surface.json?reftime=2019062112
 	Route::get('tiles/v9.0/darkmap/{zoom}/{x}/{y}', 'TestMapController@getTitlesImages')->name('tiles-images');
 	Route::get('labels/v1.3/en/{zoom}/{x}/{y}', 'TestMapController@getTitlesLabels')->name('tiles-labels');
 	Route::get('capalerts/{lat}/{lng}', 'TestMapController@getNodeCapalerts')->name('node.capalerts');
@@ -21,9 +29,6 @@ Route::group(['prefix' => 'test-windy', 'as' => 'test.windy.'], function () {
 	Route::get('forecast/citytile/v1.3/ecmwf/{zoom}/{lat}/{lng}', 'TestMapController@getForecastCitytile')->name('forecast.citytile.ecmwf');
 	Route::get('node/geoip', 'TestMapController@getNodeGeoip')->name('node.geoip');
 	Route::get('Zm9yZWNhc3Q/ZWNtd2Y/cG9pbnQvZWNtd2YvdjIuNS8zNS42OTYxLzUxLjQyMzE/c291cmNlPWhwJnNldHVwPXN1bW1hcnkmaW5jbHVkZU5vdz10cnVl', 'TestMapController@getToken')->name('token');
-	Route::get('ecmwf-hres/{year}/{month}/{day}/{hour}/{zoom}/{x}/{y}/wind-surface.jpg', 'TestMapController@getWindSurface')->name('wind');
-	Route::get('ecmwf-hres/{year}/{month}/{day}/{hour}/{zoom}/{x}/{y}/temp-surface.jpg', 'TestMapController@getTempSurface')->name('temp');
-
 	Route::get('reverse/v3/{lat}/{lng}/{zoom}', 'TestMapController@getReverse')->name('reverse');
 	// Route::get('payments/total', 'TestMapController@getNodeConnection')->name('node.connection');
 	// Route::get('rplanner/v1/elevation/{coordinate}', 'TestMapController@getAltitude')->name('altitude');

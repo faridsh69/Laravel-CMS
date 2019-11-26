@@ -39,19 +39,25 @@
             display: none !important;
         }
         #share{
-            display: none;
+            display: none !important;
         }
         #product-switch{
-            display: none;
+            display: none !important;
         }
         #pois-switch{
-            display: none;
+            display: none !important;
         }
         #info-icon{
             display: none !important;
         }
         #rh-icons{
-            display: none;
+            display: none !important;
+        }
+        #isolines{
+            display: none !important;
+        }
+        .mobilehide{
+            display: none !important;
         }
     </style>
 </head>

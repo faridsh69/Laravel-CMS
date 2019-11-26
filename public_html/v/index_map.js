@@ -5985,7 +5985,7 @@ L.CanvasLayer = L.Layer.extend({
                     var w = n.getName();
                     return '<a data-do="' + (p ? "unfold" : "set") + "," + t + '" data-parent="' + (m || "isParent") + '"\n\t\t\t\t\t\t' + (i.isCrawler ? 'href="' + d + "-" + r.seoString(w) + "-" + t + '"' : "") + "\n\t\t\t\t\t\t" + (!o && m && y ? 'class="sub-menu"' : "") + '>\n\t\t\t\t\t\t<div class="iconfont noselect notap">' + l + '</div>\n\t\t\t\t\t\t<div class="menu-text noselect notap">' + w + "</div>\n\t\t\t\t\t</a>"
                 }).join("");
-                for (var p in m += '<a data-do="toggle,overlays" id="ovr-menu"\n\t\t\t\t\t' + (i.isCrawler ? 'href="' + d + "-" + r.seoString(n.S_ADD_OVERLAYS) + '/overlays"' : "") + '\n\t\t\t\t\tclass="menu-unfold">\n\t\t\t\t\t\t<div class="iconfont noselect notap">&lt;</div>\n\t\t\t\t\t\t<div class="menu-text noselect notap">' + n.MORE_LAYERS + "</div>\n\t\t\t\t\t</a>", c) f = Math.max(f, c[p]);
+                for (var p in m += '<a style="display:none" data-do="toggle,overlays" id="ovr-menu"\n\t\t\t\t\t' + (i.isCrawler ? 'href="' + d + "-" + r.seoString(n.S_ADD_OVERLAYS) + '/overlays"' : "") + '\n\t\t\t\t\tclass="menu-unfold">\n\t\t\t\t\t\t<div class="iconfont noselect notap">&lt;</div>\n\t\t\t\t\t\t<div class="menu-text noselect notap">' + n.MORE_LAYERS + "</div>\n\t\t\t\t\t</a>", c) f = Math.max(f, c[p]);
                 this.iconNum = o ? 1 + a.length : h + f, this.el.innerHTML = m
             }
         })

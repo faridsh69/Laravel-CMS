@@ -9,15 +9,22 @@ use Str;
 
 class TestMapController extends Controller
 {
-	public function getTitlesImages($zoom, $x, $y)
+	// temp
+	public function getTempSurface($year, $month, $day, $hour, $m1, $m2, $m3)
 	{
-		// return \Redirect::to('/cdn/images/front/themes/4-windy/map/tiles/' . $zoom . '_' . $x . '_' . $y);
-		return \Redirect::to('/cdn/images/front/themes/4-windy/map/tiles-windy/' . $zoom . '_' . $x . '_' . $y);
+		return \Redirect::to('/cdn/images/front/themes/4-windy/map/temp/temp-surface.jpg');
 	}
 
-	public function getTitlesLabels($zoom, $x, $y)
+	// pressure
+	public function getPressureSurface($year, $month, $day, $hour, $m1, $m2, $m3)
 	{
-		return \Redirect::to('/cdn/images/front/themes/4-windy/map/labels-windy/' . $zoom . '_' . $x . '_' . $y);
+		return \Redirect::to('/cdn/images/front/themes/4-windy/map/pressure/pressure-surface.jpg');
+	}
+
+	// cloud
+	public function getCloudSurface($year, $month, $day, $hour, $m1, $m2, $m3)
+	{
+		return \Redirect::to('/cdn/images/front/themes/4-windy/map/cloud/cloudsrain-surface.jpg');
 	}
 
 	public function getWindSurface($year, $month, $day, $hour, $m1, $m2, $m3)
@@ -38,9 +45,15 @@ class TestMapController extends Controller
 		// return \File::get(storage_path() . '/app/public/wind-surface.jpg');
 	}
 
-	public function getTempSurface($year, $month, $day, $hour, $m1, $m2, $m3)
+	public function getTitlesImages($zoom, $x, $y)
 	{
-		return \Redirect::to('/cdn/images/front/themes/4-windy/map/temp/temp-surface.jpg');
+		// return \Redirect::to('/cdn/images/front/themes/4-windy/map/tiles/' . $zoom . '_' . $x . '_' . $y);
+		return \Redirect::to('/cdn/images/front/themes/4-windy/map/tiles-windy/' . $zoom . '_' . $x . '_' . $y);
+	}
+
+	public function getTitlesLabels($zoom, $x, $y)
+	{
+		return \Redirect::to('/cdn/images/front/themes/4-windy/map/labels-windy/' . $zoom . '_' . $x . '_' . $y);
 	}
 
 	public function getMinifest2Ecmwf()
