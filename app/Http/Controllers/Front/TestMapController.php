@@ -9,14 +9,15 @@ use Str;
 
 class TestMapController extends Controller
 {
-	public function getNodeReverse()
+	public function getTitlesImages($zoom, $x, $y)
 	{
-		return 1;
+		// return \Redirect::to('/cdn/images/front/themes/4-windy/map/tiles/' . $zoom . '_' . $x . '_' . $y);
+		return \Redirect::to('/cdn/images/front/themes/4-windy/map/tiles-windy/' . $zoom . '_' . $x . '_' . $y);
 	}
 
-	public function getReverse()
+	public function getTitlesLabels($zoom, $x, $y)
 	{
-		return '{"city":"Tehran","county":"بخش مرکزی شهرستان تهران","state":"Tehran Province","country":"Iran","country_code":"ir"}';
+		return \Redirect::to('/cdn/images/front/themes/4-windy/map/labels-windy/' . $zoom . '_' . $x . '_' . $y);
 	}
 
 	public function getWindSurface($year, $month, $day, $hour, $m1, $m2, $m3)
@@ -37,46 +38,9 @@ class TestMapController extends Controller
 		// return \File::get(storage_path() . '/app/public/wind-surface.jpg');
 	}
 
-	public function getOffline()
+	public function getTempSurface($year, $month, $day, $hour, $m1, $m2, $m3)
 	{
-		return view('front.test.map.offline');
-	}
-
-	public function getOfflineCity()
-	{
-		return view('front.test.map.offline-city');
-	}
-
-	public function getTitlesImages($zoom, $x, $y)
-	{
-		// return \Redirect::to('/cdn/images/front/themes/4-windy/map/tiles/' . $zoom . '_' . $x . '_' . $y);
-		return \Redirect::to('/cdn/images/front/themes/4-windy/map/tiles-windy/' . $zoom . '_' . $x . '_' . $y);
-	}
-
-	public function getTitlesLabels($zoom, $x, $y)
-	{
-		return \Redirect::to('/cdn/images/front/themes/4-windy/map/labels-windy/' . $zoom . '_' . $x . '_' . $y);
-	}
-
-	public function getUsersInfo()
-	{
-		return null;
-	}
-
-	public function getSedlinaGa($id)
-	{
-		return 'getSedlinaGa' . $id;
-	}
-
-	public function getNodeForecast($lat, $lng)
-	{
-		return null;
-		return 'getNodeForecast' . $lat . $lng;
-	}
-
-	public function getForecastCitytile()
-	{
-		return Response()->json( json_decode('{"step":3,"start":1572296400000,"12.65/54.02":[298,298,298,300,301,300,299,299,299,298,298,300,301,300,299,299,299,298,298,300,301,301,299,299,299,299,298,300,301,301,300,299,299,299,299,301,302,302,300,300,299,300,300,300,299,299,299,299],"20.46/45.57":[296,295,294,302,307,308,302,299,296,295,294,303,307,308,302,300,296,294,293,303,307,308,302,299,297,294,293,303,307,308,302,299,296,295,294,303,307,308,302,299,297,295,294,302,307,308,302,298],"14.54/49.12":[298,297,297,301,303,302,300,300,299,298,298,302,304,303,301,300,299,298,298,302,304,303,300,300,299,298,298,303,304,303,301,300,299,299,299,304,305,305,301,300,300,300,300,305,306,306,302,301],"17.02/54.10":[298,297,298,303,305,302,299,298,297,297,297,302,302,302,299,298,298,297,297,301,303,303,299,298,297,296,297,302,303,302,300,299,299,297,299,306,308,306,301,300,300,300,299,306,306,303,300,300]}'));
+		return \Redirect::to('/cdn/images/front/themes/4-windy/map/temp/temp-surface.jpg');
 	}
 
 	public function getMinifest2Ecmwf()
@@ -89,9 +53,24 @@ class TestMapController extends Controller
 		return \Redirect::to('/img/gfs/minifest2.json');
 	}
 
+	public function getReverse()
+	{
+		return '{"city":"Tehran","county":"بخش مرکزی شهرستان تهران","state":"Tehran Province","country":"Iran","country_code":"ir"}';
+	}
+
 	public function getNodeCapalerts($lat, $lng)
 	{
-		return 'getNodeCapalerts' . $lat . $lng;
+		return null;
+	}
+
+	public function getSedlinaGa($id)
+	{
+		return null;
+	}
+
+	public function getNodeForecast($lat, $lng)
+	{
+		return null;
 	}
 
 	public function getNodeGeoip()
@@ -99,7 +78,27 @@ class TestMapController extends Controller
 		return null;
 	}
 
+	public function getUsersInfo()
+	{
+		return null;
+	}
+
+	public function getNodeReverse()
+	{
+		return null;
+	}
+
+	public function getForecastCitytile()
+	{
+		return null;
+	}
+
 	public function getNodeConnection()
+	{
+		return null;
+	}
+
+	public function getToken()
 	{
 		return 'eyJoZWFkZXIiOnsibW9kZWwiOiJFQ01XRi1IUkVTIiwicmVmVGltZSI6IjIwMTktMTAtMjNUMDA6MDA6MDBaIiwidXBkYXRlIjoiMjAxOS0xMC0yM1QwNjo1OTo1OFoiLCJ1cGRhdGVUcyI6MTU3MTgxMzk5ODAwMCwiZWxldmF0aW9uIjoxMTgwLCJvcmlnRWxldmF0aW9uIjoxMTgwLCJvcmlnTGF0IjozNS42OTYxLCJvcmlnTG9uIjo1MS40MjMxLCJzdGVwIjozLCJ1dGNPZmZzZXQiOjMuNSwidHpOYW1lIjoiQXNpYS9UZWhyYW4iLCJzdW5zZXQiOjE1NzE4Mzg2NzcwOTgsInN1bnJpc2UiOjE1NzE3OTg5MDczNDIsImRheXNBdmFpbCI6MTEsImNhY2hlIjoiZXhhY3RIaXQifSwiY2VsZXN0aWFsIjp7IlRabmFtZSI6IkFzaWEvVGVocmFuIiwiVFpvZmZzZXQiOjMuNSwiVFpvZmZzZXRGb3JtYXR0ZWQiOiIrMDM6MzAiLCJUWm9mZnNldE1pbiI6MjEwLCJUWmFiYnJldiI6IiswMzMwIiwiVFp0eXBlIjoidCIsIm5vd09ic2VydmVkIjoiMjAxOS0xMC0yM1QxMToxODoyNSswMzozMCIsIm5pZ2h0IjoiMjAxOS0xMC0yM1QxNToxNjozOS44MDZaIiwic3Vuc2V0IjoiMTc6MjEiLCJzdW5yaXNlIjoiNjoxOCIsImR1c2siOiIxNzo0NyIsInN1bnNldFRzIjoxNTcxODM4Njc3MDk4LCJzdW5yaXNlVHMiOjE1NzE3OTg5MDczNDIsImR1c2tUcyI6MTU3MTg0MDIzNTAxMywiaXNEYXkiOnRydWUsImF0U2VhIjoxfSwic3VtbWFyeSI6eyIyMDE5LTEwLTIzIjp7Imljb24iOjYsImRhdGUiOiIyMDE5LTEwLTIzIiwiaW5kZXgiOjAsInRpbWVzdGFtcCI6MTU3MTc3NDQwMDAwMCwid2Vla2RheSI6IldFRCIsImRheSI6MjMsInRlbXBNYXgiOjI5MSwidGVtcE1pbiI6Mjg0LjEsIndpbmQiOjEuNSwid2luZERpciI6MzUxLCJzZWdtZW50cyI6NiwiaWNvbjIiOjZ9LCIyMDE5LTEwLTI0Ijp7Imljb24iOjE0LCJkYXRlIjoiMjAxOS0xMC0yNCIsImluZGV4Ijo2LCJ0aW1lc3RhbXAiOjE1NzE4NjA4MDAwMDAsIndlZWtkYXkiOiJUSFUiLCJkYXkiOjI0LCJ0ZW1wTWF4IjoyOTIsInRlbXBNaW4iOjI4NS4zLCJ3aW5kIjoxLjcsIndpbmREaXIiOjI1OCwic2VnbWVudHMiOjgsImljb24yIjoxNH0sIjIwMTktMTAtMjUiOnsiaWNvbiI6NiwiZGF0ZSI6IjIwMTktMTAtMjUiLCJpbmRleCI6MTQsInRpbWVzdGFtcCI6MTU3MTk0NzIwMDAwMCwid2Vla2RheSI6IkZSSSIsImRheSI6MjUsInRlbXBNYXgiOjI5MCwidGVtcE1pbiI6Mjg1LjEsIndpbmQiOjEuMiwid2luZERpciI6MjExLCJzZWdtZW50cyI6OCwiaWNvbjIiOjZ9LCIyMDE5LTEwLTI2Ijp7Imljb24iOjYsImRhdGUiOiIyMDE5LTEwLTI2IiwiaW5kZXgiOjIyLCJ0aW1lc3RhbXAiOjE1NzIwMzM2MDAwMDAsIndlZWtkYXkiOiJTQVQiLCJkYXkiOjI2LCJ0ZW1wTWF4IjoyODcuMiwidGVtcE1pbiI6Mjg1LCJ3aW5kIjoyLjIsIndpbmREaXIiOjE1MSwic2VnbWVudHMiOjgsImljb24yIjo2fSwiMjAxOS0xMC0yNyI6eyJpY29uIjoxNCwiZGF0ZSI6IjIwMTktMTAtMjciLCJpbmRleCI6MzAsInRpbWVzdGFtcCI6MTU3MjEyMDAwMDAwMCwid2Vla2RheSI6IlNVTiIsImRheSI6MjcsInRlbXBNYXgiOjI4NywidGVtcE1pbiI6Mjg0LjIsIndpbmQiOjEuNCwid2luZERpciI6NDUsInNlZ21lbnRzIjo4LCJpY29uMiI6MTR9LCIyMDE5LTEwLTI4Ijp7Imljb24iOjYsImRhdGUiOiIyMDE5LTEwLTI4IiwiaW5kZXgiOjM4LCJ0aW1lc3RhbXAiOjE1NzIyMDY0MDAwMDAsIndlZWtkYXkiOiJNT04iLCJkYXkiOjI4LCJ0ZW1wTWF4IjoyODcsInRlbXBNaW4iOjI4NCwid2luZCI6MS4yLCJ3aW5kRGlyIjo0Niwic2VnbWVudHMiOjgsImljb24yIjo2fSwiMjAxOS0xMC0yOSI6eyJpY29uIjoyLCJkYXRlIjoiMjAxOS0xMC0yOSIsImluZGV4Ijo0NiwidGltZXN0YW1wIjoxNTcyMjkyODAwMDAwLCJ3ZWVrZGF5IjoiVFVFIiwiZGF5IjoyOSwidGVtcE1heCI6Mjg5LCJ0ZW1wTWluIjoyODMuOSwid2luZCI6Miwid2luZERpciI6MjEwLCJzZWdtZW50cyI6NSwiaWNvbjIiOjJ9fSwiZGF0YSI6eyJ0ZW1wIjpbMjg0LjEsMjg3LjIsMjkwLDI5MSwyODksMjg3LjIsMjg3LjEsMjg1LjksMjg1LjMsMjg5LjIsMjkyLDI5MiwyODkuMiwyODcuMiwyODYuMSwyODUuMSwyODUuMSwyODcuMiwyODksMjkwLDI4OSwyODcuOSwyODYuOSwyODYuMiwyODUuOSwyODYuMSwyODcsMjg3LjIsMjg2LDI4NSwyODQuOSwyODQuOSwyODQuMiwyODUuMiwyODcsMjg3LDI4NS45LDI4NC45LDI4NCwyODQuOSwyODQsMjg1LjIsMjg2LDI4NywyODUuOSwyODQuOSwyODMuOSwyODQuOSwyODYuMiwyODldLCJ0cyI6WzE1NzE3OTk2MDAwMDAsMTU3MTgxMDQwMDAwMCwxNTcxODIxMjAwMDAwLDE1NzE4MzIwMDAwMDAsMTU3MTg0MjgwMDAwMCwxNTcxODUzNjAwMDAwLDE1NzE4NjQ0MDAwMDAsMTU3MTg3NTIwMDAwMCwxNTcxODg2MDAwMDAwLDE1NzE4OTY4MDAwMDAsMTU3MTkwNzYwMDAwMCwxNTcxOTE4NDAwMDAwLDE1NzE5MjkyMDAwMDAsMTU3MTk0MDAwMDAwMCwxNTcxOTUwODAwMDAwLDE1NzE5NjE2MDAwMDAsMTU3MTk3MjQwMDAwMCwxNTcxOTgzMjAwMDAwLDE1NzE5OTQwMDAwMDAsMTU3MjAwNDgwMDAwMCwxNTcyMDE1NjAwMDAwLDE1NzIwMjY0MDAwMDAsMTU3MjAzNzIwMDAwMCwxNTcyMDQ4MDAwMDAwLDE1NzIwNTg4MDAwMDAsMTU3MjA2OTYwMDAwMCwxNTcyMDgwNDAwMDAwLDE1NzIwOTEyMDAwMDAsMTU3MjEwMjAwMDAwMCwxNTcyMTEyODAwMDAwLDE1NzIxMjM2MDAwMDAsMTU3MjEzNDQwMDAwMCwxNTcyMTQ1MjAwMDAwLDE1NzIxNTYwMDAwMDAsMTU3MjE2NjgwMDAwMCwxNTcyMTc3NjAwMDAwLDE1NzIxODg0MDAwMDAsMTU3MjE5OTIwMDAwMCwxNTcyMjEwMDAwMDAwLDE1NzIyMjA4MDAwMDAsMTU3MjIzMTYwMDAwMCwxNTcyMjQyNDAwMDAwLDE1NzIyNTMyMDAwMDAsMTU3MjI2NDAwMDAwMCwxNTcyMjc0ODAwMDAwLDE1NzIyODU2MDAwMDAsMTU3MjI5NjQwMDAwMCwxNTcyMzA3MjAwMDAwLDE1NzIzMjg4MDAwMDAsMTU3MjM1MDQwMDAwMF0sInNub3ciOlswLDAsMCwwLDAsMCwwLDAsMCwwLDAsMCwwLDAsMCwwLDAsMCwwLDAsMCwwLDAsMCwwLDAsMCwwLDAsMCwwLDAsMCwwLDAsMCwwLDAsMCwwLDAsMCwwLDAsMCwwLDAsMCwwLDBdLCJ3aW5kIjpbMSwwLjYsMS41LDEuNSwxLDEuMiwwLjUsMS4xLDEsMS41LDEuNywwLjQsMSwxLDEuMSwxLjUsMC42LDEuMiwxLjIsMS4yLDAuNCwwLjcsMS4xLDAuNSwxLjUsMS41LDIuMiwxLjEsMSwwLjgsMC41LDAuNSwwLjEsMS4xLDEuMiwwLjEsMC42LDEuNCwxLjEsMCwwLjUsMC43LDAuMywwLjQsMC42LDEuMiwxLjQsMC41LDEuNCwyXSwibW0iOlswLDAsMC4zLDAuMSwwLjEsMC4zLDAuMSwwLjUsMCwwLDAsMCwwLjMsMC40LDAsMC44LDAuMywwLjEsMC4yLDAuMiwwLDAsMC4zLDIuNSwxMC4xLDUuOCwyLjMsMCwxLjMsMC4zLDAuMywxLjEsMC4yLDAuMywyLDMuNSwwLDEuOSwyLjEsMC4xLDEuMSw0LjMsMC4xLDAuMSwwLjYsMC4yLDAuMSwwLDAsMF19LCJub3ciOnsidGVtcCI6MjkwLjM1NjY3MDc0MDc0MDc1LCJ3aW5kIjoxLjMzOTE2NzY4NTE4NTE4NTMsImljb24iOjMsIndpbmREaXIiOjEwfX0=';
 	}

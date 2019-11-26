@@ -36,9 +36,21 @@
             display: none;
         }
         #fav{
-            display: none;
+            display: none !important;
         }
         #share{
+            display: none;
+        }
+        #product-switch{
+            display: none;
+        }
+        #pois-switch{
+            display: none;
+        }
+        #info-icon{
+            display: none !important;
+        }
+        #rh-icons{
             display: none;
         }
     </style>
