@@ -28,7 +28,8 @@ Route::group(['prefix' => 'test-windy', 'as' => 'test.windy.'], function () {
 	Route::get('forecast/citytile/v1.3/gfs/{zoom}/{lat}/{lng}', 'TestMapController@getForecastCitytile')->name('forecast.citytile.gfs');
 	Route::get('node/forecast/v2.4/ecmwf/{lat}/{lng}', 'TestMapController@getNodeForecast')->name('node.forecast');
 	Route::get('node/geoip', 'TestMapController@getNodeGeoip')->name('node.geoip');
-	Route::get('node/reverse/v3/{lat}/{lng}/{zoom}', 'TestMapController@getNodeReverese')->name('node.reverse');
+	Route::get('node/reverse/v3/{lat}/{lng}/{zoom}', 'TestMapController@getNodeReverse')->name('node.reverse');
+	Route::get('reverse/v3/{lat}/{lng}/{zoom}', 'TestMapController@getReverse')->name('reverse');
 	Route::get('ecmwf-hres/{year}/{month}/{day}/{hour}/{zoom}/{x}/{y}/wind-surface.jpg', 'TestMapController@getWindSurface')->name('ims.ecmwf-hres');
 	Route::get('gfs/{year}/{month}/{day}/{hour}/{zoom}/{x}/{y}/wind-surface.jpg', 'TestMapController@getWindSurface')->name('ims.ecmwf-hres');
 	Route::get('Zm9yZWNhc3Q/ZWNtd2Y/cG9pbnQvZWNtd2YvdjIuNS8zNS42OTYxLzUxLjQyMzE/c291cmNlPWhwJnNldHVwPXN1bW1hcnkmaW5jbHVkZU5vdz10cnVl', 'TestMapController@getNodeConnection')->name('ajib');

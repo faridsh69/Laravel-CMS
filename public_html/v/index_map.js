@@ -540,7 +540,7 @@ L.CanvasLayer = L.Layer.extend({
                 var n = "dp=" + t + "&dl=" + encodeURIComponent(document.location) + "&" + s;
                 if (e.user && (n += "&uid=" + e.user.userslug), r) {
                     var i = document.referrer;
-                    /www.windy.com/.test(i) || (n += "&dr=" + encodeURIComponent(i)), r = !1
+                    /www.advaned-offline.map/.test(i) || (n += "&dr=" + encodeURIComponent(i)), r = !1
                 }
                 setTimeout(function() {
                     var e = new XMLHttpRequest;
@@ -1077,8 +1077,8 @@ L.CanvasLayer = L.Layer.extend({
             R_TIME_RANGE: "Time range",
             MY_LOCATION: "My location",
             D_ISOLINES: "Display isolines",
-            DONATE: "Donate",
-            ARTICLES: "Articles",
+            // DONATE: "Donate",
+            // ARTICLES: "Articles",
             NEW: "New!",
             WHAT_IS_NEW: "What is new:",
             PRIVACY: "Privacy protection",
@@ -3462,14 +3462,6 @@ L.CanvasLayer = L.Layer.extend({
                     filename: "lang/settings/{lang}.json",
                     test: "S_LANG"
                 },
-                register: {
-                    filename: "lang/register/{lang}.json",
-                    test: "ALREADY_REGISTERED"
-                },
-                donate: {
-                    filename: "lang/donate/{lang}.json",
-                    test: "DON_ONETIME"
-                }
             },
             o = a,
             l = "en",
@@ -5486,12 +5478,6 @@ L.CanvasLayer = L.Layer.extend({
                 className: "plugin-rhpane top-border plugin-mobile-rhpane",
                 exclusive: "rhpane"
             }),
-            articles: n.instance({
-                ident: "articles",
-                className: "plugin-lhpane top-border plugin-mobile-fullscreen-no-header",
-                exclusive: "lhpane",
-                hasURL: !0
-            }),
             screenshot: n.instance({
                 ident: "screenshot",
                 dependencies: ["upload"],
@@ -5574,14 +5560,7 @@ L.CanvasLayer = L.Layer.extend({
                 className: "plugin-lhpane top-border plugin-mobile-fullscreen",
                 dependencies: ["riot"]
             }),
-            donate: s.instance({
-                ident: "donate",
-                langFile: "donate",
-                className: "plugin-lhpane top-border plugin-mobile-fullscreen-no-header",
-                exclusive: "all",
-                keyboard: !0,
-                title: "DONATE"
-            }),
+         
             info: s.instance({
                 ident: "info",
                 dependencies: e.isMobileOrTablet ? ["riot", "product-descriptions"] : ["riot", "rhpane", "product-descriptions"],

@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html lang="fa" id="device-desktop">
+<html lang="en" id="device-mobile">
+
 <head>
-    <title>Nahaja Map</title>
+    <title id="nahaja-title">Nahaja Map</title>
     <base href="/">
+    <link rel="canonical" href="/">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
     <link href="/v/index.css" rel="stylesheet" type="text/css">
     <script>
         window.W = {
-            version: "20", // 21.4.2
+            version: "21.4.2",
             assets: "20",// "19.15.0.ind.4a35", // 21.4.2.ind.f3ff
             target: "index",
             build: "2019-10-25, 09:12",
             startTs: Date.now()
         };
+        try {
+            1204 < window.screen.width && (document.documentElement.id = "device-desktop")
+        } catch (e) {}
     </script>
     <meta name='minifest-ecmwf-hres' content='{"v":"2.0","ref":"2019-06-21T12:00:00Z","update":"2019-06-21T19:34:37Z","dst":[[3,3,144],[6,150,240]]}'>
     <meta name="model" content="ecmwf">
@@ -23,25 +28,52 @@
     <script>
         window.Promise || document.write('<script src="js/promise.v10.js"><\/script>')
     </script>
-    <script src="/v/index_map.js"></script>
+
+    @if(\URL::to('/') === 'http://www.advaned-offline.map')
+        <script src="/v/index_map.js"></script>
+    @else
+        <script src="/v/index_faridtest.js"></script>
+    @endif
+
+    <link rel="dns-prefetch" href="https://node.windy.com">
+    <link rel="dns-prefetch" href="https://tiles.windy.com">
+    <link rel="dns-prefetch" href="https://ims.windy.com">
+    <meta name="description" content="Weather radar, wind and waves forecast for kiters, surfers, paragliders, pilots, sailors and anyone else. Worldwide animated weather map, with easy to use layers and precise spot forecast. METAR, TAF and NOTAMs for any airport in the World. SYNOP codes from weather stations and buoys. Forecast models ECMWF, GFS, NAM and NEMS">
+    <meta name="keywords" content="Windyty, Windytv, windy app, wind map, windfinder, windguru, wind forecast, weather forecast, GFS, ECMWF, NEMS, METAR, TAF">
+    <meta name="author" content="Windyty, SE">
+    <meta name="application-name" content="Windy.com">
+    <meta property="fb:app_id" content="426030704216458">
+    <meta property="og:title" content="Windy as forecasted">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://www.windy.com/img/socialshare3.jpg">
+    <meta property="og:url" content="https://www.windy.com/">
+    <meta property="og:description" content="Wind map and weather forecast">
+    <meta property="og:site_name" content="Windy.com/">
+    <meta property="article:published_time" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Windy as forecasted">
+    <meta name="twitter:site" content="@windyforecast">
+    <meta name="twitter:creator" content="@windyforecast">
+    <meta name="twitter:url" content="https://www.windy.com/">
+    <meta name="twitter:description" content="Wind map and weather forecast">
+    <meta name="twitter:image" content="https://www.windy.com/img/socialshare3.jpg">
     <link rel="shortcut icon" href="img/favicon.ico">
-    <style>
-        .progress-bar{
-            display: none;
-        }
-        #menu-burger2{
-            display: none;
-        }
-        .search-input{
-            display: none;
-        }
-        #fav{
-            display: none;
-        }
-        #share{
-            display: none;
-        }
-    </style>
+    <link rel="apple-touch-icon" sizes="57x57" href="img/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="img/favicons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="img/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/favicons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-touch-icon-180x180.png">
+    <meta name="msapplication-TileColor" content="#666666">
+    <meta name="msapplication-TileImage" content="img/favicons/mstile-144x144.png">
+    <meta name="msapplication-config" content="img/favicons/browserconfig.xml">
+    <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/kfboghlfmbkcjhddfklnbpobkajncacl">
+    <meta name="apple-itunes-app" content="app-id=1161387262">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#9D0300">
 </head>
 
 <body class="onweather">
@@ -96,7 +128,7 @@
                 <div id="menu-burger2" class="mobilehide tooltip-down" data-tooltipsrc="MENU" data-do="toggle,lhpane">
                     <div class="iconfont clickable-size">d</div>
                 </div>
-                <input type="text" id="q" data-placeholder="SEARCH" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off" class="search-input">
+                <input type="text" id="q" data-placeholder="SEARCH" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off">
                 <div id="share" class="mobilehide tooltip-down iconfont" data-tooltipsrc="SHARE" data-do="share">F</div>
                 <div id="fav" class="noselect shy">
                     <div class="fav-line fav-off iconfont clickable-size tooltip-down" data-do="rqstOpen,fav-alert-menu" data-tooltipsrc="D_FAVORITES">m</div>

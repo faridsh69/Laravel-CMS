@@ -9,9 +9,14 @@ use Str;
 
 class TestMapController extends Controller
 {
-	public function getNodeReverese()
+	public function getNodeReverse()
 	{
 		return 1;
+	}
+
+	public function getReverse()
+	{
+		return '{"city":"Tehran","county":"بخش مرکزی شهرستان تهران","state":"Tehran Province","country":"Iran","country_code":"ir"}';
 	}
 
 	public function getWindSurface($year, $month, $day, $hour, $m1, $m2, $m3)
@@ -44,7 +49,6 @@ class TestMapController extends Controller
 
 	public function getTitlesImages($zoom, $x, $y)
 	{
-		// return 1;
 		// return \Redirect::to('/cdn/images/front/themes/4-windy/map/tiles/' . $zoom . '_' . $x . '_' . $y);
 		return \Redirect::to('/cdn/images/front/themes/4-windy/map/tiles-windy/' . $zoom . '_' . $x . '_' . $y);
 	}
