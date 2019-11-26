@@ -14,16 +14,17 @@ Route::get('{page_url?}', 'PageController@getIndex')->name('page.index');
 Route::group(['prefix' => 'test-windy', 'as' => 'test.windy.'], function () {
 	// Route::get('image', 'TestMapController@getImage')->name('images');
 	
-	Route::group(['prefix' => 'ecmwf-hres/{year}/{month}/{day}/{hour}/{zoom}/{x}/{y}/'], function () {
-		Route::get('wind-surface.jpg', 'TestMapController@getWindSurface')->name('wind');
-		Route::get('temp-surface.jpg', 'TestMapController@getTempSurface')->name('temp');
-		Route::get('pressure-surface.png', 'TestMapController@getPressureSurface')->name('pressure');
-		Route::get('pressure-surface.json', 'TestMapController@getPressureSurface')->name('pressure');
-		Route::get('cloudsrain-surface.jpg', 'TestMapController@getCloudSurface')->name('cloud');
-	});
+	// Route::group(['prefix' => 'ecmwf-hres/{year}/{month}/{day}/{hour}/{zoom}/{x}/{y}/'], function () {
+	// 	// Route::get('wind-surface.jpg', 'TestMapController@getWindSurface')->name('wind');
+	// 	Route::get('temp-surface.jpg', 'TestMapController@getTempSurface')->name('temp');
+	// 	Route::get('pressure-surface.png', 'TestMapController@getPressureSurface')->name('pressure');
+	// 	Route::get('pressure-surface.json', 'TestMapController@getPressureSurface')->name('pressure');
+	// 	Route::get('cloudsrain-surface.jpg', 'TestMapController@getCloudSurface')->name('cloud');
+	// });
+	
 	// /siw0/0/0/pressure-surface.json?reftime=2019062112
 	// Route::get('tiles/v9.0/darkmap/{zoom}/{x}/{y}', 'TestMapController@getTitlesImages')->name('tiles-images');
-	Route::get('labels/v1.3/en/{zoom}/{x}/{y}', 'TestMapController@getTitlesLabels')->name('tiles-labels');
+	// Route::get('labels/v1.3/en/{zoom}/{x}/{y}', 'TestMapController@getTitlesLabels')->name('tiles-labels');
 	Route::get('capalerts/{lat}/{lng}', 'TestMapController@getNodeCapalerts')->name('node.capalerts');
 	Route::get('node/connection', 'TestMapController@getNodeConnection')->name('node.connection');
 	Route::get('users/info', 'TestMapController@getUsersInfo')->name('users.info');

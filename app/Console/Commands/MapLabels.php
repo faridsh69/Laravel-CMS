@@ -39,8 +39,8 @@ class MapLabels extends Command
     public function handle()
     {
         $init_zoom = 0;
-        $max_zoom = 5;
-        $tile_url = 'https://tiles.windy.com/labels/v1.3/en/';
+        $max_zoom = 6;
+        $label_url = 'https://tiles.windy.com/labels/v1.3/en/';
         $points = [];
         for($zoom = $init_zoom; $zoom <= $max_zoom; $zoom ++){
             $max_coordinate = pow(2, $zoom) - 1;
@@ -55,7 +55,7 @@ class MapLabels extends Command
             }
         }
         foreach($points as $point){
-            $json_src = $tile_url . $point['zoom']. '/'. $point['x']. '/'. $point['y']. '.json';
+            $json_src = $label_url . $point['zoom']. '/'. $point['x']. '/'. $point['y']. '.json';
             $directory_path = storage_path() . '/app/public/labels/'. $point['zoom']. '/'. $point['x'];
             $file_path = $directory_path . '/' . $point['y']. '.json';
             if(!file_exists($file_path))

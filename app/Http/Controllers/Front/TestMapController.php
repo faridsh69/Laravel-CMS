@@ -10,81 +10,64 @@ use File;
 
 class TestMapController extends Controller
 {
-	// temp
-	public function getTempSurface($year, $month, $day, $hour, $m1, $m2, $m3)
-	{
-		return \Redirect::to('/cdn/images/front/themes/4-windy/map/temp/temp-surface.jpg');
-	}
+	// // temp
+	// public function getTempSurface($year, $month, $day, $hour, $m1, $m2, $m3)
+	// {
+	// 	return \Redirect::to('/cdn/images/front/themes/4-windy/map/temp/temp-surface.jpg');
+	// }
 
-	// pressure
-	public function getPressureSurface($year, $month, $day, $hour, $m1, $m2, $m3)
-	{
-		return \Redirect::to('/cdn/images/front/themes/4-windy/map/pressure/pressure-surface.jpg');
-	}
+	// // pressure
+	// public function getPressureSurface($year, $month, $day, $hour, $m1, $m2, $m3)
+	// {
+	// 	return \Redirect::to('/cdn/images/front/themes/4-windy/map/pressure/pressure-surface.jpg');
+	// }
 
-	// cloud
-	public function getCloudSurface($year, $month, $day, $hour, $m1, $m2, $m3)
-	{
-		return \Redirect::to('/cdn/images/front/themes/4-windy/map/cloud/cloudsrain-surface.jpg');
-	}
+	// // cloud
+	// public function getCloudSurface($year, $month, $day, $hour, $m1, $m2, $m3)
+	// {
+	// 	return \Redirect::to('/cdn/images/front/themes/4-windy/map/cloud/cloudsrain-surface.jpg');
+	// }
 
 	// wind
-	public function getWindSurface($year, $month, $day, $hour, $m1, $m2, $m3)
-	{
-		$year = '2019';
-		$month = '10';
-		$day = '10';
-		$hour = '12';
-		if($m1 === '257w1' || $m1 === '257w0'){
-			$m1 = '257w3';
-		}
-		$m1 = '257w3';
-
-		return \Redirect::to('/cdn/images/front/themes/4-windy/map/wind/' 
-			. $year . '_' . $month . '_' . $day . '_' . $hour . '_' . $m1 . '_' . $m2 . '_' . $m3 . '_' . 
-			'wind-surface.jpg');
-
-		return \Redirect::to('img/wind/wind-surface.jpg');
-		// return "<img src ='http://www.eric.com/img/wind-surface.jpg'>";
-		// return \File::get(storage_path() . '/app/public/wind-surface.jpg');
-	}
-
-	// public function getImage()
+	// public function getWindSurface($year, $month, $day, $hour, $m1, $m2, $m3)
 	// {
-	// 	$init_zoom = 0;
-	// 	$max_zoom = 5;
-	// 	$tile_url = 'https://tiles.windy.com/tiles/v9.0/darkmap/';
-	// 	$points = [];
-	// 	for($zoom = $init_zoom; $zoom <= $max_zoom; $zoom ++){
-	// 		$max_coordinate = pow(2, $zoom) - 1;
-	// 		for($x = 0; $x <= $max_coordinate; $x ++){
-	// 			for($y = 0; $y <= $max_coordinate; $y ++){
-	// 				$points[] = [
-	// 					'zoom' => $zoom,
-	// 					'x' => $x,
-	// 					'y' => $y,
-	// 				];
-	// 			}
-	// 		}
+	// 	$hights = ['surface', '100', '950h', '925h', '900h',
+	// 		'850h', '800h', '700h', '600h', '500h', '400h', 
+	// 		'300h', '250h', '200h', '150h'];
+	// 	$hours = ['00', '03', '06', '09', '12', '15', '18', '21'];
+	// 	$hours_after_6_days = ['00', '06', '12', '18'];
+	// 	$zooms = ['257w2', '257w3', '257w4'];
+
+	// 	// zoom 3 -> 257w2 0-3 
+	// 	// zoom 4 -> 257w2 0-3
+	// 	// zoom 5 -> 257w3 0-7
+	// 	// zoom 6 -> 257w3 0-7
+	// 	// zoom 7 -> 257w3 0-7
+
+	// 	// zoom13 -> 257w4 0-15
+	// 	// zoom12 -> 257w4 0-15
+	// 	// zoom11 -> 257w4 0-15
+	// 	// zoom10 -> 257w4 0-15
+	// 	// zoom 9 -> 257w4 0-15
+	// 	// zoom 8 -> 257w4 0-15
+	// 	$year = '2019';
+	// 	$month = '10';
+	// 	$day = '10';
+	// 	$hour = '12';
+	// 	if($m1 === '257w1' || $m1 === '257w0'){
+	// 		$m1 = '257w3';
 	// 	}
-	// 	foreach($points as $point){
-	// 		$image_src = $tile_url . $point['zoom']. '/'. $point['x']. '/'. $point['y']. '.png';
-	//         $directory_path = storage_path() . '/app/public/tiles/'. $point['zoom']. '/'. $point['x'];
-	// 		$file_path = $directory_path . '/' . $point['y']. '.png';
-	//         if(!file_exists($file_path))
-	//         {
-	// 	        File::makeDirectory($directory_path, 0777, true, true);
-	//         	$image_file = file_get_contents($image_src); 
-	//         	file_put_contents($file_path, $image_file);
-	//         	// sleep(0.1);
-	//         }
-	// 	}
-	// 	dd('end');
- //    }
+	// 	$m1 = '257w3';
+
+	// 	return \Redirect::to('/cdn/images/front/themes/4-windy/map/wind/' 
+	// 		. $year . '_' . $month . '_' . $day . '_' . $hour . '_' . $m1 . '_' . $m2 . '_' . $m3 . '_' . 
+	// 		'wind-surface.jpg');
+
+	// 	return \Redirect::to('img/wind/wind-surface.jpg');
+	// }
 
 	// public function getTitlesImages($zoom, $x, $y)
 	// {
-	// 	// return \Redirect::to('/cdn/images/front/themes/4-windy/map/tiles/' . $zoom . '_' . $x . '_' . $y);
 	// 	return \Redirect::to('/cdn/images/front/themes/4-windy/map/tiles-windy/' . $zoom . '_' . $x . '_' . $y);
 	// }
 

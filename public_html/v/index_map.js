@@ -3018,7 +3018,7 @@ L.CanvasLayer = L.Layer.extend({
             c = "© Generated using Copernicus Atmosphere Monitoring Service Information [2019]. Neither the European Commission nor ECMWF is responsible for any use of this information.";
         o.ecmwf = e.instance({
             ident: "ecmwf",
-            directory: "ecmwf-hres",
+            directory: "/../../cdn/storage/ecmwf-hres",
             modelName: "ECMWF",
             modelResolution: 9,
             provider: "ECMWF",

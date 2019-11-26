@@ -3018,7 +3018,7 @@ L.CanvasLayer = L.Layer.extend({
             c = "© Generated using Copernicus Atmosphere Monitoring Service Information [2019]. Neither the European Commission nor ECMWF is responsible for any use of this information.";
         o.ecmwf = e.instance({
             ident: "ecmwf",
-            directory: "ecmwf-hres",
+            directory: "/../../cdn/storage/ecmwf-hres",
             modelName: "ECMWF",
             modelResolution: 9,
             provider: "ECMWF",
@@ -8571,7 +8571,7 @@ L.CanvasLayer = L.Layer.extend({
             },
             createTilesUrl: function() {
                 var e = a.get("englishLabels") ? "en" : a.get("usedLang");
-                this.tilesUrl = n.tileServer + "/labels/v1.3/" + e, this.fcstUrl = "http://www.faridtest.ir/test-windy/forecast/citytile/v1.3"
+                this.tilesUrl = n.tileServer + "/../cdn/storage/labels", this.fcstUrl = "http://www.faridtest.ir/test-windy/forecast/citytile/v1.3"
             },
             updateLabels: function() {
                 this.createTilesUrl(), this._reset()
