@@ -22,7 +22,7 @@ Route::group(['prefix' => 'test-windy', 'as' => 'test.windy.'], function () {
 		Route::get('cloudsrain-surface.jpg', 'TestMapController@getCloudSurface')->name('cloud');
 	});
 	// /siw0/0/0/pressure-surface.json?reftime=2019062112
-	Route::get('tiles/v9.0/darkmap/{zoom}/{x}/{y}', 'TestMapController@getTitlesImages')->name('tiles-images');
+	// Route::get('tiles/v9.0/darkmap/{zoom}/{x}/{y}', 'TestMapController@getTitlesImages')->name('tiles-images');
 	Route::get('labels/v1.3/en/{zoom}/{x}/{y}', 'TestMapController@getTitlesLabels')->name('tiles-labels');
 	Route::get('capalerts/{lat}/{lng}', 'TestMapController@getNodeCapalerts')->name('node.capalerts');
 	Route::get('node/connection', 'TestMapController@getNodeConnection')->name('node.connection');

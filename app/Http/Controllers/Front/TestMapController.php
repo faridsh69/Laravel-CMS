@@ -16,7 +16,7 @@ class TestMapController extends Controller
 		$max_zoom = 5;
 		$tile_url = 'https://tiles.windy.com/tiles/v9.0/darkmap/';
 		$points = [];
-		for($zoom = $init_zoom; $zoom < $max_zoom; $zoom ++){
+		for($zoom = $init_zoom; $zoom <= $max_zoom; $zoom ++){
 			$max_coordinate = pow(2, $zoom) - 1;
 			for($x = 0; $x <= $max_coordinate; $x ++){
 				for($y = 0; $y <= $max_coordinate; $y ++){
@@ -30,11 +30,15 @@ class TestMapController extends Controller
 		}
 		foreach($points as $point){
 			$image_src = $tile_url . $point['zoom']. '/'. $point['x']. '/'. $point['y']. '.png';
-	        $image_file = file_get_contents($image_src); 
-	        $directory_path = storage_path() . '/tiles/'. $point['zoom']. '/'. $point['x'];
-	        File::makeDirectory($directory_path, 0777, true, true);
+	        $directory_path = storage_path() . '/app/public/tiles/'. $point['zoom']. '/'. $point['x'];
 			$file_path = $directory_path . '/' . $point['y']. '.png';
-	        file_put_contents($file_path, $image_file);
+	        if(!file_exists($file_path))
+	        {
+		        File::makeDirectory($directory_path, 0777, true, true);
+	        	$image_file = file_get_contents($image_src); 
+	        	file_put_contents($file_path, $image_file);
+	        	// sleep(0.1);
+	        }
 		}
 		dd('end');
 		// $img_src = 0/0/0.png';
@@ -99,11 +103,11 @@ class TestMapController extends Controller
 		// return \File::get(storage_path() . '/app/public/wind-surface.jpg');
 	}
 
-	public function getTitlesImages($zoom, $x, $y)
-	{
-		// return \Redirect::to('/cdn/images/front/themes/4-windy/map/tiles/' . $zoom . '_' . $x . '_' . $y);
-		return \Redirect::to('/cdn/images/front/themes/4-windy/map/tiles-windy/' . $zoom . '_' . $x . '_' . $y);
-	}
+	// public function getTitlesImages($zoom, $x, $y)
+	// {
+	// 	// return \Redirect::to('/cdn/images/front/themes/4-windy/map/tiles/' . $zoom . '_' . $x . '_' . $y);
+	// 	return \Redirect::to('/cdn/images/front/themes/4-windy/map/tiles-windy/' . $zoom . '_' . $x . '_' . $y);
+	// }
 
 	public function getTitlesLabels($zoom, $x, $y)
 	{

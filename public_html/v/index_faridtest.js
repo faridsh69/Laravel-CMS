@@ -8747,7 +8747,7 @@ L.CanvasLayer = L.Layer.extend({
         }
 
         function y() {
-            var e = i.tileServer + "/tiles/v9.0/darkmap" + (i.isRetina ? "-retina" : "") + "/{z}/{x}/{y}.png",
+            var e = i.tileServer + "/../cdn/storage/tiles" + (i.isRetina ? "-retina" : "") + "/{z}/{x}/{y}.png",
                 t = a.get("map"),
                 n = {
                     url: m[t] || m.sznmap,
