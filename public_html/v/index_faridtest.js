@@ -1086,7 +1086,7 @@ L.CanvasLayer = L.Layer.extend({
             SOUND_ON: "Sound",
             BLITZ_ON: "Show lightning",
             WFORECAST: "weather forecast",
-            TITLE: "Nahaja",
+            TITLE: "نهاجا",
             HURR_TRACKER: "Hurricane tracker",
             TOC: "Terms and conditions",
             SEND: "Send",
@@ -3392,8 +3392,9 @@ L.CanvasLayer = L.Layer.extend({
                 levels: ["surface", "100m", "975h", "950h", "925h", "900h", "850h", "800h", "700h", "600h", "500h", "400h", "300h", "250h", "200h", "150h"],
                 pointForecast: "v2.5",
                 iconsDir: "img/icons4",
+                overlays: ["wind", "gust", "gustAccu", "rain", "rainAccu", "snowAccu", "snowcover", "ptype", "thunder", "temp", "dewpoint", "rh", "deg0", "clouds", "hclouds", "mclouds", "lclouds", "fog", "cloudtop", "cbase", "visibility", "cape", "waves", "swell1", "swell2", "swell3", "wwaves", "sst", "currents", "airQ", "no2", "pm2p5", "aod550", "gtco3", "cosc", "dustsm", "so2sm", "pressure", "efiWind", "efiTemp", "efiRain", "capAlerts", "map"],
                 // overlays: ["radarSat", "radar", "satellite", "wind", "gust", "gustAccu", "rain", "rainAccu", "snowAccu", "snowcover", "ptype", "thunder", "temp", "dewpoint", "rh", "deg0", "clouds", "hclouds", "mclouds", "lclouds", "fog", "cloudtop", "cbase", "visibility", "cape", "waves", "swell1", "swell2", "swell3", "wwaves", "sst", "currents", "airQ", "no2", "pm2p5", "aod550", "gtco3", "cosc", "dustsm", "so2sm", "pressure", "efiWind", "efiTemp", "efiRain", "capAlerts", "map"],
-                overlays: ["wind", "temp", "pressure", "clouds"],
+                // overlays: ["wind", "temp", "cloudTop", "rh", "hclouds", "cbase", "pressure"],
                 acTimes: ["next12h", "next24h", "next2d", "next48h", "next60h", "next3d", "next5d", "next10d"],
                 isolines: ["off", "pressure", "gh", "temp", "deg0"],
                 localProducts: ["nems", "namConus", "namHawaii", "namAlaska", "iconEu", "arome", "camsEu"],
@@ -3756,7 +3757,7 @@ L.CanvasLayer = L.Layer.extend({
                 sync: !0
             },
             favOverlays: {
-                def: ["radar", "satellite", "wind", "gust", "rain", "rainAccu", "snowAccu", "thunder", "temp", "rh", "clouds", "lclouds", "cbase", "visibility", "waves", "swell1", "swell2", "sst", "no2", "gtco3", "aod550", "pm2p5"],
+                def: ["wind", "temp", "rh", "cloudtop", "hclouds", "cbase", "pressure"],
                 allowed: Array.isArray,
                 save: !0,
                 sync: !1
@@ -6339,7 +6340,7 @@ L.CanvasLayer = L.Layer.extend({
             f = c.seoLang,
             m = r.url,
             p = Date.now(),
-            g = "Nahaja Offline Map: " + e.TITLE,
+            g = "نیروی هوایی ارتش جمهوری اسلامی ایران: " + e.TITLE,
             v = n('meta[name="description"]') || {},
             y = v && v.content,
             w = !1,
