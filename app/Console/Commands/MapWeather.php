@@ -56,24 +56,26 @@ class MapWeather extends Command
         ];
         $types = [
             'wind',
-            // 'temp',
+            'temp',
             // 'pressure',
-            // 'cloudsrain',
+            'cloudsrain',
         ];
         $years = ['2019'];
         $months = ['11'];
         $days = ['26'];
         $hours = ['21'];
         $points = [];
-        foreach($hights as $height){
-            foreach($years as $year){
-                foreach($months as $month){
-                    foreach($days as $day){
-                        foreach($hours as $hour){
-                            foreach($zooms as $zoom => $max_coordinate){
-                                for($x = 0; $x <= $max_coordinate; $x ++){
-                                    for($y = 0; $y <= $max_coordinate; $y ++){
-                                        foreach($types as $type){
+        foreach($types as $type){
+            foreach($hights as $height){
+                if($type === 'temp' && $height === '100m'){continue;}
+                if($type === 'cloudsrain' && $height !== 'surface'){continue;}
+                foreach($years as $year){
+                    foreach($months as $month){
+                        foreach($days as $day){
+                            foreach($hours as $hour){
+                                foreach($zooms as $zoom => $max_coordinate){
+                                    for($x = 0; $x <= $max_coordinate; $x ++){
+                                        for($y = 0; $y <= $max_coordinate; $y ++){
                                             $points[] = [
                                                 'year' => $year,
                                                 'month' => $month,
