@@ -8,37 +8,18 @@ use File;
 
 class MapWeather extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
     protected $signature = 'map:weather';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
     protected $description = 'download map weather';
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         parent::__construct();
     }
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
     public function handle()
     {
+        $iran = [[0.50, 0.75], [0.35, 0.45]];
         $date = Carbon::now();
         $weather_url = 'https://ims.windy.com/ecmwf-hres/';
         $hours = ['00', '03', '06', '09', '12', '15', '18', '21'];
@@ -91,7 +72,6 @@ class MapWeather extends Command
                             foreach($hours as $hour){
                                 foreach($zooms as $zoom => $max_coor){
 
-                                    $iran = [[0.50, 0.75], [0.35, 0.45]];
                                     $iran_x_min = intval(floor($iran[0][0] * $max_coor));
                                     $iran_x_max = intval(ceil($iran[0][1] * $max_coor));
                                     $iran_y_min = intval(floor($iran[1][0] * $max_coor));

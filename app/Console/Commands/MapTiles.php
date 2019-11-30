@@ -7,45 +7,25 @@ use File;
 
 class MapTiles extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
     protected $signature = 'map:tiles';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
     protected $description = 'download map tiles';
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         parent::__construct();
     }
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
     public function handle()
     {
+        $max_zoom = 6;
         $init_zoom = 0;
-        $max_zoom = 5;
+        $iran_coordinates = [[0.50, 0.75], [0.35, 0.45]];
         $tile_url = 'https://tiles.windy.com/tiles/v9.0/darkmap/';
         $points = [];
         for($zoom = $init_zoom; $zoom <= $max_zoom; $zoom ++){
             $max_coordinate = pow(2, $zoom) - 1;
 
-            $iran_coordinates = [[0.50, 0.75], [0.35, 0.45]];
             $iran_x_min = intval(floor($iran_coordinates[0][0] * $max_coordinate));
             $iran_x_max = intval(ceil($iran_coordinates[0][1] * $max_coordinate));
             $iran_y_min = intval(floor($iran_coordinates[1][0] * $max_coordinate));
