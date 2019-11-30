@@ -45,7 +45,7 @@ class MapTiles extends Command
         for($zoom = $init_zoom; $zoom <= $max_zoom; $zoom ++){
             $max_coordinate = pow(2, $zoom) - 1;
 
-            $iran_coordinates = [[0.55, 0.75], [0.35, 0.45]];
+            $iran_coordinates = [[0.50, 0.75], [0.35, 0.45]];
             $iran_x_min = intval(floor($iran_coordinates[0][0] * $max_coordinate));
             $iran_x_max = intval(ceil($iran_coordinates[0][1] * $max_coordinate));
             $iran_y_min = intval(floor($iran_coordinates[1][0] * $max_coordinate));
