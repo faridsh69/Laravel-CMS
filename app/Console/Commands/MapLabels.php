@@ -39,13 +39,20 @@ class MapLabels extends Command
     public function handle()
     {
         $init_zoom = 0;
-        $max_zoom = 6;
+        $max_zoom = 5;
         $label_url = 'https://tiles.windy.com/labels/v1.3/en/';
         $points = [];
         for($zoom = $init_zoom; $zoom <= $max_zoom; $zoom ++){
             $max_coordinate = pow(2, $zoom) - 1;
-            for($x = 0; $x <= $max_coordinate; $x ++){
-                for($y = 0; $y <= $max_coordinate; $y ++){
+
+            $iran_coordinates = [[0.55, 0.75], [0.35, 0.45]];
+            $iran_x_min = intval(floor($iran_coordinates[0][0] * $max_coordinate));
+            $iran_x_max = intval(ceil($iran_coordinates[0][1] * $max_coordinate));
+            $iran_y_min = intval(floor($iran_coordinates[1][0] * $max_coordinate));
+            $iran_y_max = intval(ceil($iran_coordinates[1][1] * $max_coordinate));
+
+            for($x = $iran_x_min; $x <= $iran_x_max; $x ++){
+                for($y = $iran_y_min; $y <= $iran_y_max; $y ++){
                     $points[] = [
                         'zoom' => $zoom,
                         'x' => $x,
@@ -54,6 +61,7 @@ class MapLabels extends Command
                 }
             }
         }
+        $i = count($points);
         foreach($points as $point){
             $json_src = $label_url . $point['zoom']. '/'. $point['x']. '/'. $point['y']. '.json';
             $directory_path = storage_path() . '/app/public/labels/'. $point['zoom']. '/'. $point['x'];
@@ -64,7 +72,8 @@ class MapLabels extends Command
                 $json_file = file_get_contents($json_src); 
                 file_put_contents($file_path, $json_file);
             }
-            var_dump('label_'. $point['zoom']. '_'. $point['x']. '_'. $point['y']);
+            $i --;
+            var_dump($i . '_label_'. $point['zoom']. '_'. $point['x']. '_'. $point['y']);
         }
         dd('map labels downloaded');
     }
