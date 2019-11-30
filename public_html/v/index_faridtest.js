@@ -3757,7 +3757,7 @@ L.CanvasLayer = L.Layer.extend({
                 sync: !0
             },
             favOverlays: {
-                def: ["wind", "temp", "rh", "cloudtop", "hclouds", "cbase", "pressure"],
+                def: ["wind", "temp", "rh", "cloudtop", "pressure"],
                 allowed: Array.isArray,
                 save: !0,
                 sync: !1

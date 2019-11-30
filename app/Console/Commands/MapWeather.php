@@ -48,10 +48,10 @@ class MapWeather extends Command
             'wind',
             'temp',
             'rh',
-            'hclouds',
             'cloudtop',
-            'cbase',
             'pressure',
+            // 'hclouds',
+            // 'cbase',
         ];
         // #2 height
         $heights = ['surface', '100m', '950h',
@@ -121,16 +121,18 @@ class MapWeather extends Command
         }
         $i = count($points);
         foreach($points as $point){
+            $passwand = '.jpg';
+            if($point['type'] === 'pressure'){$passwand = '.png';}
             $image_src = $weather_url . 
                 $point['year']. '/'. $point['month']. '/'. $point['day']. '/'.
                 $point['hour']. '/'. $point['zoom']. '/'. $point['y']. '/'. $point['x']. '/'. 
-                $point['type']. '-'. $point['height'] . '.jpg';
+                $point['type']. '-'. $point['height'] . $passwand;
 
             $directory_path = storage_path() . '/app/public/ecmwf-hres/'. 
                 $point['year']. '/'. $point['month']. '/'. $point['day']. '/'.
                 $point['hour']. '/'. $point['zoom']. '/'. $point['y']. '/'. $point['x'];
 
-            $file_path = $directory_path . '/' . $point['type']. '-'. $point['height'] . '.jpg';
+            $file_path = $directory_path . '/' . $point['type']. '-'. $point['height'] . $passwand;
             if(!file_exists($file_path))
             {
                 File::makeDirectory($directory_path, 0777, true, true);
