@@ -5440,10 +5440,10 @@ L.CanvasLayer = L.Layer.extend({
                 hasURL: !1,
                 className: "picker"
             }),
-            pickerx: n.instance({
-                ident: "pickerx",
+            pickerradar: n.instance({
+                ident: "pickerradar",
                 hasURL: !1,
-                className: "pickerx"
+                className: "pickerradar"
             }),
             waves: n.instance({
                 ident: "waves",

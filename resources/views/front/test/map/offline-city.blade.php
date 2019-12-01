@@ -74,7 +74,6 @@
             /*line-height: 1.8;*/
             /*box-shadow: 0px 0px 10px #4c4343;*/
             /*padding: 20px;*/
-            /*color: #9D0300;*/
             box-sizing: border-box;
             position: absolute;
             overflow: initial;
@@ -91,14 +90,19 @@
             background-color: #f8f8f8;
             transition: visibility 0s linear .3s,opacity .3s linear;
         }
+        .ali p{
+            color: #9D0300 !important;
+            margin: 0px;
+        }
         .ali input{
+            margin: 5px;
             width: 150px;
             position: relative;
             display: block;
-            border: 0;
+            border: 1px solid #00000021;
             padding: .3em 1em;
             border-radius: 2em;
-            margin-left: 7px;
+            outline: none;
         }
     </style>
 </head>

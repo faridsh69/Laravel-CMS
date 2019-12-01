@@ -1,0 +1,1 @@
+W.tag("pickerradar","<div class='ali'><p>Add radar</p><input placeholder='latitude'><input placeholder='longitude'><button class='button btn-red size-s'>Add radar</button></div> ");

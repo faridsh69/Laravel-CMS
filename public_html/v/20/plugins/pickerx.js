@@ -1,1 +1,1 @@
-W.tag("pickerx","<div class='ali'><p>Add radar</p><input><input><button class='button btn-red size-s'>Add radar</button></div> ");
+W.tag("radar","<div class='ali'><p>Add radar</p><input placeholder='latitude'><input placeholder='longitude'><button class='button btn-red size-s'>Add radar</button></div> ");
