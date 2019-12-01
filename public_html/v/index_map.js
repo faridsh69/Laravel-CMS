@@ -824,6 +824,7 @@ L.CanvasLayer = L.Layer.extend({
             MENU_LOCATION: "Find my location",
             MENU_FULLSCREEN: "Fullscreen mode",
             MENU_DISTANCE: "Distance & planning",
+            ADD_RADAR: "Add radar",
             MENU_HISTORICAL: "Show historical data",
             MENU_MOBILE: "Download App",
             MENU_FAVS: "Favorites",
@@ -5438,6 +5439,11 @@ L.CanvasLayer = L.Layer.extend({
                 ident: "picker",
                 hasURL: !1,
                 className: "picker"
+            }),
+            pickerx: n.instance({
+                ident: "pickerx",
+                hasURL: !1,
+                className: "pickerx"
             }),
             waves: n.instance({
                 ident: "waves",

@@ -16,7 +16,7 @@ class PageController extends Controller
         if(config('app.name') === 'map'){
             return view('front.test.map.offline-city');
         }
-
+        
         $page = Page::where('url', $page_url)->active()->first();
         abort_if(! $page, 404);
 
