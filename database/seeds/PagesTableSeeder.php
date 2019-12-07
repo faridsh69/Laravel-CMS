@@ -75,7 +75,7 @@ class PagesTableSeeder extends Seeder
 
         foreach($pages as $page){
             if(config('app.name') === 'eric'){
-                $pages = collect($pages)->whereIn('id', [1,6])->toArray();
+                $pages = collect($pages)->whereIn('id', [1, 6])->toArray();
             }
             Page::updateOrCreate(['id' => $page['id']], $page);
         }

@@ -4,8 +4,6 @@ namespace Tests\Unit;
 
 use App\Models\User;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class SettingTest extends TestCase
 {
@@ -24,21 +22,21 @@ class SettingTest extends TestCase
         'media.list.index',
     ];
 
-	private function _checkMethod($mothod_name)
-    {
-        $this
-            ->get(route('admin.' . $mothod_name))
-            ->assertStatus(200);
-    }
-
     public function test()
     {
         $user = User::first();
         $this->actingAs($user);
-        
+
         foreach($this->methods as $method)
         {
             $this->_checkMethod($method);
         }
+    }
+
+    private function _checkMethod($mothod_name)
+    {
+        $this
+            ->get(route('admin.' . $mothod_name))
+            ->assertStatus(200);
     }
 }

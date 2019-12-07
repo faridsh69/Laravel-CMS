@@ -6,29 +6,25 @@ foreach($models as $model_sm)
 {
 	$model = ucfirst($model_sm);
 	$class_name = 'App\\Models\\' . $model;
-	Route::group(['prefix' => $model_sm, 'namespace' => $model, 'as' => $model_sm . '.'], function () use ($model_sm, $class_name) {
-		Route::get('datatable', 'ResourceController@getDatatable')
-			->middleware('can:datatable,'.$class_name)
-			->name('datatable');
-		Route::get('export', 'ResourceController@getExport')
-			->middleware('can:export,'.$class_name)
-			->name('export');
-		Route::get('pdf', 'ResourceController@getPdf')
-			->middleware('can:pdf,'.$class_name)
-			->name('pdf');
-		Route::get('print', 'ResourceController@getPrint')
-			->middleware('can:print,'.$class_name)
-			->name('print');
-		Route::get('import', 'ResourceController@getImport')
-			->middleware('can:import,'.$class_name)
-			->name('import');
-		Route::get('change-status/{id}', 'ResourceController@getChangeStatus')
-			->middleware('can:change-status,'.$class_name)
-			->name('change-status');
-		Route::resource('list', 'ResourceController');
-		Route::get('list/{list}/restore', 'ResourceController@getRestore')->name('list.restore');
-		Route::get('', 'ResourceController@getRedirect')->name('redirect');
-	});
+Route::group(['prefix' => $model_sm, 'namespace' => $model, 'as' => $model_sm . '.'], function () use ($class_name) {
+	Route::get('datatable', 'ResourceController@getDatatable')->middleware('can:datatable,' . $class_name)->name('datatable');
+	Route::get('export', 'ResourceController@getExport')->middleware('can:export,' . $class_name)->name('export');
+	Route::get('pdf', 'ResourceController@getPdf')
+	    ->middleware('can:pdf,' . $class_name)
+	    ->name('pdf');
+	Route::get('print', 'ResourceController@getPrint')
+	    ->middleware('can:print,' . $class_name)
+	    ->name('print');
+	Route::get('import', 'ResourceController@getImport')
+	    ->middleware('can:import,' . $class_name)
+	    ->name('import');
+	Route::get('change-status/{id}', 'ResourceController@getChangeStatus')
+	    ->middleware('can:change-status,' . $class_name)
+	    ->name('change-status');
+	Route::resource('list', 'ResourceController');
+	Route::get('list/{list}/restore', 'ResourceController@getRestore')->name('list.restore');
+	Route::get('', 'ResourceController@getRedirect')->name('redirect');
+});
 }
 Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'as' => 'dashboard.'], function () {
 	Route::get('', 'DashboardController@index')->name('index');
@@ -57,7 +53,7 @@ Route::group(['prefix' => 'setting', 'namespace' => 'Setting', 'as' => 'setting.
 
 	Route::get('developer', 'DeveloperController@index')->name('developer');
 	Route::put('developer', 'DeveloperController@update')->name('developer.update');
-	
+
 	Route::get('advance', 'SettingController@getAdvance')->name('advance');
 	Route::get('advance/command/{command}', 'SettingController@getCommand')->name('advance.command');
 
