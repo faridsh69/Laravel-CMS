@@ -205,7 +205,7 @@ class User extends Authenticatable
     public function getImageAttribute($image)
     {
         if(isset($image)) {
-            return $image; 
+            return $image;
         }
 
         return config('0-general.default_user_image');

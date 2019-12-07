@@ -2,9 +2,9 @@
 
 namespace App\Services;
 
-use Image;
-use Illuminate\Support\Facades\Storage;
 use App\Base\BaseService;
+use Illuminate\Support\Facades\Storage;
+use Image;
 
 class ImageService extends BaseService
 {
@@ -19,14 +19,14 @@ class ImageService extends BaseService
         $path_model = 'storage/product/' . $model->id . '/';
         $path_storage = 'public/product/' . $model->id;
         $path_intervation = storage_path('app/public/product/' . $model->id . '/');
-    
+
 		$image_model = [
             'title' => $file->getClientOriginalName(),
-            'imageable_type' => 'App\Models\Product', 
+            'imageable_type' => 'App\Models\Product',
             'imageable_id' => $model->id,
             'src_main' => $path_model . $main_name,
             'src_thumbnail' => $path_model . $thumbnail_name,
-            'width' => $width, 
+            'width' => $width,
             'height' => $height,
         ];
         $image_model = \App\Models\Image::firstOrCreate($image_model);
