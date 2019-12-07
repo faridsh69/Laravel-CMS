@@ -33,12 +33,15 @@ class BaseFactory
                     elseif($name === 'description'){
                         $fake_data = $faker->realText(100);
                     }
-                    elseif($database === 'nullable' || $database === 'none'){
-                        continue;
+                    elseif($name === 'email'){
+                        $fake_data = $faker->email();
                     }
                     elseif($name === 'password'){
                         $password = $faker->realText(10);
                         $fake_data = $password;
+                    }
+                    elseif($database === 'nullable' || $database === 'none'){
+                        continue;
                     }
                     elseif($name === 'content'){
                         $fake_data = '<h1>Fake h1</h1><h2>Fake h2</h2>' . $faker->realText(400);
