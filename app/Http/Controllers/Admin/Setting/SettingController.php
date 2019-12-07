@@ -50,7 +50,7 @@ class SettingController extends BaseAdminController
             }
         }
         $model->update($updated_data);
-        
+
         Cache::forget('settings.' . $this->section);
         // $base_data = config('0-' . $this->section);
         // $new_settings = array_merge($base_data, $updated_data);
@@ -61,7 +61,7 @@ class SettingController extends BaseAdminController
         activity($this->model)
             ->causedBy(Auth::user())
             ->log(json_encode($model));
-            
+
         $this->request->session()->flash('alert-success', $this->model . ' Updated Successfully!');
         sleep(1);
 

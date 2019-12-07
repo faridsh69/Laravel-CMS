@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use Spatie\Permission\Models\Permission as PermissionSpatie;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Permission\Models\Permission as PermissionSpatie;
 
 class Permission extends PermissionSpatie
 {
     use SoftDeletes;
-    
+
     public $columns = [
         [
             'name' => 'name',

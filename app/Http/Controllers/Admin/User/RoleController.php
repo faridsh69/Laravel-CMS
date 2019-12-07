@@ -59,7 +59,7 @@ class RoleController extends BaseListController
         $data = $form->getFieldValues();
 
         $role = Role::updateOrCreate(['name' => $data['name']], ['name' => $data['name']]);
-        if( isset($data['permissions']) ){
+        if(isset($data['permissions'])){
             $permissions = Permission::whereIn('id', $data['permissions'])->get();
             $role->syncPermissions($permissions);
         }
@@ -129,7 +129,7 @@ class RoleController extends BaseListController
         })->get();
         $model->name = $data['name'];
         $model->save();
-        if( isset($data['permissions']) ){
+        if(isset($data['permissions'])){
             $permissions = Permission::whereIn('id', $data['permissions'])->get();
             $model->syncPermissions($permissions);
         }

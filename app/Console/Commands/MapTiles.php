@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
 use File;
+use Illuminate\Console\Command;
 
 class MapTiles extends Command
 {
@@ -43,17 +43,17 @@ class MapTiles extends Command
         }
         $i = count($points);
         foreach($points as $point){
-            $image_src = $tile_url . $point['zoom']. '/'. $point['x']. '/'. $point['y']. '.png';
-            $directory_path = storage_path() . '/app/public/tiles/'. $point['zoom']. '/'. $point['x'];
-            $file_path = $directory_path . '/' . $point['y']. '.png';
-            if(!file_exists($file_path))
+            $image_src = $tile_url . $point['zoom'] . '/' . $point['x'] . '/' . $point['y'] . '.png';
+            $directory_path = storage_path() . '/app/public/tiles/' . $point['zoom'] . '/' . $point['x'];
+            $file_path = $directory_path . '/' . $point['y'] . '.png';
+            if(! file_exists($file_path))
             {
                 File::makeDirectory($directory_path, 0777, true, true);
-                $image_file = file_get_contents($image_src); 
+                $image_file = file_get_contents($image_src);
                 file_put_contents($file_path, $image_file);
             }
             $i --;
-            var_dump($i . '_tile_'. $point['zoom']. '_'. $point['x']. '_'. $point['y']);
+            var_dump($i . '_tile_' . $point['zoom'] . '_' . $point['x'] . '_' . $point['y']);
         }
         dd('map tiles downloaded');
     }

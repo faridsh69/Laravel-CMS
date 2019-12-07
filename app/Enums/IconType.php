@@ -7,7 +7,7 @@ use App\Base\BaseEnum;
 final class IconType extends BaseEnum
 {
     const data = [
-    	'mobile' => 'mobile', 
+    	'mobile' => 'mobile',
     	'money' => 'money',
     	'settings' => 'settings',
     	'arrow-up' => 'arrow-up',

@@ -167,7 +167,8 @@ class BlocksTableSeeder extends Seeder
         ];
 
         foreach($blocks as $block){
-            $block_model = Block::updateOrCreate(['id' => $block['id']], 
+            $block_model = Block::updateOrCreate(
+                ['id' => $block['id']],
                 [
                     'title' => isset($block['title']) ? $block['title'] : $block['type'],
                     'order' => $block['order'],

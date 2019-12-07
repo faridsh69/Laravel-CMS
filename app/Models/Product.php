@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Actuallymab\LaravelComment\Contracts\Commentable;
 use Actuallymab\LaravelComment\HasComments;
-use Conner\Tagging\Taggable;
 use App\Base\BaseModel;
+use Conner\Tagging\Taggable;
 
 class Product extends BaseModel implements Commentable
 {

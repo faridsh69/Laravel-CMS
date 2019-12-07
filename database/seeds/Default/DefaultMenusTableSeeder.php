@@ -2,7 +2,6 @@
 
 use App\Models\Menu;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
 
 class DefaultMenusTableSeeder extends Seeder
 {

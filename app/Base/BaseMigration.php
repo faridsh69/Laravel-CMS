@@ -37,7 +37,7 @@ class BaseMigration extends Migration
                 $type = isset($column['type']) ? $column['type'] : '';
                 $database = isset($column['database']) ? $column['database'] : '';
                 $relation = isset($column['relation']) ? $column['relation'] : '';
-                // if database attribute is 'none' it means it dont need database column 
+                // if database attribute is 'none' it means it dont need database column
                 if($database === 'none'){
                     continue;
                 }
@@ -50,7 +50,7 @@ class BaseMigration extends Migration
                     $table->{$type}($name)->{$database}(true);
                 }
             }
-            // for sortable models need to add another column based on trait soratable 
+            // for sortable models need to add another column based on trait soratable
             if($table_name === 'categories' || $table_name === 'menus' || $table_name === 'blocks'){
                 $table->nestedSet();
             }

@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
 use Carbon\Carbon;
 use File;
+use Illuminate\Console\Command;
 
 class MapWeather extends Command
 {
@@ -23,9 +23,9 @@ class MapWeather extends Command
         $date = Carbon::now();
         $weather_url = 'https://ims.windy.com/ecmwf-hres/';
         $hours = ['00', '03', '06', '09', '12', '15', '18', '21'];
-        
+
         // #1 types for weather statics
-        $types = [ 
+        $types = [
             'wind',
             'temp',
             'rh',
@@ -36,8 +36,8 @@ class MapWeather extends Command
         ];
         // #2 height
         $heights = ['surface', '100m', '950h',
-            // '925h', '900h', '850h', '800h', '700h', '600h', '500h', '400h', '300h', 
-            '250h', '200h', '150h'
+            // '925h', '900h', '850h', '800h', '700h', '600h', '500h', '400h', '300h',
+            '250h', '200h', '150h',
         ];
         // #3 year
         $years = [$date->year];
@@ -51,7 +51,7 @@ class MapWeather extends Command
         // #6 hour
         $hours = ['00', '03', '06', '09', '12', '15', '18', '21'];
         $hours = ['12'];
-        // #7 zooms: 257w2 -> zoom ta 4 - 257w3 -> zoom ta 7 
+        // #7 zooms: 257w2 -> zoom ta 4 - 257w3 -> zoom ta 7
         $zooms = [
             '257w2' => 3,
             '257w3' => 7,
@@ -60,12 +60,12 @@ class MapWeather extends Command
         $points = [];
         foreach($types as $type){
             foreach($heights as $height){
-                if($type === 'temp' && $height === '100m'){continue;}
-                if($type === 'rh' && $height === '100m'){continue;}
-                if($type === 'hclouds' && $height !== 'surface'){continue;}
-                if($type === 'cloudtop' && $height !== 'surface'){continue;}
-                if($type === 'cbase' && $height !== 'surface'){continue;}
-                if($type === 'pressure' && $height !== 'surface'){continue;}
+                if($type === 'temp' && $height === '100m'){continue; }
+                if($type === 'rh' && $height === '100m'){continue; }
+                if($type === 'hclouds' && $height !== 'surface'){continue; }
+                if($type === 'cloudtop' && $height !== 'surface'){continue; }
+                if($type === 'cbase' && $height !== 'surface'){continue; }
+                if($type === 'pressure' && $height !== 'surface'){continue; }
                 foreach($years as $year){
                     foreach($months as $month){
                         foreach($days as $day){
@@ -102,28 +102,28 @@ class MapWeather extends Command
         $i = count($points);
         foreach($points as $point){
             $passwand = '.jpg';
-            if($point['type'] === 'pressure'){$passwand = '.png';}
-            $image_src = $weather_url . 
-                $point['year']. '/'. $point['month']. '/'. $point['day']. '/'.
-                $point['hour']. '/'. $point['zoom']. '/'. $point['y']. '/'. $point['x']. '/'. 
-                $point['type']. '-'. $point['height'] . $passwand;
+            if($point['type'] === 'pressure'){$passwand = '.png'; }
+            $image_src = $weather_url .
+                $point['year'] . '/' . $point['month'] . '/' . $point['day'] . '/' .
+                $point['hour'] . '/' . $point['zoom'] . '/' . $point['y'] . '/' . $point['x'] . '/' .
+                $point['type'] . '-' . $point['height'] . $passwand;
 
-            $directory_path = storage_path() . '/app/public/ecmwf-hres/'. 
-                $point['year']. '/'. $point['month']. '/'. $point['day']. '/'.
-                $point['hour']. '/'. $point['zoom']. '/'. $point['y']. '/'. $point['x'];
+            $directory_path = storage_path() . '/app/public/ecmwf-hres/' .
+                $point['year'] . '/' . $point['month'] . '/' . $point['day'] . '/' .
+                $point['hour'] . '/' . $point['zoom'] . '/' . $point['y'] . '/' . $point['x'];
 
-            $file_path = $directory_path . '/' . $point['type']. '-'. $point['height'] . $passwand;
-            if(!file_exists($file_path))
+            $file_path = $directory_path . '/' . $point['type'] . '-' . $point['height'] . $passwand;
+            if(! file_exists($file_path))
             {
                 File::makeDirectory($directory_path, 0777, true, true);
-                $image_file = file_get_contents($image_src); 
+                $image_file = file_get_contents($image_src);
                 file_put_contents($file_path, $image_file);
             }
             $i --;
-            var_dump($i . '_weather_'. 
-                $point['year']. '_'. $point['month']. '_'. $point['day']. '_'.
-                $point['hour']. '_'. $point['zoom']. '_'. $point['y']. '_'. $point['x']. '_'. 
-                $point['type']. '_'. $point['height']);
+            var_dump($i . '_weather_' .
+                $point['year'] . '_' . $point['month'] . '_' . $point['day'] . '_' .
+                $point['hour'] . '_' . $point['zoom'] . '_' . $point['y'] . '_' . $point['x'] . '_' .
+                $point['type'] . '_' . $point['height']);
         }
         dd('map weather downloaded');
     }

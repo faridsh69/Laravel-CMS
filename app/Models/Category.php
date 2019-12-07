@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Kalnoy\Nestedset\NodeTrait;
 use App\Base\BaseModel;
+use Kalnoy\Nestedset\NodeTrait;
 
 class Category extends BaseModel
 {

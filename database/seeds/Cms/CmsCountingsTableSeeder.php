@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Models\Counting;
+use Illuminate\Database\Seeder;
 
 class CmsCountingsTableSeeder extends Seeder
 {

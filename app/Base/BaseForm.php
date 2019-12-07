@@ -39,7 +39,7 @@ class BaseForm extends Form
                 $rule .= $this->id;
             }
 
-            // form options 
+            // form options
             $option = [
                 'rules' => $rule,
                 'help_block' => [
@@ -47,7 +47,7 @@ class BaseForm extends Form
                 ],
             ];
 
-            // default type for form input type is text-m 
+            // default type for form input type is text-m
             $input_type = 'text-m';
 
             // if it dosnt need to add field in form it will be none in columns
@@ -64,7 +64,7 @@ class BaseForm extends Form
                     $input_type = 'switch-bootstrap-m';
                 }
             }
-            // for convert textarean to ckeditor 
+            // for convert textarean to ckeditor
             elseif($form_type === 'ckeditor'){
                 $input_type = 'textarea';
                 $option['attr'] = ['ckeditor' => 'on'];
@@ -88,7 +88,7 @@ class BaseForm extends Form
             // create select from enum options
             elseif($form_type === 'enum'){
                 $form_enum_class = $column['form_enum_class'];
-                $enum_class_name = 'App\\Enums\\' . $form_enum_class; 
+                $enum_class_name = 'App\\Enums\\' . $form_enum_class;
                 $enum_class =  new $enum_class_name();
                 $option['choices'] = $enum_class::data;
                 $input_type = 'select';

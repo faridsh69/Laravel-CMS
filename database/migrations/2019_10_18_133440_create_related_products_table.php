@@ -29,4 +29,3 @@ class CreateRelatedProductsTable extends Migration
         Schema::dropIfExists('related_products');
     }
 }
-

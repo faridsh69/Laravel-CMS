@@ -6,8 +6,8 @@ use App\Base\BaseAdminController;
 use Auth;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
-use Spatie\Activitylog\Models\Activity;
 use Route;
+use Spatie\Activitylog\Models\Activity;
 
 class DashboardController extends BaseAdminController
 {
@@ -32,7 +32,7 @@ class DashboardController extends BaseAdminController
 
         $this->meta['alert'] = '';
 
-        $yesterday_time = \Carbon\Carbon::now()->subdays(1);
+        // $yesterday_time = \Carbon\Carbon::now()->subdays(1);
         $last_week_time = \Carbon\Carbon::now()->subdays(7);
         $count = [
             'tags' => \App\Models\Tag::count(),
@@ -122,8 +122,8 @@ class DashboardController extends BaseAdminController
         $this->meta['title'] = __('My Activity');
         $this->meta['alert'] = '';
     	$activities = Activity::where('causer_id', Auth::id())
-            ->orderBy('id', 'desc')
-            ->get();
+    	    ->orderBy('id', 'desc')
+    	    ->get();
 
     	return view('admin.dashboard.activity', ['activities' => $activities, 'meta' => $this->meta]);
     }

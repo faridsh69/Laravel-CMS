@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use Spatie\Permission\Models\Role as RoleSpatie;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Permission\Models\Role as RoleSpatie;
 
 class Role extends RoleSpatie
 {
     use SoftDeletes;
-    
+
     public $columns = [
         [
             'name' => 'name',

@@ -35,7 +35,7 @@ class DashboardController extends Controller
     }
 
     public function getLogin($shop_subdomain)
-    {        
+    {
         return view('auth.login');
     }
 
@@ -71,7 +71,7 @@ class DashboardController extends Controller
             'categories' => $categories,
             'shop_subdomain' => $shop_subdomain,
             'is_restaurant_close' => 0,
-            'under_construction' => 0, 
+            'under_construction' => 0,
         ]);
     }
 
@@ -100,7 +100,7 @@ class DashboardController extends Controller
         $product->url = Str::slug($product->title);
         $product->save();
 
-        $contents = "$('#" . $request->folder_id . "').children('.items').find('.items_list').append(\"<li class='item _' data-url='" . route('shop.dashboard.showItem', $product->id) . "' data-galleryaddr='" . $product->gallery_address . "' id='item$product->id'><img class='li_item_image hidden' src=''><div class='name'><span class='inner_item_name'>" . $product->title . "</span><span class='count'></span></div><div class='over'></div></li>\");";
+        $contents = "$('#" . $request->folder_id . "').children('.items').find('.items_list').append(\"<li class='item _' data-url='" . route('shop.dashboard.showItem', $product->id) . "' data-galleryaddr='" . $product->gallery_address . "' id='item{$product->id}'><img class='li_item_image hidden' src=''><div class='name'><span class='inner_item_name'>" . $product->title . "</span><span class='count'></span></div><div class='over'></div></li>\");";
         $contents .= "$('.add_item_input').val('');";
 
         $response  = Response::make($contents, 200);
@@ -125,14 +125,14 @@ class DashboardController extends Controller
         $category->url = Str::slug($category->title);
         $category->save();
 
-        $contents  ="$('.add_card_sw').before(\"<div class='swiper-slide'><ul class='card swiper-no-swiping' id='".$category->id."'><div class='cardheader ui-sortable-handle'><div class='leftsec'><div class='card_name'>".$category->title."</div> <div class='batchicon edit_card' data-id='batch_$category->id'></div> <div class='batchicon card_archive' data-id='$category->id'></div></div><div class='rightsec'><div class='card_icon' data-iconname='default'><img height='100%' width='100%' src='".asset('images/icons/restaurant_pack/default-icon.png')."' /></div><label class='card_select'><input class='select_input' type='checkbox' id='batch_$category->id'></label></div></div><div class='items'><ul class='items_list ui-sortable'></ul><form class='add_item_form' method='post' data-action='".route('shop.dashboard.item.store', ['shop_subdomain' => $shop_subdomain])."' name='addItemForm'><input type='hidden' name='_token' value='".csrf_token()."'><input type='hidden' name='_method' value='post'><input type='text' class='add_item add_item_input' name='name' placeholder='Add New Item ...' /><input type='hidden' name='folder_id' id='folder_id' value=".$category->id."><input type='submit' value='Add Item' class='add_item_btn'></form></div></ul></div>\");";
+        $contents  ="$('.add_card_sw').before(\"<div class='swiper-slide'><ul class='card swiper-no-swiping' id='" . $category->id . "'><div class='cardheader ui-sortable-handle'><div class='leftsec'><div class='card_name'>" . $category->title . "</div> <div class='batchicon edit_card' data-id='batch_{$category->id}'></div> <div class='batchicon card_archive' data-id='{$category->id}'></div></div><div class='rightsec'><div class='card_icon' data-iconname='default'><img height='100%' width='100%' src='" . asset('images/icons/restaurant_pack/default-icon.png') . "' /></div><label class='card_select'><input class='select_input' type='checkbox' id='batch_{$category->id}'></label></div></div><div class='items'><ul class='items_list ui-sortable'></ul><form class='add_item_form' method='post' data-action='" . route('shop.dashboard.item.store', ['shop_subdomain' => $shop_subdomain]) . "' name='addItemForm'><input type='hidden' name='_token' value='" . csrf_token() . "'><input type='hidden' name='_method' value='post'><input type='text' class='add_item add_item_input' name='name' placeholder='Add New Item ...' /><input type='hidden' name='folder_id' id='folder_id' value=" . $category->id . "><input type='submit' value='Add Item' class='add_item_btn'></form></div></ul></div>\");";
         $contents .="$('.add_card_btn').hide();";
         $contents .="$('.add_card_input').val('');";
-        $contents .="ItemsdragDrop();enableCreateBatchButton();";
+        $contents .='ItemsdragDrop();enableCreateBatchButton();';
 
         $response  = Response::make($contents, 200);
         $response->header('Content-Type', 'application/javascript');
-        
+
         return $response;
     }
 
@@ -158,7 +158,7 @@ class DashboardController extends Controller
     public function uploadGallery($shop_subdomain, $product_id, Request $request)
     {
         $product = Product::where('id', $product_id)->first();
-        $image_service = new ImageService;
+        $image_service = new ImageService();
         $uploaded_image = $request->file('gallery');
 
         $razie_array_gallery_for_front = [];
@@ -211,12 +211,11 @@ class DashboardController extends Controller
     public function hideItem($shop_subdomain, Request $request)
     {
         $product = Product::find($request->id);
-        $product->activated = !$product->activated;
+        $product->activated = ! $product->activated;
         $product->save();
 
-        return json_encode(!$product->activated);
+        return json_encode(! $product->activated);
     }
-
 
     public function changeItemSort($shop_subdomain, Request $request)
     {
@@ -278,7 +277,7 @@ class DashboardController extends Controller
             'meta' => $meta,
             'shop_subdomain' => $shop_subdomain,
             'is_restaurant_close' => 0,
-            'under_construction' => 0, 
+            'under_construction' => 0,
         ]);
 
         return redirect()->back();
@@ -294,7 +293,7 @@ class DashboardController extends Controller
         $shop->products_background_color = $request->input('products_background_color');
         $shop->category_icon_color = $request->input('category_icon_color');
 
-        if(null === $request->input('activated')){
+        if($request->input('activated') === null){
             $shop->activated = 1;
         }else{
             $shop->activated = 0;

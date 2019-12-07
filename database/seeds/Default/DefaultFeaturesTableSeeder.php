@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Models\Feature;
+use Illuminate\Database\Seeder;
 
 class DefaultFeaturesTableSeeder extends Seeder
 {

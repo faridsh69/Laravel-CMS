@@ -3,15 +3,10 @@
 namespace App\Base;
 
 use App\Http\Controllers\Controller;
-use App\Services\ImageService;
-use App\Models\Category;
 use App\Models\Shop;
 use Auth;
-use Conner\Tagging\Model\Tag;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
-use Maatwebsite\Excel\Facades\Excel;
-use PDF;
 use Route;
 use Spatie\Activitylog\Models\Activity;
 use View;
@@ -41,11 +36,17 @@ class BaseApiController extends Controller
     public $form_builder;
 
     public $message_not_found;
+
     public $message_list;
+
     public $message_store;
+
     public $message_show;
+
     public $message_update;
+
     public $message_delete;
+
     public $message_restore;
 
     public $response = [
@@ -124,7 +125,7 @@ class BaseApiController extends Controller
         // $this->authorize('create', $this->model_class);
         $main_data = $this->request->all();
         $validator = \Validator::make($main_data, $this->model_rules);
-        if ($validator->fails()) {    
+        if ($validator->fails()) {
             return response()->json($validator->messages(), 200);
         }
         $model_store = $this->repository->create($main_data);
@@ -151,7 +152,7 @@ class BaseApiController extends Controller
     public function show($id)
     {
         $model_view = $this->repository->where('id', $id)->first();
-        if(!$model_view){
+        if(! $model_view){
             $this->response['status'] = 404;
             $this->response['message'] = $this->message_not_found;
             return response()->json($this->response);
@@ -177,8 +178,8 @@ class BaseApiController extends Controller
         $model_edit = $this->repository
             ->where('id', $id)
             ->first();
-        
-        if(!$model_edit){
+
+        if(! $model_edit){
             $this->response['status'] = 404;
             $this->response['message'] = $this->message_not_found;
             return response()->json($this->response);
@@ -203,7 +204,7 @@ class BaseApiController extends Controller
     public function update($id)
     {
         $model_update = $this->repository->where('id', $id)->first();
-        if(!$model_update){
+        if(! $model_update){
             $this->response['status'] = 404;
             $this->response['message'] = $this->message_not_found;
             return response()->json($this->response);
@@ -212,7 +213,7 @@ class BaseApiController extends Controller
 
         $main_data = $this->request->all();
         $validator = \Validator::make($main_data, $this->model_rules);
-        if ($validator->fails()) {    
+        if ($validator->fails()) {
             return response()->json($validator->messages(), 200);
         }
 
@@ -240,7 +241,7 @@ class BaseApiController extends Controller
     public function destroy($id)
     {
         $model_delete = $this->repository->where('id', $id)->first();
-        if(!$model_delete){
+        if(! $model_delete){
             $this->response['status'] = 404;
             $this->response['message'] = $this->message_not_found;
             return response()->json($this->response);

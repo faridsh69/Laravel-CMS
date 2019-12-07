@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
 use File;
+use Illuminate\Console\Command;
 
 class MapLabels extends Command
 {
@@ -43,17 +43,17 @@ class MapLabels extends Command
         }
         $i = count($points);
         foreach($points as $point){
-            $json_src = $label_url . $point['zoom']. '/'. $point['x']. '/'. $point['y']. '.json';
-            $directory_path = storage_path() . '/app/public/labels/'. $point['zoom']. '/'. $point['x'];
-            $file_path = $directory_path . '/' . $point['y']. '.json';
-            if(!file_exists($file_path))
+            $json_src = $label_url . $point['zoom'] . '/' . $point['x'] . '/' . $point['y'] . '.json';
+            $directory_path = storage_path() . '/app/public/labels/' . $point['zoom'] . '/' . $point['x'];
+            $file_path = $directory_path . '/' . $point['y'] . '.json';
+            if(! file_exists($file_path))
             {
                 File::makeDirectory($directory_path, 0777, true, true);
-                $json_file = file_get_contents($json_src); 
+                $json_file = file_get_contents($json_src);
                 file_put_contents($file_path, $json_file);
             }
             $i --;
-            var_dump($i . '_label_'. $point['zoom']. '_'. $point['x']. '_'. $point['y']);
+            var_dump($i . '_label_' . $point['zoom'] . '_' . $point['x'] . '_' . $point['y']);
         }
         dd('map labels downloaded');
     }

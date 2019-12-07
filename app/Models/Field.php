@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Base\BaseModel;
 
 class Field extends BaseModel
-{    
+{
     // title, type, required, activated, options, order
     public $columns = [
         ['name' => 'title'],

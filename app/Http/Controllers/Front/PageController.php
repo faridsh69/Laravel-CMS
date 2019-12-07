@@ -16,7 +16,7 @@ class PageController extends Controller
         if(config('app.name') === 'map'){
             return view('front.test.map.offline-city');
         }
-        
+
         $page = Page::where('url', $page_url)->active()->first();
         abort_if(! $page, 404);
 
@@ -29,7 +29,7 @@ class PageController extends Controller
             //     }else{
             //         $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}"));
             //         if($details->country === 'IR'){
-                        
+
             //         }
             //     }
             // }
@@ -64,7 +64,7 @@ class PageController extends Controller
                 'phone' => $phone,
                 'bio' => $message,
                 'status' => 0,
-                'password' => 'Password-' . rand(100,999),
+                'password' => 'Password-' . rand(100, 999),
             ]);
         }
 

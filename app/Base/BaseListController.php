@@ -134,7 +134,7 @@ class BaseListController extends Controller
         $data = $this->_changeDataBeforeCreate($this->model, $data, null);
 
         $model = $this->repository->create($data);
-        
+
         $this->_saveRelatedDataAfterCreate($this->model, $main_data, $model);
 
         if(env('APP_ENV') !== 'testing'){
@@ -144,166 +144,6 @@ class BaseListController extends Controller
         $this->request->session()->flash('alert-success', $this->model . ' Created Successfully!');
 
         return redirect()->route('admin.' . $this->model_sm . '.list.index');
-    }
-
-    private function _changeDataBeforeCreate($model_name, $data, $model)
-    {
-        foreach(collect($this->model_columns)->where('type', 'boolean')->pluck('name') as $boolean_column) {
-            if(!isset($data[$boolean_column]))
-            {
-                $data[$boolean_column] = 0;
-            }
-        }
-        // Blog
-        unset($data['tags']);
-        unset($data['related_blogs']);
-        // Product
-        unset($data['tags']);
-        unset($data['gallery']);
-        unset($data['related_products']);
-        // Form
-        unset($data['fields']);
-        // Block
-        unset($data['pages']);
-        // Role
-        unset($data['users']);
-        unset($data['permissions']);
-        if($model_name === 'Role')
-        {
-            // remove role from old users in update mode
-            if($model){
-                $role_name = $model->name;
-                $old_users = \App\Models\User::whereHas('roles', function($q) use($role_name){
-                    $q->where('name', $role_name);
-                })->get();
-                foreach($old_users as $old_user){
-                    $old_user->removeRole($role_name);
-                }
-            }
-        }
-
-        // User
-        unset($data['password_confirmation']);
-        if($model_name === 'User'){
-            if(isset($data['password'])) {
-                $data['password'] = \Hash::make($data['password']);
-            }
-            else{
-                if($model){ // update mode
-                    $data['password'] = $model->password;
-                }
-                else{ // create mode
-                    $data['password'] = \Hash::make('123456');
-                }
-            }
-        }
-        // Comment
-
-        return $data;
-        
-
-        // // comment
-        // if($this->model === 'Comment'){
-        //     $model->commentable_id = $data['commented_id'];
-        //     $model->comment = $data['comment'];
-        //     $model->update();
-
-        //     if(env('APP_ENV') !== 'testing'){
-        //         activity($this->model)
-        //             ->performedOn($model)
-        //             ->causedBy(Auth::user())
-        //             ->log($this->model . ' Updated');
-        //     }
-        //     $this->request->session()->flash('alert-success', $this->model . ' Updated Successfully!');
-
-        //     return redirect()->route('admin.' . $this->model_sm . '.list.index');
-        // }        
-
-
-
-        // // comment
-        // if($this->model === 'Comment'){
-        //     $blog = \App\Models\Blog::where('id', $data['commented_id'])->first();
-
-        //     Auth::user()->comment($blog, $data['comment'], $rate = 0);
-        //     $blog->comments[0]->approve();
-
-        //     if(env('APP_ENV') !== 'testing'){
-        //         activity($this->model)
-        //             ->performedOn($blog)
-        //             ->causedBy(Auth::user())
-        //             ->log($this->model . ' Created');
-        //     }
-
-        //     $this->request->session()->flash('alert-success', $this->model . ' Created Successfully!');
-
-        //     return redirect()->route('admin.' . $this->model_sm . '.list.index');
-        // }
-
-    }
-
-    private function _saveRelatedDataAfterCreate($model_name, $data, $model)
-    {
-        // Blog
-        if($model_name === 'Blog')
-        {
-            $model->related_blogs()->sync($data['related_blogs'], true);
-            if(!isset($data['tags'])){
-                $data['tags'] = [];
-            }
-            $tag_names = Tag::whereIn('id', $data['tags'])->pluck('name')->toArray();
-            $model->retag($tag_names);
-        }
-
-        // Product
-        if($model_name === 'Product')
-        {
-            $model->related_products()->sync($data['related_products'], true);
-            if(!isset($data['tags'])){
-                $data['tags'] = [];
-            }
-            $tag_names = Tag::whereIn('id', $data['tags'])->pluck('name')->toArray();
-            $model->retag($tag_names);
-            if(!isset($data['gallery'])){
-                $data['gallery'] = [];
-            }
-            $image_service = new ImageService; 
-            foreach($data['gallery'] as $gallery_image){
-                $image_service->save($gallery_image, $model);
-            }
-        }
-
-        // Form
-        if($model_name === 'Form')
-        {
-            $model->fields()->sync($data['fields'], true);
-        }
-
-        // Block
-        if($model_name === 'Block')
-        {
-            $model->pages()->sync($data['pages'], true);
-        }
-
-        // Role
-        if($model_name === 'Role')
-        {
-            if(!isset($data['permissions'])){
-                $data['permissions'] = [];
-            }
-            $permissions = \App\Models\Permission::whereIn('id', $data['permissions'])->get();
-            $model->syncPermissions($permissions);
-
-            if(!isset($data['users'])){
-                $data['users'] = [];
-            }
-
-            // add role to new selected users
-            $users = \App\Models\User::whereIn('id', $data['users'])->get();
-            foreach($users as $user){
-                $user->assignRole($model->name);
-            }
-        }
     }
 
     /**
@@ -516,14 +356,14 @@ class BaseListController extends Controller
             $datatable->addColumn('permissions', function($model) {
                 return implode(',<br>', $model->permissions()->pluck('name')->toArray());
             })
-            ->addColumn('users', function($model) {
+                ->addColumn('users', function($model) {
                 return implode(',<br>', \App\Models\User::role($model->name)->select('email')->pluck('email')->toArray());
             });
         }
 
         $datatable->addColumn('image', function($model) {
             return '<img style="width:80%" src="' . asset($model->image) . '">';
-        }); 
+        });
 
         return $datatable->rawColumns(['id', 'image', 'content', 'order', 'users', 'permissions'])
             ->toJson();
@@ -549,5 +389,162 @@ class BaseListController extends Controller
     public function getRedirect()
     {
         return redirect()->route('admin.' . $this->model_sm . '.list.index');
+    }
+
+    private function _changeDataBeforeCreate($model_name, $data, $model)
+    {
+        foreach(collect($this->model_columns)->where('type', 'boolean')->pluck('name') as $boolean_column) {
+            if(! isset($data[$boolean_column]))
+            {
+                $data[$boolean_column] = 0;
+            }
+        }
+        // Blog
+        unset($data['tags']);
+        unset($data['related_blogs']);
+        // Product
+        unset($data['tags']);
+        unset($data['gallery']);
+        unset($data['related_products']);
+        // Form
+        unset($data['fields']);
+        // Block
+        unset($data['pages']);
+        // Role
+        unset($data['users']);
+        unset($data['permissions']);
+        if($model_name === 'Role')
+        {
+            // remove role from old users in update mode
+            if($model){
+                $role_name = $model->name;
+                $old_users = \App\Models\User::whereHas('roles', function($q) use($role_name){
+                    $q->where('name', $role_name);
+                })->get();
+                foreach($old_users as $old_user){
+                    $old_user->removeRole($role_name);
+                }
+            }
+        }
+
+        // User
+        unset($data['password_confirmation']);
+        if($model_name === 'User'){
+            if(isset($data['password'])) {
+                $data['password'] = \Hash::make($data['password']);
+            }
+            else{
+                if($model){ // update mode
+                    $data['password'] = $model->password;
+                }
+                else{ // create mode
+                    $data['password'] = \Hash::make('123456');
+                }
+            }
+        }
+        // Comment
+
+        return $data;
+
+        // // comment
+        // if($this->model === 'Comment'){
+        //     $model->commentable_id = $data['commented_id'];
+        //     $model->comment = $data['comment'];
+        //     $model->update();
+
+        //     if(env('APP_ENV') !== 'testing'){
+        //         activity($this->model)
+        //             ->performedOn($model)
+        //             ->causedBy(Auth::user())
+        //             ->log($this->model . ' Updated');
+        //     }
+        //     $this->request->session()->flash('alert-success', $this->model . ' Updated Successfully!');
+
+        //     return redirect()->route('admin.' . $this->model_sm . '.list.index');
+        // }
+
+        // // comment
+        // if($this->model === 'Comment'){
+        //     $blog = \App\Models\Blog::where('id', $data['commented_id'])->first();
+
+        //     Auth::user()->comment($blog, $data['comment'], $rate = 0);
+        //     $blog->comments[0]->approve();
+
+        //     if(env('APP_ENV') !== 'testing'){
+        //         activity($this->model)
+        //             ->performedOn($blog)
+        //             ->causedBy(Auth::user())
+        //             ->log($this->model . ' Created');
+        //     }
+
+        //     $this->request->session()->flash('alert-success', $this->model . ' Created Successfully!');
+
+        //     return redirect()->route('admin.' . $this->model_sm . '.list.index');
+        // }
+
+    }
+
+    private function _saveRelatedDataAfterCreate($model_name, $data, $model)
+    {
+        // Blog
+        if($model_name === 'Blog')
+        {
+            $model->related_blogs()->sync($data['related_blogs'], true);
+            if(! isset($data['tags'])){
+                $data['tags'] = [];
+            }
+            $tag_names = Tag::whereIn('id', $data['tags'])->pluck('name')->toArray();
+            $model->retag($tag_names);
+        }
+
+        // Product
+        if($model_name === 'Product')
+        {
+            $model->related_products()->sync($data['related_products'], true);
+            if(! isset($data['tags'])){
+                $data['tags'] = [];
+            }
+            $tag_names = Tag::whereIn('id', $data['tags'])->pluck('name')->toArray();
+            $model->retag($tag_names);
+            if(! isset($data['gallery'])){
+                $data['gallery'] = [];
+            }
+            $image_service = new ImageService();
+            foreach($data['gallery'] as $gallery_image){
+                $image_service->save($gallery_image, $model);
+            }
+        }
+
+        // Form
+        if($model_name === 'Form')
+        {
+            $model->fields()->sync($data['fields'], true);
+        }
+
+        // Block
+        if($model_name === 'Block')
+        {
+            $model->pages()->sync($data['pages'], true);
+        }
+
+        // Role
+        if($model_name === 'Role')
+        {
+            if(! isset($data['permissions'])){
+                $data['permissions'] = [];
+            }
+            $permissions = \App\Models\Permission::whereIn('id', $data['permissions'])->get();
+            $model->syncPermissions($permissions);
+
+            if(! isset($data['users'])){
+                $data['users'] = [];
+            }
+
+            // add role to new selected users
+            $users = \App\Models\User::whereIn('id', $data['users'])->get();
+            foreach($users as $user){
+                $user->assignRole($model->name);
+            }
+        }
     }
 }

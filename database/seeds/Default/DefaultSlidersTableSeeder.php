@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Models\Slider;
+use Illuminate\Database\Seeder;
 
 class DefaultSlidersTableSeeder extends Seeder
 {

@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Base\BaseModel;
 
 class Answer extends BaseModel
-{    
+{
     public $columns = [
         ['name' => 'description'],
         [

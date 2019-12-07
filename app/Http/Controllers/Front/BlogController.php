@@ -8,7 +8,6 @@ use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Page;
 use App\Models\Tag;
-use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -47,11 +46,11 @@ class BlogController extends Controller
         $output_blocks = [];
         foreach($blocks as $block)
         {
-            if($block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray()) === false){
+            if($block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray(), true) === false){
                 $output_blocks[] = $block;
             }
 
-            if(!$block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray()) !== false){
+            if(! $block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray(), true) !== false){
                 $output_blocks[] = $block;
             }
         }
@@ -85,11 +84,11 @@ class BlogController extends Controller
         $output_blocks = [];
         foreach($blocks as $block)
         {
-            if($block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray()) === false){
+            if($block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray(), true) === false){
                 $output_blocks[] = $block;
             }
 
-            if(!$block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray()) !== false){
+            if(! $block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray(), true) !== false){
                 $output_blocks[] = $block;
             }
         }
@@ -123,11 +122,11 @@ class BlogController extends Controller
         $output_blocks = [];
         foreach($blocks as $block)
         {
-            if($block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray()) === false){
+            if($block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray(), true) === false){
                 $output_blocks[] = $block;
             }
 
-            if(!$block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray()) !== false){
+            if(! $block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray(), true) !== false){
                 $output_blocks[] = $block;
             }
         }
@@ -164,11 +163,11 @@ class BlogController extends Controller
         $output_blocks = [];
         foreach($blocks as $block)
         {
-            if($block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray()) === false){
+            if($block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray(), true) === false){
                 $output_blocks[] = $block;
             }
 
-            if(!$block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray()) !== false){
+            if(! $block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray(), true) !== false){
                 $output_blocks[] = $block;
             }
         }
@@ -202,11 +201,11 @@ class BlogController extends Controller
         $output_blocks = [];
         foreach($blocks as $block)
         {
-            if($block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray()) === false){
+            if($block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray(), true) === false){
                 $output_blocks[] = $block;
             }
 
-            if(!$block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray()) !== false){
+            if(! $block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray(), true) !== false){
                 $output_blocks[] = $block;
             }
         }
@@ -242,11 +241,11 @@ class BlogController extends Controller
         $output_blocks = [];
         foreach($blocks as $block)
         {
-            if($block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray()) === false){
+            if($block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray(), true) === false){
                 $output_blocks[] = $block;
             }
 
-            if(!$block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray()) !== false){
+            if(! $block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray(), true) !== false){
                 $output_blocks[] = $block;
             }
         }

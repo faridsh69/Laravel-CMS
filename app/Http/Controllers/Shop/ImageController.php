@@ -3,14 +3,9 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
-use App\Models\Block;
 use App\Models\Product;
-use App\Models\User;
-use Carbon\Carbon;
-use Cache;
-use Illuminate\Http\Request;
-use Image;
 use Illuminate\Http\UploadedFile;
+use Image;
 
 class ImageController extends Controller
 {
@@ -25,12 +20,12 @@ class ImageController extends Controller
         foreach($products as $product)
         {
             dd(1);
-            if(!$product->image) {continue;}
+            if(! $product->image) {continue; }
             // if($product->id < 3399) {continue;}
-            $image_service = new \App\Services\ImageService; 
-            foreach(explode("|", $product->image) as $gallery_image){
-                $gallery_image = str_replace("/","", $gallery_image);
-                if( strpos($gallery_image, "mp4") !== false){
+            $image_service = new \App\Services\ImageService();
+            foreach(explode('|', $product->image) as $gallery_image){
+                $gallery_image = str_replace('/', '', $gallery_image);
+                if(strpos($gallery_image, 'mp4') !== false){
                     continue;
                 }
                 if($product->id > 3000 && $product->id < 4000){
@@ -49,6 +44,7 @@ class ImageController extends Controller
             }
         }
     }
+
     public function getProduct2($shop_url, $id, $width)
     {
         return 1;
@@ -56,9 +52,9 @@ class ImageController extends Controller
 
         foreach($products as $product)
         {
-            if(!$product->image) {continue;}
-            if($product->id < 3233) {continue;}
-            if($product->id === 3385) {continue;}
+            if(! $product->image) {continue; }
+            if($product->id < 3233) {continue; }
+            if($product->id === 3385) {continue; }
             if($product->id > 1000 && $product->id < 2000)
             {
                 $url = 'cdn/images/itemimages/' . ($product->id - 1000) . '/large_' . $product->image;
@@ -82,7 +78,7 @@ class ImageController extends Controller
 
             $image = Image::make($url);
             $image->save('cdn/images/product/' . $product->id . '-main.jpg');
-            
+
             $image->resize(150, null, function ($constraint) {
                 $constraint->aspectRatio();
             });

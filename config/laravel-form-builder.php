@@ -91,6 +91,6 @@ return [
         'email_username' => 'la-at',
         'email_password' => 'la-lock',
         'latitude' => 'la-map-marker',
-        'longitude' => 'la-map-marker',        
+        'longitude' => 'la-map-marker',
     ],
 ];

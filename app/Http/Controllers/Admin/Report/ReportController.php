@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin\Report;
 
 use App\Base\BaseAdminController;
-use Spatie\Activitylog\Models\Activity;
 use App\Http\Controllers\Admin\Dashboard\DashboardController;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
+use Spatie\Activitylog\Models\Activity;
 
 class ReportController extends BaseAdminController
 {
@@ -16,6 +16,7 @@ class ReportController extends BaseAdminController
 
         return $dashboard_controller->index();
     }
+
     // public function index()
     // {
     // 	$this->authorize('index_settingdeveloper');

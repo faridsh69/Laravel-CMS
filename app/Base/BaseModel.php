@@ -36,8 +36,8 @@ class BaseModel extends Model
                     'name' => 'url',
                     'type' => 'string',
                     'database' => '',
-                    'rule' => 'required|max:' . config('0-developer.seo_url_max') 
-                    .'|regex:/^[a-z0-9-]+$/',
+                    'rule' => 'required|max:' . config('0-developer.seo_url_max')
+                    . '|regex:/^[a-z0-9-]+$/',
                     'help' => 'Url should be unique, contain [a-z, 0-9, -], required for seo',
                     'form_type' => '',
                     'table' => false,
@@ -145,10 +145,9 @@ class BaseModel extends Model
     public function getImageAttribute($image)
     {
         if(isset($image)) {
-            return $image; 
+            return $image;
         }
 
         return config('0-general.default_meta_image');
     }
-
 }

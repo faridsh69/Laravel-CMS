@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Models\Feedback;
+use Illuminate\Database\Seeder;
 
 class CmsFeedbacksTableSeeder extends Seeder
 {

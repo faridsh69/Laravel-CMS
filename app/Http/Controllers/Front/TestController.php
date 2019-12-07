@@ -74,15 +74,14 @@ class TestController extends Controller
         $access_token_body_urlencode =
             'client_id=1c797945-49d2-4959-a874-800e0017f98f&scope=user.read&grant_type=refresh_token&client_secret=0M8GkVZB3j8RrsMcnuTjc7gzFYNWlGMIyZaMxpBeHEQ%3D&redirect_uri=http%3A%2F%2Flocalhost%2F&refresh_token=OAQABAAAAAADCoMpjJXrxTq9VG9te-7FX0Tt-gsgqjHuxmdYM3qT4Vbk3b6nz0Cv6TfC14RJuKQbez6sFfYFEKSBwP2-K9D7n8Dd9FMWggerNtI8i7TAmecSFdo-JxxKZKtqw-vscjl0X_tb3cju8bAHP_EUhEake9BlPpkaIDZJOeomlUltAbFAaZDdcA8wbgWojhAu5YeKplxSV-7RpDUQDQAxz08Ga6JkRYoWsJFn9knIgFlV_bnDmlv7Aq4EKCX8TtQ9tP0aix2afGLb9mA7QrBLngAaJYrQRXDlqNr36yF8QNRYOyeehSIFa23-fx9F-D9y-kASjKDpDdFZAhi0KmMiKLSr2jQ5MGgcRPh0Et891qHGoKJhYZEiV62-jaTfctGHqWxfhw4cRvA-z_rBklhLA0fRn9XRiucz7BsFIKY5wOVxF7uKt93HWmjXh1lQotTlFCXdbdR-cZID9lm6L5O2TD56FPsj0oYTz3MO0LhMNsr8EsGsXgqhp2gkB6wRoOef-EqLa1BCZ9WdTztuRdshYcJg5roJbZqn1gfUB485OPVsabLW1CqaYaBmLHhZyUAqh_sALqkkO3WMVKtcSq4hWSVLsbYD_8h8tnwRnCFdmz77OnmaZV51z5E6zqfzF3vZJvo79f0FzaJuNW0T7zdLnQ6kSgVcikmj5G4U8p6sfoVjehzqmsjwx1_opW9vI0aEa8xt3SF_f6zLC1MUihXfAM75NVFwdqXWMk3B663VVwTg2Ok5wuF7jw866F7FAh7uaq_a6PrziFeDTmkpugsUqw8Q1UcfylhP3yvIwfTKibRH5BSdjItY_uaWihAbvImAHtRqi62AhyKg7Po3lx6wB-ZyaIAA';
 
-
         $access_token_body_urlencode =
             'client_id=1c797945-49d2-4959-a874-800e0017f98f&scope=user.read&grant_type=refresh_token&client_secret=0M8GkVZB3j8RrsMcnuTjc7gzFYNWlGMIyZaMxpBeHEQ%3D&redirect_uri=http%3A%2F%2Flocalhost%2F&refresh_token=';
 
-        $refresh_token = 
+        $refresh_token =
             'OAQABAAAAAAAP0wLlqdLVToOpA4kwzSnx-7J2-GlJaLYL3LT11_W_A4Siv3_KFqV4ZeHXFUYJMdL96l926_OsOOTMXrJPldwA9H9AG3KitCbOCZETEgaDuJ6o8ppdvFcoBfZ4vK0WLzlmoeSHp5Rc2QGfz303Zd9vbf2JbgBZMHB2-QMD6e-HKYEzmfE8nIpZHrcNAUalvBUVWubME70WbtRJTXSFEX4cYruZ3tHU4xPKhpqCq_sMolVIo2-hGjWjzmcb8R_p-A3oIOF13xpVA60b8kYFjOR0RDeQH_gOzkRaM9qRddCPMaQzDoYmtM_VnF6GZcFYTKLZb3MyutcFKAJISLJsrfW3VqbmYrWEfzX6dAdoAQ8hCoW5vkVxZ67cLuG0SzoEEjCVxefJ2-qIL1q4b04n95qMdmpfv8T-BR_oCFOETGxA4sxTMYAI0Qnr1b2p6gdjtEiDtVkQ-C6s6xYfiAuqXtS5ZoT5Ce5w483UE9y97c0MU-4-KYCNBvfpzr8Vgjw5bzozI7hj0og-v9ymEzzivw1NTJUV27MY6ucjxIR-rNfrvdPa-bTGc3WH5Qv86z374FcSCw86s29hwNW5WiEDilm1PRapzvdKlmCSWmQLFXATmUV4t5TzhSG7z4UBT8uwGcqMto60GaB0wj7jlRg8vAiJDIrGPpZvZQB02t2efhUUc5jD6cxy0zg1NTG1inyAKMDCfJ4Qxu50VVDaJAwOzqZRZ_GJhxLQGr66AqpcVxZ2_52xJObDD-dDXpGTwPlD6L6_EyxfuKz03PDdCNCnxFXHrV7n9xV6eZ0ogrBBbF2eWl7IDbZLf_XlazimMb7O6VNUl5UA8IMcHqoVt4hF6ltQ1fahKSwciQQVldF_wtnIdSAA';
 
         $access_token_body_urlencode .= $refresh_token;
-        
+
         $server_output_token = $this->call_curl(
             $this->token_url,
             'POST',
