@@ -8,9 +8,23 @@ use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Page;
 use App\Models\Tag;
+use App\Models\User;
+use Auth;
+use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
+    public function postComment(Request $request, $blog_id)
+    {
+        $blog = Blog::where('id', $blog_id)->active()->first();
+        abort_if(! $blog, 404);
+
+        $user = Auth::User();
+        $user->comment($blog, $request->input('comment'), $request->input('rate'));
+
+        return redirect()->back();
+    }
+
     public function index()
     {
         $blogs = Blog::orderBy('id', 'desc')->active()->paginate(config('0-general.pagination_number'));

@@ -488,15 +488,15 @@ class BaseListController extends Controller
             });
         }
         elseif($this->model === 'Comment') {
-            $datatable->addColumn('blog_url', function($model) {
+            $datatable->addColumn('blog_id', function($model) {
                 if($model->blog){
-                    return $model->blog->url;
+                    return $model->blog->id;
                 }
                 return null;
             });
             $datatable->addColumn('author', function($model) {
                 if($model->user){
-                    return $model->user->email;
+                    return $model->user->full_name;
                 }
                 return null;
             });

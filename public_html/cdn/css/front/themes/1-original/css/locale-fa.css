@@ -59,6 +59,7 @@ body {
 }
 .rtl-text-right{
     text-align: right;
+    direction: rtl;
 }
 .special_description_content{
     text-align: right;

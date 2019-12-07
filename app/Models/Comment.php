@@ -20,7 +20,7 @@ class Comment extends CommentSpatie
 	        'help' => 'Blog url that is commented.',
 	        'form_type' => 'entity',
             'class' => 'App\Models\Blog',
-            'property' => 'url',
+            'property' => 'title',
             'property_key' => 'id',
             'multiple' => false,
 	        'table' => false,
@@ -46,9 +46,8 @@ class Comment extends CommentSpatie
             'form_type' => 'textarea',
             'table' => true,
         ],
-        // blog url show in admin table
         [
-            'name' => 'blog_url',
+            'name' => 'blog_id',
             'type' => 'string',
             'database' => 'none',
             'rule' => '',

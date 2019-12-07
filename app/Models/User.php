@@ -191,6 +191,12 @@ class User extends Authenticatable
         return $this->columns;
     }
 
+    public function canCommentWithoutApprove(): bool
+    {
+        return false;
+        return $this->activated;
+    }
+
     public function getFullNameAttribute()
     {
         return $this->first_name . ' ' . $this->last_name;

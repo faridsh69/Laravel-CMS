@@ -43,15 +43,30 @@
                 <br>
                 <br>
                 <br>
-                <hr>
-                <span class="mr-3 text-info"><b>{{ __('date') }}:</b> {{ $blog->created_at }}</span>
-                <br>
-                <span class="mr-3 text-info"><b>{{ __('category') }}:</b>
-                    <a href="{{ route('front.blog.category', $blog->category->url)  }}"> 
-                        {{ $blog->category->title }}
-                    </a>
-                </span>
-                <hr>
+                <div class="row">
+                    <div class="col-12">
+                        <hr>
+                        <div class="rtl-text-right mr-3">
+                            <small><b>{{ __('date') }}:</b> {{ $blog->created_at }}</small>
+                            <br>
+                            <small><b>{{ __('category') }}:</b> 
+                                <a href="{{ route('front.blog.category', $blog->category->url)  }}"> 
+                                    {{ $blog->category->title }}
+                                </a>
+                            </small>
+                            <br>
+                            <a href="whatsapp://send?text={{ route('front.blog.show', $blog->id) }}" data-action="share/whatsapp/share">
+                                <i class="fa fa-share-alt"></i>
+                                <small> Share via Whatsapp</small>
+                            </a>
+                            <br>
+                            <span class="color-gray"> {{ $blog->totalCommentsCount() }} نظر
+                            </span>
+                            <span class="color-gray">({{ $blog->averageRate() }} <i class="fa fa-star"></i>) </span>   
+                        </div>
+                        <hr>
+                    </div>
+                </div>
                 @if( count($blog->tags) > 0 )
                 <br>
                 <br>
@@ -89,6 +104,25 @@
                 </div>
                 @endif
             </div>
+            <br>
+            <div class="col-12">
+                <div class="section-heading text-center">
+                    <h2>{{ __('comments') }}</h2>
+                    <div class="line-shape"></div>
+                </div>
+                <form action="{{ route('front.blog.comment', $blog->id )}}" method="post">
+                    @csrf
+                    <div class="form-group rtl-text-right">
+                        <textarea name="comment" class="form-control" id="comment" cols="30" rows="4" placeholder="{{ __('write_comment') }}" required></textarea>
+                    </div>
+                    <div class="form-group rtl-text-right">
+                        <label>{{ __('rate') }}</label>
+                        <input name="rate" class="form-control" id="rate" required value="5">
+                    </div>
+                    <button type="submit" class="btn submit-btn">{{ __('send') }}</button>
+                </form>
+            </div>
+            @each('front.themes.1-original.comment-card', $blog->comments->where('approved', 1), 'comment')
         @endif
         </div>
     </div>

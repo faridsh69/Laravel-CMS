@@ -4,8 +4,9 @@ namespace App\Services;
 
 use Image;
 use Illuminate\Support\Facades\Storage;
+use App\Base\BaseService;
 
-class ImageService
+class ImageService extends BaseService
 {
 	public function save($file, $model)
 	{
