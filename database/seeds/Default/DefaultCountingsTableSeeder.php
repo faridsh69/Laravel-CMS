@@ -5,11 +5,6 @@ use App\Models\Counting;
 
 class DefaultCountingsTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         $countings = [

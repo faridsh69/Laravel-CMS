@@ -6,9 +6,6 @@ use Illuminate\Support\Str;
 
 class DefaultMenusTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run()
     {
         $menus = [

@@ -5,11 +5,6 @@ use App\Models\Counting;
 
 class CmsCountingsTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         $countings = [

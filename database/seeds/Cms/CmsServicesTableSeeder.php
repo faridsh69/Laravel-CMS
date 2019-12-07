@@ -5,11 +5,6 @@ use App\Models\Service;
 
 class CmsServicesTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         // title, description, image, activated

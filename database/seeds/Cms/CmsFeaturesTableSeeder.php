@@ -5,11 +5,6 @@ use App\Models\Feature;
 
 class CmsFeaturesTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         // title, description, icon, activated

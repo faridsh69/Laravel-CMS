@@ -7,11 +7,6 @@ use Illuminate\Database\Seeder;
 
 class DefaultSettingsTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
 	public function run()
 	{
 	    $database_name = config('database.connections.mysql.database');

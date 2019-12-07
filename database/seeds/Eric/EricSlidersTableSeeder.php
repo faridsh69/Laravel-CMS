@@ -5,9 +5,6 @@ use Illuminate\Database\Seeder;
 
 class EricSlidersTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run()
     {
 	    // title, description, image, activated

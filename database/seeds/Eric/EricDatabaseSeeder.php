@@ -4,9 +4,6 @@ use Illuminate\Database\Seeder;
 
 class EricDatabaseSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run()
     {
         $this->call(EricUsersTableSeeder::class);

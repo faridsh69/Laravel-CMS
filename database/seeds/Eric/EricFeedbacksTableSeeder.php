@@ -5,11 +5,6 @@ use Illuminate\Database\Seeder;
 
 class EricFeedbacksTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
 	    // title, full_name, content, image, activated

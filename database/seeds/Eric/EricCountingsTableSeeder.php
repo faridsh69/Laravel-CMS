@@ -5,11 +5,6 @@ use Illuminate\Database\Seeder;
 
 class EricCountingsTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
 	    // title, number, icon, activated

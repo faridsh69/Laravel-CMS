@@ -1,15 +1,10 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Models\Service;
+use Illuminate\Database\Seeder;
 
 class EricServicesTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         // title, description, image, activated

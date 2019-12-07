@@ -5,9 +5,6 @@ use Illuminate\Database\Seeder;
 
 class CmsTagsTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run()
     {
         $tags = [

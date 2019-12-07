@@ -5,11 +5,6 @@ use App\Models\Slider;
 
 class CmsSlidersTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         // title, description, image, activated

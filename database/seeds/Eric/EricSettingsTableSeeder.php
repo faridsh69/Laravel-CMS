@@ -7,9 +7,6 @@ use Illuminate\Database\Seeder;
 
 class EricSettingsTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run()
     {
         $general_settings = [

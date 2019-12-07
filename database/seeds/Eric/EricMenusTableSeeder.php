@@ -3,13 +3,9 @@
 use App\Models\Menu;
 use App\Models\Page;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
 
 class EricMenusTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run()
     {
         $menus = [
@@ -20,7 +16,7 @@ class EricMenusTableSeeder extends Seeder
                 'content' => [
                     [
                         'title' => 'Secure Affordable Rates For Your Family',
-                        'content' => 
+                        'content' =>
 'You’ve got energy goals and we want to help you achieve them. This means we offer a wide variety of purchase and lease options to fit your unique solar needs. We believe that making the switch to solar should be easy, not complicated – which means we take care of every aspect of each installation ourselves. No subcontractors.
 
 Has your household income tripled in the last 18 years? Utility rates have sky rocketed in the last 18 years. In 2001, PG&E had 2 tiers, and the most expensive summer time rate was 13.3 cents per kWh. In 2018, that top tier is 40.3 cents for the same E1 rate. That means it’s tripled in 18 years. Solar, on the other hand, has dropped in cost. When we started installing solar in 2004, the average cost $9.00 per kWh. Today it’s less than half that, plus the government will pay a 30% tax credit!
@@ -31,7 +27,7 @@ Solar will save you money every month. Many homeowners are shocked at the $20,00
                     ],
                     [
                         'title' => 'Leave a Legacy',
-                        'content' => 
+                        'content' =>
 'What will you teach your grandchildren? Use all the energy you want, pay as little as you can, and watch out only for yourself? Of course not! Going solar can lower your energy costs today. The average homeowner has a cash system paid for in 7 years. That means, instead of paying the utility for the next 7 years, you recouped your solar investment. Beyond that, installing solar is a clear statement, “I’m not willing to burn fossil fuels, even ‘natural gas’. I want clean renewable energy. I want to leave a better world for the next generation. I believe in doing my part.” What will your legacy be? Go solar, save money, leave a legacy. 
 
 Why did you stop renting and buy a house? Stop renting energy, invest into your future, not the utilities, buy solar. You made a smart choice to buy a house, so why is the thought of adding a system with no moving parts so scary? Your kitchen takes way more abuse, yet you aren’t afraid to own those granite counter tops. There are many ways to get solar. You can buy it straight out, but many finance it! The finance payment is nearly always the same or lower than what you currently are paying.
@@ -40,14 +36,14 @@ Why did you stop renting and buy a house? Stop renting energy, invest into your 
                     ],
                     [
                         'title' => 'Be in Control of Your Own Power',
-                        'content' => 
+                        'content' =>
 'Remember those brown outs in California? Many of us do. But guess what, solar has completely fixed that! Solar is installed in the smartest, most energy efficient location, right where it’s consumed. Energy plants, are typically hundreds of miles away from where the energy is consumed. Utility companies have shown they only care about their bottom line. We need energy installed right where it’s needed! Going solar helps stabilize our energy grid. Systems being installed today help provide important grid services, such as boosting grid voltage. They are smart devices that help in many more ways than just provide energy. 
 
 ',
                     ],
                     [
                         'title' => 'Solar Rebates and Tax Credits',
-                        'content' => 
+                        'content' =>
 'The federal government currently offers a 30% solar tax credit. It is important to note that as a renewable energy credit, and not a deduction, you will receive the 30% back on your federal taxes (until 2019). Customers who lease solar panel systems cannot outright claim the federal tax credit, but the benefits are passed to them from the system’s owner/installer, lowering their monthly payment substantially.
 
 ',
@@ -243,7 +239,7 @@ If you are getting your system inspected, it’s also a good time to consider ge
                         ],
                     ],
                     [
-                        'id' => 7, 
+                        'id' => 7,
                         'title' => 'Referral Program',
                         'url' => 'referral-program',
                         'content' => [
@@ -263,7 +259,7 @@ If you are getting your system inspected, it’s also a good time to consider ge
                 'url' => 'the-benefits-of-solar-power',
                 'children' => [
                     [
-                        'id' => 9, 
+                        'id' => 9,
                         'title' => 'Benefits of Solar',
                         'url' => 'the-benefits-of-solar-power',
                         'content' => [
@@ -303,7 +299,7 @@ No lifestyle changes; use solar power the same as you currently use electricity
                         ],
                     ],
                     [
-                        'id' => 10, 
+                        'id' => 10,
                         'title' => 'Rebates & Tax Credits',
                         'url' => 'solar-rebates-tax-credits',
                         'content' => [
@@ -341,7 +337,7 @@ Click the image below to view and download the form.
                 'url' => 'livermore-home-case-study-2',
                 'children' => [
                     [
-                        'id' => 12, 
+                        'id' => 12,
                         'title' => 'Livermore Home',
                         'url' => 'livermore-home-case-study-2',
                         'content' => [
@@ -352,7 +348,7 @@ Click the image below to view and download the form.
                         ],
                     ],
                     [
-                        'id' => 13, 
+                        'id' => 13,
                         'title' => 'Fremont Cadillac',
                         'url' => 'fremont-cadillac-case-study',
                         'content' => [
@@ -363,7 +359,7 @@ Click the image below to view and download the form.
                         ],
                     ],
                     [
-                        'id' => 14, 
+                        'id' => 14,
                         'title' => 'Chevy Dublin',
                         'url' => 'chevy-dublin-case-study',
                         'content' => [
@@ -374,7 +370,7 @@ Click the image below to view and download the form.
                         ],
                     ],
                     [
-                        'id' => 15, 
+                        'id' => 15,
                         'title' => 'ARCO',
                         'url' => 'arco-case-study-2',
                         'content' => [
@@ -385,7 +381,7 @@ Click the image below to view and download the form.
                         ],
                     ],
                     [
-                        'id' => 16, 
+                        'id' => 16,
                         'title' => 'United Duralume Products',
                         'url' => 'united-duralume-products-case-study',
                         'content' => [
@@ -403,7 +399,7 @@ Click the image below to view and download the form.
                 'url' => 'concord-ca-solar-energy-systems',
                 'children' => [
                     [
-                        'id' => 18, 
+                        'id' => 18,
                         'title' => 'Concord',
                         'url' => 'concord-ca-solar-energy-systems',
                         'content' => [
@@ -486,7 +482,7 @@ As one of the leading solar panel companies, we are available to answer your que
                         ],
                     ],
                     [
-                        'id' => 19, 
+                        'id' => 19,
                         'title' => 'Livermore',
                         'url' => 'livermore-ca-solar-energy-systems',
                         'content' => [
@@ -550,7 +546,7 @@ California has great solar possibilities available directly from the sun. Synerg
                         ],
                     ],
                     [
-                        'id' => 20, 
+                        'id' => 20,
                         'title' => 'Lodi',
                         'url' => 'lodi-ca-solar-energy-systems',
                         'content' => [
@@ -586,7 +582,7 @@ A payback estimate that uses the production estimate, incentives, and estimated 
                             ],
                             [
                                 'title' => 'Other Things to Think About with a Solar Panel Installation in Lodi CA',
-                                'content' => 
+                                'content' =>
 'Synergy power is a licensed California contractor dedicated to delivering turnkey solar energy systems. We use our own solar panel installers who are NABCEP certified and adhere to the highest possible installation procedures. Our solar panels and inverters are high quality with great warranty coverage. We guarantee our work because we want you to be happy with your system. To that end, we are happy to provide you with customer referrals of other solar installations. We work out an installation schedule that works for you and us, so we both know what to expect. Our installation track record ensures that we will be around to honor any warranties, something that it important to Lodi homeowners. We also offer solar panels for companies, if you are looking to go green with your business. Another important consideration for homeowners in the state of California considering solar panel installation is that the State exempts solar installations for property tax. This is great news, as the value of your home can increase thousands of dollars by adding a solar system. In fact, if you decrease your electricity bill by somewhere around $1,000 per year, real-estate agents estimate that you’ve increased the value of your home by between $15,000 and $20,000, which will not be added to your taxable property value base.
 
 ',
@@ -612,7 +608,7 @@ A payback estimate that uses the production estimate, incentives, and estimated 
                         ],
                     ],
                     [
-                        'id' => 21, 
+                        'id' => 21,
                         'title' => 'Manteca',
                         'url' => 'manteca-ca-solar-energy-systems',
                         'content' => [
@@ -688,7 +684,7 @@ As one of the leading solar panel companies, we are available to answer your que
                         ],
                     ],
                     [
-                        'id' => 22, 
+                        'id' => 22,
                         'title' => 'Oakdale',
                         'url' => 'oakdale-ca-solar-energy-systems',
                         'content' => [
@@ -738,7 +734,7 @@ At Synergy Power, we offer our customers a turnkey solution that addresses every
                         ],
                     ],
                     [
-                        'id' => 23, 
+                        'id' => 23,
                         'title' => 'San Jose',
                         'url' => 'san-jose-ca-solar-energy-systems',
                         'content' => [
@@ -793,7 +789,7 @@ With all of this technology and progressive thinking, it is easy to see why Syne
                         ],
                     ],
                     [
-                        'id' => 24, 
+                        'id' => 24,
                         'title' => 'Stockton',
                         'url' => 'stockton-ca-solar-energy-systems',
                         'content' => [
@@ -862,7 +858,7 @@ A payback estimate that uses the production estimate, incentives, and estimated 
                 'url' => '',
                 'children' => [
                     [
-                        'id' => 26, 
+                        'id' => 26,
                         'title' => 'Contact Us',
                         'url' => 'contact-us',
                         'content' => [
@@ -875,7 +871,7 @@ A payback estimate that uses the production estimate, incentives, and estimated 
                         ],
                     ],
                     [
-                        'id' => 27, 
+                        'id' => 27,
                         'title' => 'About Us',
                         'url' => 'about-our-solar-panel-company',
                         'content' => [
@@ -924,17 +920,17 @@ Serving the solar industry for over 14 years, Synergy Power truly values focused
                         ],
                     ],
                     [
-                        'id' => 28, 
+                        'id' => 28,
                         'title' => 'Reviews',
                         'url' => 'reviews',
                     ],
                     [
-                        'id' => 29, 
+                        'id' => 29,
                         'title' => 'FAQ',
                         'url' => 'faq',
                     ],
                     [
-                        'id' => 30, 
+                        'id' => 30,
                         'title' => 'Blog',
                         'url' => 'blog',
                     ],
@@ -960,10 +956,9 @@ Serving the solar industry for over 14 years, Synergy Power truly values focused
 
             $content = '';
             if(isset($menu['content'])){
-                
                 foreach($menu['content'] as $menu_content)
                 {
-                    $content =  $content .
+                    $content .=
                         '<br><h2>' .
                         $menu_content['title'] .
                         '</h2>' .

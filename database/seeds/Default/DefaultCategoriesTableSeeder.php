@@ -6,9 +6,6 @@ use Illuminate\Support\Str;
 
 class DefaultCategoriesTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run()
     {
         $blog_categories = [
