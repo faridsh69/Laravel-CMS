@@ -13,6 +13,11 @@ class PageController extends Controller
 {
     public function getIndex($page_url = '')
     {
+        $user = \Auth::user();
+        $data = '1';
+        $user->notify(new \App\Notifications\UserRegistered($data));
+        dd($user);
+
         if(config('app.name') === 'map'){
             return view('front.test.map.offline-city');
         }

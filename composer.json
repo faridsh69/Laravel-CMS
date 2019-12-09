@@ -1,9 +1,9 @@
 {
-    "name": "laravel/laravel",
+    "name": "faridsh69/cms",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "The Laravel CMS.",
     "keywords": [
-        "framework",
+        "cms",
         "laravel"
     ],
     "license": "MIT",

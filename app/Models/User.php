@@ -11,11 +11,11 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasRoles;
+    use CanComment;
     use HasApiTokens;
+    use HasRoles;
     use Notifiable;
     use SoftDeletes;
-    use CanComment;
 
     public $columns = [
         [
