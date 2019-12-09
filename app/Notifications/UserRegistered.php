@@ -34,15 +34,19 @@ class UserRegistered extends Notification
 
     public function via($notifiable)
     {
-        $user_registered_sms = config('setting-developer.user_registered_sms');
-        dd($user_registered_sms);
         Log::info([
             'user_id' => $notifiable->id,
             'data' => $this->data, 
         ]);
-        return [
-            DatabaseChannel::class,
-        ];
+        $via_list = [DatabaseChannel::class];
+        if(config('setting-developer.user_registered_sms')){
+            // $via_list[] = 'sms';
+        }
+        if(config('setting-developer.user_registered_mail')){
+            $via_list[] = 'mail';
+        }
+
+        return $via_list;
     }
 
     public function toArray($notifiable)
@@ -50,5 +54,10 @@ class UserRegistered extends Notification
         return [
             'data' => $this->data,
         ];
+    }
+
+    public function toMail($notifiable)
+    {
+        dd(123);
     }
 }

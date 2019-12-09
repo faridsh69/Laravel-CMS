@@ -74,6 +74,7 @@ class SettingGeneral extends BaseModel
         [
             'name' => 'google_index',
             'type' => 'boolean',
+            'database' => 'default',
             'rule' => 'boolean',
             'help' => 'Warning! if it is unchecked means google will ignore this site.',
             'form_type' => 'checkbox',
@@ -127,19 +128,12 @@ class SettingGeneral extends BaseModel
             'form_type' => 'textarea',
         ],
         [
-            'name' => 'contact_us_description',
-            'type' => 'text',
-            'database' => 'nullable',
-            'rule' => '',
-            'help' => 'It will show beside contact form.',
-            'form_type' => 'textarea',
-        ],
-        [
             'name' => 'site_verification_google_code',
             'type' => 'text',
             'database' => 'nullable',
             'rule' => '',
-            'form_type' => 'textarea',
+            'help' => 'google webmaster meta code.',
+            'form_type' => '',
         ],
         [
             'name' => 'google_analytics_id',

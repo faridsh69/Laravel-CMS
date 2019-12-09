@@ -12,6 +12,7 @@ class SettingContact extends BaseModel
             'type' => 'string',
             'database' => 'nullable',
             'rule' => 'email',
+            'help' => '',
             'form_type' => 'email',
         ],
         [
@@ -19,20 +20,23 @@ class SettingContact extends BaseModel
             'type' => 'string',
             'database' => 'nullable',
             'rule' => 'nullable|numeric',
+            'help' => '',
             'form_type' => '',
         ],
-        // [
-        //     'name' => 'whatsapp',
-        //     'type' => 'string',
-        //     'database' => 'nullable',
-        //     'rule' => 'nullable|numeric',
-        //     'form_type' => '',
-        // ],
+        [
+            'name' => 'whatsapp',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => 'nullable|numeric',
+            'help' => '',
+            'form_type' => '',
+        ],
         [
             'name' => 'phone',
             'type' => 'string',
             'database' => 'nullable',
             'rule' => 'nullable|numeric',
+            'help' => '',
             'form_type' => '',
         ],
         [
@@ -40,6 +44,7 @@ class SettingContact extends BaseModel
             'type' => 'string',
             'database' => 'nullable',
             'rule' => 'nullable|numeric',
+            'help' => '',
             'form_type' => '',
         ],
         [
@@ -47,6 +52,7 @@ class SettingContact extends BaseModel
             'type' => 'string',
             'database' => 'nullable',
             'rule' => '',
+            'help' => '',
             'form_type' => 'textarea',
         ],
         [
@@ -70,6 +76,7 @@ class SettingContact extends BaseModel
             'type' => 'string',
             'database' => 'nullable',
             'rule' => '',
+            'help' => '',
             'form_type' => '',
         ],
         [
@@ -77,6 +84,7 @@ class SettingContact extends BaseModel
             'type' => 'string',
             'database' => 'nullable',
             'rule' => '',
+            'help' => '',
             'form_type' => '',
         ],
         [
@@ -84,6 +92,7 @@ class SettingContact extends BaseModel
             'type' => 'string',
             'database' => 'nullable',
             'rule' => '',
+            'help' => '',
             'form_type' => '',
         ],
         [
@@ -91,6 +100,7 @@ class SettingContact extends BaseModel
             'type' => 'string',
             'database' => 'nullable',
             'rule' => '',
+            'help' => '',
             'form_type' => '',
         ],
         [
@@ -98,6 +108,7 @@ class SettingContact extends BaseModel
             'type' => 'string',
             'database' => 'nullable',
             'rule' => '',
+            'help' => '',
             'form_type' => '',
         ],
         [
@@ -105,6 +116,7 @@ class SettingContact extends BaseModel
             'type' => 'string',
             'database' => 'nullable',
             'rule' => '',
+            'help' => '',
             'form_type' => '',
         ],
     ];

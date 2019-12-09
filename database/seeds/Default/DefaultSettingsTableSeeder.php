@@ -28,7 +28,6 @@ class DefaultSettingsTableSeeder extends Seeder
 			'introduce_video_url' => $image_folder_name . '5-video.mp4',
 			'introduce_video_cover_photo' => $image_folder_name . '4-video.png',
 			'subscribe_description' => 'General Setting Subscribe Description.',
-			'contact_us_description' => 'General Setting Contactus Description.',
 			'google_analytics_id' => '',
 			'hotjar_id' => '',
 			'crisp_id' => '',
@@ -69,6 +68,9 @@ class DefaultSettingsTableSeeder extends Seeder
 			'seo_title_max' => '70',
 			'seo_url_max' => '80',
 			'seo_url_regex' => '/^[a-z0-9-]+$/',
+			'profile_updated_sms' => '0',
+			'user_logined_sms' => '0',		
+
         ];
 
         SettingGeneral::updateOrCreate(['id' => 1], $general_settings);

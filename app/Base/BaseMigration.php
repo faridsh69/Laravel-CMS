@@ -16,9 +16,6 @@ class BaseMigration extends Migration
 
     public $rebuild;
 
-    /**
-     * Run the migrations.
-     */
     public function __construct()
     {
         $class_name = 'App\\Models\\' . $this->model;
@@ -74,9 +71,6 @@ class BaseMigration extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down()
     {
         Schema::dropIfExists($this->table_name);
