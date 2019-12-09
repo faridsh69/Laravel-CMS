@@ -8,15 +8,20 @@ use App\Models\Page;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Notifications\SiteNotification;
+use App\Notifications\UserRegistered;
 
 class PageController extends Controller
 {
-    public function getIndex($page_url = '')
+    public function getIndex($page_url = '', UserRegistered $not)
     {
-        $user = \Auth::user();
-        $data = '1';
-        $user->notify(new \App\Notifications\UserRegistered($data));
-        dd($user);
+        // $notification = \App\Models\Notification::orderBy('id', 'desc')->first();
+        // dd( json_decode($notification->data)->data );
+        // die();
+        $user = User::find(1);
+        // $not->setData('123xx');
+        $user->notify($not);
+        dd($not);
 
         if(config('app.name') === 'map'){
             return view('front.test.map.offline-city');

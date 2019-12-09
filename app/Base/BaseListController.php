@@ -323,8 +323,12 @@ class BaseListController extends Controller
                 return route('admin.' . $this->model_sm . '.list.destroy', $model);
             });
         if($this->model === 'Notification') {
-            $datatable->addColumn('users', function($model) {
-                return $model->user->email;
+            $datatable->addColumn('user', function($model) {
+                return $model->user->id . ' - ' . $model->user->full_name;
+            })->addColumn('type', function($model) {
+                return str_replace('App\Notifications\\', '', $model->type);
+            })->addColumn('data', function($model) {
+                return json_decode($model->data)->data;
             });
         }
         elseif($this->model === 'Comment') {

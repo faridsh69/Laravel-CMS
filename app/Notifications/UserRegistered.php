@@ -6,56 +6,49 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Log;
 
 class UserRegistered extends Notification
 {
     use Queueable;
 
-    /**
-     * Create a new notification instance.
-     *
-     * @return void
-     */
+    public $message = 'ثبت نام شما در سامانه منیو تکمیل شد.';
+
+    public $data;
+    
     public function __construct()
     {
-        //
+        $heading_title = 'کاربر گرامی';
+        $new_line = "\n";
+        $app_title = 'منیو';
+        $app_url = 'http://www.menew.ir';
+
+        $this->data = __($heading_title).
+            $new_line.
+            __($this->message).
+            $new_line.
+            __($app_title).
+            $new_line.
+            $app_url;
     }
 
-    /**
-     * Get the notification's delivery channels.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
     public function via($notifiable)
     {
-        return ['mail', 'toDatabase'];
+        $user_registered_sms = config('setting-developer.user_registered_sms');
+        dd($user_registered_sms);
+        Log::info([
+            'user_id' => $notifiable->id,
+            'data' => $this->data, 
+        ]);
+        return [
+            DatabaseChannel::class,
+        ];
     }
 
-    /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
-    public function toMail($notifiable)
-    {
-        return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
-    }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
     public function toArray($notifiable)
     {
         return [
-            //
+            'data' => $this->data,
         ];
     }
 }

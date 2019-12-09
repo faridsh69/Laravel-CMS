@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App;
 use App\Models\SettingContact;
 use App\Models\SettingDeveloper;
 use App\Models\SettingGeneral;
@@ -26,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $seconds = 1;
         if(! Schema::hasTable('setting_generals') || SettingGeneral::first() === null){
-            return 1;
+            return 'general settings does not exist!';
         }
         $general_settings = Cache::remember('settings.general', $seconds, function () {
             $general_setings_database = SettingGeneral::first();
@@ -38,18 +39,18 @@ class AppServiceProvider extends ServiceProvider
             if($contact_setings_database) {return $contact_setings_database->toArray(); }
             return [];
         });
-        $developer_settings = Cache::remember('xsettings.developer', $seconds, function () {
+        $developer_settings = Cache::remember('settings.developer', $seconds, function () {
             $developer_setings_database = SettingDeveloper::first();
             if($developer_setings_database) {return $developer_setings_database->toArray(); }
             return [];
         });
-        config(['0-general' => $general_settings]);
-        config(['0-developer' => $developer_settings]);
-        config(['0-contact' => $contact_settings]);
-        config(['app.debug' => config('0-developer.app_debug')]);
-        config(['app.env' => config('0-developer.app_env')]);
-        config(['app.locale' => config('0-developer.app_language')]);
-        \App::setLocale(config('app.locale'));
+        config(['setting-general' => $general_settings]);
+        config(['setting-contact' => $contact_settings]);
+        config(['setting-developer' => $developer_settings]);
+        config(['app.debug' => config('setting-developer.app_debug')]);
+        config(['app.env' => config('setting-developer.app_env')]);
+        config(['app.locale' => config('setting-developer.app_language')]);
+        App::setLocale(config('setting-developer.app_language'));
         // Validator::extend('seo_header', '\App\Rules\SeoHeading@passes');
     }
 }

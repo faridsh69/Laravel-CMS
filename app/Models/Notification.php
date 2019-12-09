@@ -6,15 +6,31 @@ use App\Base\BaseModel;
 
 class Notification extends BaseModel
 {
-    public $incrementing = false;
-
     public $columns = [
         [
-            'name' => 'read_at',
-            'type' => 'date',
+            'name' => 'type',
+            'type' => 'string',
             'database' => 'nullable',
             'rule' => '',
             'help' => '',
+            'form_type' => 'none',
+            'table' => true,
+        ],
+        [
+            'name' => 'notifiable_type',
+            'type' => 'string',
+            'database' => '',
+            'rule' => 'required',
+            'help' => 'Model of who is getting notification',
+            'form_type' => 'none',
+            'table' => false,
+        ],
+        [
+            'name' => 'notifiable_id',
+            'type' => 'integer',
+            'database' => '',
+            'rule' => 'required|numeric',
+            'help' => 'Model ID of who is getting notification',
             'form_type' => 'none',
             'table' => false,
         ],
@@ -28,22 +44,22 @@ class Notification extends BaseModel
             'table' => true,
         ],
         [
-            'name' => 'type',
-            'type' => 'string',
-            'database' => '',
-            'rule' => 'required',
+            'name' => 'read_at',
+            'type' => 'date',
+            'database' => 'nullable',
+            'rule' => '',
             'help' => '',
             'form_type' => 'none',
             'table' => false,
         ],
         [
-            'name' => 'notifiable_id',
-            'type' => 'integer',
-            'database' => '',
-            'rule' => 'required|numeric',
+            'name' => 'user',
+            'type' => 'string',
+            'database' => 'none',
+            'rule' => '',
             'help' => '',
             'form_type' => 'none',
-            'table' => false,
+            'table' => true,
         ],
         [
             'name' => 'users',
@@ -53,20 +69,20 @@ class Notification extends BaseModel
             'help' => '',
             'form_type' => 'entity',
             'class' => 'App\Models\User',
-            'property' => 'email',
+            'property' => 'phone',
             'property_key' => 'id',
             'multiple' => true,
-            'table' => true,
+            'table' => false,
         ],
     ];
 
-    public function getDataAttribute($data)
-    {
-        if(isset($data) && $data !== '[]'){
-            return json_decode($data)->data;
-        }
-        return '-';
-    }
+    // public function getDataAttribute($data)
+    // {
+    //     if(isset($data) && $data !== '[]'){
+    //         return json_decode($data)->data;
+    //     }
+    //     return '-';
+    // }
 
     public function user()
     {

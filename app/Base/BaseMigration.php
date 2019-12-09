@@ -14,6 +14,8 @@ class BaseMigration extends Migration
 
     public $columns;
 
+    public $rebuild;
+
     /**
      * Run the migrations.
      */
@@ -30,6 +32,9 @@ class BaseMigration extends Migration
         $columns = $this->columns;
         $table_name = $this->table_name;
         Schema::defaultStringLength(191);
+        if($this->rebuild === true){
+            Schema::dropIfExists($this->table_name);
+        }
         Schema::create($table_name, function (Blueprint $table) use ($columns, $table_name) {
             $table->bigIncrements('id');
             foreach($columns as $column){

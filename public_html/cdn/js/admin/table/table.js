@@ -60,7 +60,7 @@ var output =
 		                timeout: 30000,
                 	},
                 },
-                pageSize:10, 
+                pageSize:15, 
                 saveState: {
                     cookie: false,
                     webstorage: true,

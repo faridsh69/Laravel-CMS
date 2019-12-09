@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateRelatedProductsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up()
     {
         Schema::create('related_products', function (Blueprint $table) {
@@ -21,9 +18,6 @@ class CreateRelatedProductsTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down()
     {
         Schema::dropIfExists('related_products');

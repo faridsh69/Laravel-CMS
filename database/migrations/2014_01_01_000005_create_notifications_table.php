@@ -1,31 +1,28 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+// use Illuminate\Database\Migrations\Migration;
+// use Illuminate\Database\Schema\Blueprint;
+// use Illuminate\Support\Facades\Schema;
+use App\Base\BaseMigration;
 
-class CreateNotificationsTable extends Migration
+class CreateNotificationsTable extends BaseMigration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up()
-    {
-        Schema::create('notifications', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('type');
-            $table->morphs('notifiable');
-            $table->text('data');
-            $table->timestamp('read_at')->nullable();
-            $table->timestamps();
-        });
-    }
+    public $model = 'Notification';
+    // public function up()
+    // {
+    //     Schema::create('notifications', function (Blueprint $table) {
+    //         $table->uuid('id')->primary();
+    //         $table->string('type');
+    //         $table->morphs('notifiable');
+    //         $table->text('data');
+    //         $table->timestamp('read_at')->nullable();
+    //         $table->timestamps();
+    //         $table->softDeletes();
+    //     });
+    // }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down()
-    {
-        Schema::dropIfExists('notifications');
-    }
+    // public function down()
+    // {
+    //     Schema::dropIfExists('notifications');
+    // }
 }
