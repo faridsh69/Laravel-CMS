@@ -6,7 +6,6 @@ use App\Base\BaseModel;
 
 class Block extends BaseModel
 {
-    // type, title, show_all_pages, pages_list, order, activated
     public $columns = [
         ['name' => 'title'],
         ['name' => 'activated'],

@@ -69,10 +69,11 @@ class DefaultSettingsTableSeeder extends Seeder
 			'seo_url_max' => '80',
 			'seo_url_regex' => '/^[a-z0-9-]+$/',
 			'profile_updated_sms' => '0',
-			'user_logined_sms' => '0',		
-
+			'user_logined_sms' => '0',
+			'sms_driver' => 'kavenegar.com',
+			'sms_sender' => '20002839889399',
+			'sms_api_key' => '4149536F31374C63446835565577772F363075767A756451436F765361415054',
         ];
-
         SettingGeneral::updateOrCreate(['id' => 1], $general_settings);
         SettingDeveloper::updateOrCreate(['id' => 1], $developer_settings);
         SettingContact::updateOrCreate(['id' => 1], $contact_settings);

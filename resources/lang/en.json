@@ -13,5 +13,11 @@
 	"tags" : "Tags",
 	"related_blogs" : "Related Blogs",
 	"categories" : "Categories",
-  	"copy_right" : "Copyright ©2019. Designed by https://github.com/faridsh69"
+  	"copy_right" : "Copyright ©2019. Designed by https://github.com/faridsh69",
+  	"user_registered_message" : "Registration on %s completed.",
+  	"user_logined_message" : "You logined on %s successfully.",
+  	"profile_updated_message" : "Your profile on %s updated successfully.",
+  	"document_rejected_message" : "Your documents in %s rejected.",
+  	"menew" : "MeneW",
+  	"dear_customer" : "Dear Customer"
 }

@@ -4,7 +4,7 @@ namespace App\Enums;
 
 use App\Base\BaseEnum;
 
-final class ThemeType extends BaseEnum
+final class AppTheme extends BaseEnum
 {
     const data = [
 		'1-original' => 'Original',

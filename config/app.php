@@ -14,7 +14,7 @@ return [
 
     'timezone' => 'Asia/Tehran',
 
-    'locale' => env('APP_LOCALE', 'fa'),
+    'locale' => env('APP_LOCALE', 'en'),
 
     'fallback_locale' => 'en_US',
 

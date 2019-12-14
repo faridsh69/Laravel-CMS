@@ -4,7 +4,7 @@ namespace App\Enums;
 
 use App\Base\BaseEnum;
 
-final class MenuType extends BaseEnum
+final class MenuLocation extends BaseEnum
 {
     const data = [
 		'1' => 'top-menu',

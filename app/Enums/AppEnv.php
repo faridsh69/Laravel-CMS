@@ -4,7 +4,7 @@ namespace App\Enums;
 
 use App\Base\BaseEnum;
 
-final class AppEnvType extends BaseEnum
+final class AppEnv extends BaseEnum
 {
     const data = [
 		'production' => 'production',

@@ -51,6 +51,10 @@ class AppServiceProvider extends ServiceProvider
         config(['app.env' => config('setting-developer.app_env')]);
         config(['app.locale' => config('setting-developer.app_language')]);
         App::setLocale(config('setting-developer.app_language'));
+        config(['sms.driver' => config('setting-developer.sms_driver')]);
+        config(['sms.sender' => config('setting-developer.sms_sender')]);
+        config(['sms.api_key' => config('setting-developer.sms_api_key')]);
+        // set data in admin panel setting in config for email 
         // Validator::extend('seo_header', '\App\Rules\SeoHeading@passes');
     }
 }

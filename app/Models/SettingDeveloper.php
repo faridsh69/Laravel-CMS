@@ -22,7 +22,7 @@ class SettingDeveloper extends BaseModel
             'rule' => 'required',
             'help' => 'Select Production always.',
             'form_type' => 'enum',
-            'form_enum_class' => 'AppEnvType',
+            'form_enum_class' => 'AppEnv',
         ],
         [
             'name' => 'app_language',
@@ -39,7 +39,7 @@ class SettingDeveloper extends BaseModel
             'rule' => 'required',
             'help' => 'Select theme',
             'form_type' => 'enum',
-            'form_enum_class' => 'ThemeType',
+            'form_enum_class' => 'AppTheme',
         ],
         [
             'name' => 'theme_color_1',
@@ -64,7 +64,7 @@ class SettingDeveloper extends BaseModel
             'rule' => 'required',
             'help' => 'Select direction for texts',
             'form_type' => 'enum',
-            'form_enum_class' => 'DirectionType',
+            'form_enum_class' => 'HtmlDirection',
         ],        
         [
             'name' => 'throttle',
@@ -120,6 +120,31 @@ class SettingDeveloper extends BaseModel
             'database' => 'nullable',
             'rule' => '',
             'help' => 'Dont change this, its validation for url',
+            'form_type' => '',
+        ],
+        [
+            'name' => 'sms_driver',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => 'required',
+            'help' => 'Select sms driver.',
+            'form_type' => 'enum',
+            'form_enum_class' => 'SmsDriver',
+        ],
+        [
+            'name' => 'sms_sender',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => 'numeric',
+            'help' => 'Specify sms sender number.',
+            'form_type' => '',
+        ],
+        [
+            'name' => 'sms_api_key',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => '',
+            'help' => 'Specify sms API KEY.',
             'form_type' => '',
         ],
         [

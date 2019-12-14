@@ -14,6 +14,7 @@
         "barryvdh/laravel-dompdf": "^0.8.4",
         "fideloper/proxy": "^4.0",
         "kalnoy/nestedset": "^4.3",
+        "kavenegar/php": "^1.2",
         "kris/laravel-form-builder": "^1.20",
         "laravel/framework": "5.8.*",
         "laravel/nexmo-notification-channel": "^2.0",
