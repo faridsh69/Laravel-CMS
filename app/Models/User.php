@@ -17,6 +17,11 @@ class User extends Authenticatable
     use Notifiable;
     use SoftDeletes;
 
+    public function routeNotificationForSlack($notification)
+    {
+        return 'https://hooks.slack.com/services/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';
+    }
+
     public $columns = [
         [
             'name' => 'first_name',

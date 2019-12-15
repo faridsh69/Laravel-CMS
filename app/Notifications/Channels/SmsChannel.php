@@ -9,14 +9,14 @@ class SmsChannel extends BaseChannel
 {
 	public function send($notifiable, $notification)
 	{
-        dump('sms');
+        $curl = new \App\Services\CurlService();
+        $response = $curl->call_curl('sdaf', 'get');
         try{
             $message = $notification->data;
             $phone = $notifiable->phone;
             $api_key = config('sms.api_key');
             $sender = config('sms.sender');
             $kavenegar_api = new \Kavenegar\KavenegarApi($api_key);
-            $api_key = '123';
             // $kavenegar_api->Send($sender, $phone, $message);
         }catch(\Kavenegar\Exceptions\ApiException $e){
             Log::error([

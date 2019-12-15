@@ -13,19 +13,14 @@ use App\Notifications\UserRegistered;
 use App\Notifications\UserLogined;
 use App\Notifications\ProfileUpdated;
 use App\Notifications\DocumentRejected;
+use App\Jobs\ProcessPodcast;
 
 class PageController extends Controller
 {
-    public function getIndex($page_url = '', ProfileUpdated $not)
+    public function getIndex($page_url = '', UserRegistered $not)
     {
-        // $notification = \App\Models\Notification::orderBy('id', 'desc')->first();
-        // dd( json_decode($notification->data)->data );
-        // die();
-        // $not->setData('123xx');
-        // $user = User::find(1);
-        // $user->notify($not);
-        // dd(1);
-        // dd($not);
+        $user = User::find(1);
+        $user->notify($not);
 
         if(config('app.name') === 'map'){
             return view('front.test.map.offline-city');

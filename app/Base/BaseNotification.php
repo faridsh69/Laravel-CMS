@@ -5,8 +5,11 @@ namespace App\Base;
 use App\Notifications\Channels\SmsChannel;
 use App\Notifications\Channels\DatabaseChannel;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Str;
+use Illuminate\Notifications\Messages\SlackMessage;
 
 class BaseNotification extends Notification
 {
@@ -29,15 +32,23 @@ class BaseNotification extends Notification
 
     public function via($notifiable)
     {
-        $via_list = [DatabaseChannel::class];
+        $channel_list = [
+            // DatabaseChannel::class, 
+            // 'slack'
+        ];
         if(config('setting-developer.' . $this->class_name . '_sms') !== 0){
-            $via_list[] = SmsChannel::class;
+            $channel_list[] = SmsChannel::class;
         }
         if(config('setting-developer.' . $this->class_name . '_mail') !== 0){
-            $via_list[] = 'mail';
+            $channel_list[] = 'mail';
         }
-        dd($via_list, $this->data);
-        return $via_list;
+
+        return $channel_list;
+    }
+
+    public function setData($data)
+    {
+    	$this->data = $data;
     }
 
     public function toArray($notifiable)
@@ -49,7 +60,17 @@ class BaseNotification extends Notification
 
     public function toMail($notifiable)
     {
-        dump('mail');
-        die();
+        $url = 'hi';
+        return (new MailMessage)
+                    ->greeting('Hello!')
+                    ->line('One of your invoices has been paid!')
+                    ->action('View Invoice', $url)
+                    ->line('Thank you for using our application!');
     }
+
+    public function toSlack($notifiable)
+	{
+	    return (new SlackMessage)
+            ->content('user_id: ' . $notifiable->id . ' - ' . $this->data);
+	}
 }
