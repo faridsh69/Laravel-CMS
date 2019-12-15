@@ -1,16 +1,13 @@
 <?php
 
 return [
-    'name' => env('APP_NAME', 'laravel-cms'),
-
-    // 'url' => env('APP_URL', 'cms-laravel.com'),
-    // 'asset_url' => env('ASSET_URL', '//' . env('APP_URL') . '/cdn'),
+    'name' => env('APP_NAME', 'Laravel CMS'),
 
     'asset_url' => env('ASSET_URL', '//cms-laravel.com/cdn'),
 
-    'env' => env('APP_ENV', config('0-developer.app_env')),
+    'env' => env('APP_ENV', 'development'),
 
-    'debug' => 1,
+    'debug' => env('APP_DEBUG', true),
 
     'timezone' => 'Asia/Tehran',
 
@@ -75,16 +72,6 @@ return [
         App\Providers\RouteServiceProvider::class,
     ],
 
-    /*
-    |--------------------------------------------------------------------------
-    | Class Aliases
-    |--------------------------------------------------------------------------
-    |
-    | This array of class aliases will be registered when this application
-    | is started. However, feel free to register as many as you wish as
-    | the aliases are "lazy" loaded so they don't hinder performance.
-    |
-    */
 
     'aliases' => [
 
