@@ -22,7 +22,7 @@
 			<div class="m-demo__preview">
 				<div class="m-list-timeline">
 					<div class="m-list-timeline__items">
-						@foreach(config('0-contact') as $key => $value)
+						@foreach(config('setting-contact') as $key => $value)
 						<div class="m-list-timeline__item">
 							<span class="m-list-timeline__badge m-list-timeline__badge--success"></span>
 							<span class="m-list-timeline__text">

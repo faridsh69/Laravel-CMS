@@ -7,17 +7,17 @@
                 </div>
                 <div class="footer-text" style="display: none;">
                     <p class="text-center">
-                    {!! config('0-general.contact_us_description') !!}
+                    {!! config('setting-general.contact_us_description') !!}
                     </p>
                 </div>
                 <div class="address-text">
-                    <p><span>{{ __('address') }}</span><br>{{ config('0-contact.address') }}</p>
+                    <p><span>{{ __('address') }}</span><br>{{ config('setting-contact.address') }}</p>
                 </div>
                 <div class="phone-text">
-                    <p><span>{{ __('phone') }}</span><br>{{ config('0-contact.phone') }}</p>
+                    <p><span>{{ __('phone') }}</span><br>{{ config('setting-contact.phone') }}</p>
                 </div>
                 <div class="email-text">
-                    <p><span>{{ __('email') }}</span><br>{{ config('0-contact.email') }}</p>
+                    <p><span>{{ __('email') }}</span><br>{{ config('setting-contact.email') }}</p>
                 </div>
             </div>
             <div class="col-md-6">

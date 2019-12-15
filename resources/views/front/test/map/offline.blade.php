@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="canonical" href="{{ url()->current() }}">
-    <link rel="shortcut icon" href="{{ asset(config('0-general.favicon')) }}" />
+    <link rel="shortcut icon" href="{{ asset(config('setting-general.favicon')) }}" />
 
     <link rel="stylesheet" href="{{ asset('css\front\themes\4-windy\map\style.css') }}" />
 </head>

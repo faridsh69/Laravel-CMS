@@ -52,7 +52,7 @@ class SettingController extends BaseAdminController
         $model->update($updated_data);
 
         Cache::forget('settings.' . $this->section);
-        // $base_data = config('0-' . $this->section);
+        // $base_data = config('setting-' . $this->section);
         // $new_settings = array_merge($base_data, $updated_data);
         // $newSettings = var_export($new_settings, 1);
         // $new_config = "<?php\n return ${newSettings} ;";

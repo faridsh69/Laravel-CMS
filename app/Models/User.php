@@ -208,6 +208,6 @@ class User extends Authenticatable
             return $image;
         }
 
-        return config('0-general.default_user_image');
+        return config('setting-general.default_user_image');
     }
 }

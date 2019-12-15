@@ -2,6 +2,6 @@
 
 @section('content')
 	@foreach($blocks as $block)
-		@includeIf('front.themes.' . config('0-developer.theme') . '.' . $block->title)
+		@includeIf('front.themes.' . config('setting-developer.theme') . '.' . $block->title)
 	@endforeach
 @endsection

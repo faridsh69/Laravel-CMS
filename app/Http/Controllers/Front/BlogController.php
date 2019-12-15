@@ -26,15 +26,15 @@ class BlogController extends Controller
 
     public function index()
     {
-        $blogs = Blog::orderBy('id', 'desc')->active()->paginate(config('0-general.pagination_number'));
+        $blogs = Blog::orderBy('id', 'desc')->active()->paginate(config('setting-general.pagination_number'));
         $page = Page::where('url', 'blog')->active()->first();
         abort_if(! $page, 404);
 
         $meta = [
-            'title' => config('0-general.app_name') . ' | Blogs',
-            'description' => config('0-general.default_meta_description'),
+            'title' => config('setting-general.app_name') . ' | Blogs',
+            'description' => config('setting-general.default_meta_description'),
             'keywords' => '',
-            'image' => config('0-general.default_meta_image'),
+            'image' => config('setting-general.default_meta_image'),
             'google_index' => $page->google_index,
             'canonical_url' => $page->canonical_url ?: url()->current(),
         ];
@@ -107,10 +107,10 @@ class BlogController extends Controller
         abort_if(! $page, 404);
 
         $meta = [
-            'title' => config('0-general.app_name') . ' | Category Of Blogs',
-            'description' => config('0-general.default_meta_description'),
+            'title' => config('setting-general.app_name') . ' | Category Of Blogs',
+            'description' => config('setting-general.default_meta_description'),
             'keywords' => '',
-            'image' => config('0-general.default_meta_image'),
+            'image' => config('setting-general.default_meta_image'),
             'google_index' => $page->google_index,
             'canonical_url' => $page->canonical_url ?: url()->current(),
         ];
@@ -142,13 +142,13 @@ class BlogController extends Controller
         abort_if(! $category, 404);
 
         $categories = Category::get();
-        $blogs = Blog::where('category_id', $category->id)->orderBy('id', 'desc')->paginate(config('0-general.pagination_number'));
+        $blogs = Blog::where('category_id', $category->id)->orderBy('id', 'desc')->paginate(config('setting-general.pagination_number'));
 
         $page = Page::where('url', 'blog')->first();
         abort_if(! $page, 404);
 
         $meta = [
-            'title' => config('0-general.app_name') . ' | ' . $category->title,
+            'title' => config('setting-general.app_name') . ' | ' . $category->title,
             'description' => $category->meta_description,
             'keywords' => '',
             'image' => $category->meta_image,
@@ -180,16 +180,16 @@ class BlogController extends Controller
     public function getTags()
     {
         $categories = Tag::get();
-        $blogs = Blog::orderBy('id', 'desc')->paginate(config('0-general.pagination_number'));
+        $blogs = Blog::orderBy('id', 'desc')->paginate(config('setting-general.pagination_number'));
 
         $page = Page::where('url', 'blog')->active()->first();
         abort_if(! $page, 404);
 
         $meta = [
-            'title' => config('0-general.app_name') . ' | Tag Of Blogs',
-            'description' => config('0-general.default_meta_description'),
+            'title' => config('setting-general.app_name') . ' | Tag Of Blogs',
+            'description' => config('setting-general.default_meta_description'),
             'keywords' => '',
-            'image' => config('0-general.default_meta_image'),
+            'image' => config('setting-general.default_meta_image'),
             'google_index' => $page->google_index,
             'canonical_url' => $page->canonical_url ?: url()->current(),
         ];
@@ -220,16 +220,16 @@ class BlogController extends Controller
         $category = Tag::where('slug', $tag_url)->first();
         abort_if(! $category, 404);
 
-        $blogs = Blog::withAnyTag([$category->name])->orderBy('id', 'desc')->paginate(config('0-general.pagination_number'));
+        $blogs = Blog::withAnyTag([$category->name])->orderBy('id', 'desc')->paginate(config('setting-general.pagination_number'));
 
         $page = Page::where('url', 'blog')->first();
         abort_if(! $page, 404);
 
         $meta = [
-            'title' => config('0-general.app_name') . ' | ' . $category->title,
-            'description' => config('0-general.default_meta_description'),
+            'title' => config('setting-general.app_name') . ' | ' . $category->title,
+            'description' => config('setting-general.default_meta_description'),
             'keywords' => '',
-            'image' => config('0-general.default_meta_image'),
+            'image' => config('setting-general.default_meta_image'),
             'google_index' => $page->google_index,
             'canonical_url' => $page->canonical_url ?: url()->current(),
         ];

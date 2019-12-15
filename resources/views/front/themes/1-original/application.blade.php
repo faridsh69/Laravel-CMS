@@ -44,7 +44,7 @@
                             </div>
                         </div>                        
                         @elseif($slider->id === 5)
-                            @include('front.themes.' . config("0-developer.theme"). '.form')
+                            @include('front.themes.' . config('setting-developer.theme'). '.form')
                         @endif
                     </div>
                 </div>

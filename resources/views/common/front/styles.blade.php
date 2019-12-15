@@ -1,2 +1,2 @@
-@include('front.themes.' . config('0-developer.theme') . '.styles')
+@include('front.themes.' . config('setting-developer.theme') . '.styles')
 @stack('style')

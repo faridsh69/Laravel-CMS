@@ -19,7 +19,7 @@
 			<b>Title:</b> 
 			<br>
 			<p><small>
-				required|min:{{config('0-developer.seo_title_min')}}|max:{{config('0-developer.seo_title_max')}}
+				required|min:{{config('setting-developer.seo_title_min')}}|max:{{config('setting-developer.seo_title_max')}}
 			</small></p>
 			<a href="{{ route('admin.setting.developer') }}#scripts" class="btn btn-info btn-sm m-btn m-btn--icon m-btn--air m-btn--pill" target="_blank">
 				<i class="la la-edit"></i>Edit</a>
@@ -31,7 +31,7 @@
 			<b>Url:</b> 
 			<br>
 			<p><small>
-				nullable|max:{{config('0-developer.seo_url_max')}}|regex:{{config('0-developer.seo_url_regex')}}
+				nullable|max:{{config('setting-developer.seo_url_max')}}|regex:{{config('setting-developer.seo_url_regex')}}
 			</small></p>
 			<a href="#" class="btn btn-info btn-sm m-btn m-btn--icon m-btn--air m-btn--pill">
 				<i class="la la-edit"></i>Edit</a>

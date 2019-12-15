@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="{{ config('app.locale') }}" dir="{{ config('0-developer.direction') }}">
+<html lang="{{ config('app.locale') }}" dir="{{ config('setting-developer.direction') }}">
 	<head>
 		<meta name="robots" content="noindex">
-		@if(!config('0-general.google_index'))
+		@if(!config('setting-general.google_index'))
 			<meta name="robots" content="noindex">
 		@endif
 		<meta charset="utf-8" />
@@ -11,7 +11,7 @@
 		<meta name="author" content="farid shahidi">
 		<meta name="csrf-token" content="{{ csrf_token() }}">
 
-		<title>{{ config('0-general.app_title') }}</title>
+		<title>{{ config('setting-general.app_title') }}</title>
 		<meta name="description" content="admin login page">
 
 		<link rel="canonical" href="{{ url()->current() }}">
@@ -23,7 +23,7 @@
 		<link href="{{ asset('css/admin/custome.css') }}" rel="stylesheet" />
 		<!--end::Base Styles -->
 		
-		<link rel="shortcut icon" href="{{ asset(config('0-general.favicon')) }}" />
+		<link rel="shortcut icon" href="{{ asset(config('setting-general.favicon')) }}" />
 	</head>
 	<body class="m--skin- m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default"  >
 		<!-- begin:: Page -->

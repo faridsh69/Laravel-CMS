@@ -1,5 +1,5 @@
 <head>
-	@if(!config('0-general.google_index'))
+	@if(!config('setting-general.google_index'))
 		<meta name="robots" content="noindex">
 	@endif
 	<meta charset="utf-8" />
@@ -34,7 +34,7 @@
 	<meta property="twitter:domain" content="{{ url('/') }}">
 
 	<link rel="canonical" href="{{ url()->current() }}">
-	<link rel="shortcut icon" href="{{ asset(config('0-general.favicon')) }}" />
+	<link rel="shortcut icon" href="{{ asset(config('setting-general.favicon')) }}" />
 
 	<link href="{{ asset('css/admin/vendors.bundle.css') }}" rel="stylesheet" />
 	<link href="{{ asset('css/admin/style.bundle.css') }}" rel="stylesheet" />

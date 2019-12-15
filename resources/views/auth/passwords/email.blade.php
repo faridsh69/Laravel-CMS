@@ -5,7 +5,7 @@
     <div class="m-login__wrapper">
         <div class="m-login__logo">
             <a href="javascript:void(0)">
-                <img src="{{ asset(config('0-general.logo')) }}">
+                <img src="{{ asset(config('setting-general.logo')) }}">
             </a>
         </div>
         <div class="m-login__forget-password1">

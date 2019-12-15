@@ -4,12 +4,12 @@
             <div class="col-md-6">
                 <div class="membership-description">
                     <p>
-                    {!! config('0-general.subscribe_description') !!}
+                    {!! config('setting-general.subscribe_description') !!}
                     </p>
                 </div>
             </div>
             <div class="col-md-6">
-                @include('front.themes.' . config("0-developer.theme"). '.form')
+                @include('front.themes.' . config('setting-developer.theme'). '.form')
             </div>
         </div>
     </div>

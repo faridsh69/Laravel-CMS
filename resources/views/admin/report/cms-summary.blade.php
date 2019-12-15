@@ -1,13 +1,13 @@
 <div class="col-xl-6">
 	<div class="media border p-3">
-		<img src="{{ asset(config('0-general.logo')) }}" style="max-width: 150px" class="mr-3 mt-3 rounded-circle">
+		<img src="{{ asset(config('setting-general.logo')) }}" style="max-width: 150px" class="mr-3 mt-3 rounded-circle">
 		<div class="media-body">
-			<h4>{{ config('0-general.app_title') }}<br><small><i>Version: 3.4.11</i></small></h4>
-			<p>{{ config('0-general.default_meta_description') }}</p>
+			<h4>{{ config('setting-general.app_title') }}<br><small><i>Version: 3.4.11</i></small></h4>
+			<p>{{ config('setting-general.default_meta_description') }}</p>
 		</div>
 	</div>
 	<br>
-	@if(config('0-general.google_index'))
+	@if(config('setting-general.google_index'))
 	<div class="m-alert m-alert--icon m-alert--outline alert alert-success alert-dismissible fade show" role="alert">
 		<div class="m-alert__icon"><i class="la la-warning"></i></div>
 		<div class="m-alert__text"><strong>Well done!</strong>
@@ -25,7 +25,7 @@
 	</div>
 	@endif
 
-	@if(!config('0-developer.cdn_url'))
+	@if(!config('setting-developer.cdn_url'))
 	<div class="m-alert m-alert--icon m-alert--outline alert alert-success alert-dismissible fade show" role="alert">
 		<div class="m-alert__icon"><i class="la la-warning"></i></div>
 		<div class="m-alert__text"><strong>Well done!</strong>
@@ -62,7 +62,7 @@
 						App Environment:
 					</span>
 					<span class="m-widget13__text m-widget13__text-bolder">
-						{{ config('0-developer.app_env') == 0 ? 'Development' : 'Production' }}
+						{{ config('setting-developer.app_env') == 0 ? 'Development' : 'Production' }}
 					</span>
 				</div>
 				<div class="m-widget13__item">
@@ -70,7 +70,7 @@
 						Theme:
 					</span>
 					<span class="m-widget13__text m-widget13__text-bolder">
-						{{ config('0-developer.theme') }}
+						{{ config('setting-developer.theme') }}
 					</span>
 				</div>
 				<div class="m-widget13__item">
@@ -78,7 +78,7 @@
 						Android Application
 					</span>
 					<span class="m-widget13__text m-widget13__text-bolder">
-						<a href="{{ config('0-general.android_application_url') }}">Download</a>
+						<a href="{{ config('setting-general.android_application_url') }}">Download</a>
 					</span>
 				</div>
 				<div class="m-widget13__item">
@@ -86,7 +86,7 @@
 						ios Application:
 					</span>
 					<span class="m-widget13__text m-widget13__text-bolder">
-						<a href="{{ config('0-general.ios_application_url') }}">Download</a>
+						<a href="{{ config('setting-general.ios_application_url') }}">Download</a>
 					</span>
 				</div>
 			</div>

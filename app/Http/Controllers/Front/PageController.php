@@ -21,11 +21,11 @@ class PageController extends Controller
         // $notification = \App\Models\Notification::orderBy('id', 'desc')->first();
         // dd( json_decode($notification->data)->data );
         // die();
-        $user = User::find(1);
         // $not->setData('123xx');
-        $user->notify($not);
-        dd(1);
-        dd($not);
+        // $user = User::find(1);
+        // $user->notify($not);
+        // dd(1);
+        // dd($not);
 
         if(config('app.name') === 'map'){
             return view('front.test.map.offline-city');
@@ -51,11 +51,11 @@ class PageController extends Controller
         }
 
         $meta = [
-            'title' => config('0-general.default_meta_title') . ' | ' . $page->title,
-            'description' => $page->meta_description ?: config('0-general.default_meta_description'),
+            'title' => config('setting-general.default_meta_title') . ' | ' . $page->title,
+            'description' => $page->meta_description ?: config('setting-general.default_meta_description'),
             'keywords' => $page->keywords,
-            'image' => $page->image ? asset($page->image) : asset(config('0-general.default_meta_image')),
-            'google_index' => config('0-general.google_index') ?: $page->google_index,
+            'image' => $page->image ? asset($page->image) : asset(config('setting-general.default_meta_image')),
+            'google_index' => config('setting-general.google_index') ?: $page->google_index,
             'canonical_url' => $page->canonical_url ?: url()->current(),
         ];
 

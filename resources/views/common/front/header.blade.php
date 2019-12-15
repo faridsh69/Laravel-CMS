@@ -1,5 +1,5 @@
 <head>
-	@if(!config('0-general.google_index') && !$meta['google_index'])
+	@if(!config('setting-general.google_index') && !$meta['google_index'])
 		<meta name="robots" content="noindex">
 	@endif
 	<meta charset="utf-8" />
@@ -12,7 +12,7 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="theme-color" content="#94d">
 	<link rel="canonical" href="{{ $meta['canonical_url'] }}">
-	<link rel="shortcut icon" href="{{ asset(config('0-general.favicon')) }}" />
+	<link rel="shortcut icon" href="{{ asset(config('setting-general.favicon')) }}" />
 
 	<meta itemprop="name" content="{{ $meta['title'] }}">
 	<meta itemprop="description" content="{{ $meta['description'] }}">

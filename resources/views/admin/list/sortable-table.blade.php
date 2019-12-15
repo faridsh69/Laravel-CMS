@@ -4,7 +4,7 @@
 <link href="{{ asset('css/admin/table/jquery-ui.bundle.css') }}" rel="stylesheet" />
 
 @if(false)
-@include('front.widgets.styles.' . config('0-developer.theme'))
+@include('front.widgets.styles.' . config('setting-developer.theme'))
 @endif
 
 @endpush
@@ -138,7 +138,7 @@
 					</div>
 					@if(false)
 						<div class="m-portlet__body m-sortable-table-body">
-							@includeIf('front.widgets.' . $block->widget_type . '.' . config('0-developer.theme'))
+							@includeIf('front.widgets.' . $block->widget_type . '.' . config('setting-developer.theme'))
 						</div>
 					@endif
 				</div>

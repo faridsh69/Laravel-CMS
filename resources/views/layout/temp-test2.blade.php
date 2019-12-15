@@ -9,8 +9,8 @@
 
 	<title>@yield('title')</title>
 	
-	<link rel="shortcut icon" href="{{ asset(config('0-general.favicon')) }}" />
-	@include('front.widgets.styles.' . config('0-developer.theme'))
+	<link rel="shortcut icon" href="{{ asset(config('setting-general.favicon')) }}" />
+	@include('front.widgets.styles.' . config('setting-developer.theme'))
 	@include('common.front.styles')
 	@stack('style')
 </head>
@@ -51,7 +51,7 @@
   </p>
 </footer>
 
-	@include('front.widgets.scripts.' . config('0-developer.theme'))
+	@include('front.widgets.scripts.' . config('setting-developer.theme'))
 	@include('common.front.scripts')
 </body>
 </html>

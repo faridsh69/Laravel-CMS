@@ -26,8 +26,8 @@ class BaseModel extends Model
                     'name' => 'title',
                     'type' => 'string',
                     'database' => '',
-                    'rule' => 'required|min:' . config('0-developer.seo_title_min')
-                    . '|max:' . config('0-developer.seo_title_max'),
+                    'rule' => 'required|min:' . config('setting-developer.seo_title_min')
+                    . '|max:' . config('setting-developer.seo_title_max'),
                     'help' => 'Title should be unique and must not be same with H1.',
                     'form_type' => '',
                     'table' => true,
@@ -36,7 +36,7 @@ class BaseModel extends Model
                     'name' => 'url',
                     'type' => 'string',
                     'database' => '',
-                    'rule' => 'required|max:' . config('0-developer.seo_url_max')
+                    'rule' => 'required|max:' . config('setting-developer.seo_url_max')
                     . '|regex:/^[a-z0-9-]+$/',
                     'help' => 'Url should be unique, contain [a-z, 0-9, -], required for seo',
                     'form_type' => '',
@@ -148,6 +148,6 @@ class BaseModel extends Model
             return $image;
         }
 
-        return config('0-general.default_meta_image');
+        return config('setting-general.default_meta_image');
     }
 }

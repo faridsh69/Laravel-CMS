@@ -35,9 +35,9 @@ class SeoController extends BaseAdminController
 		$content_unique = [];
 		$content_header = [];
 
-		$seo_title_min = config('0-developer.seo_title_min');
-		$seo_title_max = config('0-developer.seo_title_max');
-		$seo_url_max = config('0-developer.seo_url_max');
+		$seo_title_min = config('setting-developer.seo_title_min');
+		$seo_title_max = config('setting-developer.seo_title_max');
+		$seo_url_max = config('setting-developer.seo_url_max');
 		$seo_url_regex = '/^[a-z0-9-]+$/';
 
 		foreach($blogs as $blog)

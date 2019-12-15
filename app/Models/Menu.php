@@ -20,7 +20,7 @@ class Menu extends BaseModel
             'rule' => '',
             'help' => '',
             'form_type' => 'enum',
-            'form_enum_class' => 'MenuType',
+            'form_enum_class' => 'MenuLocation',
             'table' => false,
         ],
         [
