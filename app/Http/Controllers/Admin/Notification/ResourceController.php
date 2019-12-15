@@ -7,7 +7,6 @@ use App\Models\User;
 use App\Notifications\SiteNotification;
 use Auth;
 use Notification;
-use Route;
 
 class ResourceController extends BaseListController
 {
@@ -24,7 +23,7 @@ class ResourceController extends BaseListController
         $data = $form->getFieldValues();
 
     	$users = User::where('id', $data['users'])->get();
-        $site_notification =  new SiteNotification(); 
+        $site_notification =  new SiteNotification();
         $site_notification->setData($data['data']);
     	Notification::send($users, $site_notification);
 

@@ -31,7 +31,7 @@ class SettingDeveloper extends BaseModel
             'rule' => 'nullable',
             'help' => 'Specify application language. en, fa, fr, ...',
             'form_type' => '',
-        ],  
+        ],
         [
             'name' => 'theme',
             'type' => 'string',
@@ -65,7 +65,7 @@ class SettingDeveloper extends BaseModel
             'help' => 'Select direction for texts',
             'form_type' => 'enum',
             'form_enum_class' => 'HtmlDirection',
-        ],        
+        ],
         [
             'name' => 'throttle',
             'type' => 'string',

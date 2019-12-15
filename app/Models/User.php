@@ -17,11 +17,6 @@ class User extends Authenticatable
     use Notifiable;
     use SoftDeletes;
 
-    public function routeNotificationForSlack($notification)
-    {
-        return 'https://hooks.slack.com/services/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';
-    }
-
     public $columns = [
         [
             'name' => 'first_name',
@@ -190,6 +185,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function routeNotificationForSlack($notification)
+    {
+        return 'https://hooks.slack.com/services/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';
+    }
 
     public function getColumns()
     {

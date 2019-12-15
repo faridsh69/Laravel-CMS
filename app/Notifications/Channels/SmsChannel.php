@@ -9,8 +9,6 @@ class SmsChannel extends BaseChannel
 {
 	public function send($notifiable, $notification)
 	{
-        $curl = new \App\Services\CurlService();
-        $response = $curl->call_curl('sdaf', 'get');
         try{
             $message = $notification->data;
             $phone = $notifiable->phone;

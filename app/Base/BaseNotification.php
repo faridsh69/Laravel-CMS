@@ -16,11 +16,15 @@ class BaseNotification extends Notification implements ShouldQueue
 	use Queueable;
 
 	public $class_name;
+
     public $data;
+
     public $heading_title;
+
     public $message;
+
     public $app_url;
-    
+
     public function __construct()
     {
     	$this->class_name = Str::snake(class_basename($this));
@@ -35,7 +39,7 @@ class BaseNotification extends Notification implements ShouldQueue
     public function via($notifiable)
     {
         $channel_list = [
-            DatabaseChannel::class, 
+            DatabaseChannel::class,
             'slack',
         ];
         if(config('setting-developer.' . $this->class_name . '_sms') !== 0){
@@ -62,7 +66,7 @@ class BaseNotification extends Notification implements ShouldQueue
 
     public function toMail($notifiable)
     {
-        return (new MailMessage)
+        return (new MailMessage())
             ->greeting($this->heading_title)
             ->line($this->message);
             // ->action('Visit site', $this->app_url);
@@ -70,7 +74,7 @@ class BaseNotification extends Notification implements ShouldQueue
 
     public function toSlack($notifiable)
 	{
-	    return (new SlackMessage)
-            ->content('user_id: ' . $notifiable->id . ' - ' . $this->data);
+	    return (new SlackMessage())
+	        ->content('user_id: ' . $notifiable->id . ' - ' . $this->data);
 	}
 }

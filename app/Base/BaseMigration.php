@@ -14,7 +14,7 @@ class BaseMigration extends Migration
 
     public $columns;
 
-    public $rebuild;
+    public $rebuild = false;
 
     public function __construct()
     {
@@ -30,6 +30,14 @@ class BaseMigration extends Migration
         $table_name = $this->table_name;
         Schema::defaultStringLength(191);
         if($this->rebuild === true){
+            $model_class = 'App\\Models\\' . $this->model;
+            $repository = new $model_class();
+            $count = $repository::count();
+            if($count > 0){
+                dump('Model Count: ' . $repository::count());
+                dump('Your data will be destroyes, You can pause the proccess with Ctrl + C, you have 10 seconds to do that!');
+                sleep(10);
+            }
             Schema::dropIfExists($this->table_name);
         }
         Schema::create($table_name, function (Blueprint $table) use ($columns, $table_name) {
@@ -73,6 +81,8 @@ class BaseMigration extends Migration
 
     public function down()
     {
-        Schema::dropIfExists($this->table_name);
+        if($this->rebuild === false){
+            Schema::dropIfExists($this->table_name);
+        }
     }
 }

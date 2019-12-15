@@ -6,14 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Block;
 use App\Models\Page;
 use App\Models\User;
+use App\Notifications\UserRegistered;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Notifications\SiteNotification;
-use App\Notifications\UserRegistered;
-use App\Notifications\UserLogined;
-use App\Notifications\ProfileUpdated;
-use App\Notifications\DocumentRejected;
-use App\Jobs\ProcessPodcast;
 
 class PageController extends Controller
 {
