@@ -47,7 +47,7 @@ class AppServiceProvider extends ServiceProvider
         config(['setting-general' => $general_settings]);
         config(['setting-contact' => $contact_settings]);
         config(['setting-developer' => $developer_settings]);
-        config(['app.name' => config('setting-developer.app_title')]);
+        config(['app.name' => config('setting-general.app_title')]);
         config(['app.debug' => config('setting-developer.app_debug')]);
         config(['app.env' => config('setting-developer.app_env')]);
         config(['app.locale' => config('setting-developer.app_language')]);
@@ -55,7 +55,13 @@ class AppServiceProvider extends ServiceProvider
         config(['sms.driver' => config('setting-developer.sms_driver')]);
         config(['sms.sender' => config('setting-developer.sms_sender')]);
         config(['sms.api_key' => config('setting-developer.sms_api_key')]);
-        
+        config(['mail.username' => config('setting-developer.email_username')]);
+        config(['mail.password' => config('setting-developer.email_password')]);
+        config(['mail.from.name' => config('setting-general.app_title')]);
+        config(['mail.from.address' => config('setting-developer.email_username')]);
+        config(['mail.reply_to.name' => config('setting-general.app_title')]);
+        config(['mail.reply_to.address' => config('setting-developer.email_username')]);
+
         // set data in admin panel setting in config for email 
         // Validator::extend('seo_header', '\App\Rules\SeoHeading@passes');
     }

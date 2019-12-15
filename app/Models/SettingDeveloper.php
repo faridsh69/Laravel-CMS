@@ -164,22 +164,6 @@ class SettingDeveloper extends BaseModel
             'form_type' => '',
         ],
         [
-            'name' => 'email_default_subject',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => '',
-            'help' => '',
-            'form_type' => '',
-        ],
-        [
-            'name' => 'email_default_ccc',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => '',
-            'help' => '',
-            'form_type' => '',
-        ],
-        [
             'name' => 'user_registered_sms',
             'type' => 'boolean',
             'database' => 'default',

@@ -2,22 +2,10 @@
 
 return [
     'driver' => env('MAIL_DRIVER', 'smtp'),
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.gmail.com'), // smtp.mailgun.org
     'port' => env('MAIL_PORT', 587),
-    'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
-    ],
-    'reply_to' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
-    ],
     'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-    'username' => env('MAIL_USERNAME'),
-    'password' => env('MAIL_PASSWORD'),
-
     'sendmail' => '/usr/sbin/sendmail -bs',
-
     'markdown' => [
         'theme' => 'default',
 
@@ -25,6 +13,15 @@ return [
             resource_path('views/vendor/mail'),
         ],
     ],
-
     'log_channel' => env('MAIL_LOG_CHANNEL'),
+    'username' => env('MAIL_USERNAME'),
+    'password' => env('MAIL_PASSWORD'),
+    'from' => [
+        'address' => env('MAIL_USERNAME', 'laravel-cms@gmail.com'),
+        'name' => env('APP_NAME', 'Laravel CMS'),
+    ],
+    'reply_to' => [
+        'address' => env('MAIL_USERNAME', 'laravel-cms@gmail.com'),
+        'name' => env('APP_NAME', 'Laravel CMS'),
+    ],
 ];
