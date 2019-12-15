@@ -19,7 +19,7 @@ class User extends Authenticatable
 
     public function routeNotificationForSlack($notification)
     {
-        return 'https://hooks.slack.com/services/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';
+        return 'https://hooks.slack.com/services/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';
     }
 
     public $columns = [

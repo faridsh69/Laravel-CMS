@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $seconds = 1;
+        $seconds = 10;
         if(! Schema::hasTable('setting_generals') || SettingGeneral::first() === null){
             return 'general settings does not exist!';
         }
@@ -61,8 +61,6 @@ class AppServiceProvider extends ServiceProvider
         config(['mail.from.address' => config('setting-developer.email_username')]);
         config(['mail.reply_to.name' => config('setting-general.app_title')]);
         config(['mail.reply_to.address' => config('setting-developer.email_username')]);
-
-        // set data in admin panel setting in config for email 
         // Validator::extend('seo_header', '\App\Rules\SeoHeading@passes');
     }
 }
