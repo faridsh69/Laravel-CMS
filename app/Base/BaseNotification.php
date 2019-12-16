@@ -31,6 +31,7 @@ class BaseNotification extends Notification
     	$this->class_name = Str::snake(class_basename($this));
     	$message_template = __($this->class_name . '_message');
         $app_title = __(config('setting-general.app_title'));
+        $app_title = 'منیو';
         $this->message = sprintf($message_template, $app_title);
         $this->heading_title = __('dear_customer');
         $this->app_url = URL::to('/');
