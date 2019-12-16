@@ -180,8 +180,10 @@ class SettingController extends BaseAdminController
 	public function getCommand($command)
 	{
         try {
+        	$command = 'api:gen';
             echo '<br> ' . $command . ' ...';
             Artisan::call($command);
+            dd($command);
             echo '<br>' . $command . ' completed';
             echo '<br><a href="/admin/setting/advance">Go back</a>';
         } catch (Exception $e) {
