@@ -268,6 +268,7 @@
 		[
 			'id' => 10,
 			'title' => 'Report',
+			'permission' => 'Activity',
 			'route' => 'report',
 			'type' => 'submenu',
 			'icon' => 'flaticon-graphic-2',
@@ -281,6 +282,7 @@
 		[
 			'id' => 10,
 			'title' => 'User Activity',
+			'permission' => 'Activity',
 			'route' => 'activity',
 			'type' => 'submenu',
 			'icon' => 'flaticon-share',
@@ -473,7 +475,12 @@
 				<i class="m-menu__section-icon flaticon-more-v3"></i>
 			</li>
 			@else
-			@can('index', 'App\\Models\\' . $item['title'])
+			@php
+				if(!isset($item['permission']) ){
+					$item['permission'] = $item['title'];
+				}
+			@endphp
+			@can('index', 'App\\Models\\' . $item['permission'])
 			<li class="m-menu__item m-menu__item--submenu  
 				@if(Request::segment(2) == $item['route']) m-menu__item--open m-menu__item--expanded @endif" aria-haspopup="true" data-menu-submenu-toggle="hover">
 				<a href="javascript:void(0)" class="m-menu__link m-menu__toggle">

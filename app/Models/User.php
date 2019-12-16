@@ -215,4 +215,9 @@ class User extends Authenticatable
 
         return config('setting-general.default_user_image');
     }
+
+    public function getAssetImageAttribute()
+    {
+        return asset($this->image);
+    }
 }

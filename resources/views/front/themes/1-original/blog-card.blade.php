@@ -2,7 +2,7 @@
     <div class="single-team-member">
         <a href="{{ route('front.blog.show', $blog->id) }}">
             <div class="member-image">
-                <img src="{{ asset($blog->image) }}" alt="{{ $blog->title }}">
+                <img src="{{ $blog->asset_image }}" alt="{{ $blog->title }}">
             </div>
         </a>
         <div class="member-text">

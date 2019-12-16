@@ -10,7 +10,7 @@
 @endphp
 
 <section class="wellcome_area clearfix" id="home" 
-    style="background-image: url({{ asset($first_slider->image) }});">
+    style="background-image: url({{ $first_slider->asset_image }});">
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12 col-md">
@@ -30,7 +30,7 @@
         </div>
     </div>
     <div class="welcome-thumb wow fadeInDown" data-wow-delay="0.5s">
-        <img src="{{ asset($second_slider->image) }}" alt="{{ $second_slider->title }}">
+        <img src="{{ $second_slider->asset_image }}" alt="{{ $second_slider->title }}">
     </div>
     @if(false)
     <div class="hero-app-7 custom-animation3">

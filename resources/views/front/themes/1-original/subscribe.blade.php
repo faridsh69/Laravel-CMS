@@ -14,6 +14,3 @@
         </div>
     </div>
 </section>
-@if(env('APP_NAME') === 'eric')
-    <img src="{{ asset('storage/files/shares/synergypower/certificate.jpg') }}" style="width: 100%" alt="logo">
-@endif

@@ -19,25 +19,45 @@
 			</div>
 		</div>
 		<div class="m-portlet__head-tools">
-			<ul class="m-portlet__nav">
-				<li class="m-portlet__nav-item">
-					<a href="" class="m-portlet__nav-link m-portlet__nav-link--icon">
-						<i class="la la-cloud-upload"></i>
-					</a>
-				</li>
-				<li class="m-portlet__nav-item">
-					<a href="" class="m-portlet__nav-link m-portlet__nav-link--icon">
-						<i class="la la-cog"></i>
-					</a>
-				</li>
-				<li class="m-portlet__nav-item">
-					<a href="" class="m-portlet__nav-link m-portlet__nav-link--icon">
-						<i class="la la-share-alt-square"></i>
-					</a>
-				</li>
-			</ul>
+			<h6 class="m-portlet__head-text">
+				Created at:
+				{{ $data->created_at }}
+				<br>
+				Updated at:
+				{{ $data->updated_at }}	
+			</h6>	
 		</div>
 	</div>
+
+	<div class="m-portlet__body">
+		<div class="m-list-timeline">
+			<div class="m-list-timeline__items">
+				<br>
+				@foreach($data->columns as $column)
+				<div class="m-list-timeline__item">
+					<span class="m-list-timeline__badge m-list-timeline__badge--brand"></span>
+					<div style="color: white;width: 150px; display: inline-block;border-right: 1px solid white; margin-right: 10px">
+						<span>
+							{!! $column['name'] !!}
+						</span>
+					</div>
+					<span class="m-list-" style="color: white">
+						@if( !is_object($data[$column['name']]) )
+							{{ $data[$column['name']] }}
+						@else
+							@foreach($data[$column['name']] as $item)
+								{{ isset($item->id) ? $item->id : '' }}
+							@endforeach
+						@endif
+					</span>
+				</div>
+				@endforeach
+				<br>
+			</div>
+		</div>
+		<!--end::Section-->
+	</div>
+
 	<div class="m-portlet__body">
 		<div class="m-list-timeline">
 			<h4>Activity log for this model</h4>
@@ -47,7 +67,7 @@
 				<div class="m-list-timeline__item">
 					<span class="m-list-timeline__badge m-list-timeline__badge--brand"></span>
 					<span class="m-list-timeline__icon flaticon-exclamation-1"></span>
-					<span class="m-list-timeline__text">
+					<span class="m-list-timeline__text" style="color: white">
 						{{ $activity->description }}
 						By 
 						{{ $activity->causer->fullName }}
@@ -58,29 +78,6 @@
 				@endforeach
 			</div>
 		</div>
-	</div>
-
-	<div class="m-portlet__body">
-		<div class="m-list-timeline">
-			<div class="m-list-timeline__items">
-				<br>
-				@foreach($data as $key => $value)
-				<div class="m-list-timeline__item">
-					<span class="m-list-timeline__badge m-list-timeline__badge--brand"></span>
-					<div style="color: white;width: 150px; display: inline-block;border-right: 1px solid white; margin-right: 10px">
-						<span>
-							{!! $key !!}
-						</span>
-					</div>
-					<span class="m-list-" style="color: white">
-						{!! $value !!}
-					</span>
-				</div>
-				@endforeach
-				<br>
-			</div>
-		</div>
-		<!--end::Section-->
 	</div>
 </div>
 

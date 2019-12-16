@@ -71,7 +71,7 @@ class Blog extends BaseModel implements Commentable
 
     public function mustBeApproved(): bool
     {
-        return true;
+        return false;
     }
 
     public function category()

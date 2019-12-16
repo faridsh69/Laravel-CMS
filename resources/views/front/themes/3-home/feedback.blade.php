@@ -15,7 +15,7 @@
           @foreach($feedbacks as $feedback)
           <div class="item">
             <div class="testimony-wrap text-center py-4 pb-5">
-              <div class="user-img" style="background-image: url({{ asset($feedback->image) }})">
+              <div class="user-img" style="background-image: url({{ $feedback->asset_image }})">
                 <span class="quote d-flex align-items-center justify-content-center">
                   <i class="icon-quote-left"></i>
                 </span>

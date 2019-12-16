@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="special_description_img">
-                        <img src="{{ asset($slider->image) }}" class="pull-right" alt="services">
+                        <img src="{{ $slider->asset_image }}" class="pull-right" alt="services">
                     </div>
                 </div>
                 @else

@@ -9,7 +9,7 @@
 					<i class="flaticon-statistics"></i>
 				</span>
 				<h3 class="m-portlet__head-text">
-					Last User Activities
+					{{ \Auth::user()->fullName }} Activities
 				</h3>
 			</div>
 		</div>
@@ -44,10 +44,8 @@
 						<span style="font-weight: bold">
 						{{ $activity->description }}
 						</span>
-						With model:  
-						<div style="max-width: 90%; overflow-x: scroll;">
-						{{ $activity->subject }}
-						</div>
+						With model ID:  
+						{{ $activity->subject_id }}
 					</span>
 					<span class="m-list-timeline__time">
 						{{ $activity->created_at }}

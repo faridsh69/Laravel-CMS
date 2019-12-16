@@ -25,21 +25,21 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $seconds = 100;
+        $seconds = 200;
         if(! Schema::hasTable('setting_generals') || SettingGeneral::first() === null){
             return 'general settings does not exist!';
         }
-        $general_settings = Cache::remember('settings.general', $seconds, function () {
+        $general_settings = Cache::remember('setting.general', $seconds, function () {
             $general_setings_database = SettingGeneral::first();
             if($general_setings_database) {return $general_setings_database->toArray(); }
             return [];
         });
-        $contact_settings = Cache::remember('settings.contact', $seconds, function () {
+        $contact_settings = Cache::remember('setting.contact', $seconds, function () {
             $contact_setings_database = SettingContact::first();
             if($contact_setings_database) {return $contact_setings_database->toArray(); }
             return [];
         });
-        $developer_settings = Cache::remember('settings.developer', $seconds, function () {
+        $developer_settings = Cache::remember('setting.developer', $seconds, function () {
             $developer_setings_database = SettingDeveloper::first();
             if($developer_setings_database) {return $developer_setings_database->toArray(); }
             return [];
@@ -50,7 +50,6 @@ class AppServiceProvider extends ServiceProvider
         config(['app.name' => config('setting-general.app_title')]);
         config(['app.debug' => config('setting-developer.app_debug')]);
         config(['app.env' => config('setting-developer.app_env')]);
-        config(['app.locale' => config('setting-developer.app_language')]);
         App::setLocale(config('setting-developer.app_language'));
         config(['sms.driver' => config('setting-developer.sms_driver')]);
         config(['sms.sender' => config('setting-developer.sms_sender')]);

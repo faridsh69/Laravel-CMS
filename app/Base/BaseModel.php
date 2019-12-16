@@ -150,4 +150,9 @@ class BaseModel extends Model
 
         return config('setting-general.default_meta_image');
     }
+
+    public function getAssetImageAttribute()
+    {
+        return asset($this->image);
+    }
 }

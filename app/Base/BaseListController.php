@@ -156,8 +156,7 @@ class BaseListController extends Controller
     {
         $model = $this->repository->findOrFail($id);
         $this->authorize('view', $model);
-        $data = $model->getAttributes();
-
+        $data = $model;
         $activities = Activity::where('subject_type', $this->model_class)
             ->where('subject_id', $id)
             ->get();
@@ -329,6 +328,11 @@ class BaseListController extends Controller
                 return str_replace('App\Notifications\\', '', $model->type);
             })->addColumn('data', function($model) {
                 return json_decode($model->data)->data;
+            });
+        }
+        elseif($this->model === 'Activity') {
+            $datatable->addColumn('causer', function($model) {
+                return $model->causer->full_name;
             });
         }
         elseif($this->model === 'Comment') {

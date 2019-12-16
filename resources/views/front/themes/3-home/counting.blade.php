@@ -1,7 +1,7 @@
 @php
     $slider = \App\Models\Slider::where('id', 3)->first();
 @endphp
-<section class="ftco-intro img" id="hotel-section" style="background-image: url({{ asset($slider->image) }});">
+<section class="ftco-intro img" id="hotel-section" style="background-image: url({{ $slider->->asset_image }});">
 	<div class="overlay"></div>
 	<div class="container">
 		<div class="row justify-content-end">

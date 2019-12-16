@@ -81,6 +81,9 @@ class BaseForm extends Form
             elseif($form_type === 'date'){
                 $option['attr'] = ['autocomplete' => 'off'];
             }
+            elseif($form_type === 'color'){
+                $input_type = 'color';
+            }
             elseif($form_type === 'textarea'){
                 $input_type = 'textarea';
                 $option['attr'] = ['rows' => 3];

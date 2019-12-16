@@ -59,6 +59,15 @@ class Activity extends ActivitySpatie
             'rule' => 'nullable',
             'help' => '',
             'form_type' => '',
+            'table' => false,
+        ],
+        [
+            'name' => 'causer',
+            'type' => 'string',
+            'database' => 'none',
+            'rule' => '',
+            'help' => '',
+            'form_type' => 'none',
             'table' => true,
         ],
         [

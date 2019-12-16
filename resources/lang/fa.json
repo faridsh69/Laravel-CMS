@@ -128,5 +128,6 @@
     "profile_updated_message" : "پروفایل شما در سامانه %s به روز رسانی شد.",
     "document_rejected_message" : "مدارک ارسال شده برای سامانه %s نامعتبر می باشند.",
     "menew" : "منیو",
-    "dear_customer" : "کاربر گرامی"
+    "dear_customer" : "کاربر گرامی",
+    "comment_created" : "نظر شما با موفقیت ثبت شد."
 }

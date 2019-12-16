@@ -5,7 +5,7 @@
 	<div class="container">
 		<div class="row no-gutters d-flex">
 			<div class="col-md-6 col-lg-5 d-flex">
-				<div class="img d-flex align-self-stretch align-items-center" style="background-image:url({{ asset($slider->image) }});">
+				<div class="img d-flex align-self-stretch align-items-center" style="background-image:url({{ $slider->asset_image }});">
 				</div>
 			</div>
 			<div class="col-md-6 col-lg-7 px-lg-5 py-md-5">

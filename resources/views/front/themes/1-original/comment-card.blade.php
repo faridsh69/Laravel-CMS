@@ -4,7 +4,7 @@
     		$user = \App\Models\User::where('id', $comment->commented_id)->first();
 		@endphp
 		<p>
-			<img src="{{ asset($user->image) }}" width="50px" alt="$user->full_name profile image">
+			<img src="{{ $user->asset_image }}" width="50px" alt="$user->full_name profile image">
 			{{ $user->full_name }} - 
 			<small> {{ $comment->created_at }} </small>
 			<br>

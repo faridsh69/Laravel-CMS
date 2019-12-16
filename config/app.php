@@ -7,11 +7,11 @@ return [
 
     'env' => env('APP_ENV', 'development'),
 
-    'debug' => env('APP_DEBUG', true),
-
-    'timezone' => 'Asia/Tehran',
+    'debug' => env('APP_DEBUG', false),
 
     'locale' => env('APP_LOCALE', 'en'),
+
+    'timezone' => 'Asia/Tehran',
 
     'fallback_locale' => 'en_US',
 

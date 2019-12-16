@@ -25,7 +25,7 @@
             <div class="col-12 col-md-6 col-lg-3">
                 <div class="single-team-member">
                     <div class="member-image">
-                        <img src="{{ asset($category->image) }}" alt="{{ $category->title }}">
+                        <img src="{{ $category->asset_image }}" alt="{{ $category->title }}">
                     </div>
                     <div class="member-text">
                         <a href="{{ route('front.blog.category', $category->url) }}">
@@ -111,6 +111,18 @@
                     <div class="line-shape"></div>
                 </div>
                 <form action="{{ route('front.blog.comment', $blog->id )}}" method="post">
+
+                    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                        @if(Session::has('alert-' . $msg))
+                            <div class="alert alert-{{ $msg }} alert-dismissible" role="alert">
+                                <ul class="list-unstyled rtl-text-right">
+                                    <li>{{ Session::get('alert-' . $msg) }}</li>
+                                </ul>
+                            </div>
+                        @endif
+                    @endforeach
+
+
                     @csrf
                     <div class="form-group rtl-text-right">
                         <textarea name="comment" class="form-control" id="comment" cols="30" rows="4" placeholder="{{ __('write_comment') }}" required></textarea>

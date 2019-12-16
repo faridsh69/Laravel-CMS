@@ -34,7 +34,7 @@
                 <div class="slider slider-nav">
                     @foreach($feedbacks as $feedback)
                     <div class="client-thumbnail">
-                        <img src="{{ asset($feedback->image) }}" alt="customer feedback">
+                        <img src="{{ $feedback->asset_image }}" alt="customer feedback">
                     </div>
                     @endforeach
                 </div>

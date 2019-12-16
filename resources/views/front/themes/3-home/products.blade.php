@@ -12,7 +12,7 @@
 	            	<div class="item">
 	            		<div class="properties ftco-animate">
 	    					<div class="img">
-			    				<img src="{{ asset($service->image) }}" class="img-fluid" alt="{{$service->title}}">
+			    				<img src="{{ $service->asset_image }}" class="img-fluid" alt="{{$service->title}}">
 		    				</div>
 		    				<div class="desc">
 		    					<div class="text bg-primary d-flex text-center align-items-center justify-content-center">
