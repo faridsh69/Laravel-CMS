@@ -11,7 +11,7 @@ use Illuminate\Notifications\Messages\SlackMessage;
 use Illuminate\Notifications\Notification;
 use Str;
 
-class BaseNotification extends Notification implements ShouldQueue
+class BaseNotification extends Notification
 {
 	use Queueable;
 
