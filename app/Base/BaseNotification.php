@@ -10,6 +10,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Messages\SlackMessage;
 use Illuminate\Notifications\Notification;
 use Str;
+use URL;
 
 class BaseNotification extends Notification
 {
@@ -32,7 +33,7 @@ class BaseNotification extends Notification
         $app_title = __(config('setting-general.app_title'));
         $this->message = sprintf($message_template, $app_title);
         $this->heading_title = __('dear_customer');
-        $this->app_url = 'http://www.menew.ir';
+        $this->app_url = URL::to('/');
         $this->data = sprintf(" %s \n %s \n %s", $this->heading_title, $this->message, $this->app_url);
     }
 
