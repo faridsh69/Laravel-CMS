@@ -34,6 +34,7 @@ class BaseNotification extends Notification
         $this->message = sprintf($message_template, $app_title);
         $this->heading_title = __('dear_customer');
         $this->app_url = URL::to('/');
+        $this->app_url = $app_title;
         $this->data = sprintf(" %s \n %s \n %s", $this->heading_title, $this->message, $this->app_url);
     }
 
