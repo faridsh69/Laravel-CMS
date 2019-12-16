@@ -12,7 +12,7 @@ class Comment extends CommentSpatie
     public $columns = [
         // blog id
         [
-	        'name' => 'commented_id',
+	        'name' => 'commentable_id',
 	        'type' => 'bigInteger',
 	        'database' => '',
 	        'relation' => 'blogs',
@@ -27,7 +27,7 @@ class Comment extends CommentSpatie
 	    ],
         // user id
         [
-            'name' => 'commentable_id',
+            'name' => 'commented_id',
             'type' => 'bigInteger',
             'database' => '',
             'relation' => 'users',

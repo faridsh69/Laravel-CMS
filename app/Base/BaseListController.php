@@ -131,6 +131,7 @@ class BaseListController extends Controller
         }
         $data = $form->getFieldValues();
         $main_data = $data;
+
         $data = $this->_changeDataBeforeCreate($this->model, $data, null);
 
         $model = $this->repository->create($data);
@@ -450,46 +451,8 @@ class BaseListController extends Controller
                 }
             }
         }
-        // Comment
 
         return $data;
-
-        // // comment
-        // if($this->model === 'Comment'){
-        //     $model->commentable_id = $data['commented_id'];
-        //     $model->comment = $data['comment'];
-        //     $model->update();
-
-        //     if(env('APP_ENV') !== 'testing'){
-        //         activity($this->model)
-        //             ->performedOn($model)
-        //             ->causedBy(Auth::user())
-        //             ->log($this->model . ' Updated');
-        //     }
-        //     $this->request->session()->flash('alert-success', $this->model . ' Updated Successfully!');
-
-        //     return redirect()->route('admin.' . $this->model_sm . '.list.index');
-        // }
-
-        // // comment
-        // if($this->model === 'Comment'){
-        //     $blog = \App\Models\Blog::where('id', $data['commented_id'])->first();
-
-        //     Auth::user()->comment($blog, $data['comment'], $rate = 0);
-        //     $blog->comments[0]->approve();
-
-        //     if(env('APP_ENV') !== 'testing'){
-        //         activity($this->model)
-        //             ->performedOn($blog)
-        //             ->causedBy(Auth::user())
-        //             ->log($this->model . ' Created');
-        //     }
-
-        //     $this->request->session()->flash('alert-success', $this->model . ' Created Successfully!');
-
-        //     return redirect()->route('admin.' . $this->model_sm . '.list.index');
-        // }
-
     }
 
     private function _saveRelatedDataAfterCreate($model_name, $data, $model)
@@ -553,6 +516,15 @@ class BaseListController extends Controller
             foreach($users as $user){
                 $user->assignRole($model->name);
             }
+        }
+
+        // Comment
+        if($model_name === 'Comment'){
+            $model->commented_id = Auth::id();
+            $model->commented_type = 'App\Models\User';
+            $model->commentable_type = 'App\Models\Blog';
+            $model->update();
+            $model->approve();
         }
     }
 }

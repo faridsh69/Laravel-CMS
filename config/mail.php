@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'driver' => env('MAIL_DRIVER', 'smtp'),
-    'host' => env('MAIL_HOST', 'smtp.gmail.com'), // smtp.mailgun.org
+    'driver' => env('MAIL_DRIVER', 'sendmail'),
+    'host' => env('MAIL_HOST', 'mail.cms-laravel.com'), // smtp.mailgun.org
     'port' => env('MAIL_PORT', 587),
     'encryption' => env('MAIL_ENCRYPTION', 'tls'),
     'sendmail' => '/usr/sbin/sendmail -bs',

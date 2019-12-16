@@ -14,8 +14,8 @@ class PageController extends Controller
 {
     public function getIndex($page_url = '', UserRegistered $not)
     {
-        // $user = User::find(1);
-        // $user->notify($not);
+        $user = User::find(1);
+        $user->notify($not);
 
         if(config('app.name') === 'map'){
             return view('front.test.map.offline-city');
