@@ -183,7 +183,7 @@ class SettingController extends BaseAdminController
             echo '<br> ' . $command . ' ...';
             Artisan::call($command);
             echo '<br>' . $command . ' completed';
-            echo '<br><a href="/setting/advance">Go back</a>';
+            echo '<br><a href="/admin/setting/advance">Go back</a>';
         } catch (Exception $e) {
             Response::make($e->getMessage(), 500);
         }

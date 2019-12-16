@@ -31,6 +31,15 @@ return [
                     base_path('temp'),
                     base_path('vendor'),
                     base_path('node_modules'),
+                    base_path('public_html'),
+                    base_path('storage/app/Laravel'),
+                    base_path('storage/app/backup-temp'),
+                    base_path('storage/app/pdf-fonts'),
+                    base_path('tests'),
+                    base_path('routes'),
+                    base_path('resources'),
+                    base_path('database'),
+                    base_path('config'),
                 ],
 
                 /*
