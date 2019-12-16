@@ -40,7 +40,7 @@ class BaseNotification extends Notification implements ShouldQueue
     {
         $channel_list = [
             DatabaseChannel::class,
-            'slack',
+            // 'slack',
         ];
         if(config('setting-developer.' . $this->class_name . '_sms') !== 0){
             $channel_list[] = SmsChannel::class;
