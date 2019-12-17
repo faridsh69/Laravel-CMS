@@ -16,7 +16,7 @@
                 @foreach($sliders as $slider)
                 <div class="col-sm-6 col-md-4 ml-xl-auto mt-3">
                     <div class="special_description_content">
-                        <h3>{{ $slider->title }}</h3>
+                        <h4>{{ $slider->title }}</h4>
                         <p>{!! $slider->description !!}</p>
                     </div>
                 </div>
