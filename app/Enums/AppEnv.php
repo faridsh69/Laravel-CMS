@@ -7,9 +7,10 @@ use App\Base\BaseEnum;
 final class AppEnv extends BaseEnum
 {
     const data = [
-		'production' => 'production',
-		'local' => 'Local',
+		'production' => 'Production',
+		'development' => 'Development',
 		'testing' => 'Testing',
-		'staging' => 'staging',
+		'local' => 'Local',
+		'staging' => 'Staging',
 	];
 }

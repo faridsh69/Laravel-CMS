@@ -6,17 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Block;
 use App\Models\Page;
 use App\Models\User;
-use App\Notifications\UserRegistered;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function getIndex($page_url = '', UserRegistered $not)
+    public function getIndex($page_url = '')
     {
-        // $user = User::find(1);
-        // $user->notify($not);
-
         if(config('app.name') === 'map'){
             return view('front.test.map.offline-city');
         }

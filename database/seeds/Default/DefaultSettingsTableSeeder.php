@@ -51,7 +51,7 @@ class DefaultSettingsTableSeeder extends Seeder
 
         $developer_settings = [
 			'app_debug' => '1',
-			'app_env' => 'production',
+			'app_env' => 'development',
 			'app_language' => 'fa',
 			'theme' => '1-original',
 			'theme_color_1' => $this->random_color(),
@@ -64,11 +64,11 @@ class DefaultSettingsTableSeeder extends Seeder
 			'seo_title_max' => '70',
 			'seo_url_max' => '80',
 			'seo_url_regex' => '/^[a-z0-9-]+$/',
-			'email_username' => 'farid.sh69@gmail.com',
-			'email_password' => 'email@password',
+			'email_username' => 'farid@cms-laravel.com',
+			'email_password' => 'Farid111111',
 			'sms_driver' => 'kavenegar.com',
-			'sms_sender' => '20002839889399',
-			'sms_api_key' => '4149536F31374C63446835565577772F363075767A756451436F765361415054',
+			'sms_sender' => '1000596446',
+			'sms_api_key' => '676873656D4557322F783138755654636852324A304B42417548425047383671344372796F6A417759444D3D',
 			'profile_updated_sms' => '0',
 			'user_logined_sms' => '0',
         ];

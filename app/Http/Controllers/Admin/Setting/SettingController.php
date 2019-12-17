@@ -6,9 +6,8 @@ use App\Base\BaseAdminController;
 use Artisan;
 use Auth;
 use Cache;
-use Config;
-use File;
 use Rap2hpoutre\LaravelLogViewer\LogViewerController;
+use Symfony\Component\Console\Output\BufferedOutput;
 
 class SettingController extends BaseAdminController
 {
@@ -94,6 +93,21 @@ class SettingController extends BaseAdminController
 		return redirect()->route('admin.setting.general');
 	}
 
+	public function getCommand($command)
+	{
+        echo '<br> php artisan ' . $command . ' is running...';
+		$output = new BufferedOutput;
+		if(strpos($command, 'api') === false && strpos($command, 'passport') === false){
+	        Artisan::call($command, [], $output);
+	    }else{
+			shell_exec('php ../artisan ' . $command);
+			dump('php ../artisan ' . $command);
+		}
+        dump($output->fetch());
+        echo 'php artisan ' . $command . ' completed.';
+        echo '<br><br><a href="/admin/setting/advance">Go back</a>';
+	}
+
 	public function getAdvance()
 	{
 		$commands = [
@@ -172,24 +186,13 @@ class SettingController extends BaseAdminController
 				'description' => 'clear view cache',
 				'command' => 'view:clear',
 			],
+			[
+				'id' => 16,
+				'description' => 'optimize all configurations',
+				'command' => 'optimize',
+			],
 		];
 
 		return view('admin.setting.advance', ['meta' => $this->meta, 'commands' => $commands]);
-	}
-
-	public function getCommand($command)
-	{
-        try {
-        	$command = 'api:gen';
-            echo '<br> ' . $command . ' ...';
-            Artisan::call($command);
-            dd($command);
-            echo '<br>' . $command . ' completed';
-            echo '<br><a href="/admin/setting/advance">Go back</a>';
-        } catch (Exception $e) {
-            Response::make($e->getMessage(), 500);
-        }
-
-		// dd($command);
 	}
 }
