@@ -12,13 +12,19 @@
     "blogs" : "Blogs",
     "tags" : "Tags",
     "related_blogs" : "Related Blogs",
+    "comment_created" : "Your comment added to blog successfully!",
     "categories" : "Categories",
     "copy_right" : "Copyright ©2019. Designed by https://github.com/faridsh69",
+    "site_notification_subject" : "Notification",
     "user_registered_message" : "Registration on %s completed.",
+    "user_registered_subject" : "Registration",
     "user_logined_message" : "You logined on %s successfully.",
+    "user_logined_subject" : "Login",
     "profile_updated_message" : "Your profile on %s updated successfully.",
+    "profile_updated_subject" : "Profile",
     "document_rejected_message" : "Your documents in %s rejected.",
+    "document_rejected_subject" : "Documents",
     "menew" : "MeneW",
     "dear_customer" : "Dear Customer",
-    "comment_created" : "Your comment added to blog successfully!"
+    "regards" : "Regards"
 }

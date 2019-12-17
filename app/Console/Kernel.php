@@ -22,7 +22,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('backup:run')->daily()->at('16:00');
+        // $schedule->call(function () {
+        //     $field = \App\Models\Field::first();
+        //     $field->id = $field->id + 10;
+        //     $field->update();
+        // })->everyMinute();
+        $schedule->command('backup:run')->daily()->at('09:22');
     }
 
     /**

@@ -11,7 +11,7 @@ use Notification;
 class ResourceController extends BaseListController
 {
     public $model = 'Notification';
-
+    
     public function store()
     {
         $this->authorize('create', $this->model_class);
@@ -24,11 +24,12 @@ class ResourceController extends BaseListController
 
     	$users = User::where('id', $data['users'])->get();
         $site_notification =  new SiteNotification();
-        $site_notification->setData($data['data']);
-    	Notification::send($users, $site_notification);
+        $site_notification->setMessage($data['data']);
+        foreach($users as $user){
+            $user->notify($site_notification);
+        }
 
     	$model = \App\Models\Notification::orderBy('id', 'desc')->first();
-
         activity($this->model)
             ->performedOn($model)
             ->causedBy(Auth::user())

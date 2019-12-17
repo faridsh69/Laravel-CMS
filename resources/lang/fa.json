@@ -123,11 +123,17 @@
     "write_comment" : "نظر خود را بنویسید",
     "rate" : "امتیاز از 5 نمره:",
     "copy_right" : "حق کپی محفوظ است ©2019. طراحی شده توسط شرکت شریف وب 09120568203",
+    "site_notification_subject" : "اطلاعیه",
     "user_registered_message" : "ثبت نام شما در سامانه %s تکمیل شد.",
+    "user_registered_subject" : "ثبت نام",
     "user_logined_message" : "ورود شما به سامانه %s با موفقیت انجام شد.",
+    "user_logined_subject" : "ورود",
     "profile_updated_message" : "پروفایل شما در سامانه %s به روز رسانی شد.",
+    "profile_updated_subject" : "پروفایل",
     "document_rejected_message" : "مدارک ارسال شده برای سامانه %s نامعتبر می باشند.",
+    "document_rejected_subject" : "مدارک",
     "menew" : "منیو",
     "dear_customer" : "کاربر گرامی",
-    "comment_created" : "نظر شما با موفقیت ثبت شد."
+    "comment_created" : "نظر شما با موفقیت ثبت شد.",
+    "regards" : "با سپاس"
 }

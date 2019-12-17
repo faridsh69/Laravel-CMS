@@ -18,7 +18,7 @@ class BaseNotification extends Notification
 
 	public $class_name;
 
-    public $data;
+    public $sms_message;
 
     public $heading_title;
 
@@ -26,17 +26,18 @@ class BaseNotification extends Notification
 
     public $app_url;
 
+    public $app_title;
+
     public function __construct()
     {
     	$this->class_name = Str::snake(class_basename($this));
+        $this->subject = __($this->class_name . '_subject');
     	$message_template = __($this->class_name . '_message');
-        $app_title = __(config('setting-general.app_title'));
-        $app_title = 'منیو';
-        $this->message = sprintf($message_template, $app_title);
+        $this->app_title = __(config('setting-general.app_title'));
+        $this->message = sprintf($message_template, $this->app_title);
         $this->heading_title = __('dear_customer');
         $this->app_url = URL::to('/');
-        $this->app_url = $app_title;
-        $this->data = sprintf(" %s \n %s \n %s", $this->heading_title, $this->message, $this->app_url);
+        $this->sms_message = sprintf(" %s \n %s \n %s", $this->heading_title, $this->message, $this->app_url);
     }
 
     public function via($notifiable)
@@ -55,29 +56,36 @@ class BaseNotification extends Notification
         return $channel_list;
     }
 
-    public function setData($data)
+    public function setMessage($message)
     {
-    	$this->data = $data;
+    	$this->message = $message;
+        $this->sms_message = sprintf(" %s \n %s \n %s", $this->heading_title, $this->message, $this->app_url);
     }
 
     public function toArray($notifiable)
     {
         return [
-            'data' => $this->data,
+            'data' => $this->sms_message,
         ];
     }
 
     public function toMail($notifiable)
     {
         return (new MailMessage())
-            ->greeting($this->heading_title)
-            ->line($this->message);
-            // ->action('Visit site', $this->app_url);
+            ->subject($this->subject)
+            ->markdown('vendor.mail.general', 
+                [
+                    'heading_title' => $this->heading_title,
+                    'mail_message' => $this->message,
+                    'app_url' => $this->app_url,
+                    'app_title' => $this->app_title,
+                ]
+            );
     }
 
     public function toSlack($notifiable)
 	{
 	    return (new SlackMessage())
-	        ->content('user_id: ' . $notifiable->id . ' - ' . $this->data);
+	        ->content('user_id: ' . $notifiable->id . ' - ' . $this->sms_message);
 	}
 }

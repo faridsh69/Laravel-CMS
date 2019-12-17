@@ -7,8 +7,7 @@ return [
     'encryption' => env('MAIL_ENCRYPTION', 'tls'),
     'sendmail' => '/usr/sbin/sendmail -bs',
     'markdown' => [
-        'theme' => 'default',
-
+        'theme' => 'custome',
         'paths' => [
             resource_path('views/vendor/mail'),
         ],

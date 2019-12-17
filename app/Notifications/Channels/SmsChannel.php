@@ -32,7 +32,7 @@ class SmsChannel extends BaseChannel
         // }
 
         try{
-            $message = $notification->data;
+            $message = $notification->sms_message;
             $phone = $notifiable->phone;
             $api_key = config('sms.api_key');
             $sender = config('sms.sender');
