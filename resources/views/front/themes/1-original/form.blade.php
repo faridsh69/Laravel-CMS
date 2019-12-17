@@ -12,12 +12,4 @@
             <input type="submit" class="submit" value="{{ __('start') }}" style="min-width: 140px">
         </div>
     </form>
-
-    @if(env('APP_NAME') === 'eric')
-    <amp-call-tracking config="https://swappy.callrail.com/companies/315389868/amp-swap.json?t=18664479637&cid=CLIENT_ID(cid-scope-cookie-fallback-name)"> 
-        <a href="tel:8664479637" style="color: black; background: rgba(244,244,244,0.7);margin: 10px; padding: 2px;border-radius: 5px;font-size: 20px">+1 866-447-9637</a> 
-    </amp-call-tracking>
-
-    <amp-analytics config="https://swappy.callrail.com/companies/315389868/amp-analytics.json?cid=CLIENT_ID(cid-scope-cookie-fallback-name)"></amp-analytics> 
-    @endif
 </div>
