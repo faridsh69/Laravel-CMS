@@ -1,5 +1,5 @@
-<section class="special-area mt-4 mb-5" style="padding-top: 30px; background-color: #e0004d; min-height: 500px;">
-    <div class="container-fluid">
+<section class="special-area bg-white" style="padding-top: 130px;">
+    <div class="container-fluid" style="background-color: #e0004d; padding-top: 30px; min-height: 500px;">
         <div class="row">
             <div class="col-12">
                 <div class="section-heading text-center">
