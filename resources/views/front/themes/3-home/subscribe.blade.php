@@ -1,4 +1,4 @@
- <section class="ftco-intro img" id="about-section" style="background-image: url({{ asset(\Config::get('0-general.introduce_video_cover_photo')) }});">
+ <section class="ftco-intro img" id="about-section" style="background-image: url({{ asset(config('setting-general.introduce_video_cover_photo')) }});">
 	<div class="overlay"></div>
 	<div class="container">
 		<div class="row justify-content-center">

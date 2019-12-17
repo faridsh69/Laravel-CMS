@@ -15,8 +15,8 @@
 				            <h2 class="mb-4">{{ $slider->title }}</h2>
 				            <p>{{ $slider->description }}</p>
 				            <p>
-				            	<a href="{{ \Config::get('0-general.android_application_url') }}" class="btn btn-primary py-3 px-4">ANDROID</a> 
-				            	<a href="{{ \Config::get('0-general.ios_application_url') }}" class="btn btn-secondary py-3 px-4">IOS</a>
+				            	<a href="{{ config('setting-general.android_application_url') }}" class="btn btn-primary py-3 px-4">ANDROID</a> 
+				            	<a href="{{ config('setting-general.ios_application_url') }}" class="btn btn-secondary py-3 px-4">IOS</a>
 				            </p>
 			          	</div>
 		        	</div>

@@ -20,7 +20,7 @@
 <script>
 function myMap() {
 	var mapProp= {
-	center:new google.maps.LatLng( {{ Config::get('0-contact.latitude') }} , {{ Config::get('0-contact.longitude') }} ),
+	center:new google.maps.LatLng( {{ config('setting-contact.latitude') }} , {{ config('setting-contact.longitude') }} ),
 	zoom:12,
 	};
 	var map = new google.maps.Map(document.getElementById("map-widget"),mapProp);

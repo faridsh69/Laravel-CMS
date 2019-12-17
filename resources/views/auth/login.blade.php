@@ -47,7 +47,7 @@
 					</button>
 				</div>
 				<div class="text-center">
-				@foreach(\Config::get('services.social_companies') as $social_company)
+				@foreach(config('services.social_companies') as $social_company)
 					@php 
 						$social = strtolower($social_company);
 						if($social == 'google')	{
@@ -70,7 +70,6 @@
 		</div>
 	</div>
 </div>
-@if(config('app.name') !== 'mmenew')
 <div class="m-stack__item m-stack__item--center">
 	<div class="m-login__account">
 		<span class="m-login__account-msg">
@@ -82,5 +81,4 @@
 		</a>
 	</div>
 </div>
-@endif
 @endsection
