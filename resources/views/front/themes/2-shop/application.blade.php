@@ -2,7 +2,7 @@
     $sliders = \App\Models\Slider::where('id', '>', 2)->active()->get();
     $slider_3 = $sliders->first();
 @endphp
-<section class="special-area bg-white" style="margin-bottom: 100px;">
+<section class="special-area bg-white" style="margin-bottom: 130px;">
     <div class="special_description_area">
         <div class="container">
             <div class="row">
