@@ -1,13 +1,5 @@
-<section class="special-area bg-white" style="padding-top: 130px;">
-    <div class="container-fluid" style="background-color: #e0004d; padding-top: 30px; min-height: 500px;">
-        <div class="row">
-            <div class="col-12">
-                <div class="section-heading text-center">
-                    <h2 style="color: white !important">{{ __('features_title') }}</h2>
-                    <div class="line-shape"></div>
-                </div>
-            </div>
-        </div>
+<section class="cool_facts_area clearfix">
+    <div class="container">
         <div class="row">
             @php
                 $features = \App\Models\Feature::active()->get();
