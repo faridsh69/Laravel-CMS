@@ -1,5 +1,5 @@
-<section class="clients-feedback-area bg-white section_padding_100 clearfix" id="testimonials">
-    <div class="container">
+<section class="clients-feedback-area bg-white section_padding_100 clearfix" id="testimonials" >
+    <div class="container bg-white" style="margin-top: -100px;">
         <div class="row justify-content-center text-center">
             @php
                 $feedbacks = \App\Models\Feedback::active()->take(3)->get(); 
