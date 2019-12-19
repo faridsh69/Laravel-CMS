@@ -10,15 +10,21 @@
                     {!! config('setting-general.contact_us_description') !!}
                     </p>
                 </div>
+                @if( config('setting-contact.address') )
                 <div class="address-text">
                     <p><span>{{ __('address') }}</span><br>{{ config('setting-contact.address') }}</p>
                 </div>
+                @endif
+                @if( config('setting-contact.phone') )
                 <div class="phone-text">
                     <p><span>{{ __('phone') }}</span><br>{{ config('setting-contact.phone') }}</p>
                 </div>
+                @endif
+                @if( config('setting-contact.email') )
                 <div class="email-text">
                     <p><span>{{ __('email') }}</span><br>{{ config('setting-contact.email') }}</p>
                 </div>
+                @endif
             </div>
             <div class="col-md-6">
                 <div class="contact_from">
