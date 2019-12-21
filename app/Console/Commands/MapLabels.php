@@ -18,7 +18,7 @@ class MapLabels extends Command
 
     public function handle()
     {
-        $max_zoom = 6;
+        $max_zoom = 7;
         $init_zoom = 0;
         $iran_coordinates = [[0.50, 0.75], [0.35, 0.45]];
         $label_url = 'https://tiles.windy.com/labels/v1.3/en/';

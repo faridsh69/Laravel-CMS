@@ -18,7 +18,7 @@ class MapTiles extends Command
 
     public function handle()
     {
-        $max_zoom = 6;
+        $max_zoom = 7;
         $init_zoom = 0;
         $iran_coordinates = [[0.50, 0.75], [0.35, 0.45]];
         $tile_url = 'https://tiles.windy.com/tiles/v9.0/darkmap/';
