@@ -28,6 +28,9 @@
 	.section-heading h2{
 		color: {{ config('setting-developer.theme_color_1') }} !important;
 	}
+	h4{
+		line-height: 38px;
+	}
 	.single-special h4{
 		color: {{ config('setting-developer.theme_color_1') }} !important;
 	}
