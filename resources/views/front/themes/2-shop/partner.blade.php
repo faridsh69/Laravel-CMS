@@ -13,7 +13,7 @@
             <div class="col-12">
                 <div class="app_screenshots_slides owl-carousel">
                     @foreach(\App\Models\Service::active()->get() as $service)
-                    <div class="single-shot">
+                    <div class="single-shot" style="background-color: white;">
                         <img src="{{ $service->asset_image }}" alt="services gallery">
                     </div>
                     @endforeach
