@@ -87,6 +87,7 @@
     	box-shadow: 0 0 15px 0 rgba(0,0,0,.3);
     	border-radius: 3px;
     	overflow: hidden;
+		text-align: center;
 	}
 	.single-team-member:hover{
 		box-shadow: 0 0 45px 0 rgba(0,0,0,.2);
@@ -112,7 +113,6 @@
 	.member-text h6{
 		color: rgb(100,100,100);
 		margin-bottom: 20px;
-		text-align: center;
     	line-height: 25px;
 	}
 	.member-text p{
