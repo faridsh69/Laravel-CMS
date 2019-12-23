@@ -1,5 +1,5 @@
-<section class="app-screenshots-area section_padding_0_100 clearfix" id="screenshot" style=" padding-top: 40px; padding-bottom: 0px">
-    <div class="container">
+<section class="app-screenshots-area section_padding_0_100 clearfix" id="screenshot" style="background-color: rgba(36, 43, 53,1.0); padding-top: 40px; padding-bottom: 110px">
+    <div class="container mt-2">
         <div class="row">
             <div class="col-12 text-center">
                 <div class="section-heading">
