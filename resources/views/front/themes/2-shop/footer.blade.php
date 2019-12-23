@@ -1,9 +1,7 @@
 <footer class="footer-social-icon text-center section_padding_70 clearfix">
-    <!-- footer logo -->
     <div class="footer-text">
         <h2>{{ config('setting-general.app_title') }}</h2>
     </div>
-    <!-- social icon-->
     <div class="footer-social-icon">
         <a href="http://facebook.com/{{ config('setting-contact.facebook') }}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
         <a href="http://twitter.com/{{ config('setting-contact.twitter') }}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
