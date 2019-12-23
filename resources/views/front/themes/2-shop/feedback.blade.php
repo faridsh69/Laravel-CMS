@@ -5,11 +5,13 @@
                 $feedbacks = \App\Models\Feedback::active()->take(3)->get(); 
             @endphp
             @foreach($feedbacks as $feedback)
-            <div class="col-sm-4 rtl-text-right">
+            <div class="col-sm-4">
                 <img src="{{ $feedback->asset_image }}" alt="feedback" style="height: 170px;">
                 <br><br>
-                <i class="fa fa-quote-right" aria-hidden="true" style="color: gray; font-size: 30px;"></i>
-                {{ $feedback->description }}
+                <p class="rtl-text-right">
+                    <i class="fa fa-quote-right" aria-hidden="true" style="color: gray; font-size: 30px;"></i>
+                    {{ $feedback->description }}
+                </p>
                 <br>
                 <br>
                 <div class="client-name text-center">
