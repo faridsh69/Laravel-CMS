@@ -22,7 +22,7 @@
                 @endif
                 <div class="wellcome-heading">
                     <h2>{{ $first_slider->title }}</h2>
-                    <h3>{{ $second_slider->title }}</h3>
+                    <h3 style="font-size: 200px;">{{ $second_slider->title }}</h3>
                     <p>{!! $first_slider->description !!}</p>
                 </div>
             </div>
