@@ -82,14 +82,38 @@
 		border-color: {{ config('setting-developer.theme_color_2') }};
 	}
 	.single-team-member{
-		border: 1px solid #ddd;
-		box-shadow: 0px 0px 15px rgba(200,200,200, 0.7);
-		padding: 20px;
-		min-height: 220px;
-		text-align: center;
+		height: 340px;
+		background-color: #fff;
+    	box-shadow: 0 0 15px 0 rgba(0,0,0,.3);
+    	border-radius: 3px;
+    	overflow: hidden;
+	}
+	.single-team-member:hover{
+		box-shadow: 0 0 45px 0 rgba(0,0,0,.2);
+	}
+	.member-image {
+		height: 170px;
+		overflow: hidden;
+		border-radius: 0px;
+		margin: 0px;
+		margin-bottom: 10px;
 	}
 	.member-image img{
-		height: 100px;
-		max-width: 100%;
+		width: 100%;
+		max-height: initial;
+		border-radius: 0px;
+	}
+	.member-text{
+		padding: 20px;
+	}
+	.member-text a{
+		text-decoration: none;
+	}
+	.member-text h6{
+		color: rgb(100,100,100);
+		margin-bottom: 20px;
+	}
+	.member-text p{
+		font-size: 12px;
 	}
 </style>
