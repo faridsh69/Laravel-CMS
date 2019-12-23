@@ -120,4 +120,11 @@
 		height: 150px;
 		overflow: hidden;
 	}
+	.m-form__help{
+		display: none;
+	}
+	#email{
+		padding: .375rem .75rem;
+		border-radius: 0px;
+	}
 </style>

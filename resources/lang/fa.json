@@ -135,5 +135,22 @@
     "menew" : "منیو",
     "dear_customer" : "کاربر گرامی",
     "comment_created" : "نظر شما با موفقیت ثبت شد.",
-    "regards" : "با سپاس"
+    "regards" : "با سپاس",
+
+    "full_name" : "نام و نام خانوادگی",
+    "title" : "عنوان رستوران",
+    "title_fa" : "عنوان فارسی",
+    "url" : "آدرس url",
+    "email" : "ایمیل",
+    "logo" : "لوگو",
+    "cover_image" : "تصویر بکگراند",
+    "favicon" : "favicon",
+    "activated" : "فعالسازی",
+    "address" : "آدرس",
+    "country" : "کشور",
+    "city" : "شهر",
+    "postal_code" : "کد پستی",
+    "mobile" : "شماره همراه",
+    "submit" : "ثبت اطلاعات",
+    "back" : "بستن"
 }

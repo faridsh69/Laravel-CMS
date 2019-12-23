@@ -1,9 +1,14 @@
 <section class="footer-contact-area section_padding_100 clearfix" id="contact">
     <div class="container">
         <div class="row">
+            <div class="col-12">
+                <div class="section-heading text-center">
+                    <h3>با پر کردن فرم زیر دمو رایگان منیو را استفاده کنید</h3>
+                </div>
+            </div>
             <div class="col-md-6 rtl-text-right">
-                <div class="section-heading">
-                    <h2>{{ __('contact_title') }}</h2>
+                <div class="section-heading text-center mt-5">
+                    <h5>تماس با ما</h5>
                 </div>
                 <div class="footer-text" style="display: none;">
                     <p class="text-center">
@@ -21,10 +26,22 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="contact_from">
-                    <form action="{{ route('front.page.subscribe') }}" method="post">
+                <div class="contact_from rtl-text-right">
+                    @if(false)
+                    {!! form($shop_register_form) !!}
+                    @endif
+                    @if(true)
+                     {!! form_start($shop_register_form) !!}
+                    {!! form_row($shop_register_form->title) !!}
+                    {!! form_row($shop_register_form->full_name) !!}
+                    {!! form_row($shop_register_form->email) !!}
+                    {!! form_row($shop_register_form->mobile) !!}
+                    {!! form_row($shop_register_form->submit) !!}
+                    @endif
+                    @if(false)
+                    <form action="{{ route('front.page.subscribe') }}" method="post" >
                         @csrf
-                        <div class="contact_input_area">
+                        <div class="contact_input_area" style="display: none !important;">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -47,8 +64,10 @@
                             </div>
                         </div>
                     </form>
+                    @endif
                 </div>
             </div>
+            
         </div>
     </div>
 </section>

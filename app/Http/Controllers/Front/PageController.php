@@ -11,8 +11,15 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function getIndex($page_url = '')
+    public function getIndex($page_url = '', \Kris\LaravelFormBuilder\FormBuilder $form_builder)
     {
+        $shop_register_form = $form_builder->create( '\App\Forms\ShopForm', [
+            'method' => 'POST',
+            'url' => route('front.page.subscribe'),
+            'class' => 'm-form m-form--state',
+            'id' =>  'admin_form',
+        ]);
+
         if(config('app.name') === 'map'){
             return view('front.test.map.offline-city');
         }
@@ -47,11 +54,12 @@ class PageController extends Controller
 
         $blocks = Block::getPageBlocks($page->id);
 
-        return view('front.page', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta]);
+        return view('front.page', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta, 'shop_register_form' => $shop_register_form]);
     }
 
     public function postSubscribe(Request $request)
     {
+        dd($request->all());
         $date = Carbon::now()->format('Y/d/m');
         $time = Carbon::now()->format('H:i');
         $phone = $request->input('phone');
