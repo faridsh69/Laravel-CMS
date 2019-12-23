@@ -23,7 +23,7 @@
                 <div class="wellcome-heading">
                     <h2>{{ $first_slider->title }}</h2>
                     <h3>{{ $second_slider->title }}</h3>
-                    <p>{{ $first_slider->description }}</p>
+                    <p>{!! $first_slider->description !!}</p>
                 </div>
                 @include('front.themes.' . config('setting-developer.theme') . '.form')
             </div>

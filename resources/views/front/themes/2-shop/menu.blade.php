@@ -1,12 +1,10 @@
 <header class="header_area animated header_area_custome">
     <div class="container-fluid">
         <div class="row align-items-center">
-            <div class="col-12 col-lg-10">
+            <div class="col-12 col-lg-12">
                 <div class="menu_area">
                     <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="{{ route('front.page.index', '/') }}">
-                            <img src="{{ asset(config('setting-general.logo')) }}" alt="L">
-                        </a>
+                        @include('front.themes.' . config('setting-developer.theme') . '.form')
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ca-navbar" aria-controls="ca-navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                         <!-- Menu Area -->
                         <div class="collapse navbar-collapse" id="ca-navbar">
@@ -32,12 +30,10 @@
                                 <a href="{{ route('front.page.index') }}">Home Page</a>
                             </div>
                         </div>
+                        <a class="navbar-brand" href="{{ route('front.page.index', '/') }}">
+                            <img src="{{ asset(config('setting-general.logo')) }}" alt="L">
+                        </a>
                     </nav>
-                </div>
-            </div>
-            <div class="col-12 col-lg-2 display-none">
-                <div class="sing-up-button d-none d-lg-block">
-                    <a href="{{ route('front.page.index') }}">Home Page</a>
                 </div>
             </div>
         </div>

@@ -53,7 +53,7 @@ $properties = [
 	<div class="row rtl-text-right">
 		@foreach($properties as $property)
 		<div class="col-sm-6 mt-3">
-			<h3>{{ $property['title'] }}</h3>
+			<h5>{{ $property['title'] }}</h5>
 			<p>{{ $property['description'] }}</p>
 		</div>
 		@endforeach

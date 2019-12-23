@@ -7,7 +7,7 @@ return [
 
     'env' => env('APP_ENV', 'development'),
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     'locale' => env('APP_LOCALE', 'en'),
 
