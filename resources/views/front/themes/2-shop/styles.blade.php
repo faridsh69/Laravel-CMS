@@ -82,7 +82,7 @@
 		border-color: {{ config('setting-developer.theme_color_2') }};
 	}
 	.single-team-member{
-		height: 340px;
+		height: 390px;
 		background-color: #fff;
     	box-shadow: 0 0 15px 0 rgba(0,0,0,.3);
     	border-radius: 3px;
@@ -112,8 +112,12 @@
 	.member-text h6{
 		color: rgb(100,100,100);
 		margin-bottom: 20px;
+		text-align: center;
+    	line-height: 25px;
 	}
 	.member-text p{
 		font-size: 12px;
+		height: 150px;
+		overflow: hidden;
 	}
 </style>
