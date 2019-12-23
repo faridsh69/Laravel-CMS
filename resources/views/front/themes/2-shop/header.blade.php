@@ -20,10 +20,10 @@
                 <div class="hero-app-5 custom-animation2">
                     <img src="{{ asset('css/front/themes/1-original/img/animate_icon/icon_3.png') }}" alt="animated image"></div>
                 @endif
-                <div class="wellcome-heading">
-                    <h2>{{ $first_slider->title }}</h2>
-                    <h3 style="font-size: 200px;">{{ $second_slider->title }}</h3>
-                    <p>{!! $first_slider->description !!}</p>
+                <div class="wellcome-heading" style="width: 500px">
+                    <h2 class="rtl-text-right">{{ $first_slider->title }}</h2>
+                    <h3  style="font-size: 200px;">{{ $second_slider->title }}</h3>
+                    <p  class="rtl-text-right">{!! $first_slider->description !!}</p>
                 </div>
             </div>
         </div>
