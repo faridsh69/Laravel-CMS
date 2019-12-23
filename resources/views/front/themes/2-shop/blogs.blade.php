@@ -141,8 +141,6 @@
         @endphp
         <div class="col-12 text-center">
                 <div class="section-heading">
-                    <h2>{{ __('blogs') }}</h2>
-                    <div class="line-shape"></div>
                 </div>
             </div>
             @each('front.themes.2-shop.blog-card', $blogs, 'blog')
