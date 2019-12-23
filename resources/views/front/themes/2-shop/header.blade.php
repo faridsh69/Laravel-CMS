@@ -25,7 +25,6 @@
                     <h3>{{ $second_slider->title }}</h3>
                     <p>{!! $first_slider->description !!}</p>
                 </div>
-                @include('front.themes.' . config('setting-developer.theme') . '.form')
             </div>
         </div>
     </div>
