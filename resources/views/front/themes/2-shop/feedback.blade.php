@@ -13,7 +13,7 @@
                 <br>
                 <br>
                 <div class="client-name text-center">
-                    <h5 style="color: #41434e !important"> - {{ $feedback->full_name }}</h5>
+                    <h5 style="color: #41434e !important; font-size: 17px;"> - {{ $feedback->full_name }}</h5>
                     <p>{{ $feedback->title }}</p>
                 </div>
             </div>
