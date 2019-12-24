@@ -43,7 +43,7 @@ class BaseListController extends Controller
         'keywords' => '',
         'image' => '/cdn/upload/images/logo.png',
         'alert' => 'Advanced form with nice ui, easy to fill, real validation, ckeditor, switch, multiselect, max length limmiter, icon base and responsive features.',
-        'link_route' => '/',
+        'link_route' => '/admin',
         'link_name' => 'Dashboard',
         'search' => 0,
     ];

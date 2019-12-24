@@ -51,7 +51,7 @@ class DashboardController extends BaseAdminController
 
         $activities = Activity::orderBy('id', 'desc')->take(5)->get();
 
-        return view('admin.report.index', [
+        return view('admin.dashboard.index', [
             'meta' => $this->meta,
             'data' => $data,
             'count' => $count,

@@ -36,6 +36,8 @@
                     {!! form_row($shop_register_form->full_name) !!}
                     {!! form_row($shop_register_form->email) !!}
                     {!! form_row($shop_register_form->mobile) !!}
+                    {!! form_row($shop_register_form->cover_image) !!}
+                    
                     {!! form_row($shop_register_form->submit) !!}
                     @endif
                     @if(false)

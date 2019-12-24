@@ -32,7 +32,7 @@ class BaseAdminController extends Controller
         'keywords' => '',
         'image' => '',
         'alert' => '',
-        'link_route' => '/',
+        'link_route' => '/admin/dashboard',
         'link_name' => 'Dashboard',
         'search' => 0,
     ];
