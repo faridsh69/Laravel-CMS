@@ -19,13 +19,13 @@ class DashboardController extends BaseAdminController
         $this->request = $request;
         $this->form_builder = $form_builder;
         $this->model_columns = $this->repository->getColumns();
-        $this->meta['title'] = __('drofile');
+        $this->meta['title'] = __('profile');
+        $this->meta['link_name'] = __('dashboard');
     }
 
     public function index()
     {
         $this->meta['title'] = __('dashboard');
-        $this->meta['link_name'] = __('dashboard');
 
         // $yesterday_time = \Carbon\Carbon::now()->subdays(1);
         $last_week_time = \Carbon\Carbon::now()->subdays(7);
@@ -114,7 +114,7 @@ class DashboardController extends BaseAdminController
 
     public function getActivity()
     {
-        $this->meta['title'] = __('My Activity');
+        $this->meta['title'] = __('activity');
         $this->meta['alert'] = '';
     	$activities = Activity::where('causer_id', Auth::id())
     	    ->orderBy('id', 'desc')
