@@ -65,7 +65,7 @@ body {
     direction: rtl;
 }
 .m-portlet__body{
-    direction: rtl;
+    /*direction: rtl;*/
 }
 span, button, h3, a{
     font-family: 'IRANSans' !important;

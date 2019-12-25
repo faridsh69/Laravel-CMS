@@ -236,8 +236,9 @@
     "settingcontact_manager" : "تنظیمات تماس با ما",
     "backup_manager" : "مدیریت بکاپ ها",
     "backup_create" : "ایجاد بکاپ جدید",
-
-
+    "log_manager" : "مدیریت لاگ ها",
+    "api_manager" : "مدیریت وب سرویس",
+    "advance_setting" : "تنظیمات پیشرفته",
     "keywords" : "کلمات کلیدی",
     "google index" : "فعال سازی در گوگل",
     "canonical url" : "آدرس کنونیکال",

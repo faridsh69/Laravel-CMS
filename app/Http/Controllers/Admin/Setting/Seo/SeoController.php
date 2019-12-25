@@ -10,7 +10,7 @@ class SeoController extends BaseAdminController
 	public function getCrowl()
 	{
 		$this->authorize('index_settingdeveloper');
-		$this->meta['title'] = 'Seo Crwol Website';
+		$this->meta['title'] = __('seo crowl site');
 
 		return view('admin.setting.seo.crowl', ['meta' => $this->meta]);
 	}
@@ -18,7 +18,7 @@ class SeoController extends BaseAdminController
 	public function getContentRules()
 	{
 		$this->authorize('index_settingdeveloper');
-		$this->meta['title'] = 'Seo Content Rules';
+		$this->meta['title'] = __('seo content rules');
 
 		return view('admin.setting.seo.content-rules', ['meta' => $this->meta]);
 	}

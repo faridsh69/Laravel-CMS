@@ -72,8 +72,7 @@ class SettingController extends BaseAdminController
 
 	public function getLog()
 	{
-        $this->meta['title'] = __('Log Manager');
-        $this->meta['alert'] = 'Log of system with all traces!';
+        $this->meta['title'] = __('log_manager');
 
 		return view('admin.setting.log', ['meta' => $this->meta]);
 	}
@@ -85,7 +84,7 @@ class SettingController extends BaseAdminController
 
 	public function getApi()
 	{
-        $this->meta['title'] = __('API Manager');
+        $this->meta['title'] = __('api_manager');
 
 		return view('admin.setting.api', ['meta' => $this->meta]);
 	}
@@ -194,6 +193,8 @@ class SettingController extends BaseAdminController
 				'command' => 'optimize',
 			],
 		];
+
+        $this->meta['title'] = __('advance_setting');
 
 		return view('admin.setting.advance', ['meta' => $this->meta, 'commands' => $commands]);
 	}

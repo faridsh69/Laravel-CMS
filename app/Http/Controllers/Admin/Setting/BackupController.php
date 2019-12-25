@@ -23,7 +23,7 @@ class BackupController extends BaseAdminController
         $this->request = $request;
         $this->disk_name = config('backup.backup.destination.disks')[0];
         $this->backup_name = config('backup.backup.name');
-        $this->meta['title'] = __(strtolower($this->model . '_manager'));;
+        $this->meta['title'] = __(strtolower($this->model . '_manager'));
         $this->meta['link_route'] = route('admin.setting.backup.create');
         $this->meta['link_name'] = __(strtolower($this->model . '_create'));
     }

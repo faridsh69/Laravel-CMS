@@ -27,7 +27,7 @@ class BaseAdminController extends Controller
     public $section;
 
     public $meta = [
-        'title' => '',
+        'title' => 'Setting',
         'description' => 'Admin Panel Page For Best Cms In The World',
         'keywords' => '',
         'image' => '',
