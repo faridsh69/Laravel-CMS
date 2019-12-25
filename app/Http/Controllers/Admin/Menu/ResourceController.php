@@ -12,9 +12,7 @@ class ResourceController extends BaseListController
     public function index()
     {
         $this->authorize('index', $this->model_class);
-        $this->meta['title'] = __($this->model . ' Manager');
-        $this->meta['alert'] = '';
-        $this->meta['link_name'] = __('Create New ' . $this->model);
+        $this->meta['link_name'] = __(strtolower($this->model . '_create'));
         $this->meta['search'] = 1;
 
         $columns = [];

@@ -12,26 +12,9 @@ use Route;
 
 class ReportController extends BaseAdminController
 {
-    public function __construct(Request $request, FormBuilder $form_builder)
-    {
-        $this->model_class = 'App\\Models\\User';
-        $this->model_form = 'App\\Forms\\UserForm';
-        $this->repository = new $this->model_class();
-        $this->request = $request;
-        $this->form_builder = $form_builder;
-        $this->model_columns = $this->repository->getColumns();
-        $this->meta['title'] = __('Profile');
-    }
-
     public function index()
     {
-        if(Route::currentRouteName() === 'admin.report.index'){
-            $this->meta['title'] = __('Report');
-        }else{
-            $this->meta['title'] = __('Dashboard');
-        }
-
-        $this->meta['alert'] = '';
+        $this->meta['title'] = __('report');
 
         // $yesterday_time = \Carbon\Carbon::now()->subdays(1);
         $last_week_time = \Carbon\Carbon::now()->subdays(7);

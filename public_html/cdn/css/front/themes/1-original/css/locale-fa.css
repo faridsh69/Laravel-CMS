@@ -57,10 +57,16 @@ body {
 .get-start-area{
     direction: ltr;
 }
+.special_description_content{
+    text-align: right;
+}
 .rtl-text-right{
     text-align: right;
     direction: rtl;
 }
-.special_description_content{
-    text-align: right;
+.m-portlet__body{
+    direction: rtl;
+}
+span, button, h3, a{
+    font-family: 'IRANSans' !important;
 }

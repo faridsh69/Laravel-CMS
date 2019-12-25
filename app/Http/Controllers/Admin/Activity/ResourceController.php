@@ -11,10 +11,9 @@ class ResourceController extends BaseListController
     public function index()
     {
         $this->authorize('index', $this->model_class);
-        $this->meta['title'] = __('Activity Manager');
-        $this->meta['alert'] = 'All user activities.';
-        $this->meta['link_name'] = 'Dashboard';
-        $this->meta['link_route'] = route('admin.dashboard.index');
+        $this->meta['title'] = __('activity_manager');
+        $this->meta['link_name'] = __('dashboard');
+        $this->meta['link_route'] = route('admin.dashboard.list.index');
         $this->meta['search'] = 1;
 
         $columns = [];

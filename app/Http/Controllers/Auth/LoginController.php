@@ -44,7 +44,7 @@ class LoginController extends Controller
 
     public function redirectTo()
     {
-        return route('admin.dashboard.index');
+        return route('admin.dashboard.list.index');
     }
 
     /**
@@ -80,7 +80,7 @@ class LoginController extends Controller
                 ->causedBy(Auth::user())
                 ->log('User Login');
 
-            return redirect()->route('admin.dashboard.index');
+            return redirect()->route('admin.dashboard.list.index');
         }
 
         return view('auth.register', ['name' => $userSocial->getName(), 'email' => $userSocial->getEmail()]);

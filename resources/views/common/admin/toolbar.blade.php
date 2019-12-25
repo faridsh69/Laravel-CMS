@@ -170,7 +170,7 @@
 										<a href="{{ route('admin.dashboard.profile') }}" class="m-nav__link">
 											<i class="m-nav__link-icon flaticon-profile-1"></i>
 											<span class="m-nav__link-text">
-												My Profile
+												{{ __('profile') }}
 											</span>
 										</a>
 									</li>
@@ -178,7 +178,7 @@
 										<a href="{{ route('admin.dashboard.activity') }}" class="m-nav__link">
 											<i class="m-nav__link-icon flaticon-share"></i>
 											<span class="m-nav__link-text">
-												My Activity
+												{{ __('activity') }}
 											</span>
 										</a>
 									</li>
@@ -206,7 +206,7 @@
 											class="btn m-btn--pill    btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder"
 											onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
-                                        	{{ __('Logout') }}
+                                        	{{ __('logout') }}
                                     	</a>
 									</li>
                                     <form id="logout-form" action="{{ route('auth.logout') }}" method="POST" style="display: none;">

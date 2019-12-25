@@ -21,6 +21,7 @@
 			'order' => 3,
 			'title' => 'Setting',
 			'route' => 'setting',
+			'permission' => 'SettingGeneral',
 			'type' => 'tree',
 			'icon' => 'flaticon-cogwheel',
 			'children' => [	
@@ -294,6 +295,7 @@
 				</li>
 				@endif
 			@elseif($item['type'] === 'tree')
+			@can('index', 'App\\Models\\' . $item['permission'])
 			<li class="m-menu__item m-menu__item--submenu  
 				@if(Request::segment(2) == $item['route']) m-menu__item--open m-menu__item--expanded @endif" aria-haspopup="true" data-menu-submenu-toggle="hover">
 				<a href="javascript:void(0)" class="m-menu__link m-menu__toggle">
@@ -317,7 +319,7 @@
 									<span></span>
 								</i>
 								<span class="m-menu__link-text">
-									{{ $submenu_item['title'] }}
+									{{ __(strtolower($submenu_item['title'])) }}
 								</span>
 							</a>
 						</li>
@@ -325,6 +327,7 @@
 					</ul>
 				</div>
 			</li>
+			@endcan
 			@endif
 		@endforeach
 		</ul>

@@ -6,7 +6,7 @@
 
 <?php if ($showField): ?>
 	    <?php if ($showLabel && $options['label'] !== false && $options['label_show']): ?>
-	        <?= Form::customLabel($name, $options['label'], 'class=""') ?>
+	        <?= Form::customLabel($name, __(strtolower($options['label'])), 'class=""') ?>
 	    <?php endif; ?>
     
         <span class="m-bootstrap-switch m-bootstrap-switch--pill m-bootstrap-switch--air">

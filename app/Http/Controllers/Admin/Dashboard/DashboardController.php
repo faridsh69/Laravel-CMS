@@ -19,18 +19,13 @@ class DashboardController extends BaseAdminController
         $this->request = $request;
         $this->form_builder = $form_builder;
         $this->model_columns = $this->repository->getColumns();
-        $this->meta['title'] = __('Profile');
+        $this->meta['title'] = __('drofile');
     }
 
     public function index()
     {
-        if(Route::currentRouteName() === 'admin.report.index'){
-            $this->meta['title'] = __('Report');
-        }else{
-            $this->meta['title'] = __('Dashboard');
-        }
-
-        $this->meta['alert'] = '';
+        $this->meta['title'] = __('dashboard');
+        $this->meta['link_name'] = __('dashboard');
 
         // $yesterday_time = \Carbon\Carbon::now()->subdays(1);
         $last_week_time = \Carbon\Carbon::now()->subdays(7);
@@ -61,7 +56,7 @@ class DashboardController extends BaseAdminController
 
     public function redirect()
     {
-        return redirect()->route('admin.dashboard.index');
+        return redirect()->route('admin.dashboard.list.index');
     }
 
     public function getProfile()

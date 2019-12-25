@@ -24,7 +24,7 @@
 				<li class="m-nav__item">
 					<a href="{{ url('/' . $url) }}" class="m-nav__link">
 						<span class="m-nav__link-text">
-							{{ ucwords($segment) }}
+							{{ __($segment) }}
 						</span>
 					</a>
 				</li>

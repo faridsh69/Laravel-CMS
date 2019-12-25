@@ -8,7 +8,7 @@
     <?= Form::checkbox($name, $options['value'], $options['checked'], $options['attr']) ?>
 
     <?php if ($showLabel && $options['label'] !== false && $options['label_show']): ?>
-        <?= Form::customLabel($name, $options['label'], $options['label_attr']) ?>
+        <?= Form::customLabel($name, __(strtolower($options['label'])), $options['label_attr']) ?>
     <?php endif; ?>
 
     <?php include 'help_block.php' ?>

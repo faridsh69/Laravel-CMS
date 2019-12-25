@@ -7,7 +7,7 @@
 
 <?php if ($showField): ?>
     <?php if ($showLabel && $options['label'] !== false && $options['label_show']): ?>
-        <?= Form::customLabel($name, $options['label'], 'class="col-1 col-form-label"') ?>
+        <?= Form::customLabel($name, __(strtolower($options['label'])), 'class="col-1 col-form-label"') ?>
     <?php endif; ?>
     
     <div class="col-1">

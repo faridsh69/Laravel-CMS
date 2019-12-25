@@ -27,20 +27,21 @@ class BaseAdminController extends Controller
     public $section;
 
     public $meta = [
-        'title' => 'Admin Panel',
+        'title' => '',
         'description' => 'Admin Panel Page For Best Cms In The World',
         'keywords' => '',
         'image' => '',
         'alert' => '',
         'link_route' => '/admin/dashboard',
-        'link_name' => 'Dashboard',
+        'link_name' => '',
         'search' => 0,
     ];
 
     public function __construct(Request $request, FormBuilder $form_builder)
     {
+        $this->meta['link_name'] = __('dashboard');
         if($this->model){
-            $this->meta['title'] = __(ucfirst($this->model) . ' Manager');
+            $this->meta['title'] = __(strtolower($this->model . '_manager'));
             $this->model_class = 'App\\Models\\' . $this->model;
             $this->repository = new $this->model_class();
             $this->model_columns = $this->repository->getColumns();

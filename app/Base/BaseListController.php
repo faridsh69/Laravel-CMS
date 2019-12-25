@@ -38,11 +38,11 @@ class BaseListController extends Controller
     public $form_builder;
 
     public $meta = [
-        'title' => 'Admin Panel',
-        'description' => 'Admin Panel Page For Full Features, Best UI-UX Cms ever.',
+        'title' => '',
+        'description' => 'Admin Panel Page For Full Features, Best UI-UX Cms.',
         'keywords' => '',
         'image' => '/cdn/upload/images/logo.png',
-        'alert' => 'Advanced form with nice ui, easy to fill, real validation, ckeditor, switch, multiselect, max length limmiter, icon base and responsive features.',
+        'alert' => '',
         'link_route' => '/admin',
         'link_name' => 'Dashboard',
         'search' => 0,
@@ -60,7 +60,8 @@ class BaseListController extends Controller
         if(Route::has('admin.' . $this->model_sm . '.list.index')){
             $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.index');
         }
-        $this->meta['link_name'] = __($this->model . ' Manager');
+        $this->meta['link_name'] = __(strtolower($this->model . '_manager'));
+        $this->meta['title'] = __(strtolower($this->model . '_manager'));
     }
 
     /**
@@ -71,12 +72,11 @@ class BaseListController extends Controller
     public function index()
     {
         $this->authorize('index', $this->model_class);
-        $this->meta['title'] = __($this->model . ' Manager');
-        $this->meta['alert'] = 'Advanced data table with sort on each column, search, paginate, status changing and full access actions with policies.';
+        $this->meta['title'] = __(strtolower($this->model . '_manager'));
         if(Route::has('admin.' . $this->model_sm . '.list.index')){
             $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.create');
         }
-        $this->meta['link_name'] = __('Create New ' . $this->model);
+        $this->meta['link_name'] = __(strtolower($this->model . '_create'));
         $this->meta['search'] = 1;
 
         $columns = [];
@@ -99,7 +99,7 @@ class BaseListController extends Controller
     public function create()
     {
         $this->authorize('create', $this->model_class);
-        $this->meta['title'] = __('Create New ' . $this->model);
+        $this->meta['title'] = __(strtolower($this->model . '_create'));
 
         $form = $this->form_builder->create($this->model_form, [
             'method' => 'POST',
@@ -163,7 +163,6 @@ class BaseListController extends Controller
             ->get();
 
         $this->meta['title'] = __($this->model . ' Show');
-        $this->meta['alert'] = 'Simple view of a model !';
         $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.edit', $model);
         $this->meta['link_name'] = __($this->model . ' Edit Form');
 

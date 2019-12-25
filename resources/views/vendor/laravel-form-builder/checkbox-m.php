@@ -8,7 +8,7 @@
     <div class="m-checkbox-list">
         <label class="m-checkbox m-checkbox--solid m-checkbox--danger">
             <?= Form::checkbox($name, $options['value'], $options['checked'], $options['attr']) ?>
-            <?= $options['label']; ?>
+            <?= __(strtolower($options['label'])); ?>
 
             <span></span>
         </label>

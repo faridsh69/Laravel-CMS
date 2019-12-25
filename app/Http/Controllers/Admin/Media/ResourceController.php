@@ -13,8 +13,7 @@ class ResourceController extends BaseAdminController
      */
     public function index()
     {
-        $this->meta['title'] = __('Media Manager');
-        $this->meta['alert'] = 'File manager for move, copy, resize, crop and delete file and images.';
+        $this->meta['title'] = __('media_manager');
 
         return view('admin.media.index', ['meta' => $this->meta]);
     }

@@ -39,7 +39,7 @@ class RegisterController extends Controller
 
     public function redirectTo()
     {
-        return route('admin.dashboard.index');
+        return route('admin.dashboard.list.index');
     }
 
     /**
