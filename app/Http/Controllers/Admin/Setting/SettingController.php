@@ -13,7 +13,7 @@ class SettingController extends BaseAdminController
 {
     public function getSettingForm()
     {
-        $this->meta['title'] = __(ucfirst($this->section) . ' Setting Manager');
+        $this->meta['title'] = __(strtolower($this->model . '_manager'));
         $this->authorize('index', $this->model_class);
         $model = $this->repository->first();
         $form = $this->form_builder->create($this->model_form, [

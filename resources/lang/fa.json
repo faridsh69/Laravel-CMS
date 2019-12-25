@@ -231,6 +231,13 @@
     "media" : "تصویر",
     "media_manager" : "مدیریت تصویر ها",
     "media_create" : "ایجاد تصویر جدید",
+    "settinggeneral_manager" : "تنظیمات عمومی",
+    "settingdeveloper_manager" : "تنظیمات برنامه نویس",
+    "settingcontact_manager" : "تنظیمات تماس با ما",
+    "backup_manager" : "مدیریت بکاپ ها",
+    "backup_create" : "ایجاد بکاپ جدید",
+
+
     "keywords" : "کلمات کلیدی",
     "google index" : "فعال سازی در گوگل",
     "canonical url" : "آدرس کنونیکال",
