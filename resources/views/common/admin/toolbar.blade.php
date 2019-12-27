@@ -175,6 +175,22 @@
 										</a>
 									</li>
 									<li class="m-nav__item">
+										<a href="{{ route('admin.dashboard.identify') }}" class="m-nav__link">
+											<i class="m-nav__link-icon flaticon-user-ok"></i>
+											<span class="m-nav__link-text">
+												{{ __('identify') }}
+											</span>	
+										</a>
+									</li>
+									<li class="m-nav__item">
+										<a href="{{ route('admin.dashboard.profile') }}" class="m-nav__link">
+											<i class="m-nav__link-icon flaticon-lock-1"></i>
+											<span class="m-nav__link-text">
+												{{ __('change password') }}
+											</span>
+										</a>
+									</li>
+									<li class="m-nav__item">
 										<a href="{{ route('admin.dashboard.activity') }}" class="m-nav__link">
 											<i class="m-nav__link-icon flaticon-share"></i>
 											<span class="m-nav__link-text">
@@ -182,14 +198,13 @@
 											</span>
 										</a>
 									</li>
-									<!-- <li class="m-nav__item">
+									<li class="m-nav__item">
 										<a href="{{ route('admin.dashboard.profile') }}" class="m-nav__link">
 											<i class="m-nav__link-icon flaticon-chat-1"></i>
-											
 											<span class="m-nav__link-title">
 												<span class="m-nav__link-wrap">
 													<span class="m-nav__link-text">
-														Messages
+														{{ __('messages') }}
 													</span>
 													<span class="m-nav__link-badge">
 														<span class="m-badge m-badge--success">
@@ -199,7 +214,7 @@
 												</span>
 											</span>
 										</a>
-									</li> -->
+									</li>
 									<li class="m-nav__separator m-nav__separator--fit"></li>
 									<li class="m-nav__item">
 										<a href="{{ route('auth.logout') }}" 

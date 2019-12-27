@@ -1,8 +1,12 @@
 /* Base */
-
+.container-table {
+    /*border-radius: 15px !important;*/
+    /*border: 1px solid #aaa !important;*/
+}
 body,
 body *:not(html):not(style):not(br):not(tr):not(code) {
-    font-family: traditional arabic,helvetica,tahoma;
+    /*font-family: traditional arabic,helvetica,tahoma !important;*/
+    font-family: 'Tahoma',Geneva,sans-serif,sans-serif !important;
     /*font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
         'Apple Color Emoji',*/ 'Segoe UI Emoji', 'Segoe UI Symbol';
     box-sizing: border-box;
@@ -174,10 +178,7 @@ img {
 
 /* Tables */
 
-.container-table {
-    border-radius: 15px !important;
-    border: 1px solid #aaa !important;
-}
+
 code{
     font-size: 18px !important;
     font-family: none !important;

@@ -132,6 +132,10 @@
     "profile_updated_subject" : "پروفایل",
     "document_rejected_message" : "مدارک ارسال شده برای سامانه %s نامعتبر می باشند.",
     "document_rejected_subject" : "مدارک",
+    "email_verified_message" : "کد فعال سازی شما: %s", 
+    "email_verified_subject" : "کد فعال سازی",
+    "phone_verified_message" : "کد فعال سازی شما: %s", 
+    "phone_verified_subject" : "کد فعال سازی",
     "menew" : "منیو",
     "dear_customer" : "کاربر گرامی",
     "comment_created" : "نظر شما با موفقیت ثبت شد.",
@@ -299,5 +303,14 @@
     "admin" : "داشبورد",
     "list" : "لیست",
     "create" : "ایجاد",
-    "manager" : "مدیریت"
+    "manager" : "مدیریت",
+    "change password" : "تغییر رمز عبور",
+    "messages" : "پیام ها",
+    "identify" : "احراز هویت",
+    "identify email" : "احراز هویت ایمیل",
+    "email_verified" : "ایمیل شما معتبر است.",
+    "activation_code" : "کد فعال سازی",
+    "wrong_activation_code" : "کد فعال سازی اشتباه است.",
+    "identify phone" : "احراز هویت شماره همراه",
+    "phone_verified" : "مشاره همراه شما معتبر است."
 }

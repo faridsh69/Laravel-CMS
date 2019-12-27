@@ -14,23 +14,7 @@
 			</div>
 		</div>
 		<div class="m-portlet__head-tools">
-			<ul class="m-portlet__nav">
-				<li class="m-portlet__nav-item">
-					<a href="" class="m-portlet__nav-link m-portlet__nav-link--icon">
-						<i class="la la-cloud-upload"></i>
-					</a>
-				</li>
-				<li class="m-portlet__nav-item">
-					<a href="" class="m-portlet__nav-link m-portlet__nav-link--icon">
-						<i class="la la-cog"></i>
-					</a>
-				</li>
-				<li class="m-portlet__nav-item">
-					<a href="" class="m-portlet__nav-link m-portlet__nav-link--icon">
-						<i class="la la-share-alt-square"></i>
-					</a>
-				</li>
-			</ul>
+			
 		</div>
 	</div>
 	<div class="m-portlet__body">

@@ -7,13 +7,6 @@
 </script>
 <script src="{{ asset('js/admin/table/table.js') }}"></script>
 <script src="{{ asset('js/admin/table/change-status.js') }}"></script>
-@if(Session::has('alert-success'))
-<script>
-    jQuery(document).ready(function() {
-        $.notify({"message": "{{ Session::get('alert-success') }}" },{"type":"success"});
-    });
-</script>
-@endif
 @endpush
 
 @section('content')

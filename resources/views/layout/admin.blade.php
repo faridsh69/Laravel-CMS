@@ -39,6 +39,20 @@
 			@include('common.admin.scripts')
 		</div>
     	@stack('script')
+    	@if(Session::has('alert-success'))
+		<script>
+		    jQuery(document).ready(function() {
+		        $.notify({"message": "{{ Session::get('alert-success') }}" },{"type":"success"});
+		    });
+		</script>
+		@endif
+		@if(Session::has('alert-danger'))
+		<script>
+		    jQuery(document).ready(function() {
+		        $.notify({"message": "{{ Session::get('alert-danger') }}" },{"type":"danger"});
+		    });
+		</script>
+		@endif
 	</body>
 	<!-- end::Body -->
 </html>

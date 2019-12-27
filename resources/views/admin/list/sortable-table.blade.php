@@ -28,13 +28,6 @@
 	    });
 	});
 </script>
-@if(Session::has('alert-success'))
-<script>
-    jQuery(document).ready(function() {
-        $.notify({"message": "{{ Session::get('alert-success') }}" },{"type":"success"});
-    });
-</script>
-@endif
 @endpush
 
 @section('content')

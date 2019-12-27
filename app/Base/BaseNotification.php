@@ -16,11 +16,13 @@ class BaseNotification extends Notification
 {
 	use Queueable;
 
-	public $class_name;
+	public $class_name; // user_logined
 
-    public $sms_message;
+    public $heading_title; // dear customer
 
-    public $heading_title;
+    public $sms_message; // dear customer /n message /n app url
+
+    public $message_template; // __(user_logined_message)
 
     public $message;
 
@@ -28,16 +30,18 @@ class BaseNotification extends Notification
 
     public $app_title;
 
+    public $mail_subject;
+
     public function __construct()
     {
-    	$this->class_name = Str::snake(class_basename($this));
-        $this->subject = __($this->class_name . '_subject');
-    	$message_template = __($this->class_name . '_message');
-        $this->app_title = __(config('setting-general.app_title'));
-        $this->message = sprintf($message_template, $this->app_title);
-        $this->heading_title = __('dear_customer');
         $this->app_url = URL::to('/');
-        $this->sms_message = sprintf(" %s \n %s \n %s", $this->heading_title, $this->message, $this->app_url);
+        $this->app_title = __(config('app.name'));
+        $this->class_name = Str::snake(class_basename($this));
+        $this->mail_subject = __($this->class_name . '_subject');
+        $this->message_template = __($this->class_name . '_message');
+        $this->heading_title = __('dear_customer');
+        $this->message = sprintf($this->message_template, $this->app_title);
+        $this->sms_message = sprintf(" %s \n %s \n %s \n %s", $this->heading_title, $this->message, $this->app_title, $this->app_url);
     }
 
     public function via($notifiable)
@@ -62,6 +66,12 @@ class BaseNotification extends Notification
         $this->sms_message = sprintf(" %s \n %s \n %s", $this->heading_title, $this->message, $this->app_url);
     }
 
+    public function setCode($code)
+    {
+        $this->message = sprintf($this->message_template, $code);
+        $this->sms_message = sprintf(" %s \n %s \n %s \n %s", $this->heading_title, $this->message, $this->app_title, $this->app_url);
+    }
+
     public function toArray($notifiable)
     {
         return [
@@ -72,7 +82,7 @@ class BaseNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage())
-            ->subject($this->subject)
+            ->subject($this->mail_subject)
             ->markdown('vendor.mail.general', 
                 [
                     'heading_title' => $this->heading_title,

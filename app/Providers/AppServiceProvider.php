@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
             config(['database.connections.mysql.database' => $database_name]);
         }
 
-        $seconds = 200;
+        $seconds = 5;
         if(! Schema::hasTable('setting_generals') || SettingGeneral::first() === null){
             return 'general settings does not exist!';
         }
@@ -53,10 +53,10 @@ class AppServiceProvider extends ServiceProvider
         config(['setting-general' => $general_settings]);
         config(['setting-contact' => $contact_settings]);
         config(['setting-developer' => $developer_settings]);
+        App::setLocale(config('setting-developer.app_language'));
+        config(['app.env' => config('setting-developer.app_env')]);
         config(['app.name' => config('setting-general.app_title')]);
         config(['app.debug' => config('setting-developer.app_debug')]);
-        config(['app.env' => config('setting-developer.app_env')]);
-        App::setLocale(config('setting-developer.app_language'));
         config(['sms.driver' => config('setting-developer.sms_driver')]);
         config(['sms.sender' => config('setting-developer.sms_sender')]);
         config(['sms.api_key' => config('setting-developer.sms_api_key')]);

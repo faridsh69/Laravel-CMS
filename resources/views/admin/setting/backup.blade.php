@@ -1,15 +1,5 @@
 @extends('layout.admin')
 
-@push('script')
-@if(Session::has('alert-success'))
-<script>
-    jQuery(document).ready(function() {
-        $.notify({"message": "{{ Session::get('alert-success') }}" },{"type":"success"});
-    });
-</script>
-@endif
-@endpush
-
 @section('content')
 <table class="table table-striped table-bordered">
     <thead>
