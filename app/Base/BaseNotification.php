@@ -42,6 +42,7 @@ class BaseNotification extends Notification
         $this->heading_title = __('dear_customer');
         $this->message = sprintf($this->message_template, $this->app_title);
         $this->sms_message = sprintf(" %s \n %s \n %s \n %s", $this->heading_title, $this->message, $this->app_title, $this->app_url);
+        $this->editContent();
     }
 
     public function via($notifiable)
@@ -98,4 +99,9 @@ class BaseNotification extends Notification
 	    return (new SlackMessage())
 	        ->content('user_id: ' . $notifiable->id . ' - ' . $this->sms_message);
 	}
+
+    public function editContent()
+    {
+        
+    }
 }

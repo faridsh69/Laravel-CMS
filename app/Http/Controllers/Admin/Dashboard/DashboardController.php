@@ -3,15 +3,16 @@
 namespace App\Http\Controllers\Admin\Dashboard;
 
 use App\Base\BaseAdminController;
+use App\Notifications\EmailVerified;
+use App\Notifications\PhoneVerified;
+use App\Notifications\ProfileUpdated;
+use App\Services\ImageService;
 use Auth;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Route;
 use Spatie\Activitylog\Models\Activity;
-use App\Notifications\EmailVerified;
-use App\Notifications\PhoneVerified;
-use Carbon\Carbon;
-use App\Services\ImageService;
 
 class DashboardController extends BaseAdminController
 {
@@ -127,9 +128,7 @@ class DashboardController extends BaseAdminController
         }
         if(!$auth_user->activation_code){
             $code = rand(1000,9999);
-            $code = 1111;
             $auth_user->activation_code = $code;
-            // send code with email
             $email_verified =  new EmailVerified();
             $email_verified->setCode($code);
             $auth_user->notify($email_verified);
@@ -171,7 +170,6 @@ class DashboardController extends BaseAdminController
         }
         if(!$auth_user->activation_code){
             $code = rand(1000,9999);
-            $code = 1111;
             $auth_user->activation_code = $code;
             $phone_verified =  new PhoneVerified();
             $phone_verified->setCode($code);
@@ -208,10 +206,15 @@ class DashboardController extends BaseAdminController
 
     public function postIdentifyNationalCard()
     {
+        $auth_user = Auth::user();
         $image_service = new ImageService();
         $national_card_image = $this->request->file('national_card');
-        $image_service->save($national_card_image, \Auth::user(), 'national_card');
+        $image_service->save($national_card_image, $auth_user, 'national_card');
 
-        dd($this->request->file());
+        $profile_updated = new ProfileUpdated();
+        $auth_user->notify($profile_updated);
+
+        $this->request->session()->flash('alert-success', __('national card uploaded'));
+        return redirect()->back();
     }
 }

@@ -128,7 +128,7 @@
     "user_registered_subject" : "ثبت نام",
     "user_logined_message" : "ورود شما به سامانه %s با موفقیت انجام شد.",
     "user_logined_subject" : "ورود",
-    "profile_updated_message" : "پروفایل شما در سامانه %s به روز رسانی شد.",
+    "profile_updated_message" : "پروفایل کاربر با آیدی %s به روز رسانی شد.",
     "profile_updated_subject" : "پروفایل",
     "document_rejected_message" : "مدارک ارسال شده برای سامانه %s نامعتبر می باشند.",
     "document_rejected_subject" : "مدارک",
@@ -314,5 +314,6 @@
     "identify phone" : "احراز هویت شماره همراه",
     "phone_verified" : "مشاره همراه شما معتبر است.",
     "verified at" : "احراز هویت شده در تاریخ.",
-    "national card" : "کارت ملی"
+    "national card" : "کارت ملی",
+    "national card uploaded" : "کارت ملی با موفقیت بارگزاری شد!"
 }
