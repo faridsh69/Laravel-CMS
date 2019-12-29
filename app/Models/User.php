@@ -247,4 +247,14 @@ class User extends Authenticatable
     {
         return asset($this->image);
     }
+
+    public function images()
+    {
+        return $this->morphMany('App\Models\Image', 'imageable');
+    }
+
+    public function getNationalCardImagesAttribute()
+    {
+        return $this->images->where('title', 'national_card');
+    }
 }

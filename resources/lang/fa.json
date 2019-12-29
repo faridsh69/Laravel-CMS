@@ -312,5 +312,7 @@
     "activation_code" : "کد فعال سازی",
     "wrong_activation_code" : "کد فعال سازی اشتباه است.",
     "identify phone" : "احراز هویت شماره همراه",
-    "phone_verified" : "مشاره همراه شما معتبر است."
+    "phone_verified" : "مشاره همراه شما معتبر است.",
+    "verified at" : "احراز هویت شده در تاریخ.",
+    "national card" : "کارت ملی"
 }

@@ -11,6 +11,7 @@ use Spatie\Activitylog\Models\Activity;
 use App\Notifications\EmailVerified;
 use App\Notifications\PhoneVerified;
 use Carbon\Carbon;
+use App\Services\ImageService;
 
 class DashboardController extends BaseAdminController
 {
@@ -203,5 +204,14 @@ class DashboardController extends BaseAdminController
             $this->request->session()->flash('alert-danger', __('wrong_activation_code'));
             return redirect()->back();
         }
+    }
+
+    public function postIdentifyNationalCard()
+    {
+        $image_service = new ImageService();
+        $national_card_image = $this->request->file('national_card');
+        $image_service->save($national_card_image, \Auth::user(), 'national_card');
+
+        dd($this->request->file());
     }
 }

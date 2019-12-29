@@ -37,6 +37,7 @@ Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'as' => 'dash
 	Route::post('identify/email', 'DashboardController@postIdentifyEmail')->name('identify.email-verify');
 	Route::get('identify/phone', 'DashboardController@getIdentifyPhone')->name('identify.phone');
 	Route::post('identify/phone', 'DashboardController@postIdentifyPhone')->name('identify.phone-verify');
+	Route::post('identify/national_card', 'DashboardController@postIdentifyNationalCard')->name('identify.national_card-verify');
 });
 Route::group(['prefix' => 'category', 'namespace' => 'Category', 'as' => 'category.'], function () {
 	Route::get('tree', 'ResourceController@getTree')->name('tree');
