@@ -140,7 +140,6 @@
     "dear_customer" : "کاربر گرامی",
     "comment_created" : "نظر شما با موفقیت ثبت شد.",
     "regards" : "با سپاس",
-
     "full_name" : "نام و نام خانوادگی",
     "title" : "عنوان",
     "title_fa" : "عنوان فارسی",
@@ -315,5 +314,10 @@
     "phone_verified" : "مشاره همراه شما معتبر است.",
     "verified at" : "احراز هویت شده در تاریخ.",
     "national card" : "کارت ملی",
-    "national card uploaded" : "کارت ملی با موفقیت بارگزاری شد!"
+    "national card uploaded" : "کارت ملی با موفقیت بارگزاری شد!",
+    "bank card" : "کارت بانکی",
+    "bank card uploaded" : "کارت بانکی با موفقیت بارگزاری شد!",
+    "certificate card" : "تصویر شخص و تاریخ امروز",
+    "certificate card uploaded" : "مدارک با موفقیت بارگزاری شد!"
+    
 }

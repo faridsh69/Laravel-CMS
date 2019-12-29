@@ -38,6 +38,8 @@ Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'as' => 'dash
 	Route::get('identify/phone', 'DashboardController@getIdentifyPhone')->name('identify.phone');
 	Route::post('identify/phone', 'DashboardController@postIdentifyPhone')->name('identify.phone-verify');
 	Route::post('identify/national_card', 'DashboardController@postIdentifyNationalCard')->name('identify.national_card-verify');
+	Route::post('identify/bank_card', 'DashboardController@postIdentifyBankCard')->name('identify.bank_card-verify');
+	Route::post('identify/certificate_card', 'DashboardController@postIdentifyCertificateCard')->name('identify.certificate_card-verify');
 });
 Route::group(['prefix' => 'category', 'namespace' => 'Category', 'as' => 'category.'], function () {
 	Route::get('tree', 'ResourceController@getTree')->name('tree');

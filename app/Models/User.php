@@ -257,4 +257,13 @@ class User extends Authenticatable
     {
         return $this->images->where('title', 'national_card');
     }
+
+    public function getBankCardImagesAttribute()
+    {
+        return $this->images->where('title', 'bank_card');
+    }
+    public function getCertificateCardImagesAttribute()
+    {
+        return $this->images->where('title', 'certificate_card');
+    }
 }
