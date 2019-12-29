@@ -71,6 +71,16 @@ class DashboardController extends BaseAdminController
             }
         }
 
+        if($model->email !== $data['email']){
+            $model->activation_code = null;
+            $model->email_verified_at = null;
+        }
+
+        if($model->phone !== $data['phone']){
+            $model->activation_code = null;
+            $model->phone_verified_at = null;
+        }
+
         if(isset($data['password'])) {
             $data['password'] = \Hash::make($data['password']);
         }
