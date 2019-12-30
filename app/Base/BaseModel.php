@@ -35,7 +35,7 @@ class BaseModel extends Model
                 'url' => [
                     'name' => 'url',
                     'type' => 'string',
-                    'database' => '',
+                    'database' => 'nullable',
                     'rule' => '',
                     // 'rule' => 'max:' . config('setting-developer.seo_url_max')
                     // . '|regex:/^[a-z0-9-]+$/',
