@@ -243,6 +243,7 @@ class DashboardController extends BaseAdminController
         $auth_user->notify($profile_updated);
 
         $this->request->session()->flash('alert-success', __('certificate card uploaded'));
+        
         return redirect()->back();
     }
 }
