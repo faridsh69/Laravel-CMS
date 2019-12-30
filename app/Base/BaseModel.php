@@ -36,8 +36,9 @@ class BaseModel extends Model
                     'name' => 'url',
                     'type' => 'string',
                     'database' => '',
-                    'rule' => 'max:' . config('setting-developer.seo_url_max')
-                    . '|regex:/^[a-z0-9-]+$/',
+                    'rule' => '',
+                    // 'rule' => 'max:' . config('setting-developer.seo_url_max')
+                    // . '|regex:/^[a-z0-9-]+$/',
                     'help' => 'Url should be unique, contain [a-z, 0-9, -], required for seo',
                     'form_type' => '',
                     'table' => false,
