@@ -1,10 +1,15 @@
-# Laravel CMS - Full Feature, Seo Friendly
+# Laravel CMS
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
-## Dont rewrite any code in your application!
+## Laravel CMS is an open source project that creates a complete infrastructure with standard code for anyone who wants to use Larval. Preparing an structure to visualization laravel development in future :x
 
-#### This is a Laravel CMS that handle migrations, forms, seeders, factory, policies, routes, controllers, unit tests, tables, export to pdf excel print... with specific structure that there is no duplicate codes. You should just define an array in each model and define what you want from this application, Then every thing will be ready with capabality to custome it in every sections of code.
+### Specify columns in model => migration, form, seeder, factory, table, api, export to pdf and excel will be ready with complete admin panel codes!
+
+#### Prepared services for notification, saving gallery images, creating backup, API authentication, create blogs with comments, rate, category and tag, create page and menu, policies, routes, controllers, unit tests.
+
+#### Provided structure for adding theme to laravel project with blocks and widgets.
+
 
 Auto generate:
 
@@ -37,7 +42,7 @@ Auto generate:
 	policies
 
 
-Controller:
+Controller sample code:
 
 	namespace App\Http\Controllers\Admin\Blog;
 	use App\Base\BaseListController;
@@ -149,8 +154,6 @@ Policy: (You can ovveride any functions that you want to customise)
 
 ## How to use
 	
-	This is an complete model for blogs
-
 	You just need to define what you want from this project !!!
 	Define public $columns in each model
 
@@ -305,11 +308,11 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Credits
 
-- [Farid Shahidi](https://faridshahidi.ir)
+- [Farid Shahidi](http://cms-laravel.com)
 
 ## Support us
 
-Faridsh69 is a full stack web and application developer and manager who is trying to prepare usefull packages for developers.
+Faridsh69 is a full stack developer who is trying to prepare usefull codes for developers.
 
 ## License
 
