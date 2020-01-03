@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Setting\Seo;
 
-use App\Base\BaseAdminController;
+use App\Services\BaseAdminController;
 use App\Models\Blog;
 
 class SeoController extends BaseAdminController

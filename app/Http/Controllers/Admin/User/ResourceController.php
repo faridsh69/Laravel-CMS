@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\User;
 
-use App\Base\BaseListController;
+use App\Services\BaseListController;
 
 class ResourceController extends BaseListController
 {

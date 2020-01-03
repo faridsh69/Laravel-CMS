@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Base\BasePolicy;
+use App\Services\BasePolicy;
 
 class FormPolicy extends BasePolicy
 {

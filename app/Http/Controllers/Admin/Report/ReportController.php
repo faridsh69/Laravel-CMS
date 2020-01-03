@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Report;
 
-use App\Base\BaseAdminController;
+use App\Services\BaseAdminController;
 use App\Http\Controllers\Admin\Dashboard\DashboardController;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;

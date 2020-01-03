@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Base;
+namespace App\Services;
 
 class BaseChannel
 {

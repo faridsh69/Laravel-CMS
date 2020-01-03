@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Media;
 
-use App\Base\BaseAdminController;
+use App\Services\BaseAdminController;
 
 class ResourceController extends BaseAdminController
 {

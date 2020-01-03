@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use App\Base\BaseTest;
+use App\Services\BaseTest;
 
 class PageTest extends BaseTest
 {

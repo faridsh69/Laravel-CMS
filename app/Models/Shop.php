@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Actuallymab\LaravelComment\Contracts\Commentable;
 use Actuallymab\LaravelComment\HasComments;
-use App\Base\BaseModel;
+use App\Services\BaseModel;
 use Conner\Tagging\Taggable;
 
 class Shop extends BaseModel implements Commentable

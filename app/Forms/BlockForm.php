@@ -2,7 +2,7 @@
 
 namespace App\Forms;
 
-use App\Base\BaseForm;
+use App\Services\BaseForm;
 
 class BlockForm extends BaseForm
 {

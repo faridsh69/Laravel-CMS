@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Base;
+namespace App\Services;
 
 use App\Notifications\Channels\DatabaseChannel;
 use App\Notifications\Channels\SmsChannel;

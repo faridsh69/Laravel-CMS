@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Base\BaseService;
+use App\Services\BaseService;
 use Illuminate\Support\Facades\Storage;
 use Image;
 

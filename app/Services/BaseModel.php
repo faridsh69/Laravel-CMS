@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Base;
+namespace App\Services;
 
 use Cache;
 use Illuminate\Database\Eloquent\Model;

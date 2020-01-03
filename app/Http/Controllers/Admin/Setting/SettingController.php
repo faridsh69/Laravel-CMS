@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Setting;
 
-use App\Base\BaseAdminController;
+use App\Services\BaseAdminController;
 use Artisan;
 use Auth;
 use Cache;

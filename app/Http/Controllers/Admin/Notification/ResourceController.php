@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Notification;
 
-use App\Base\BaseListController;
+use App\Services\BaseListController;
 use App\Models\User;
 use App\Notifications\SiteNotification;
 use Auth;

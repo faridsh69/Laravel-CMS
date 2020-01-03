@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Dashboard;
 
-use App\Base\BaseAdminController;
+use App\Services\BaseAdminController;
 use App\Notifications\EmailVerified;
 use App\Notifications\PhoneVerified;
 use App\Notifications\ProfileUpdated;

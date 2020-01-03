@@ -3,7 +3,7 @@
 // use Illuminate\Database\Migrations\Migration;
 // use Illuminate\Database\Schema\Blueprint;
 // use Illuminate\Support\Facades\Schema;
-use App\Base\BaseMigration;
+use App\Services\BaseMigration;
 
 class CreateNotificationsTable extends BaseMigration
 {

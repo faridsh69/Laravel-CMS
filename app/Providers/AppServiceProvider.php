@@ -25,11 +25,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if(isset($_SERVER['SERVER_NAME'])){
-            $server_name = $_SERVER['SERVER_NAME'];
-            $database_name = 'faridsh_0' . substr($server_name, 4, 6);
-            config(['database.connections.mysql.database' => $database_name]);
-        }
+        // if(isset($_SERVER['SERVER_NAME'])){
+        //     $server_name = $_SERVER['SERVER_NAME'];
+        //     $database_name = 'faridsh_0' . substr($server_name, 4, 6);
+        //     config(['database.connections.mysql.database' => $database_name]);
+        // }
 
         $seconds = 5;
         if(! Schema::hasTable('setting_generals') || SettingGeneral::first() === null){

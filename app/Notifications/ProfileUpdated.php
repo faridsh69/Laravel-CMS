@@ -2,7 +2,7 @@
 
 namespace App\Notifications;
 
-use App\Base\BaseNotification;
+use App\Services\BaseNotification;
 
 class ProfileUpdated extends BaseNotification
 {

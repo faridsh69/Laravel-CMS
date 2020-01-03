@@ -1,6 +1,6 @@
 <?php
 
-use App\Base\BaseMigration;
+use App\Services\BaseMigration;
 
 class CreateAddressesTable extends BaseMigration
 {

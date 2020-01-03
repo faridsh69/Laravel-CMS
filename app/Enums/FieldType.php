@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-use App\Base\BaseEnum;
+use App\Services\BaseEnum;
 
 final class FieldType extends BaseEnum
 {

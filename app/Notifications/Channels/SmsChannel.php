@@ -2,7 +2,7 @@
 
 namespace App\Notifications\Channels;
 
-use App\Base\BaseChannel;
+use App\Services\BaseChannel;
 use Log;
 use SoapClient;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Base;
+namespace App\Services;
 
 use App\Http\Controllers\Controller;
 use App\Services\ImageService;
@@ -292,7 +292,7 @@ class BaseListController extends Controller
 
     public function getExport()
     {
-        $class_name = 'App\Base\BaseExport';
+        $class_name = 'App\Services\BaseExport';
         $base_export = new $class_name();
         $base_export->setModel($this->model);
 
@@ -301,7 +301,7 @@ class BaseListController extends Controller
 
     public function getImport()
     {
-        $class_name = 'App\Base\BaseImport';
+        $class_name = 'App\Services\BaseImport';
         $base_import = new $class_name();
         $base_import->setModel($this->model);
 

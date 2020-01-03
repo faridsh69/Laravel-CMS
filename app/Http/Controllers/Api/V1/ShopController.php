@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Base\BaseApiController;
+use App\Services\BaseApiController;
 use App\Models\Category;
 
 class ShopController extends BaseApiController

@@ -49,7 +49,7 @@ class User extends Authenticatable
             'name' => 'phone',
             'type' => 'string',
             'database' => 'nullable',
-            'rule' => 'nullable|numeric|digits_between:5,16',
+            'rule' => 'nullable|min:5|max:16',
             'help' => 'Mobile Number',
             'form_type' => '',
             'table' => true,

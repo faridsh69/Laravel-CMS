@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Base\BaseModel;
+use App\Services\BaseModel;
 
 class Feature extends BaseModel
 {

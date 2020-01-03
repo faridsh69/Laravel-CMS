@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-use App\Base\BaseEnum;
+use App\Services\BaseEnum;
 
 final class AppLanguage extends BaseEnum
 {
@@ -10,5 +10,7 @@ final class AppLanguage extends BaseEnum
 		'en' => 'English',
 		'fa' => 'Persian',
 		'ar' => 'Arabic',
+		'fr' => 'French',
+		'' => 'French',
 	];
 }
