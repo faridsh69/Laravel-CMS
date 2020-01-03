@@ -38,7 +38,7 @@ class ImageService extends BaseService
         Storage::putFileAs($path_storage, $file, $main_name);
         $intervation_image = Image::make($file);
         $intervation_image->save($path_intervation . $main_name, 100);
-        $intervation_image->resize(200, null, function ($constraint) {
+        $intervation_image->resize(300, null, function ($constraint) {
             $constraint->aspectRatio();
         });
         $intervation_image->save($path_intervation . $thumbnail_name, 90);
