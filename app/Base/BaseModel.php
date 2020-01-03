@@ -55,8 +55,8 @@ class BaseModel extends Model
                 'content' => [
                     'name' => 'content',
                     'type' => 'text',
-                    'database' => '',
-                    'rule' => 'required', // only page and blog need seo_header
+                    'database' => ' nullable',
+                    'rule' => '', // only page and blog need seo_header
                     'help' => '',
                     'form_type' => 'ckeditor',
                     'table' => false,

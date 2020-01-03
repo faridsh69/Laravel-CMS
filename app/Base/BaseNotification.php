@@ -39,7 +39,7 @@ class BaseNotification extends Notification
         $this->class_name = Str::snake(class_basename($this));
         $this->mail_subject = __($this->class_name . '_subject');
         $this->message_template = __($this->class_name . '_message');
-        $this->heading_title = __('dear_customer');
+        $this->heading_title = __('dear customer');
         $this->message = sprintf($this->message_template, $this->app_title);
         $this->sms_message = sprintf(" %s \n %s \n %s \n %s", $this->heading_title, $this->message, $this->app_title, $this->app_url);
         $this->editContent();
