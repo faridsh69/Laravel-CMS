@@ -331,5 +331,14 @@
     "bank card" : "Bank card",
     "bank card uploaded" : "Bank card uploaded!",
     "certificate card" : "Certificate card",
-    "certificate card uploaded" : "Certificate card uploaded!"
+    "certificate card uploaded" : "Certificate card uploaded!",
+    "activtion code sent to email" : "Activation code sent to your email, please check your mail.",
+    "activtion code sent to phon" : "Activation code sent to your phone.",
+    "created successfully" : " created successfully!",
+    "updated successfully" : " Updated Successfully!",
+    "deleted successfully" : " Deleted Successfully!",
+    "restored successfully" : " Restored Successfully!",
+    "show" : " Show",
+    "edit form" : " Edit Form",
+    "edit" : "Edit "
 }

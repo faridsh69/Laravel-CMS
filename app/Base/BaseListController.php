@@ -22,6 +22,9 @@ class BaseListController extends Controller
     // public $model_sm = 'blog';
     public $model_sm;
 
+    // public $model_trans = 'Blog';
+    public $model_trans;
+
     // public $model_form = '\App\Forms\BlogForm';
     public $model_form;
 
@@ -50,6 +53,7 @@ class BaseListController extends Controller
 
     public function __construct(Request $request, FormBuilder $form_builder)
     {
+        $this->model_trans = __(strtolower($this->model));
         $this->model_class = 'App\\Models\\' . $this->model;
         $this->model_sm = lcfirst($this->model);
         $this->model_form = 'App\\Forms\\' . $this->model . 'Form';
@@ -72,11 +76,11 @@ class BaseListController extends Controller
     public function index()
     {
         $this->authorize('index', $this->model_class);
-        $this->meta['title'] = __(strtolower($this->model . '_manager'));
         if(Route::has('admin.' . $this->model_sm . '.list.index')){
             $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.create');
         }
         $this->meta['link_name'] = __(strtolower($this->model . '_create'));
+        $this->meta['title'] = __(strtolower($this->model . '_manager'));
         $this->meta['search'] = 1;
 
         $columns = [];
@@ -142,7 +146,7 @@ class BaseListController extends Controller
             activity($this->model)->performedOn($model)->causedBy(Auth::user())
                 ->log($this->model . ' Created');
         }
-        $this->request->session()->flash('alert-success', $this->model . ' Created Successfully!');
+        $this->request->session()->flash('alert-success', $this->model_trans . __('created successfully'));
 
         return redirect()->route('admin.' . $this->model_sm . '.list.index');
     }
@@ -162,9 +166,9 @@ class BaseListController extends Controller
             ->where('subject_id', $id)
             ->get();
 
-        $this->meta['title'] = __($this->model . ' Show');
+        $this->meta['title'] = $this->model_trans . __('show');
         $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.edit', $model);
-        $this->meta['link_name'] = __($this->model . ' Edit Form');
+        $this->meta['link_name'] = $this->model_trans . __('edit form');
 
         return view('admin.list.show', ['data' => $data, 'meta' => $this->meta, 'activities' => $activities]);
     }
@@ -180,7 +184,7 @@ class BaseListController extends Controller
         $model = $this->repository->findOrFail($id);
         $this->authorize('update', $model);
 
-        $this->meta['title'] = __('Edit ' . $this->model . ' - #' . $id);
+        $this->meta['title'] = __('edit') . $this->model_trans . ' - #' . $id;
         $form = $this->form_builder->create($this->model_form, [
             'method' => 'PUT',
             'url' => route('admin.' . $this->model_sm . '.list.update', $model),
@@ -227,7 +231,7 @@ class BaseListController extends Controller
             activity($this->model)->performedOn($model)->causedBy(Auth::user())
                 ->log($this->model . ' Updated');
         }
-        $this->request->session()->flash('alert-success', $this->model . ' Updated Successfully!');
+        $this->request->session()->flash('alert-success', $this->model_trans . __('updated successfully'));
 
         return redirect()->route('admin.' . $this->model_sm . '.list.index');
     }
@@ -249,7 +253,7 @@ class BaseListController extends Controller
             activity($this->model)->performedOn($model)->causedBy(Auth::user())
                 ->log($this->model . ' Deleted');
         }
-        $this->request->session()->flash('alert-success', $this->model . ' Deleted Successfully!');
+        $this->request->session()->flash('alert-success', $this->model_trans . __('deleted successfully'));
 
         return redirect()->route('admin.' . $this->model_sm . '.list.index');
     }
@@ -265,7 +269,7 @@ class BaseListController extends Controller
             activity($this->model)->performedOn($model)->causedBy(Auth::user())
                 ->log($this->model . ' Restored');
         }
-        $this->request->session()->flash('alert-success', $this->model . ' Deleted Successfully!');
+        $this->request->session()->flash('alert-success', $this->model_trans . __('restored successfully'));
 
         return redirect()->route('admin.' . $this->model_sm . '.list.index');
     }

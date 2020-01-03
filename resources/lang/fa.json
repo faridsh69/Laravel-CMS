@@ -298,6 +298,14 @@
     "bank card" : "کارت بانکی",
     "bank card uploaded" : "کارت بانکی با موفقیت بارگزاری شد!",
     "certificate card" : "تصویر شخص و تاریخ امروز",
-    "certificate card uploaded" : "مدارک با موفقیت بارگزاری شد!"
-    
+    "certificate card uploaded" : "مدارک با موفقیت بارگزاری شد!",
+    "activtion code sent to email" : "کد فعال سازی به ایمیل شما ارسال شده است.",
+    "activtion code sent to phon" : "کد فعال سازی به همراه شما ارسال شده است.",
+    "created successfully" : " با موفقیت ساخته شد!",
+    "updated successfully" : " با موفقیت آپدیت شد!",
+    "deleted successfully" : " با موفقیت حذف شد!",
+    "restored successfully" : " با موفقیت بازگردانی شد!",
+    "show" : " با جزییات",
+    "edit form" : " ویرایش فرم",
+    "edit" : "ویرایش "
 }

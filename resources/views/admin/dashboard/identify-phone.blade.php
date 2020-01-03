@@ -6,6 +6,9 @@
 	<div class="form-group m-form__group">
 		<label>{{ __('activation_code') }}</label>
 		<input type="text" class="form-control m-input" name="activation_code">
+		<div class="help-block">
+			{{ __('activtion code sent to phone') }} 
+		</div>
 		<br>
 		<button class="btn btn-success btn-sm">{{ __('submit') }}</button>
 	</div>
