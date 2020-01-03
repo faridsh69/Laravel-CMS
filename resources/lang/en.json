@@ -340,5 +340,6 @@
     "restored successfully" : " Restored Successfully!",
     "show" : " Show",
     "edit form" : " Edit Form",
-    "edit" : "Edit "
+    "edit" : "Edit ",
+    "app title" : "App Title"
 }
