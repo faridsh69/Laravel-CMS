@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin\Menu;
 
-use App\Services\BaseListController;
 use App\Models\Menu;
+use App\Services\BaseListController;
 
 class ResourceController extends BaseListController
 {

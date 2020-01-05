@@ -20,8 +20,8 @@ class BlogController extends Controller
 
         $user = Auth::User();
         $user->comment($blog, $request->input('comment'), $request->input('rate'));
-        
-        $request->session()->flash('alert-success', __('comment_created') );
+
+        $request->session()->flash('alert-success', __('comment_created'));
 
         return redirect()->back();
     }

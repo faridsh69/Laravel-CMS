@@ -2,8 +2,8 @@
 
 namespace App\Notifications;
 
-use App\Services\BaseNotification;
 use App\Notifications\Channels\DatabaseChannel;
+use App\Services\BaseNotification;
 
 class EmailVerified extends BaseNotification
 {

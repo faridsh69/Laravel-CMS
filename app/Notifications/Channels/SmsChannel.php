@@ -25,8 +25,8 @@ class SmsChannel extends BaseChannel
         //     $parameters['recId'] = &$recId ;
         //     $parameters['status'] = &$status ;
         //     echo $sms_client->SendSMS($parameters)->SendSMSResult;
-        // } 
-        // catch (Exception $e) 
+        // }
+        // catch (Exception $e)
         // {
         //     echo 'Caught exception: ',  $e->getMessage(), "\n";
         // }

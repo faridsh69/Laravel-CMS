@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin\Block;
 
-use App\Services\BaseListController;
 use App\Models\Block;
+use App\Services\BaseListController;
 
 class ResourceController extends BaseListController
 {

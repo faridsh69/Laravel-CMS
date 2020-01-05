@@ -2,9 +2,9 @@
 
 namespace App\Notifications;
 
-use App\Services\BaseNotification;
 use App\Notifications\Channels\DatabaseChannel;
 use App\Notifications\Channels\SmsChannel;
+use App\Services\BaseNotification;
 
 class PhoneVerified extends BaseNotification
 {

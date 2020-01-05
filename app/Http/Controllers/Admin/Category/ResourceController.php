@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin\Category;
 
-use App\Services\BaseListController;
 use App\Models\Category;
+use App\Services\BaseListController;
 
 class ResourceController extends BaseListController
 {

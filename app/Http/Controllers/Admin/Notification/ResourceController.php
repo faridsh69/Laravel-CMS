@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers\Admin\Notification;
 
-use App\Services\BaseListController;
 use App\Models\User;
 use App\Notifications\SiteNotification;
+use App\Services\BaseListController;
 use Auth;
-use Notification;
 
 class ResourceController extends BaseListController
 {
     public $model = 'Notification';
-    
+
     public function store()
     {
         $this->authorize('create', $this->model_class);

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Services\BaseApiController;
 use App\Models\Category;
+use App\Services\BaseApiController;
 
 class ShopController extends BaseApiController
 {
@@ -12,7 +12,7 @@ class ShopController extends BaseApiController
     public function show($shop_id)
     {
         $shop = $this->repository->where('id', $shop_id)->first();
-        if(!$shop){
+        if(! $shop){
             $this->response['status'] = 404;
             $this->response['message'] = $this->message_not_found;
             return response()->json($this->response);
@@ -67,7 +67,9 @@ class ShopController extends BaseApiController
         return response()->json($this->response);
     }
 
-    public function index(){abort(404);}
-    public function store(){abort(404);}
-    public function destroy($id){abort(404);}
+    public function index(){abort(404); }
+
+    public function store(){abort(404); }
+
+    public function destroy($id){abort(404); }
 }

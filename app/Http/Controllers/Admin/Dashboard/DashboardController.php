@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin\Dashboard;
 
-use App\Services\BaseAdminController;
 use App\Notifications\EmailVerified;
 use App\Notifications\PhoneVerified;
 use App\Notifications\ProfileUpdated;
+use App\Services\BaseAdminController;
 use App\Services\ImageService;
 use Auth;
 use Carbon\Carbon;
@@ -126,8 +126,8 @@ class DashboardController extends BaseAdminController
         if($auth_user->email_verified_at){
             return redirect()->back();
         }
-        if(!$auth_user->activation_code){
-            $code = rand(1000,9999);
+        if(! $auth_user->activation_code){
+            $code = rand(1000, 9999);
             $auth_user->activation_code = $code;
             $email_verified =  new EmailVerified();
             $email_verified->setCode($code);
@@ -155,11 +155,10 @@ class DashboardController extends BaseAdminController
             $this->request->session()->flash('alert-success', __('email_verified'));
             return redirect()->route('admin.dashboard.identify');
         }
-        else
-        {
+
             $this->request->session()->flash('alert-danger', __('wrong_activation_code'));
             return redirect()->back();
-        }
+
     }
 
     public function getIdentifyPhone()
@@ -168,8 +167,8 @@ class DashboardController extends BaseAdminController
         if($auth_user->phone_verified_at){
             return redirect()->back();
         }
-        if(!$auth_user->activation_code){
-            $code = rand(1000,9999);
+        if(! $auth_user->activation_code){
+            $code = rand(1000, 9999);
             $auth_user->activation_code = $code;
             $phone_verified =  new PhoneVerified();
             $phone_verified->setCode($code);
@@ -197,11 +196,10 @@ class DashboardController extends BaseAdminController
             $this->request->session()->flash('alert-success', __('phone_verified'));
             return redirect()->route('admin.dashboard.identify');
         }
-        else
-        {
+
             $this->request->session()->flash('alert-danger', __('wrong_activation_code'));
             return redirect()->back();
-        }
+
     }
 
     public function postIdentifyNationalCard()
@@ -243,7 +241,7 @@ class DashboardController extends BaseAdminController
         $auth_user->notify($profile_updated);
 
         $this->request->session()->flash('alert-success', __('certificate card uploaded'));
-        
+
         return redirect()->back();
     }
 }

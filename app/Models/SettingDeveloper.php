@@ -32,7 +32,7 @@ class SettingDeveloper extends BaseModel
             'help' => 'Specify application language.',
             'form_type' => 'enum',
             'form_enum_class' => 'AppLanguage',
-        ],        
+        ],
         [
             'name' => 'theme',
             'type' => 'string',

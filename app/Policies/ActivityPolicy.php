@@ -8,4 +8,3 @@ class ActivityPolicy extends BasePolicy
 {
     public $model = 'Activity';
 }
-

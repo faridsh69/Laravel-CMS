@@ -3,12 +3,7 @@
 namespace App\Http\Controllers\Admin\Report;
 
 use App\Services\BaseAdminController;
-use App\Http\Controllers\Admin\Dashboard\DashboardController;
-use Illuminate\Http\Request;
-use Kris\LaravelFormBuilder\FormBuilder;
 use Spatie\Activitylog\Models\Activity;
-use Auth;
-use Route;
 
 class ReportController extends BaseAdminController
 {

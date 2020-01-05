@@ -60,9 +60,9 @@ class SettingController extends BaseAdminController
         // File::put(config_path() . '/0-' . $this->section . '.php', $new_config);
 
         activity($this->model)
-        	->performedOn($model)
+            ->performedOn($model)
             ->causedBy(Auth::user())
-            ->log('setting.' . $this->section . " Updated: <br>" . json_encode($model));
+            ->log('setting.' . $this->section . ' Updated: <br>' . json_encode($model));
 
         $this->request->session()->flash('alert-success', $this->model . ' Updated Successfully!');
         sleep(1);
@@ -97,7 +97,7 @@ class SettingController extends BaseAdminController
 	public function getCommand($command)
 	{
         echo '<br> php artisan ' . $command . ' is running...';
-		$output = new BufferedOutput;
+		$output = new BufferedOutput();
 		if(strpos($command, 'api') === false && strpos($command, 'passport') === false){
 	        Artisan::call($command, [], $output);
 	    }else{

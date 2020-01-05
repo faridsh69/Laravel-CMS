@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Notifications\Channels\DatabaseChannel;
 use App\Notifications\Channels\SmsChannel;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Messages\SlackMessage;
 use Illuminate\Notifications\Notification;
@@ -84,7 +83,8 @@ class BaseNotification extends Notification
     {
         return (new MailMessage())
             ->subject($this->mail_subject)
-            ->markdown('vendor.mail.general', 
+            ->markdown(
+                'vendor.mail.general',
                 [
                     'heading_title' => $this->heading_title,
                     'mail_message' => $this->message,
@@ -102,6 +102,6 @@ class BaseNotification extends Notification
 
     public function editContent()
     {
-        
+
     }
 }

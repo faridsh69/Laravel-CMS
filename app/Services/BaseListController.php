@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Http\Controllers\Controller;
-use App\Services\ImageService;
 use Auth;
 use Conner\Tagging\Model\Tag;
 use Illuminate\Http\Request;

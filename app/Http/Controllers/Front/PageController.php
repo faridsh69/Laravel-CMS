@@ -13,7 +13,7 @@ class PageController extends Controller
 {
     public function getIndex($page_url = '', \Kris\LaravelFormBuilder\FormBuilder $form_builder)
     {
-        $shop_register_form = $form_builder->create( '\App\Forms\ShopForm', [
+        $shop_register_form = $form_builder->create('\App\Forms\ShopForm', [
             'method' => 'POST',
             'url' => route('front.page.subscribe'),
             'class' => 'm-form m-form--state',

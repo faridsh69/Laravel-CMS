@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Services\BaseService;
 use Illuminate\Support\Facades\Storage;
 use Image;
 
@@ -14,7 +13,7 @@ class ImageService extends BaseService
         $model_class = 'App\\Models\\' . $class_name;
         $repository = new $model_class();
         $relationForGallery = $title . '_images';
-		$index = count($repository->find($model->id)->$relationForGallery);
+		$index = count($repository->find($model->id)->{$relationForGallery});
 		$name_file_main = 'main.jpg';
 		$name_file_thumbnail = 'thumbnail.jpg';
 		$main_name = $index . '_' . $name_file_main;
