@@ -8,6 +8,7 @@ use App\Services\BaseMigration;
 class CreateNotificationsTable extends BaseMigration
 {
     public $model = 'Notification';
+
     // public function up()
     // {
     //     Schema::create('notifications', function (Blueprint $table) {
