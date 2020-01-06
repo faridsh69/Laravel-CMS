@@ -94,7 +94,16 @@ class BasketController extends Controller
 
     public function getIndex()
     {
-        return view('front.components.basket');
+        $meta = [
+            'title' => config('setting-general.default_meta_title') . ' | ' . __('basket'),
+            'description' => config('setting-general.default_meta_description'),
+            'keywords' => '',
+            'image' => asset(config('setting-general.default_meta_image')),
+            'google_index' => config('setting-general.google_index'),
+            'canonical_url' => url()->current(),
+        ];
+
+        return view('front.components.basket', ['meta' => $meta]);
     }
 
     public function getInit()

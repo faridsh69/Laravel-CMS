@@ -27,7 +27,17 @@ class CheckoutController extends Controller
         if($basket->products->count() == 0){
             return redirect('/');
         }
-        return view('front.components.address', ['basket' => $basket]);
+
+        $meta = [
+            'title' => config('setting-general.default_meta_title') . ' | ' . __('address'),
+            'description' => config('setting-general.default_meta_description'),
+            'keywords' => '',
+            'image' => asset(config('setting-general.default_meta_image')),
+            'google_index' => config('setting-general.google_index'),
+            'canonical_url' => url()->current(),
+        ];
+
+        return view('front.components.checkout.address', ['basket' => $basket, 'meta' => $meta]);
     }
 
     public function getAddressInit()
