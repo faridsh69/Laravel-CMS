@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Cache;
+use Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -141,6 +142,11 @@ class BaseModel extends Model
     public function scopeActive($query)
     {
         return $query->where('activated', 1);
+    }
+
+    public function scopeMine($query)
+    {
+        return $query->where('user_id', Auth::id());
     }
 
     public function getImageAttribute($image)

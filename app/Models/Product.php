@@ -12,23 +12,7 @@ class Product extends BaseModel implements Commentable
     use Taggable;
     use HasComments;
 
-    // title,
-    // price,
-    // discount_price,
-    // inventory,
-    // order,
-    // url,
-    // category_id,
-    // description,
-    // content,
-    // image,
-    // activated,
-    // tags,
-    // ready_time,
-
-    // comment,
-    // rate,
-    // gallery
+    // title, price, discount_price, inventory, order, url, category_id, description, content, image, activated, tags, ready_time, comment, rate, gallery
 
     public $columns = [
         ['name' => 'title'],
@@ -75,7 +59,7 @@ class Product extends BaseModel implements Commentable
         [
             'name' => 'category_id',
             'type' => 'bigInteger',
-            'database' => 'unsigned',
+            'database' => 'nullable',
             'relation' => 'categories',
             'rule' => 'nullable|exists:categories,id',
             'help' => '',

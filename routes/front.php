@@ -13,6 +13,18 @@ Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
 Route::post('subscribe', 'PageController@postSubscribe')->name('page.subscribe')->middleware('throttle:2,1');
 Route::get('{page_url?}', 'PageController@getIndex')->name('page.index');
 
+Route::group(['prefix' => 'basket', 'as' => 'basket.'], function () {
+	Route::get('product/init', 'BasketController@getProductInit');
+	Route::post('add', 'BasketController@postAdd');
+	Route::post('product/filter', 'BasketController@getProductFilter');
+
+	Route::get('', 'BasketController@index');
+	Route::get('init', 'BasketController@getInit');
+	Route::post('count', 'BasketController@postBasketCount');
+	Route::post('count/view', 'BasketController@postBasketCountView');
+	Route::get('quick-register/{phone}', 'BasketController@getQuickRegister');
+});
+
 // windy map
 Route::get('distance/{coordinate}', 'PageController@getIndex')->name('distance.coordinate');
 Route::get('{lat}/{long}', 'PageController@getIndex')->name('point.details');

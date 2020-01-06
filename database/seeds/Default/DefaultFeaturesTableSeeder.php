@@ -7,7 +7,6 @@ class DefaultFeaturesTableSeeder extends Seeder
 {
     public function run()
     {
-        // title, description, icon, activated
         $features = [
             [
                 'id' => 1,

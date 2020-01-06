@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-heading text-center">
-                    <h2>{{ __('features_title') }}</h2>
+                    <h2>{{ __('features title') }}</h2>
                     <div class="line-shape"></div>
                 </div>
             </div>
