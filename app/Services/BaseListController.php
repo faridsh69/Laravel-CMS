@@ -373,7 +373,7 @@ class BaseListController extends Controller
         }
 
         $datatable->addColumn('image', function($model) {
-            return '<img style="width:80%" src="' . asset($model->image) . '">';
+            return '<img style="width:80%" src="' . $model->asset_image . '">';
         });
 
         return $datatable->rawColumns(['id', 'image', 'content', 'order', 'users', 'permissions'])

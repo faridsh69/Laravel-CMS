@@ -4,6 +4,18 @@
 <link rel="stylesheet" href="{{ asset('/css/front/themes/1-original/css/locale-fa.css') }}">
 @endif
 <style>
+	a:hover {
+		text-decoration: none;
+	}
+	.notification-alert{
+		position: absolute;
+		top: 200px;
+		right: 150px;
+		z-index: 1;
+	}
+	.notification-alert .list-unstyled{
+		margin: 0px;
+	}
 	.wellcome_area{
 		height: 750px;
 	}

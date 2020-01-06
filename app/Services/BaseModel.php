@@ -149,17 +149,12 @@ class BaseModel extends Model
         return $query->where('user_id', Auth::id());
     }
 
-    public function getImageAttribute($image)
-    {
-        if(isset($image)) {
-            return $image;
-        }
-
-        return config('setting-general.default_meta_image');
-    }
-
     public function getAssetImageAttribute()
     {
-        return asset($this->image);
+        if(isset($this->image) && $this->image) {
+            return asset($this->image);
+        }
+
+        return asset(config('setting-general.default_meta_image'));
     }
 }

@@ -16,7 +16,6 @@ class PagesTableSeeder extends Seeder
             	'description' => '',
             	'activated' => 1,
             	'google_index' => 1,
-            	'image' => '',
             ],
             [
             	'id' => 2,
@@ -26,7 +25,6 @@ class PagesTableSeeder extends Seeder
             	'description' => 'description about about us page',
             	'activated' => 1,
             	'google_index' => 1,
-            	'image' => '',
             ],
             [
             	'id' => 3,
@@ -36,17 +34,14 @@ class PagesTableSeeder extends Seeder
             	'description' => 'description about Services page',
             	'activated' => 1,
             	'google_index' => 1,
-            	'image' => '',
             ],
             [
                 'id' => 4,
                 'title' => 'مقالات',
                 'url' => 'blog',
-                'content' => '',
                 'description' => 'description about BLOGS page',
                 'activated' => 1,
                 'google_index' => 1,
-                'image' => '',
             ],
             [
             	'id' => 5,
@@ -56,17 +51,14 @@ class PagesTableSeeder extends Seeder
             	'description' => 'description about contact us page',
             	'activated' => 1,
             	'google_index' => 1,
-            	'image' => '',
             ],
             [
                 'id' => 6,
                 'title' => 'سبد خرید',
                 'url' => 'basket',
-                'content' => '<h1>سبد خرید</h1>',
                 'description' => 'description about basket page',
                 'activated' => 1,
                 'google_index' => 1,
-                'image' => '',
             ],
             // [
             //  'id' => 4,
@@ -76,7 +68,6 @@ class PagesTableSeeder extends Seeder
             //  'description' => 'description about FAQ page',
             //  'activated' => 1,
             //  'google_index' => 1,
-            //  'image' => '',
             // ],
         ];
 

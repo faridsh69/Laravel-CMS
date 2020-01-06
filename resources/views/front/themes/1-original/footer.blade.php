@@ -32,3 +32,14 @@
         <img src="{{ asset('/images/front/general/whatsapp.png') }}"  width="60px">
     </a>
 </div>
+<div class="notification-alert">
+@foreach (['danger', 'warning', 'success', 'info'] as $msg)
+    @if(Session::has('alert-' . $msg))
+        <div class="alert alert-{{ $msg }} alert-dismissible" role="alert">
+            <ul class="list-unstyled rtl-text-right">
+                <li>{{ Session::get('alert-' . $msg) }}</li>
+            </ul>
+        </div>
+    @endif
+@endforeach
+</div>

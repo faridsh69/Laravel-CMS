@@ -20,7 +20,7 @@ class SettingGeneral extends BaseModel
             'type' => 'string',
             'database' => 'nullable',
             'rule' => '',
-            'help' => 'Title of pages that dosnt have title.',
+            'help' => 'Title of pages is default_meta_title | page title.',
             'form_type' => '',
         ],
         [

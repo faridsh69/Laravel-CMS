@@ -139,20 +139,14 @@ class Product extends BaseModel implements Commentable
         return $this->morphMany('App\Models\Image', 'imageable');
     }
 
-    public function getImageAttribute($image)
+        public function getAssetImageAttribute()
     {
-        if(isset($image)) {
-            return $image;
+        if(isset($this->image) && $this->image) {
+            return asset($this->image);
         }
 
-        return config('setting-general.default_product_image');
+        return asset(config('setting-general.default_product_image'));
     }
-
-    public function getAssetImageAttribute()
-    {
-        return asset($this->image);
-    }
-
 
     public function related_products()
     {

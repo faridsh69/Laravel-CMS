@@ -22,23 +22,14 @@ class BlogController extends Controller
         $this->blog_page = Page::where('url', 'blog')->active()->first();
         abort_if(! $this->blog_page, 404);
 
-        // $meta = [
-        //     'title' => config('setting-general.default_meta_title') . ' | ' . $page->title,
-        //     'description' => $page->meta_description ?: config('setting-general.default_meta_description'),
-        //     'keywords' => $page->keywords,
-        //     'image' => $page->asset_image ?: asset(config('setting-general.default_meta_image')),
-        //     'google_index' => config('setting-general.google_index') ?: $page->google_index,
-        //     'canonical_url' => $page->canonical_url ?: url()->current(),
-        // ];
-        
-        // $this->meta = [
-        //     'title' => config('setting-general.app_name') . ' | Blogs',
-        //     'description' => config('setting-general.default_meta_description'),
-        //     'keywords' => '',
-        //     'image' => config('setting-general.default_meta_image'),
-        //     'google_index' => $page->google_index,
-        //     'canonical_url' => $page->canonical_url ?: url()->current(),
-        // ];
+        $this->meta = [
+            'title' => config('setting-general.default_meta_title') . ' | ' . $this->blog_page->title,
+            'description' => $this->blog_page->description ?: config('setting-general.default_meta_description'),
+            'keywords' => $this->blog_page->keywords,
+            'image' => $this->blog_page->asset_image ?: asset(config('setting-general.default_meta_image')),
+            'google_index' => config('setting-general.google_index') ?: $this->blog_page->google_index,
+            'canonical_url' => $this->blog_page->canonical_url ?: url()->current(),
+        ];
     }
 
     public function postComment(Request $request, $blog_id)
@@ -56,9 +47,11 @@ class BlogController extends Controller
 
     public function index()
     {
-        $blogs = Blog::orderBy('id', 'desc')->active()->paginate(config('setting-general.pagination_number'));
+        $blogs = Blog::orderBy('id', 'desc')
+            ->active()
+            ->paginate(config('setting-general.pagination_number'));
 
-        return view('front.page', ['page' => $page, 'blogs' => $blogs]);
+        return view('front.page', ['page' => $this->blog_page, 'blogs' => $blogs]);
     }
 
     public function show($blog_id)
@@ -66,101 +59,90 @@ class BlogController extends Controller
         $blog = Blog::where('id', $blog_id)->active()->first();
         abort_if(! $blog, 404);
 
-        $page = Page::where('url', 'blog')->active()->first();
-        abort_if(! $page, 404);
+        $this->meta = [
+            'title' => config('setting-general.default_meta_title') . ' | ' . $blog->title,
+            'description' => $blog->description,
+            'keywords' => $blog->keywords,
+            'image' => $blog->asset_image,
+            'google_index' => config('setting-general.google_index') ?: $x,
+            'canonical_url' => $blog->canonical_url ?: url()->current(),
+        ];
 
-        // $meta = [
-        //     'title' => $blog->title,
-        //     'description' => $blog->meta_description,
-        //     'keywords' => $blog->keywords,
-        //     'image' => $blog->meta_image,
-        //     'google_index' => $blog->google_index,
-        //     'canonical_url' => $blog->canonical_url ?: url()->current(),
-        // ];
-
-        return view('front.page', ['page' => $page, 'blog' => $blog]);
+        return view('front.components.blog.show', ['blog' => $blog, 'meta' => $this->meta]);
     }
 
     public function getCategories()
     {
-        $page = Page::where('url', 'blog')->active()->first();
-        abort_if(! $page, 404);
         $categories = Category::active()->get();
 
-        // $meta = [
-        //     'title' => config('setting-general.app_name') . ' | Category Of Blogs',
-        //     'description' => config('setting-general.default_meta_description'),
-        //     'keywords' => '',
-        //     'image' => config('setting-general.default_meta_image'),
-        //     'google_index' => $page->google_index,
-        //     'canonical_url' => $page->canonical_url ?: url()->current(),
-        // ];
+        $this->meta = [
+            'title' => config('setting-general.default_meta_title') . ' | ' . __('blog categories'),
+            'description' => __('blog categories description'),
+            'keywords' => '',
+            'image' => config('setting-general.default_meta_image'),
+            'google_index' => config('setting-general.google_index'),
+            'canonical_url' => url()->current(),
+        ];
 
-        return view('front.page', ['page' => $page, 'categories' => $categories]);
+        return view('front.components.blog.categories', ['categories' => $categories, 'meta' => $this->meta]);
     }
 
     public function getCategory($category_url)
     {
-        $category = Category::where('url', $category_url)->first();
+        $category = Category::where('url', $category_url)->active()->first();
         abort_if(! $category, 404);
 
-        $categories = Category::get();
-        $blogs = Blog::where('category_id', $category->id)->orderBy('id', 'desc')->paginate(config('setting-general.pagination_number'));
+        $blogs = Blog::where('category_id', $category->id)
+            ->active()
+            ->orderBy('id', 'desc')
+            ->paginate(config('setting-general.pagination_number'));
 
-        $page = Page::where('url', 'blog')->first();
-        abort_if(! $page, 404);
+        $this->meta = [
+            'title' => config('setting-general.default_meta_title') . ' | ' . $category->title,
+            'description' => $category->description,
+            'keywords' => '',
+            'image' => $category->asset_image,
+            'google_index' => $category->google_index,
+            'canonical_url' => $category->canonical_url ?: url()->current(),
+        ];
 
-        // $meta = [
-        //     'title' => config('setting-general.app_name') . ' | ' . $category->title,
-        //     'description' => $category->meta_description,
-        //     'keywords' => '',
-        //     'image' => $category->meta_image,
-        //     'google_index' => $category->google_index,
-        //     'canonical_url' => $category->canonical_url ?: url()->current(),
-        // ];
-
-        return view('front.page', ['page' => $page, 'meta' => $meta, 'blogs' => $blogs, 'category' => $category, 'categories' => $categories]);
+        return view('front.components.blog.category', ['category' => $category, 'blogs' => $blogs, 'meta' => $this->meta]);
     }
 
     public function getTags()
     {
-        $categories = Tag::get();
-        $blogs = Blog::orderBy('id', 'desc')->paginate(config('setting-general.pagination_number'));
+        $tags = Tag::get();
 
-        $page = Page::where('url', 'blog')->active()->first();
-        abort_if(! $page, 404);
+        $this->meta = [
+            'title' => config('setting-general.default_meta_title') . ' | ' . __('blog tags'),
+            'description' => __('blog tags description'),
+            'keywords' => '',
+            'image' => config('setting-general.default_meta_image'),
+            'google_index' => config('setting-general.google_index'),
+            'canonical_url' => url()->current(),
+        ];
 
-        // $meta = [
-        //     'title' => config('setting-general.app_name') . ' | Tag Of Blogs',
-        //     'description' => config('setting-general.default_meta_description'),
-        //     'keywords' => '',
-        //     'image' => config('setting-general.default_meta_image'),
-        //     'google_index' => $page->google_index,
-        //     'canonical_url' => $page->canonical_url ?: url()->current(),
-        // ];
-
-        return view('front.page', ['page' => $page, 'meta' => $meta, 'blogs' => $blogs, 'categories' => $categories]);
+        return view('front.components.blog.tags', ['tags' => $tags, 'meta' => $this->meta]);
     }
 
     public function getTag($tag_url)
     {
-        $category = Tag::where('slug', $tag_url)->first();
-        abort_if(! $category, 404);
+        $tag = Tag::where('slug', $tag_url)->first();
+        abort_if(! $tag, 404);
 
-        $blogs = Blog::withAnyTag([$category->name])->orderBy('id', 'desc')->paginate(config('setting-general.pagination_number'));
+        $blogs = Blog::withAnyTag([$tag->name])
+            ->orderBy('id', 'desc')
+            ->paginate(config('setting-general.pagination_number'));
 
-        $page = Page::where('url', 'blog')->first();
-        abort_if(! $page, 404);
+        $this->meta = [
+            'title' => config('setting-general.default_meta_title') . ' | ' . $tag->title,
+            'description' => $tag->description,
+            'keywords' => '',
+            'image' => $tag->asset_image,
+            'google_index' => $tag->google_index,
+            'canonical_url' => $tag->canonical_url ?: url()->current(),
+        ];
 
-        // $meta = [
-        //     'title' => config('setting-general.app_name') . ' | ' . $category->title,
-        //     'description' => config('setting-general.default_meta_description'),
-        //     'keywords' => '',
-        //     'image' => config('setting-general.default_meta_image'),
-        //     'google_index' => $page->google_index,
-        //     'canonical_url' => $page->canonical_url ?: url()->current(),
-        // ];
-
-        return view('front.page', ['page' => $page, 'meta' => $meta, 'blogs' => $blogs, 'category' => $category]);
+        return view('front.components.blog.tag', ['tag' => $tag, 'blogs' => $blogs, 'meta' => $this->meta]);
     }
 }

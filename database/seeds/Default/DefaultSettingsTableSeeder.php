@@ -15,7 +15,7 @@ class DefaultSettingsTableSeeder extends Seeder
 		$general_settings = [
 			'app_title' => 'App Title',
 			'default_meta_title' => 'App Title',
-			'default_meta_description' => 'App Desciption should be about 60 characters',
+			'default_meta_description' => 'App desciption about this website that will be show on social networks.',
 			'logo' => $image_folder_name . '1-logo.png',
 			'favicon' => $image_folder_name . '2-favicon.png',
 			'default_meta_image' => $image_folder_name . '1-logo.png',

@@ -30,9 +30,9 @@ Route::group(['prefix' => 'checkout', 'middleware' => ['auth'] ], function () {
 Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
 	Route::get('', 'BlogController@index')->name('index');
 	Route::get('categories', 'BlogController@getCategories')->name('categories');
-	Route::get('categories/{category_url}', 'BlogController@getCategory')->name('category');
+	Route::get('category/{category_url}', 'BlogController@getCategory')->name('category');
 	Route::get('tags', 'BlogController@getTags')->name('tags');
-	Route::get('tags/{tag_url}', 'BlogController@getTag')->name('tag');
+	Route::get('tag/{tag_url}', 'BlogController@getTag')->name('tag');
 	Route::get('{blog_url}', 'BlogController@show')->name('show');
 	Route::post('{blog_url}/comment', 'BlogController@postComment')->name('comment')
 		->middleware('auth', 'throttle:5,1');

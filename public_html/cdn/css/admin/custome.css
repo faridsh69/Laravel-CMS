@@ -126,3 +126,6 @@
 	color: #666;
 	padding: 10px;
 }
+.glyphicon{
+	font-family: LineAwesome !important;
+}
