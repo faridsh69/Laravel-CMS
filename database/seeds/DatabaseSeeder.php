@@ -11,8 +11,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(PagesTableSeeder::class);
-        dd(1);
-        $this->call(PagesTableSeeder::class);
         $this->call(BlocksTableSeeder::class);
         $this->call(DefaultDatabaseSeeder::class);
         $this->call(RolesTableSeeder::class);

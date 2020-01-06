@@ -139,24 +139,6 @@ class Product extends BaseModel implements Commentable
         return $this->morphMany('App\Models\Image', 'imageable');
     }
 
-    // public function getImageThumbnailAttribute()
-    // {
-    //     $gallery = $this->images;
-    //     if(count($gallery) > 0){
-    //         return asset($gallery->first()->src_thumbnail);
-    //     }
-    //     return null;
-    // }
-
-    // public function getImageMainAttribute()
-    // {
-    //     $gallery = $this->images;
-    //     if(count($gallery) > 0){
-    //         return asset($gallery->first()->src_main);
-    //     }
-    //     return null;
-    // }
-
     public function getImageAttribute($image)
     {
         if(isset($image)) {
@@ -176,4 +158,22 @@ class Product extends BaseModel implements Commentable
     {
         return $this->belongsToMany('App\Models\Product', 'related_products', 'product_id', 'related_product_id');
     }
+
+    // public function getImageThumbnailAttribute()
+    // {
+    //     $gallery = $this->images;
+    //     if(count($gallery) > 0){
+    //         return asset($gallery->first()->src_thumbnail);
+    //     }
+    //     return null;
+    // }
+
+    // public function getImageMainAttribute()
+    // {
+    //     $gallery = $this->images;
+    //     if(count($gallery) > 0){
+    //         return asset($gallery->first()->src_main);
+    //     }
+    //     return null;
+    // }
 }

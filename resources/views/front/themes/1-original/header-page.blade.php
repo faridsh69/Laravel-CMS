@@ -8,7 +8,9 @@
 @endphp
 
 <section class="wellcome_area clearfix" id="home" 
-    style="background-image: url({{ $first_slider->asset_image }}); height: 400px; background-position: top" >
+    style="background-image: url({{ $first_slider->asset_image }}); height: 300px; background-position: top" >
+    <br>
+    <br>
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12 col-md">

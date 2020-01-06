@@ -13,6 +13,34 @@ use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
+    public $blog_page;
+
+    public $meta;
+
+    public function __construct()
+    {
+        $this->blog_page = Page::where('url', 'blog')->active()->first();
+        abort_if(! $this->blog_page, 404);
+
+        // $meta = [
+        //     'title' => config('setting-general.default_meta_title') . ' | ' . $page->title,
+        //     'description' => $page->meta_description ?: config('setting-general.default_meta_description'),
+        //     'keywords' => $page->keywords,
+        //     'image' => $page->asset_image ?: asset(config('setting-general.default_meta_image')),
+        //     'google_index' => config('setting-general.google_index') ?: $page->google_index,
+        //     'canonical_url' => $page->canonical_url ?: url()->current(),
+        // ];
+        
+        // $this->meta = [
+        //     'title' => config('setting-general.app_name') . ' | Blogs',
+        //     'description' => config('setting-general.default_meta_description'),
+        //     'keywords' => '',
+        //     'image' => config('setting-general.default_meta_image'),
+        //     'google_index' => $page->google_index,
+        //     'canonical_url' => $page->canonical_url ?: url()->current(),
+        // ];
+    }
+
     public function postComment(Request $request, $blog_id)
     {
         $blog = Blog::where('id', $blog_id)->active()->first();
@@ -29,17 +57,6 @@ class BlogController extends Controller
     public function index()
     {
         $blogs = Blog::orderBy('id', 'desc')->active()->paginate(config('setting-general.pagination_number'));
-        $page = Page::where('url', 'blog')->active()->first();
-        abort_if(! $page, 404);
-
-        // $meta = [
-        //     'title' => config('setting-general.app_name') . ' | Blogs',
-        //     'description' => config('setting-general.default_meta_description'),
-        //     'keywords' => '',
-        //     'image' => config('setting-general.default_meta_image'),
-        //     'google_index' => $page->google_index,
-        //     'canonical_url' => $page->canonical_url ?: url()->current(),
-        // ];
 
         return view('front.page', ['page' => $page, 'blogs' => $blogs]);
     }

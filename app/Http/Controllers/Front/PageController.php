@@ -11,25 +11,13 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function getIndex($page_url = '', \Kris\LaravelFormBuilder\FormBuilder $form_builder)
+    public function getIndex($page_url = '')
     {
-        if(config('app.name') === 'map'){
-            return view('front.test.map.offline-city');
-        }
-
         $page = Page::where('url', $page_url)->active()->first();
         abort_if(! $page, 404);
-
-        // $meta = [
-        //     'title' => config('setting-general.default_meta_title') . ' | ' . $page->title,
-        //     'description' => $page->meta_description ?: config('setting-general.default_meta_description'),
-        //     'keywords' => $page->keywords,
-        //     'image' => $page->image ? asset($page->image) : asset(config('setting-general.default_meta_image')),
-        //     'google_index' => config('setting-general.google_index') ?: $page->google_index,
-        //     'canonical_url' => $page->canonical_url ?: url()->current(),
-        // ];
-
-        // $blocks = Block::getPageBlocks($page->id);
+        // if(config('app.name') === 'map'){
+        //     return view('front.test.map.offline-city');
+        // }
 
         return view('front.page', ['page' => $page]);
     }
@@ -54,6 +42,6 @@ class PageController extends Controller
 
         $request->session()->flash('alert-success', 'Congratulation, We Will Contact You Soon!');
 
-        return redirect()->route('front.page.index', '/');
+        return redirect()->route('front.page.index', '');
     }
 }
