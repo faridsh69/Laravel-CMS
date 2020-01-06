@@ -32,34 +32,16 @@ class BlogController extends Controller
         $page = Page::where('url', 'blog')->active()->first();
         abort_if(! $page, 404);
 
-        $meta = [
-            'title' => config('setting-general.app_name') . ' | Blogs',
-            'description' => config('setting-general.default_meta_description'),
-            'keywords' => '',
-            'image' => config('setting-general.default_meta_image'),
-            'google_index' => $page->google_index,
-            'canonical_url' => $page->canonical_url ?: url()->current(),
-        ];
+        // $meta = [
+        //     'title' => config('setting-general.app_name') . ' | Blogs',
+        //     'description' => config('setting-general.default_meta_description'),
+        //     'keywords' => '',
+        //     'image' => config('setting-general.default_meta_image'),
+        //     'google_index' => $page->google_index,
+        //     'canonical_url' => $page->canonical_url ?: url()->current(),
+        // ];
 
-        $blocks = Block::active()
-            ->orderBy('order', 'asc')
-            ->get();
-
-        $output_blocks = [];
-        foreach($blocks as $block)
-        {
-            if($block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray(), true) === false){
-                $output_blocks[] = $block;
-            }
-
-            if(! $block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray(), true) !== false){
-                $output_blocks[] = $block;
-            }
-        }
-
-        $blocks = $output_blocks;
-
-        return view('front.page', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta, 'blogs' => $blogs]);
+        return view('front.page', ['page' => $page, 'blogs' => $blogs]);
     }
 
     public function show($blog_id)
@@ -70,72 +52,34 @@ class BlogController extends Controller
         $page = Page::where('url', 'blog')->active()->first();
         abort_if(! $page, 404);
 
-        $meta = [
-            'title' => $blog->title,
-            'description' => $blog->meta_description,
-            'keywords' => $blog->keywords,
-            'image' => $blog->meta_image,
-            'google_index' => $blog->google_index,
-            'canonical_url' => $blog->canonical_url ?: url()->current(),
-        ];
+        // $meta = [
+        //     'title' => $blog->title,
+        //     'description' => $blog->meta_description,
+        //     'keywords' => $blog->keywords,
+        //     'image' => $blog->meta_image,
+        //     'google_index' => $blog->google_index,
+        //     'canonical_url' => $blog->canonical_url ?: url()->current(),
+        // ];
 
-        $blocks = Block::active()
-            ->orderBy('order', 'asc')
-            ->get();
-
-        $output_blocks = [];
-        foreach($blocks as $block)
-        {
-            if($block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray(), true) === false){
-                $output_blocks[] = $block;
-            }
-
-            if(! $block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray(), true) !== false){
-                $output_blocks[] = $block;
-            }
-        }
-
-        $blocks = $output_blocks;
-
-        return view('front.page', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta, 'blog' => $blog]);
+        return view('front.page', ['page' => $page, 'blog' => $blog]);
     }
 
     public function getCategories()
     {
-        $categories = Category::active()->get();
-        $blogs = null;
-
         $page = Page::where('url', 'blog')->active()->first();
         abort_if(! $page, 404);
+        $categories = Category::active()->get();
 
-        $meta = [
-            'title' => config('setting-general.app_name') . ' | Category Of Blogs',
-            'description' => config('setting-general.default_meta_description'),
-            'keywords' => '',
-            'image' => config('setting-general.default_meta_image'),
-            'google_index' => $page->google_index,
-            'canonical_url' => $page->canonical_url ?: url()->current(),
-        ];
+        // $meta = [
+        //     'title' => config('setting-general.app_name') . ' | Category Of Blogs',
+        //     'description' => config('setting-general.default_meta_description'),
+        //     'keywords' => '',
+        //     'image' => config('setting-general.default_meta_image'),
+        //     'google_index' => $page->google_index,
+        //     'canonical_url' => $page->canonical_url ?: url()->current(),
+        // ];
 
-        $blocks = Block::active()
-            ->orderBy('order', 'asc')
-            ->get();
-
-        $output_blocks = [];
-        foreach($blocks as $block)
-        {
-            if($block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray(), true) === false){
-                $output_blocks[] = $block;
-            }
-
-            if(! $block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray(), true) !== false){
-                $output_blocks[] = $block;
-            }
-        }
-
-        $blocks = $output_blocks;
-
-        return view('front.page', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta, 'blogs' => $blogs, 'categories' => $categories]);
+        return view('front.page', ['page' => $page, 'categories' => $categories]);
     }
 
     public function getCategory($category_url)
@@ -149,34 +93,16 @@ class BlogController extends Controller
         $page = Page::where('url', 'blog')->first();
         abort_if(! $page, 404);
 
-        $meta = [
-            'title' => config('setting-general.app_name') . ' | ' . $category->title,
-            'description' => $category->meta_description,
-            'keywords' => '',
-            'image' => $category->meta_image,
-            'google_index' => $category->google_index,
-            'canonical_url' => $category->canonical_url ?: url()->current(),
-        ];
+        // $meta = [
+        //     'title' => config('setting-general.app_name') . ' | ' . $category->title,
+        //     'description' => $category->meta_description,
+        //     'keywords' => '',
+        //     'image' => $category->meta_image,
+        //     'google_index' => $category->google_index,
+        //     'canonical_url' => $category->canonical_url ?: url()->current(),
+        // ];
 
-        $blocks = Block::active()
-            ->orderBy('order', 'asc')
-            ->get();
-
-        $output_blocks = [];
-        foreach($blocks as $block)
-        {
-            if($block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray(), true) === false){
-                $output_blocks[] = $block;
-            }
-
-            if(! $block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray(), true) !== false){
-                $output_blocks[] = $block;
-            }
-        }
-
-        $blocks = $output_blocks;
-
-        return view('front.page', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta, 'blogs' => $blogs, 'category' => $category, 'categories' => $categories]);
+        return view('front.page', ['page' => $page, 'meta' => $meta, 'blogs' => $blogs, 'category' => $category, 'categories' => $categories]);
     }
 
     public function getTags()
@@ -187,34 +113,16 @@ class BlogController extends Controller
         $page = Page::where('url', 'blog')->active()->first();
         abort_if(! $page, 404);
 
-        $meta = [
-            'title' => config('setting-general.app_name') . ' | Tag Of Blogs',
-            'description' => config('setting-general.default_meta_description'),
-            'keywords' => '',
-            'image' => config('setting-general.default_meta_image'),
-            'google_index' => $page->google_index,
-            'canonical_url' => $page->canonical_url ?: url()->current(),
-        ];
+        // $meta = [
+        //     'title' => config('setting-general.app_name') . ' | Tag Of Blogs',
+        //     'description' => config('setting-general.default_meta_description'),
+        //     'keywords' => '',
+        //     'image' => config('setting-general.default_meta_image'),
+        //     'google_index' => $page->google_index,
+        //     'canonical_url' => $page->canonical_url ?: url()->current(),
+        // ];
 
-        $blocks = Block::active()
-            ->orderBy('order', 'asc')
-            ->get();
-
-        $output_blocks = [];
-        foreach($blocks as $block)
-        {
-            if($block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray(), true) === false){
-                $output_blocks[] = $block;
-            }
-
-            if(! $block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray(), true) !== false){
-                $output_blocks[] = $block;
-            }
-        }
-
-        $blocks = $output_blocks;
-
-        return view('front.page', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta, 'blogs' => $blogs, 'categories' => $categories]);
+        return view('front.page', ['page' => $page, 'meta' => $meta, 'blogs' => $blogs, 'categories' => $categories]);
     }
 
     public function getTag($tag_url)
@@ -227,33 +135,15 @@ class BlogController extends Controller
         $page = Page::where('url', 'blog')->first();
         abort_if(! $page, 404);
 
-        $meta = [
-            'title' => config('setting-general.app_name') . ' | ' . $category->title,
-            'description' => config('setting-general.default_meta_description'),
-            'keywords' => '',
-            'image' => config('setting-general.default_meta_image'),
-            'google_index' => $page->google_index,
-            'canonical_url' => $page->canonical_url ?: url()->current(),
-        ];
+        // $meta = [
+        //     'title' => config('setting-general.app_name') . ' | ' . $category->title,
+        //     'description' => config('setting-general.default_meta_description'),
+        //     'keywords' => '',
+        //     'image' => config('setting-general.default_meta_image'),
+        //     'google_index' => $page->google_index,
+        //     'canonical_url' => $page->canonical_url ?: url()->current(),
+        // ];
 
-        $blocks = Block::active()
-            ->orderBy('order', 'asc')
-            ->get();
-
-        $output_blocks = [];
-        foreach($blocks as $block)
-        {
-            if($block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray(), true) === false){
-                $output_blocks[] = $block;
-            }
-
-            if(! $block->show_all_pages && array_search($page->id, $block->pages->pluck('id')->toArray(), true) !== false){
-                $output_blocks[] = $block;
-            }
-        }
-
-        $blocks = $output_blocks;
-
-        return view('front.page', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta, 'blogs' => $blogs, 'category' => $category]);
+        return view('front.page', ['page' => $page, 'meta' => $meta, 'blogs' => $blogs, 'category' => $category]);
     }
 }

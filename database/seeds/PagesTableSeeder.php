@@ -58,6 +58,16 @@ class PagesTableSeeder extends Seeder
             	'google_index' => 1,
             	'image' => '',
             ],
+            [
+                'id' => 6,
+                'title' => 'سبد خرید',
+                'url' => 'basket',
+                'content' => '<h1>سبد خرید</h1>',
+                'description' => 'description about basket page',
+                'activated' => 1,
+                'google_index' => 1,
+                'image' => '',
+            ],
             // [
             //  'id' => 4,
             //  'title' => 'FAQ',

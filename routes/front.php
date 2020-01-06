@@ -1,5 +1,32 @@
 <?php
 
+Route::group(['prefix' => 'basket', 'as' => 'basket.'], function () {
+	Route::get('product/init', 'BasketController@getProductInit');
+	Route::post('add', 'BasketController@postAdd');
+	Route::post('product/filter', 'BasketController@getProductFilter');
+
+	Route::get('', 'BasketController@getIndex');
+	Route::get('init', 'BasketController@getInit');
+	Route::post('count', 'BasketController@postBasketCount');
+	Route::post('count/view', 'BasketController@postBasketCountView');
+	Route::get('quick-register/{phone}', 'BasketController@getQuickRegister');
+});
+
+Route::group(['prefix' => 'checkout', 'middleware' => ['auth'] ], function () {
+	Route::get('address', 'CheckoutController@getAddress');
+	Route::post('address', 'CheckoutController@postAddress');
+	Route::get('address/init', 'CheckoutController@getAddressInit');
+	Route::get('shipping', 'CheckoutController@getShipping');
+	Route::post('shipping', 'CheckoutController@postShipping');
+	Route::post('discount', 'CheckoutController@postDiscount');
+	Route::get('payment', 'CheckoutController@getPayment');
+	Route::get('payment/local', 'CheckoutController@getPaymentLocal');
+	Route::get('payment/online/{bank}', 'CheckoutController@getPaymentOnline');
+	Route::get('payment/verify', 'CheckoutController@getPaymentVerify');
+	Route::post('payment/verify', 'CheckoutController@getPaymentVerify');
+});
+
+
 Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
 	Route::get('', 'BlogController@index')->name('index');
 	Route::get('categories', 'BlogController@getCategories')->name('categories');
@@ -13,17 +40,6 @@ Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
 Route::post('subscribe', 'PageController@postSubscribe')->name('page.subscribe')->middleware('throttle:2,1');
 Route::get('{page_url?}', 'PageController@getIndex')->name('page.index');
 
-Route::group(['prefix' => 'basket', 'as' => 'basket.'], function () {
-	Route::get('product/init', 'BasketController@getProductInit');
-	Route::post('add', 'BasketController@postAdd');
-	Route::post('product/filter', 'BasketController@getProductFilter');
-
-	Route::get('', 'BasketController@index');
-	Route::get('init', 'BasketController@getInit');
-	Route::post('count', 'BasketController@postBasketCount');
-	Route::post('count/view', 'BasketController@postBasketCountView');
-	Route::get('quick-register/{phone}', 'BasketController@getQuickRegister');
-});
 
 // windy map
 Route::get('distance/{coordinate}', 'PageController@getIndex')->name('distance.coordinate');

@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-6 rtl-text-right">
                 <div class="section-heading">
-                    <h2>{{ __('contact_title') }}</h2>
+                    <h2>{{ __('contact title') }}</h2>
                 </div>
                 <div class="footer-text" style="display: none;">
                     <p class="text-center">

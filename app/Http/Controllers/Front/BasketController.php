@@ -92,9 +92,9 @@ class BasketController extends Controller
         ];   
     }
 
-    public function index()
-    {   
-        return view('user.basket.index');
+    public function getIndex()
+    {
+        return view('front.components.basket');
     }
 
     public function getInit()

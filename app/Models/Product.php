@@ -117,7 +117,7 @@ class Product extends BaseModel implements Commentable
         ],
     ];
 
-    protected $appends = ['image_thumbnail', 'image_main'];
+    // protected $appends = ['image_thumbnail', 'image_main'];
 
     public function canBeRated(): bool
     {
@@ -139,33 +139,38 @@ class Product extends BaseModel implements Commentable
         return $this->morphMany('App\Models\Image', 'imageable');
     }
 
-    public function getImageThumbnailAttribute()
+    // public function getImageThumbnailAttribute()
+    // {
+    //     $gallery = $this->images;
+    //     if(count($gallery) > 0){
+    //         return asset($gallery->first()->src_thumbnail);
+    //     }
+    //     return null;
+    // }
+
+    // public function getImageMainAttribute()
+    // {
+    //     $gallery = $this->images;
+    //     if(count($gallery) > 0){
+    //         return asset($gallery->first()->src_main);
+    //     }
+    //     return null;
+    // }
+
+    public function getImageAttribute($image)
     {
-        $gallery = $this->images;
-        if(count($gallery) > 0){
-            return asset($gallery->first()->src_thumbnail);
+        if(isset($image)) {
+            return $image;
         }
-        return null;
+
+        return config('setting-general.default_product_image');
     }
 
-    public function getImageMainAttribute()
+    public function getAssetImageAttribute()
     {
-        $gallery = $this->images;
-        if(count($gallery) > 0){
-            return asset($gallery->first()->src_main);
-        }
-        return null;
+        return asset($this->image);
     }
 
-    public function getGalleryAttribute()
-    {
-        $gallery = [];
-        foreach($this->images as $gallery_image)
-        {
-            $gallery[] = ['file' => asset($gallery_image->src_main)];
-        }
-        return json_encode($gallery);
-    }
 
     public function related_products()
     {

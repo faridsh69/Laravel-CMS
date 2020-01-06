@@ -82,11 +82,11 @@ class FactorService extends BaseService
             $vue_basket[] = [
                 'id' => $basket_product->id,
                 'title' => $basket_product->title,
-                'features' => $basket_product->features_basket(),
+                'features' => [],
                 'price' =>  $basket_product->price,
                 'discount_price' =>  $basket_product->discount_price,
                 'count' =>  $basket_product->pivot->count,
-                'image_url' => $basket_product->base_image(),
+                'image_url' => $basket_product->asset_image,
             ];
         }
         return $vue_basket;
@@ -133,7 +133,7 @@ class FactorService extends BaseService
             }
         }
         else{
-            $basket->products()->sync([$product_id => ['count' => 1 ]]);
+            $basket->products()->sync([$product_id => ['count' => 1 ]], false);
         }
     }
 

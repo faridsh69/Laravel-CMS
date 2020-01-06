@@ -13,13 +13,6 @@ class PageController extends Controller
 {
     public function getIndex($page_url = '', \Kris\LaravelFormBuilder\FormBuilder $form_builder)
     {
-        $shop_register_form = $form_builder->create('\App\Forms\ShopForm', [
-            'method' => 'POST',
-            'url' => route('front.page.subscribe'),
-            'class' => 'm-form m-form--state',
-            'id' =>  'admin_form',
-        ]);
-
         if(config('app.name') === 'map'){
             return view('front.test.map.offline-city');
         }
@@ -27,39 +20,22 @@ class PageController extends Controller
         $page = Page::where('url', $page_url)->active()->first();
         abort_if(! $page, 404);
 
-        if(config('app.name') === 'map'){
-            return view('front.test.map.offline-city');
-            // $ip = $_SERVER['REMOTE_ADDR'];
-            // try{
-            //     if($ip === '127.0.0.1'){
-            //         return view('front.test.map.offline-city');
-            //     }else{
-            //         $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}"));
-            //         if($details->country === 'IR'){
+        // $meta = [
+        //     'title' => config('setting-general.default_meta_title') . ' | ' . $page->title,
+        //     'description' => $page->meta_description ?: config('setting-general.default_meta_description'),
+        //     'keywords' => $page->keywords,
+        //     'image' => $page->image ? asset($page->image) : asset(config('setting-general.default_meta_image')),
+        //     'google_index' => config('setting-general.google_index') ?: $page->google_index,
+        //     'canonical_url' => $page->canonical_url ?: url()->current(),
+        // ];
 
-            //         }
-            //     }
-            // }
-            // catch(Exception $e){}
-        }
+        // $blocks = Block::getPageBlocks($page->id);
 
-        $meta = [
-            'title' => config('setting-general.default_meta_title') . ' | ' . $page->title,
-            'description' => $page->meta_description ?: config('setting-general.default_meta_description'),
-            'keywords' => $page->keywords,
-            'image' => $page->image ? asset($page->image) : asset(config('setting-general.default_meta_image')),
-            'google_index' => config('setting-general.google_index') ?: $page->google_index,
-            'canonical_url' => $page->canonical_url ?: url()->current(),
-        ];
-
-        $blocks = Block::getPageBlocks($page->id);
-
-        return view('front.page', ['blocks' => $blocks, 'page' => $page, 'meta' => $meta, 'shop_register_form' => $shop_register_form]);
+        return view('front.page', ['page' => $page]);
     }
 
     public function postSubscribe(Request $request)
     {
-        dd($request->all());
         $date = Carbon::now()->format('Y/d/m');
         $time = Carbon::now()->format('H:i');
         $phone = $request->input('phone');

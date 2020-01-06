@@ -6,7 +6,7 @@ Vue.component('products', {
 		<nav class="display-none" id="" data-offset-top="180">
 		    <div class="container">
 		    	<div class="row">
-	    			<div class="col-xs-3">
+	    			<div class="col-3">
 	    				<select class="form-control" v-model="filters.category" v-on:change="filter()">
 	    					<option value="">همه دسته بندی ها</option>
 							<option v-for="category in categories" v-bind:value="category.title">
@@ -14,10 +14,10 @@ Vue.component('products', {
 							</option>
 						</select>	 
 	    			</div>
-	    			<div class="col-xs-3">
+	    			<div class="col-3">
 					    <input type="text" class="form-control" placeholder="نام محصول..." v-model="filters.title">	 
 	    			</div>
-	    			<div class="col-xs-3 col-md-3">
+	    			<div class="col-3 col-md-3">
 	    				حداکثر قیمت:
 	    				{{ filters.maxPrice }} هزارتومان
 					    <input type="range" placeholder="محصول یا دسته..." min="0" v-bind:max="filter.maxRangePrice" v-model="filters.maxPrice" step="1000">	 
@@ -36,7 +36,7 @@ Vue.component('products', {
 			قفسه {{ filters.category }} 
 			<hr>
 		</h4>
-		<div class="col-xs-6 col-sm-8 col-md-9">
+		<div class="col-6 col-sm-8 col-md-9">
 			<div class="alert alert-warning" v-if="products.length == 0">محصولی یافت نشد.</div>
 			<div class="row" v-if="products.length > 0">
 				<div v-for="product in products" 
@@ -91,7 +91,7 @@ Vue.component('products', {
 	<div class="shopping-card">
 
 		<div class="row">
-			<div class="col-xs-12">
+			<div class="col-12">
 				<div class="table-responsive">
 				<table class="table">
 				<thead>
@@ -133,14 +133,14 @@ Vue.component('products', {
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-xs-12 text-center">
+			<div class="col-12 text-center">
 				<loading v-if="productLoading"></loading>
 				<a href="/basket" class="btn btn-primary btn-block text-center">سبد خرید</a>
 				<div class="half-seperate"></div>
 			</div>
 		</div>
 		<dl class="dl-horizontal">
-		  	<dt class="big-size">هزینه قابل پرداخت</dt>
+		  	<dt class="big-size">مبلغ:</dt>
 		  	<dd class="big-size">{{totalPrice | persian_digits}} تومان</dd>
 		</dl>
 	</div>

@@ -120,9 +120,9 @@ class BlocksTableSeeder extends Seeder
             	'id' => 14,
                 'order' => 42,
             	'type' => 'subscribe',
-                'show_all_pages' => 1,
-                'pages_list' => [],
-                'activated' => 1,
+                'show_all_pages' => 0,
+                'pages_list' => [1],
+                'activated' => 0,
             ],
             [
             	'id' => 15,

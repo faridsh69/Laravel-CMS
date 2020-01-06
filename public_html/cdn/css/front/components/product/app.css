@@ -115,11 +115,12 @@ h3{
     display: inline-block;
 }
 .product-block{
-    margin-bottom: 30px !important;
+    margin-bottom: 0px !important;
+    padding: 5px;
 }
 .product-card{
     width: 100%;
-    padding: 20px 15px 10px 15px !important;
+    /*padding: 20px 15px 10px 15px !important;*/
     min-height: 285px !important;
     background-color: white;
     box-shadow: 0px 2px 6px rgba(70,70,70,0.3);
@@ -135,7 +136,8 @@ h3{
     text-decoration: none;
 }
 .basket-card{
-    padding: 20px 15px 20px 15px !important;
+    padding: 20px 15px 20px 15px;
+    padding-top: 5px;
     min-height: 280px !important;
     background-color: white;
     cursor: pointer;
@@ -204,7 +206,7 @@ h3{
 }
 
 .product-image{
-    width: 150px;
+    /*width: 150px;*/
     max-width: 100% !important;
     max-height: 150px;
     margin-left: auto;
@@ -226,6 +228,7 @@ h3{
     left: 5px;
     border: 1px solid #ddd;
     padding: 15px;
+    padding-top: 0px;
     padding-bottom: 5px;
     max-width: 50%;
     z-index: 999999990;
@@ -1389,11 +1392,23 @@ input[type="radio"]:checked + label span.radio::after {
 .report-panel h4{
     color: #48f !important;
 }
-
+a{
+    text-decoration: none !important;
+}
+.btn-group-xs .btn{
+    padding: 0px;
+}
 .btn-success .label-warning{
     background-color: #98e45e;
     padding: 5px 10px;
     border-radius: 40px;
+}
+.btn-block{
+    width: 100%;
+}
+.dl-horizontal{
+    direction: rtl;
+    text-align: right;
 }
 @media (max-width: 667px){
     .header-logo{

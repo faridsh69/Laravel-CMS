@@ -1,6 +1,6 @@
 Vue.component('basket', {
   	template: `
-  	<div>
+  	<div style="direction: rtl; text-align: right;">
   	<div class="row">
   		<div class="col-sm-8" v-if="loading">
   			<div class="loading"></div>
@@ -12,17 +12,17 @@ Vue.component('basket', {
 			</div>
 			<div class="basket-card min-height-card" v-for="item in basket">
 				<div class="row">
-					<div class="col-xs-12">
-						<p class="label label-danger pull-left" v-on:click="remove(item)">
+					<div class="col-12">
+						<span class="label label-danger pull-left" v-on:click="remove(item)">
 							<i class="fa fa-close"></i>
-						</p>
+						</span>
 					</div>
-					<div class="col-xs-3 text-center">
+					<div class="col-3 text-center">
 						<a v-bind:href="'/product/' + item.id">
                        		<img v-bind:src="item.image_url" alt="" class="product-image">
                    		</a>
 					</div>
-					<div class="col-xs-5 col-sm-6 col-lg-7">
+					<div class="col-5 col-sm-6 col-lg-7">
 						<a v-bind:href="'/product/' + item.id">
 							<div>{{ item.title }}</div>
 						</a>
@@ -32,7 +32,7 @@ Vue.component('basket', {
 							<div class="one-third-seperate"></div>
 						</div>
 					</div>
-					<div class="col-xs-4 col-sm-3 col-lg-2">
+					<div class="col-4 col-sm-3 col-lg-2">
 						<div class="seperate"></div>
 						<div v-if="item.discount_price">
 							<del class="gray font-12">
@@ -60,9 +60,12 @@ Vue.component('basket', {
 						</div>
 						<div class="half-seperate"></div>
 						<span class="font-12">
-							تعداد:
+							مقدار:
 						</span>
-						<input type="number" class="product-count-input" v-model="item.count" 
+						<span>
+						 {{item.count}}
+						</span>
+						<input type="number" class="display-none product-count-input" v-model="item.count" 
 							v-on:change="changeCount(item)" v-on:keyup="changeCount(item)">
 						<div class="half-seperate"></div>
 					</div>
