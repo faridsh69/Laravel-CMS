@@ -53,7 +53,7 @@ class BaseMigration extends Migration
                 }
                 // for create foreign key relation attribute should be defined
                 elseif($relation){
-                    $table->unsignedBigInteger($name);
+                    $table->unsignedBigInteger($name)->nullable();
                     $table->foreign($name)->references('id')->on($relation);
                 }
                 else{
