@@ -16,6 +16,12 @@ class BaseMigration extends Migration
 
     public $rebuild = false;
 
+    public $backup = false;
+
+    public $models = [];
+
+    public $seed = false; 
+
     public function __construct()
     {
         $class_name = 'App\\Models\\' . $this->model;
@@ -34,9 +40,32 @@ class BaseMigration extends Migration
             $repository = new $model_class();
             $count = $repository::count();
             if($count > 0){
-                dump('Model Count: ' . $repository::count());
-                dump('Your data will be destroyes, You can pause the proccess with Ctrl + C, you have 10 seconds to do that!');
-                sleep(10);
+                if($this->backup === true){
+                    $backup_data = $repository::withTrashed()
+                        ->get()
+                        ->makeVisible('deleted_at')
+                        ->toArray();
+                    $backup_table_name = $table_name . '_backup_' . strtotime('now');
+                    Schema::create($backup_table_name, function (Blueprint $table) {
+                        $table->bigIncrements('id');
+                        $table->text('row_data')->nullabe();
+                        $table->timestamps();
+                        $table->softDeletes();
+                    });
+                    foreach($backup_data as $backup_item){
+                        \DB::table($backup_table_name)->insert([
+                            'id' => $backup_item['id'],
+                            'created_at' => $backup_item['created_at'],
+                            'updated_at' => $backup_item['updated_at'],
+                            'deleted_at' => $backup_item['deleted_at'],
+                            'row_data' => serialize($backup_item),
+                        ]);
+                    }
+                }else{
+                    dump('Model Count: ' . $repository::count());
+                    dump('Your data will be destroyes, You can pause the proccess with Ctrl + C, you have 5 seconds to do that!');
+                    sleep(5);
+                }
             }
             Schema::dropIfExists($this->table_name);
         }

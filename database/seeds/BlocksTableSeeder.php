@@ -38,7 +38,7 @@ class BlocksTableSeeder extends Seeder
             ],
             [
                 'id' => 4,
-                'order' => 12,
+                'order' => 41,
                 'type' => 'blogs',
                 'show_all_pages' => 0,
                 'pages_list' => [4],
