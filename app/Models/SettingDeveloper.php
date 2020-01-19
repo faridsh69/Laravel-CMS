@@ -72,7 +72,7 @@ class SettingDeveloper extends BaseModel
             'type' => 'string',
             'database' => 'nullable',
             'rule' => '',
-            'help' => 'Stop users who is requesting alot to server.',
+            'help' => 'Stop users who is requesting alot to api. default 60,1',
             'form_type' => '',
         ],
         [

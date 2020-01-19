@@ -40,7 +40,7 @@ class BaseNotification extends Notification
         $this->message_template = __($this->class_name . '_message');
         $this->heading_title = __('dear customer');
         $this->message = sprintf($this->message_template, $this->app_title);
-        $this->sms_message = sprintf(" %s \n %s \n %s \n %s", $this->heading_title, $this->message, $this->app_title, $this->app_url);
+        $this->sms_message = sprintf(" %s \n %s \n %s", $this->heading_title, $this->message, $this->app_title);
         $this->editContent();
     }
 
@@ -63,13 +63,13 @@ class BaseNotification extends Notification
     public function setMessage($message)
     {
     	$this->message = $message;
-        $this->sms_message = sprintf(" %s \n %s \n %s", $this->heading_title, $this->message, $this->app_url);
+        $this->sms_message = sprintf(" %s \n %s \n %s", $this->heading_title, $this->message, $this->app_title);
     }
 
     public function setCode($code)
     {
         $this->message = sprintf($this->message_template, $code);
-        $this->sms_message = sprintf(" %s \n %s \n %s \n %s", $this->heading_title, $this->message, $this->app_title, $this->app_url);
+        $this->sms_message = sprintf(" %s \n %s \n %s", $this->heading_title, $this->message, $this->app_title);
     }
 
     public function toArray($notifiable)
