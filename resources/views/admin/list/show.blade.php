@@ -12,20 +12,23 @@
 					ID: {{ $data['id'] }}
 					@if(isset($data['password']))
 						<a href="{{ route('admin.user.login', $data['id']) }}" class="btn btn-success btn-sm m-btn m-btn--custom m-btn--air m-btn--pill">
-							Login with this user
+							{{ __('Login with this user') }}
+						</a>
+						<a href="{{ route('admin.user.identify', $data['id']) }}" class="btn btn-primary btn-sm m-btn m-btn--custom m-btn--air m-btn--pill">
+							{{ __('Check user identify') }}
 						</a>
 					@endif
 				</h3>
 			</div>
 		</div>
 		<div class="m-portlet__head-tools">
-			<h6 class="m-portlet__head-text">
-				Created at:
+			<small class="m-portlet__head-text">
+				{{ __('created at') }}:
 				{{ $data->created_at }}
 				<br>
-				Updated at:
+				{{ ('updated at') }}:
 				{{ $data->updated_at }}	
-			</h6>	
+			</small>	
 		</div>
 	</div>
 
@@ -60,7 +63,7 @@
 
 	<div class="m-portlet__body">
 		<div class="m-list-timeline">
-			<h4>Activity log for this model</h4>
+			<h4>{{ __('Activity log for this model') }}</h4>
 			<br>
 			<div class="m-list-timeline__items">
 				@foreach($activities as $activity)

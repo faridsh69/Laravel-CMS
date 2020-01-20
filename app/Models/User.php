@@ -163,6 +163,33 @@ class User extends Authenticatable
             'table' => false,
         ],
         [
+            'name' => 'national_card_verified_at',
+            'type' => 'timestamp',
+            'database' => 'nullable',
+            'rule' => '',
+            'help' => '',
+            'form_type' => 'none',
+            'table' => false,
+        ],
+        [
+            'name' => 'bank_card_verified_at',
+            'type' => 'timestamp',
+            'database' => 'nullable',
+            'rule' => '',
+            'help' => '',
+            'form_type' => 'none',
+            'table' => false,
+        ],
+        [
+            'name' => 'certificate_card_verified_at',
+            'type' => 'timestamp',
+            'database' => 'nullable',
+            'rule' => '',
+            'help' => '',
+            'form_type' => 'none',
+            'table' => false,
+        ],
+        [
             'name' => 'activated',
             'type' => 'boolean',
             'database' => 'default',
@@ -209,9 +236,9 @@ class User extends Authenticatable
         'deleted_at',
     ];
 
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    // protected $casts = [
+    //     'email_verified_at' => 'datetime',
+    // ];
 
     public function addresses()
     {
@@ -271,5 +298,10 @@ class User extends Authenticatable
     public function getCertificateCardImagesAttribute()
     {
         return $this->images->where('title', 'certificate_card');
+    }
+
+    public function getAdminUser()
+    {
+        return User::where('id', 1)->first();
     }
 }

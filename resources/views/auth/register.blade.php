@@ -11,40 +11,32 @@
 		<div class="m-login__signup1">
 			<div class="m-login__head">
 				<h3 class="m-login__title">
-					{{ __('Register') }}
+					{{ __('register') }}
 				</h3>
 			</div>
 			<form class="m-login__form m-form margin-top-20" method="POST" action="{{ route('auth.register') }}">
 				@csrf
-				<!-- <div class="form-group m-form__group">
-					<input class="form-control m-input" type="text" placeholder="{{ __('Name') }}" name="name" value="{{ isset($name) ? $name : old('name') }}" required autocomplete="name" autofocus>
-					@error('name')
+				<div class="form-group m-form__group rtl-text-right">
+					<input class="form-control m-input" type="text" placeholder="{{ __('phone') . ' - 0912xxxxxxx' }}" name="phone" value="{{ isset($phone) ? $phone : old('phone') }}" required autocomplete="phone">
+					@error('phone')
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror 
-				</div> -->
-				<div class="form-group m-form__group">
-					<input class="form-control m-input" type="email" placeholder="{{ __('E-Mail Address') }}" name="email" value="{{ isset($email) ? $email : old('email') }}" required autocomplete="email">
-					@error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                            <strong>{{ __($message) }}</strong>
                         </span>
                     @enderror
 				</div>
-				<div class="form-group m-form__group">
-					<input class="form-control m-input" type="password" placeholder="{{ __('Password') }}" name="password" required autocomplete="new-password">
+				<div class="form-group m-form__group rtl-text-right">
+					<input class="form-control m-input" type="password" placeholder="{{ __('password') }}" name="password" required autocomplete="new-password">
 					@error('password')
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                            <strong>{{ __($message) }}</strong>
                         </span>
                     @enderror
 				</div>
-				<div class="form-group m-form__group">
-					<input class="form-control m-input m-login__form-input--last" type="password" placeholder="{{ __('Confirm Password') }}" id="password-confirm" name="password_confirmation" required autocomplete="new-password">
+				<div class="form-group m-form__group rtl-text-right">
+					<input class="form-control m-input m-login__form-input--last" type="password" placeholder="{{ __('password confirmation') }}" id="password-confirm" name="password_confirmation" required autocomplete="new-password">
 				</div>
 				<div class="row form-group m-form__group m-login__form-sub">
-					<div class="col m--align-left">
+					<div class="col m--align-right">
 						<label class="m-checkbox m-checkbox--focus">
 							<input type="checkbox" name="agree" required="">
 							{{ __('I Agree the') }}
@@ -59,24 +51,24 @@
 				</div>
 				<div class="m-login__form-action">
 					<button id="m_login_signup_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">
-						{{ __('Register') }}
+						{{ __('register') }}
 					</button>
 					<button id="m_login_signup_cancel" class="btn btn-outline-focus  m-btn m-btn--pill m-btn--custom">
-						{{ __('Cancel') }}
+						{{ __('cancel') }}
 					</button>
 				</div>
 			</form>
 		</div>
 	</div>
 </div>
-<div class="m-stack__item m-stack__item--center">
+<div class="m-stack__item m-stack__item--center rtl-text-right">
 	<div class="m-login__account">
 		<span class="m-login__account-msg">
 			{{ __('Already have account?') }}
 		</span>
 		&nbsp;&nbsp;
 		<a href="{{ route('auth.login') }}" id="m_login_signup" class="m-link m-link--focus m-login__account-link">
-			{{ __('Login') }}
+			{{ __('login') }}
 		</a>
 	</div>
 </div>

@@ -118,36 +118,152 @@ return [
     'uuid' => 'The :attribute must be a valid UUID.',
     'phone' => 'The :attribute field contains an invalid number.',
     'seo_header' => 'The :attribute should has exactly 1 H1 tag and atleast 1 H2 tag.',
-    // 'enum_key' => 'Select an item.',
-    // 'enum_value' => 'Select an item.',
-    /*
-    |--------------------------------------------------------------------------
-    | Custom Validation Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | Here you may specify custom validation messages for attributes using the
-    | convention "attribute.rule" to name the lines. This makes it quick to
-    | specify a specific custom language line for a given attribute rule.
-    |
-    */
 
-    'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
-        ],
+
+
+
+
+    'accepted'             => ':attribute باید پذیرفته شده باشد.',
+    'active_url'           => 'آدرس :attribute معتبر نیست',
+    'after'                => ':attribute باید تاریخی بعد از :date باشد.',
+    'alpha'                => ':attribute باید شامل حروف الفبا باشد.',
+    'alpha_dash'           => ':attribute باید شامل حروف الفبا و عدد و خظ تیره(-) باشد.',
+    'alpha_num'            => ':attribute باید شامل حروف الفبا و عدد باشد.',
+    'array'                => ':attribute باید شامل آرایه باشد.',
+    'before'               => ':attribute باید تاریخی قبل از :date باشد.',
+    'between'              => [
+        'numeric' => ':attribute باید بین :min و :max باشد.',
+        'file'    => ':attribute باید بین :min و :max کیلوبایت باشد.',
+        'string'  => ':attribute باید بین :min و :max کاراکتر باشد.',
+        'array'   => ':attribute باید بین :min و :max آیتم باشد.',
     ],
+    'boolean'              => 'فیلد :attribute فقط میتواند صحیح و یا غلط باشد',
+    'confirmed'            => ':attribute با تاییدیه مطابقت ندارد.',
+    'date'                 => ':attribute یک تاریخ معتبر نیست.',
+    'date_format'          => ':attribute با الگوی :format مطاقبت ندارد.',
+    'different'            => ':attribute و :other باید متفاوت باشند.',
+    'digits'               => ':attribute باید :digits رقم باشد.',
+    'digits_between'       => ':attribute باید بین :min و :max رقم باشد.',
+    'email'                => 'فرمت :attribute معتبر نیست.',
+    'exists'               => ':attribute انتخاب شده، معتبر نیست.',
+    'filled'               => 'فیلد :attribute الزامی است',
+    'image'                => ':attribute باید تصویر باشد.',
+    'in'                   => ':attribute انتخاب شده، معتبر نیست.',
+    'integer'              => ':attribute باید نوع داده ای عددی (integer) باشد.',
+    'ip'                   => ':attribute باید IP آدرس معتبر باشد.',
+    'json'                 => 'The :attribute must be a valid JSON string.',
+    'max'                  => [
+        'numeric' => ':attribute نباید بزرگتر از :max باشد.',
+        'file'    => ':attribute نباید بزرگتر از :max کیلوبایت باشد.',
+        'string'  => ':attribute نباید بیشتر از :max کاراکتر باشد.',
+        'array'   => ':attribute نباید بیشتر از :max آیتم باشد.',
+    ],
+    'mimes'                => ':attribute باید یکی از فرمت های :values باشد.',
+    'min'                  => [
+        'numeric' => ':attribute نباید کوچکتر از :min باشد.',
+        'file'    => ':attribute نباید کوچکتر از :min کیلوبایت باشد.',
+        'string'  => ':attribute نباید کمتر از :min کاراکتر باشد.',
+        'array'   => ':attribute نباید کمتر از :min آیتم باشد.',
+    ],
+    'not_in'               => ':attribute انتخاب شده، معتبر نیست.',
+    'numeric'              => ':attribute باید شامل عدد باشد.',
+    'regex'                => ':attribute یک فرمت معتبر نیست',
+    'required'             => 'فیلد :attribute الزامی است',
+    'required_if'          => 'فیلد :attribute هنگامی که :other برابر با :value است، الزامیست.',
+    'required_unless'      => 'The :attribute field is required unless :other is in :values.',
+    'required_with'        => ':attribute الزامی است زمانی که :values موجود است.',
+    'required_with_all'    => ':attribute الزامی است زمانی که :values موجود است.',
+    'required_without'     => ':attribute الزامی است زمانی که :values موجود نیست.',
+    'required_without_all' => ':attribute الزامی است زمانی که :values موجود نیست.',
+    'same'                 => ':attribute و :other باید مانند هم باشند.',
+    'size'                 => [
+        'numeric' => ':attribute باید برابر با :size باشد.',
+        'file'    => ':attribute باید برابر با :size کیلوبایت باشد.',
+        'string'  => ':attribute باید برابر با :size کاراکتر باشد.',
+        'array'   => ':attribute باسد شامل :size آیتم باشد.',
+    ],
+    'string'               => 'The :attribute must be a string.',
+    'timezone'             => 'فیلد :attribute باید یک منطقه صحیح باشد.',
+    'unique'               => ':attribute قبلا انتخاب شده است.',
+    'url'                  => 'فرمت آدرس :attribute اشتباه است.',
+    'date_time'            => 'فرمت :attribute اشتباه است.',
+    'phone'                => ' :attribute نامعتبر است.',
 
-    /*
-    |--------------------------------------------------------------------------
-    | Custom Validation Attributes
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used to swap our attribute placeholder
-    | with something more reader friendly such as "E-Mail Address" instead
-    | of "email". This simply helps us make our message more expressive.
-    |
-    */
+    'attributes' => [
+        'name'            => 'نام',
+        'rate'            => 'امتیاز',
+        'username'        => 'شناسه کاربری',
+        'email'           => 'پست الکترونیکی',
+        'first_name'      => 'نام',
+        'family'          => 'نام خانوادگی',
+        'password'        => 'کلمه عبور',
+        're-password'     => 'تاییدیه ی کلمه عبور',
+        'city'            => 'شهر',
+        'country'         => 'کشور',
+        'address'         => 'نشانی',
+        'phone'           => 'شماره تماس',
+        'mobile'          => 'تلفن همراه',
+        'mob'             => 'تلفن همراه',
+        'education'       => 'مقطع تحصیلی',
+        'age'             => 'سن',
+        'sex'             => 'جنسیت',
+        'gender'          => 'جنسیت',
+        'day'             => 'روز',
+        'month'           => 'ماه',
+        'year'            => 'سال',
+        'hour'            => 'ساعت',
+        'minute'          => 'دقیقه',
+        'second'          => 'ثانیه',
+        'title'           => 'عنوان',
+        'text'            => 'متن',
+        'content'         => 'محتوا',
+        'description'     => 'توضیحات',
+        'excerpt'         => 'گلچین کردن',
+        'date'            => 'تاریخ',
+        'time'            => 'زمان',
+        'available'       => 'موجود',
+        'size'            => 'اندازه',
+        'start_date'      => 'تاریخ شروع',
+        'end_date'        => 'تاریخ پایان',
+        'reg_start_date'  => 'تاریخ شروع ثبت نام',
+        'reg_end_date'    => 'تاریخ پایان ثبت نام',
+        'courseCats'      => 'دسته بندی دوره',
+        'orgLevels'       => 'رده سازمانی',
+        'cost'            => 'قیمت',
+        'teacher'         => 'استاد',
+        'picture'         => 'تصویر',
+        'option_selected' => 'گزینه صحیح',
+        'option_text'     => 'گزینه(ها)',
+        'roles'           => 'نقش (ها)',
+        'tag_title'       => 'عنوان برچسب',
+        'cat'             => 'موضوع',
 
-    'attributes' => [],
+        'flight_date' => 'تاریخ پرواز',
+        'flight_time' => 'ساعت پرواز',
+        'flight_company' => 'کمپانی پرواز',
+        'flight_number' => 'شماره پرواز',
+        'flight_origin' => 'مبدا',
+        'flight_destination' => 'مقصد',
+        'flight_type' => 'نوع پرواز',
+        'flight_description' => 'توضیحات پرواز',
+        'passengers_info' => 'اطلاعات مسافران',
+        'first_name' => 'نام',
+        'last_name' => 'نام خانوادگی',
+        'gender' => 'جنسیت',
+        'attendance_info' => 'اطلاعات مستقبلان',
+        'full_name' => 'نام کامل',
+        'extra_info' => 'اطلاعات اضافی',
+        'do_you_have_any_pets' => 'آیا حیوان همراه دارید',
+        'pet_forbidden' => 'ورود حیوانات بدون مجوز غیر قانونی می باشد',
+        'airport_transfer' => 'ترانسفر',
+        'reserver_info' => 'اطلاعات رزرو کننده',
+        'email' => 'ایمیل',
+        'mobile' => 'موبایل',
+        'reserve_payment' => 'رزرو و پرداخت',
+        'ticket_info' => 'اطلاعات پرواز',
 
+        'post_title' => 'عنوان',
+        'post_alias' => 'آدرس',
+        'meta_desc' => 'توضیحات ',
+    ],
 ];

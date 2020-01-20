@@ -16,16 +16,16 @@
 			</div>
 			<form class="m-login__form m-form" method="POST" action="{{ route('auth.login') }}">
 				@csrf
-				<div class="form-group m-form__group">
-					<input class="form-control m-input" type="email" placeholder="{{ __('E-Mail Address') }}" name="email" value="{{ old('email') }}" required autocomplete="email">
-					@error('email')
+				<div class="form-group m-form__group rtl-text-right">
+					<input class="form-control m-input" type="phone" placeholder="{{ __('phone') }}" name="phone" value="{{ old('phone') }}" required autocomplete="phone">
+					@error('phone')
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                            <strong>{{ __($message) }}</strong>
                         </span>
                     @enderror
 				</div>
-				<div class="form-group m-form__group">
-					<input class="form-control m-input m-login__form-input--last" type="password" placeholder="{{ __('Password') }}" name="password" autocomplete="current-password" required>
+				<div class="form-group m-form__group rtl-text-right">
+					<input class="form-control m-input m-login__form-input--last" type="password" placeholder="{{ __('password') }}" name="password" autocomplete="current-password" required>
 				</div>
 				<div class="row m-login__form-sub">
 					<div class="col m--align-left">
@@ -43,7 +43,7 @@
 				</div>
 				<div class="m-login__form-action">
 					<button id="m_login_signin_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">
-						{{ __('Login') }}
+						{{ __('login') }}
 					</button>
 				</div>
 				<div class="text-center">
@@ -71,13 +71,13 @@
 	</div>
 </div>
 <div class="m-stack__item m-stack__item--center">
-	<div class="m-login__account">
+	<div class="m-login__account rtl-text-right">
 		<span class="m-login__account-msg">
 			{{ __('Do you have any account yet?') }}
 		</span>
 		&nbsp;&nbsp;
 		<a href="{{ route('auth.register') }}" id="m_login_signup" class="m-link m-link--focus m-login__account-link">
-			{{ __('Register') }}
+			{{ __('register') }}
 		</a>
 	</div>
 </div>

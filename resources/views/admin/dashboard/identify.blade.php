@@ -79,6 +79,10 @@
 			@csrf
 			<div class="form-group m-form__group">
 				<input type="file" required  class="form-control m-input" name="certificate_card">
+				<small class="help-block">
+					از خودتان به همراه کاغذی که تاریخ امروز روی آن نوشته شده است و کارت ملی خود عکس بگیرید و ارسال کنید
+				</small>
+				<br>
 				<br>
 				<button class="btn btn-success btn-sm">{{ __('submit') }}</button>
 			</div>

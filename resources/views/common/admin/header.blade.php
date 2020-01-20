@@ -36,14 +36,13 @@
 	<link rel="canonical" href="{{ url()->current() }}">
 	<link rel="shortcut icon" href="{{ asset(config('setting-general.favicon')) }}" />
 
+	<link href="{{ asset('css/admin/vendors.bundle.css') }}" rel="stylesheet" />
+	<link href="{{ asset('css/admin/style.bundle.css') }}" rel="stylesheet" />
 	@if(config('app.locale') === 'fa')
-	<link href="{{ asset('css/admin/vendors.bundle.css') }}" rel="stylesheet" />
-	<link href="{{ asset('css/admin/style.bundle.css') }}" rel="stylesheet" />
-	<link href="{{ asset('/css/front/themes/1-original/css/locale-fa.css') }}" rel="stylesheet" >
+	<link href="{{ asset('/css/admin/locale-fa.css') }}" rel="stylesheet" >
 	@else
-	<link href="{{ asset('css/admin/vendors.bundle.css') }}" rel="stylesheet" />
-	<link href="{{ asset('css/admin/style.bundle.css') }}" rel="stylesheet" />
 	@endif
+	
 	<link href="{{ asset('css/admin/custome.css') }}" rel="stylesheet" />
 
 	@stack('style')

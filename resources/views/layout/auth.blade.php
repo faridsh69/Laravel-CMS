@@ -16,17 +16,18 @@
 
 		<link rel="canonical" href="{{ url()->current() }}">
 
-	    <!--begin::Base Styles -->
 		<link href="{{ asset('css/admin/vendors.bundle.css') }}" rel="stylesheet" />
 		<link href="{{ asset('css/admin/style.bundle.css') }}" rel="stylesheet" />
-		<!-- <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> -->
+		@if(config('app.locale') === 'fa')
+		<link href="{{ asset('/css/admin/locale-fa.css') }}" rel="stylesheet" >
+		@else
+		@endif
 		<link href="{{ asset('css/admin/custome.css') }}" rel="stylesheet" />
-		<!--end::Base Styles -->
-		
+		@stack('style')
+
 		<link rel="shortcut icon" href="{{ asset(config('setting-general.favicon')) }}" />
 	</head>
 	<body class="m--skin- m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default"  >
-		<!-- begin:: Page -->
 		<div class="m-grid m-grid--hor m-grid--root m-page">
 			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-grid--tablet-and-mobile m-grid--hor-tablet-and-mobile m-login m-login--1 m-login--singin" id="m_login">
 				<div class="m-grid__item m-grid__item--order-tablet-and-mobile-2 m-login__aside">
@@ -35,7 +36,7 @@
 					</div>
 				</div>
 				<div class="m-grid__item m-grid__item--fluid m-grid m-grid--center m-grid--hor m-grid__item--order-tablet-and-mobile-1	m-login__content" style="background-image: url({{ asset('images/admin/login-backgournd.jpg') }} )">
-					<div class="m-grid__item m-grid__item--middle">
+					<div class="m-grid__item m-grid__item--middle rtl-text-right">
 						<h3 class="m-login__welcome">
 							{{ __('Join Our Community') }}
 						</h3>
@@ -50,7 +51,5 @@
 		</div>
 		@include('common.admin.scripts')
 		@stack('scripts')
-	<!-- <script src="{{ asset('js/admin/login.js') }}"></script> -->
 	</body>
-	<!-- end::Body -->
 </html>
