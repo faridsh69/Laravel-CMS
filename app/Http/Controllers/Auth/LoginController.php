@@ -7,6 +7,7 @@ use App\Models\User;
 use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
+use App\Notifications\UserLogined;
 
 class LoginController extends Controller
 {
@@ -44,6 +45,13 @@ class LoginController extends Controller
 
     public function redirectTo()
     {
+        $auth_user = Auth::user();
+        activity('User')->performedOn($auth_user)
+            ->causedBy($auth_user)
+            ->log('User Logined');
+        $user_logined = new UserLogined();
+        $auth_user->notify($user_logined);
+
         return route('admin.dashboard.list.index');
     }
 
