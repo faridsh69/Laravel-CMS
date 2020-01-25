@@ -22,18 +22,18 @@ Route::group(['prefix' => 'basket', 'as' => 'basket.'], function () {
 	Route::get('quick-register/{phone}', 'BasketController@getQuickRegister');
 });
 
-Route::group(['prefix' => 'checkout', 'middleware' => ['auth'] ], function () {
-	Route::get('address', 'CheckoutController@getAddress');
-	Route::post('address', 'CheckoutController@postAddress');
-	Route::get('address/init', 'CheckoutController@getAddressInit');
-	Route::get('shipping', 'CheckoutController@getShipping');
-	Route::post('shipping', 'CheckoutController@postShipping');
-	Route::post('discount', 'CheckoutController@postDiscount');
-	Route::get('payment', 'CheckoutController@getPayment');
-	Route::get('payment/local', 'CheckoutController@getPaymentLocal');
-	Route::get('payment/online/{bank}', 'CheckoutController@getPaymentOnline');
-	Route::get('payment/verify', 'CheckoutController@getPaymentVerify');
-	Route::post('payment/verify', 'CheckoutController@getPaymentVerify');
+Route::group(['prefix' => 'checkout', 'as' => 'checkout.', 'middleware' => ['auth'] ], function () {
+	Route::get('address', 'CheckoutController@getAddress')->name('address');
+	Route::post('address', 'CheckoutController@postAddress')->name('post-address');
+	Route::get('address/init', 'CheckoutController@getAddressInit')->name('init-address');
+	Route::get('shipping', 'CheckoutController@getShipping')->name('shipping');
+	Route::post('shipping', 'CheckoutController@postShipping')->name('post-shipping');
+	Route::post('discount', 'CheckoutController@postDiscount')->name('post-discount');
+	Route::get('payment', 'CheckoutController@getPayment')->name('payment');
+	Route::get('payment/local', 'CheckoutController@getPaymentLocal')->name('payment-local');
+	Route::get('payment/online/{bank}', 'CheckoutController@getPaymentOnline')->name('payment-online');
+	Route::get('payment/verify', 'CheckoutController@getPaymentVerify')->name('payment-verify');
+	Route::post('payment/verify', 'CheckoutController@getPaymentVerify')->name('post-payment-verify');
 });
 
 Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {

@@ -16,9 +16,9 @@ class CreateBasketProductTable extends Migration
         Schema::create('basket_product', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('count')->unsigned()->default(1);
-            $table->bigInteger('basket_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('basket_id')->nullable();
             $table->foreign('basket_id')->references('id')->on('baskets');
-            $table->bigInteger('product_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('product_id')->nullable();
             $table->foreign('product_id')->references('id')->on('products');
             $table->timestamps();
         });

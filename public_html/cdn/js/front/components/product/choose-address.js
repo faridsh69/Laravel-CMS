@@ -1,7 +1,7 @@
 Vue.component('choose-address', {
   	template: `
   	<div>
-  	<div class="m-3 card-info">
+  	<div class="card card-success">
 		<div class="card-header">آدرس های شما
 		</div>
 		<div class="card-body">
@@ -44,7 +44,7 @@ Vue.component('choose-address', {
 			class="form-control hidden-xs">
 		</div>
 		<div class="half-seperate"></div>
-		<a v-if="selectedAddress" v-on:click="finish()" class="btn btn-success btn-lg btn-block"> 
+		<a v-if="selectedAddress" v-on:click="finish()" class="btn btn-warning btn-block"> 
 			ادامه خرید
 			<i class="fa fa-arrow-circle-o-left"></i>
 		</a>

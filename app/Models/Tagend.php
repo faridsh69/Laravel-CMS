@@ -101,5 +101,17 @@ class Tagend extends BaseModel
             ->where('activated', 1);
     }
 
+    public function scopeShipping($query)
+    {
+        return $query->where('title', 'like', '%ارسال%')
+            ->where('is_copon', 0)
+            ->active();
+    }
+
+    public function scopeCopon($query)
+    {
+        return $query->where('is_copon', 1)
+            ->where('activated', 1);
+    }
 
 }

@@ -97,6 +97,10 @@ class Factor extends BaseModel
     const STATUS_CANCELED = 6;
     const STATUS_SUCCEED = 7;
 
+    const PAYMENT_LOCAL = 'پرداخت در محل';
+    const PAYMENT_CART = 'پرداخت کارت به کارت';
+    const PAYMENT_ONLINE = 'پرداخت آنلاین';
+
     public function scopeCurrentFactor($query)
     {
         return $query->where('user_id', \Auth::id())
@@ -109,6 +113,21 @@ class Factor extends BaseModel
     public function products()
     {
         return $this->belongsToMany('App\Models\Product')->withPivot('count')->withPivot('price')->withPivot('discount_price');
+    }
+
+	public function address()
+    {
+        return $this->belongsTo('App\Models\Address', 'address_id', 'id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id', 'id');
+    }
+
+    public function tagends()
+    {
+        return $this->belongsToMany('App\Models\Tagend')->withPivot('value');;
     }
 
     public function fillFactorProducts()
@@ -174,5 +193,18 @@ class Factor extends BaseModel
             }
         }
         return $total_price;
+    }
+
+    public function detachShippings()
+    {
+        $tagends = Tagend::shipping()
+            ->get();
+
+        foreach ($tagends as $tagend) 
+        {
+            $this->tagends()->detach([$tagend->id]);
+        }
+
+        return $this;
     }
 }

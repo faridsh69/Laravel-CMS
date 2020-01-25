@@ -8,18 +8,16 @@
         </h3>
     </div>
 </div>
-@include('front.components.alert')
 
 <div id="vue_id" class="rtl text-right">
     <choose-address></choose-address>
 </div>
 <div class="seperate"></div>
 
-<button class="btn btn-info btn-block" onclick="openCreateAddress()"> 
+<button class="btn btn-info btn-sm btn-block" onclick="openCreateAddress()"> 
     <i class="fa fa-plus"></i> 
     افزودن آدرس جدید
 </button>
-<div class="seperate"></div>
 <div class="row add-address-css" id="addAdress">
     <div class="col-12">
         <div class="seperate"></div>

@@ -2,6 +2,7 @@
 
 use App\Models\Product;
 use Illuminate\Database\Seeder;
+use App\Models\Tagend;
 
 class BitcointProductsTableSeeder extends Seeder
 {
@@ -58,8 +59,83 @@ class BitcointProductsTableSeeder extends Seeder
     	foreach($products as $product){
             $product['url'] = '';
     		$product['content'] = '';
-    		$product['category_id'] = 1;
+            $product['category_id'] = 1;
+    		$product['discount_price'] = null;
+
             Product::firstOrCreate($product);
+        }
+
+        $tagends = [
+            [
+                'title' => 'ارسال معمولی',
+                'description' => 'زمان ارسال بین ۱ الی ۲ روز است.',
+                'value' => 8000,
+                'sign' => 1,
+                'type' => 0,
+                'is_copon' => 0,
+                'code' => null,
+                'activated' => 1,
+                'user_id' => null,
+            ],
+            [
+                'title' => 'ارسال سفارشی',
+                'description' => 'زمان ارسال کمتر از ۱ روز است.',
+                'value' => 10000,
+                'sign' => 1,
+                'type' => 0,
+                'is_copon' => 0,
+                'code' => null,
+                'activated' => 1,
+                'user_id' => null,
+            ],
+            [
+                'title' => 'ارسال با پیک موتوری',
+                'description' => 'زمان ارسال تا ساعاتی دیگر',
+                'value' => 12000,
+                'sign' => 1,
+                'type' => 0,
+                'is_copon' => 0,
+                'code' => null,
+                'activated' => 1,
+                'user_id' => null,
+            ],
+            [
+                'title' => 'مالیات',
+                'description' => 'مالیات برابر ۲ درصد می باشد.',
+                'value' => 2,
+                'sign' => 1,
+                'type' => 1,
+                'is_copon' => 0,
+                'code' => null,
+                'activated' => 0,
+                'user_id' => null,
+            ],
+            [
+                'title' => 'ارزش افزوده',
+                'description' => 'ارزش افزوده برابر ۳ درصد می باشد.',
+                'value' => 3,
+                'sign' => 1,
+                'type' => 1,
+                'is_copon' => 0,
+                'code' => null,
+                'activated' => 0,
+                'user_id' => null,
+            ],
+            [
+                'title' => 'هزینه بسته بندی',
+                'description' => 'هزینه بسته بندی هزار تومان است.',
+                'value' => 1000,
+                'sign' => 1,
+                'type' => 0,
+                'is_copon' => 0,
+                'code' => null,
+                'activated' => 0,
+                'user_id' => null,
+            ],
+        ];
+
+        foreach($tagends as $tagend){
+            Tagend::updateOrCreate(['title' => $tagend['title']], $tagend);
         }
     }
 }

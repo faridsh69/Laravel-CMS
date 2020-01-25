@@ -99,7 +99,16 @@ class CheckoutController extends Controller
         
         $shippings = Tagend::shipping()->get();
 
-        return view('user.checkout.shipping', compact('factor', 'shippings'));
+        $meta = [
+            'title' => config('setting-general.default_meta_title') . ' | ' . __('shippings'),
+            'description' => config('setting-general.default_meta_description'),
+            'keywords' => '',
+            'image' => asset(config('setting-general.default_meta_image')),
+            'google_index' => config('setting-general.google_index'),
+            'canonical_url' => url()->current(),
+        ];
+
+        return view('front.components.checkout.shipping', ['shippings' => $shippings, 'factor' => $factor, 'meta' => $meta]);
     }
 
     public function postShipping(Request $request)
@@ -121,7 +130,7 @@ class CheckoutController extends Controller
         $factor->total_price = $factor->calculateTotalPriceWithTagends();
         $factor->save();
 
-        return redirect('/checkout/payment');
+        return redirect()->route('front.checkout.payment');
     }
 
     public function postDiscount(Request $request)
@@ -153,19 +162,26 @@ class CheckoutController extends Controller
     public function getPayment()
     {
         $factor = Factor::currentFactor()->first();
-        if($factor){
-            return view('user.checkout.payment', compact('factor'));
-        }else{
-            return redirect('/');
+        if(!$factor){
+             return redirect('/');
         }
+
+        $meta = [
+            'title' => config('setting-general.default_meta_title') . ' | ' . __('payments'),
+            'description' => config('setting-general.default_meta_description'),
+            'keywords' => '',
+            'image' => asset(config('setting-general.default_meta_image')),
+            'google_index' => config('setting-general.google_index'),
+            'canonical_url' => url()->current(),
+        ];
+
+        return view('front.components.checkout.payment', ['factor' => $factor, 'meta' => $meta]);
     }
 
     public function getPaymentLocal()
     {        
         $factor = Factor::currentFactor()->first();
-
         if(!$factor){
-            \Log::error('getPaymentLocal + factor does not exist');
             return redirect('/');
         }
 
@@ -183,10 +199,19 @@ class CheckoutController extends Controller
         $basket->products()->detach();
         $basket->delete();
 
-        $sms_service = new SmsService();
-        $sms_service->shopping($factor);
+        // send sms with factor details
 
-        return view('user.checkout.verify', compact('view_status', 'factor'));
+        $meta = [
+            'title' => config('setting-general.default_meta_title') . ' | ' . __('shippings'),
+            'description' => config('setting-general.default_meta_description'),
+            'keywords' => '',
+            'image' => asset(config('setting-general.default_meta_image')),
+            'google_index' => config('setting-general.google_index'),
+            'canonical_url' => url()->current(),
+        ];
+
+        return view('front.components.checkout.verify', ['factor' => $factor, 'view_status' => $view_status, 
+            'meta' => $meta]);
     }
 
     public function getPaymentOnline($bank)

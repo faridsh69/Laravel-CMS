@@ -90,7 +90,7 @@ h3{
     rgba(255,255,255,0.1) 80%, rgba(180,255,235,0.3) 100%);
 
     /*padding: 0px 14px 0px 14px;*/
-    min-height: 390px;
+    /*min-height: 390px;*/
     /*max-height: 490px;*/
     background-color: #efe;
     color: #444;
@@ -926,14 +926,14 @@ img{
     cursor: pointer;
 }
 .radio-button span.radio::before {
-    right: -52px;
+    right: 35px;
     width: 45px;
     height: 25px;
     background-color: #A8AAC1;
     border-radius: 50px;
 }
 .radio-button span.radio::after {
-    right: -49px;
+    right: 39px;
     width: 17px;
     height: 17px;
     border-radius: 10px;
@@ -941,7 +941,7 @@ img{
     transition: left .25s, background-color .25s;
 }
 input[type="radio"]:checked + label span.radio::after {
-  right: -27px;
+  right: 59px;
   background-color: #4e4;
 }
 /*.social-network {
