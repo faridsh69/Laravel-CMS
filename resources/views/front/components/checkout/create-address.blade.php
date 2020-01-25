@@ -1,4 +1,4 @@
-<form enctype="multipart/form-data" action="/admin/profile/address" method="POST" class="form-inline rtl text-right">
+<form enctype="multipart/form-data" action="{{ route('admin.dashboard.post-address') }}" method="POST" class="form-inline rtl text-right">
 	{{ csrf_field() }}
 	<div class="card card-success" style="width: 100%">
 		<div class="card-header">ثبت آدرس جدید</div>
@@ -7,7 +7,7 @@
 				<div class="form-group">
 				    <label for="display_name" class="col-sm-2 control-label">نام و نام‌خانوادگی *</label>
 				    <div class="col-sm-4">
-				      	<input type="text" class="form-control" id="display_name" name="display_name" value="{{Auth::user()->first_name}} {{Auth::user()->last_name}}" required>
+				      	<input type="text" class="form-control" id="display_name" name="display_name" value="{{ Auth::user()->full_name }}" required>
 				    </div>
 				    <label for="phone" class="col-sm-2 control-label">شماره همراه *</label>
 				    <div class="col-sm-4">
@@ -27,29 +27,17 @@
 			  	<div class="form-group">
 				    <label for="province" class="col-sm-2 control-label">استان *</label>
 				    <div class="col-sm-4">
-						<select id="province" onchange="changeProvince()" class="form-control" name="province">
-							@foreach([] as $id => $value)
-							<option value="{{ $id }}" 
-								@if($id == 8) 
-									selected 
-								@endif
-								>
-								{{ $value }}
-							</option>
-							@endforeach
-						</select>		    
+				    	<input type="text" class="form-control" id="province" name="province"	value="{{ old('province') }}">
 					</div>
 				    <label for="city" class="col-sm-2 control-label">شهر</label>
 				    <div class="col-sm-4">
-				    	<select id="city" class="form-control" name="city">
-						</select>
-				      	<!-- <input type="text" class="form-control" id="city" name="city" value="{{ old('city') }}" required> -->
+				      	<input type="text" class="form-control" id="city" name="city" value="{{ old('city') }}" required>
 				    </div>
 			  	</div>
 			  	<div class="form-group">
 				    <label for="address" class="col-sm-2 control-label">آدرس پستی</label>
-				    <div class="col-sm-10">
-				    	<textarea rows="3" type="text" id="address" class="form-control" name="address" required>{{ old('address') }}</textarea>
+				    <div class="col-sm-9">
+				    	<textarea style="width: 100%;" rows="3" type="text" id="address" class="form-control" name="address" required>{{ old('address') }}</textarea>
 				    </div>
 			  	</div>
 			  	<div class="form-group">

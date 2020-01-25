@@ -38,6 +38,11 @@
         @endif
     </div>  
 </div>
+<div id="vue_id" class="rtl text-right">
+    <choose-address :provinces_json="{{ json_encode( \Config::get('constants.provinces') ) }}"></choose-address>
+</div>
+<div class="seperate"></div>
+
 <button class="btn btn-info btn-block" onclick="openCreateAddress()"> 
     <i class="fa fa-plus"></i> 
     افزودن آدرس جدید
@@ -50,10 +55,6 @@
         <div class="seperate"></div>
     </div>
 </div>
-<div id="vue_id" class="rtl text-right">
-	<choose-address :provinces_json="{{ json_encode( \Config::get('constants.provinces') ) }}"></choose-address>
-</div>
-<div class="seperate"></div>
 @endsection
 @push('style')
 <link href="{{ asset('css/front/components/product/app.css') }}" rel="stylesheet" />

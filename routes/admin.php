@@ -32,6 +32,7 @@ Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'as' => 'dash
 	Route::get('activity', 'DashboardController@getActivity')->name('activity');
 	Route::get('profile', 'DashboardController@getProfile')->name('profile');
 	Route::put('profile', 'DashboardController@updateProfile')->name('update-profile');
+	Route::post('address', 'DashboardController@postAddress')->name('post-address');
 	Route::get('identify', 'DashboardController@getIdentify')->name('identify');
 	Route::get('identify/email', 'DashboardController@getIdentifyEmail')->name('identify.email');
 	Route::post('identify/email', 'DashboardController@postIdentifyEmail')->name('identify.email-verify');

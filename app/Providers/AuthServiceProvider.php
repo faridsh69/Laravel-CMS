@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Policies\ActivityPolicy;
+use App\Policies\AddressPolicy;
 use App\Policies\BlockPolicy;
 use App\Policies\BlogPolicy;
 use App\Policies\CategoryPolicy;
@@ -34,12 +35,8 @@ use Laravel\Passport\Passport;
 
 class AuthServiceProvider extends ServiceProvider
 {
-    /**
-     * The policy mappings for the application.
-     *
-     * @var array
-     */
     protected $policies = [
+        'App\Models\Address' => AddressPolicy::class,
         'App\Models\Activity' => ActivityPolicy::class,
         'App\Models\Block' => BlockPolicy::class,
         'App\Models\Blog' => BlogPolicy::class,
@@ -54,8 +51,8 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Notification' => NotificationPolicy::class,
         'App\Models\Menu' => MenuPolicy::class,
         'App\Models\Partner' => PartnerPolicy::class,
-        'App\Models\Permission' => UserPolicy::class,
         'App\Models\Page' => PagePolicy::class,
+        'App\Models\Permission' => UserPolicy::class,
         'App\Models\Pricing' => PricingPolicy::class,
         'App\Models\Product' => ProductPolicy::class,
         'App\Models\Role' => UserPolicy::class,
