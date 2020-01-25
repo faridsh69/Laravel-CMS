@@ -28,10 +28,55 @@ class BaseFactory
                     $database = isset($column['database']) ? $column['database'] : null;
 
                     if($name === 'url'){
-                        $fake_data = 'fake-' . $faker->numberBetween($min = 1000, $max = 9999);
+                        $fake_data = 'fake-' . $faker->slug();
+                    }
+                    elseif($name === 'title'){
+                        $fake_data = $faker->jobTitle();
                     }
                     elseif($name === 'description'){
                         $fake_data = $faker->realText(100);
+                    }
+                    elseif($name === 'content'){
+                        $fake_data = '<h1>h1</h1><h2>h2</h2>' . $faker->realText(400);
+                    }
+                    elseif($name === 'image' || $name === 'canonical_url'){
+                        $fake_data = $faker->url();
+                    }
+                    elseif($name === 'keywords'){
+                        $fake_data = $faker->realText(100);
+                    }
+                    elseif($name === 'icon'){
+                        $fake_data = $faker->word();
+                    }
+                    elseif($name === 'full_name'){
+                        $fake_data = $faker->name();
+                    }
+                    elseif($name === 'phone' || $name === 'telephone'){
+                        $fake_data = $faker->e164PhoneNumber();
+                    }
+                    elseif($name === 'national_code'){
+                        $fake_data = '1270739034';
+                    }
+                    elseif($name === 'postal_code'){
+                        $fake_data = '18321';
+                    }
+                    elseif($name === 'country'){
+                        $fake_data = $faker->countryCode();
+                    }
+                    elseif($name === 'province'){
+                        $fake_data = $faker->state();
+                    }
+                    elseif($name === 'city'){
+                        $fake_data = $faker->city();
+                    }
+                    elseif($name === 'address'){
+                        $fake_data = $faker->address();
+                    }
+                    elseif($name === 'latitude'){
+                        $fake_data = $faker->latitude();
+                    }
+                    elseif($name === 'longitude'){
+                        $fake_data = $faker->longitude();
                     }
                     elseif($name === 'email'){
                         $fake_data = $faker->email();
@@ -40,11 +85,8 @@ class BaseFactory
                         $password = $faker->realText(10);
                         $fake_data = $password;
                     }
-                    elseif($database === 'nullable' || $database === 'none'){
+                    elseif($database === 'none'){
                         continue;
-                    }
-                    elseif($name === 'content'){
-                        $fake_data = '<h1>Fake h1</h1><h2>Fake h2</h2>' . $faker->realText(400);
                     }
                     elseif($form_type === 'email'){
                         $fake_data = $faker->unique()->safeEmail;

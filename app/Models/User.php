@@ -58,7 +58,7 @@ class User extends Authenticatable
             'name' => 'telephone',
             'type' => 'string',
             'database' => 'nullable',
-            'rule' => 'nullable|numeric|digits_between:5,16',
+            'rule' => 'nullable|min:5|max:16',
             'help' => 'Home Number',
             'form_type' => '',
             'table' => false,
