@@ -1,5 +1,10 @@
 <?php
 
+Route::group(['prefix' => 'product', 'as' => 'product.'], function () {
+	Route::get('', 'ProductController@getIndex');
+	Route::get('{id}', 'ProductController@getShow');
+});
+
 Route::group(['prefix' => 'basket', 'as' => 'basket.'], function () {
 	Route::get('product/init', 'BasketController@getProductInit');
 	Route::post('add', 'BasketController@postAdd');

@@ -21,7 +21,7 @@ class Page extends BaseModel
             'type' => 'text',
             'database' => 'nullable',
             'rule' => 'nullable',
-            'help' => 'Let this field empty if you are not developer, It will used for creating code content from a view. "front.themes." ',
+            'help' => 'It will used for rendering blade file. for example for products page you can add blade and use it. "front.components.products" ',
             'form_type' => '',
             'table' => false,
         ],
