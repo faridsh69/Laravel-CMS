@@ -1,15 +1,20 @@
 <?php
 
 Route::group(['prefix' => 'product', 'as' => 'product.'], function () {
-	Route::get('', 'ProductController@getIndex');
-	Route::get('{id}', 'ProductController@getShow');
+	Route::get('', 'ProductController@index')->name('index');
+	Route::get('categories', 'ProductController@getCategories')->name('categories');
+	Route::get('category/{category_url}', 'ProductController@getCategory')->name('category');
+	Route::get('tags', 'ProductController@getTags')->name('tags');
+	Route::get('tag/{tag_url}', 'ProductController@getTag')->name('tag');
+	Route::get('{blog_url}', 'ProductController@show')->name('show');
+	Route::post('{blog_url}/comment', 'ProductController@postComment')->name('comment')
+		->middleware('auth', 'throttle:5,1');
 });
 
 Route::group(['prefix' => 'basket', 'as' => 'basket.'], function () {
 	Route::get('product/init', 'BasketController@getProductInit');
 	Route::post('add', 'BasketController@postAdd');
 	Route::post('product/filter', 'BasketController@getProductFilter');
-
 	Route::get('', 'BasketController@getIndex');
 	Route::get('init', 'BasketController@getInit');
 	Route::post('count', 'BasketController@postBasketCount');
