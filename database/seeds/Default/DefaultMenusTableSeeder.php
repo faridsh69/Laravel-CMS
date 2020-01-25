@@ -20,8 +20,8 @@ class DefaultMenusTableSeeder extends Seeder
             ],
             [
                 'id' => 3,
-                'title' => 'خدمات',
-                'url' => 'services',
+                'title' => 'محصولات',
+                'url' => 'product',
             ],
             [
                 'id' => 4,

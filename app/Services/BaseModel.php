@@ -21,7 +21,7 @@ class BaseModel extends Model
     {
         $table_name = $this->getTable();
         $seconds = 1;
-        return Cache::remember('models1.' . $table_name, $seconds, function () {
+        return Cache::remember('models.' . $table_name, $seconds, function () {
             $default_columns = [
                 'title' => [
                     'name' => 'title',
@@ -124,6 +124,20 @@ class BaseModel extends Model
                     'help' => '',
                     'form_type' => '',
                     'table' => true,
+                ],
+                'user_id' => [
+                    'name' => 'user_id',
+                    'type' => 'unsignedBigInteger',
+                    'database' => 'nullable',
+                    'relation' => 'users',
+                    'rule' => 'nullable|exists:users,id',
+                    'help' => '',
+                    'form_type' => 'entity',
+                    'class' => 'App\Models\User',
+                    'property' => 'phone',
+                    'property_key' => 'id',
+                    'multiple' => false,
+                    'table' => false,
                 ],
             ];
 

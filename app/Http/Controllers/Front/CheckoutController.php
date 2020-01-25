@@ -13,7 +13,7 @@ use App\Models\ProductView;
 use App\Models\Payment;
 use App\Models\Setting;
 use App\Models\Tagend;
-use SoapClient;
+use Auth;
 use Carbon\carbon;
 use App\Services\FactorService;
 use App\Services\SmsService;
@@ -42,10 +42,11 @@ class CheckoutController extends Controller
 
     public function getAddressInit()
     {
-        $addresses = \Auth::user()->addresses()->orderBy('id', 'desc')->get()->toArray();
-    	return [
+        $addresses = Auth::user()->addresses()->orderBy('id', 'desc')->get()->toArray();
+        
+        return response()->json([
     		'addresses' =>  $addresses,
-    	];
+    	]);
     }
 
     public function postAddress(Request $request)

@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Route;
 use Spatie\Activitylog\Models\Activity;
+use App\Models\Address;
 
 class DashboardController extends BaseAdminController
 {
@@ -41,8 +42,11 @@ class DashboardController extends BaseAdminController
 
     public function postAddress()
     {
-        dd($this->request->all());
-        
+        $data = $this->request->all();
+        $data['user_id'] = Auth::id();
+        $model = Address::create($data);
+
+        return redirect()->back();
     }
 
     public function getProfile()

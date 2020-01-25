@@ -97,7 +97,7 @@ class BaseFactory
                     elseif($type === 'boolean'){
                         $fake_data = 0;
                     }
-                    elseif($type === '' || $type === 'bigInteger' || $type === 'integer' || $type === 'tinyInteger'){
+                    elseif($type === '' || $type === 'bigInteger' || $type === 'integer' || $type === 'tinyInteger' || $type === 'unsignedBigInteger'){
                         $fake_data = 1;
                     }
                     elseif($type === 'string'){

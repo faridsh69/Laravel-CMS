@@ -183,8 +183,20 @@
 			'permission' => 'Product',
 		],
 		[
+			'order' => 56,
+			'title' => 'Factor',
+			'type' => 'submenu',
+			'icon' => 'flaticon-business',
+		],
+		[
 			'order' => 57,
 			'title' => 'Product',
+			'type' => 'submenu',
+			'icon' => 'flaticon-business',
+		],
+		[
+			'order' => 58,
+			'title' => 'Tagend',
 			'type' => 'submenu',
 			'icon' => 'flaticon-business',
 		],

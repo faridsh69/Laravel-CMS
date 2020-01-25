@@ -9,6 +9,7 @@ use App\Policies\BlogPolicy;
 use App\Policies\CategoryPolicy;
 use App\Policies\CommentPolicy;
 use App\Policies\CountingPolicy;
+use App\Policies\FactorPolicy;
 use App\Policies\FeaturePolicy;
 use App\Policies\FeedbackPolicy;
 use App\Policies\FieldPolicy;
@@ -27,6 +28,7 @@ use App\Policies\SettingGeneralPolicy;
 use App\Policies\ShopPolicy;
 use App\Policies\SliderPolicy;
 use App\Policies\TagPolicy;
+use App\Policies\TagendPolicy;
 use App\Policies\TeamPolicy;
 use App\Policies\UserPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -43,6 +45,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Counting' => CountingPolicy::class,
         'App\Models\Category' => CategoryPolicy::class,
         'App\Models\Comment' => CommentPolicy::class,
+        'App\Models\Factor' => FactorPolicy::class,
         'App\Models\Feature' => FeaturePolicy::class,
         'App\Models\Feedback' => FeedbackPolicy::class,
         'App\Models\Field' => FieldPolicy::class,
@@ -63,6 +66,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Shop' => ShopPolicy::class,
         'App\Models\Slider' => SliderPolicy::class,
         'App\Models\Tag' => TagPolicy::class,
+        'App\Models\Tagend' => TagendPolicy::class,
         'App\Models\Team' => TeamPolicy::class,
         'App\Models\User' => UserPolicy::class,
     ];

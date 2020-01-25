@@ -1,22 +1,24 @@
 Vue.component('choose-address', {
   	template: `
   	<div>
-  	<div class="panel panel-info">
-		<div class="panel-heading">آدرس های شما
+  	<div class="m-3 card-info">
+		<div class="card-header">آدرس های شما
 		</div>
-		<div class="panel-body">
+		<div class="card-body">
 			<div class="help-block" v-if="addresses.length == 0"> آدرسی تاکنون وارد نکرده‌اید. </div>
 			<div class="radio-style">
-				<div class="radio-button" v-for="address in addresses">
+				<div class="radio-button" v-for="address in addresses" 
+					v-bind:class="{ 'address-selected' : address === selectedAddress }">
 					<input type="radio" v-bind:value="address" v-model="selectedAddress" v-bind:id="address.id">
 					<label v-bind:for="address.id">
-				    	<span class="radio">
+				    	<span>
 				    		<div class="one-third-seperate"></div>
-				    		{{ address.display_name }} - 
+				    		{{ address.full_name }} - 
 				    		شماره همراه: {{ address.phone }} -
-				    		شماره ثابت: {{ address.sabet_phone }}
+				    		شماره ثابت: {{ address.telephone }}
 				    		<div class="one-third-seperate"></div>
-				    		{{ provinces[address.province] }} - 
+				    		{{ address.country }} - 
+				    		{{ address.province }} - 
 				    		شهر: {{ address.city }} -
 				    		کدپستی‌: {{ address.postalCode }}
 				    		<div class="one-third-seperate"></div>
@@ -50,22 +52,16 @@ Vue.component('choose-address', {
 	<div class="seperate"></div>
   	</div>`,
 	props: {
-		provinces_json: {
-    		type: Object,
-      		required: true
-    	},
   	},
 	data: function () {
 		return {
 			selectedAddress: '',
 			addresses: [],
 			userDescription : '',
-			provinces:[],
 		}
 	},
 	methods: {
 		fetchData: function () {
-			this.provinces = this.provinces_json;
 			this.$http.get('/checkout/address/init').then(function (response) {
 				this.addresses = response.data.addresses;
 				if(this.addresses.length > 0 ){
@@ -81,7 +77,6 @@ Vue.component('choose-address', {
 			}).then(function (response) {
 				if(response.status == 200){
 					if(response.data.status == 1){
-						console.log(response.data);
 						window.location.assign("/checkout/shipping");
 					}else{
 					}

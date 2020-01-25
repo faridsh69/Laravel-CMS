@@ -5,9 +5,9 @@
 		<div class="card-body">
 	    	<div class="form-horizontal">
 				<div class="form-group">
-				    <label for="display_name" class="col-sm-2 control-label">نام و نام‌خانوادگی *</label>
+				    <label for="full_name" class="col-sm-2 control-label">نام و نام‌خانوادگی *</label>
 				    <div class="col-sm-4">
-				      	<input type="text" class="form-control" id="display_name" name="display_name" value="{{ Auth::user()->full_name }}" required>
+				      	<input type="text" class="form-control" id="full_name" name="full_name" value="{{ Auth::user()->full_name }}" required>
 				    </div>
 				    <label for="phone" class="col-sm-2 control-label">شماره همراه *</label>
 				    <div class="col-sm-4">
@@ -15,9 +15,9 @@
 				    </div>
 			  	</div>
 			  	<div class="form-group">
-				    <label for="sabet_phone" class="col-sm-2 control-label">شماره تلفن ثابت</label>
+				    <label for="telephone" class="col-sm-2 control-label">شماره تلفن ثابت</label>
 				    <div class="col-sm-4">
-				      	<input type="text" class="form-control" id="sabet_phone" name="sabet_phone" value="{{ old('sabet_phone') }}">
+				      	<input type="text" class="form-control" id="telephone" name="telephone" value="{{ old('telephone') }}">
 				    </div>
 				    <label for="postal_code" class="col-sm-2 control-label">کد پستی</label>
 				    <div class="col-sm-4">
