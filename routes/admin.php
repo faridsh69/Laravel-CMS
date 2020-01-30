@@ -86,7 +86,7 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'as' => 'user.'], funct
 	Route::get('identify/{id}', 'ResourceController@getIdentify')->name('identify');
 	Route::get('identify/{id}/national_card', 'ResourceController@getIdentifyNationalCard')->name('identify.national_card');
 	Route::get('identify/{id}/bank_card', 'ResourceController@getIdentifyBankCard')->name('identify.bank_card');
-	Route::get('identify/{id}/bank_card', 'ResourceController@getIdentifyCertificateCard')->name('identify.certificate_card');
+	Route::get('identify/{id}/certificate_card', 'ResourceController@getIdentifyCertificateCard')->name('identify.certificate_card');
 });
 Route::group(['prefix' => 'report', 'namespace' => 'Report', 'as' => 'report.'], function () {
 	Route::get('list', 'ReportController@index')->name('list.index');

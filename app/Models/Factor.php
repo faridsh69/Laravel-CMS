@@ -207,4 +207,27 @@ class Factor extends BaseModel
 
         return $this;
     }
+
+        public function addTagendToFactor($tagend)
+    {
+        if($tagend->type == 0)
+        { // absolute
+            if( $tagend->sign == 1){
+                $value = $tagend->value;
+            }else{
+                $value = (-1) * $tagend->value;
+            }
+        }else{ // percent
+            if( $tagend->sign == 1){
+                $value = ( $tagend->value * $this->total_price ) / 100;
+            }else{
+                $value = ( (-1) * $tagend->value * $this->total_price) / 100;
+            }
+        }
+        $this->tagends()->syncWithoutDetaching([
+            $tagend->id => [
+                'value' => $value,
+            ]
+        ]);
+    }
 }
