@@ -6,6 +6,7 @@ use Cache;
 use Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Scopes\LanguageScope;
 
 class BaseModel extends Model
 {
@@ -86,7 +87,7 @@ class BaseModel extends Model
                     'database' => 'default',
                     'rule' => 'boolean',
                     'help' => '',
-                    'form_type' => 'switch-m', // switch-m, checkbox, switch-bootstrap-m
+                    'form_type' => 'checkbox', // switch-m, checkbox, switch-bootstrap-m
                     'table' => false,
                 ],
                 'google_index' => [
@@ -139,6 +140,15 @@ class BaseModel extends Model
                     'multiple' => false,
                     'table' => false,
                 ],
+                'language' => [
+                    'name' => 'language',
+                    'type' => 'string',
+                    'database' => 'nullable',
+                    'rule' => '',
+                    'help' => 'Specify language.',
+                    'form_type' => 'enum',
+                    'form_enum_class' => 'AppLanguage',
+                ],
             ];
 
             $columns = $this->columns;
@@ -161,6 +171,11 @@ class BaseModel extends Model
     public function scopeMine($query)
     {
         return $query->where('user_id', Auth::id());
+    }
+
+    public function scopeLanguage($query)
+    {
+        return $query->where('language', config('app.locale'));
     }
 
     public function getAssetImageAttribute()

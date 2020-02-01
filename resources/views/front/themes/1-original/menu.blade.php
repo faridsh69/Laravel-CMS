@@ -11,7 +11,7 @@
                         <!-- Menu Area -->
                         <div class="collapse navbar-collapse" id="ca-navbar">
                             <ul class="navbar-nav ml-auto" id="nav">
-                                @foreach(\App\Models\Menu::orderBy('id', 'desc')->active()->take(7)->get()->toTree() as $menu_item)
+                                @foreach(\App\Models\Menu::orderBy('id', 'desc')->active()->language()->take(7)->get()->toTree() as $menu_item)
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('front.page.index', $menu_item->url) }}">
                                         {{ $menu_item->title }}

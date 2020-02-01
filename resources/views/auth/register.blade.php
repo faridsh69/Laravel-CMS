@@ -43,7 +43,7 @@
 							<a href="javascript:void(0)" class="m-link m-link--focus">
 								{{ __('terms and conditions') }}
 							</a>
-							.
+							
 							<span></span>
 						</label>
 						<span class="m-form__help"></span>

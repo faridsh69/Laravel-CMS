@@ -27,12 +27,18 @@ class ForgotPasswordController extends Controller
     {
         $phone = $request->input('phone');
         $user = User::where('phone', $phone)->first();
+        if(!$user){
+            $request->session()->flash('alert-danger', __('user not found'));
+
+            return redirect()->back();
+        }
         $user->password = Hash::make('123456');
         $user->save();
         
         $password_changed =  new PasswordChanged();
         $password_changed->setCode('123456');
         $user->notify($password_changed);
+        $request->session()->flash('alert-danger', __('password sent to your phone'));
 
         return redirect()->route('auth.login');
     }

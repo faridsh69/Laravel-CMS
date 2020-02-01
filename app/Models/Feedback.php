@@ -12,5 +12,6 @@ class Feedback extends BaseModel
         ['name' => 'image'],
         ['name' => 'description'],
         ['name' => 'activated'],
+        ['name' => 'language'],
     ];
 }

@@ -10,7 +10,7 @@ class PagesTableSeeder extends Seeder
     	$pages = [
             [
             	'id' => 1,
-            	'title' => 'خانه',
+            	'title' => 'Home',
             	'url' => '',
             	'content' => '',
             	'description' => '',
@@ -19,18 +19,18 @@ class PagesTableSeeder extends Seeder
             ],
             [
             	'id' => 2,
-            	'title' => 'درباره ما',
+            	'title' => 'About Us',
             	'url' => 'about-us',
-            	'content' => '<h1>درباره ما</h1>',
+            	'content' => '<h1>About Us</h1>',
             	'description' => 'description about about us page',
             	'activated' => 1,
             	'google_index' => 1,
             ],
             [
             	'id' => 3,
-            	'title' => 'محصولات',
+            	'title' => 'Products',
             	'url' => 'product',
-            	'content' => '<h1>product</h1>',
+            	'content' => '<h1>Products</h1>',
                 'description' => 'description about Services page',
             	'view_code_url' => 'front.components.product.index',
             	'activated' => 1,
@@ -38,44 +38,34 @@ class PagesTableSeeder extends Seeder
             ],
             [
                 'id' => 4,
-                'title' => 'مقالات',
+                'title' => 'Blog',
                 'url' => 'blog',
+                'content' => '<h1>Blog</h1>',
                 'description' => 'description about BLOGS page',
                 'activated' => 1,
                 'google_index' => 1,
             ],
             [
             	'id' => 5,
-            	'title' => 'تماس با ما',
+            	'title' => 'Contact Us',
             	'url' => 'contact-us',
-            	'content' => '<h1>تماس با ما</h1>',
+            	'content' => '<h1>Contact Us</h1>',
             	'description' => 'description about contact us page',
             	'activated' => 1,
             	'google_index' => 1,
             ],
             [
                 'id' => 6,
-                'title' => 'سبد خرید',
+                'title' => 'Basket',
                 'url' => 'basket',
                 'description' => 'description about basket page',
                 'activated' => 1,
                 'google_index' => 1,
             ],
-            // [
-            //  'id' => 4,
-            //  'title' => 'FAQ',
-            //  'url' => 'faq',
-            //  'content' => '<h1>CMS FAQ</h1><h2>CMS FAQ</h2>',
-            //  'description' => 'description about FAQ page',
-            //  'activated' => 1,
-            //  'google_index' => 1,
-            // ],
         ];
 
         foreach($pages as $page){
-            if(config('app.name') === 'eric'){
-                $pages = collect($pages)->whereIn('id', [1, 6])->toArray();
-            }
+            $page['language'] = config('app.locale');
             Page::updateOrCreate(['id' => $page['id']], $page);
         }
     }

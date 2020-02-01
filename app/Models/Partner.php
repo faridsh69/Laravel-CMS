@@ -12,5 +12,6 @@ class Partner extends BaseModel
         ['name' => 'image'],
         ['name' => 'description'],
         ['name' => 'activated'],
+        ['name' => 'language'],
     ];
 }

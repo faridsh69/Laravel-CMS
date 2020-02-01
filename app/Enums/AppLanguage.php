@@ -11,6 +11,6 @@ final class AppLanguage extends BaseEnum
 		'fa' => 'Persian',
 		'ar' => 'Arabic',
 		'fr' => 'French',
-		'' => 'French',
+		'sp' => 'Spanish',
 	];
 }

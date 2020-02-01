@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             @php
-                $countings = \App\Models\Counting::active()->get(); 
+                $countings = \App\Models\Counting::active()->language()->get(); 
             @endphp
             @foreach($countings as $counting)
             <div class="col-12 col-md-3 col-lg-3">

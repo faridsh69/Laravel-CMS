@@ -115,6 +115,7 @@ class Product extends BaseModel implements Commentable
             'form_type' => 'none',
             'table' => false,
         ],
+        ['name' => 'language'],
     ];
 
     // protected $appends = ['image_thumbnail', 'image_main'];

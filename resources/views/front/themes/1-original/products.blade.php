@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="app_screenshots_slides owl-carousel">
-                    @foreach(\App\Models\Product::active()->get() as $product)
+                    @foreach(\App\Models\Product::active()->language()->get() as $product)
                     <div class="single-shot">
                         <img src="{{ $product->asset_image }}" alt="products gallery">
                     </div>

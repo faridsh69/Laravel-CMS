@@ -50,15 +50,16 @@ class DefaultSettingsTableSeeder extends Seeder
         ];
 
         $developer_settings = [
-			'app_debug' => '1',
+			'app_debug' => true,
 			'app_env' => 'development',
-			'app_language' => 'fa',
+			'app_language' => 'en',
+			'auto_language' => true,
 			'theme' => '1-original',
 			'theme_color_1' => $this->random_color(),
 			'theme_color_2' => $this->random_color(),
-			'direction' => 'ltr',
+			'direction' => true, // rtl, ltr
 			'throttle' => '15,0.2',
-			'lazy_loading' => '1',
+			'lazy_loading' => true,
 			'scripts' => '<script> console.log("Laravel is running..."); </script>',
 			'seo_title_min' => '2',
 			'seo_title_max' => '70',
@@ -69,9 +70,14 @@ class DefaultSettingsTableSeeder extends Seeder
 			'sms_driver' => 'kavenegar',
 			'sms_sender' => '1000596446',
 			'sms_api_key' => '676873656D4557322F783138755654636852324A304B42417548425047383671344372796F6A417759444D3DXXXXXX',
-			'user_logined_sms' => '0',
-			'user_registered_mail' => '0',
-			'profile_updated_sms' => '0',
+			'user_registered_sms' => true,
+			'user_registered_mail' => false,
+			'user_logined_sms' => false,
+			'user_logined_mail' => false,
+			'profile_updated_sms' => false,
+			'profile_updated_mail' => false,
+			'factor_created_sms' => true,
+			'factor_created_mail' => false,			
         ];
         SettingGeneral::updateOrCreate(['id' => 1], $general_settings);
         SettingDeveloper::updateOrCreate(['id' => 1], $developer_settings);

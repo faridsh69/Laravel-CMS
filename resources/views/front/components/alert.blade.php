@@ -1,13 +1,10 @@
-<div class="row">
+<div class="row rtl-text-right">
     <div class="col-12">
         <div class="seperate"></div>
         @foreach (['danger', 'warning', 'success', 'info'] as $msg)
             @if(Session::has('alert-' . $msg))
                 <div class="alert alert-{{ $msg }} alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <ul class="list-unstyled">
+                    <ul class="list-unstyled" style="padding: 0px; margin: 0px;">
                         <li>{{ Session::get('alert-' . $msg) }}</li>
                     </ul>
                 </div>
@@ -15,10 +12,7 @@
         @endforeach
         @if ($errors->all())
             <div class="alert alert-danger alert-dismissible" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <ul class="list-unstyled">
+                <ul class="list-unstyled" style="padding: 0px; margin: 0px;">
                 @foreach($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach

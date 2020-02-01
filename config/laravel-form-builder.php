@@ -59,7 +59,7 @@ return [
         'app_url' => 'la-sitemap',
         'slug' => 'la-sitemap',
         'name' => 'la-header',
-        'app_name' => 'la-header',
+        'app_title' => 'la-header',
         'title' => 'la-header',
         'keywords' => 'la-key',
         'meta_image' => 'la-image',

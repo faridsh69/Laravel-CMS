@@ -9,7 +9,7 @@
             </div>
             @if(!isset($blogs))
                 @php
-                    $blogs = \App\Models\Blog::active()->paginate(4);
+                    $blogs = \App\Models\Blog::active()->language()->paginate(4);
                 @endphp
             @endif
             @each('front.themes.1-original.blog-card', $blogs, 'blog')

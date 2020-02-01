@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="{{ config('app.locale') }}" dir="{{ config('setting-developer.direction') }}">
+<html lang="{{ config('app.locale') }}" dir="{{ config('setting-developer.direction') ? 'ltr' : 'rtl' }}">
 	<head>
-		<meta name="robots" content="noindex">
 		@if(!config('setting-general.google_index'))
 			<meta name="robots" content="noindex">
 		@endif
@@ -18,11 +17,10 @@
 
 		<link href="{{ asset('css/admin/vendors.bundle.css') }}" rel="stylesheet" />
 		<link href="{{ asset('css/admin/style.bundle.css') }}" rel="stylesheet" />
+		<link href="{{ asset('css/admin/custome.css') }}" rel="stylesheet" />
 		@if(config('app.locale') === 'fa')
 		<link href="{{ asset('/css/admin/locale-fa.css') }}" rel="stylesheet" >
-		@else
 		@endif
-		<link href="{{ asset('css/admin/custome.css') }}" rel="stylesheet" />
 		@stack('style')
 
 		<link rel="shortcut icon" href="{{ asset(config('setting-general.favicon')) }}" />
@@ -32,6 +30,7 @@
 			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-grid--tablet-and-mobile m-grid--hor-tablet-and-mobile m-login m-login--1 m-login--singin" id="m_login">
 				<div class="m-grid__item m-grid__item--order-tablet-and-mobile-2 m-login__aside">
 					<div class="m-stack m-stack--hor m-stack--desktop">
+						@include('front.components.alert')
 						@yield('content')
 					</div>
 				</div>

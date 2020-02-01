@@ -1,4 +1,4 @@
-<div id="vue_id" style="direction: rtl">
+<div id="vue_id" class="rtl-text-right">
     <div class="section-heading text-center">
         <h2>{{ __('products title') }}</h2>
     	<div class="line-shape"></div>

@@ -10,27 +10,27 @@ class DefaultMenusTableSeeder extends Seeder
         $menus = [
             [
                 'id' => 1,
-                'title' => 'خانه',
+                'title' => 'Home',
                 'url' => '/',
             ],
             [
                 'id' => 2,
-                'title' => 'درباره ما',
+                'title' => 'About Us',
                 'url' => 'about-us',
             ],
             [
                 'id' => 3,
-                'title' => 'محصولات',
+                'title' => 'Product',
                 'url' => 'product',
             ],
             [
                 'id' => 4,
-                'title' => 'مقالات',
+                'title' => 'Blog',
                 'url' => 'blog',
             ],
             [
                 'id' => 5,
-                'title' => 'تماس با ما',
+                'title' => 'Contact Us',
                 'url' => 'contact-us',
             ],
         ];
@@ -48,6 +48,7 @@ class DefaultMenusTableSeeder extends Seeder
                     'title' => $menu['title'],
                     'url' => $menu['url'],
                     'activated' => 1,
+                    'language' => config('app.locale'),
                 ]
             );
 

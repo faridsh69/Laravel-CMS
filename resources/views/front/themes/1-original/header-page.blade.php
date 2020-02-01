@@ -1,5 +1,5 @@
 @php 
-    $sliders = \App\Models\Slider::orderBy('id', 'asc')->active()->get();
+    $sliders = \App\Models\Slider::orderBy('id', 'asc')->active()->language()->get();
     if(isset($sliders[0])){
         $first_slider = $sliders[0];
     }else{

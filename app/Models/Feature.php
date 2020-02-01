@@ -11,5 +11,6 @@ class Feature extends BaseModel
         ['name' => 'icon'],
         ['name' => 'description'],
         ['name' => 'activated'],
+        ['name' => 'language'],
     ];
 }

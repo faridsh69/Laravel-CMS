@@ -34,6 +34,14 @@ class SettingDeveloper extends BaseModel
             'form_enum_class' => 'AppLanguage',
         ],
         [
+            'name' => 'auto_language',
+            'type' => 'boolean',
+            'database' => 'default',
+            'rule' => 'boolean',
+            'help' => 'Choose language base on user IP.',
+            'form_type' => 'checkbox',
+        ],
+        [
             'name' => 'theme',
             'type' => 'string',
             'database' => 'nullable',
@@ -60,12 +68,11 @@ class SettingDeveloper extends BaseModel
         ],
         [
             'name' => 'direction',
-            'type' => 'string',
+            'type' => 'boolean',
             'database' => 'nullable',
             'rule' => 'required',
+            'form_type' => 'switch-bootstrap-m',
             'help' => 'Select direction for texts',
-            'form_type' => 'enum',
-            'form_enum_class' => 'HtmlDirection',
         ],
         [
             'name' => 'throttle',

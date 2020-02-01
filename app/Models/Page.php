@@ -25,6 +25,7 @@ class Page extends BaseModel
             'form_type' => '',
             'table' => false,
         ],
+        ['name' => 'language'],
     ];
 
     public function blocks()

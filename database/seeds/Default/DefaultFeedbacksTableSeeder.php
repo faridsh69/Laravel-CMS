@@ -46,6 +46,7 @@ class DefaultFeedbacksTableSeeder extends Seeder
         ];
 
         foreach($feedbacks as $feedback){
+            $feedback['language'] = config('app.locale');
             Feedback::updateOrCreate(['id' => $feedback['id']], $feedback);
         }
     }

@@ -81,15 +81,15 @@ class BaseFactory
                     elseif($name === 'email'){
                         $fake_data = $faker->email();
                     }
+                    elseif($name === 'language'){
+                        $fake_data = 'en';
+                    }
                     elseif($name === 'password'){
                         $password = $faker->realText(10);
                         $fake_data = $password;
                     }
                     elseif($database === 'none'){
                         continue;
-                    }
-                    elseif($form_type === 'email'){
-                        $fake_data = $faker->unique()->safeEmail;
                     }
                     elseif($type === 'text'){
                         $fake_data = 'Fake ' . $faker->realText(400);

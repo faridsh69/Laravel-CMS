@@ -92,6 +92,7 @@ class Tagend extends BaseModel
             'form_type' => '',
             'table' => false,
         ],
+        ['name' => 'language'],
     ];
 
 	public function scopeForced($query)

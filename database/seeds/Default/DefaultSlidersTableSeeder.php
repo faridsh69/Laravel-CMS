@@ -49,6 +49,7 @@ class DefaultSlidersTableSeeder extends Seeder
         ];
 
         foreach($sliders as $slider){
+            $slider['language'] = config('app.locale');
             Slider::updateOrCreate(['id' => $slider['id']], $slider);
         }
     }

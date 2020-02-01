@@ -39,6 +39,7 @@ class DefaultCountingsTableSeeder extends Seeder
         ];
 
         foreach($countings as $counting){
+            $counting['language'] = config('app.locale'); 
             Counting::updateOrCreate(['id' => $counting['id']], $counting);
         }
     }

@@ -20,5 +20,6 @@ class Pricing extends BaseModel
             'form_type' => '',
             'table' => true,
         ],
+        ['name' => 'language'],
     ];
 }

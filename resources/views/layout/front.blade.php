@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ config('app.locale') }}" dir="{{ config('setting-developer.direction') }}">
+<html lang="{{ config('app.locale') }}" dir="{{ config('setting-developer.direction') ? 'ltr' : 'rtl' }}">
 @include('common.front.header')
 <body>
 	@yield('content')

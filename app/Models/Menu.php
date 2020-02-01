@@ -33,6 +33,7 @@ class Menu extends BaseModel
             'form_type' => 'none',
             'table' => true,
         ],
+        ['name' => 'language'],
     ];
 
     protected $appends = ['text'];

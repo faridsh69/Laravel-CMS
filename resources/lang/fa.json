@@ -137,7 +137,7 @@
     "submit" : "ثبت اطلاعات",
     "back" : "بستن",
     "management" : "مدیریت",
-    "theme" : "زیباسازی",
+    "theme" : "تم سایت",
     "content" : "محتوا",
     "business" : "کسب و کار",
     "setting" : "تنظیمات",
@@ -349,8 +349,8 @@
     "app language" : "زبان اپلیکیشن",
     "theme color 1" : "رنگ تم شماره 1",
     "theme color 2" : "رنگ تم شماره 2",
-    "direction" : "راست چین و چپ چین",
-    "throttle" : "حداکثر تعداد درخاست ها در یم دقیقه",
+    "direction" : "جهت تم سایت",
+    "throttle" : "حداکثر تعداد درخاست ها در یک دقیقه",
     "lazy loading" : "لیزی لودینگ",
     "scripts" : "اسکریپت های اجرا شده در تمام صفحات",
     "seo title min" : "حداقل کاراکترهای عنوان",
@@ -389,5 +389,7 @@
     "updated at" : "به روز رسانی شده در",
     "Activity log for this model" : "تاریخچه تغییرات این مدل",
     "not verified" : "نامعتبر",
-    "verify" : "تایید"
+    "verify" : "تایید",
+    "user not found" : "کاربری با این مشخصات یافت نشد.",
+    "password sent to your phone" : "رمز عبور جدید به شماره همراه شما ارسال شد."
 }

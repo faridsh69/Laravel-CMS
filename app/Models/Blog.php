@@ -62,6 +62,7 @@ class Blog extends BaseModel implements Commentable
             'multiple' => true,
             'table' => false,
         ],
+        ['name' => 'language'],
     ];
 
     public function canBeRated(): bool

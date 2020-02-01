@@ -49,6 +49,7 @@ class DefaultServicesTableSeeder extends Seeder
         ];
 
         foreach($services as $service){
+            $service['language'] = config('app.locale');
             Service::updateOrCreate(['id' => $service['id']], $service);
         }
     }

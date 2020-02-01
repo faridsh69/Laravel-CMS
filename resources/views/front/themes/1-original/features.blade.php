@@ -10,7 +10,7 @@
         </div>
         <div class="row">
             @php
-                $features = \App\Models\Feature::active()->get();
+                $features = \App\Models\Feature::active()->language()->get();
             @endphp
             @foreach($features as $feature)
             <div class="col-12 col-md-4">

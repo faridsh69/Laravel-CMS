@@ -19,5 +19,6 @@ class Counting extends BaseModel
             'form_type' => '',
             'table' => true,
         ],
+        ['name' => 'language'],
     ];
 }

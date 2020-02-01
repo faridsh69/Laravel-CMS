@@ -29,6 +29,7 @@ class DefaultFeaturesTableSeeder extends Seeder
         ];
 
         foreach($features as $feature){
+            $feature['language'] = config('app.locale');
             Feature::updateOrCreate(['id' => $feature['id']], $feature);
         }
     }
