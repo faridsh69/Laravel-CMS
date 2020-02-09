@@ -68,16 +68,16 @@ class AppServiceProvider extends ServiceProvider
         config(['mail.reply_to.address' => config('setting-developer.email_username')]);
         if(config('setting-developer.auto_language')){
             $language = 'en';
-            try{
-                if(isset($_SERVER['REMOTE_ADDR'])){
-                    $ip = $_SERVER['REMOTE_ADDR'];
-                    $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}"));
-                    if(isset($details->country) && $details->country === 'IR'){
-                        $language = 'fa'; 
-                    }
-                }
-            }
-            catch(Exception $e){}
+            // try{
+            //     if(isset($_SERVER['REMOTE_ADDR'])){
+            //         $ip = $_SERVER['REMOTE_ADDR'];
+            //         $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}"));
+            //         if(isset($details->country) && $details->country === 'IR'){
+            //             $language = 'fa'; 
+            //         }
+            //     }
+            // }
+            // catch(Exception $e){}
             App::setLocale($language);
         }
         Validator::extend('seo_headings', '\App\Rules\SeoHeading@passes');
