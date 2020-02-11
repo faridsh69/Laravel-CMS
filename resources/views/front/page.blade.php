@@ -17,6 +17,6 @@
 @endphp
 @section('content')
 	@foreach($blocks as $block)
-		@includeIf('front.themes.' . config('setting-developer.theme') . '.' . $block->title)
+		@include('front.themes.' . config('setting-developer.theme') . '.' . $block->type)
 	@endforeach
 @endsection

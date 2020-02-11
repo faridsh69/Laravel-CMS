@@ -40,7 +40,7 @@ class BaseFactory
                         $fake_data = '<h1>h1</h1><h2>h2</h2>' . $faker->realText(400);
                     }
                     elseif($name === 'image' || $name === 'canonical_url'){
-                        $fake_data = $faker->url();
+                        $fake_data = null;
                     }
                     elseif($name === 'keywords'){
                         $fake_data = $faker->realText(100);

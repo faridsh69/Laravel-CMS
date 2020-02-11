@@ -65,7 +65,7 @@ class Factor extends BaseModel
         [
             'name' => 'status',
             'type' => 'unsignedTinyInteger',
-            'database' => 'default',
+            'database' => 'nullable',
             'rule' => '',
             'help' => '',
             'form_type' => '',

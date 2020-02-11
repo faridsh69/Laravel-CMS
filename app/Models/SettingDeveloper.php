@@ -99,6 +99,14 @@ class SettingDeveloper extends BaseModel
             'form_type' => 'textarea',
         ],
         [
+            'name' => 'styles',
+            'type' => 'text',
+            'database' => 'nullable',
+            'rule' => '',
+            'help' => 'This styles go into header of all pages',
+            'form_type' => 'textarea',
+        ],
+        [
             'name' => 'seo_title_min',
             'type' => 'string',
             'database' => 'nullable',

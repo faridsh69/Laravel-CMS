@@ -54,7 +54,7 @@ class DefaultSettingsTableSeeder extends Seeder
 			'app_env' => 'development',
 			'app_language' => 'en',
 			'auto_language' => true,
-			'theme' => '1-original',
+			'theme' => 'classic',
 			'theme_color_1' => $this->random_color(),
 			'theme_color_2' => $this->random_color(),
 			'direction' => true, // rtl, ltr

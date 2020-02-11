@@ -4,9 +4,9 @@ namespace Tests\Unit;
 
 use App\Services\BaseTest;
 
-class BlogTest extends BaseTest
+class ModuleTest extends BaseTest
 {
-    public $model = 'Blog';
+    public $model = 'Module';
 
     public function test()
     {

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}" dir="{{ config('setting-developer.direction') ? 'ltr' : 'rtl' }}">
-@include('common.front.header')
+<head>
+	@include('common.front.header')
+	@include('common.front.styles')
+</head>
 <body>
 	@yield('content')
-	@include('front.themes.' . config('setting-developer.theme') . '.scripts')
 	@include('common.front.scripts')
 </body>
 </html>
