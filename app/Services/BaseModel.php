@@ -115,7 +115,7 @@ class BaseModel extends Model
                     'rule' => '',
                     'help' => 'Select Icon from https://themify.me/themify-icons',
                     'form_type' => '',
-                    'table' => true,
+                    'table' => false,
                 ],
                 'full_name' => [
                     'name' => 'full_name',
@@ -124,7 +124,7 @@ class BaseModel extends Model
                     'rule' => '',
                     'help' => '',
                     'form_type' => '',
-                    'table' => true,
+                    'table' => false,
                 ],
                 'user_id' => [
                     'name' => 'user_id',

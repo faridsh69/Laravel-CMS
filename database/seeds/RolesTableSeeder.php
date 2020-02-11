@@ -7,9 +7,6 @@ use Spatie\Permission\Models\Role;
 
 class RolesTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run()
     {
         $models = config('services.models.permissions');

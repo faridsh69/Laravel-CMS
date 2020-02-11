@@ -38,26 +38,4 @@ class DefaultMenusTableSeeder extends Seeder
         $this->saveTree($menus, null);
     }
 
-    public function saveTree($menus, $parent)
-    {
-        foreach($menus as $menu)
-        {
-            $node = Menu::updateOrCreate(
-                ['id' => $menu['id']],
-                [
-                    'title' => $menu['title'],
-                    'url' => $menu['url'],
-                    'activated' => 1,
-                    'language' => config('app.locale'),
-                ]
-            );
-
-            if(isset($parent)){
-                $parent->appendNode($node);
-            }
-            if(isset($menu['children'])){
-                $this->saveTree($menu['children'], $node);
-            }
-        }
-    }
 }

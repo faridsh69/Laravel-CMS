@@ -7,7 +7,7 @@
                 <div class="col-12 h-100">
                     <div class="header-content h-100 d-flex align-items-center justify-content-between">
                         <div class="academy-logo">
-                            <a href="index.html"><img src="img/core-img/logo.png" alt=""></a>
+                            <a href="index.html"><img src="{{ asset('images/front/themes/classic/img/core-img/logo.png') }}" alt=""></a>
                         </div>
                         <div class="login-content">
                             <a href="#">Register / Login</a>
@@ -76,7 +76,7 @@
                                             <li><a href="#">Students Gallery</a></li>
                                         </ul>
                                         <div class="single-mega cn-col-4">
-                                            <img src="img/bg-img/bg-1.jpg" alt="">
+                                            <img src="{{ asset('images/front/themes/classic/img/bg-img/bg-1.jpg') }}" alt="">
                                         </div>
                                     </div>
                                 </li>

@@ -120,14 +120,6 @@ class SettingGeneral extends BaseModel
             'form_type' => 'image',
         ],
         [
-            'name' => 'subscribe_description',
-            'type' => 'text',
-            'database' => 'nullable',
-            'rule' => '',
-            'help' => 'It will show beside subscribe form.',
-            'form_type' => 'textarea',
-        ],
-        [
             'name' => 'google_map_code',
             'type' => 'text',
             'database' => 'nullable',

@@ -1,4 +1,4 @@
-<div class="testimonials-area section-padding-100 bg-img bg-overlay" style="background-image: url(img/bg-img/bg-2.jpg);">
+<div class="testimonials-area section-padding-100 bg-img bg-overlay" style="background-image: url({{ asset('images/front/themes/classic/img/bg-img/bg-2.jpg') }});">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -13,7 +13,7 @@
             <div class="col-12 col-md-6">
                 <div class="single-testimonial-area mb-100 d-flex wow fadeInUp" data-wow-delay="400ms">
                     <div class="testimonial-thumb">
-                        <img src="img/bg-img/t1.jpg" alt="">
+                        <img src="{{ asset('images/front/themes/classic/img/bg-img/t1.jpg') }}" alt="">
                     </div>
                     <div class="testimonial-content">
                         <h5>Great teachers</h5>
@@ -26,7 +26,7 @@
             <div class="col-12 col-md-6">
                 <div class="single-testimonial-area mb-100 d-flex wow fadeInUp" data-wow-delay="500ms">
                     <div class="testimonial-thumb">
-                        <img src="img/bg-img/t2.jpg" alt="">
+                        <img src="{{ asset('images/front/themes/classic/img/bg-img/t2.jpg') }}" alt="">
                     </div>
                     <div class="testimonial-content">
                         <h5>Easy and user friendly courses</h5>
@@ -39,7 +39,7 @@
             <div class="col-12 col-md-6">
                 <div class="single-testimonial-area mb-100 d-flex wow fadeInUp" data-wow-delay="600ms">
                     <div class="testimonial-thumb">
-                        <img src="img/bg-img/t3.jpg" alt="">
+                        <img src="{{ asset('images/front/themes/classic/img/bg-img/t3.jpg') }}" alt="">
                     </div>
                     <div class="testimonial-content">
                         <h5>I just love the courses here</h5>
@@ -52,7 +52,7 @@
             <div class="col-12 col-md-6">
                 <div class="single-testimonial-area mb-100 d-flex wow fadeInUp" data-wow-delay="700ms">
                     <div class="testimonial-thumb">
-                        <img src="img/bg-img/t4.jpg" alt="">
+                        <img src="{{ asset('images/front/themes/classic/img/bg-img/t4.jpg') }}" alt="">
                     </div>
                     <div class="testimonial-content">
                         <h5>One good academy</h5>

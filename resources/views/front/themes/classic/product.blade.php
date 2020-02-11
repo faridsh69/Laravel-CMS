@@ -26,7 +26,7 @@
                         <p>Cras vitae turpis lacinia, lacinia lacus non, fermentum nisi. Donec et sollicitudin est, in euismod.</p>
                         <a href="#" class="btn academy-btn btn-sm">See More</a>
                     </div>
-                    <div class="popular-course-thumb bg-img" style="background-image: url(img/bg-img/pc-1.jpg);"></div>
+                    <div class="popular-course-thumb bg-img" style="background-image: url({{ asset('images/front/themes/classic/img/bg-img/pc-1.jpg') }});"></div>
                 </div>
             </div>
             
@@ -46,7 +46,7 @@
                         <p>Cras vitae turpis lacinia, lacinia lacus non, fermentum nisi. Donec et sollicitudin est, in euismod.</p>
                         <a href="#" class="btn academy-btn btn-sm">See More</a>
                     </div>
-                    <div class="popular-course-thumb bg-img" style="background-image: url(img/bg-img/pc-2.jpg);"></div>
+                    <div class="popular-course-thumb bg-img" style="background-image: url({{ asset('images/front/themes/classic/img/bg-img/pc-2.jpg') }});"></div>
                 </div>
             </div>
             
@@ -66,7 +66,7 @@
                         <p>Cras vitae turpis lacinia, lacinia lacus non, fermentum nisi. Donec et sollicitudin est, in euismod.</p>
                         <a href="#" class="btn academy-btn btn-sm">See More</a>
                     </div>
-                    <div class="popular-course-thumb bg-img" style="background-image: url(img/bg-img/pc-3.jpg);"></div>
+                    <div class="popular-course-thumb bg-img" style="background-image: url({{ asset('images/front/themes/classic/img/bg-img/pc-3.jpg') }});"></div>
                 </div>
             </div>
             
@@ -86,7 +86,7 @@
                         <p>Cras vitae turpis lacinia, lacinia lacus non, fermentum nisi. Donec et sollicitudin est, in euismod.</p>
                         <a href="#" class="btn academy-btn btn-sm">See More</a>
                     </div>
-                    <div class="popular-course-thumb bg-img" style="background-image: url(img/bg-img/pc-4.jpg);"></div>
+                    <div class="popular-course-thumb bg-img" style="background-image: url({{ asset('images/front/themes/classic/img/bg-img/pc-4.jpg') }});"></div>
                 </div>
             </div>
         </div>

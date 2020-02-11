@@ -3,19 +3,19 @@
 use Conner\Tagging\Model\Tag;
 use Illuminate\Database\Seeder;
 
-class DefaultTagsTableSeeder extends Seeder
+class TagsTableSeeder extends Seeder
 {
     public function run()
     {
         $tags = [
         	[
-	        	'name' => 'Blog Tag 1',
+	        	'name' => 'Development',
         	],
         	[
-	        	'name' => 'Blog Tag 2',
+	        	'name' => 'Movie',
         	],
         	[
-	        	'name' => 'Blog Tag 3',
+	        	'name' => '2020',
         	],
         ];
 

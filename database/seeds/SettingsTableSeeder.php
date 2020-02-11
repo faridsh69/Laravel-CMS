@@ -5,7 +5,7 @@ use App\Models\SettingDeveloper;
 use App\Models\SettingGeneral;
 use Illuminate\Database\Seeder;
 
-class DefaultSettingsTableSeeder extends Seeder
+class SettingsTableSeeder extends Seeder
 {
 	public function run()
 	{
@@ -27,25 +27,26 @@ class DefaultSettingsTableSeeder extends Seeder
 			'ios_application_url' => 'https://sibapp.com/applications',
 			'introduce_video_url' => $image_folder_name . '5-video.mp4',
 			'introduce_video_cover_photo' => $image_folder_name . '4-video.png',
-			'subscribe_description' => 'General Setting Subscribe Description.',
-			'google_analytics_id' => '',
-			'hotjar_id' => '',
-			'crisp_id' => '',
+			'google_map_code' => 'AIzaSyAwuyLRa1uKNtbgx6xAJVmWy-zADgegA2s',
+			'google_analytics_id' => null,
+			'site_verification_google_code' => null,
+			'hotjar_id' => null,
+			'crisp_id' => null,
         ];
 
         $contact_settings = [
 			'email' => 'farid.sh69@gmail.com',
-			'mobile' => '+989120568203',
-			'phone' => '+989120568203',
-			'fax' => '+989120568203',
-			'address' => 'تهران - زعفرانیه - خیابان آصف - پلاک 93 - واحد 1',
+			'mobile' => '09120568203',
+			'phone' => '09120568203',
+			'fax' => '09120568203',
+			'address' => 'Frankfort, Germany',
 			'latitude' => '35.751138',
 			'longitude' => '51.323043',
 			'google_plus' => 'farid.sh69',
 			'twitter' => 'faridsh69',
 			'facebook' => 'faridsh69',
 			'skype' => 'live:faridsh69',
-			'instagram' => 'faridsh69',
+			'instagram' => 'it_manager_sh',
 			'telegram' => 'faridsh69',
         ];
 
@@ -61,6 +62,7 @@ class DefaultSettingsTableSeeder extends Seeder
 			'throttle' => '15,0.2',
 			'lazy_loading' => true,
 			'scripts' => '<script> console.log("Laravel is running..."); </script>',
+			'styles' => '<style>  </style>',
 			'seo_title_min' => '2',
 			'seo_title_max' => '70',
 			'seo_url_max' => '80',

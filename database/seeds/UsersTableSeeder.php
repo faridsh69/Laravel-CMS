@@ -3,7 +3,7 @@
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
-class DefaultUsersTableSeeder extends Seeder
+class UsersTableSeeder extends Seeder
 {
     public function run()
     {
@@ -15,7 +15,7 @@ class DefaultUsersTableSeeder extends Seeder
                 'url' => 'farid-shahidi',
                 'email' => 'farid.sh69@gmail.com',
                 'phone' => '09120568203',
-                'password' => bcrypt('123456'),
+                'password' => bcrypt('1111'),
                 'activated' => 1,
             ],
             [
@@ -25,7 +25,7 @@ class DefaultUsersTableSeeder extends Seeder
                 'url' => 'admin-cms',
                 'email' => 'admin@cms.com',
                 'phone' => '09120568204',
-                'password' => bcrypt('123456'),
+                'password' => bcrypt('1111'),
                 'activated' => 1,
             ],
         ];

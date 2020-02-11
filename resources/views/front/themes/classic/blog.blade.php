@@ -10,7 +10,7 @@
                             <div class="single-blog-post mb-50 wow fadeInUp" data-wow-delay="300ms">
                                 <!-- Post Thumb -->
                                 <div class="blog-post-thumb mb-50">
-                                    <img src="img/blog-img/1.jpg" alt="">
+                                    <img src="{{ asset('images/front/themes/classic/img/blog-img/1.jpg') }}" alt="">
                                 </div>
                                 <!-- Post Title -->
                                 <a href="#" class="post-title">Top ten courses we love for you to try</a>
@@ -30,7 +30,7 @@
                             <div class="single-blog-post mb-50 wow fadeInUp" data-wow-delay="400ms">
                                 <!-- Post Thumb -->
                                 <div class="blog-post-thumb mb-50">
-                                    <img src="img/blog-img/2.jpg" alt="">
+                                    <img src="{{ asset('images/front/themes/classic/img/blog-img/2.jpg') }}" alt="">
                                 </div>
                                 <!-- Post Title -->
                                 <a href="#" class="post-title">Top ten courses we love for you to try</a>
@@ -50,7 +50,7 @@
                             <div class="single-blog-post mb-50 wow fadeInUp" data-wow-delay="500ms">
                                 <!-- Post Thumb -->
                                 <div class="blog-post-thumb mb-50">
-                                    <img src="img/blog-img/3.jpg" alt="">
+                                    <img src="{{ asset('images/front/themes/classic/img/blog-img/3.jpg') }}" alt="">
                                 </div>
                                 <!-- Post Title -->
                                 <a href="#" class="post-title">Top ten courses we love for you to try</a>
@@ -106,7 +106,7 @@
                         <!-- Single Latest Blog Post -->
                         <div class="single-latest-blog-post d-flex mb-30">
                             <div class="latest-blog-post-thumb">
-                                <img src="img/blog-img/lb-1.jpg" alt="">
+                                <img src="{{ asset('images/front/themes/classic/img/blog-img/lb-1.jpg') }}" alt="">
                             </div>
                             <div class="latest-blog-post-content">
                                 <a href="#" class="post-title">
@@ -118,7 +118,7 @@
                         <!-- Single Latest Blog Post -->
                         <div class="single-latest-blog-post d-flex mb-30">
                             <div class="latest-blog-post-thumb">
-                                <img src="img/blog-img/lb-2.jpg" alt="">
+                                <img src="{{ asset('images/front/themes/classic/img/blog-img/lb-2.jpg') }}" alt="">
                             </div>
                             <div class="latest-blog-post-content">
                                 <a href="#" class="post-title">
@@ -130,7 +130,7 @@
                         <!-- Single Latest Blog Post -->
                         <div class="single-latest-blog-post d-flex mb-30">
                             <div class="latest-blog-post-thumb">
-                                <img src="img/blog-img/lb-3.jpg" alt="">
+                                <img src="{{ asset('images/front/themes/classic/img/blog-img/lb-3.jpg') }}" alt="">
                             </div>
                             <div class="latest-blog-post-content">
                                 <a href="#" class="post-title">
@@ -142,7 +142,7 @@
                         <!-- Single Latest Blog Post -->
                         <div class="single-latest-blog-post d-flex">
                             <div class="latest-blog-post-thumb">
-                                <img src="img/blog-img/lb-4.jpg" alt="">
+                                <img src="{{ asset('images/front/themes/classic/img/blog-img/lb-4.jpg') }}" alt="">
                             </div>
                             <div class="latest-blog-post-content">
                                 <a href="#" class="post-title">
@@ -155,7 +155,7 @@
 
                     <!-- Add Widget -->
                     <div class="add-widget">
-                        <a href="#"><img src="img/blog-img/add.png" alt=""></a>
+                        <a href="#"><img src="{{ asset('images/front/themes/classic/img/blog-img/add.png') }}" alt=""></a>
                     </div>
                 </div>
             </div>
