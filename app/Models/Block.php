@@ -7,8 +7,6 @@ use App\Services\BaseModel;
 class Block extends BaseModel
 {
     public $columns = [
-        ['name' => 'title'],
-        ['name' => 'activated'],
         [
             'name' => 'type',
             'type' => 'string',
@@ -19,6 +17,8 @@ class Block extends BaseModel
             'form_enum_class' => 'BlockType',
             'table' => true,
         ],
+        ['name' => 'order'],
+        ['name' => 'activated'],
         [
             'name' => 'show_all_pages',
             'type' => 'boolean',
@@ -41,15 +41,6 @@ class Block extends BaseModel
             'multiple' => true,
             'table' => false,
         ],
-        [
-            'name' => 'order',
-            'type' => 'integer',
-            'database' => 'nullable',
-            'rule' => 'required|numeric',
-            'help' => 'Order of block, lower order will be on the top of others',
-            'form_type' => '',
-            'table' => true,
-        ],
     ];
 
     public function pages()
@@ -70,10 +61,11 @@ class Block extends BaseModel
                 $output_blocks[] = $block;
             }
 
-            if(! $block->show_all_pages && array_search($page_id, $block->pages->pluck('id')->toArray(), true) !== false){
+            if(!$block->show_all_pages && array_search($page_id, $block->pages->pluck('id')->toArray(), true) !== false){
                 $output_blocks[] = $block;
             }
         }
+
         return $output_blocks;
     }
 }

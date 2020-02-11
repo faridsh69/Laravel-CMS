@@ -17,14 +17,7 @@ class Category extends BaseModel
         ['name' => 'activated'],
         ['name' => 'google_index'],
         ['name' => 'canonical_url'],
-        [
-            'name' => 'order',
-            'type' => 'integer',
-            'database' => '',
-            'rule' => 'nullable',
-            'form_type' => '',
-            'table' => true,
-        ],
+        ['name' => 'order'],
         [
             'name' => 'parent_id',
             'type' => 'bigInteger',

@@ -7,8 +7,6 @@ use Kalnoy\Nestedset\NodeTrait;
 
 class Menu extends BaseModel
 {
-    use NodeTrait;
-
     public $columns = [
         ['name' => 'title'],
         ['name' => 'url'],

@@ -149,6 +149,15 @@ class BaseModel extends Model
                     'form_type' => 'enum',
                     'form_enum_class' => 'AppLanguage',
                 ],
+                'order' => [
+                    'name' => 'order',
+                    'type' => 'integer',
+                    'database' => 'nullable',
+                    'rule' => 'nullable|numeric',
+                    'help' => 'Sort by this column, lower order will be ahead',
+                    'form_type' => '',
+                    'table' => false,
+                ],
             ];
 
             $columns = $this->columns;

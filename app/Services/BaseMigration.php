@@ -64,7 +64,7 @@ class BaseMigration extends Migration
                 }else{
                     dump('Model Count: ' . $repository::count());
                     dump('Your data will be destroyes, You can pause the proccess with Ctrl + C, you have 5 seconds to do that!');
-                    sleep(5);
+                    sleep(6);
                 }
             }
             Schema::dropIfExists($this->table_name);
@@ -90,7 +90,7 @@ class BaseMigration extends Migration
                 }
             }
             // for sortable models need to add another column based on trait soratable
-            if($table_name === 'categories' || $table_name === 'menus' || $table_name === 'blocks'){
+            if($table_name === 'categories'){
                 $table->nestedSet();
             }
             // for users table need to have rememberToken

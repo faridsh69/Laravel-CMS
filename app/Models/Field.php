@@ -10,6 +10,7 @@ class Field extends BaseModel
     public $columns = [
         ['name' => 'title'],
         ['name' => 'activated'],
+        ['name' => 'order'],
         [
             'name' => 'type',
             'type' => 'string',
@@ -27,14 +28,6 @@ class Field extends BaseModel
             'rule' => 'boolean',
             'help' => '',
             'form_type' => 'switch-bootstrap-m', // switch-m
-            'table' => true,
-        ],
-        [
-            'name' => 'order',
-            'type' => 'integer',
-            'database' => 'nullable',
-            'rule' => 'nullable',
-            'form_type' => '',
             'table' => true,
         ],
         [

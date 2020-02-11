@@ -123,59 +123,12 @@
 			'icon' => 'flaticon-app',
 		],
 		[
-			'order' => 30,
-			'title' => 'Menu',
-			'type' => 'submenu',
-			'icon' => 'flaticon-more',
-		],
-		[
-			'order' => 33,
-			'title' => 'Slider',
+			'order' => 27,
+			'title' => 'Module',
 			'type' => 'submenu',
 			'icon' => 'flaticon-layers',
 		],
-		[
-			'order' => 36,
-			'title' => 'Feature',
-			'type' => 'submenu',
-			'icon' => 'flaticon-technology-1',
-		],
-		[
-			'order' => 39,
-			'title' => 'Counting',
-			'type' => 'submenu',
-			'icon' => 'flaticon-diagram',
-		],
-		[
-			'order' => 42,
-			'title' => 'Feedback',
-			'type' => 'submenu',
-			'icon' => 'flaticon-comment',
-		],
-		[
-			'order' => 45,
-			'title' => 'Service',
-			'type' => 'submenu',
-			'icon' => 'flaticon-open-box',
-		],
-		[
-			'order' => 48,
-			'title' => 'Team',
-			'type' => 'submenu',
-			'icon' => 'flaticon-users',
-		],
-		[
-			'order' => 51,
-			'title' => 'Partner',
-			'type' => 'submenu',
-			'icon' => 'flaticon-network',
-		],
-		[
-			'order' => 54,
-			'title' => 'Pricing',
-			'type' => 'submenu',
-			'icon' => 'flaticon-coins',
-		],
+		
 		[
 			'order' => 55,
 			'title' => 'business',
@@ -256,6 +209,63 @@
 			'icon' => 'flaticon-comment',
 		],
 	];
+
+	$deleted_menu_items = [
+		[
+			'order' => 30,
+			'title' => 'Menu',
+			'type' => 'submenu',
+			'icon' => 'flaticon-more',
+		],
+		[
+			'order' => 33,
+			'title' => 'Slider',
+			'type' => 'submenu',
+			'icon' => 'flaticon-layers',
+		],
+		[
+			'order' => 36,
+			'title' => 'Feature',
+			'type' => 'submenu',
+			'icon' => 'flaticon-technology-1',
+		],
+		[
+			'order' => 39,
+			'title' => 'Counting',
+			'type' => 'submenu',
+			'icon' => 'flaticon-diagram',
+		],
+		[
+			'order' => 42,
+			'title' => 'Feedback',
+			'type' => 'submenu',
+			'icon' => 'flaticon-comment',
+		],
+		[
+			'order' => 45,
+			'title' => 'Service',
+			'type' => 'submenu',
+			'icon' => 'flaticon-open-box',
+		],
+		[
+			'order' => 48,
+			'title' => 'Team',
+			'type' => 'submenu',
+			'icon' => 'flaticon-users',
+		],
+		[
+			'order' => 51,
+			'title' => 'Partner',
+			'type' => 'submenu',
+			'icon' => 'flaticon-network',
+		],
+		[
+			'order' => 54,
+			'title' => 'Pricing',
+			'type' => 'submenu',
+			'icon' => 'flaticon-coins',
+		],
+		];
 @endphp
 
 <button class="m-aside-left-close  m-aside-left-close--skin-dark " id="m_aside_left_close_btn">

@@ -47,15 +47,7 @@ class Product extends BaseModel implements Commentable
             'form_type' => 'none',
             'table' => false,
         ],
-        [
-            'name' => 'order',
-            'type' => 'integer',
-            'database' => 'nullable',
-            'rule' => '',
-            'help' => '',
-            'form_type' => 'none',
-            'table' => false,
-        ],
+        ['name' => 'order'],
         [
             'name' => 'category_id',
             'type' => 'bigInteger',
