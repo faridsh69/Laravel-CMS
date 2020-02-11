@@ -202,58 +202,58 @@
 		],
 		[
 			'order' => 60,
-			'title' => 'Comment',
-			'type' => 'submenu',
-			'icon' => 'flaticon-comment',
-		],
-		[
-			'order' => 63,
-			'title' => 'Form',
-			'type' => 'submenu',
-			'icon' => 'flaticon-edit',
-		],
-		[
-			'order' => 66,
-			'title' => 'Field',
-			'type' => 'submenu',
-			'icon' => 'flaticon-comment',
-		],
-		[
-			'order' => 69,
 			'title' => 'content',
 			'type' => 'section',
 			'permission' => 'Blog',
 		],
 		[
-			'order' => 72,
+			'order' => 63,
 			'title' => 'Blog',
 			'type' => 'submenu',
 			'icon' => 'flaticon-list-3',
 		],
 		[
-			'order' => 75,
+			'order' => 66,
 			'title' => 'Page',
 			'type' => 'submenu',
 			'icon' => 'flaticon-web',
 		],
 		[
-			'order' => 78,
+			'order' => 69,
 			'title' => 'Category',
 			'type' => 'submenu',
 			'icon' => 'flaticon-map',
 		],
 		[
-			'order' => 81,
+			'order' => 72,
 			'title' => 'Tag',
 			'type' => 'submenu',
 			'icon' => 'flaticon-interface-9',
 		],
 		[
-			'order' => 84,
+			'order' => 75,
 			'title' => 'Media',
 			'permission' => 'Image',
 			'type' => 'submenu',
 			'icon' => 'flaticon-open-box',
+		],
+				[
+			'order' => 78,
+			'title' => 'Comment',
+			'type' => 'submenu',
+			'icon' => 'flaticon-comment',
+		],
+		[
+			'order' => 81,
+			'title' => 'Form',
+			'type' => 'submenu',
+			'icon' => 'flaticon-edit',
+		],
+		[
+			'order' => 84,
+			'title' => 'Field',
+			'type' => 'submenu',
+			'icon' => 'flaticon-comment',
 		],
 	];
 @endphp
@@ -293,7 +293,7 @@
 			@endcan
 				@if($permission)
 				<li aria-haspopup="true" class="m-menu__item 
-					@if(Route::currentRouteName() == $item['route']) m-menu__item--active @endif" >
+					@if(Request::segment(2) == strtolower($item['title'])) m-menu__item--active @endif" >
 					<a href="{{ route($item['route']) }}" class="m-menu__link ">
 						<i class="m-menu__link-icon {{ $item['icon'] }}"></i>
 						<span class="m-menu__link-title">

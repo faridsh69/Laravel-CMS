@@ -34,17 +34,6 @@ class BaseModel extends Model
                     'form_type' => '',
                     'table' => true,
                 ],
-                'url' => [
-                    'name' => 'url',
-                    'type' => 'string',
-                    'database' => 'nullable',
-                    'rule' => '',
-                    // 'rule' => 'max:' . config('setting-developer.seo_url_max')
-                    // . '|regex:/^[a-z0-9-]+$/',
-                    'help' => 'Url should be unique, contain [a-z, 0-9, -], required for seo',
-                    'form_type' => '',
-                    'table' => false,
-                ],
                 'description' => [
                     'name' => 'description',
                     'type' => 'text',
@@ -61,6 +50,17 @@ class BaseModel extends Model
                     'rule' => 'nullable', // only page and blog need seo_header
                     'help' => '',
                     'form_type' => 'ckeditor',
+                    'table' => false,
+                ],
+                'url' => [
+                    'name' => 'url',
+                    'type' => 'string',
+                    'database' => 'nullable',
+                    'rule' => '',
+                    // 'rule' => 'max:' . config('setting-developer.seo_url_max')
+                    // . '|regex:/^[a-z0-9-]+$/',
+                    'help' => 'Url should be unique, contain [a-z, 0-9, -], required for seo',
+                    'form_type' => '',
                     'table' => false,
                 ],
                 'image' => [
