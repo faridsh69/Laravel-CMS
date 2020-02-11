@@ -193,6 +193,8 @@
     "menu" : "Menu",
     "menu_manager" : "Menu manager",
     "menu_create" : "Create new menu",
+    "module_manager" : "Module manager",
+    "module_create" : "Create new module",
     "slider" : "Slider",
     "slider_manager" : "Slider manager",
     "slider_create" : "Create new slider",

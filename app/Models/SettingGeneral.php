@@ -128,6 +128,14 @@ class SettingGeneral extends BaseModel
             'form_type' => 'textarea',
         ],
         [
+            'name' => 'google_map_code',
+            'type' => 'text',
+            'database' => 'nullable',
+            'rule' => '',
+            'help' => 'Google map code for using map in site.',
+            'form_type' => '',
+        ],
+        [
             'name' => 'site_verification_google_code',
             'type' => 'text',
             'database' => 'nullable',
