@@ -9,4 +9,7 @@
 	.teachers-area{
 		margin-top: 50px;
 	}
+	.logo{
+		max-height: 70px;
+	}
 </style>

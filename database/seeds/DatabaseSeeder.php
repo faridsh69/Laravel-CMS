@@ -10,8 +10,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(ModulesTableSeeder::class);
-        dd(1);
+        // dd(1);
         // $this->call(BitcointProductsTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(SettingsTableSeeder::class);
@@ -19,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TagsTableSeeder::class);
         $this->call(PagesTableSeeder::class);
         $this->call(BlocksTableSeeder::class);
+        $this->call(ModulesTableSeeder::class);
         $this->call(RolesTableSeeder::class);
         $this->call(BaseSeeder::class);
     }

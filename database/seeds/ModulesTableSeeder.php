@@ -173,11 +173,41 @@ class ModulesTableSeeder extends Seeder
                 'url' => '/',
             ],
             [
-                'title' => 'About Us',
-                'url' => 'about-us',
+                'title' => 'How to use',
+                'url' => 'how-to-use',
             ],
             [
-                'title' => 'Product',
+                'title' => 'Introduction',
+                'url' => 'introduction',
+                'parent_url' => 'how-to-use',
+            ],
+            [
+                'title' => 'Form / Table',
+                'url' => 'form-table',
+                'parent_url' => 'how-to-use',
+            ],
+            [
+                'title' => 'Models',
+                'url' => 'models',
+                'parent_url' => 'how-to-use',
+            ],
+            [
+                'title' => 'Translation',
+                'url' => 'translation',
+                'parent_url' => 'how-to-use',
+            ],
+            [
+                'title' => 'Notification',
+                'url' => 'Notification',
+                'parent_url' => 'how-to-use',
+            ],
+            [
+                'title' => 'Packages',
+                'url' => 'packages',
+                'parent_url' => 'how-to-use',
+            ],
+            [
+                'title' => 'Products',
                 'url' => 'product',
             ],
             [
@@ -189,12 +219,21 @@ class ModulesTableSeeder extends Seeder
                 'url' => 'blog',
             ],
             [
+                'title' => 'About Us',
+                'url' => 'about-us',
+            ],
+            [
                 'title' => 'Contact Us',
                 'url' => 'contact-us',
             ],
         ];
 
         foreach($menus as $menu){
+            if( isset($menu['parent_url']) ){
+                $parent = Module::where('url', $menu['parent_url'])->first();
+                $menu['parent_id'] = $parent->id;
+                unset($menu['parent_url']);
+            }
         	$menu['type'] = 'menu';
             $menu['language'] = config('app.locale');
             $menu['activated'] = 1;
