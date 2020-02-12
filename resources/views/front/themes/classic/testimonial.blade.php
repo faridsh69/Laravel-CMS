@@ -9,63 +9,25 @@
             </div>
         </div>
         <div class="row">
-            <!-- Single Testimonials Area -->
+            @foreach($modules->where('type', 'testimonial')->take(4) as $testimonial_item)
             <div class="col-12 col-md-6">
                 <div class="single-testimonial-area mb-100 d-flex wow fadeInUp" data-wow-delay="400ms">
                     <div class="testimonial-thumb">
-                        <img src="{{ asset('images/front/themes/classic/img/bg-img/t1.jpg') }}" alt="">
+                        <img src="{{ $testimonial_item->asset_image }}" alt="testimonial image">
                     </div>
                     <div class="testimonial-content">
-                        <h5>Great teachers</h5>
-                        <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit amet tellus blandit. Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. Etiam nec odio vestibulum est mat tis effic iturut magna.</p>
-                        <h6><span>Maria Smith,</span> Student</h6>
+                        <h5>{{ $testimonial_item->title }}</h5>
+                        <p>{{ $testimonial_item->description }}</p>
+                        <h6><span>{{ $testimonial_item->full_name }}</span></h6>
                     </div>
                 </div>
             </div>
-            <!-- Single Testimonials Area -->
-            <div class="col-12 col-md-6">
-                <div class="single-testimonial-area mb-100 d-flex wow fadeInUp" data-wow-delay="500ms">
-                    <div class="testimonial-thumb">
-                        <img src="{{ asset('images/front/themes/classic/img/bg-img/t2.jpg') }}" alt="">
-                    </div>
-                    <div class="testimonial-content">
-                        <h5>Easy and user friendly courses</h5>
-                        <p>Retiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit amet tellus blandit. Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul.</p>
-                        <h6><span>Shawn Gaines,</span> Student</h6>
-                    </div>
-                </div>
-            </div>
-            <!-- Single Testimonials Area -->
-            <div class="col-12 col-md-6">
-                <div class="single-testimonial-area mb-100 d-flex wow fadeInUp" data-wow-delay="600ms">
-                    <div class="testimonial-thumb">
-                        <img src="{{ asset('images/front/themes/classic/img/bg-img/t3.jpg') }}" alt="">
-                    </div>
-                    <div class="testimonial-content">
-                        <h5>I just love the courses here</h5>
-                        <p>Nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. Etiam nec odio vestibulum est mat tis effic iturut magna. Pellentesque sit amet tellus blandit. Etiam nec odio ves tibul.</p>
-                        <h6><span>Ross Cooper,</span> Student</h6>
-                    </div>
-                </div>
-            </div>
-            <!-- Single Testimonials Area -->
-            <div class="col-12 col-md-6">
-                <div class="single-testimonial-area mb-100 d-flex wow fadeInUp" data-wow-delay="700ms">
-                    <div class="testimonial-thumb">
-                        <img src="{{ asset('images/front/themes/classic/img/bg-img/t4.jpg') }}" alt="">
-                    </div>
-                    <div class="testimonial-content">
-                        <h5>One good academy</h5>
-                        <p>Vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. Etiam nec odio vestibu lum est mat tis effic iturut magna. Pellentesque sit amet tellus blandit. Etiam nec odio ves tibul. Etiam nec odio vestibulum est mat tis effic iturut magnaNec odio vestibulum est mattis effic iturut magna.</p>
-                        <h6><span>James Williams,</span> Student</h6>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
         <div class="row">
             <div class="col-12">
                 <div class="load-more-btn text-center wow fadeInUp" data-wow-delay="800ms">
-                    <a href="#" class="btn academy-btn">See More</a>
+                    <a href="javascript:void(0)" class="btn academy-btn">See More</a>
                 </div>
             </div>
         </div>

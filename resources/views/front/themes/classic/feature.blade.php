@@ -1,7 +1,21 @@
 <div class="academy-courses-area section-padding-100-0">
     <div class="container">
         <div class="row">
-            <!-- Single Course Area -->
+            @foreach($modules->where('type', 'feature')->take(6) as $feature_item)
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="single-course-area d-flex align-items-center mb-100 wow fadeInUp" data-wow-delay="300ms">
+                    <div class="course-icon">
+                        <i class="{{ $feature_item->icon }}"></i>
+                    </div>
+                    <div class="course-content">
+                        <h4>{{ $feature_item->title }}</h4>
+                        <p>{{ $feature_item->description }}</p>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        <div class="row display-none">
             <div class="col-12 col-sm-6 col-lg-4">
                 <div class="single-course-area d-flex align-items-center mb-100 wow fadeInUp" data-wow-delay="300ms">
                     <div class="course-icon">
@@ -13,7 +27,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Single Course Area -->
             <div class="col-12 col-sm-6 col-lg-4">
                 <div class="single-course-area d-flex align-items-center mb-100 wow fadeInUp" data-wow-delay="400ms">
                     <div class="course-icon">
@@ -25,7 +38,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Single Course Area -->
             <div class="col-12 col-sm-6 col-lg-4">
                 <div class="single-course-area d-flex align-items-center mb-100 wow fadeInUp" data-wow-delay="500ms">
                     <div class="course-icon">
@@ -37,7 +49,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Single Course Area -->
             <div class="col-12 col-sm-6 col-lg-4">
                 <div class="single-course-area d-flex align-items-center mb-100 wow fadeInUp" data-wow-delay="600ms">
                     <div class="course-icon">
@@ -49,7 +60,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Single Course Area -->
             <div class="col-12 col-sm-6 col-lg-4">
                 <div class="single-course-area d-flex align-items-center mb-100 wow fadeInUp" data-wow-delay="700ms">
                     <div class="course-icon">
@@ -61,7 +71,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Single Course Area -->
             <div class="col-12 col-sm-6 col-lg-4">
                 <div class="single-course-area d-flex align-items-center mb-100 wow fadeInUp" data-wow-delay="800ms">
                     <div class="course-icon">

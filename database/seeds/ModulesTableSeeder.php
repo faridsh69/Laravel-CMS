@@ -16,26 +16,30 @@ class ModulesTableSeeder extends Seeder
         $folder_name = substr($database_name, 9, 6);
         $image_folder_name = '/storage/photos/shares/' . $folder_name . '/';
 
+        $modules = Module::get();
+        foreach($modules as $module){
+            $module->delete();
+        }
         $countings = [
             [
-            	'title' => 'SOLD',
-            	'description' => 1038,
-            	'icon' => 'ion-arrow-down-a',
+            	'title' => 'Courses Available',
+            	'description' => 130,
+            	'icon' => 'icon-agenda-1',
             ],
             [
-            	'title' => 'Happy Clients',
+            	'title' => 'Developers',
             	'description' => 339,
-            	'icon' => 'ion-happy-outline',
+            	'icon' => 'icon-assistance',
             ],
             [
-            	'title' => 'Active Members',
+            	'title' => 'Online Students',
             	'description' => 187,
-            	'icon' => 'ion-person',
+            	'icon' => 'icon-id-card',
             ],
             [
-            	'title' => 'Satisfy Rate',
-            	'description' => 97,
-            	'icon' => 'ion-ios-star-outline',
+            	'title' => 'Projects',
+            	'description' => 37,
+            	'icon' => 'icon-message',
             ],
         ];
 
@@ -49,34 +53,69 @@ class ModulesTableSeeder extends Seeder
 
         $features = [
             [
+                'type' => 'main_feature',
                 'title' => 'Feature Title 1',
-                'icon' => 'ti-mobile',
-                'description' => 'Feature Description 1, ti-mobile, Feature Description 1, ti-mobile, Feature Description 1, ti-mobile, Feature Description 1, ti-mobile, Feature Description 1, ti-mobile, ',
+                'icon' => 'icon-agenda-1', // ti-mobile
+                'description' => 'Feature Description, Feature Description, Feature Description, ',
             ],
             [
+                'type' => 'main_feature',
                 'title' => 'Feature Title 2',
-                'icon' => 'ti-money',
-                'description' => 'Feature Description 2 - ti-money - Feature Description 2 - ti-money - Feature Description 2 - ti-money - Feature Description 2 - ti-money - Feature Description 2 - ti-money',
+                'icon' => 'icon-assistance', // ti-money
+                'description' => 'Feature Description, Feature Description, Feature Description',
             ],
             [
+                'type' => 'main_feature',
                 'title' => 'Feature Title 3',
-                'icon' => 'ti-settings',
-                'description' => 'Feature description 3 - ti-settings, Feature description 3 - ti-settings, Feature description 3 - ti-settings, Feature description 3 - ti-settings, Feature description 3 - ti-settings',
+                'icon' => 'icon-telephone-3', // ti-settings
+                'description' => 'Feature Description, Feature Description, Feature Description',
+            ],
+            [
+                'type' => 'feature',
+                'title' => 'Feature Title 1',
+                'icon' => 'icon-id-card',
+                'description' => 'Feature Description, Feature Description, Feature Description,',
+            ],
+            [
+                'type' => 'feature',
+                'title' => 'Feature Title 2',
+                'icon' => 'icon-worldwide',
+                'description' => 'Feature Description, Feature Description, Feature Description,',
+            ],
+            [
+                'type' => 'feature',
+                'title' => 'Feature Title 3',
+                'icon' => 'icon-map',
+                'description' => 'Feature Description, Feature Description, Feature Description,',
+            ],
+            [
+                'type' => 'feature',
+                'title' => 'Feature Title 4',
+                'icon' => 'icon-like',
+                'description' => 'Feature Description, Feature Description, Feature Description,',
+            ],
+            [
+                'type' => 'feature',
+                'title' => 'Feature Title 5',
+                'icon' => 'icon-responsive',
+                'description' => 'Feature Description, Feature Description, Feature Description,',
+            ],
+            [
+                'type' => 'feature',
+                'title' => 'Feature Title 6',
+                'icon' => 'icon-message',
+                'description' => 'Feature Description, Feature Description, Feature Description',
             ],
         ];
 
         foreach($features as $feature){
-        	$feature['type'] = 'main_feature';
             $feature['language'] = config('app.locale');
             $feature['activated'] = 1;
             
             Module::updateOrCreate($feature);
-
-            $feature['type'] = 'feature';            
-            Module::updateOrCreate($feature);
         }
 
-        $feedbacks = [
+        $testimonials = [
             [
             	'title' => '#13 Customer',
             	'full_name' => 'Eric Ez',
@@ -103,12 +142,12 @@ class ModulesTableSeeder extends Seeder
             ],
         ];
 
-        foreach($feedbacks as $feedback){
-        	$feedback['type'] = 'testimonial';
-            $feedback['language'] = config('app.locale');
-            $feedback['activated'] = 1;
+        foreach($testimonials as $testimonial){
+        	$testimonial['type'] = 'testimonial';
+            $testimonial['language'] = config('app.locale');
+            $testimonial['activated'] = 1;
             
-            Module::updateOrCreate($feedback);
+            Module::updateOrCreate($testimonial);
         }
 
         $sliders = [
@@ -159,72 +198,112 @@ class ModulesTableSeeder extends Seeder
         ];
 
         foreach($services as $service){
-        	$service['type'] = 'partner';
-        	$service['title'] = 'partner';
+        	$service['type'] = 'service';
+        	$service['title'] = 'service';
             $service['language'] = config('app.locale');
             $service['activated'] = 1;
             
             Module::updateOrCreate($service);
         }
 
+        $partners = [
+            [
+                'image' => $image_folder_name . '9-partner-1.png',
+            ],
+            [
+                'image' => $image_folder_name . '9-partner-2.png',
+            ],
+            [
+                'image' => $image_folder_name . '9-partner-3.png',
+            ],
+            [
+                'image' => $image_folder_name . '9-partner-4.png',
+            ],
+            [
+                'image' => $image_folder_name . '9-partner-5.png',
+            ],
+        ];
+
+        foreach($partners as $partner){
+            $partner['type'] = 'partner';
+            $partner['title'] = 'partner';
+            $partner['language'] = config('app.locale');
+            $partner['activated'] = 1;
+            
+            Module::updateOrCreate($partner);
+        }
+
         $menus = [
             [
                 'title' => 'Home',
                 'url' => '/',
+                'order' => 1,
             ],
             [
                 'title' => 'How to use',
                 'url' => 'how-to-use',
+                'order' => 4,
             ],
             [
                 'title' => 'Introduction',
                 'url' => 'introduction',
                 'parent_url' => 'how-to-use',
+                'order' => 7,
             ],
             [
                 'title' => 'Form / Table',
                 'url' => 'form-table',
                 'parent_url' => 'how-to-use',
+                'order' => 10,
             ],
             [
                 'title' => 'Models',
                 'url' => 'models',
                 'parent_url' => 'how-to-use',
+                'order' => 13,
             ],
             [
                 'title' => 'Translation',
                 'url' => 'translation',
                 'parent_url' => 'how-to-use',
+                'order' => 16,
             ],
             [
                 'title' => 'Notification',
                 'url' => 'Notification',
                 'parent_url' => 'how-to-use',
+                'order' => 19,
             ],
             [
                 'title' => 'Packages',
                 'url' => 'packages',
                 'parent_url' => 'how-to-use',
+                'order' => 22,
             ],
             [
                 'title' => 'Products',
                 'url' => 'product',
+                'order' => 25,
             ],
             [
                 'title' => 'Basket',
-                'url' => 'blog',
+                'url' => 'basket',
+                'order' => 28,
             ],
             [
                 'title' => 'Blog',
                 'url' => 'blog',
+                'order' => 31,
             ],
             [
                 'title' => 'About Us',
                 'url' => 'about-us',
+                'order' => 34,
             ],
             [
                 'title' => 'Contact Us',
                 'url' => 'contact-us',
+                'order' => 37,
             ],
         ];
 
@@ -239,6 +318,84 @@ class ModulesTableSeeder extends Seeder
             $menu['activated'] = 1;
             
             Module::updateOrCreate($menu);
+        }
+
+        $products = [
+            [
+                'product_id' => 1,
+            ],
+            [
+                'product_id' => 2,
+            ],
+            [
+                'product_id' => 3,
+            ],
+            [
+                'product_id' => 4,
+            ],
+        ];
+
+        foreach($products as $product){
+            $product['title'] = 'product';
+            $product['type'] = 'product';
+            $product['language'] = config('app.locale');
+            $product['activated'] = 1;
+            
+            Module::updateOrCreate($product);
+        }
+
+        $faqs = [
+            [
+                'title' => 'What is the best benefit of laravel cms?',
+                'description' => 'It is complete and very fast and easy to develop',
+            ],
+            [
+                'title' => 'What is the best benefit of laravel cms??',
+                'description' => 'It is complete and very fast and easy to develop',
+            ],
+            [
+                'title' => 'What is the best benefit of laravel cms???',
+                'description' => 'It is complete and very fast and easy to develop',
+            ],
+        ];
+
+        foreach($faqs as $faq){
+            $faq['type'] = 'faq';
+            $faq['language'] = config('app.locale');
+            $faq['activated'] = 1;
+            
+            Module::updateOrCreate($faq);
+        }
+
+        $teams = [
+            [
+                'title' => '#13 Customer',
+                'full_name' => 'Eric Ez',
+                'image' => $image_folder_name . '8-feedback-1.png',
+            ],
+            [
+                'title' => 'Manager',
+                'full_name' => 'Navid Ma',
+                'image' => $image_folder_name . '8-feedback-2.png',
+            ],
+            [
+                'title' => '#4 Customer',
+                'full_name' => 'Farima El',
+                'image' => $image_folder_name . '8-feedback-3.png',
+            ],
+            [
+                'title' => 'Chief Technology Officer',
+                'full_name' => 'Farid Sh',
+                'image' => $image_folder_name . '8-feedback-4.png',
+            ],
+        ];
+
+        foreach($teams as $team){
+            $team['type'] = 'team';
+            $team['language'] = config('app.locale');
+            $team['activated'] = 1;
+            
+            Module::updateOrCreate($team);
         }
     }
 }

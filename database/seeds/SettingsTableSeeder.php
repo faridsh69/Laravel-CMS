@@ -36,8 +36,9 @@ class SettingsTableSeeder extends Seeder
 
         $contact_settings = [
 			'email' => 'farid.sh69@gmail.com',
-			'mobile' => '09120568203',
 			'phone' => '09120568203',
+			'whatsapp' => '+989120568203',
+			'telephone' => '02144209873',
 			'fax' => '09120568203',
 			'address' => 'Frankfort, Germany',
 			'latitude' => '35.751138',
@@ -45,9 +46,12 @@ class SettingsTableSeeder extends Seeder
 			'google_plus' => 'farid.sh69',
 			'twitter' => 'faridsh69',
 			'facebook' => 'faridsh69',
-			'skype' => 'live:faridsh69',
+			'skype' => 'live:farid.sh69',
 			'instagram' => 'it_manager_sh',
 			'telegram' => 'faridsh69',
+			'linkedin' => 'fullstackphpjs',
+			'github' => 'faridsh69',
+			'stackoverflow' => 'fullstackphpjs',
         ];
 
         $developer_settings = [

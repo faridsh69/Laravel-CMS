@@ -45,7 +45,7 @@ class Module extends BaseModel
         	'name' => 'product_id',
             'type' => 'unsignedBigInteger',
             'database' => 'nullable',
-            'relation' => 'users',
+            'relation' => 'products',
             'rule' => 'nullable|exists:products,id',
             'help' => 'Used for products block.',
             'form_type' => 'entity',
@@ -58,4 +58,24 @@ class Module extends BaseModel
         ['name' => 'activated'],
         ['name' => 'language'],
     ];
+
+    public function scopeOfType($query, $type)
+    {
+        return $query->where('type', $type);
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo('App\Models\Module', 'parent_id', 'id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany('App\Models\Module', 'parent_id', 'id');
+    }
+
+    public function product()
+    {
+        return $this->belongsTo('App\Models\Product', 'product_id', 'id');
+    }
 }

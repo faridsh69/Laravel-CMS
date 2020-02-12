@@ -38,6 +38,19 @@
 
                         <div class="classynav">
                             <ul>
+                            @foreach($modules->where('type', 'menu')->where('parent_id', null) as $menu_item)
+                                <li><a href="{{ route('front.page.index', $menu_item->url) }}">{{ $menu_item->title }}</a>
+                                    @if($menu_item->children->count() > 0)
+                                    <ul class="dropdown">
+                                        @foreach($menu_item->children as $menu_child_item)
+                                        <li><a href="{{ route('front.page.index', $menu_child_item->url)}}">{{ $menu_child_item->title }}</a></li>
+                                        @endforeach
+                                    </ul>
+                                    @endif
+                                </li>
+                            @endforeach
+                            </ul>
+                            <ul class="display-none">
                                 <li><a href="index.html">Home</a></li>
                                 <li><a href="#">Pages</a>
                                     <ul class="dropdown">

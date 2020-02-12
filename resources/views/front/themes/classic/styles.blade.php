@@ -12,4 +12,7 @@
 	.logo{
 		max-height: 70px;
 	}
+	.display-none{
+		display: none;
+	}
 </style>

@@ -1,6 +1,5 @@
 <div class="col-12">
     <div class="elements-title mb-50">
-        <span>The Best</span>
         <h2>Milestone</h2>
     </div>
 </div>
@@ -8,8 +7,17 @@
 <div class="col-12">
     <div class="academy-cool-facts-area mb-50">
         <div class="row">
-
-            <!-- Single Cool Fact-->
+            @foreach($modules->where('type', 'counting')->take(4) as $counting_item)
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="single-cool-fact text-center">
+                    <i class="{{ $counting_item->icon }}"></i>
+                    <h3><span class="counter">{{ $counting_item->description }}</span></h3>
+                    <p>{{ $counting_item->title }}</p>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        <div class="row display-none">
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="single-cool-fact text-center">
                     <i class="icon-agenda-1"></i>
@@ -17,8 +25,6 @@
                     <p>Courses Available</p>
                 </div>
             </div>
-
-            <!-- Single Cool Fact-->
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="single-cool-fact text-center">
                     <i class="icon-assistance"></i>
@@ -26,8 +32,6 @@
                     <p>Amazing Teachers</p>
                 </div>
             </div>
-
-            <!-- Single Cool Fact-->
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="single-cool-fact text-center">
                     <i class="icon-id-card"></i>
@@ -35,8 +39,6 @@
                     <p>Online Students</p>
                 </div>
             </div>
-
-            <!-- Single Cool Fact-->
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="single-cool-fact text-center">
                     <i class="icon-message"></i>

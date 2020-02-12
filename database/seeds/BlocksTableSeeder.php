@@ -158,7 +158,7 @@ class BlocksTableSeeder extends Seeder
                 'type' => 'map',
                 'show_all_pages' => 0,
                 'pages_list' => [1], // contact page only
-                'activated' => 1,
+                'activated' => 0,
             ],
             [
             	'id' => 20,
