@@ -11,10 +11,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // dd(1);
-        $this->call(BitcointProductsTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(SettingsTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
+        $this->call(BitcointProductsTableSeeder::class);
         $this->call(TagsTableSeeder::class);
         $this->call(PagesTableSeeder::class);
         $this->call(BlocksTableSeeder::class);
