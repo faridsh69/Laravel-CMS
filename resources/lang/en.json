@@ -422,5 +422,7 @@
     "not verified" : "not verified",
     "verify" : "verify",
     "user not found" : "User not found!",
-    "password sent to your phone" : "Password sent to your phone"
+    "password sent to your phone" : "Password sent to your phone",
+    "basket" : "Basket",
+    "shippings" : "Shippings"
 }

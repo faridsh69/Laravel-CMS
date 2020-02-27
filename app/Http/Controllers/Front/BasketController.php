@@ -95,7 +95,7 @@ class BasketController extends Controller
     public function getIndex()
     {
         $meta = [
-            'title' => config('setting-general.default_meta_title') . ' | ' . __('basket'),
+            'title' => __('basket'),
             'description' => config('setting-general.default_meta_description'),
             'keywords' => '',
             'image' => asset(config('setting-general.default_meta_image')),

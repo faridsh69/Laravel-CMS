@@ -29,7 +29,7 @@ class CheckoutController extends Controller
         }
 
         $meta = [
-            'title' => config('setting-general.default_meta_title') . ' | ' . __('address'),
+            'title' => __('address'),
             'description' => config('setting-general.default_meta_description'),
             'keywords' => '',
             'image' => asset(config('setting-general.default_meta_image')),
@@ -100,7 +100,7 @@ class CheckoutController extends Controller
         $shippings = Tagend::shipping()->get();
 
         $meta = [
-            'title' => config('setting-general.default_meta_title') . ' | ' . __('shippings'),
+            'title' => __('shippings'),
             'description' => config('setting-general.default_meta_description'),
             'keywords' => '',
             'image' => asset(config('setting-general.default_meta_image')),
