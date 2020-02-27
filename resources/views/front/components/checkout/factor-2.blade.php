@@ -1,5 +1,5 @@
 <div class="container text-center">
-	<h3>This is the place for invoice</h3>
+	<h5>This is the place for invoice</h5>
 	<div class="row">
 		<div class="col-md-6 offset-md-3">
 				<div class="col-12">
@@ -88,7 +88,10 @@
 	</div>
 	<hr>
 	<h5>This is the image of invoice</h5>
-	<img src="{{ asset('images/front/general/sample-invoice-7.png') }}" class="factor-image" alt="invoice">
+	<br>
+	<br>
+	<!-- <img src="{{ asset('images/front/general/sample-invoice-7.png') }}" class="factor-image-2" alt="invoice"> -->
+	<img src="{{ asset('images/front/general/sample-invoice-8.png') }}" class="factor-image" alt="invoice">
 
 </div>
 
@@ -98,6 +101,11 @@
 .factor-image{
 	max-width: 100% !important;
 	width: 600px;
+	margin: 0px auto;
+}
+.factor-image-2{
+	max-width: 100% !important;
+	width: 400px;
 	margin: 0px auto;
 }
 </style>
