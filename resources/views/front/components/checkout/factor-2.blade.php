@@ -82,3 +82,5 @@
 	    </div>
 	</div>
 </div>
+
+<img src="{{ asset('images/front/general/sample-invoice-7.png') }}">
