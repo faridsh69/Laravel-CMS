@@ -5,17 +5,17 @@
 				<div class="col-12">
 					<div class="card card-success">
 						<div class="card-header">
-							سفارش شما 
+							Factor 
 						</div>
 				    	<div class="card-body">
 				    		<div class="row">
 					    		<div class="col-sm-6">
-						    		<label>شماره فاکتور:</label> 29
+						    		<label>Number:</label> 29
 									<div class="one-third-seperate"></div>
-									<label>روش ارسال:</label> 
+									<label>Shipping:</label> 
 									<div class="one-third-seperate"></div>
 									<label>
-									تاریخ فاکتور: 
+									Date: 
 									</label> 
 									02/27/2020
 								</div>
@@ -29,16 +29,16 @@
 									<thead>
 									<tr>
 										<th>
-											تعداد	
+											Count	
 										</th>
 										<th>
-											نام کالا
+											Name
 										</th>
 										<th>
-											قیمت
+											Fee
 										</th>
 										<th>
-											با تخفیف
+											Discount
 										</th>
 									</tr>
 									</thead>
@@ -64,20 +64,20 @@
 								</div>
 								<div class="col-sm-6">
 									<dl class="dl-horizontal">
-									  	<dt class="big-size">جمع قیمت ها</dt>
-									  	<dd class="big-size">1320 تومان</dd>
+									  	<dt class="big-size">Total</dt>
+									  	<dd class="big-size">1320 $</dd>
 									  	
 
 										  	<div class="half-seperate"></div>
 										  	<dt>Tax</dt>
-										  	<dd>200 تومان</dd>
+										  	<dd>200 $</dd>
 									  	
 
 									  	<div class="seperate"></div>
 									  	<div class="seperate"></div>
-									  	<dt class="double-size">هزینه قابل پرداخت</dt>
+									  	<dt class="double-size">Total Price</dt>
 									  	<dd class="double-size">
-									  		1520 تومان</dd>
+									  		1520 $</dd>
 									</dl>
 								</div>
 							</div>
