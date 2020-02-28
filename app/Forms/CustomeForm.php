@@ -69,9 +69,6 @@ class CustomeForm extends Form
             elseif($form_type === 'file'){
                 $input_type = 'file';
             }
-            elseif($form_type === 'gallery'){
-                $input_type = 'gallery';
-            }
 
             $this->add($name, $input_type, $option);
         }

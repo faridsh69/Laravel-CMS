@@ -49,15 +49,6 @@ class Field extends BaseModel
             'form_type' => '',
             'table' => false,
         ],
-        [
-            'name' => 'required',
-            'type' => 'boolean',
-            'database' => 'default',
-            'rule' => 'boolean',
-            'help' => '',
-            'form_type' => 'switch-bootstrap-m', // switch-m
-            'table' => true,
-        ],
     ];
 
     public function fields()
