@@ -8,17 +8,44 @@ class Field extends BaseModel
 {
     // title, type, required, activated, options, order
     public $columns = [
-        ['name' => 'title'],
-        ['name' => 'activated'],
-        ['name' => 'order'],
         [
             'name' => 'type',
             'type' => 'string',
             'database' => 'nullable',
-            'rule' => 'nullable|max:191',
-            'help' => '',
+            'rule' => 'required',
+            'help' => 'Select Type of fields',
             'form_type' => 'enum',
             'form_enum_class' => 'FieldType',
+            'table' => true,
+        ],
+        ['name' => 'title'],
+        ['name' => 'activated'],
+        ['name' => 'order'],
+        [
+            'name' => 'help',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => '',
+            'help' => 'Help text under the input',
+            'form_type' => '',
+            'table' => false,
+        ],
+        [
+            'name' => 'rules',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => 'nullable',
+            'help' => 'Forexample: required|numberic|min:4',
+            'form_type' => '',
+            'table' => false,
+        ],
+        [
+            'name' => 'options',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => 'nullable',
+            'help' => 'Seperate the options with | between them',
+            'form_type' => '',
             'table' => false,
         ],
         [
@@ -29,14 +56,6 @@ class Field extends BaseModel
             'help' => '',
             'form_type' => 'switch-bootstrap-m', // switch-m
             'table' => true,
-        ],
-        [
-            'name' => 'options',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => 'nullable',
-            'help' => 'devide all options with | character',
-            'form_type' => '',
         ],
     ];
 

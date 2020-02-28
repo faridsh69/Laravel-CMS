@@ -7,11 +7,17 @@ use App\Services\BaseEnum;
 final class FieldType extends BaseEnum
 {
     const data = [
-		'string' => 'string',
-		'number' => 'number',
-		'text' => 'text',
-		'boolean' => 'boolean',
-		'select' => 'select',
-		'mulitselect' => 'mulitselect',
+		'text' => 'Text',
+		'textarea' => 'Textarea',
+		'number' => 'Number',
+		'date' => 'Date',
+		'time' => 'Time',
+		'email' => 'Email',
+		'color' => 'Color',
+		'password' => 'Password',
+		'file' => 'File',
+		'boolean' => 'Boolean',
+		'select' => 'Select',
+		'mulitselect' => 'Mulitselect',
 	];
 }
