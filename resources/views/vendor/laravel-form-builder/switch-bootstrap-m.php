@@ -9,7 +9,7 @@
 	        <?= Form::customLabel($name, __(strtolower($options['label'])), 'class=""') ?>
 	    <?php endif; ?>
     
-        <span class="m-bootstrap-switch m-bootstrap-switch--pill m-bootstrap-switch--air">
+        <span class="m-bootstrap-switch bootstrap-switch--brand  m-bootstrap-switch--success">
             <?= Form::checkbox($name, $options['value'], $options['checked'], $options['attr']) ?>
         </span>
 

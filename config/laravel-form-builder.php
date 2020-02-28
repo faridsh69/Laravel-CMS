@@ -92,5 +92,8 @@ return [
         'email_password' => 'la-lock',
         'latitude' => 'la-map-marker',
         'longitude' => 'la-map-marker',
+        'date' => 'la-calendar-o',
+        'price' => 'la-dollar',
+        'time' => 'la-clock-o',
     ],
 ];

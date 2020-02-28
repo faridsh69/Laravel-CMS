@@ -15,7 +15,7 @@ class Form extends BaseModel
             'type' => 'array',
             'database' => 'none',
             'rule' => 'nullable',
-            'help' => '',
+            'help' => 'Specify the fields of form.',
             'form_type' => 'entity',
             'class' => 'App\Models\Field',
             'property' => 'title',
@@ -23,6 +23,8 @@ class Form extends BaseModel
             'multiple' => true,
             'table' => false,
         ],
+        // ['name' => 'authentication'],
+        // ['name' => 'captcha'],    
     ];
 
     public function fields()

@@ -46,7 +46,7 @@ var BootstrapSelect = function() {
 // bootstrao date picker
 var BootstrapDatepicker=function() {
     var t=function() {
-        $("#birth_date").datepicker( {
+        $("#datepicker").datepicker( {
             format: 'yyyy/mm/dd',
             autoclose: true,
             todayBtn:"linked", 
@@ -65,11 +65,38 @@ var BootstrapDatepicker=function() {
     }
 }();
 
+var BootstrapTimepicker=function() {
+    var e=function() {
+        $("#timepicker").timepicker()
+    };
+    return {
+        init:function() {
+            e()
+        }
+    }
+}();
+
+// input mask
+var Inputmask = function() {
+    var a = function() {
+        $("#phone").inputmask("mask", {
+            mask: "(999) 999-9999"
+        })
+    };
+    return {
+        init: function() {
+            a()
+        }
+    }
+}();
+
 jQuery(document).ready(function() {
     BootstrapMaxlength.init();
     BootstrapSwitch.init();
     BootstrapDatepicker.init();
+    BootstrapTimepicker.init();
     BootstrapSelect.init();
+    // Inputmask.init();
     $("#admin_form").validate({});
     $('.lfm').filemanager('image');
 });

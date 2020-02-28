@@ -87,7 +87,7 @@ class BaseModel extends Model
                     'database' => 'default',
                     'rule' => 'boolean',
                     'help' => '',
-                    'form_type' => 'checkbox', // switch-m, checkbox, switch-bootstrap-m
+                    'form_type' => 'switch-m', // switch-m, checkbox, switch-bootstrap-m
                     'table' => false,
                 ],
                 'google_index' => [

@@ -43,6 +43,8 @@ class SwitchBootstrapM extends FormField
 
         $options['attr']['data-on-text'] = $options['choices'][0];
         $options['attr']['data-off-text'] = $options['choices'][1];
+        $options['attr']['data-on-color'] = 'success';
+
 
         return parent::render($options, $showLabel, $showField, $showError);
     }

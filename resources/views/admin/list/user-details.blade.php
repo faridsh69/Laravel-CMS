@@ -25,7 +25,7 @@
 <div class="m-section">
 	<h3 class="m-section__heading"> 
 	{{ __('national card') }}:
-	</h3> برای کارت ملی {{ $user->national_card_images->count() }} تصویر آپلود شده است. <br>
+	</h3> {{ $user->national_card_images->count() }} picture was uploaded. <br>
 	<div class="image-form">
 		@foreach($user->national_card_images as $image)
 			<a target="_blank" href="{{ asset($image['src_main']) }}" class="m-2 p-2" style="position: inherit;">
@@ -46,7 +46,7 @@
 <div class="m-section">
 	<h3 class="m-section__heading"> 
 	{{ __('bank card') }}:
-	</h3> برای کارت بانکی {{ $user->bank_card_images->count() }} تصویر آپلود شده است. <br>
+	</h3> {{ $user->bank_card_images->count() }} picture was uploaded. <br>
 	<div class="image-form">
 		@foreach($user->bank_card_images as $image)
 			<a target="_blank" href="{{ asset($image['src_main']) }}" class="m-2 p-2" style="position: inherit;">
@@ -68,7 +68,7 @@
 <div class="m-section">
 	<h3 class="m-section__heading"> 
 	{{ __('certificate card') }}:
-	</h3> برای کارت بانکی {{ $user->certificate_card_images->count() }} تصویر آپلود شده است. <br>
+	</h3> {{ $user->certificate_card_images->count() }} picture was uploaded. <br>
 	<div class="image-form">
 		@foreach($user->certificate_card_images as $image)
 			<a target="_blank" href="{{ asset($image['src_main']) }}" class="m-2 p-2" style="position: inherit;">

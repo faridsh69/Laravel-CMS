@@ -39,7 +39,7 @@
 			</div>
 		</form>
 	@endif
-	</h3> برای کارت ملی شما {{ \Auth::user()->national_card_images->count() }} تصویر آپلود شده است. <br>
+	</h3> {{ \Auth::user()->national_card_images->count() }} picture was uploaded. <br>
 	<div class="image-form">
 		@foreach(\Auth::user()->national_card_images as $image)
 			<img src=" {{ asset($image['src_thumbnail']) }}" alt="image">
@@ -62,7 +62,7 @@
 			</div>
 		</form>
 	@endif
-	</h3> برای کارت بانکی شما {{ \Auth::user()->bank_card_images->count() }} تصویر آپلود شده است. <br>
+	</h3> {{ \Auth::user()->bank_card_images->count() }} picture was uploaded. <br>
 	<div class="image-form">
 		@foreach(\Auth::user()->bank_card_images as $image)
 			<img src=" {{ asset($image['src_thumbnail']) }}" alt="image">
@@ -80,7 +80,7 @@
 			<div class="form-group m-form__group">
 				<input type="file" required  class="form-control m-input" name="certificate_card">
 				<small class="help-block">
-					از خودتان به همراه کاغذی که تاریخ امروز روی آن نوشته شده است و کارت ملی خود عکس بگیرید و ارسال کنید
+					A picture of yourself holding your national card and today date.
 				</small>
 				<br>
 				<br>
@@ -88,7 +88,7 @@
 			</div>
 		</form>
 	@endif
-	</h3> برای این مدرک {{ \Auth::user()->certificate_card_images->count() }} تصویر آپلود شده است. <br>
+	</h3> {{ \Auth::user()->certificate_card_images->count() }} picture was uploaded. <br>
 		<div class="image-form">
 		@foreach(\Auth::user()->certificate_card_images as $image)
 			<img src=" {{ asset($image['src_thumbnail']) }}" alt="image">

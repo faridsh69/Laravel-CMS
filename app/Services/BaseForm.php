@@ -54,6 +54,7 @@ class BaseForm extends Form
             if($form_type === 'none'){
                 continue;
             }
+
             // boolean types are: 1- switch-m 2- switch-bootstrap-m 3- checkbox-m
             elseif($type === 'boolean'){
                 $input_type = 'switch-m';
@@ -64,11 +65,13 @@ class BaseForm extends Form
                     $input_type = 'switch-bootstrap-m';
                 }
             }
+
             // for convert textarean to ckeditor
             elseif($form_type === 'ckeditor'){
                 $input_type = 'textarea';
                 $option['attr'] = ['ckeditor' => 'on'];
             }
+            
             // create email type input
             elseif($form_type === 'email'){
                 $option['attr'] = ['type' => 'email'];
@@ -79,7 +82,10 @@ class BaseForm extends Form
                 $option['value'] = '';
             }
             elseif($form_type === 'date'){
-                $option['attr'] = ['autocomplete' => 'off'];
+                $option['attr'] = ['id' => 'datepicker', 'autocomplete' => 'off'];
+            }
+            elseif($form_type === 'time'){
+                $option['attr'] = ['id' => 'timepicker', 'autocomplete' => 'off'];
             }
             elseif($form_type === 'color'){
                 $input_type = 'color';

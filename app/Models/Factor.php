@@ -22,7 +22,7 @@ class Factor extends BaseModel
             'name' => 'price',
             'type' => 'unsignedBigInteger',
             'database' => 'nullable',
-            'rule' => '',
+            'rule' => 'required|numeric',
             'help' => '',
             'form_type' => '',
             'table' => true,
@@ -47,7 +47,7 @@ class Factor extends BaseModel
         ],
         [
             'name' => 'bank_cart_number',
-            'type' => 'unsignedBigInteger',
+            'type' => 'string',
             'database' => 'nullable',
             'rule' => '',
             'help' => '',
@@ -60,7 +60,7 @@ class Factor extends BaseModel
             'database' => 'default',
             'rule' => 'boolean',
             'help' => '',
-            'form_type' => 'checkbox', // switch-m, checkbox, switch-bootstrap-m
+            'form_type' => 'switch-m', // switch-m, checkbox, switch-bootstrap-m
             'table' => false,
         ],
         [
