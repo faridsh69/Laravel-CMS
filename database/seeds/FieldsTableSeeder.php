@@ -143,7 +143,8 @@ class FieldsTableSeeder extends Seeder
         $job_apply_form = Form::firstOrCreate([
         	'title' => 'Computer Software Job',
         	'description' => 'This job is a remote job and it is for growing company.',
-        	'activated' => 1,
+            'activated' => 1,
+        	'language' => config('app.locale'),
         	// 'authentication' => 1,
         	// 'captcha' => 1,
         ]);

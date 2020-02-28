@@ -48,7 +48,6 @@
 	    <div class="row" id="m_sortable_portlets">
 	    	@foreach($blocks as $block)
 			<div class="col-lg-12">
-				<!--begin::Portlet-->
 				<div class="m-portlet m-portlet--mobile m-portlet--sortable 
 					{{ !$block->show_all_pages ? 'm-portlet--brand' : 'm-portlet--danger' }}
 					
@@ -60,7 +59,7 @@
 									{{ $block->id }}
 								</span>
 								<h3 class="m-portlet__head-text">
-									{{ ucfirst($block->title) }}
+									{{ ucfirst($block->type) }}
 									<small>
 										{{ ucfirst($block->widget_type) }}
 									-
@@ -138,9 +137,6 @@
 			</div>
 			@endforeach
 			<div class="col-lg-12">
-				<!--end::Portlet-->
-				<!-- <div class="m-portlet m-portlet--sortable-empty"></div> -->
-				<!--end::Empty Portlet-->
 			</div>
 		</div>
 

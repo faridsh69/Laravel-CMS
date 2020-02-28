@@ -10,6 +10,7 @@ class Form extends BaseModel
         ['name' => 'title'],
         ['name' => 'description'],
         ['name' => 'activated'],
+        ['name' => 'language'],
         [
             'name' => 'fields',
             'type' => 'array',
@@ -29,6 +30,7 @@ class Form extends BaseModel
 
     public function fields()
     {
-        return $this->belongsToMany('App\Models\Field', 'field_form', 'form_id', 'field_id');
+        return $this->belongsToMany('App\Models\Field', 'field_form', 'form_id', 'field_id')
+            ->orderBy('order', 'asc');
     }
 }

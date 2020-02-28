@@ -27,6 +27,7 @@ final class BlockType extends BaseEnum
 		'map' => 'Map',
 		'subscribe' => 'Subscribe',
 		'contact' => 'Contact',
+		'form' => 'Form',
 		'footer' => 'Footer',
 		'loading' => 'Loading',
 	];

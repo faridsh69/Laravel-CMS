@@ -18,8 +18,9 @@ class Field extends BaseModel
             'form_enum_class' => 'FieldType',
             'table' => true,
         ],
-        ['name' => 'title'],
+        ['name' => 'name'],
         ['name' => 'activated'],
+        ['name' => 'language'],
         ['name' => 'order'],
         [
             'name' => 'help',
@@ -31,7 +32,7 @@ class Field extends BaseModel
             'table' => false,
         ],
         [
-            'name' => 'rules',
+            'name' => 'rule',
             'type' => 'string',
             'database' => 'nullable',
             'rule' => 'nullable',

@@ -87,6 +87,9 @@ class BaseForm extends Form
             elseif($form_type === 'time'){
                 $option['attr'] = ['id' => 'timepicker', 'autocomplete' => 'off'];
             }
+            elseif($form_type === 'number'){
+                $option['attr'] = ['type' => 'number'];
+            }
             elseif($form_type === 'color'){
                 $input_type = 'color';
             }

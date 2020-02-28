@@ -156,7 +156,7 @@ class BaseModel extends Model
                     'rule' => 'nullable|numeric',
                     'help' => 'Sort by this column, lower order will be ahead',
                     'form_type' => '',
-                    'table' => false,
+                    'table' => true,
                 ],
             ];
 

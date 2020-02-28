@@ -18,6 +18,6 @@ final class FieldType extends BaseEnum
 		'file' => 'File',
 		'boolean' => 'Boolean',
 		'select' => 'Select',
-		'mulitselect' => 'Mulitselect',
+		'multiselect' => 'Multi select',
 	];
 }
