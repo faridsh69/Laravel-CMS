@@ -24,6 +24,7 @@ class PageController extends Controller
 
     public function postSubscribe(Request $request)
     {
+        dd($request->all());
         $date = Carbon::now()->format('Y/d/m');
         $time = Carbon::now()->format('H:i');
         $phone = $request->input('phone');

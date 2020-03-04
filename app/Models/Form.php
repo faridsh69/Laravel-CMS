@@ -24,8 +24,8 @@ class Form extends BaseModel
             'multiple' => true,
             'table' => false,
         ],
-        // ['name' => 'authentication'],
-        // ['name' => 'captcha'],    
+        // ['name' => 'authentication'], // always need authentication
+        // ['name' => 'captcha'], // its a field   
     ];
 
     public function fields()

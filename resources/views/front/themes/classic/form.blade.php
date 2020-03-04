@@ -8,5 +8,9 @@
     ]);
 @endphp
 <div class="container mt-5">
-{!! form($form) !!}
+	<div class="row">
+		<div class="col-md-8">
+			{!! form($form) !!}
+		</div>
+	</div>
 </div>

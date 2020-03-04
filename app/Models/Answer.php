@@ -7,32 +7,11 @@ use App\Services\BaseModel;
 class Answer extends BaseModel
 {
     public $columns = [
-        ['name' => 'description'],
-        [
-            'name' => 'user_id',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => 'nullable',
-            'table' => false,
-        ],
-        [
-            'name' => 'field_id',
-            'type' => 'bigInteger',
-            'database' => 'unsigned',
-            'relation' => 'fields',
-            'rule' => 'nullable',
-            'help' => '',
-            'form_type' => 'entity',
-            'class' => 'App\Models\Field',
-            'property' => 'title',
-            'property_key' => 'id',
-            'multiple' => false,
-            'table' => false,
-        ],
+        ['name' => 'user_id'],
         [
             'name' => 'form_id',
-            'type' => 'bigInteger',
-            'database' => 'unsigned',
+            'type' => 'unsignedBigInteger',
+            'database' => 'nullable',
             'relation' => 'forms',
             'rule' => 'nullable',
             'help' => '',
@@ -43,12 +22,17 @@ class Answer extends BaseModel
             'multiple' => false,
             'table' => false,
         ],
+        ['name' => 'description'],
+        [
+            'name' => 'created_at',
+            'type' => 'string',
+            'database' => 'none',
+            'rule' => '',
+            'help' => '',
+            'form_type' => 'none',
+            'table' => true,
+        ],
     ];
-
-    public function field()
-    {
-        return $this->belongsTo('App\Models\Field', 'field_id', 'id');
-    }
 
     public function form()
     {
