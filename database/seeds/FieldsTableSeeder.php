@@ -16,13 +16,12 @@ class FieldsTableSeeder extends Seeder
     	$fields = [
             [
                 'type' => 'text',
-                'title' => 'Full Name',
+                'title' => 'full_name',
             	'order' => 0,
                 'help' => 'Specify the input',
                 'rules' => 'required|min:2|max:60',
             	'options' => '',
             	'activated' => 1,
-            	'required' => 1,
             ],
             [
                 'type' => 'textarea',
@@ -32,47 +31,42 @@ class FieldsTableSeeder extends Seeder
                 'rules' => 'required|min:4|max:191',
             	'options' => '',
             	'activated' => 1,
-            	'required' => 1,
             ],
             [
                 'type' => 'number',
                 'title' => 'Salary',
             	'order' => 6,
                 'help' => 'salary per year in K$',
-                'rules' => 'required|numberic',
+                'rules' => 'required|numeric',
             	'options' => '',
             	'activated' => 1,
-            	'required' => 1,
             ],
             [
                 'type' => 'date',
-                'title' => 'Date Of Start',
+                'title' => 'start_date',
             	'order' => 9,
-                'help' => 'Specify the input',
+                'help' => 'Specify the date to can start',
                 'rules' => '',
             	'options' => '',
             	'activated' => 1,
-            	'required' => 0,
             ],
             [
                 'type' => 'time',
-                'title' => 'Time Of Start',
+                'title' => 'start_time',
             	'order' => 12,
-                'help' => 'Specify the input',
+                'help' => 'Specify the time to can start',
                 'rules' => '',
             	'options' => '',
             	'activated' => 1,
-            	'required' => 0,
             ],
             [
                 'type' => 'email',
                 'title' => 'Email',
             	'order' => 15,
-                'help' => 'Specify the input',
-                'rules' => 'email',
+                'help' => 'Specify the email',
+                'rules' => 'nullable|email',
             	'options' => '',
             	'activated' => 1,
-            	'required' => 0,
             ],
             [
                 'type' => 'color',
@@ -82,7 +76,6 @@ class FieldsTableSeeder extends Seeder
                 'rules' => 'email',
             	'options' => '',
             	'activated' => 1,
-            	'required' => 0,
             ],
             [
                 'type' => 'password',
@@ -92,7 +85,6 @@ class FieldsTableSeeder extends Seeder
                 'rules' => 'required',
             	'options' => '',
             	'activated' => 1,
-            	'required' => 0,
             ],
             [
                 'type' => 'boolean',
@@ -102,41 +94,38 @@ class FieldsTableSeeder extends Seeder
                 'rules' => '',
             	'options' => '',
             	'activated' => 1,
-            	'required' => 0,
             ],
             [
                 'type' => 'file',
-                'title' => 'Profile Image',
+                'title' => 'profile_image',
             	'order' => 27,
                 'help' => 'Specify the input',
                 'rules' => 'required|image',
             	'options' => '',
             	'activated' => 1,
-            	'required' => 0,
             ],
             [
                 'type' => 'select',
-                'title' => 'Category',
+                'title' => 'category',
             	'order' => 30,
                 'help' => 'Specify the input',
                 'rules' => '',
             	'options' => 'Frontend|Backend|Full Stack',
             	'activated' => 1,
-            	'required' => 0,
             ],
             [
-                'type' => 'mulitselect',
+                'type' => 'multiselect',
                 'title' => 'Tags',
             	'order' => 33,
                 'help' => 'Specify the input',
                 'rules' => '',
             	'options' => 'Manager|Junior|Senior|Full Time|Remote',
             	'activated' => 1,
-            	'required' => 0,
             ],
         ];
 
         foreach($fields as $field){
+            $field['language'] = 'en';
         	Field::firstOrCreate($field);
         }
 
@@ -144,10 +133,9 @@ class FieldsTableSeeder extends Seeder
         	'title' => 'Computer Software Job',
         	'description' => 'This job is a remote job and it is for growing company.',
             'activated' => 1,
-        	'language' => config('app.locale'),
-        	// 'authentication' => 1,
-        	// 'captcha' => 1,
+        	'language' => 'en',
         ]);
+
         $job_apply_form->fields()->sync([
         	1,2,3,4,5,6,7,8,9,10,11,12
         ], true);

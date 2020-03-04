@@ -8,6 +8,7 @@ class Answer extends BaseModel
 {
     public $columns = [
         ['name' => 'user_id'],
+        ['name' => 'activated'],
         [
             'name' => 'form_id',
             'type' => 'unsignedBigInteger',
@@ -20,9 +21,17 @@ class Answer extends BaseModel
             'property' => 'title',
             'property_key' => 'id',
             'multiple' => false,
-            'table' => false,
+            'table' => true,
         ],
-        ['name' => 'description'],
+        [
+            'name' => 'answers',
+            'type' => 'text',
+            'database' => 'nullable',
+            'rule' => 'nullable',
+            'help' => 'Dont change it, its encoded.',
+            'form_type' => 'textarea',
+            'table' => true,
+        ],
         [
             'name' => 'created_at',
             'type' => 'string',

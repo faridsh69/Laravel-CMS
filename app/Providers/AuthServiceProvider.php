@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Policies\ActivityPolicy;
 use App\Policies\AddressPolicy;
+use App\Policies\AnswerPolicy;
 use App\Policies\BlockPolicy;
 use App\Policies\BlogPolicy;
 use App\Policies\CategoryPolicy;
@@ -41,6 +42,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         'App\Models\Address' => AddressPolicy::class,
         'App\Models\Activity' => ActivityPolicy::class,
+        'App\Models\Answer' => AnswerPolicy::class,
         'App\Models\Block' => BlockPolicy::class,
         'App\Models\Blog' => BlogPolicy::class,
         'App\Models\Counting' => CountingPolicy::class,

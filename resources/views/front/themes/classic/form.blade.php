@@ -8,8 +8,11 @@
     ]);
 @endphp
 <div class="container mt-5">
+	<br>
+	<br>
 	<div class="row">
 		<div class="col-md-8">
+			@include('front.components.alert')
 			{!! form($form) !!}
 		</div>
 	</div>

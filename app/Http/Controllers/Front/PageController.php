@@ -22,27 +22,41 @@ class PageController extends Controller
         return view('front.page', ['page' => $page]);
     }
 
-    public function postSubscribe(Request $request)
+    public function postSubscribe(Request $request, \App\Models\Answer $answer)
     {
-        dd($request->all());
-        $date = Carbon::now()->format('Y/d/m');
-        $time = Carbon::now()->format('H:i');
-        $phone = $request->input('phone');
-        $message = $request->input('message');
+        $form = \FormBuilder::create(\App\Forms\CustomeForm::class);
 
-        if(! User::where('phone', $phone)->first()){
-            User::create([
-                'first_name' => $date,
-                'last_name' => $time,
-                'phone' => $phone,
-                'bio' => $message,
-                'status' => 0,
-                'password' => 'Password-' . rand(100, 999),
-            ]);
+        if (! $form->isValid()) {
+            return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
+        $data = $form->getFieldValues();
+        unset($data['profile_image']);
+        $answer->activated = 1;
+        $answer->user_id = \Auth::id();
+        $answer->form_id = 1;
+        $answer->answers = serialize($data);
+        $answer->save();
+        
+        $request->session()->flash('alert-success', __('created successfully'));
 
-        $request->session()->flash('alert-success', 'Congratulation, We Will Contact You Soon!');
+        // $date = Carbon::now()->format('Y/d/m');
+        // $time = Carbon::now()->format('H:i');
+        // $phone = $request->input('phone');
+        // $message = $request->input('message');
 
-        return redirect()->route('front.page.index', '');
+        // if(! User::where('phone', $phone)->first()){
+        //     User::create([
+        //         'first_name' => $date,
+        //         'last_name' => $time,
+        //         'phone' => $phone,
+        //         'bio' => $message,
+        //         'status' => 0,
+        //         'password' => 'Password-' . rand(100, 999),
+        //     ]);
+        // }
+
+        $request->session()->flash('alert-success', 'Congratulation, Your answer saved successfully!');
+
+        return redirect()->back();
     }
 }

@@ -34,8 +34,8 @@ class ResourceController extends BaseListController
 
     public function update($id){return $this->getRedirect(); }
 
-    public function getRedirect()
-    {
-        return redirect()->route('admin.activity.list.index');
-    }
+    // public function getRedirect()
+    // {
+    //     return redirect()->route('admin.activity.list.index');
+    // }
 }

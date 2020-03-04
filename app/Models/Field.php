@@ -8,6 +8,7 @@ class Field extends BaseModel
 {
     // title, type, required, activated, options, order
     public $columns = [
+        ['name' => 'title'],
         [
             'name' => 'type',
             'type' => 'string',
@@ -18,9 +19,15 @@ class Field extends BaseModel
             'form_enum_class' => 'FieldType',
             'table' => true,
         ],
-        ['name' => 'name'],
-        ['name' => 'activated'],
-        ['name' => 'language'],
+        [
+            'name' => 'rules',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => 'nullable',
+            'help' => 'Forexample: required|numberic|min:4',
+            'form_type' => '',
+            'table' => false,
+        ],
         ['name' => 'order'],
         [
             'name' => 'help',
@@ -28,15 +35,6 @@ class Field extends BaseModel
             'database' => 'nullable',
             'rule' => '',
             'help' => 'Help text under the input',
-            'form_type' => '',
-            'table' => false,
-        ],
-        [
-            'name' => 'rule',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => 'nullable',
-            'help' => 'Forexample: required|numberic|min:4',
             'form_type' => '',
             'table' => false,
         ],
@@ -49,6 +47,8 @@ class Field extends BaseModel
             'form_type' => '',
             'table' => false,
         ],
+        ['name' => 'language'],
+        ['name' => 'activated'],
     ];
 
     public function fields()
