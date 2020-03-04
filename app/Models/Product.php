@@ -22,7 +22,7 @@ class Product extends BaseModel implements Commentable
         ['name' => 'image'],
         [
             'name' => 'price',
-            'type' => 'integer',
+            'type' => 'bigInteger',
             'database' => 'nullable',
             'rule' => 'numeric',
             'help' => '',
@@ -31,7 +31,7 @@ class Product extends BaseModel implements Commentable
         ],
         [
             'name' => 'discount_price',
-            'type' => 'integer',
+            'type' => 'bigInteger',
             'database' => 'nullable',
             'rule' => '',
             'help' => '',
@@ -40,7 +40,7 @@ class Product extends BaseModel implements Commentable
         ],
         [
             'name' => 'inventory',
-            'type' => 'integer',
+            'type' => 'bigInteger',
             'database' => 'nullable',
             'rule' => '',
             'help' => '',
@@ -50,7 +50,7 @@ class Product extends BaseModel implements Commentable
         ['name' => 'order'],
         [
             'name' => 'category_id',
-            'type' => 'bigInteger',
+            'type' => 'unsignedBigInteger',
             'database' => 'nullable',
             'relation' => 'categories',
             'rule' => 'nullable|exists:categories,id',
@@ -98,19 +98,8 @@ class Product extends BaseModel implements Commentable
             'multiple' => true,
             'table' => false,
         ],
-        [
-            'name' => 'ready_time',
-            'type' => 'integer',
-            'database' => 'nullable',
-            'rule' => '',
-            'help' => '',
-            'form_type' => 'none',
-            'table' => false,
-        ],
         ['name' => 'language'],
     ];
-
-    // protected $appends = ['image_thumbnail', 'image_main'];
 
     public function canBeRated(): bool
     {
@@ -127,12 +116,12 @@ class Product extends BaseModel implements Commentable
         return $this->belongsTo('App\Models\Category', 'category_id', 'id');
     }
 
-    public function images()
+    public function related_products()
     {
-        return $this->morphMany('App\Models\Image', 'imageable');
+        return $this->belongsToMany('App\Models\Product', 'related_products', 'product_id', 'related_product_id');
     }
 
-        public function getAssetImageAttribute()
+    public function getAssetImageAttribute()
     {
         if(isset($this->image) && $this->image) {
             return asset($this->image);
@@ -141,26 +130,13 @@ class Product extends BaseModel implements Commentable
         return asset(config('setting-general.default_product_image'));
     }
 
-    public function related_products()
+    public function images()
     {
-        return $this->belongsToMany('App\Models\Product', 'related_products', 'product_id', 'related_product_id');
+        return $this->morphMany('App\Models\Image', 'imageable');
     }
 
-    // public function getImageThumbnailAttribute()
-    // {
-    //     $gallery = $this->images;
-    //     if(count($gallery) > 0){
-    //         return asset($gallery->first()->src_thumbnail);
-    //     }
-    //     return null;
-    // }
-
-    // public function getImageMainAttribute()
-    // {
-    //     $gallery = $this->images;
-    //     if(count($gallery) > 0){
-    //         return asset($gallery->first()->src_main);
-    //     }
-    //     return null;
-    // }
+    public function getProductImagesAttribute()
+    {
+        return $this->images->where('title', 'product');
+    }
 }

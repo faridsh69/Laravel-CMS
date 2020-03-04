@@ -24,8 +24,8 @@ class Blog extends BaseModel implements Commentable
         ['name' => 'canonical_url'],
         [
             'name' => 'category_id',
-            'type' => 'bigInteger',
-            'database' => 'unsigned',
+            'type' => 'unsignedBigInteger',
+            'database' => 'nullable',
             'relation' => 'categories',
             'rule' => 'nullable|exists:categories,id',
             'help' => '',

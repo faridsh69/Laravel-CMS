@@ -25,7 +25,7 @@ class Block extends BaseModel
             'database' => 'default',
             'rule' => 'boolean',
             'help' => 'If this ckecked this block will show in all pages except below pages list',
-            'form_type' => 'checkbox', // switch-m
+            'form_type' => 'checkbox',
             'table' => false,
         ],
         [

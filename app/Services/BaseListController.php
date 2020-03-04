@@ -484,7 +484,7 @@ class BaseListController extends Controller
             }
             $image_service = new ImageService();
             foreach($data['gallery'] as $gallery_image){
-                $image_service->save($gallery_image, $model);
+                $image_service->save($gallery_image, $model, 'product');
             }
         }
 

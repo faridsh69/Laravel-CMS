@@ -41,7 +41,7 @@ class SettingContact extends BaseModel
         ],
         [
             'name' => 'address',
-            'type' => 'string',
+            'type' => 'text',
             'database' => 'nullable',
             'rule' => '',
             'help' => '',

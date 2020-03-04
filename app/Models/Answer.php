@@ -14,7 +14,7 @@ class Answer extends BaseModel
             'type' => 'unsignedBigInteger',
             'database' => 'nullable',
             'relation' => 'forms',
-            'rule' => 'nullable',
+            'rule' => 'nullable|exists:forms,id',
             'help' => '',
             'form_type' => 'entity',
             'class' => 'App\Models\Form',

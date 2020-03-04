@@ -22,7 +22,7 @@ class Factor extends BaseModel
             'name' => 'price',
             'type' => 'unsignedBigInteger',
             'database' => 'nullable',
-            'rule' => 'required|numeric',
+            'rule' => 'nullable|numeric',
             'help' => '',
             'form_type' => '',
             'table' => true,
@@ -38,7 +38,7 @@ class Factor extends BaseModel
         ],
         [
             'name' => 'customer_info',
-            'type' => 'string',
+            'type' => 'text',
             'database' => 'nullable',
             'rule' => '',
             'help' => '',
@@ -60,7 +60,7 @@ class Factor extends BaseModel
             'database' => 'default',
             'rule' => 'boolean',
             'help' => '',
-            'form_type' => 'switch-m', // switch-m, checkbox, switch-bootstrap-m
+            'form_type' => 'checkbox', // switch-m, checkbox, switch-bootstrap-m
             'table' => false,
         ],
         [
@@ -70,6 +70,24 @@ class Factor extends BaseModel
             'rule' => '',
             'help' => '',
             'form_type' => 'textarea',
+            'table' => false,
+        ],
+        [
+            'name' => 'factor_image',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => '',
+            'help' => '',
+            'form_type' => 'image',
+            'table' => false,
+        ],
+        [
+            'name' => 'product_gallery',
+            'type' => 'files_array',
+            'database' => 'nullable',
+            'rule' => '',
+            'help' => '',
+            'form_type' => 'gallery',
             'table' => false,
         ],
 
@@ -136,13 +154,13 @@ class Factor extends BaseModel
      //        'database' => 'nullable',
      //        'rule' => '',
      //        'help' => '',
-     //        'form_type' => '',
+     //        'form_type' => 'enum', // it should have enum types
      //        'table' => true,
      //    ],
      //    [
      //        'name' => 'address_id',
-     //        'type' => 'bigInteger',
-     //        'database' => 'unsigned',
+     //        'type' => 'unsignedBigInteger',
+     //        'database' => 'nullable',
      //        'relation' => 'addresses',
      //        'rule' => 'nullable|exists:addresses,id',
      //        'help' => '',

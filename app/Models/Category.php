@@ -20,7 +20,7 @@ class Category extends BaseModel
         ['name' => 'order'],
         [
             'name' => 'parent_id',
-            'type' => 'bigInteger',
+            'type' => 'unsignedBigInteger',
             'database' => 'none',
             'relation' => 'categories',
             'rule' => 'nullable|exists:categories,id',

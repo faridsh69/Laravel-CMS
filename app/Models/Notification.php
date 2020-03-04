@@ -27,8 +27,8 @@ class Notification extends BaseModel
         ],
         [
             'name' => 'notifiable_id',
-            'type' => 'integer',
-            'database' => '',
+            'type' => 'unsignedBigInteger',
+            'database' => 'nullable',
             'rule' => 'required|numeric',
             'help' => 'Model ID of who is getting notification',
             'form_type' => 'none',

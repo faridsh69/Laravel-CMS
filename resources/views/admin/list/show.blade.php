@@ -33,6 +33,17 @@
 	</div>
 
 	<div class="m-portlet__body">
+		@if(isset($data['answers']))
+			@php
+				$answers = unserialize($data['answers']);
+			@endphp
+			<h3>Answer:</h3>
+			<ul>
+			@foreach($answers as $key => $answer)
+				<li> <span class="mr-4">{{ $key }}</span> : {{ json_encode($answer) }} </li>
+			@endforeach
+			</ul>
+		@endif
 		<div class="m-list-timeline">
 			<div class="m-list-timeline__items">
 				<br>
@@ -58,7 +69,6 @@
 				<br>
 			</div>
 		</div>
-		<!--end::Section-->
 	</div>
 
 	<div class="m-portlet__body">
