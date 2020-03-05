@@ -23,15 +23,15 @@ class Factor extends BaseModel
         [
             'name' => 'text',
         ],
-        [
-            'name' => 'gallery',
-            'type' => 'files_array',
-            'database' => 'none',
-            'rule' => '',
-            'help' => 'select all image files you want to upload',
-            'form_type' => 'gallery',
-            'table' => false,
-        ],
+        // [
+        //     'name' => 'gallery',
+        //     'type' => 'files_array',
+        //     'database' => 'none',
+        //     'rule' => '',
+        //     'help' => 'select all image files you want to upload',
+        //     'form_type' => 'gallery',
+        //     'table' => false,
+        // ],
         [
             'name' => 'type',
             'type' => 'string',
