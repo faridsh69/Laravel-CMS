@@ -126,6 +126,18 @@ class BaseForm extends Form
             elseif($form_type === 'gallery'){
                 $input_type = 'gallery';
             }
+            // all input files
+            elseif($form_type === 'file'){
+                $file_manager = isset($column['file_manager']) ? $column['file_manager'] : true;
+                $file_accept = isset($column['file_accept']) ? $column['file_accept'] : 'file';
+                $file_multiple = isset($column['file_multiple']) ? $column['file_multiple'] : false;
+
+                $option['file_accept'] = $file_accept;
+                $option['file_multiple'] = $file_multiple;
+                if($file_manager === true){
+                    $input_type = 'file-manager';
+                }
+            }
 
             $this->add($name, $input_type, $option);
         }

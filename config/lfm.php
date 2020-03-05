@@ -51,7 +51,7 @@ return [
         'file'  => [
             'folder_name'  => 'files',
             'startup_view' => 'grid',
-            'max_size'     => 5000, // size in KB
+            'max_size'     => 9000, // size in KB
             'valid_mime'   => [
                 'image/jpeg',
                 'image/pjpeg',
@@ -61,9 +61,9 @@ return [
             ],
         ],
         'image' => [
-            'folder_name'  => 'photos',
+            'folder_name'  => 'files/photos',
             'startup_view' => 'list',
-            'max_size'     => 5000, // size in KB
+            'max_size'     => 9000, // size in KB
             'valid_mime'   => [
                 'image/jpeg',
                 'image/pjpeg',
@@ -106,7 +106,7 @@ return [
     // behavior on files with identical name
     // setting it to true cause old file replace with new one
     // setting it to false show `error-file-exist` error and stop upload
-    'over_write_on_duplicate'  => false,
+    'over_write_on_duplicate'  => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -119,14 +119,14 @@ return [
 
     // Create thumbnails automatically only for listed types.
     'raster_mimetypes'         => [
-        'image/jpeg',
-        'image/pjpeg',
-        'image/png',
+        // 'image/jpeg',
+        // 'image/pjpeg',
+        // 'image/png',
     ],
 
-    'thumb_img_width'          => 200,
+    'thumb_img_width'          => 50,
 
-    'thumb_img_height'         => 200,
+    'thumb_img_height'         => 50,
 
     /*
     |--------------------------------------------------------------------------

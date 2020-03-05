@@ -52,6 +52,7 @@ return [
         'submit-m' => '\App\Forms\Fields\SubmitM',
         'image' => '\App\Forms\Fields\Image',
         'gallery' => '\App\Forms\Fields\Gallery',
+        'file-manager' => '\App\Forms\Fields\FileManager',
     ],
 
     'field_icons' => [

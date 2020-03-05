@@ -90,6 +90,7 @@ var Inputmask = function() {
     }
 }();
 
+// triger all functions
 jQuery(document).ready(function() {
     BootstrapMaxlength.init();
     BootstrapSwitch.init();
@@ -98,7 +99,9 @@ jQuery(document).ready(function() {
     BootstrapSelect.init();
     // Inputmask.init();
     $("#admin_form").validate({});
-    $('.lfm').filemanager('image');
+    $('.laravel-file-manager').filemanager('file', {prefix: ""});
+    $('.laravel-image-manager').filemanager('image', {prefix: ""});
+    // lfm('lfm', 'image', {prefix: route_prefix});
 });
 
 // bootstrap ckeditor
