@@ -131,9 +131,12 @@ class User extends Authenticatable
             'type' => 'string',
             'database' => 'nullable',
             'rule' => 'nullable|max:191',
-            'help' => '',
-            'form_type' => 'image',
-            'table' => false,
+            'help' => 'Upload and select image from file manager',
+            'form_type' => 'file',
+            'file_manager' => true,
+            'file_accept' => 'image', // file, image, video, audio, text
+            'file_multiple' => true,
+            'table' => true,
         ],
         [
             'name' => 'activation_code',
@@ -266,18 +269,13 @@ class User extends Authenticatable
         return $this->first_name . ' ' . $this->last_name;
     }
 
-    public function getImageAttribute($image)
-    {
-        if(isset($image)) {
-            return $image;
-        }
-
-        return config('setting-general.default_user_image');
-    }
-
     public function getAssetImageAttribute()
     {
-        return asset($this->image);
+        if(isset($this->image) && $this->image) {
+            return asset($this->image);
+        }
+
+        return asset(config('setting-general.default_user_image'));
     }
 
     public function images()

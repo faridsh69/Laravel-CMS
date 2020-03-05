@@ -96,16 +96,6 @@ class Factor extends BaseModel
             'form_type' => 'textarea',
             'table' => false,
         ],
-        [
-            'name' => 'factor_image',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => '',
-            'help' => '',
-            'form_type' => 'image',
-            'table' => false,
-        ],
-
     	// [
      //        'name' => 'total_price',
      //        'type' => 'unsignedBigInteger',

@@ -21,10 +21,10 @@
 	</div>
 	<?php include 'help_block.php' ?>
 	<div class="image-form">
-		<?php if ($options['value']): ?>
+		<?php if ($options['value'] && $options['file_accept'] === 'image'): ?>
 			<img src="<?php echo asset($options['value']); ?>" alt="image">
 		<?php endif; ?>
-		<div id="holder-<?php if($options['file_accept'] === 'image'){ echo $name; }  ?>"></div>
+		<div id="holder-<?php if($options['file_accept'] === 'image'){ echo $name; } ?>"></div>
 	</div>
 <?php endif; ?>
 

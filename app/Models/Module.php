@@ -32,7 +32,7 @@ class Module extends BaseModel
             'type' => 'unsignedBigInteger',
             'database' => 'nullable',
             'relation' => 'modules',
-            'rule' => 'nullable|exists:modules,id',
+            'rule' => 'nullable',
             'help' => 'Used for menu block.',
             'form_type' => 'entity',
             'class' => 'App\Models\Module',

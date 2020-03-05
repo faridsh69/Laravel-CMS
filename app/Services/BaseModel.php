@@ -149,15 +149,6 @@ class BaseModel extends Model
                     'form_type' => '',
                     'table' => true,
                 ],
-                // 'image' => [
-                //     'name' => 'image',
-                //     'type' => 'string',
-                //     'database' => 'nullable',
-                //     'rule' => 'nullable|max:191',
-                //     'help' => 'Select main image.',
-                //     'form_type' => 'image',
-                //     'table' => true,
-                // ],
                 'image' => [
                     'name' => 'image',
                     'type' => 'string',

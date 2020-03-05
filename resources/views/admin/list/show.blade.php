@@ -35,7 +35,11 @@
 	<div class="m-portlet__body">
 		@if(isset($data['answers']))
 			@php
-				$answers = unserialize($data['answers']);
+				try{
+					$answers = unserialize($data['answers']);
+				} catch(exception $e){
+					$answers = [];
+				}
 			@endphp
 			<h3>Answer:</h3>
 			<ul>
