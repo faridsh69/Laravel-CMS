@@ -43,7 +43,7 @@ return [
     // Ex: The private folder of user will be named as the user id.
     'user_folder_name'         => UniSharp\LaravelFilemanager\Handlers\ConfigHandler::class,
 
-    'shared_folder_name'       => 'shares',
+    'shared_folder_name'       => '',
 
     'thumb_folder_name'        => 'thumbs',
 
@@ -61,7 +61,7 @@ return [
             ],
         ],
         'image' => [
-            'folder_name'  => 'files/shares/photos',
+            'folder_name'  => 'files/photos',
             'startup_view' => 'list',
             'max_size'     => 3000,
             'valid_mime'   => [
@@ -69,7 +69,7 @@ return [
             ],
         ],
         'video'  => [
-            'folder_name'  => 'files/shares/videos',
+            'folder_name'  => 'files/videos',
             'startup_view' => 'list',
             'max_size'     => 20000,
             'valid_mime'   => [
@@ -77,7 +77,7 @@ return [
             ],
         ],
         'audio'  => [
-            'folder_name'  => 'files/shares/audios',
+            'folder_name'  => 'files/audios',
             'startup_view' => 'list',
             'max_size'     => 10000,
             'valid_mime'   => [
@@ -85,7 +85,7 @@ return [
             ],
         ],
         'text'  => [
-            'folder_name'  => 'files/shares/texts',
+            'folder_name'  => 'files/texts',
             'startup_view' => 'list',
             'max_size'     => 90000,
             'valid_mime'   => [
@@ -134,7 +134,7 @@ return [
      */
 
     // If true, image thumbnails would be created during upload
-    'should_create_thumbnails' => true,
+    'should_create_thumbnails' => false,
 
     // Create thumbnails automatically only for listed types.
     'raster_mimetypes'         => [

@@ -9,6 +9,18 @@ class Factor extends BaseModel
 {
     public $columns = [
         [
+            'name' => 'file_upload',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => 'nullable|max:191',
+            'help' => 'Upload single file',
+            'form_type' => 'file',
+            'file_manager' => false,
+            'file_accept' => 'file',
+            'file_multiple' => false,
+            'table' => false,
+        ],
+        [
             'name' => 'file',
         ],
         [

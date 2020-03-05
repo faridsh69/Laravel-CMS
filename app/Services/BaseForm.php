@@ -136,6 +136,8 @@ class BaseForm extends Form
                 $option['file_multiple'] = $file_multiple;
                 if($file_manager === true){
                     $input_type = 'file-manager';
+                } else {
+                    $input_type = 'file-uploader';
                 }
             }
 
