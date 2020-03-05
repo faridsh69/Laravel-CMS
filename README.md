@@ -157,82 +157,82 @@ public $columns = [
 
 ## How to use
 	
-	You just need to define what you want from this project !!!
-	Define public $columns in each model
+You just need to define what you want from this project !!!
+Define public $columns in each model
 
-	'name': name of column in table and field in inputs and factory and everywhere.
-	'type': use for form and migrations that show type of column
-	'database': a method that will run affter each migration column like:
-		nullable, unique, default(true), unsigned
-	'rule': validation after form in update and create
-	'help': help block under each field in forms
-	'form_type': type of each column, like
-		ckeditor, date, email, switch, checkbox, image, textarea, none(for dont show in db)
-	'table': boolean that use for show that item in tables
-	'relation': used for relation columns just need to define name of table
-
-
-	This is my array in blog model:
-
-	public $columns = [
-        [
-            'name' => 'title',
-            'type' => 'string',
-            'database' => 'unique',
-            'rule' => 'required|max:60|min:10|unique:blogs,title,',
-            'help' => 'Title should be unique, minimum 10 and maximum 60 characters.',
-            'form_type' => '',
-            'table' => true,
-        ],
-        [
-            'name' => 'url',
-            'type' => 'string',
-            'database' => 'unique',
-            'rule' => 'required|max:80|regex:/^[a-z0-9-]+$/|unique:blogs,url,',
-            'help' => 'Url should be unique, contain lowercase characters and numbers and -',
-            'form_type' => '',
-            'table' => true,
-        ],
-    ];
+'name': name of column in table and field in inputs and factory and everywhere.
+'type': use for form and migrations that show type of column
+'database': a method that will run affter each migration column like:
+`nullable, unique, default(true), unsigned`
+'rule': validation after form in update and create
+'help': help block under each field in forms
+'form_type': type of each column, like
+`ckeditor, date, email, switch, checkbox, image, textarea, none(for dont show in db)`
+'table': boolean that use for show that item in tables
+'relation': used for relation columns just need to define name of table
 
 
+This is my array in blog model:
+
+```php
+public $columns = [
+[
+    'name' => 'title',
+    'type' => 'string',
+    'database' => 'unique',
+    'rule' => 'required|max:60|min:10|unique:blogs,title,',
+    'help' => 'Title should be unique, minimum 10 and maximum 60 characters.',
+    'form_type' => '',
+    'table' => true,
+],
+[
+    'name' => 'url',
+    'type' => 'string',
+    'database' => 'unique',
+    'rule' => 'required|max:80|regex:/^[a-z0-9-]+$/|unique:blogs,url,',
+    'help' => 'Url should be unique, contain lowercase characters and numbers and -',
+    'form_type' => '',
+    'table' => true,
+],
+];
+```
 
 
 
 ## Features
 
-	migration:
+migration:
 
-		https://github.com/faridsh69/cms/blob/master/database/migrations/2014_10_12_000010_create_users_table.php 
+https://github.com/faridsh69/cms/blob/master/database/migrations/2014_10_12_000010_create_users_table.php 
 
-		<?php
-		use App\Services\MigrationService;
-		class CreateUsersTable extends MigrationService
-		{
-		    public $model = 'User';
-		}
+```php
+use App\Services\MigrationService;
+class CreateUsersTable extends MigrationService
+{
+    public $model = 'User';
+}
 
+```
+Controller:
 
-	Controller:
+https://github.com/faridsh69/cms/blob/master/app/Http/Controllers/Admin/Blog/ResourceController.php
 
-		https://github.com/faridsh69/cms/blob/master/app/Http/Controllers/Admin/Blog/ResourceController.php
+```php
+namespace App\Http\Controllers\Admin\Blog;
+use App\Http\Controllers\Base\ListController;
+class ResourceController extends ListController
+{
+	public $model = 'Blog';
+}
+```
 
-		<?php
-		namespace App\Http\Controllers\Admin\Blog;
-		use App\Http\Controllers\Base\ListController;
-		class ResourceController extends ListController
-		{
-			public $model = 'Blog';
-		}
+Seeders:
 
-	Seeders:
+Factory:
 
-	Factory:
+Unittest:
 
-	Unittest:
-
-	...
-
+...
 
 ## Install
 
