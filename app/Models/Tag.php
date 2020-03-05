@@ -65,7 +65,7 @@ class Tag extends TagSpatie
         return $this->columns;
     }
 
-        public function getAssetImageAttribute()
+    public function getAssetImageAttribute()
     {
         if(isset($this->image) && $this->image) {
             return asset($this->image);
