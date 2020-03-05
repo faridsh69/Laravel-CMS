@@ -99,8 +99,12 @@ jQuery(document).ready(function() {
     BootstrapSelect.init();
     // Inputmask.init();
     $("#admin_form").validate({});
-    $('.laravel-file-manager').filemanager('file', {prefix: ""});
-    $('.laravel-image-manager').filemanager('image', {prefix: ""});
+    $('.laravel-file-manager').filemanager('file');
+    $('.laravel-image-manager').filemanager('image');
+    $('.laravel-video-manager').filemanager('video');
+    $('.laravel-audio-manager').filemanager('audio');
+    $('.laravel-text-manager').filemanager('text');
+    // $('.laravel-image-manager').filemanager('image', {prefix: ""});
     // lfm('lfm', 'image', {prefix: route_prefix});
 });
 

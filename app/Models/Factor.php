@@ -9,78 +9,20 @@ class Factor extends BaseModel
 {
     public $columns = [
         [
-            'name' => 'file_admin_image_single',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => '',
-            'help' => 'Select single image from admin panel',
-            'form_type' => 'file',
-            'file_manager' => true,
-            'file_accept' => 'image', // image, video, audio, file
-            'file_multiple' => false,
-            'table' => false,
+            'name' => 'file',
         ],
         [
-            'name' => 'file_admin_image_multiple',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => '',
-            'help' => 'Select multiple image from admin panel',
-            'form_type' => 'file',
-            'file_manager' => true,
-            'file_accept' => 'image', // image, video, audio, file
-            'file_multiple' => true,
-            'table' => false,
+            'name' => 'image',
         ],
         [
-            'name' => 'file_admin_video_multiple',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => '',
-            'help' => 'Select multiple image from admin panel',
-            'form_type' => 'file',
-            'file_manager' => true,
-            'file_accept' => 'video', // image, video, audio, file
-            'file_multiple' => true,
-            'table' => false,
+            'name' => 'video',
         ],
         [
-            'name' => 'file_admin_audio_multiple',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => '',
-            'help' => 'Select multiple image from admin panel',
-            'form_type' => 'file',
-            'file_manager' => true,
-            'file_accept' => 'audio', // image, video, audio, file
-            'file_multiple' => true,
-            'table' => false,
+            'name' => 'audio',
         ],
         [
-            'name' => 'file_admin_pdf_multiple',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => '',
-            'help' => 'Select multiple image from admin panel',
-            'form_type' => 'file',
-            'file_manager' => true,
-            'file_accept' => 'pdf', // image, video, audio, file
-            'file_multiple' => true,
-            'table' => false,
+            'name' => 'text',
         ],
-        [
-            'name' => 'file_admin_file_multiple',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => '',
-            'help' => 'Select multiple image from admin panel',
-            'form_type' => 'file',
-            'file_manager' => true,
-            'file_accept' => 'file', // image, video, audio, file
-            'file_multiple' => true,
-            'table' => false,
-        ],
-        ['name' => 'image'],
         [
             'name' => 'gallery',
             'type' => 'files_array',
@@ -163,18 +105,6 @@ class Factor extends BaseModel
             'form_type' => 'image',
             'table' => false,
         ],
-        [
-            'name' => 'product_gallery',
-            'type' => 'files_array',
-            'database' => 'nullable',
-            'rule' => '',
-            'help' => '',
-            'form_type' => 'gallery',
-            'table' => false,
-        ],
-
-
-
 
     	// [
      //        'name' => 'total_price',

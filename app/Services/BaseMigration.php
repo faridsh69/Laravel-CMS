@@ -62,7 +62,7 @@ class BaseMigration extends Migration
                         ]);
                     }
                 }else{
-                    dump('Model Count: ' . $repository::count());
+                    dump('Model records count: ' . $repository::count());
                     dump('Your data will be destroyes, You can pause the proccess with Ctrl + C, you have 5 seconds to do that!');
                     sleep(6);
                 }

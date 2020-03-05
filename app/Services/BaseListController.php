@@ -353,14 +353,18 @@ class BaseListController extends Controller
             });
         }
         elseif($this->model === 'Block') {
-            $datatable->addColumn('page', function($model) {
-                if($model->page_id){
-                    if(array_search($model->type, \App\Models\Block::getStaticTypes(), true) !== false) {
-                        return '*';
-                    }
-                    return $model->page->title;
+            $datatable->addColumn('pages', function($model) {
+                $pages = $model->pages()->pluck('title')->toArray();
+                $output = 'Just in: ';
+                if($model->show_all_pages){
+                    $output = 'Not in: ';
                 }
-                return null;
+                if($pages){
+                    $output .= implode(',<br>', $pages);
+                }else{
+                    $output .= '-';
+                }
+                return $output;
             });
         }
         elseif($this->model === 'Role') {
@@ -376,7 +380,7 @@ class BaseListController extends Controller
             return '<img style="width:80%" src="' . $model->asset_image . '">';
         });
 
-        return $datatable->rawColumns(['id', 'image', 'content', 'order', 'users', 'permissions'])
+        return $datatable->rawColumns(['id', 'order', 'image', 'content', 'users', 'permissions'])
             ->toJson();
     }
 

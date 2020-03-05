@@ -50,28 +50,47 @@ return [
     'folder_categories'        => [
         'file'  => [
             'folder_name'  => 'files',
-            'startup_view' => 'grid',
-            'max_size'     => 9000, // size in KB
+            'startup_view' => 'list',
+            'max_size'     => 90000, // size in KB
             'valid_mime'   => [
-                'image/jpeg',
-                'image/pjpeg',
-                'image/png',
-                'image/gif',
-                'image/svg+xml',
+                'image/*',
+                'video/*',
+                'audio/*',
+                'application/*',
+                'text/*',
             ],
         ],
         'image' => [
-            'folder_name'  => 'files/photos',
+            'folder_name'  => 'files/shares/photos',
             'startup_view' => 'list',
-            'max_size'     => 9000, // size in KB
+            'max_size'     => 3000,
             'valid_mime'   => [
-                'image/jpeg',
-                'image/pjpeg',
-                'image/png',
-                'image/gif',
-                'image/svg+xml',
-                'application/pdf',
-                'text/plain',
+                'image/*',
+            ],
+        ],
+        'video'  => [
+            'folder_name'  => 'files/shares/videos',
+            'startup_view' => 'list',
+            'max_size'     => 20000,
+            'valid_mime'   => [
+                'video/*',
+            ],
+        ],
+        'audio'  => [
+            'folder_name'  => 'files/shares/audios',
+            'startup_view' => 'list',
+            'max_size'     => 10000,
+            'valid_mime'   => [
+                'audio/*',
+            ],
+        ],
+        'text'  => [
+            'folder_name'  => 'files/shares/texts',
+            'startup_view' => 'list',
+            'max_size'     => 90000,
+            'valid_mime'   => [
+                'application/*',
+                'text/*',
             ],
         ],
     ],
@@ -115,18 +134,18 @@ return [
      */
 
     // If true, image thumbnails would be created during upload
-    'should_create_thumbnails' => false,
+    'should_create_thumbnails' => true,
 
     // Create thumbnails automatically only for listed types.
     'raster_mimetypes'         => [
-        // 'image/jpeg',
-        // 'image/pjpeg',
-        // 'image/png',
+        'image/jpeg',
+        'image/pjpeg',
+        'image/png',
     ],
 
-    'thumb_img_width'          => 50,
+    'thumb_img_width'          => 200,
 
-    'thumb_img_height'         => 50,
+    'thumb_img_height'         => 200,
 
     /*
     |--------------------------------------------------------------------------

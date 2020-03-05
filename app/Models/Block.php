@@ -39,7 +39,7 @@ class Block extends BaseModel
             'property' => 'title',
             'property_key' => 'id',
             'multiple' => true,
-            'table' => false,
+            'table' => true,
         ],
     ];
 

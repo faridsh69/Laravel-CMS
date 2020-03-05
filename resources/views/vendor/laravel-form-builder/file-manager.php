@@ -11,10 +11,10 @@
 <?php if ($showField): ?>
 	<div class="input-group">
 		<span class="input-group-btn">
-			<button class="laravel-file-manager btn btn-danger" type="button" 
+			<button class="btn btn-danger laravel-<?php echo $options['file_accept'] ?>-manager" type="button" 
 			data-preview="holder-<?php echo $name ?>" 
 			data-input="<?php echo $options['real_name']; ?>">
-				<i class="fa fa-picture-o"></i> Choose Image
+				<i class="fa fa-picture-o"></i> Choose <?php echo $options['file_accept'] ?>				
 			</button>
 		</span>
 		<?= Form::input('text', $name, $options['value'], $options['attr']) ?>
@@ -24,7 +24,7 @@
 		<?php if ($options['value']): ?>
 			<img src="<?php echo asset($options['value']); ?>" alt="image">
 		<?php endif; ?>
-		<div id="holder-<?php echo $name ?>"></div>
+		<div id="holder-<?php if($options['file_accept'] === 'image'){ echo $name; }  ?>"></div>
 	</div>
 <?php endif; ?>
 
