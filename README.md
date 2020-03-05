@@ -108,7 +108,7 @@ class BlogPolicy extends BasePolicy
 }
 ```
 
-# Model: Just need to define columns array, and let system handle every thing.
+Model: Just need to define columns array, and let the system handle everything.
 
 ```php
 public $columns = [
