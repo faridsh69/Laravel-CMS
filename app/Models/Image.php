@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Services\BaseModel;
 
-class Image extends BaseModel
+class File extends BaseModel
 {
     // title, imageable_type, imageable_id, src_main, src_thumbnail, width, height
     public $columns = [
@@ -46,24 +46,6 @@ class Image extends BaseModel
         ],
         [
             'name' => 'src_thumbnail',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => '',
-            'help' => '',
-            'form_type' => '',
-            'table' => true,
-        ],
-        [
-            'name' => 'width',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => '',
-            'help' => '',
-            'form_type' => '',
-            'table' => true,
-        ],
-        [
-            'name' => 'height',
             'type' => 'string',
             'database' => 'nullable',
             'rule' => '',

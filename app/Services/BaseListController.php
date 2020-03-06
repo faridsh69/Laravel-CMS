@@ -137,9 +137,11 @@ class BaseListController extends Controller
 
         $data = $this->_changeDataBeforeCreate($this->model, $data, null);
 
-        $model = $this->repository->create($data);
+        // $model = $this->repository->create($data);
+        $model = $this->repository->find(1);
 
         $this->_saveRelatedDataAfterCreate($this->model, $main_data, $model);
+        dd($data);
 
         if(env('APP_ENV') !== 'testing'){
             activity($this->model)->performedOn($model)->causedBy(Auth::user())
@@ -408,11 +410,16 @@ class BaseListController extends Controller
 
     private function _changeDataBeforeCreate($model_name, $data, $model)
     {
-        foreach(collect($this->model_columns)->where('type', 'boolean')->pluck('name') as $boolean_column) {
+        foreach(collect($this->model_columns)->where('type', 'boolean')->pluck('name') as $boolean_column) 
+        {
             if(! isset($data[$boolean_column]))
             {
                 $data[$boolean_column] = 0;
             }
+        }
+        foreach(collect($this->model_columns)->where('form_type', 'file')->where('file_manager', false)->pluck('name') as $file_uploader_column) 
+        {
+            unset($data[$file_uploader_column]);
         }
         // Blog
         unset($data['tags']);
@@ -463,6 +470,14 @@ class BaseListController extends Controller
 
     private function _saveRelatedDataAfterCreate($model_name, $data, $model)
     {
+        // save custome file
+        foreach(collect($this->model_columns)
+            ->where('form_type', 'file')
+            ->where('file_manager', false)->pluck('name') as $file_uploader_column) {
+            $file_upload_service = new \App\Services\FileUploadService;
+            $file_upload_service->save($data[$file_uploader_column], $model);
+        }
+
         // Blog
         if($model_name === 'Blog')
         {

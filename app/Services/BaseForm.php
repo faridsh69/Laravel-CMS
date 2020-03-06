@@ -128,16 +128,26 @@ class BaseForm extends Form
             }
             // all input files
             elseif($form_type === 'file'){
-                $file_manager = isset($column['file_manager']) ? $column['file_manager'] : true;
+                $file_manager = isset($column['file_manager']) ? $column['file_manager'] : false;
                 $file_accept = isset($column['file_accept']) ? $column['file_accept'] : 'file';
-                $file_multiple = isset($column['file_multiple']) ? $column['file_multiple'] : false;
+                $file_multiple = isset($column['file_multiple']) ? $column['file_multiple'] : true;
 
                 $option['file_accept'] = $file_accept;
                 $option['file_multiple'] = $file_multiple;
                 if($file_manager === true){
                     $input_type = 'file-manager';
                 } else {
-                    $input_type = 'file-uploader';
+                    $input_type = 'text-m';
+                    $option['attr']['type'] = 'file';
+                    if($file_accept === 'image'){
+                        $option['attr']['accept'] = 'image/*';
+                    }elseif($file_accept === 'video'){
+                        $option['attr']['accept'] = 'video/*';
+                    }elseif($file_accept === 'audio'){
+                        $option['attr']['accept'] = 'audio/*';
+                    }elseif($file_accept === 'text'){
+                        $option['attr']['accept'] = ['text/*', 'application/*'];
+                    }
                 }
             }
 
