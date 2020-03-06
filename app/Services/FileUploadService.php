@@ -17,11 +17,11 @@ class FileUploadService extends BaseService
         $size = $file->getSize();
         $mime_type = $file->getMimeType();
         $extension = $file->getClientOriginalExtension();
-        $file_name = $title . $extension;
+        $file_name = $title . '.' . $extension;
+        // save file
         $base_upload_path = 'public/files/upload/';
         $upload_path = $base_upload_path . $class_name . '/' . $imageable_id;
         $src = $upload_path . '/' . $file_name;
-        // save file
         Storage::putFileAs($upload_path, $file, $file_name);
         // save image model record 
         $file_model_array = [

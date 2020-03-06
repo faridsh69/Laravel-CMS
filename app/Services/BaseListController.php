@@ -137,8 +137,7 @@ class BaseListController extends Controller
 
         $data = $this->_changeDataBeforeCreate($this->model, $data, null);
 
-        // $model = $this->repository->create($data);
-        $model = $this->repository->find(1);
+        $model = $this->repository->create($data);
 
         $this->_saveRelatedDataAfterCreate($this->model, $main_data, $model);
 
