@@ -7,16 +7,63 @@ use App\Services\FactorService;
 
 class Factor extends BaseModel
 {
+    public function getFileUploadAttribute(){
+        $file = $this->files()->where('title', 'file_upload')->first();
+        if($file){
+            return $file->src;
+        }
+        return asset(config('setting-general.default_user_image'));
+    }
+
+    // public function getImageUploadAttribute(){
+    //     $file = $this->files()->where('title', 'image_upload')->first();
+    //     if($file){
+    //         return $file->src;
+    //     }
+    //     return asset(config('setting-general.default_user_image'));
+    // }
+
+    public function getVideoUploadAttribute(){
+        $file = $this->files()->where('title', 'video_upload')->first();
+        if($file){
+            return $file->src;
+        }
+        return asset(config('setting-general.default_user_image'));
+    }
+
+    public function getAudioUploadAttribute(){
+        $file = $this->files()->where('title', 'audio_upload')->first();
+        if($file){
+            return $file->src;
+        }
+        return asset(config('setting-general.default_user_image'));
+    }
+
+    public function getTextUploadAttribute(){
+        $file = $this->files()->where('title', 'text_upload')->first();
+        if($file){
+            return $file->src;
+        }
+        return asset(config('setting-general.default_user_image'));
+    }
+
+    public function files()
+    {
+        return $this->morphMany('App\Models\File', 'imageable');
+    }
+
     public $columns = [
         ['name' => 'title'],
         ['name' => 'file'],
         ['name' => 'image'],
         ['name' => 'video'],
+        ['name' => 'audio'],
+        ['name' => 'text'],
         [
             'name' => 'file_upload',
             'type' => 'file',
             'database' => 'none',
-            'rule' => 'nullable|file|max:2000',
+            'rule' => 'nullable|file|max:25000',
             'help' => 'Upload single file',
             'form_type' => 'file',
             'file_manager' => false,
@@ -40,11 +87,35 @@ class Factor extends BaseModel
             'name' => 'video_upload',
             'type' => 'file',
             'database' => 'none',
-            'rule' => 'nullable|file|mimetypes:video/*|max:10000',
+            'rule' => 'nullable|file|mimetypes:video/*|max:15000',
             'help' => 'Upload single video',
             'form_type' => 'file',
             'file_manager' => false,
             'file_accept' => 'video',
+            'file_multiple' => false,
+            'table' => true,
+        ],
+        [
+            'name' => 'audio_upload',
+            'type' => 'file',
+            'database' => 'none',
+            'rule' => 'nullable|file|mimetypes:audio/*|max:9000',
+            'help' => 'Upload single audio',
+            'form_type' => 'file',
+            'file_manager' => false,
+            'file_accept' => 'audio',
+            'file_multiple' => false,
+            'table' => true,
+        ],
+        [
+            'name' => 'text_upload',
+            'type' => 'file',
+            'database' => 'none',
+            'rule' => 'nullable|file|max:25000',
+            'help' => 'Upload single text',
+            'form_type' => 'file',
+            'file_manager' => false,
+            'file_accept' => 'text',
             'file_multiple' => false,
             'table' => true,
         ],

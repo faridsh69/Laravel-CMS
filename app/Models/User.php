@@ -269,14 +269,14 @@ class User extends Authenticatable
         return $this->first_name . ' ' . $this->last_name;
     }
 
-    // public function getAssetImageAttribute()
-    // {
-    //     if(isset($this->image) && $this->image) {
-    //         return asset($this->image);
-    //     }
+    public function getImageAttribute($image)
+    {
+        if(isset($image) && $image) {
+            return $image;
+        }
 
-    //     return asset(config('setting-general.default_user_image'));
-    // }
+        return asset(config('setting-general.default_user_image'));
+    }
 
     public function images()
     {

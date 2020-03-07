@@ -51,39 +51,35 @@
 		<div class="m-list-timeline">
 			<div class="m-list-timeline__items">
 				<br>
-				{{ $data->file }} <br>
-				{{ $data->asset_file }} <br>
-
-				<img src="{{ $data->image }}" width="100px">
-				{{ $data->image }} <br>
-				{{ $data->asset_image }} <br>
-
-				{{ $data->video }} <br>
-				{{ $data->asset_video }} <br>
-				
-				@php
-					$xyz = \App\Models\File::where('imageable_type', 'App\Models\Factor')
-					->where('imageable_id', 2)->get();
-				@endphp
-
-				<img src="{{ asset($xyz->where('title', 'image_upload')->first()->src) }}"
-					width="100px">
-				{{ $xyz->where('title', 'image_upload')->first()->src }} <br>
-				{{ $xyz->where('title', 'file_upload')->first()->src }} <br>
-				{{ $xyz->where('title', 'video_upload')->first()->src }} <br>
-
-				 <br> <br> <br>
 				@foreach($data->columns as $column)
 				<div class="m-list-timeline__item">
 					<span class="m-list-timeline__badge m-list-timeline__badge--brand"></span>
 					<div style="color: white;width: 150px; display: inline-block;border-right: 1px solid white; margin-right: 10px">
 						<span>
+							{{ isset($column['file_accept']) ? $column['file_accept'] : ''}}
 							{!! $column['name'] !!}
+							@if(array_search($column['name'],['file', 'image', 'audio', 'video', 'text']) !== false)
+							<a download href="{{ $data[$column['name']] }}" class="btn btn-outline-info m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air btn-sm"><span>
+							    <i class="la la-download"></i></span>
+							</a>
+							@endif
 						</span>
 					</div>
 					<span class="m-list-" style="color: white">
 						@if( !is_object($data[$column['name']]) )
-							{{ $data[$column['name']] }}
+							@if($column['name'] === 'image')
+						    <img alt="image" src="{{ $data[$column['name']] }}" height="100px">
+							@elseif($column['name'] === 'video')
+							<video height="150" controls>
+								<source src="{{ $data[$column['name']] }}">
+							</video>
+							@elseif($column['name'] === 'audio')
+							<audio controls>
+								<source src="{{ $data[$column['name']] }}">
+							</audio>
+							@else
+								{{ $data[$column['name']] }}
+							@endif
 						@else
 							@foreach($data[$column['name']] as $item)
 								{{ isset($item->id) ? $item->id : '' }}

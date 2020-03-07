@@ -20,10 +20,29 @@
 		<?= Form::input('text', $name, $options['value'], $options['attr']) ?>
 	</div>
 	<?php include 'help_block.php' ?>
-	<div class="image-form">
-		<?php if ($options['value'] && $options['file_accept'] === 'image'): ?>
-			<img src="<?php echo $options['value']; ?>" alt="image">
+	<br>
+	<?php if ($options['value']): ?>
+		<a download href="<?php echo $options['value']; ?>" class="btn btn-outline-info m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air mb-1 mt-3"><span>
+		    <i class="la la-download"></i></span>
+		</a>
+		<br>
+		<?php if ($options['file_accept'] === 'image'): ?>
+			<div class="image-form">
+				<img src="<?php echo $options['value']; ?>" alt="image">
+			</div>
 		<?php endif; ?>
+		<?php if ($options['file_accept'] === 'video'): ?>
+			<video height="150" controls>
+				<source src="<?php echo $options['value']; ?>">
+			</video>
+		<?php endif; ?>
+		<?php if ($options['file_accept'] === 'audio'): ?>
+			<audio controls>
+				<source src="<?php echo $options['value']; ?>">
+			</audio>
+		<?php endif; ?>
+	<?php endif; ?>
+	<div class="image-form">
 		<div id="holder-<?php if($options['file_accept'] === 'image'){ echo $name; } ?>"></div>
 	</div>
 <?php endif; ?>

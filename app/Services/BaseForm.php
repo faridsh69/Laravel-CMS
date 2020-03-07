@@ -139,15 +139,7 @@ class BaseForm extends Form
                 } else {
                     $input_type = 'text-m';
                     $option['attr']['type'] = 'file';
-                    if($file_accept === 'image'){
-                        $option['attr']['accept'] = 'image/*';
-                    }elseif($file_accept === 'video'){
-                        $option['attr']['accept'] = 'video/*';
-                    }elseif($file_accept === 'audio'){
-                        $option['attr']['accept'] = 'audio/*';
-                    }elseif($file_accept === 'text'){
-                        $option['attr']['accept'] = ['text/*', 'application/*'];
-                    }
+                    $option['attr']['accept'] = $file_accept . '/*';
                 }
             }
 

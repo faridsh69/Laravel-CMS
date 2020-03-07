@@ -12,7 +12,7 @@ class FileUploadService extends BaseService
     public $src_path_prefix = 'storage/files/upload/';
 
 	public function save($file, $model, $title = 'file')
-	{        
+	{
         $class_name = class_basename($model);
         $model_class = 'App\\Models\\' . $class_name;
         $imageable_type = $model_class;
@@ -24,7 +24,7 @@ class FileUploadService extends BaseService
         // save file
         $upload_path = $this->upload_path_prefix . $class_name . '/' . $imageable_id;
         $src_path = $this->src_path_prefix . $class_name . '/' . $imageable_id;
-        $src = $src_path . '/' . $file_name;
+        $src = asset($src_path . '/' . $file_name);
         Storage::putFileAs($upload_path, $file, $file_name);
         // save image model record 
         $file_model_array = [
