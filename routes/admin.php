@@ -94,3 +94,7 @@ Route::group(['prefix' => 'report', 'namespace' => 'Report', 'as' => 'report.'],
 Route::group(['prefix' => 'product', 'namespace' => 'Product', 'as' => 'product.'], function () {
 	Route::get('remove-image/{id}', 'ResourceController@getRemoveImage')->name('remove-image');
 });
+Route::get('remove-file', 'File\FileController@getRemoveFile')
+    // ->middleware('can:change-status,' . $class_name)
+    ->name('remove-file');
+

@@ -129,3 +129,7 @@ inputsWithTypeTextarea.each(function(){
 function emptyImageInput(inputId) {
     $('#' + inputId).removeAttr('value');
 };
+
+function removeFile(src){
+    $.ajax({url: '/admin/remove-file/?src=' + src}).then(location.reload());
+}

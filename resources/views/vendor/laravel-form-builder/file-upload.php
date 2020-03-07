@@ -34,6 +34,9 @@
 		<a download href="<?php echo $options['value']; ?>" class="btn btn-outline-info m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air"><span>
 		    <i class="la la-download"></i></span>
 		</a>
+		<a href="javascript:void(0)" class="btn btn-outline-danger m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air" onclick="removeFile('<?php echo $options['value']; ?>')"><span>
+		    <i class="la la-trash"></i></span>
+		</a>
 	<?php endif; ?>
 
 <?php endif; ?>

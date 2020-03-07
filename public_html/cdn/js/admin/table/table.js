@@ -89,5 +89,9 @@ var output =
 }
 ();
 jQuery(document).ready(function() {
-	DatatableJsonRemoteDemo.init()
+	DatatableJsonRemoteDemo.init();
 });
+
+function changeStatus(id){
+    $.ajax({url: "change-status/" + id});
+}

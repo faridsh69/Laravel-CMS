@@ -6,7 +6,6 @@
 	columns = JSON.parse(columns);
 </script>
 <script src="{{ asset('js/admin/table/table.js') }}"></script>
-<script src="{{ asset('js/admin/table/change-status.js') }}"></script>
 @endpush
 
 @section('content')

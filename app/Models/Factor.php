@@ -43,7 +43,7 @@ class Factor extends BaseModel
         if($file){
             return $file->src;
         }
-        return asset(config('setting-general.default_user_image'));
+        return null;
     }
 
     public function getAudioUploadAttribute(){
@@ -51,7 +51,7 @@ class Factor extends BaseModel
         if($file){
             return $file->src;
         }
-        return asset(config('setting-general.default_user_image'));
+        return null;
     }
 
     public function getTextUploadAttribute(){
@@ -59,7 +59,7 @@ class Factor extends BaseModel
         if($file){
             return $file->src;
         }
-        return asset(config('setting-general.default_user_image'));
+        return null;
     }
 
     public function files()
