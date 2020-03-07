@@ -125,3 +125,7 @@ inputsWithTypeTextarea.each(function(){
         CKEDITOR.replace(input.attr('id'), ckeditorOptions);
     }
 });
+
+function emptyImageInput(inputId) {
+    $('#' + inputId).removeAttr('value');
+};

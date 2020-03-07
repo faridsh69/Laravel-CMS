@@ -12,6 +12,14 @@ class Factor extends BaseModel
         if($file){
             return $file->src;
         }
+        return null;
+    }
+
+    public function getFileUploadOrDefaultAttribute(){
+        $file_upload = $this->file_upload;
+        if($file_upload){
+            return $file_upload;
+        }
         return asset(config('setting-general.default_user_image'));
     }
 
@@ -19,6 +27,13 @@ class Factor extends BaseModel
         $file = $this->files()->where('title', 'image_upload')->first();
         if($file){
             return $file->src;
+        }
+        return null;
+    }
+
+    public function getImageUploadOrDefaultAttribute(){
+        if($this->image_upload){
+            return $image_upload;
         }
         return asset(config('setting-general.default_user_image'));
     }
@@ -66,7 +81,7 @@ class Factor extends BaseModel
             'type' => 'file',
             'database' => 'none',
             'rule' => 'nullable|file|max:25000',
-            'help' => 'Upload single file',
+            'help' => '',
             'form_type' => 'file',
             'file_manager' => false,
             'file_accept' => 'file',
@@ -78,7 +93,7 @@ class Factor extends BaseModel
             'type' => 'file',
             'database' => 'none',
             'rule' => 'nullable|file|image|mimetypes:image/*|max:2000',
-            'help' => 'Upload single image',
+            'help' => '',
             'form_type' => 'file',
             'file_manager' => false,
             'file_accept' => 'image',
@@ -90,7 +105,7 @@ class Factor extends BaseModel
             'type' => 'file',
             'database' => 'none',
             'rule' => 'nullable|file|mimetypes:video/*|max:15000',
-            'help' => 'Upload single video',
+            'help' => '',
             'form_type' => 'file',
             'file_manager' => false,
             'file_accept' => 'video',
@@ -102,7 +117,7 @@ class Factor extends BaseModel
             'type' => 'file',
             'database' => 'none',
             'rule' => 'nullable|file|mimetypes:audio/*|max:9000',
-            'help' => 'Upload single audio',
+            'help' => '',
             'form_type' => 'file',
             'file_manager' => false,
             'file_accept' => 'audio',
@@ -114,7 +129,7 @@ class Factor extends BaseModel
             'type' => 'file',
             'database' => 'none',
             'rule' => 'nullable|file|max:25000',
-            'help' => 'Upload single text',
+            'help' => '',
             'form_type' => 'file',
             'file_manager' => false,
             'file_accept' => 'text',

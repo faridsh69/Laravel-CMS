@@ -138,7 +138,9 @@ class BaseForm extends Form
                     $input_type = 'file-manager';
                 } else {
                     $input_type = 'file-upload';
-                    $option['attr']['accept'] = $file_accept . '/*';
+                    if($file_accept !== 'file'){
+                        $option['attr']['accept'] = $file_accept . '/*';
+                    }
                 }
             }
 
