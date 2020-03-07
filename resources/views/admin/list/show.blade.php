@@ -51,6 +51,28 @@
 		<div class="m-list-timeline">
 			<div class="m-list-timeline__items">
 				<br>
+				{{ $data->file }} <br>
+				{{ $data->asset_file }} <br>
+
+				<img src="{{ $data->image }}" width="100px">
+				{{ $data->image }} <br>
+				{{ $data->asset_image }} <br>
+
+				{{ $data->video }} <br>
+				{{ $data->asset_video }} <br>
+				
+				@php
+					$xyz = \App\Models\File::where('imageable_type', 'App\Models\Factor')
+					->where('imageable_id', 2)->get();
+				@endphp
+
+				<img src="{{ asset($xyz->where('title', 'image_upload')->first()->src) }}"
+					width="100px">
+				{{ $xyz->where('title', 'image_upload')->first()->src }} <br>
+				{{ $xyz->where('title', 'file_upload')->first()->src }} <br>
+				{{ $xyz->where('title', 'video_upload')->first()->src }} <br>
+
+				 <br> <br> <br>
 				@foreach($data->columns as $column)
 				<div class="m-list-timeline__item">
 					<span class="m-list-timeline__badge m-list-timeline__badge--brand"></span>

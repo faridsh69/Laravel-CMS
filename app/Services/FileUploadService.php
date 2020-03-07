@@ -8,8 +8,11 @@ use App\Models\File;
 
 class FileUploadService extends BaseService
 {
+    public $upload_path_prefix = 'public/files/upload/';
+    public $src_path_prefix = 'storage/files/upload/';
+
 	public function save($file, $model, $title = 'file')
-	{
+	{        
         $class_name = class_basename($model);
         $model_class = 'App\\Models\\' . $class_name;
         $imageable_type = $model_class;
@@ -19,9 +22,9 @@ class FileUploadService extends BaseService
         $extension = $file->getClientOriginalExtension();
         $file_name = $title . '.' . $extension;
         // save file
-        $base_upload_path = 'public/files/upload/';
-        $upload_path = $base_upload_path . $class_name . '/' . $imageable_id;
-        $src = $upload_path . '/' . $file_name;
+        $upload_path = $this->upload_path_prefix . $class_name . '/' . $imageable_id;
+        $src_path = $this->src_path_prefix . $class_name . '/' . $imageable_id;
+        $src = $src_path . '/' . $file_name;
         Storage::putFileAs($upload_path, $file, $file_name);
         // save image model record 
         $file_model_array = [

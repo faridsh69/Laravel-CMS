@@ -14,8 +14,7 @@ class ModulesTableSeeder extends Seeder
     {
         $database_name = config('database.connections.mysql.database');
         $folder_name = substr($database_name, 9, 6);
-        $image_folder_name = '/storage/photos/shares/' . $folder_name . '/';
-
+        $image_folder_name = '/storage/files/photos/' . $folder_name . '/';
         $modules = Module::get();
         foreach($modules as $module){
             $module->delete();
@@ -143,6 +142,7 @@ class ModulesTableSeeder extends Seeder
         ];
 
         foreach($testimonials as $testimonial){
+            $testimonial['image'] = asset($testimonial['image']);
         	$testimonial['type'] = 'testimonial';
             $testimonial['language'] = config('app.locale');
             $testimonial['activated'] = 1;
@@ -172,6 +172,7 @@ class ModulesTableSeeder extends Seeder
         ];
 
         foreach($sliders as $slider){
+            $slider['image'] = asset($slider['image']);
         	$slider['type'] = 'header';
             $slider['language'] = config('app.locale');
             $slider['activated'] = 1;
@@ -198,6 +199,7 @@ class ModulesTableSeeder extends Seeder
         ];
 
         foreach($services as $service){
+            $service['image'] = asset($service['image']);
         	$service['type'] = 'service';
         	$service['title'] = 'service';
             $service['language'] = config('app.locale');
@@ -225,6 +227,7 @@ class ModulesTableSeeder extends Seeder
         ];
 
         foreach($partners as $partner){
+            $partner['image'] = asset($partner['image']);
             $partner['type'] = 'partner';
             $partner['title'] = 'partner';
             $partner['language'] = config('app.locale');
@@ -391,6 +394,7 @@ class ModulesTableSeeder extends Seeder
         ];
 
         foreach($teams as $team){
+            $team['image'] = asset($team['image']);
             $team['type'] = 'team';
             $team['language'] = config('app.locale');
             $team['activated'] = 1;

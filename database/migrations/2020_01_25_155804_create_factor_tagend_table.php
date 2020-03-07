@@ -23,7 +23,6 @@ class CreateFactorTagendTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
-
     }
 
     /**

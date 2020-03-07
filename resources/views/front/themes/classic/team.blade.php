@@ -14,7 +14,7 @@
                 <div class="single-teachers-area text-center mb-100 wow fadeInUp" data-wow-delay="400ms">
                     <!-- Thumbnail -->
                     <div class="teachers-thumbnail">
-                        <img src="{{ $team_item->asset_image }}" alt="team member">
+                        <img src="{{ $team_item->image }}" alt="team member">
                     </div>
                     <!-- Meta Info -->
                     <div class="teachers-info mt-30">

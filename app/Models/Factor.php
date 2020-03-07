@@ -8,6 +8,10 @@ use App\Services\FactorService;
 class Factor extends BaseModel
 {
     public $columns = [
+        ['name' => 'title'],
+        ['name' => 'file'],
+        ['name' => 'image'],
+        ['name' => 'video'],
         [
             'name' => 'file_upload',
             'type' => 'file',
@@ -18,7 +22,7 @@ class Factor extends BaseModel
             'file_manager' => false,
             'file_accept' => 'file',
             'file_multiple' => false,
-            'table' => false,
+            'table' => true,
         ],
         [
             'name' => 'image_upload',
@@ -30,7 +34,7 @@ class Factor extends BaseModel
             'file_manager' => false,
             'file_accept' => 'image',
             'file_multiple' => false,
-            'table' => false,
+            'table' => true,
         ],
         [
             'name' => 'video_upload',
@@ -42,7 +46,7 @@ class Factor extends BaseModel
             'file_manager' => false,
             'file_accept' => 'video',
             'file_multiple' => false,
-            'table' => false,
+            'table' => true,
         ],
         // [
         //     'name' => 'file',

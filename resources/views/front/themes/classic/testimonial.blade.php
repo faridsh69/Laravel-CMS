@@ -13,7 +13,7 @@
             <div class="col-12 col-md-6">
                 <div class="single-testimonial-area mb-100 d-flex wow fadeInUp" data-wow-delay="400ms">
                     <div class="testimonial-thumb">
-                        <img src="{{ $testimonial_item->asset_image }}" alt="testimonial image">
+                        <img src="{{ $testimonial_item->image }}" alt="testimonial image">
                     </div>
                     <div class="testimonial-content">
                         <h5>{{ $testimonial_item->title }}</h5>

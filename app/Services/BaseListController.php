@@ -377,7 +377,7 @@ class BaseListController extends Controller
         }
 
         $datatable->addColumn('image', function($model) {
-            return '<img style="width:80%" src="' . $model->asset_image . '">';
+            return '<img style="width:80%" src="' . $model->image . '">';
         });
 
         return $datatable->rawColumns(['id', 'order', 'image', 'content', 'users', 'permissions'])
@@ -472,8 +472,11 @@ class BaseListController extends Controller
         foreach(collect($this->model_columns)
             ->where('form_type', 'file')
             ->where('file_manager', false)->pluck('name') as $file_uploader_column) {
-            $file_upload_service = new \App\Services\FileUploadService;
-            $file_upload_service->save($data[$file_uploader_column], $model, $file_uploader_column);
+            $file = $data[$file_uploader_column];
+            if($file){
+                $file_upload_service = new \App\Services\FileUploadService;
+                $file_upload_service->save($file, $model, $file_uploader_column);
+            }
         }
 
         // Blog
