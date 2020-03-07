@@ -15,13 +15,13 @@ class Factor extends BaseModel
         return asset(config('setting-general.default_user_image'));
     }
 
-    // public function getImageUploadAttribute(){
-    //     $file = $this->files()->where('title', 'image_upload')->first();
-    //     if($file){
-    //         return $file->src;
-    //     }
-    //     return asset(config('setting-general.default_user_image'));
-    // }
+    public function getImageUploadAttribute(){
+        $file = $this->files()->where('title', 'image_upload')->first();
+        if($file){
+            return $file->src;
+        }
+        return asset(config('setting-general.default_user_image'));
+    }
 
     public function getVideoUploadAttribute(){
         $file = $this->files()->where('title', 'video_upload')->first();

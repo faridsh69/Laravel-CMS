@@ -51,14 +51,21 @@
 		<div class="m-list-timeline">
 			<div class="m-list-timeline__items">
 				<br>
-				@foreach($data->columns as $column)
+				@foreach($data->getColumns() as $column)
 				<div class="m-list-timeline__item">
 					<span class="m-list-timeline__badge m-list-timeline__badge--brand"></span>
 					<div style="color: white;width: 150px; display: inline-block;border-right: 1px solid white; margin-right: 10px">
 						<span>
-							{{ isset($column['file_accept']) ? $column['file_accept'] : ''}}
 							{!! $column['name'] !!}
-							@if(array_search($column['name'],['file', 'image', 'audio', 'video', 'text']) !== false)
+
+							@php
+								$file_accept = '';
+								if(isset($column['file_accept'])){
+									$file_accept = $column['file_accept'];
+								}
+							@endphp
+
+							@if(array_search($file_accept, ['file', 'image', 'audio', 'video', 'text']) !== false)
 							<a download href="{{ $data[$column['name']] }}" class="btn btn-outline-info m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air btn-sm"><span>
 							    <i class="la la-download"></i></span>
 							</a>
@@ -67,13 +74,13 @@
 					</div>
 					<span class="m-list-" style="color: white">
 						@if( !is_object($data[$column['name']]) )
-							@if($column['name'] === 'image')
+							@if($file_accept === 'image')
 						    <img alt="image" src="{{ $data[$column['name']] }}" height="100px">
-							@elseif($column['name'] === 'video')
+							@elseif($file_accept === 'video')
 							<video height="150" controls>
 								<source src="{{ $data[$column['name']] }}">
 							</video>
-							@elseif($column['name'] === 'audio')
+							@elseif($file_accept === 'audio')
 							<audio controls>
 								<source src="{{ $data[$column['name']] }}">
 							</audio>
