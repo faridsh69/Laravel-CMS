@@ -52,6 +52,8 @@ class Factor extends BaseModel
         return $this->morphMany('App\Models\File', 'imageable');
     }
 
+    protected $appends = ['file_upload', 'image_upload', 'video_upload', 'audio_upload', 'text_upload'];
+
     public $columns = [
         ['name' => 'title'],
         ['name' => 'file'],
@@ -93,7 +95,7 @@ class Factor extends BaseModel
             'file_manager' => false,
             'file_accept' => 'video',
             'file_multiple' => false,
-            'table' => true,
+            'table' => false,
         ],
         [
             'name' => 'audio_upload',
@@ -105,7 +107,7 @@ class Factor extends BaseModel
             'file_manager' => false,
             'file_accept' => 'audio',
             'file_multiple' => false,
-            'table' => true,
+            'table' => false,
         ],
         [
             'name' => 'text_upload',
@@ -117,7 +119,7 @@ class Factor extends BaseModel
             'file_manager' => false,
             'file_accept' => 'text',
             'file_multiple' => false,
-            'table' => true,
+            'table' => false,
         ],
         // [
         //     'name' => 'file',

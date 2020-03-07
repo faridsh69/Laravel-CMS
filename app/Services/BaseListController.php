@@ -376,11 +376,11 @@ class BaseListController extends Controller
             });
         }
 
-        $datatable->addColumn('image', function($model) {
-            return '<img style="width:80%" src="' . $model->image . '">';
-        });
+        // $datatable->addColumn('image', function($model) {
+        //     return '<img style="width:80%" src="' . $model->image . '">';
+        // });
 
-        return $datatable->rawColumns(['id', 'order', 'image', 'content', 'users', 'permissions'])
+        return $datatable->rawColumns(['id', 'order', 'content', 'users', 'permissions'])
             ->toJson();
     }
 

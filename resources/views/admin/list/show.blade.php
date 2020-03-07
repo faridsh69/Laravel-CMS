@@ -64,8 +64,7 @@
 									$file_accept = $column['file_accept'];
 								}
 							@endphp
-
-							@if(array_search($file_accept, ['file', 'image', 'audio', 'video', 'text']) !== false)
+							@if(array_search($file_accept, ['file', 'image', 'audio', 'video', 'text']) !== false) <br>
 							<a download href="{{ $data[$column['name']] }}" class="btn btn-outline-info m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air btn-sm"><span>
 							    <i class="la la-download"></i></span>
 							</a>

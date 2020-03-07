@@ -53,6 +53,7 @@ return [
         'image' => '\App\Forms\Fields\Image',
         'gallery' => '\App\Forms\Fields\Gallery',
         'file-manager' => '\App\Forms\Fields\FileManager',
+        'file-upload' => '\App\Forms\Fields\FileUpload',
     ],
 
     'field_icons' => [
