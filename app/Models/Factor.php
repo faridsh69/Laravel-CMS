@@ -64,7 +64,7 @@ class Factor extends BaseModel
 
     public function files()
     {
-        return $this->morphMany('App\Models\File', 'imageable');
+        return $this->morphMany('App\Models\File', 'fileable');
     }
 
     protected $appends = ['file_upload', 'image_upload', 'video_upload', 'audio_upload', 'text_upload'];

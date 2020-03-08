@@ -56,7 +56,10 @@ class BitcointProductsTableSeeder extends Seeder
         	],
         ];
 
+        $order = 1;
     	foreach($products as $product){
+            $order += 3;
+            $product['order'] = $order;
             $product['url'] = '';
     		$product['content'] = '';
             $product['category_id'] = 1;

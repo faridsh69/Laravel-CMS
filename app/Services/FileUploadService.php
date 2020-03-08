@@ -15,18 +15,31 @@ class FileUploadService extends BaseService
 	{
         $class_name = class_basename($model);
         $model_class = 'App\\Models\\' . $class_name;
-        $imageable_type = $model_class;
-        $imageable_id = $model->id;
+        $fileable_type = $model_class;
+        $fileable_id = $model->id;
         $size = $file->getSize();
         $mime_type = $file->getMimeType();
         $extension = $file->getClientOriginalExtension();
-        $file_name = $title . '.' . $extension;
+        $random_code = rand(100, 999);
+        $file_name = $title . '-' . $random_code . '.' . $extension;
         // save file
-        $upload_path = $this->upload_path_prefix . $class_name . '/' . $imageable_id;
-        $src_path = $this->src_path_prefix . $class_name . '/' . $imageable_id;
+        $upload_path = $this->upload_path_prefix . $class_name . '/' . $fileable_id . '/';
+        $src_path = $this->src_path_prefix . $class_name . '/' . $fileable_id;
         $src = asset($src_path . '/' . $file_name);
         Storage::putFileAs($upload_path, $file, $file_name);
-        // save image model record 
+        // save thumbnail if its image
+        $src_thumbnail = null;
+        if(strpos($mime_type, 'image') === 0){
+            $file_name_thumbnail = $title . '-' . $random_code . '-' . 'thumbnail' . '.' . $extension;
+            $src_thumbnail = asset($src_path . '/' . $file_name_thumbnail);
+            $intervation_image = Image::make($file);
+            $intervation_image->resize(null, 200, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $intervation_upload_path = storage_path('app/' . $upload_path);
+            $intervation_image->save($intervation_upload_path . $file_name_thumbnail, 100);
+        }
+        // save file model record 
         $file_model_array = [
             'title' => $title,
             'extension' => $extension,
@@ -34,11 +47,17 @@ class FileUploadService extends BaseService
             'mime_type' => $mime_type,
             'size' => $size,
             'src' => $src,
-            'imageable_type' => $imageable_type,
-            'imageable_id' => $imageable_id,            
+            'src_thumbnail' => $src_thumbnail,
+            'fileable_type' => $fileable_type,
+            'fileable_id' => $fileable_id,            
         ];
 
-        $file_model = File::firstOrCreate($file_model_array);        
+        $file_model = File::updateOrCreate(
+                [
+                    'title' => $title, 
+                    'fileable_id' => $fileable_id, 
+                    'fileable_type' => $fileable_type
+                ], $file_model_array);        
 
   //       $class_name = class_basename($model);
   //       $model_class = 'App\\Models\\' . $class_name;

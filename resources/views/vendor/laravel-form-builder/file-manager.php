@@ -14,7 +14,7 @@
 			<button class="btn btn-danger laravel-<?php echo $options['file_accept'] ?>-manager" type="button" 
 			data-preview="holder-<?php echo $name ?>" 
 			data-input="<?php echo $options['real_name']; ?>">
-				<i class="fa fa-picture-o"></i> Choose <?php echo $options['file_accept'] ?>				
+				<i class="fa fa-picture-o"></i> Choose <?php echo $options['file_accept'] ?>
 			</button>
 		</span>
 		<?= Form::input('text', $name, $options['value'], $options['attr']) ?>
@@ -26,13 +26,11 @@
 			<div class="image-form">
 				<img src="<?php echo $options['value']; ?>" alt="image">
 			</div>
-		<?php endif; ?>
-		<?php if ($options['file_accept'] === 'video'): ?>
+		<?php elseif ($options['file_accept'] === 'video'): ?>
 			<video height="150" controls>
 				<source src="<?php echo $options['value']; ?>">
 			</video>
-		<?php endif; ?>
-		<?php if ($options['file_accept'] === 'audio'): ?>
+		<?php elseif ($options['file_accept'] === 'audio'): ?>
 			<audio controls>
 				<source src="<?php echo $options['value']; ?>">
 			</audio>

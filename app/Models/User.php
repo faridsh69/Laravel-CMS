@@ -11,6 +11,15 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
+    public $function_name = 'sex-group';
+
+    public function __get($key)
+    {
+        if($key === 'sex'){
+            return 'kos';
+        }
+    }
+
     use CanComment;
     use HasApiTokens;
     use HasRoles;
