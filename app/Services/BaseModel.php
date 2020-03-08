@@ -238,6 +238,26 @@ class BaseModel extends Model
         return $query->where('language', config('app.locale'));
     }
 
+    public function files()
+    {
+        return $this->morphMany('App\Models\File', 'fileable');
+    }
+
+    public function file($title)
+    {
+        return $this->files()->where('title', $title)->first();
+    }
+
+    public function file_src($title)
+    {
+        return $this->files()->where('title', $title)->first()->src;
+    }
+
+    public function file_src_thumbnail($title)
+    {
+        return $this->files()->where('title', $title)->first()->src_thumbnail;
+    }
+
     // public function getAssetImageAttribute()
     // {
     //     if(isset($this->image) && $this->image) {
@@ -245,5 +265,23 @@ class BaseModel extends Model
     //     }
 
     //     return asset(config('setting-general.default_meta_image'));
+    // }
+
+    // protected $appends = ['file_upload', 'image_upload', 'video_upload', 'audio_upload', 'text_upload'];
+
+    // public function getFileUploadAttribute(){
+    //     $file = $this->files()->where('title', 'file_upload')->first();
+    //     if($file){
+    //         return $file->src;
+    //     }
+    //     return null;
+    // }
+
+    // public function getFileUploadOrDefaultAttribute(){
+    //     $file_upload = $this->file_upload;
+    //     if($file_upload){
+    //         return $file_upload;
+    //     }
+    //     return asset(config('setting-general.default_user_image'));
     // }
 }

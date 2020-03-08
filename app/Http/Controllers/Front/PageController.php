@@ -13,8 +13,6 @@ class PageController extends Controller
 {
     public function getIndex($page_url = '')
     {
-        $user = \Auth::user();
-        dd($user->sex, $user->email);
         $page = Page::where('url', $page_url)->active()->first();
         abort_if(! $page, 404);
         if(config('app.name') === 'map'){

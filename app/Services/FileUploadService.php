@@ -53,11 +53,11 @@ class FileUploadService extends BaseService
         ];
 
         $file_model = File::updateOrCreate(
-                [
-                    'title' => $title, 
-                    'fileable_id' => $fileable_id, 
-                    'fileable_type' => $fileable_type
-                ], $file_model_array);        
+            [
+                'title' => $title, 
+                'fileable_id' => $fileable_id, 
+                'fileable_type' => $fileable_type
+            ], $file_model_array);        
 
   //       $class_name = class_basename($model);
   //       $model_class = 'App\\Models\\' . $class_name;

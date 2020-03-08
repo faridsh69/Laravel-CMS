@@ -7,68 +7,6 @@ use App\Services\FactorService;
 
 class Factor extends BaseModel
 {
-    public function getFileUploadAttribute(){
-        $file = $this->files()->where('title', 'file_upload')->first();
-        if($file){
-            return $file->src;
-        }
-        return null;
-    }
-
-    public function getFileUploadOrDefaultAttribute(){
-        $file_upload = $this->file_upload;
-        if($file_upload){
-            return $file_upload;
-        }
-        return asset(config('setting-general.default_user_image'));
-    }
-
-    public function getImageUploadAttribute(){
-        $file = $this->files()->where('title', 'image_upload')->first();
-        if($file){
-            return $file->src;
-        }
-        return null;
-    }
-
-    public function getImageUploadOrDefaultAttribute(){
-        if($this->image_upload){
-            return $image_upload;
-        }
-        return asset(config('setting-general.default_user_image'));
-    }
-
-    public function getVideoUploadAttribute(){
-        $file = $this->files()->where('title', 'video_upload')->first();
-        if($file){
-            return $file->src;
-        }
-        return null;
-    }
-
-    public function getAudioUploadAttribute(){
-        $file = $this->files()->where('title', 'audio_upload')->first();
-        if($file){
-            return $file->src;
-        }
-        return null;
-    }
-
-    public function getTextUploadAttribute(){
-        $file = $this->files()->where('title', 'text_upload')->first();
-        if($file){
-            return $file->src;
-        }
-        return null;
-    }
-
-    public function files()
-    {
-        return $this->morphMany('App\Models\File', 'fileable');
-    }
-
-    protected $appends = ['file_upload', 'image_upload', 'video_upload', 'audio_upload', 'text_upload'];
-
     public $columns = [
         ['name' => 'title'],
         ['name' => 'file'],
@@ -86,7 +24,7 @@ class Factor extends BaseModel
             'file_manager' => false,
             'file_accept' => 'file',
             'file_multiple' => false,
-            'table' => true,
+            'table' => false,
         ],
         [
             'name' => 'image_upload',
@@ -98,7 +36,7 @@ class Factor extends BaseModel
             'file_manager' => false,
             'file_accept' => 'image',
             'file_multiple' => false,
-            'table' => true,
+            'table' => false,
         ],
         [
             'name' => 'video_upload',

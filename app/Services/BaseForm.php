@@ -141,6 +141,7 @@ class BaseForm extends Form
                     if($file_accept !== 'file'){
                         $option['attr']['accept'] = $file_accept . '/*';
                     }
+                    $option['value'] = $this->model->file_src($name);
                 }
             }
 

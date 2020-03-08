@@ -161,6 +161,12 @@ class BaseListController extends Controller
         $model = $this->repository->findOrFail($id);
         $this->authorize('view', $model);
         $data = $model;
+        foreach($this->model_columns as $column){
+            if($column['form_type'] === 'file' && $column['file_manager'] === false){
+                $data[$column['name']] = $data->file_src($column['name']);
+            }
+        }
+
         $activities = Activity::where('subject_type', $this->model_class)
             ->where('subject_id', $id)
             ->get();
