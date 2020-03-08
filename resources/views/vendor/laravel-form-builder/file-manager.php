@@ -38,7 +38,7 @@
 				<?php echo $src; ?>
 			<?php endif; ?>
 			<div class="file-tools mt-2">
-				<a href="javascript:void(0)" class="btn btn-outline-danger m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air" onclick="removeFile('<?php echo $src; ?>')"><span>
+				<a href="javascript:void(0)" class="btn btn-outline-danger m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air" onclick="emptyImageInput('<?php echo $name ?>')"><span>
 				    <i class="la la-trash"></i></span>
 				</a>
 				<a download href="<?php echo $src; ?>" class="btn btn-outline-info m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air"><span>
@@ -50,9 +50,7 @@
 			</div>
 		</div>
 	<?php endforeach; ?>
-	<div class="image-form">
-		<div id="holder-<?php if($options['file_accept'] === 'image'){ echo $name; } ?>"></div>
-	</div>
+	<div id="holder-<?php if($options['file_accept'] === 'image'){ echo $name; } ?>"></div>
 
 <?php endif; ?>
 

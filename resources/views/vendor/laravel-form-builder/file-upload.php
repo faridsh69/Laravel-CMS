@@ -41,6 +41,7 @@
 			</div>
 		</div>
 	<?php endforeach; ?>
+	<div id="holder-<?php if($options['file_accept'] === 'image'){ echo $name; } ?>"></div>
 
 <?php endif; ?>
 
