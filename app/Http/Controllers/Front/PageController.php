@@ -35,7 +35,7 @@ class PageController extends Controller
         $files = [];
         foreach($main_data as $key => $item){
             if(is_object($item)){
-                $files[] = [ $key => $item ];
+                $files[$key] = $item;
                 unset($data[$key]);
             }
         }
