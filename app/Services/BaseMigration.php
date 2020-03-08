@@ -77,7 +77,7 @@ class BaseMigration extends Migration
                 $database = isset($column['database']) ? $column['database'] : '';
                 $relation = isset($column['relation']) ? $column['relation'] : '';
                 // if database attribute is 'none' it means it dont need database column
-                if($database === 'none'){
+                if($database === 'none' || $database === 'file'){
                     continue;
                 }
                 // for create foreign key relation attribute should be defined

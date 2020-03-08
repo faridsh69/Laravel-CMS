@@ -209,6 +209,90 @@ class BaseModel extends Model
                     'file_multiple' => true,
                     'table' => false,
                 ],
+                'upload_file' => [
+                    'name' => 'upload_file',
+                    'type' => 'file',
+                    'database' => 'none',
+                    'rule' => 'nullable|file|max:9000',
+                    'help' => '',
+                    'form_type' => 'file',
+                    'file_manager' => false,
+                    'file_accept' => 'file',
+                    'file_multiple' => false,
+                    'table' => false,
+                ],
+                'upload_image' => [
+                    'name' => 'upload_image',
+                    'type' => 'file',
+                    'database' => 'none',
+                    'rule' => 'nullable|file|image|mimetypes:image/*|max:2000',
+                    'help' => '',
+                    'form_type' => 'file',
+                    'file_manager' => false,
+                    'file_accept' => 'image',
+                    'file_multiple' => false,
+                    'table' => false,
+                ],
+                'upload_video' => [
+                    'name' => 'upload_video',
+                    'type' => 'file',
+                    'database' => 'none',
+                    'rule' => 'nullable|file|mimetypes:video/*|max:9000',
+                    'help' => '',
+                    'form_type' => 'file',
+                    'file_manager' => false,
+                    'file_accept' => 'video',
+                    'file_multiple' => false,
+                    'table' => false,
+                ],
+                'upload_audio' => [
+                    'name' => 'upload_audio',
+                    'type' => 'file',
+                    'database' => 'none',
+                    'rule' => 'nullable|file|mimetypes:audio/*|max:9000',
+                    'help' => '',
+                    'form_type' => 'file',
+                    'file_manager' => false,
+                    'file_accept' => 'audio',
+                    'file_multiple' => false,
+                    'table' => false,
+                ],
+                'upload_text' => [
+                    'name' => 'upload_text',
+                    'type' => 'file',
+                    'database' => 'none',
+                    'rule' => 'nullable|file|max:25000',
+                    'help' => '',
+                    'form_type' => 'file',
+                    'file_manager' => false,
+                    'file_accept' => 'text',
+                    'file_multiple' => false,
+                    'table' => false,
+                ],
+                'upload_file_gallery' => [
+                    'name' => 'upload_file_gallery',
+                    'type' => 'file',
+                    'database' => 'none',
+                    'rule' => 'nullable',
+                    'help' => '',
+                    'form_type' => 'file',
+                    'file_manager' => false,
+                    'file_accept' => 'file',
+                    'file_multiple' => true,
+                    'table' => true,
+                ],
+                'upload_image_gallery' => [
+                    'name' => 'upload_image_gallery',
+                    'type' => 'file',
+                    'database' => 'none',
+                    'rule' => 'nullable',
+                    'help' => '',
+                    'form_type' => 'file',
+                    'file_manager' => false,
+                    'file_accept' => 'image',
+                    'file_multiple' => true,
+                    'table' => true,
+                ],
             ];
 
             $columns = $this->columns;
@@ -238,25 +322,45 @@ class BaseModel extends Model
         return $query->where('language', config('app.locale'));
     }
 
-    public function files()
+    public function files_relation()
     {
         return $this->morphMany('App\Models\File', 'fileable');
     }
 
-    public function file($title)
+    public function files($title)
     {
-        return $this->files()->where('title', $title)->first();
+        return $this->files_relation()->where('title', $title)->get();
     }
 
-    public function file_src($title)
+    public function files_src($title)
     {
-        return $this->files()->where('title', $title)->first()->src;
+        return json_encode($this->files($title)->pluck('src'));
     }
 
-    public function file_src_thumbnail($title)
-    {
-        return $this->files()->where('title', $title)->first()->src_thumbnail;
-    }
+        // $files = $this->files($title);
+        // if($files->count() > 1){
+        //     return $files->pluck('src')->implode('|||');
+        // }elseif($files->count() === 1){
+        //     return $files->first()->src;
+        // }
+
+        // return null;
+
+        // $file_src = $this->model->file_src($name);
+        // $file_src = explode('|||', $file_src);
+        // if($file_src === ['']){
+        //     $file_src = [];
+        // }
+        // $options['value'] = json_encode($file_src);
+
+    // public function file_src_thumbnail($title)
+    // {
+    //     $file = $this->file($title);
+    //     if($file){
+    //         return $file->src_thumbnail;
+    //     }
+    //     return null;
+    // }
 
     // public function getAssetImageAttribute()
     // {

@@ -161,9 +161,11 @@ class BaseListController extends Controller
         $model = $this->repository->findOrFail($id);
         $this->authorize('view', $model);
         $data = $model;
+        // show file attributes
         foreach($this->model_columns as $column){
             if($column['form_type'] === 'file' && $column['file_manager'] === false){
                 $data[$column['name']] = $data->file_src($column['name']);
+                dd($data[$column['name']]);
             }
         }
 
@@ -414,6 +416,7 @@ class BaseListController extends Controller
 
     private function _changeDataBeforeCreate($model_name, $data, $model)
     {
+        // null and false -> 0, true -> 1
         foreach(collect($this->model_columns)->where('type', 'boolean')->pluck('name') as $boolean_column) 
         {
             if(! isset($data[$boolean_column]))
@@ -421,10 +424,14 @@ class BaseListController extends Controller
                 $data[$boolean_column] = 0;
             }
         }
+
+        // unset file attributes before saving
         foreach(collect($this->model_columns)->where('form_type', 'file')->where('file_manager', false)->pluck('name') as $file_uploader_column) 
         {
             unset($data[$file_uploader_column]);
         }
+        unset($data['upload_file_gallery_*']);
+        // do all of this unsets with foreach on columns
         // Blog
         unset($data['tags']);
         unset($data['related_blogs']);
@@ -474,17 +481,16 @@ class BaseListController extends Controller
 
     private function _saveRelatedDataAfterCreate($model_name, $data, $model)
     {
-        // save custome file
+        // upload files
         foreach(collect($this->model_columns)
             ->where('form_type', 'file')
-            ->where('file_manager', false)->pluck('name') as $file_uploader_column) {
-            $file = $data[$file_uploader_column];
+            ->where('file_manager', false)->pluck('name') as $file_column) {
+            $file = $data[$file_column];
             if($file){
-                $file_upload_service = new \App\Services\FileUploadService;
-                $file_upload_service->save($file, $model, $file_uploader_column);
+                $file_service = new \App\Services\FileService;
+                $file_service->save($file, $model, $file_column);
             }
         }
-
         // Blog
         if($model_name === 'Blog')
         {
@@ -505,13 +511,14 @@ class BaseListController extends Controller
             }
             $tag_names = Tag::whereIn('id', $data['tags'])->pluck('name')->toArray();
             $model->retag($tag_names);
-            if(! isset($data['gallery'])){
-                $data['gallery'] = [];
-            }
-            $image_service = new ImageService();
-            foreach($data['gallery'] as $gallery_image){
-                $image_service->save($gallery_image, $model, 'product');
-            }
+            // @todo delete this codes
+            // if(! isset($data['gallery'])){
+            //     $data['gallery'] = [];
+            // }
+            // $image_service = new ImageService();
+            // foreach($data['gallery'] as $gallery_image){
+            //     $image_service->save($gallery_image, $model, 'product');
+            // }
         }
 
         // Form

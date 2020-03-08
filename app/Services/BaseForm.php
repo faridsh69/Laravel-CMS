@@ -40,7 +40,7 @@ class BaseForm extends Form
             }
 
             // form options
-            $option = [
+            $options = [
                 'rules' => $rule,
                 'help_block' => [
                     'text' => $help,
@@ -69,53 +69,53 @@ class BaseForm extends Form
             // for convert textarean to ckeditor
             elseif($form_type === 'ckeditor'){
                 $input_type = 'textarea';
-                $option['attr'] = ['ckeditor' => 'on'];
+                $options['attr'] = ['ckeditor' => 'on'];
             }
             
             // create email type input
             elseif($form_type === 'email'){
-                $option['attr'] = ['type' => 'email'];
+                $options['attr'] = ['type' => 'email'];
             }
             // create password input
             elseif($form_type === 'password'){
-                $option['attr'] = ['type' => 'password', 'autocomplete' => 'off'];
-                $option['value'] = '';
+                $options['attr'] = ['type' => 'password', 'autocomplete' => 'off'];
+                $options['value'] = '';
             }
             elseif($form_type === 'date'){
-                $option['attr'] = ['id' => 'datepicker', 'autocomplete' => 'off'];
+                $options['attr'] = ['id' => 'datepicker', 'autocomplete' => 'off'];
             }
             elseif($form_type === 'time'){
-                $option['attr'] = ['id' => 'timepicker', 'autocomplete' => 'off'];
+                $options['attr'] = ['id' => 'timepicker', 'autocomplete' => 'off'];
             }
             elseif($form_type === 'number'){
-                $option['attr'] = ['type' => 'number'];
+                $options['attr'] = ['type' => 'number'];
             }
             elseif($form_type === 'color'){
                 $input_type = 'color';
             }
             elseif($form_type === 'textarea'){
                 $input_type = 'textarea';
-                $option['attr'] = ['rows' => 3];
+                $options['attr'] = ['rows' => 3];
             }
             // create select from enum options
             elseif($form_type === 'enum'){
                 $form_enum_class = $column['form_enum_class'];
                 $enum_class_name = 'App\\Enums\\' . $form_enum_class;
                 $enum_class =  new $enum_class_name();
-                $option['choices'] = $enum_class::data;
+                $options['choices'] = $enum_class::data;
                 $input_type = 'select';
-                $option['attr'] = ['class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker'];
+                $options['attr'] = ['class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker'];
             }
             // create option from a list of models item with specific attribute
             elseif($form_type === 'entity'){
                 $input_type = 'entity';
-                $option['class'] = $column['class'];
-                $option['property'] = $column['property'];
-                $option['property_key'] = $column['property_key'];
-                $option['attr']['class'] = 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker';
-                $option['attr']['data-live-search'] = 'true';
+                $options['class'] = $column['class'];
+                $options['property'] = $column['property'];
+                $options['property_key'] = $column['property_key'];
+                $options['attr']['class'] = 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker';
+                $options['attr']['data-live-search'] = 'true';
                 if($column['multiple'] === true){
-                    $option['attr']['multiple'] = 'true';
+                    $options['attr']['multiple'] = 'true';
                 }
             }
             // create image file browser for select image
@@ -130,22 +130,25 @@ class BaseForm extends Form
             elseif($form_type === 'file'){
                 $file_manager = isset($column['file_manager']) ? $column['file_manager'] : false;
                 $file_accept = isset($column['file_accept']) ? $column['file_accept'] : 'file';
-                $file_multiple = isset($column['file_multiple']) ? $column['file_multiple'] : true;
+                $file_multiple = isset($column['file_multiple']) ? $column['file_multiple'] : false;
 
-                $option['file_accept'] = $file_accept;
-                $option['file_multiple'] = $file_multiple;
+                $options['file_accept'] = $file_accept;
+                $options['file_multiple'] = $file_multiple;
                 if($file_manager === true){
                     $input_type = 'file-manager';
                 } else {
                     $input_type = 'file-upload';
                     if($file_accept !== 'file'){
-                        $option['attr']['accept'] = $file_accept . '/*';
+                        $options['attr']['accept'] = $file_accept . '/*';
                     }
-                    $option['value'] = $this->model->file_src($name);
+                    if($this->model){
+                        $options['value'] = $this->model->files_src($name);
+                    }
+                    $options['attr']['multiple'] = $file_multiple;
                 }
             }
 
-            $this->add($name, $input_type, $option);
+            $this->add($name, $input_type, $options);
         }
         $this->addBottom();
         $this->add('submit', 'submit');

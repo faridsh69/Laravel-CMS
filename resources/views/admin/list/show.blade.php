@@ -57,24 +57,11 @@
 					<div style="color: white;width: 150px; display: inline-block;border-right: 1px solid white; margin-right: 10px; vertical-align: top;">
 						<span>
 							{!! $column['name'] !!}
-							@if($data[$column['name']])
-								@php
-									$file_accept = '';
-									if(isset($column['file_accept'])){
-										$file_accept = $column['file_accept'];
-									}
-								@endphp
-								@if(array_search($file_accept, ['file', 'image', 'audio', 'video', 'text']) !== false) <br>
-								<a download href="{{ $data[$column['name']] }}" class="btn btn-outline-info m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air btn-sm"><span>
-								    <i class="la la-download"></i></span>
-								</a>
-								@endif
-							@endif
 						</span>
 					</div>
 					<span class="m-list-" style="color: white">
 						@if( !is_object($data[$column['name']]) )
-							@if($data[$column['name']])
+							@foreach($data[$column['name']])
 								@if($file_accept === 'image')
 							    <img alt="image" src="{{ $data[$column['name']] }}" height="100px">
 								@elseif($file_accept === 'video')
@@ -86,14 +73,30 @@
 									<source src="{{ $data[$column['name']] }}">
 								</audio>
 								@else
-									{{ $data[$column['name']] }}
+									
 								@endif
 							@endif
+							{{ $data[$column['name']] }}
 						@else
 							@foreach($data[$column['name']] as $item)
 								{{ isset($item->id) ? $item->id : '' }}
 							@endforeach
 						@endif
+
+						@if($data[$column['name']])
+							@php
+								$file_accept = '';
+								if(isset($column['file_accept'])){
+									$file_accept = $column['file_accept'];
+								}
+							@endphp
+							@if(array_search($file_accept, ['file', 'image', 'audio', 'video', 'text']) !== false) <br>
+							<a download href="{{ $data[$column['name']] }}" class="btn btn-outline-info m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air btn-sm"><span>
+							    <i class="la la-download"></i></span>
+							</a>
+							@endif
+						@endif
+
 					</span>
 				</div>
 				@endforeach

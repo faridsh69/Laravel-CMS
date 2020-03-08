@@ -13,31 +13,34 @@
 	<?= Form::input('file', $name, $options['value'], $options['attr']) ?>
 
 	<?php include 'help_block.php' ?>
-	<br>
-	<?php if ($options['value']): ?>
-		<?php if ($options['file_accept'] === 'image'): ?>
-			<div class="image-form">
-				<img src="<?php echo $options['value']; ?>" alt="image">
+	<?php foreach (json_decode($options['value']) as $src): ?>
+		<div class="show-file">
+			<?php if ($options['file_accept'] === 'image'): ?>
+				<img src="<?php echo $src; ?>" alt="image">
+			<?php elseif ($options['file_accept'] === 'video'): ?>
+				<video controls>
+					<source src="<?php echo $src; ?>">
+				</video>
+			<?php elseif ($options['file_accept'] === 'audio'): ?>
+				<audio controls>
+					<source src="<?php echo $src; ?>">
+				</audio>
+			<?php else: ?>
+				<?php echo $src; ?>
+			<?php endif; ?>
+			<div class="file-tools mt-2">
+				<a href="javascript:void(0)" class="btn btn-outline-danger m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air" onclick="removeFile('<?php echo $src; ?>')"><span>
+				    <i class="la la-trash"></i></span>
+				</a>
+				<a download href="<?php echo $src; ?>" class="btn btn-outline-info m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air"><span>
+				    <i class="la la-download"></i></span>
+				</a>
+				<a target="blank" href="<?php echo $src; ?>" class="btn btn-outline-success m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air"><span>
+				    <i class="la la-eye"></i></span>
+				</a>
 			</div>
-		<?php elseif ($options['file_accept'] === 'video'): ?>
-			<video height="150" controls>
-				<source src="<?php echo $options['value']; ?>">
-			</video>
-		<?php elseif ($options['file_accept'] === 'audio'): ?>
-			<audio controls>
-				<source src="<?php echo $options['value']; ?>">
-			</audio>
-		<?php else: ?>
-			<?php echo $options['value']; ?>
-		<?php endif; ?>
-		<br>
-		<a download href="<?php echo $options['value']; ?>" class="btn btn-outline-info m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air"><span>
-		    <i class="la la-download"></i></span>
-		</a>
-		<a href="javascript:void(0)" class="btn btn-outline-danger m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air" onclick="removeFile('<?php echo $options['value']; ?>')"><span>
-		    <i class="la la-trash"></i></span>
-		</a>
-	<?php endif; ?>
+		</div>
+	<?php endforeach; ?>
 
 <?php endif; ?>
 
