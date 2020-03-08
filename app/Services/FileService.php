@@ -58,7 +58,7 @@ class FileService extends BaseService
             ];
 
             $column = collect($model->getColumns())->where('name', $title)->first();
-            if($column['file_multiple'] === true){
+            if(isset($column['file_multiple']) && $column['file_multiple'] === true){
                 $file_model = File::updateOrCreate($file_model_array);
             }else{
                 // for single file upload this 3 columns is unique.

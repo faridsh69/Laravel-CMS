@@ -429,7 +429,15 @@ class BaseListController extends Controller
         {
             unset($data[$file_uploader_column]);
         }
-        unset($data['upload_file_gallery_*']);
+
+        // foreach($main_data as $key => $item){
+        //     if(is_object($item)){
+        //         unset($data[$key]);
+        //     }
+        // }
+
+
+        // unset($data['upload_file_gallery_*']);
         // do all of this unsets with foreach on columns
         // Blog
         unset($data['tags']);

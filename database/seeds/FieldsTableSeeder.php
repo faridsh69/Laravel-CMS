@@ -96,13 +96,40 @@ class FieldsTableSeeder extends Seeder
             	'activated' => 1,
             ],
             [
-                'type' => 'file',
-                'title' => 'profile_image',
-            	'order' => 27,
-                'help' => 'Specify the input',
-                'rules' => 'required|image',
-            	'options' => '',
-            	'activated' => 1,
+                'type' => 'upload_file',
+                'title' => 'document',
+                'order' => 25,
+                'help' => 'select a file',
+                'rules' => 'nullable|file',
+                'options' => '',
+                'activated' => 1,
+            ],
+            [
+                'type' => 'upload_image',
+                'title' => 'profile_picture',
+                'order' => 26,
+                'help' => 'select an image',
+                'rules' => 'nullable|image|mimetypes:image/*',
+                'options' => '',
+                'activated' => 1,
+            ],
+            [
+                'type' => 'upload_video',
+                'title' => 'post_clip',
+                'order' => 27,
+                'help' => 'select a video',
+                'rules' => 'nullable|file|mimetypes:video/*',
+                'options' => '',
+                'activated' => 1,
+            ],
+            [
+                'type' => 'upload_audio',
+                'title' => 'music_audio',
+                'order' => 28,
+                'help' => 'select an audio',
+                'rules' => 'nullable|file|mimetypes:audio/*',
+                'options' => '',
+                'activated' => 1,
             ],
             [
                 'type' => 'select',
@@ -137,7 +164,7 @@ class FieldsTableSeeder extends Seeder
         ]);
 
         $job_apply_form->fields()->sync([
-        	1,2,3,4,5,6,7,8,9,10,11,12
+        	1,2,3,4,5,6,7,8,9,11,12,15,16,17,18
         ], true);
     }
 }

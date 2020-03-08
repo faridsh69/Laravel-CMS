@@ -30,12 +30,27 @@ class PageController extends Controller
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
         $data = $form->getFieldValues();
-        unset($data['profile_image']);
+
+        $main_data = $data;
+        $files = [];
+        foreach($main_data as $key => $item){
+            if(is_object($item)){
+                $files[] = [ $key => $item ];
+                unset($data[$key]);
+            }
+        }
+        
         $answer->activated = 1;
         $answer->user_id = \Auth::id();
         $answer->form_id = 1;
         $answer->answers = serialize($data);
         $answer->save();
+
+        // upload files
+        foreach($files as $column => $file) {
+            $file_service = new \App\Services\FileService;
+            $file_service->save($file, $answer, $column);
+        }
         
         $request->session()->flash('alert-success', __('created successfully'));
 

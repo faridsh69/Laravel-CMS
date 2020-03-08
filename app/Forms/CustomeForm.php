@@ -16,15 +16,18 @@ class CustomeForm extends Form
             $rule = $column['rules'];
             $form_type = $column['type'];
             $help = isset($column['help']) ? $column['help'] : ' ';
-            $options = isset($column['options']) ? $column['options'] : ' ';
+            $select_options = isset($column['options']) ? $column['options'] : ' ';
 
-            $option = [
+            $options = [
                 'rules' => $rule,
                 'help_block' => [
                     'text' => $help,
                 ],
             ];
-
+            if(explode('_', $form_type)[0] === 'upload'){
+                $file_accept = explode('_', $form_type)[1];
+                $form_type = 'file';
+            }
             // default type for form input type is text-m
             $input_type = 'text-m';
 
@@ -34,43 +37,52 @@ class CustomeForm extends Form
             }
             // create email type input
             elseif($form_type === 'email'){
-                $option['attr'] = ['type' => 'email'];
+                $options['attr'] = ['type' => 'email'];
             }
             // create password input
             elseif($form_type === 'password'){
-                $option['attr'] = ['type' => 'password', 'autocomplete' => 'off'];
-                $option['value'] = '';
+                $options['attr'] = ['type' => 'password', 'autocomplete' => 'off'];
+                $options['value'] = '';
             }
             elseif($form_type === 'date'){
-                $option['attr'] = ['type' => 'date', 'autocomplete' => 'off'];
+                $options['attr'] = ['type' => 'date', 'autocomplete' => 'off'];
             }
             elseif($form_type === 'time'){
-                $option['attr'] = ['type' => 'time', 'autocomplete' => 'off'];
+                $options['attr'] = ['type' => 'time', 'autocomplete' => 'off'];
             }
             elseif($form_type === 'number'){
-                $option['attr'] = ['type' => 'number'];
+                $options['attr'] = ['type' => 'number'];
             }
             elseif($form_type === 'color'){
                 $input_type = 'color';
             }
             elseif($form_type === 'textarea'){
                 $input_type = 'textarea';
-                $option['attr'] = ['rows' => 3];
+                $options['attr'] = ['rows' => 3];
             }
             elseif($form_type === 'select'){
                 $input_type = 'select';
-                $option['choices'] = explode('|', $options);
+                $options['choices'] = explode('|', $select_options);
             }
             elseif($form_type === 'multiselect'){
                 $input_type = 'select';
-                $option['attr']['multiple'] = 'true';
-                $option['choices'] = explode('|', $options);
+                $options['attr']['multiple'] = 'true';
+                $options['choices'] = explode('|', $select_options);
             }
-            elseif($form_type === 'file'){
-                $input_type = 'file';
+            elseif($form_type === 'file' || $form_type === 'file'){
+                $options['file_accept'] = $file_accept;
+                $input_type = 'file-upload';
+                if($file_accept !== 'file'){
+                    $options['attr']['accept'] = $file_accept . '/*';
+                }
+                if($this->model){
+                    $options['files_src'] = $this->model->files_src($name);
+                }else{
+                    $options['files_src'] = json_encode([]);
+                }
             }
 
-            $this->add($name, $input_type, $option);
+            $this->add($name, $input_type, $options);
         }
         $this->add('submit', 'submit');
     }
