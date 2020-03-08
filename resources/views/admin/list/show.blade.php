@@ -1,7 +1,7 @@
 @extends('layout.admin')
 
 @section('content')
-<div class="m-portlet m-portlet--skin-dark m-portlet--bordered-semi">
+<div class="m-portlet m-portlet--bordered-semi">
 	<div class="m-portlet__head">
 		<div class="m-portlet__head-caption">
 			<div class="m-portlet__head-title">
@@ -48,61 +48,60 @@
 			@endforeach
 			</ul>
 		@endif
-		<div class="m-list-timeline">
-			<div class="m-list-timeline__items">
-				<br>
-				@foreach($data->getColumns() as $column)
-				<div class="m-list-timeline__item">
-					<span class="m-list-timeline__badge m-list-timeline__badge--brand"></span>
-					<div style="color: white;width: 150px; display: inline-block;border-right: 1px solid white; margin-right: 10px; vertical-align: top;">
-						<span>
-							{!! $column['name'] !!}
-						</span>
+
+		@foreach($data->getColumns() as $column)
+			<div>
+				<h6>{{ __($column['name']) }}</h6>
+				@php
+					$file_accept = '';
+					if($column['form_type'] === 'file')
+					{
+						$file_accept = $column['file_accept'];
+						if($column['file_manager'] === true){
+							$files_src = explode(',',  $data[$column['name']] );
+							if($files_src == ['']){ $files_src = [];}
+						}else{
+							$files_src = json_decode($data[$column['name']]);
+						}
+					}
+				@endphp
+			</div>
+			<div class="mb-4 show-file">
+			@if($file_accept)
+				@foreach($files_src as $src)
+				<div class="show-file">
+					@if($file_accept === 'image')
+				    	<img alt="image" src="{{ $src }}">
+					@elseif($file_accept === 'video')
+						<video controls>
+							<source src="{{ $src }}">
+						</video>
+					@elseif($file_accept === 'audio')
+						<audio controls>
+							<source src="{{ $src }}">
+						</audio>
+					@else
+						{{ $src }}
+					@endif
+					<div class="file-tools mt-2">
+						<a download href="{{ $src }}" class="btn btn-outline-info m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air"><span>
+						    <i class="la la-download"></i></span>
+						</a>
+						<a target="blank" href="{{ $src }}" class="btn btn-outline-success m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air"><span>
+						    <i class="la la-eye"></i></span>
+						</a>
 					</div>
-					<span class="m-list-" style="color: white">
-						@if( !is_object($data[$column['name']]) )
-							@foreach($data[$column['name']])
-								@if($file_accept === 'image')
-							    <img alt="image" src="{{ $data[$column['name']] }}" height="100px">
-								@elseif($file_accept === 'video')
-								<video height="150" controls>
-									<source src="{{ $data[$column['name']] }}">
-								</video>
-								@elseif($file_accept === 'audio')
-								<audio controls>
-									<source src="{{ $data[$column['name']] }}">
-								</audio>
-								@else
-									
-								@endif
-							@endif
-							{{ $data[$column['name']] }}
-						@else
-							@foreach($data[$column['name']] as $item)
-								{{ isset($item->id) ? $item->id : '' }}
-							@endforeach
-						@endif
-
-						@if($data[$column['name']])
-							@php
-								$file_accept = '';
-								if(isset($column['file_accept'])){
-									$file_accept = $column['file_accept'];
-								}
-							@endphp
-							@if(array_search($file_accept, ['file', 'image', 'audio', 'video', 'text']) !== false) <br>
-							<a download href="{{ $data[$column['name']] }}" class="btn btn-outline-info m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air btn-sm"><span>
-							    <i class="la la-download"></i></span>
-							</a>
-							@endif
-						@endif
-
-					</span>
 				</div>
 				@endforeach
-				<br>
+			@elseif(!is_object($data[$column['name']]) )
+				{{ $data[$column['name']] }}
+			@else
+				@foreach($data[$column['name']] as $item)
+					{{ isset($item->id) ? $item->id : '' }}
+				@endforeach
+			@endif
 			</div>
-		</div>
+		@endforeach
 	</div>
 
 	<div class="m-portlet__body">
@@ -114,7 +113,7 @@
 				<div class="m-list-timeline__item">
 					<span class="m-list-timeline__badge m-list-timeline__badge--brand"></span>
 					<span class="m-list-timeline__icon flaticon-exclamation-1"></span>
-					<span class="m-list-timeline__text" style="color: white">
+					<span class="m-list-timeline__text">
 						{{ $activity->description }}
 						By 
 						{{ $activity->causer->fullName }}

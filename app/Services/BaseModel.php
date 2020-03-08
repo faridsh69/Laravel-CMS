@@ -171,7 +171,7 @@ class BaseModel extends Model
                     'file_manager' => true,
                     'file_accept' => 'image', // file, image, video, audio, text
                     'file_multiple' => true,
-                    'table' => true,
+                    'table' => false,
                 ],
                 'video' => [
                     'name' => 'video',
@@ -279,7 +279,7 @@ class BaseModel extends Model
                     'file_manager' => false,
                     'file_accept' => 'file',
                     'file_multiple' => true,
-                    'table' => true,
+                    'table' => false,
                 ],
                 'upload_image_gallery' => [
                     'name' => 'upload_image_gallery',
@@ -291,7 +291,7 @@ class BaseModel extends Model
                     'file_manager' => false,
                     'file_accept' => 'image',
                     'file_multiple' => true,
-                    'table' => true,
+                    'table' => false,
                 ],
             ];
 

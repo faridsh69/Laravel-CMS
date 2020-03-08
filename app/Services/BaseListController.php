@@ -164,8 +164,7 @@ class BaseListController extends Controller
         // show file attributes
         foreach($this->model_columns as $column){
             if($column['form_type'] === 'file' && $column['file_manager'] === false){
-                $data[$column['name']] = $data->file_src($column['name']);
-                dd($data[$column['name']]);
+                $data[$column['name']] = $data->files_src($column['name']);
             }
         }
 

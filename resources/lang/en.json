@@ -278,6 +278,8 @@
     "canonical url" : "Canonical Url",
     "icon" : "Icon",
     "first name" : "First name",
+    "last_name" : "Last Name",
+    "first_name" : "First Name",
     "last name" : "Last name",
     "phone" : "Phone",
     "telephone" : "Telephone",
