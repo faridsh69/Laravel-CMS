@@ -52,6 +52,10 @@ class CmsLaravelSeeder extends Seeder
         	$block->activated = 0;
         	$block->save();
         }
+        $block_content = Block::where('type', 'content')
+        	->first()
+        	->pages()
+        	->sync([], true);
     	// module 
 	    $folder_name = 'cms-la';
 		$image_folder_name = '/storage/files/photos/' . $folder_name . '/';
