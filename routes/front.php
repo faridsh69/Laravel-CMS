@@ -46,7 +46,7 @@ Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
 	Route::post('{blog_url}/comment', 'BlogController@postComment')->name('comment')
 		->middleware('auth', 'throttle:5,1');
 });
-Route::post('subscribe', 'PageController@postSubscribe')->name('page.subscribe');
+Route::post('submit-form/{form_id}', 'PageController@postSubmitForm')->name('page.submit-form');
 Route::get('{page_url?}', 'PageController@getIndex')->name('page.index');
 
 // windy map

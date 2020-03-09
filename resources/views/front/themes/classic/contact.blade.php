@@ -58,7 +58,7 @@
                         </div>
                         <div class="col-12 col-lg-7">
                             <div class="contact-form-area wow fadeInUp" data-wow-delay="500ms">
-                                <form action="{{ route('front.page.subscribe') }}" method="post">
+                                <form action="{{ route('front.page.submit-form', 1) }}" method="post">
                                     <input type="text" class="form-control" id="name" placeholder="Name">
                                     <input type="email" class="form-control" id="email" placeholder="E-mail">
                                     <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>

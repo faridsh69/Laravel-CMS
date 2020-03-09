@@ -8,7 +8,7 @@ class CustomeForm extends Form
 {
     public function buildForm()
     {
-    	$form = \App\Models\Form::language()->active()->first();
+        $form = $this->getFormOptions()['form_model'];
         foreach($form->fields as $column)
         {
             $name = $column['title'];
@@ -69,7 +69,7 @@ class CustomeForm extends Form
                 $options['attr']['multiple'] = 'true';
                 $options['choices'] = explode('|', $select_options);
             }
-            elseif($form_type === 'file' || $form_type === 'file'){
+            elseif($form_type === 'file'){
                 $options['file_accept'] = $file_accept;
                 $input_type = 'file-upload';
                 if($file_accept !== 'file'){

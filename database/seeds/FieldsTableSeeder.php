@@ -160,11 +160,23 @@ class FieldsTableSeeder extends Seeder
         	'title' => 'Computer Software Job',
         	'description' => 'This job is a remote job and it is for growing company.',
             'activated' => 1,
-        	'language' => 'en',
+            'language' => 'en',
+            'block_id' => 23,
         ]);
 
-        $job_apply_form->fields()->sync([
-        	1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
+        $fields = Field::get();
+        $job_apply_form->fields()->sync($fields->take(4)->pluck('id')->toArray(), true);
+
+        $blog_survey_form = Form::firstOrCreate([
+            'title' => 'Blog Survey',
+            'description' => 'What do you think about this website blogs.',
+            'activated' => 1,
+            'language' => 'en',
+        	'block_id' => 24,
+        ]);
+
+        $blog_survey_form->fields()->sync([
+            1,2
         ], true);
     }
 }

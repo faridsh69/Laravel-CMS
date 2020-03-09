@@ -24,6 +24,20 @@ class Form extends BaseModel
             'multiple' => true,
             'table' => false,
         ],
+        [
+            'name' => 'block_id',
+            'type' => 'unsignedBigInteger',
+            'database' => 'nullable',
+            'relation' => 'blocks',
+            'rule' => 'nullable|exists:blocks,id',
+            'help' => '',
+            'form_type' => 'entity',
+            'class' => 'App\Models\Block',
+            'property' => 'type',
+            'property_key' => 'id',
+            'multiple' => false,
+            'table' => false,
+        ],
         // ['name' => 'authentication'], // always need authentication
         // ['name' => 'captcha'], // its a field   
     ];

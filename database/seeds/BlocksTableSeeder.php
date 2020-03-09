@@ -192,6 +192,14 @@ class BlocksTableSeeder extends Seeder
                 'pages_list' => [5],
                 'activated' => 1,
             ],
+            [
+                'id' => 24,
+                'order' => 12,
+                'type' => 'form',
+                'show_all_pages' => 0,
+                'pages_list' => [4],
+                'activated' => 1,
+            ],
         ];
 
         foreach($blocks as $block){
