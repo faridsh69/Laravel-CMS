@@ -21,11 +21,16 @@ class CmsLaravelSeeder extends Seeder
     // category 
     public function run()
     {
+    	$folder_name = 'cms-la';
+		$image_folder_name = '/storage/files/photos/' . $folder_name . '/';
+		$video_folder_name = '/storage/files/videos/' . $folder_name . '/';
+
     	$pages = [
             [
             	'title' => 'Home',
             	'url' => null,
             	'content' => '',
+            	'image' => asset($image_folder_name . '1-logo.png'),
             	'description' => '',
             	'activated' => 1,
             	'google_index' => 1,
@@ -34,9 +39,10 @@ class CmsLaravelSeeder extends Seeder
             [
             	'title' => 'Services | Base model',
             	'url' => 'document-services-base-model',
+            	'image' => asset($image_folder_name . 'documents/services-base-model.png'),
+            	'description' => 'How to write your models in cms-laravel to see how whole project will run with just one array in your model and try to find out why this cms can help to develop more easier and faster.',
             	'view_code_url' => 'front.components.documents.services.base-model',
             	'content' => '',
-            	'description' => 'How to write your models in cms-laravel to see how whole project will run with just one array in your model and try to find out why this cms can help to develop more easier and faster.',
             	'activated' => 1,
             	'google_index' => 1,
             ],
@@ -56,10 +62,7 @@ class CmsLaravelSeeder extends Seeder
         	->first()
         	->pages()
         	->sync([], true);
-    	// module 
-	    $folder_name = 'cms-la';
-		$image_folder_name = '/storage/files/photos/' . $folder_name . '/';
-		$video_folder_name = '/storage/files/videos/' . $folder_name . '/';
+
 		$general_settings = [
 			'app_title' => 'CMS Laravel',
 			'default_meta_title' => 'CMS Laravel',
