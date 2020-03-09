@@ -39,7 +39,7 @@ class BaseFactory
                     elseif($name === 'content'){
                         $fake_data = '<h1>h1</h1><h2>h2</h2>' . $faker->realText(400);
                     }
-                    elseif($form_type === 'image' || $name === 'canonical_url'){
+                    elseif($form_type === 'file' || $name === 'canonical_url'){
                         $fake_data = null;
                     }
                     elseif($name === 'keywords'){

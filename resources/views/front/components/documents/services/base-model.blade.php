@@ -24,13 +24,22 @@ class User extends Authenticatable
 {
 	public $columns = [
 	[
-	    'name' => 'first_name',
-	    'type' => 'string',
-	    'database' => 'nullable',
-	    'rule' => 'required|max:100',
-	    'help' => 'Write your first name',
-	    'form_type' => 'text',
-	    'table' => true,
+		'name' => 'first_name',
+		'type' => 'string',
+		'database' => 'nullable',
+		'rule' => 'required|max:100',
+		'help' => 'Write your first name',
+		'form_type' => 'text',
+		'table' => true,
+	],
+	[
+		'name' => 'gender',
+		'type' => 'boolean',
+		'database' => 'default',
+		'rule' => 'boolean',
+		'help' => 'Male of female',
+		'form_type' => 'checkbox',
+		'table' => false,
 	],
 </pre>
 <p>$column['name']: is used for name of column in database and name of input in form. also it's used in factory for generating fake data.</p>
@@ -76,7 +85,7 @@ class User extends Authenticatable
 		<tr>
 			<td>Form Type</td>
 			<td>Define type of input in form.</td>
-			<td></td>
+			<td><code>textarea, ckeditor, entity, checkbox,<br> enum, color, date, time, switch,<br> password, email, file, number, none</code></td>
 		</tr>
 		<tr>
 			<td>Table</td>
@@ -85,6 +94,25 @@ class User extends Authenticatable
 		</tr>		
 	</tbody>
 </table>
+<h4>Other usefull base model features</h4>
+<p>You dont need to define all of this properties again and again, just for usual columns write the name of columns and other parts with autogenerate.</p>
+<pre>
+class Blog extends App\Services\BaseModel
+{
+	public $columns = [
+		['name' => 'title'],
+		['name' => 'url'],
+		['name' => 'description'],
+		['name' => 'content'],
+		['name' => 'keywords'],
+		['name' => 'image'],
+		['name' => 'activated'],
+		['name' => 'google_index'],
+		['name' => 'canonical_url']
+	];
+}
+</pre>
+<p>Blog model is just this and alot of developments for creating migration, seeder, faker and form is skiped! <br>Just test it you would love it.</p>
 <h2>conclusion</h2>
 <p>The most important part in development is storing data in database and editing them.<br>
 With Laravel cms you dont have to develop any repeated and extra codes for getting to this aim, just you have to define your models and tell cms that what type of input you want!</p>

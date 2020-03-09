@@ -118,14 +118,6 @@ class BaseForm extends Form
                     $options['attr']['multiple'] = 'true';
                 }
             }
-            // create image file browser for select image
-            elseif($form_type === 'image'){
-                $input_type = 'image';
-            }
-            // create multi select image uploader
-            elseif($form_type === 'gallery'){
-                $input_type = 'gallery';
-            }
             // all input files
             elseif($form_type === 'file'){
                 $file_manager = isset($column['file_manager']) ? $column['file_manager'] : false;
