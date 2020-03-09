@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function getIndex($page_url = '')
+    public function getIndex($page_url = null)
     {
         $page = Page::where('url', $page_url)->active()->first();
         abort_if(! $page, 404);

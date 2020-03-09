@@ -11,7 +11,7 @@ class PagesTableSeeder extends Seeder
             [
             	'id' => 1,
             	'title' => 'Home',
-            	'url' => '',
+            	'url' => null,
             	'content' => '',
             	'description' => '',
             	'activated' => 1,

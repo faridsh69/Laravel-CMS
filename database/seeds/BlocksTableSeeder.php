@@ -53,7 +53,7 @@ class BlocksTableSeeder extends Seeder
                 'order' => 18,
             	'type' => 'content',
                 'show_all_pages' => 1,
-                'pages_list' => [1],
+                'pages_list' => [],
                 'activated' => 1,
             ],
             [
