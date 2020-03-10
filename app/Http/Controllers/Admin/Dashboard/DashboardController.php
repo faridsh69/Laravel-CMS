@@ -7,7 +7,6 @@ use App\Notifications\EmailVerified;
 use App\Notifications\PhoneVerified;
 use App\Notifications\ProfileUpdated;
 use App\Services\BaseAdminController;
-use App\Services\ImageService;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -71,49 +70,22 @@ class DashboardController extends BaseAdminController
             'model' => $model,
         ]);
 
-        if (! $form->isValid()) {
+        if(! $form->isValid()) {
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
         $data = $form->getFieldValues();
+        $main_data = $data;
+        $data = $this->_changeDataBeforeCreate('User', $data, $model);
 
-        // BaseListController
-        // _changeDataBeforeCreate
-
-        // if($model->email !== $data['email']){
-        //     $model->activation_code = null;
-        //     $model->email_verified_at = null;
-        // }
-
-        // if($model->phone !== $data['phone']){
-        //     $model->activation_code = null;
-        //     $model->phone_verified_at = null;
-        // }
-
-        // foreach(collect($this->model_columns)->where('type', 'boolean')->pluck('name') as $boolean_column)
-        // {
-        //     if(! isset($data[$boolean_column]))
-        //     {
-        //         $data[$boolean_column] = 0;
-        //     }
-        // }
-
-        // if(isset($data['password'])) {
-        //     $data['password'] = \Hash::make($data['password']);
-        // }
-        // else{
-        //     $data['password'] = $model->password;
-        // }
-
-        unset($data['password_confirmation']);
         $model->update($data);
-
+        $this->_saveRelatedDataAfterCreate($this->model, $main_data, $model);
         activity('User')
             ->performedOn($model)
             ->causedBy(Auth::user())
             ->log('User Profile Updated');
         $this->request->session()->flash('alert-success', $this->model . ' Updated Successfully!');
 
-        return redirect()->route('admin.dashboard.profile');
+        return redirect()->route('admin.dashboard.profile');        
     }
 
     public function getActivity()

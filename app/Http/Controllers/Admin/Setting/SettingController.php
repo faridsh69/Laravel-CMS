@@ -53,11 +53,6 @@ class SettingController extends BaseAdminController
         foreach(['developer', 'general', 'contact'] as $section){
 	        Cache::forget('setting.' . $section);
 	    }
-        // $base_data = config('setting-' . $this->section);
-        // $new_settings = array_merge($base_data, $updated_data);
-        // $newSettings = var_export($new_settings, 1);
-        // $new_config = "<?php\n return ${newSettings} ;";
-        // File::put(config_path() . '/0-' . $this->section . '.php', $new_config);
 
         activity($this->model)
             ->performedOn($model)

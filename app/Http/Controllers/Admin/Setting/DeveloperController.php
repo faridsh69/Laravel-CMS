@@ -11,7 +11,7 @@ class DeveloperController extends SettingController
 		return $this->getSettingForm();
 	}
 
-	public function update()
+	public function putUpdate()
 	{
         return $this->putSettingForm();
 	}

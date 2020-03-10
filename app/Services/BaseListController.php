@@ -7,9 +7,7 @@ use Auth;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Maatwebsite\Excel\Facades\Excel;
-use PDF;
 use Route;
-use Spatie\Activitylog\Models\Activity;
 use View;
 
 class BaseListController extends Controller
@@ -167,7 +165,7 @@ class BaseListController extends Controller
             }
         }
 
-        $activities = Activity::where('subject_type', $this->model_class)
+        $activities = \Spatie\Activitylog\Models\Activity::where('subject_type', $this->model_class)
             ->where('subject_id', $id)
             ->get();
 
@@ -283,7 +281,7 @@ class BaseListController extends Controller
     {
         $list = $this->repository->all();
 
-        return PDF::loadView('layout.print', compact('list'))
+        return \PDF::loadView('layout.print', compact('list'))
             ->setPaper('a4', 'landscape')
             ->download($this->model . '.pdf');
     }
@@ -412,9 +410,9 @@ class BaseListController extends Controller
         return redirect()->route('admin.' . $this->model_sm . '.list.index');
     }
 
-    private function _changeDataBeforeCreate($model_name, $data, $model)
+    public function _changeDataBeforeCreate($model_name, $data, $model)
     {
-        // null and false -> 0, true -> 1
+        // null and false => 0, true => 1
         foreach(collect($this->model_columns)->where('type', 'boolean')->pluck('name') as $boolean_column)
         {
             if(! isset($data[$boolean_column]))
@@ -423,34 +421,12 @@ class BaseListController extends Controller
             }
         }
 
-        // unset file attributes before saving
-        foreach(collect($this->model_columns)->where('form_type', 'file')->where('file_manager', false)->pluck('name') as $file_uploader_column)
+        // unset file and array attributes before saving
+        foreach(collect($this->model_columns)->whereIn('type', ['file', 'array'])->pluck('name') as $file_uploader_column)
         {
             unset($data[$file_uploader_column]);
         }
 
-        // foreach($main_data as $key => $item){
-        //     if(is_object($item)){
-        //         unset($data[$key]);
-        //     }
-        // }
-
-        // unset($data['upload_file_gallery_*']);
-        // do all of this unsets with foreach on columns
-        // Blog
-        unset($data['tags']);
-        unset($data['related_blogs']);
-        // Product
-        unset($data['tags']);
-        unset($data['gallery']);
-        unset($data['related_products']);
-        // Form
-        unset($data['fields']);
-        // Block
-        unset($data['pages']);
-        // Role
-        unset($data['users']);
-        unset($data['permissions']);
         if($model_name === 'Role')
         {
             // remove role from old users in update mode
@@ -466,14 +442,23 @@ class BaseListController extends Controller
         }
 
         // User
-        unset($data['password_confirmation']);
         if($model_name === 'User'){
+            unset($data['password_confirmation']);
             if(isset($data['password'])) {
                 $data['password'] = \Hash::make($data['password']);
             }
             else{
                 if($model){ // update mode
                     $data['password'] = $model->password;
+                     if($model->email !== $data['email']){
+                        $model->activation_code = null;
+                        $model->email_verified_at = null;
+                    }
+
+                    if($model->phone !== $data['phone']){
+                        $model->activation_code = null;
+                        $model->phone_verified_at = null;
+                    }
                 }
                 else{ // create mode
                     $data['password'] = \Hash::make('123456');
@@ -484,18 +469,25 @@ class BaseListController extends Controller
         return $data;
     }
 
-    private function _saveRelatedDataAfterCreate($model_name, $data, $model)
+    public function _saveRelatedDataAfterCreate($model_name, $data, $model)
     {
-        // upload files
-        foreach(collect($this->model_columns)
-            ->where('form_type', 'file')
-            ->where('file_manager', false)->pluck('name') as $file_column) {
+        // files column
+        foreach(collect($this->model_columns)->where('type', 'file')->pluck('name') as $file_column) {
             $file = $data[$file_column];
             if($file){
                 $file_service = new \App\Services\FileService();
                 $file_service->save($file, $model, $file_column);
             }
         }
+
+        // array columns
+        foreach(collect($this->model_columns)->where('type', 'array')->pluck('name') as $array_column) {
+            if(array_search($array_column, ['users', 'permissions', 'tags']) !== false){
+                $model->{$array_column}()->sync($data[$array_column], true);
+            }
+        }
+        // tag, related_blogs, related_products, pages, related_pages, rol->users, permissions, form->fields 
+            
         // Tag
         if($model_name === 'Product' || $model_name === 'Blog')
         {
@@ -504,29 +496,6 @@ class BaseListController extends Controller
             }
             $tag_names = \Conner\Tagging\Model\Tag::whereIn('id', $data['tags'])->pluck('name')->toArray();
             $model->retag($tag_names);
-        }
-        // Blog
-        if($model_name === 'Blog')
-        {
-            $model->related_blogs()->sync($data['related_blogs'], true);
-        }
-
-        // Product
-        if($model_name === 'Product')
-        {
-            $model->related_products()->sync($data['related_products'], true);
-        }
-
-        // Form
-        if($model_name === 'Form')
-        {
-            $model->fields()->sync($data['fields'], true);
-        }
-
-        // Block
-        if($model_name === 'Block')
-        {
-            $model->pages()->sync($data['pages'], true);
         }
 
         // Role

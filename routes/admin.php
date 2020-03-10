@@ -56,13 +56,13 @@ Route::group(['prefix' => 'block', 'namespace' => 'Block', 'as' => 'block.'], fu
 Route::group(['prefix' => 'setting', 'namespace' => 'Setting', 'as' => 'setting.'], function () {
 	Route::get('', 'GeneralController@redirect')->name('general.redirect');
 	Route::get('general', 'GeneralController@index')->name('general');
-	Route::put('general', 'GeneralController@update')->name('general.update');
+	Route::put('general', 'GeneralController@putUpdate')->name('general.update');
 
 	Route::get('contact', 'ContactController@index')->name('contact');
-	Route::put('contact', 'ContactController@update')->name('contact.update');
+	Route::put('contact', 'ContactController@putUpdate')->name('contact.update');
 
 	Route::get('developer', 'DeveloperController@index')->name('developer');
-	Route::put('developer', 'DeveloperController@update')->name('developer.update');
+	Route::put('developer', 'DeveloperController@putUpdate')->name('developer.update');
 
 	Route::get('advance', 'SettingController@getAdvance')->name('advance');
 	Route::get('advance/command/{command}', 'SettingController@getCommand')->name('advance.command');

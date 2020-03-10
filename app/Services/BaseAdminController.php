@@ -6,26 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
 
-class BaseAdminController extends Controller
+class BaseAdminController extends BaseListController
 {
-    // public $model = 'Blog';
-    public $model;
-
-    // public $model_sm = 'blog';
-    public $model_sm;
-
-    // public $model_form = '\App\Forms\BlogForm';
-    public $model_form;
-
-    // App\Models\Blog
-    public $model_class;
-
-    public $request;
-
-    public $form_builder;
-
+    // for setting sections
     public $section;
 
+    // meta for admin pages 
     public $meta = [
         'title' => 'Setting',
         'description' => 'Admin Panel Page For Best Cms In The World',

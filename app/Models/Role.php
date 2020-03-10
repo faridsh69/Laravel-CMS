@@ -27,7 +27,7 @@ class Role extends RoleSpatie
             'help' => '',
             'form_type' => 'entity',
             'class' => 'App\Models\User',
-            'property' => 'email',
+            'property' => 'phone',
             'property_key' => 'id',
             'multiple' => true,
             'table' => true,
