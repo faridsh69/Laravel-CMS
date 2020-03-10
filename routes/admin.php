@@ -38,9 +38,7 @@ Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'as' => 'dash
 	Route::post('identify/email', 'DashboardController@postIdentifyEmail')->name('identify.email-verify');
 	Route::get('identify/phone', 'DashboardController@getIdentifyPhone')->name('identify.phone');
 	Route::post('identify/phone', 'DashboardController@postIdentifyPhone')->name('identify.phone-verify');
-	Route::post('identify/national_card', 'DashboardController@postIdentifyNationalCard')->name('identify.national_card-verify');
-	Route::post('identify/bank_card', 'DashboardController@postIdentifyBankCard')->name('identify.bank_card-verify');
-	Route::post('identify/certificate_card', 'DashboardController@postIdentifyCertificateCard')->name('identify.certificate_card-verify');
+	Route::post('identify/{document}', 'DashboardController@postIdentifyDocument')->name('identify.document');
 });
 Route::group(['prefix' => 'category', 'namespace' => 'Category', 'as' => 'category.'], function () {
 	Route::get('tree', 'ResourceController@getTree')->name('tree');
@@ -84,9 +82,7 @@ Route::group(['prefix' => 'setting', 'namespace' => 'Setting', 'as' => 'setting.
 Route::group(['prefix' => 'user', 'namespace' => 'User', 'as' => 'user.'], function () {
 	Route::get('login/{id}', 'ResourceController@getlogin')->name('login');
 	Route::get('identify/{id}', 'ResourceController@getIdentify')->name('identify');
-	Route::get('identify/{id}/national_card', 'ResourceController@getIdentifyNationalCard')->name('identify.national_card');
-	Route::get('identify/{id}/bank_card', 'ResourceController@getIdentifyBankCard')->name('identify.bank_card');
-	Route::get('identify/{id}/certificate_card', 'ResourceController@getIdentifyCertificateCard')->name('identify.certificate_card');
+	Route::get('identify/{id}/{document}', 'ResourceController@getIdentifyDocument')->name('identify.document');
 });
 Route::group(['prefix' => 'report', 'namespace' => 'Report', 'as' => 'report.'], function () {
 	Route::get('list', 'ReportController@index')->name('list.index');

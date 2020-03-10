@@ -188,52 +188,19 @@ class DashboardController extends BaseAdminController
 
     }
 
-    public function postIdentifyNationalCard()
+    public function postIdentifyDocument($document_title = 'national_card')
     {
         $auth_user = Auth::user();
-        $image_service = new ImageService();
-        $national_card_image = $this->request->file('national_card');
-        $image_service->save($national_card_image, $auth_user, 'national_card');
+        $file_service = new \App\Services\FileService();
+        $file_service->save($this->request->file($document_title), $auth_user, $document_title);
 
         $profile_updated = new ProfileUpdated();
         $profile_updated->setCode($auth_user->id);
         $admin = $this->repository->getAdminUser();
         $admin->notify($profile_updated);
 
-        $this->request->session()->flash('alert-success', __('national card uploaded'));
+        $this->request->session()->flash('alert-success', __($document_title . ' uploaded'));
         return redirect()->back();
     }
 
-    Public function postIdentifyBankCard()
-    {
-        $auth_user = Auth::user();
-        $image_service = new ImageService();
-        $bank_card_image = $this->request->file('bank_card');
-        $image_service->save($bank_card_image, $auth_user, 'bank_card');
-
-        $profile_updated = new ProfileUpdated();
-        $profile_updated->setCode($auth_user->id);
-        $admin = $this->repository->getAdminUser();
-        $admin->notify($profile_updated);
-
-        $this->request->session()->flash('alert-success', __('bank card uploaded'));
-        return redirect()->back();
-    }
-
-    Public function postIdentifyCertificateCard()
-    {
-        $auth_user = Auth::user();
-        $image_service = new ImageService();
-        $certificate_card_image = $this->request->file('certificate_card');
-        $image_service->save($certificate_card_image, $auth_user, 'certificate_card');
-
-        $profile_updated = new ProfileUpdated();
-        $profile_updated->setCode($auth_user->id);
-        $admin = $this->repository->getAdminUser();
-        $admin->notify($profile_updated);
-
-        $this->request->session()->flash('alert-success', __('certificate card uploaded'));
-
-        return redirect()->back();
-    }
 }

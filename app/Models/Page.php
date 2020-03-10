@@ -50,5 +50,4 @@ class Page extends BaseModel
     {
         return $this->belongsToMany('App\Models\Page', 'related_pages', 'page_id', 'related_page_id');
     }
-
 }

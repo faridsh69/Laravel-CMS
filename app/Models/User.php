@@ -301,6 +301,24 @@ class User extends Authenticatable
         return json_encode($this->files($title)->pluck('src'));
     }
 
+    public function file_src($title)
+    {
+        if($this->files($title)->first()){
+            return $this->files($title)->first()->src;
+        }
+
+        return config('setting-general.default_user_image');
+    }
+
+    public function file_src_thumbnail($title)
+    {
+        if($this->files($title)->first()){
+            return $this->files($title)->first()->file_src_thumbnail;
+        }
+
+        return config('setting-general.default_user_image');
+    }
+
     // public function getImageAttribute($image)
     // {
     //     if(isset($image) && $image) {
