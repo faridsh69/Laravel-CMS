@@ -2,29 +2,21 @@
 
 namespace App\Http\Controllers\Front;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Product;
-use App\Models\Category;
-use App\Models\Basket;
 use App\Models\Factor;
-use App\Models\Feature;
-use App\Models\ProductView;
 use App\Models\Payment;
-use App\Models\Setting;
 use App\Models\Tagend;
-use Auth;
-use Carbon\carbon;
 use App\Services\FactorService;
 use App\Services\SmsService;
-
+use Auth;
+use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
 {
     public function getAddress()
     {
         $basket = FactorService::_getUserBasket();
-        if($basket->products->count() == 0){
+        if($basket->products->count() === 0){
             return redirect('/');
         }
 
@@ -43,7 +35,7 @@ class CheckoutController extends Controller
     public function getAddressInit()
     {
         $addresses = Auth::user()->addresses()->orderBy('id', 'desc')->get()->toArray();
-        
+
         return response()->json([
     		'addresses' =>  $addresses,
     	]);
@@ -79,7 +71,7 @@ class CheckoutController extends Controller
         }
 
         $factor->fillFactorProducts();
-        $factor->fillFactorTagends();        
+        $factor->fillFactorTagends();
         $factor->total_price = $factor->calculateTotalPriceWithTagends();
         $factor->save();
 
@@ -93,10 +85,10 @@ class CheckoutController extends Controller
     public function getShipping()
     {
         $factor = Factor::currentFactor()->first();
-        if(!$factor){
+        if(! $factor){
             return redirect('/');
         }
-        
+
         $shippings = Tagend::shipping()->get();
 
         $meta = [
@@ -123,7 +115,7 @@ class CheckoutController extends Controller
         $factor->tagends()->syncWithoutDetaching([
             $tagend_shipping->id => [
                 'value' => $tagend_shipping->value,
-            ]
+            ],
         ]);
 
         $factor->shipping = $request['shipping'];
@@ -151,18 +143,18 @@ class CheckoutController extends Controller
             $factor->total_price = $factor->calculateTotalPriceWithTagends();
             $factor->save();
 
-            $tagend->used_count = $tagend->used_count - 1;
+            --$tagend->used_count;
             $request->session()->flash('alert-success', 'کد تخفیف اعمال شد.');
         }else{
             $request->session()->flash('alert-danger', 'کد تخفیف اشتباه است.');
         }
         return redirect()->back();
-    }    
+    }
 
     public function getPayment()
     {
         $factor = Factor::currentFactor()->first();
-        if(!$factor){
+        if(! $factor){
              return redirect('/');
         }
 
@@ -179,9 +171,9 @@ class CheckoutController extends Controller
     }
 
     public function getPaymentLocal()
-    {        
+    {
         $factor = Factor::currentFactor()->first();
-        if(!$factor){
+        if(! $factor){
             return redirect('/');
         }
 
@@ -194,7 +186,7 @@ class CheckoutController extends Controller
         $factor->status = Factor::STATUS_PROCCESSING;
         $factor->save();
         $view_status = 'local';
-            
+
         $basket = FactorService::_getUserBasket();
         $basket->products()->detach();
         $basket->delete();
@@ -210,14 +202,14 @@ class CheckoutController extends Controller
             'canonical_url' => url()->current(),
         ];
 
-        return view('front.components.checkout.verify', ['factor' => $factor, 'view_status' => $view_status, 
-            'meta' => $meta]);
+        return view('front.components.checkout.verify', ['factor' => $factor, 'view_status' => $view_status,
+            'meta' => $meta, ]);
     }
 
     public function getPaymentOnline($bank)
     {
         $factor = Factor::currentFactor()->first();
-        if(!$factor){
+        if(! $factor){
             \Log::error('getPaymentOnline + factor does not exist');
             return redirect('/');
         }
@@ -240,37 +232,37 @@ class CheckoutController extends Controller
             'description' => 'در حال ورود به بانک',
             'bank' => $bank,
         ]);
-        \Log::info('going to bank factor_id: '.$factor->id.' by user_id: ' .\Auth::id() 
-            .'with payment_id: '.$payment->id );
-                
+        \Log::info('going to bank factor_id: ' . $factor->id . ' by user_id: ' . \Auth::id()
+            . 'with payment_id: ' . $payment->id);
+
         try{
-            if($bank == 'zarinpal'){
+            if($bank === 'zarinpal'){
                 $gateway = \Gateway::ZARINPAL();
                 $gateway->setDescription('سفارش از فروشگاه اینترنتی');
                 $gateway->setEmail(\Auth::user()->email);
                 $gateway->setMobileNumber(\Auth::user()->phone);
-            }elseif($bank == 'mellat'){
+            }elseif($bank === 'mellat'){
                 $gateway = \Gateway::Mellat();
             }
 
             $gateway->setCallback(url('checkout/payment/verify'));
-            $gateway->price( (10 * $factor->total_price) )->ready();
+            $gateway->price((10 * $factor->total_price))->ready();
 
             $refId =  $gateway->refId(); // شماره ارجاع بانک
             $transID = $gateway->transactionId(); // شماره تراکنش
-            
+
             $payment->refId = $refId; // 000000000000000000000000000072078672
             $payment->transaction_id = $transID; // 152420075508
             $payment->save();
             return $gateway->redirect();
-            
+
         } catch (\Exception $e) {
             $payment->status = Payment::STATUS_UNSUCCEED;
             $payment->error = $e->getMessage();
             $payment->description = 'اطلاعات بانک تو سیستم غلط است';
             $payment->save();
-            \Log::error('اطلاعات بانک اشتباه رخ داده است.' );
-            dd( $e->getMessage() );
+            \Log::error('اطلاعات بانک اشتباه رخ داده است.');
+            dd($e->getMessage());
         }
     }
 
@@ -281,7 +273,7 @@ class CheckoutController extends Controller
         "http://holooyarshop.ir/checkout/payment/verify
             ?transaction_id=152787598384
             &_token=vPVqfrLyQtwaXYAQHJw3C4PtvjpWw24t8u9lcnNG"
-        
+
         zarin pall
         "http://ariotel.com/checkout/payment/verify
             ?Authority=000000000000000000000000000076220683
@@ -294,24 +286,23 @@ class CheckoutController extends Controller
         {
             $payment = Payment::Mine()
                 ->where('refId', $Authority)
-                ->orderBy('id','desc')
+                ->orderBy('id', 'desc')
                 ->first();
         }elseif($transaction_id){
             $payment = Payment::Mine()
                 ->where('transaction_id', $transaction_id)
-                ->orderBy('id','desc')
+                ->orderBy('id', 'desc')
                 ->first();
         }else{
             dd('لینک این صفحه را حتما ذخیره نمایید و گزارش کنید.');
         }
-        if(!$payment){
+        if(! $payment){
             dd('پرداخت به مشکل خورده است شما با این کد به بانک نرفته اید!');
         }
-       
-        $factor = $payment->factor;
-        $Amount = $payment->total_price;
 
-        try { 
+        $factor = $payment->factor;
+
+        try {
             $gateway = \Gateway::verify();
             $trackingCode = $gateway->trackingCode();
             $refId = $gateway->refId();
@@ -322,22 +313,21 @@ class CheckoutController extends Controller
             $payment->card_number = $cardNumber;
             $payment->description = 'با موفقیت پرداخت شد.';
             $payment->status = Payment::STATUS_SUCCEED;
-            
+
             $factor->status = Factor::STATUS_PROCCESSING;
             $view_status = 'success';
             FactorService::_decreaseInventory();
-            
 
         } catch (\Larabookir\Gateway\Exceptions\RetryException $e) {
-            if($payment->status == Payment::STATUS_SUCCEED){
+            if($payment->status === Payment::STATUS_SUCCEED){
                 $view_status = 'success';
             }else{
                 $view_status = 'error';
             }
-            return view('user.checkout.verify', compact('view_status', 'factor') );
+            return view('user.checkout.verify', compact('view_status', 'factor'));
 
         } catch (\Exception $e) {
-            \Log::warning('user canceled: by payment_id: '. $payment->id );
+            \Log::warning('user canceled: by payment_id: ' . $payment->id);
             $payment->status = Payment::STATUS_UNSUCCEED;
             $payment->error = $e->getMessage();
             $payment->description = 'پرداخت ناموفق بوده است';
@@ -345,15 +335,15 @@ class CheckoutController extends Controller
         }
         $payment->save();
         $factor->save();
-        if($view_status == 'success'){
+        if($view_status === 'success'){
             $sms_service = new SmsService();
             $sms_service->shopping($factor);
         }
-        
+
         $basket = FactorService::_getUserBasket();
         $basket->products()->detach();
         $basket->delete();
-        
-        return view('user.checkout.verify', compact('view_status', 'factor') );
+
+        return view('user.checkout.verify', compact('view_status', 'factor'));
     }
 }

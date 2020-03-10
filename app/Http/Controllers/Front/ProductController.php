@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use App\Models\Block;
-use App\Models\Product;
 use App\Models\Category;
 use App\Models\Page;
+use App\Models\Product;
 use App\Models\Tag;
 use Auth;
 use Illuminate\Http\Request;
@@ -70,8 +69,6 @@ class ProductController extends Controller
 
         return redirect()->back();
     }
-
-    
 
     public function getCategories()
     {

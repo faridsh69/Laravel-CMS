@@ -16,4 +16,3 @@ class FileManager extends FormField
         return 'vendor.laravel-form-builder.file-manager';
     }
 }
-

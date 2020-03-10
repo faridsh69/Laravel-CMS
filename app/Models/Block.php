@@ -61,7 +61,7 @@ class Block extends BaseModel
                 $output_blocks[] = $block;
             }
 
-            if(!$block->show_all_pages && array_search($page_id, $block->pages->pluck('id')->toArray(), true) !== false){
+            if(! $block->show_all_pages && array_search($page_id, $block->pages->pluck('id')->toArray(), true) !== false){
                 $output_blocks[] = $block;
             }
         }

@@ -16,4 +16,3 @@ class FileUpload extends FormField
         return 'vendor.laravel-form-builder.file-upload';
     }
 }
-

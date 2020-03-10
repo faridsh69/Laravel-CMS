@@ -127,16 +127,28 @@ class User extends Authenticatable
             'table' => false,
         ],
         [
-            'name' => 'image',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => 'nullable|max:191',
-            'help' => 'Upload and select image from file manager',
+            'name' => 'profile_picture',
+            'type' => 'file',
+            'database' => 'none',
+            'rule' => 'nullable|file|image|mimetypes:image/*|max:2000|dimensions:min_width=100,min_height=100|',
+            'help' => 'Upload profile picture, minimum acceptable width and heigth is 100px.',
             'form_type' => 'file',
-            'file_manager' => true,
-            'file_accept' => 'image', // file, image, video, audio, text
-            'file_multiple' => true,
-            'table' => true,
+            'file_manager' => false,
+            'file_accept' => 'image',
+            'file_multiple' => false,
+            'table' => false,
+        ],
+        [
+            'name' => 'cover_photo',
+            'type' => 'file',
+            'database' => 'none',
+            'rule' => 'nullable|file|image|mimetypes:image/*|max:2000',
+            'help' => 'Upload cover photo',
+            'form_type' => 'file',
+            'file_manager' => false,
+            'file_accept' => 'image',
+            'file_multiple' => false,
+            'table' => false,
         ],
         [
             'name' => 'activation_code',
@@ -269,37 +281,53 @@ class User extends Authenticatable
         return $this->first_name . ' ' . $this->last_name;
     }
 
-    public function getImageAttribute($image)
-    {
-        if(isset($image) && $image) {
-            return $image;
-        }
-
-        return asset(config('setting-general.default_user_image'));
-    }
-
-    public function images()
-    {
-        return $this->morphMany('App\Models\Image', 'imageable');
-    }
-
-    public function getNationalCardImagesAttribute()
-    {
-        return $this->images->where('title', 'national_card');
-    }
-
-    public function getBankCardImagesAttribute()
-    {
-        return $this->images->where('title', 'bank_card');
-    }
-
-    public function getCertificateCardImagesAttribute()
-    {
-        return $this->images->where('title', 'certificate_card');
-    }
-
     public function getAdminUser()
     {
-        return User::where('id', 1)->first();
+        return self::where('id', 1)->first();
     }
+
+    public function files_relation()
+    {
+        return $this->morphMany('App\Models\File', 'fileable');
+    }
+
+    public function files($title)
+    {
+        return $this->files_relation()->where('title', $title)->get();
+    }
+
+    public function files_src($title)
+    {
+        return json_encode($this->files($title)->pluck('src'));
+    }
+
+    // public function getImageAttribute($image)
+    // {
+    //     if(isset($image) && $image) {
+    //         return $image;
+    //     }
+
+    //     return asset(config('setting-general.default_user_image'));
+    // }
+
+    // public function images()
+    // {
+    //     return $this->morphMany('App\Models\Image', 'imageable');
+    // }
+
+    // public function getNationalCardImagesAttribute()
+    // {
+    //     return $this->images->where('title', 'national_card');
+    // }
+
+    // public function getBankCardImagesAttribute()
+    // {
+    //     return $this->images->where('title', 'bank_card');
+    // }
+
+    // public function getCertificateCardImagesAttribute()
+    // {
+    //     return $this->images->where('title', 'certificate_card');
+    // }
+
 }

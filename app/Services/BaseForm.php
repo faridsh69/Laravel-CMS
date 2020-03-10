@@ -57,9 +57,9 @@ class BaseForm extends Form
 
             // boolean types are: 1- switch-m 2- switch-bootstrap-m 3- checkbox-m
             elseif($type === 'boolean'){
-                $input_type = 'switch-m';
-                if($form_type === 'checkbox'){
-                    $input_type = 'checkbox-m';
+                $input_type = 'checkbox-m';
+                if($form_type === 'switch-m'){
+                    $input_type = 'switch-m';
                 }
                 elseif($form_type === 'switch-bootstrap-m'){
                     $input_type = 'switch-bootstrap-m';
@@ -71,7 +71,7 @@ class BaseForm extends Form
                 $input_type = 'textarea';
                 $options['attr'] = ['ckeditor' => 'on'];
             }
-            
+
             // create email type input
             elseif($form_type === 'email'){
                 $options['attr'] = ['type' => 'email'];

@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Http\Controllers\Controller;
 use Auth;
-use Conner\Tagging\Model\Tag;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Maatwebsite\Excel\Facades\Excel;
@@ -416,7 +415,7 @@ class BaseListController extends Controller
     private function _changeDataBeforeCreate($model_name, $data, $model)
     {
         // null and false -> 0, true -> 1
-        foreach(collect($this->model_columns)->where('type', 'boolean')->pluck('name') as $boolean_column) 
+        foreach(collect($this->model_columns)->where('type', 'boolean')->pluck('name') as $boolean_column)
         {
             if(! isset($data[$boolean_column]))
             {
@@ -425,7 +424,7 @@ class BaseListController extends Controller
         }
 
         // unset file attributes before saving
-        foreach(collect($this->model_columns)->where('form_type', 'file')->where('file_manager', false)->pluck('name') as $file_uploader_column) 
+        foreach(collect($this->model_columns)->where('form_type', 'file')->where('file_manager', false)->pluck('name') as $file_uploader_column)
         {
             unset($data[$file_uploader_column]);
         }
@@ -435,7 +434,6 @@ class BaseListController extends Controller
         //         unset($data[$key]);
         //     }
         // }
-
 
         // unset($data['upload_file_gallery_*']);
         // do all of this unsets with foreach on columns
@@ -494,38 +492,29 @@ class BaseListController extends Controller
             ->where('file_manager', false)->pluck('name') as $file_column) {
             $file = $data[$file_column];
             if($file){
-                $file_service = new \App\Services\FileService;
+                $file_service = new \App\Services\FileService();
                 $file_service->save($file, $model, $file_column);
             }
+        }
+        // Tag
+        if($model_name === 'Product' || $model_name === 'Blog')
+        {
+            if(! isset($data['tags'])){
+                $data['tags'] = [];
+            }
+            $tag_names = \Conner\Tagging\Model\Tag::whereIn('id', $data['tags'])->pluck('name')->toArray();
+            $model->retag($tag_names);
         }
         // Blog
         if($model_name === 'Blog')
         {
             $model->related_blogs()->sync($data['related_blogs'], true);
-            if(! isset($data['tags'])){
-                $data['tags'] = [];
-            }
-            $tag_names = Tag::whereIn('id', $data['tags'])->pluck('name')->toArray();
-            $model->retag($tag_names);
         }
 
         // Product
         if($model_name === 'Product')
         {
             $model->related_products()->sync($data['related_products'], true);
-            if(! isset($data['tags'])){
-                $data['tags'] = [];
-            }
-            $tag_names = Tag::whereIn('id', $data['tags'])->pluck('name')->toArray();
-            $model->retag($tag_names);
-            // @todo delete this codes
-            // if(! isset($data['gallery'])){
-            //     $data['gallery'] = [];
-            // }
-            // $image_service = new ImageService();
-            // foreach($data['gallery'] as $gallery_image){
-            //     $image_service->save($gallery_image, $model, 'product');
-            // }
         }
 
         // Form

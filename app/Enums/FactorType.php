@@ -14,4 +14,3 @@ final class FactorType extends BaseEnum
 		'Team Pay' => 'Team Pay',
 	];
 }
-

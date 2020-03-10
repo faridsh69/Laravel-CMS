@@ -12,7 +12,7 @@ class CustomeForm extends Form
         foreach($form->fields as $column)
         {
             $name = $column['title'];
-            $type = $column['type'];
+            // $type = $column['type'];
             $rule = $column['rules'];
             $form_type = $column['type'];
             $help = isset($column['help']) ? $column['help'] : ' ';

@@ -2,15 +2,11 @@
 
 namespace App\Services;
 
-use Auth;
-use App\Models\Product;
-use App\Models\Category;
 use App\Models\Basket;
+use App\Models\Category;
 use App\Models\Factor;
-use App\Models\Feature;
-use App\Models\ProductView;
-use App\Models\User;
-use App\Models\Tagend;
+use App\Models\Product;
+use Auth;
 
 class FactorService extends BaseService
 {
@@ -27,18 +23,18 @@ class FactorService extends BaseService
 
             foreach($factor->products as $product)
             {
-                $product->inventory = $product->inventory - $product->pivot->count; 
+                $product->inventory -= $product->pivot->count;
             }
         }
         catch(Exception $e) {
-          echo 'Message: ' .$e->getMessage();
+          echo 'Message: ' . $e->getMessage();
         }
     }
 
 	public static function _getProductsVue($filters = false)
     {
         $products = Product::active()
-            ->select('id','title','price','discount_price')
+            ->select('id', 'title', 'price', 'discount_price')
             ->orderBy('id', 'desc')
             ->with('images')
             ->get();
@@ -55,7 +51,7 @@ class FactorService extends BaseService
                 }
             }
             // if($filters['title'])
-            // { 
+            // {
             //     $products = $products->where('title', 'like','%'. $filters['title'] .'%');
             // }
         }
@@ -95,12 +91,7 @@ class FactorService extends BaseService
     public static function _getUserBasketCountProducts()
     {
         $basket = self::_getUserBasket();
-        $count = 0;
-        foreach($basket->products as $basket_product)
-        {
-            $count ++;
-        }
-        return $count;
+        return $basket->products->count();
     }
 
     public static function _getTotalPrice()
@@ -111,9 +102,9 @@ class FactorService extends BaseService
         foreach($basket_product as $item)
         {
             if($item->discount_price){
-                $total_price = $total_price + ( $item->pivot->count * $item->discount_price );
+                $total_price += ( $item->pivot->count * $item->discount_price );
             }else{
-                $total_price = $total_price + ( $item->pivot->count * $item->price );
+                $total_price += ( $item->pivot->count * $item->price );
             }
         }
         return $total_price;
@@ -126,24 +117,24 @@ class FactorService extends BaseService
             // ->where('inventory', '>', 0);
         if($basket_product->count() >= 1){
             $count = $basket_product->first()->pivot->count + $add;
-            if($count == 0 && $add == -1){
+            if($count === 0 && $add === -1){
                 $basket->products()->detach([$product_id]);
             }else{
-                $basket->products()->syncWithoutDetaching([$product_id => ['count' => $count ]], false);
+                $basket->products()->syncWithoutDetaching([$product_id => ['count' => $count]], false);
             }
         }
         else{
-            $basket->products()->sync([$product_id => ['count' => 1 ]], false);
+            $basket->products()->sync([$product_id => ['count' => 1]], false);
         }
     }
 
     public static function _changeCountBasket($product_id, $count)
     {
         $basket = self::_getUserBasket();
-        if($count == 0){
+        if($count === 0){
             $basket->products()->detach([$product_id]);
         }else{
-            $basket->products()->syncWithoutDetaching([$product_id => ['count' => $count ]]);
+            $basket->products()->syncWithoutDetaching([$product_id => ['count' => $count]]);
         }
     }
 
@@ -154,7 +145,7 @@ class FactorService extends BaseService
         $basket->user_id = Auth::id();
         $basket->save();
 
-        setcookie('basket_id', $basket->id, time() + (86400 * 3), "/"); // 86400 = 1 day
+        setcookie('basket_id', $basket->id, time() + (86400 * 3), '/'); // 86400 = 1 day
         session(['basket_id' => $basket->id]);
 
         return $basket;
@@ -186,7 +177,7 @@ class FactorService extends BaseService
                 if($basket){
                     $basket->user_id = \Auth::id();
                     $basket->save();
-                    setcookie("basket_id", "", time() - 3600);
+                    setcookie('basket_id', '', time() - 3600);
 
                     return $basket;
                 }

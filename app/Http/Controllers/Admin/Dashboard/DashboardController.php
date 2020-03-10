@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Dashboard;
 
+use App\Models\Address;
 use App\Notifications\EmailVerified;
 use App\Notifications\PhoneVerified;
 use App\Notifications\ProfileUpdated;
@@ -13,7 +14,6 @@ use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Route;
 use Spatie\Activitylog\Models\Activity;
-use App\Models\Address;
 
 class DashboardController extends BaseAdminController
 {
@@ -44,7 +44,7 @@ class DashboardController extends BaseAdminController
     {
         $data = $this->request->all();
         $data['user_id'] = Auth::id();
-        $model = Address::create($data);
+        Address::create($data);
 
         return redirect()->back();
     }
@@ -57,6 +57,7 @@ class DashboardController extends BaseAdminController
             'class' => 'm-form m-form--state',
             'id' =>  'admin_form',
             'model' => Auth::user(),
+            'enctype' => 'multipart/form-data',
         ]);
 
     	return view('admin.list.form', ['form' => $form, 'meta' => $this->meta]);
@@ -75,30 +76,33 @@ class DashboardController extends BaseAdminController
         }
         $data = $form->getFieldValues();
 
-        foreach(collect($this->model_columns)->where('type', 'boolean')->pluck('name') as $boolean_column)
-        {
-            if(! isset($data[$boolean_column]))
-            {
-                $data[$boolean_column] = 0;
-            }
-        }
+        // BaseListController
+        // _changeDataBeforeCreate
 
-        if($model->email !== $data['email']){
-            $model->activation_code = null;
-            $model->email_verified_at = null;
-        }
+        // if($model->email !== $data['email']){
+        //     $model->activation_code = null;
+        //     $model->email_verified_at = null;
+        // }
 
-        if($model->phone !== $data['phone']){
-            $model->activation_code = null;
-            $model->phone_verified_at = null;
-        }
+        // if($model->phone !== $data['phone']){
+        //     $model->activation_code = null;
+        //     $model->phone_verified_at = null;
+        // }
 
-        if(isset($data['password'])) {
-            $data['password'] = \Hash::make($data['password']);
-        }
-        else{
-            $data['password'] = $model->password;
-        }
+        // foreach(collect($this->model_columns)->where('type', 'boolean')->pluck('name') as $boolean_column)
+        // {
+        //     if(! isset($data[$boolean_column]))
+        //     {
+        //         $data[$boolean_column] = 0;
+        //     }
+        // }
+
+        // if(isset($data['password'])) {
+        //     $data['password'] = \Hash::make($data['password']);
+        // }
+        // else{
+        //     $data['password'] = $model->password;
+        // }
 
         unset($data['password_confirmation']);
         $model->update($data);

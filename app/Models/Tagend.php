@@ -114,5 +114,4 @@ class Tagend extends BaseModel
         return $query->where('is_copon', 1)
             ->where('activated', 1);
     }
-
 }

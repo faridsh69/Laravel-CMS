@@ -20,7 +20,7 @@ class BaseMigration extends Migration
 
     public $models = [];
 
-    public $seed = false; 
+    public $seed = false;
 
     public function __construct()
     {

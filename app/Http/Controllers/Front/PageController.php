@@ -3,11 +3,8 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use App\Models\Block;
 use App\Models\Form;
 use App\Models\Page;
-use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -48,10 +45,10 @@ class PageController extends Controller
 
         // upload files
         foreach($files as $column => $file) {
-            $file_service = new \App\Services\FileService;
+            $file_service = new \App\Services\FileService();
             $file_service->save($file, $answer, $column);
         }
-        
+
         $request->session()->flash('alert-success', 'Congratulation, Your answer saved successfully!');
 
         return redirect()->back();

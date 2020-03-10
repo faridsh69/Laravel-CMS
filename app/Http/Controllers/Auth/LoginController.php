@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Notifications\UserLogined;
 use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
-use App\Notifications\UserLogined;
 
 class LoginController extends Controller
 {

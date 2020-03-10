@@ -7,6 +7,26 @@ use App\Services\FactorService;
 
 class Factor extends BaseModel
 {
+    const STATUS_INITIAL = 1;
+
+    const STATUS_PAYMENT = 2;
+
+    const STATUS_PROCCESSING = 3;
+
+    const STATUS_PREPARING = 4;
+
+    const STATUS_DELIVERING = 5;
+
+    const STATUS_CANCELED = 6;
+
+    const STATUS_SUCCEED = 7;
+
+    const PAYMENT_LOCAL = 'پرداخت در محل';
+
+    const PAYMENT_CART = 'پرداخت کارت به کارت';
+
+    const PAYMENT_ONLINE = 'پرداخت آنلاین';
+
     public $columns = [
         ['name' => 'title'],
         ['name' => 'file'],
@@ -180,25 +200,13 @@ class Factor extends BaseModel
      //    ['name' => 'activated'],
     ];
 
-    const STATUS_INITIAL = 1;
-    const STATUS_PAYMENT = 2;
-    const STATUS_PROCCESSING = 3;
-    const STATUS_PREPARING = 4;
-    const STATUS_DELIVERING = 5;
-    const STATUS_CANCELED = 6;
-    const STATUS_SUCCEED = 7;
-
-    const PAYMENT_LOCAL = 'پرداخت در محل';
-    const PAYMENT_CART = 'پرداخت کارت به کارت';
-    const PAYMENT_ONLINE = 'پرداخت آنلاین';
-
     public function scopeCurrentFactor($query)
     {
         return $query->where('user_id', \Auth::id())
             ->where('status', '<', 3)
             // ->where('admin_seen', 0)
             // ->where('created_at', '>', carbon::now()->subHour() )
-            ->orderBy('id', 'desc');            
+            ->orderBy('id', 'desc');
     }
 
     public function products()
@@ -218,7 +226,7 @@ class Factor extends BaseModel
 
     public function tagends()
     {
-        return $this->belongsToMany('App\Models\Tagend')->withPivot('value');;
+        return $this->belongsToMany('App\Models\Tagend')->withPivot('value');
     }
 
     public function fillFactorProducts()
@@ -226,7 +234,7 @@ class Factor extends BaseModel
         $this->products()->sync([]);
         $basket = FactorService::_getUserBasket();
 
-        foreach($basket->products as $product) 
+        foreach($basket->products as $product)
         {
             if($product->activated !== 1){
                 continue;
@@ -237,7 +245,7 @@ class Factor extends BaseModel
                     'count' => $count,
                     'price' =>  $product->price,
                     'discount_price' =>  $product->discount_price,
-                ]
+                ],
             ]);
         }
 
@@ -249,7 +257,7 @@ class Factor extends BaseModel
         $tagends = Tagend::forced()
             ->get();
 
-        foreach ($tagends as $tagend) 
+        foreach ($tagends as $tagend)
         {
             $this->addTagendToFactor($tagend);
         }
@@ -263,7 +271,7 @@ class Factor extends BaseModel
 
         foreach($this->tagends as $tagend)
         {
-            $total_price = $total_price + $tagend->pivot->value; 
+            $total_price += $tagend->pivot->value;
         }
         if($total_price < 0){
             $total_price = 0;
@@ -278,9 +286,9 @@ class Factor extends BaseModel
         foreach($factor_product as $item)
         {
             if($item->pivot->discount_price){
-                $total_price = $total_price + ( $item->pivot->count * $item->pivot->discount_price );
+                $total_price += ( $item->pivot->count * $item->pivot->discount_price );
             }else{
-                $total_price = $total_price + ( $item->pivot->count * $item->pivot->price );
+                $total_price += ( $item->pivot->count * $item->pivot->price );
             }
         }
         return $total_price;
@@ -291,7 +299,7 @@ class Factor extends BaseModel
         $tagends = Tagend::shipping()
             ->get();
 
-        foreach ($tagends as $tagend) 
+        foreach ($tagends as $tagend)
         {
             $this->tagends()->detach([$tagend->id]);
         }
@@ -301,16 +309,16 @@ class Factor extends BaseModel
 
         public function addTagendToFactor($tagend)
     {
-        if($tagend->type == 0)
+        if($tagend->type === 0)
         { // absolute
-            if( $tagend->sign == 1){
+            if($tagend->sign === 1){
                 $value = $tagend->value;
             }else{
                 $value = (-1) * $tagend->value;
             }
         }else{ // percent
-            if( $tagend->sign == 1){
-                $value = ( $tagend->value * $this->total_price ) / 100;
+            if($tagend->sign === 1){
+                $value = $tagend->value * $this->total_price / 100;
             }else{
                 $value = ( (-1) * $tagend->value * $this->total_price) / 100;
             }
@@ -318,7 +326,7 @@ class Factor extends BaseModel
         $this->tagends()->syncWithoutDetaching([
             $tagend->id => [
                 'value' => $value,
-            ]
+            ],
         ]);
     }
 }

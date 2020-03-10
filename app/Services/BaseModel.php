@@ -2,11 +2,10 @@
 
 namespace App\Services;
 
-use Cache;
 use Auth;
+use Cache;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Scopes\LanguageScope;
 
 class BaseModel extends Model
 {
@@ -225,7 +224,7 @@ class BaseModel extends Model
                     'name' => 'upload_image',
                     'type' => 'file',
                     'database' => 'none',
-                    'rule' => 'nullable|file|image|mimetypes:image/*|max:2000',
+                    'rule' => 'nullable|file|image|mimetypes:image/*|dimensions:min_width=1,min_height=1|max:2000',
                     'help' => '',
                     'form_type' => 'file',
                     'file_manager' => false,

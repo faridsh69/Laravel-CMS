@@ -44,19 +44,19 @@ class SmsChannel extends BaseChannel
         }
         elseif($driver === 'raygansms')
         {
-            $url = "http://smspanel.trez.ir/api/smsAPI/SendMessage";
-            $post_data = json_encode(array(
+            $url = 'http://smspanel.trez.ir/api/smsAPI/SendMessage';
+            $post_data = json_encode([
                 'PhoneNumber' => $sender,
                 'Message' => $message,
                 'Mobiles' => [$phone],
                 'UserGroupID' => uniqid(),
                 'SendDateInTimeStamp' => time(),
-            ));
+            ]);
 
             $curl_service = new \App\Services\CurlService();
             $raygansms_api = $curl_service->call_curl($url, 'POST', $post_data, null, $api_key);
             $result = json_decode($raygansms_api, true);
-            if(is_null($result) || $result['Code'] != 0){
+            if($result === null || $result['Code'] !== 0){
                 Log::error([
                     'error' => $raygansms_api,
                     'info' => 'نام کاربری یا کلمه عبور صحیح نمی باشد',
@@ -90,4 +90,3 @@ class SmsChannel extends BaseChannel
 // {
 //     echo 'Caught exception: ',  $e->getMessage(), "\n";
 // }
-

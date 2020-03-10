@@ -73,7 +73,7 @@ class AppServiceProvider extends ServiceProvider
             //         $ip = $_SERVER['REMOTE_ADDR'];
             //         $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}"));
             //         if(isset($details->country) && $details->country === 'IR'){
-            //             $language = 'fa'; 
+            //             $language = 'fa';
             //         }
             //     }
             // }

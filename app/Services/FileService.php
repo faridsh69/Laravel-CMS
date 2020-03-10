@@ -2,19 +2,20 @@
 
 namespace App\Services;
 
+use App\Models\File;
 use Illuminate\Support\Facades\Storage;
 use Image;
-use App\Models\File;
 
 class FileService extends BaseService
 {
     public $upload_path_prefix = 'public/files/upload/';
+
     public $src_path_prefix = 'storage/files/upload/';
 
     public function save($file, $model, $title = 'file')
     {
         $gallery = $file;
-        if(!is_array($file)){
+        if(! is_array($file)){
             $gallery = [$file];
         }
         foreach($gallery as $file){
@@ -44,7 +45,7 @@ class FileService extends BaseService
                 $intervation_upload_path = storage_path('app/' . $upload_path);
                 $intervation_image->save($intervation_upload_path . $file_name_thumbnail, 100);
             }
-            // save file model record 
+            // save file model record
             $file_model_array = [
                 'title' => $title,
                 'extension' => $extension,
@@ -64,44 +65,15 @@ class FileService extends BaseService
                 // for single file upload this 3 columns is unique.
                 $file_model = File::updateOrCreate(
                     [
-                        'title' => $title, 
+                        'title' => $title,
                         'fileable_id' => $fileable_id,
-                        'fileable_type' => $fileable_type
-                    ], $file_model_array);
+                        'fileable_type' => $fileable_type,
+                    ],
+                    $file_model_array
+                );
             }
+
+            return $file_model;
         }
     }
-                
-// $class_name = class_basename($model);
-// $model_class = 'App\\Models\\' . $class_name;
-// $repository = new $model_class();
-// $relationForGallery = $title . '_images';
-// $index = count($repository->find($model->id)->{$relationForGallery});
-// $name_file_main = 'main.jpg';
-// $name_file_thumbnail = 'thumbnail.jpg';
-// $main_name = $index . '_' . $name_file_main;
-// $thumbnail_name = $index . '_' . $name_file_thumbnail;
-// list($width, $height) = getimagesize($file);
-// $path_model = 'storage/' . $title . '/' . $model->id . '/';
-// $path_storage = 'public/' . $title . '/' . $model->id;
-// $path_intervation = storage_path('app/public/' . $title . '/' . $model->id . '/');
-
-// $image_model = [
-//     'title' => $title,
-//     'imageable_type' => $model_class,
-//     'imageable_id' => $model->id,
-//     'src_main' => $path_model . $main_name,
-//     'src_thumbnail' => $path_model . $thumbnail_name,
-//     'width' => $width,
-//     'height' => $height,
-// ];
-// $image_model = \App\Models\Image::firstOrCreate($image_model);
-
-// Storage::putFileAs($path_storage, $file, $main_name);
-// $intervation_image = Image::make($file);
-// $intervation_image->save($path_intervation . $main_name, 100);
-// $intervation_image->resize(300, null, function ($constraint) {
-//     $constraint->aspectRatio();
-// });
-// $intervation_image->save($path_intervation . $thumbnail_name, 90);
 }
