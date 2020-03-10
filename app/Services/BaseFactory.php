@@ -104,10 +104,7 @@ class BaseFactory
                         $fake_data = 'Fake ' . $faker->realText(20);
                     }
                     elseif($type === 'array'){
-                        $fake_data = [];
-                    }
-                    elseif($type === 'files_array'){
-                        $fake_data = [];
+                        $fake_data = [1];
                     }
                     $output[$name] = $fake_data;
                 }
