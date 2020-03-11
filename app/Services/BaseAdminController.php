@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
 
@@ -11,7 +10,7 @@ class BaseAdminController extends BaseListController
     // for setting sections
     public $section;
 
-    // meta for admin pages 
+    // meta for admin pages
     public $meta = [
         'title' => 'Setting',
         'description' => 'Admin Panel Page For Best Cms In The World',

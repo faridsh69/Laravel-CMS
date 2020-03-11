@@ -21,6 +21,7 @@ class FileService extends BaseService
         foreach($gallery as $file){
             $class_name = class_basename($model);
             $model_class = 'App\\Models\\' . $class_name;
+            $class_name = strtolower($class_name);
             $fileable_type = $model_class;
             $fileable_id = $model->id;
             $size = $file->getSize();
@@ -60,10 +61,10 @@ class FileService extends BaseService
 
             $column = collect($model->getColumns())->where('name', $title)->first();
             if(isset($column['file_multiple']) && $column['file_multiple'] === true){
-                $file_model = File::updateOrCreate($file_model_array);
+                    File::updateOrCreate($file_model_array);
             }else{
                 // for single file upload this 3 columns is unique.
-                $file_model = File::updateOrCreate(
+                File::updateOrCreate(
                     [
                         'title' => $title,
                         'fileable_id' => $fileable_id,
@@ -72,8 +73,6 @@ class FileService extends BaseService
                     $file_model_array
                 );
             }
-
-            return $file_model;
         }
     }
 }

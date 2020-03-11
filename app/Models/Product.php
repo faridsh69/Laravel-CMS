@@ -16,17 +16,13 @@ class Product extends BaseModel implements Commentable
 
     public $columns = [
         ['name' => 'title'],
-        ['name' => 'url'],
-        ['name' => 'description'],
-        ['name' => 'content'],
-        ['name' => 'image'],
         [
             'name' => 'price',
             'type' => 'bigInteger',
             'database' => 'nullable',
-            'rule' => 'numeric',
+            'rule' => 'nullable|numeric',
             'help' => '',
-            'form_type' => '',
+            'form_type' => 'number',
             'table' => true,
         ],
         [
@@ -38,6 +34,10 @@ class Product extends BaseModel implements Commentable
             'form_type' => 'none',
             'table' => false,
         ],
+        ['name' => 'url'],
+        ['name' => 'description'],
+        ['name' => 'content'],
+        ['name' => 'gallery'],
         [
             'name' => 'inventory',
             'type' => 'bigInteger',
@@ -47,6 +47,7 @@ class Product extends BaseModel implements Commentable
             'form_type' => 'none',
             'table' => false,
         ],
+        ['name' => 'activated'],
         ['name' => 'order'],
         [
             'name' => 'category_id',
@@ -62,19 +63,6 @@ class Product extends BaseModel implements Commentable
             'multiple' => false,
             'table' => false,
         ],
-        [
-            'name' => 'gallery',
-            'type' => 'file',
-            'database' => 'none',
-            'rule' => 'nullable',
-            'help' => '',
-            'form_type' => 'file',
-            'file_manager' => false,
-            'file_accept' => 'image',
-            'file_multiple' => true,
-            'table' => false,
-        ],
-        ['name' => 'activated'],
         [
             'name' => 'tags',
             'type' => 'array',
@@ -124,22 +112,23 @@ class Product extends BaseModel implements Commentable
         return $this->belongsToMany('App\Models\Product', 'related_products', 'product_id', 'related_product_id');
     }
 
-    public function getAssetImageAttribute()
+    public function file_src($title)
     {
-        if(isset($this->image) && $this->image) {
-            return asset($this->image);
+        if($this->files($title)->first()){
+            return $this->files($title)->first()->src;
         }
 
-        return asset(config('setting-general.default_product_image'));
+        return config('setting-general.default_product_image');
     }
 
-    public function images()
+    public function file_src_thumbnail($title)
     {
-        return $this->morphMany('App\Models\Image', 'imageable');
+        if($this->files($title)->first()){
+            return $this->files($title)->first()->file_src_thumbnail;
+        }
+
+        return config('setting-general.default_product_image');
     }
 
-    public function getProductImagesAttribute()
-    {
-        return $this->images->where('title', 'product');
-    }
+
 }

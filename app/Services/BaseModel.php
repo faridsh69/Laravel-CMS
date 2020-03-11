@@ -280,8 +280,8 @@ class BaseModel extends Model
                     'file_multiple' => true,
                     'table' => false,
                 ],
-                'upload_image_gallery' => [
-                    'name' => 'upload_image_gallery',
+                'gallery' => [
+                    'name' => 'gallery',
                     'type' => 'file',
                     'database' => 'none',
                     'rule' => 'nullable',

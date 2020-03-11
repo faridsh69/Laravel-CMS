@@ -482,12 +482,12 @@ class BaseListController extends Controller
 
         // array columns
         foreach(collect($this->model_columns)->where('type', 'array')->pluck('name') as $array_column) {
-            if(array_search($array_column, ['users', 'permissions', 'tags']) === false){
+            if(array_search($array_column, ['users', 'permissions', 'tags'], true) === false){
                 $model->{$array_column}()->sync($data[$array_column], true);
             }
         }
-        // tag, related_blogs, related_products, pages, related_pages, rol->users, permissions, form->fields 
-            
+        // tag, related_blogs, related_products, pages, related_pages, rol->users, permissions, form->fields
+
         // Tag
         if($model_name === 'Product' || $model_name === 'Blog')
         {

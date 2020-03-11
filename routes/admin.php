@@ -87,7 +87,6 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'as' => 'user.'], funct
 Route::group(['prefix' => 'report', 'namespace' => 'Report', 'as' => 'report.'], function () {
 	Route::get('list', 'ReportController@index')->name('list.index');
 });
-Route::get('remove-file', 'File\FileController@getRemoveFile')
-    // ->middleware('can:change-status,' . $class_name)
-    ->name('remove-file');
-
+Route::group(['prefix' => 'file', 'namespace' => 'File', 'as' => 'file.'], function () {
+	Route::get('remove-by-src', 'ResourceController@getRemoveBySrc')->name('remove-by-src');
+});

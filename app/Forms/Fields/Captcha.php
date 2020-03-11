@@ -4,7 +4,7 @@ namespace App\Forms\Fields;
 
 use Kris\LaravelFormBuilder\Fields\FormField;
 
-class captcha extends FormField
+class Captcha extends FormField
 {
     public function render(array $options = [], $showLabel = true, $showField = true, $showError = true)
     {

@@ -85,7 +85,7 @@ class DashboardController extends BaseAdminController
             ->log('User Profile Updated');
         $this->request->session()->flash('alert-success', $this->model . ' Updated Successfully!');
 
-        return redirect()->route('admin.dashboard.profile');        
+        return redirect()->route('admin.dashboard.profile');
     }
 
     public function getActivity()
@@ -202,5 +202,4 @@ class DashboardController extends BaseAdminController
         $this->request->session()->flash('alert-success', __($document_title . ' uploaded'));
         return redirect()->back();
     }
-
 }

@@ -131,5 +131,5 @@ function emptyImageInput(inputId) {
 };
 
 function removeFile(src){
-    $.ajax({url: '/admin/remove-file/?src=' + src}).then(location.reload());
+    $.ajax({url: '/admin/file/remove-by-src?src=' + src}).then(function(){location.reload()});
 }

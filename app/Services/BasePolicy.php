@@ -99,6 +99,6 @@ class BasePolicy
 
     public function changeStatus(User $user)
     {
-        return $user->can('index_' . $this->model_sm);
+        return $user->can('update_' . $this->model_sm);
     }
 }

@@ -185,11 +185,18 @@ $sidebar = [
 	[
 		'order' => 75,
 		'title' => 'Media',
-		'permission' => 'Image',
+		'permission' => 'File',
 		'type' => 'submenu',
 		'icon' => 'flaticon-open-box',
 	],
-			[
+	[
+		'order' => 76,
+		'title' => 'File',
+		'permission' => 'File',
+		'type' => 'submenu',
+		'icon' => 'flaticon-attachment',
+	],
+	[
 		'order' => 78,
 		'title' => 'Comment',
 		'type' => 'submenu',

@@ -6,7 +6,7 @@ use App\Services\BaseModel;
 
 class File extends BaseModel
 {
-    // title, extension, file_name, mime_type, size, src, fileable_type, fileable_id
+    // title, extension, file_name, mime_type, size, src, src_thumbnail, fileable_type, fileable_id
     public $columns = [
         ['name' => 'title'],
         [
@@ -16,7 +16,7 @@ class File extends BaseModel
             'rule' => '',
             'help' => 'extension of file',
             'form_type' => '',
-            'table' => true,
+            'table' => false,
         ],
         [
             'name' => 'file_name',
@@ -55,13 +55,22 @@ class File extends BaseModel
             'table' => true,
         ],
         [
+            'name' => 'src_thumbnail',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => '',
+            'help' => '',
+            'form_type' => '',
+            'table' => false,
+        ],
+        [
             'name' => 'fileable_type',
             'type' => 'string',
             'database' => 'nullable',
             'rule' => '',
             'help' => 'type of model that this file belongs to it.',
             'form_type' => '',
-            'table' => true,
+            'table' => false,
         ],
         [
             'name' => 'fileable_id',
@@ -70,7 +79,7 @@ class File extends BaseModel
             'rule' => '',
             'help' => 'id of model that this file belongs to it.',
             'form_type' => '',
-            'table' => true,
+            'table' => false,
         ],
     ];
 

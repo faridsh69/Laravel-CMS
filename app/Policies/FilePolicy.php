@@ -4,7 +4,7 @@ namespace App\Policies;
 
 use App\Services\BasePolicy;
 
-class ImagePolicy extends BasePolicy
+class FilePolicy extends BasePolicy
 {
-    public $model = 'Image';
+    public $model = 'File';
 }
