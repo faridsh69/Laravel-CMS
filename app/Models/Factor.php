@@ -102,7 +102,7 @@ class Factor extends BaseModel
         //     'database' => 'default',
         //     'rule' => 'boolean',
         //     'help' => '',
-        //     'form_type' => 'checkbox', // switch-m, checkbox, switch-bootstrap-m
+        //     'form_type' => 'checkbox-m',
         //     'table' => false,
         // ],
         // [
@@ -170,7 +170,7 @@ class Factor extends BaseModel
      //        'database' => 'default',
      //        'rule' => '',
      //        'help' => '',
-     //        'form_type' => 'checkbox',
+     //        'form_type' => 'checkbox-m',
      //        'table' => true,
      //    ],
      //    [

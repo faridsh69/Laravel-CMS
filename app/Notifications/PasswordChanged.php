@@ -12,6 +12,7 @@ class PasswordChanged extends BaseNotification
     {
         $channel_list = [
             DatabaseChannel::class,
+            'mail',
         ];
         $channel_list[] = SmsChannel::class;
 

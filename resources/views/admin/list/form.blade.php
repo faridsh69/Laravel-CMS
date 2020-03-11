@@ -7,5 +7,6 @@
 @endpush
 
 @section('content')
+@include('front.components.alert')
 {!! form($form) !!}
 @endsection

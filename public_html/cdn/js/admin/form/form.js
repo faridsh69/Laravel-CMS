@@ -79,7 +79,7 @@ var BootstrapTimepicker=function() {
 // input mask
 var Inputmask = function() {
     var a = function() {
-        $("#phone").inputmask("mask", {
+        $(".phone-mask").inputmask("mask", {
             mask: "(999) 999-9999"
         })
     };

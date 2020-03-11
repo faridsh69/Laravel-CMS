@@ -28,12 +28,11 @@ class BaseForm extends Form
         foreach($this->columns as $column)
         {
             $name = $column['name'];
-            $type = $column['type'];
             $rule = $column['rule'];
             $form_type = $column['form_type'];
             $help = isset($column['help']) ? $column['help'] : ' ';
-            $database = isset($column['database']) ? $column['database'] : null;
 
+            $database = isset($column['database']) ? $column['database'] : null;
             // if column is unique it will add id for edit mode
             if($database === 'unique' || strpos($rule, 'unique') !== false){
                 $rule .= $this->id;
@@ -54,16 +53,14 @@ class BaseForm extends Form
             if($form_type === 'none'){
                 continue;
             }
-
-            // boolean types are: 1- switch-m 2- switch-bootstrap-m 3- checkbox-m
-            elseif($type === 'boolean'){
+            elseif($form_type === 'checkbox-m'){
                 $input_type = 'checkbox-m';
-                if($form_type === 'switch-m'){
-                    $input_type = 'switch-m';
-                }
-                elseif($form_type === 'switch-bootstrap-m'){
-                    $input_type = 'switch-bootstrap-m';
-                }
+            }
+            elseif($form_type === 'switch-m'){
+                $input_type = 'switch-m';
+            }
+            elseif($form_type === 'switch-bootstrap-m'){
+                $input_type = 'switch-bootstrap-m';
             }
 
             // for convert textarean to ckeditor
@@ -76,10 +73,12 @@ class BaseForm extends Form
             elseif($form_type === 'email'){
                 $options['attr'] = ['type' => 'email'];
             }
-            // create password input
             elseif($form_type === 'password'){
                 $options['attr'] = ['type' => 'password', 'autocomplete' => 'off'];
                 $options['value'] = '';
+            }
+            elseif($form_type === 'confirm_password'){
+                $options['attr'] = ['autocomplete' => 'off'];
             }
             elseif($form_type === 'date'){
                 $options['attr'] = ['id' => 'datepicker', 'autocomplete' => 'off'];
@@ -93,9 +92,15 @@ class BaseForm extends Form
             elseif($form_type === 'color'){
                 $input_type = 'color';
             }
+            elseif($form_type === 'phone'){
+                $options['attr'] = ['placeholder' => '+4917...'];
+            }
             elseif($form_type === 'textarea'){
                 $input_type = 'textarea';
                 $options['attr'] = ['rows' => 3];
+            }
+            elseif($form_type === 'captcha'){
+                $input_type = 'captcha';
             }
             // create select from enum options
             elseif($form_type === 'enum'){

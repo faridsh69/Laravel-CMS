@@ -1,6 +1,5 @@
 @extends('layout.auth')
-
-
+not used
 @section('content')
 <div class="m-stack__item m-stack__item--fluid">
     <div class="m-login__wrapper padding-0">

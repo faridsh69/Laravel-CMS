@@ -24,8 +24,11 @@
     "profile_updated_subject" : "Profile",
     "document_rejected_message" : "Your documents in %s rejected.",
     "document_rejected_subject" : "Documents",
+    "password_changed_message" : "Your new password is: %s",
+    "password_changed_subject" : "Change Password",
     "menew" : "MeneW",
     "dear_customer" : "Dear Customer",
+    "dear_user" : "Dear User", 
     "regards" : "Regards",
     "all" : "All",
     "watch" : "Watch",
@@ -188,6 +191,10 @@
     "factor" : "Factor",
     "factor_manager" : "Factor Manager",
     "factor_create" : "Create new factor",
+    "tagend" : "Tagend",
+    "tagend_manager" : "Tagend Manager",
+    "tagend_create" : "Create new tagend",
+    
     "role" : "Role",
     "role_manager" : "Role manager",
     "role_create" : "Create new role",
@@ -438,6 +445,7 @@
     "verify" : "verify",
     "user not found" : "User not found!",
     "password sent to your phone" : "Password sent to your phone",
+    "password sent to your email" : "Password sent to your email",
     "basket" : "Basket",
     "shippings" : "Shippings"
 }

@@ -6,9 +6,6 @@ use Kris\LaravelFormBuilder\Fields\FormField;
 
 class SwitchBootstrapM extends FormField
 {
-    /**
-     * @inheritdoc
-     */
     public function getDefaults()
     {
         return [
@@ -39,6 +36,12 @@ class SwitchBootstrapM extends FormField
         }
         elseif($this->name === 'direction'){
             $options['choices'] = ['LTR', 'RTL'];
+        }
+        elseif($this->name === 'sign'){
+            $options['choices'] = ['positive', 'negative'];
+        }
+        elseif($this->name === 'value_type'){
+            $options['choices'] = ['percent', 'absolute'];
         }
 
         $options['attr']['data-on-text'] = $options['choices'][0];

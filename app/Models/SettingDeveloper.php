@@ -13,7 +13,7 @@ class SettingDeveloper extends BaseModel
             'database' => 'default',
             'rule' => 'boolean',
             'help' => 'Users can see error with details.',
-            'form_type' => 'checkbox',
+            'form_type' => 'checkbox-m',
         ],
         [
             'name' => 'app_env',
@@ -39,7 +39,7 @@ class SettingDeveloper extends BaseModel
             'database' => 'default',
             'rule' => 'boolean',
             'help' => 'Choose language base on user IP.',
-            'form_type' => 'checkbox',
+            'form_type' => 'checkbox-m',
         ],
         [
             'name' => 'theme',
@@ -88,7 +88,7 @@ class SettingDeveloper extends BaseModel
             'database' => 'default',
             'rule' => 'boolean',
             'help' => 'Lazy loading is neccessary for fast website fast loading.',
-            'form_type' => 'checkbox',
+            'form_type' => 'checkbox-m',
         ],
         [
             'name' => 'scripts',
@@ -185,7 +185,7 @@ class SettingDeveloper extends BaseModel
             'database' => 'default',
             'rule' => 'boolean',
             'help' => 'Site will send sms when a user registered to site.',
-            'form_type' => 'checkbox',
+            'form_type' => 'checkbox-m',
         ],
         [
             'name' => 'user_registered_mail',
@@ -193,7 +193,7 @@ class SettingDeveloper extends BaseModel
             'database' => 'default',
             'rule' => 'boolean',
             'help' => 'Site will send mail when a user registered to site.',
-            'form_type' => 'checkbox',
+            'form_type' => 'checkbox-m',
         ],
         [
             'name' => 'user_logined_sms',
@@ -201,7 +201,7 @@ class SettingDeveloper extends BaseModel
             'database' => 'default',
             'rule' => 'boolean',
             'help' => 'Site will send sms when a user logined to site.',
-            'form_type' => 'checkbox',
+            'form_type' => 'checkbox-m',
         ],
         [
             'name' => 'user_logined_mail',
@@ -209,7 +209,7 @@ class SettingDeveloper extends BaseModel
             'database' => 'default',
             'rule' => 'boolean',
             'help' => 'Site will send mail when a user logined to site.',
-            'form_type' => 'checkbox',
+            'form_type' => 'checkbox-m',
         ],
         [
             'name' => 'profile_updated_sms',
@@ -217,7 +217,7 @@ class SettingDeveloper extends BaseModel
             'database' => 'default',
             'rule' => 'boolean',
             'help' => 'Site will send sms when a user update his profile.',
-            'form_type' => 'checkbox',
+            'form_type' => 'checkbox-m',
         ],
         [
             'name' => 'profile_updated_mail',
@@ -225,7 +225,7 @@ class SettingDeveloper extends BaseModel
             'database' => 'default',
             'rule' => 'boolean',
             'help' => 'Site will send mail when a user update his profile.',
-            'form_type' => 'checkbox',
+            'form_type' => 'checkbox-m',
         ],
         [
             'name' => 'factor_created_sms',
@@ -233,7 +233,7 @@ class SettingDeveloper extends BaseModel
             'database' => 'default',
             'rule' => 'boolean',
             'help' => 'Site will send sms when a user create a new factor.',
-            'form_type' => 'checkbox',
+            'form_type' => 'checkbox-m',
         ],
         [
             'name' => 'factor_created_mail',
@@ -241,7 +241,7 @@ class SettingDeveloper extends BaseModel
             'database' => 'default',
             'rule' => 'boolean',
             'help' => 'Site will send mail when a user create a new factor.',
-            'form_type' => 'checkbox',
+            'form_type' => 'checkbox-m',
         ],
     ];
 }

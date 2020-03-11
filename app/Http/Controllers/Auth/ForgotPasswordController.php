@@ -33,20 +33,21 @@ class ForgotPasswordController extends Controller
 
     public function sendResetLinkEmail(Request $request)
     {
-        $phone = $request->input('phone');
-        $user = User::where('phone', $phone)->first();
+        $email = $request->input('email');
+        $user = User::where('email', $email)->first();
         if(! $user){
             $request->session()->flash('alert-danger', __('user not found'));
 
             return redirect()->back();
         }
-        $user->password = Hash::make('123456');
+        $new_password = rand(100000, 999999);
+        $user->password = Hash::make($new_password);
         $user->save();
 
         $password_changed =  new PasswordChanged();
-        $password_changed->setCode('123456');
+        $password_changed->setCode($new_password);
         $user->notify($password_changed);
-        $request->session()->flash('alert-danger', __('password sent to your phone'));
+        $request->session()->flash('alert-danger', __('password sent to your email'));
 
         return redirect()->route('auth.login');
     }

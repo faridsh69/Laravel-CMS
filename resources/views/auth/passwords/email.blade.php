@@ -19,7 +19,7 @@
             <form class="m-login__form m-form" method="POST" action="{{ route('auth.password.email') }}">
                 @csrf
                 <div class="form-group m-form__group rtl-text-right">
-                    <input class="form-control m-input" type="text" placeholder="{{ __('phone') }}" name="phone" id="phone"  value="{{ old('phone') }}" required autofocus>
+                    <input class="form-control m-input" type="text" placeholder="{{ __('email') }}" name="email" id="email"  value="{{ old('email') }}" required autofocus>
                 </div>
                 <div class="m-login__form-action">
                     <button id="m_login_forget_password_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">

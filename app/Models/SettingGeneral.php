@@ -92,7 +92,7 @@ class SettingGeneral extends BaseModel
             'database' => 'default',
             'rule' => 'boolean',
             'help' => 'Warning! if it is unchecked means google will ignore this site.',
-            'form_type' => 'checkbox',
+            'form_type' => 'checkbox-m',
         ],
         [
             'name' => 'pagination_number',

@@ -149,6 +149,15 @@ class FieldsTableSeeder extends Seeder
             	'options' => 'Manager|Junior|Senior|Full Time|Remote',
             	'activated' => 1,
             ],
+            [
+                'type' => 'captcha',
+                'title' => 'g-recaptcha-response',
+                'order' => 99,
+                'help' => '',
+                'rule' => 'required|captcha',
+                'options' => '',
+                'activated' => 1,
+            ],
         ];
 
         foreach($fields as $field){

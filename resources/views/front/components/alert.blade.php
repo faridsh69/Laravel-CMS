@@ -1,6 +1,5 @@
 <div class="row rtl-text-right">
     <div class="col-12">
-        <div class="seperate"></div>
         @foreach (['danger', 'warning', 'success', 'info'] as $msg)
             @if(Session::has('alert-' . $msg))
                 <div class="alert alert-{{ $msg }} alert-dismissible" role="alert">

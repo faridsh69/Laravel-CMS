@@ -38,6 +38,15 @@ class Form extends BaseModel
             'multiple' => false,
             'table' => false,
         ],
+        [
+            'name' => 'g-recaptcha-response',
+            'type' => 'captcha',
+            'database' => 'none',
+            'rule' => 'required|captcha',
+            'help' => '',
+            'form_type' => 'captcha',
+            'table' => false,
+        ],
         // ['name' => 'authentication'], // always need authentication
         // ['name' => 'captcha'], // its a field
     ];

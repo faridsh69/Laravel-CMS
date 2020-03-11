@@ -8,9 +8,17 @@ class Field extends BaseModel
 {
     // title, type, required, activated, options, order
     public $columns = [
-        ['name' => 'title'],
         [
-            'name' => 'type',
+            'name' => 'name',
+            'type' => 'string',
+            'database' => '',
+            'rule' => 'required|max:191',
+            'help' => 'Name of field.',
+            'form_type' => '',
+            'table' => true,
+        ],
+        [
+            'name' => 'form_type',
             'type' => 'string',
             'database' => 'nullable',
             'rule' => 'required',

@@ -86,7 +86,7 @@ class BaseModel extends Model
                     'database' => 'default',
                     'rule' => 'boolean',
                     'help' => 'Shows google robots will follow this link.',
-                    'form_type' => 'checkbox',
+                    'form_type' => 'checkbox-m',
                     'table' => false,
                 ],
                 'canonical_url' => [
@@ -334,6 +334,15 @@ class BaseModel extends Model
     public function files_src($title)
     {
         return json_encode($this->files($title)->pluck('src'));
+    }
+
+    public function file_src($title)
+    {
+        if($this->files($title)->first()){
+            return $this->files($title)->first()->src;
+        }
+
+        return config('setting-general.default_meta_image');
     }
 
         // $files = $this->files($title);

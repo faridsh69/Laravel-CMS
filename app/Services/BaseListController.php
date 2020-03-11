@@ -422,7 +422,7 @@ class BaseListController extends Controller
         }
 
         // unset file and array attributes before saving
-        foreach(collect($this->model_columns)->whereIn('type', ['file', 'array'])->pluck('name') as $file_uploader_column)
+        foreach(collect($this->model_columns)->whereIn('type', ['file', 'array', 'captcha'])->pluck('name') as $file_uploader_column)
         {
             unset($data[$file_uploader_column]);
         }

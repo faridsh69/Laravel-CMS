@@ -39,16 +39,14 @@
 						<h3 class="m-login__welcome">
 							{{ __('Join Our Community') }}
 						</h3>
-						<p class="m-login__msg">
-							{{ __('This is a usefull website for you') }}
-							<br>
-							
+						<p class="m-login__msg">							
 						</p>
 					</div>
 				</div>
 			</div>
 		</div>
-		@include('common.admin.scripts')
+		<script src="{{ asset('js/admin/vendors.bundle.js') }}"></script>
+		<script src="{{ asset('js/admin/scripts.bundle.js') }}"></script>
 		@stack('scripts')
 	</body>
 </html>

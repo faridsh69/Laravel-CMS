@@ -14,6 +14,7 @@ final class FieldType extends BaseEnum
 		'time' => 'Time',
 		'email' => 'Email',
 		'color' => 'Color',
+		'captcha' => 'Captcha',
 		'password' => 'Password',
 		'upload_file' => 'Upload File',
 		'upload_image' => 'Upload Image',

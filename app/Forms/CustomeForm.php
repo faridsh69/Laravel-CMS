@@ -11,10 +11,9 @@ class CustomeForm extends Form
         $form = $this->getFormOptions()['form_model'];
         foreach($form->fields as $column)
         {
-            $name = $column['title'];
-            // $type = $column['type'];
-            $rule = $column['rules'];
-            $form_type = $column['type'];
+            $name = $column['name'];
+            $rule = $column['rule'];
+            $form_type = $column['form_type'];
             $help = isset($column['help']) ? $column['help'] : ' ';
             $select_options = isset($column['options']) ? $column['options'] : ' ';
 
@@ -55,6 +54,9 @@ class CustomeForm extends Form
             }
             elseif($form_type === 'color'){
                 $input_type = 'color';
+            }
+            elseif($form_type === 'captcha'){
+                $input_type = 'captcha';
             }
             elseif($form_type === 'textarea'){
                 $input_type = 'textarea';

@@ -54,6 +54,7 @@ return [
         'gallery' => '\App\Forms\Fields\Gallery',
         'file-manager' => '\App\Forms\Fields\FileManager',
         'file-upload' => '\App\Forms\Fields\FileUpload',
+        'captcha' => '\App\Forms\Fields\Captcha',
     ],
 
     'field_icons' => [

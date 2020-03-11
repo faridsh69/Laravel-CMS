@@ -17,8 +17,8 @@
 			<form class="m-login__form m-form" method="POST" action="{{ route('auth.login') }}">
 				@csrf
 				<div class="form-group m-form__group rtl-text-right">
-					<input class="form-control m-input" type="phone" placeholder="{{ __('phone') }}" name="phone" value="{{ old('phone') }}" required autocomplete="phone">
-					@error('phone')
+					<input class="form-control m-input" type="email" placeholder="{{ __('email') }}" name="email" value="{{ old('email') }}" required autocomplete="email">
+					@error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ __($message) }}</strong>
                         </span>
