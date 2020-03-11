@@ -121,6 +121,8 @@ class BaseForm extends Form
                 $options['attr']['data-live-search'] = 'true';
                 if($column['multiple'] === true){
                     $options['attr']['multiple'] = 'true';
+                }else{
+                    $options['empty_value'] = 'Nothing selected';
                 }
             }
             // all input files
