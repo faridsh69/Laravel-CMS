@@ -7,6 +7,8 @@ class CreateSpatieTagsTable extends Migration
 {
 	public function up()
 	{
+		// this migration is running from package files
+		return true;
 		Schema::create('tagging_tagged', function(Blueprint $table) {
 			$table->increments('id');
 			if(config('tagging.primary_keys_type') === 'string') {
@@ -25,8 +27,8 @@ class CreateSpatieTagsTable extends Migration
 			$table->string('name', 125);
 			$table->boolean('suggest')->default(false);
 			$table->integer('count')->unsigned()->default(0); // count of how many times this tag was used
-			$table->timestamps();
-            $table->softDeletes();
+			// $table->timestamps();
+   //          $table->softDeletes();
 		});
 
 		Schema::create('tagging_tag_groups', function(Blueprint $table) {
@@ -43,6 +45,7 @@ class CreateSpatieTagsTable extends Migration
 
 	public function down()
 	{
+		return true;
 		Schema::disableForeignKeyConstraints();
 		Schema::table('tagging_tags', function ($table) {
 			$table->dropForeign('tagging_tags_tag_group_id_foreign');
