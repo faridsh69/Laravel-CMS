@@ -19,7 +19,7 @@ class Form extends BaseModel
             'help' => 'Specify the fields of form.',
             'form_type' => 'entity',
             'class' => 'App\Models\Field',
-            'property' => 'title',
+            'property' => 'name',
             'property_key' => 'id',
             'multiple' => true,
             'table' => false,
@@ -30,25 +30,15 @@ class Form extends BaseModel
             'database' => 'nullable',
             'relation' => 'blocks',
             'rule' => 'nullable|exists:blocks,id',
-            'help' => '',
+            'help' => 'Select a block with form type.',
             'form_type' => 'entity',
             'class' => 'App\Models\Block',
-            'property' => 'type',
+            'property' => 'id',
             'property_key' => 'id',
             'multiple' => false,
             'table' => false,
         ],
-        [
-            'name' => 'g-recaptcha-response',
-            'type' => 'captcha',
-            'database' => 'none',
-            'rule' => 'required|captcha',
-            'help' => '',
-            'form_type' => 'captcha',
-            'table' => false,
-        ],
         // ['name' => 'authentication'], // always need authentication
-        // ['name' => 'captcha'], // its a field
     ];
 
     public function fields()

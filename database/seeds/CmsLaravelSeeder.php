@@ -53,7 +53,7 @@ class CmsLaravelSeeder extends Seeder
             Page::updateOrCreate(['url' => $page['url']], $page);
         }
 
-        $blocks = Block::whereNotIn('type', ['menu', 'header', 'content', 'footer'])->get();
+        $blocks = Block::whereNotIn('type', ['menu', 'header', 'content', 'footer', 'breadcrumb', 'form'])->get();
         foreach($blocks as $block){
         	$block->activated = 0;
         	$block->save();

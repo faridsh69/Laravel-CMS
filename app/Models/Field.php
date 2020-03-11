@@ -28,7 +28,7 @@ class Field extends BaseModel
             'table' => true,
         ],
         [
-            'name' => 'rules',
+            'name' => 'rule',
             'type' => 'string',
             'database' => 'nullable',
             'rule' => 'nullable',

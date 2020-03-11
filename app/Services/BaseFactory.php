@@ -52,7 +52,7 @@ class BaseFactory
                         $fake_data = $faker->name();
                     }
                     elseif($name === 'phone' || $name === 'telephone'){
-                        $fake_data = $faker->e164PhoneNumber();
+                        $fake_data = '+989120568203';
                     }
                     elseif($name === 'national_code'){
                         $fake_data = '1270739034';
