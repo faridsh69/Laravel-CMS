@@ -32,6 +32,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapAdminRoutes();
         $this->mapApiRoutes();
         $this->mapAuthRoutes();
+        $this->mapFilemanagerRoutes();
         $this->mapFrontRoutes();
     }
 
@@ -68,5 +69,12 @@ class RouteServiceProvider extends ServiceProvider
             ->as('front.')
             ->middleware('web')
             ->group(base_path('routes/front.php'));
+    }
+
+    protected function mapFilemanagerRoutes()
+    {
+        Route::group(['prefix' => 'admin/filemanager', 'middleware' => ['web', 'auth', 'can:index,App\Models\File']], function () {
+            \UniSharp\LaravelFilemanager\Lfm::routes();
+        });
     }
 }
