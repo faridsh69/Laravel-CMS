@@ -2,6 +2,10 @@
     <div id="googleMap"></div>
 </div>
 @push('scripts')
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwuyLRa1uKNtbgx6xAJVmWy-zADgegA2s"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{ config('setting-general.google_map_code') }}"></script>
+<script>
+	var latitude = {{ config('setting-contact.latitude') }};
+	var longitude = {{ config('setting-contact.longitude') }};
+</script>
 <script src="{{ asset('js/front/themes/classic/js/google-map/map-active.js') }}"></script>
 @endpush

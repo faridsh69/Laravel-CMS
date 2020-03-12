@@ -146,6 +146,7 @@ class ModulesTableSeeder extends Seeder
             [
                 'type' => 'introduce',
                 'title' => 'Introduce Title',
+                'description' => 'Introduce description',
                 'content' => 'Introduce Content',
                 'url' => 'introduce-url',
                 'image' => $image_folder_name . 'introduce.png',
@@ -154,7 +155,7 @@ class ModulesTableSeeder extends Seeder
             [
                 'type' => 'video',
                 'title' => 'Video Title',
-                'image' => $video_folder_name . 'video.mp4',
+                'video' => $video_folder_name . 'video.mp4',
             ],
             // Counting
             [

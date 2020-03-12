@@ -10,8 +10,7 @@
         'enctype' => 'multipart/form-data',
     ]);
 @endphp
-<div class="container mt-5">
-	asdf
+<div class="container mt-5 mb-5">
 	<br>
 	<h1>{{ $form_model->title }}</h1>
 	<br>

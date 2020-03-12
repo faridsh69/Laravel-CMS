@@ -186,7 +186,7 @@ class BlocksTableSeeder extends Seeder
             ],
             [
                 'id' => 23,
-                'order' => 11,
+                'order' => 52,
                 'type' => 'form',
                 'show_all_pages' => 0,
                 'pages_list' => [4], // job page

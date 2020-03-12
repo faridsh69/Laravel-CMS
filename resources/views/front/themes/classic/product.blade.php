@@ -3,8 +3,8 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-heading text-center mx-auto wow fadeInUp" data-wow-delay="300ms">
-                    <span>The Best</span>
-                    <h3>Top Products</h3>
+                    <span>{{ __('The Best') }}</span>
+                    <h3>{{ __('Top Products') }}</h3>
                 </div>
             </div>
         </div>
@@ -18,17 +18,17 @@
                     <div class="popular-course-content">
                         <h5>{{ $product->title }}</h5>
                         <span>{{ $product->price }} $</span>
-                        <div class="course-ratings">
+                        <!-- <div class="course-ratings">
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star-o" aria-hidden="true"></i>
-                        </div>
+                        </div> --> 
                         <p>{{ $product->description }}</p>
-                        <a href="{{ route('front.product.show', $product->id)}}" class="btn academy-btn btn-sm">See More</a>
+                        <a href="{{ route('front.product.show', $product->id)}}" class="btn academy-btn btn-sm">{{ __('See More') }}</a>
                     </div>
-                    <div class="popular-course-thumb bg-img" style="background-image: url({{ asset('images/front/themes/classic/img/bg-img/pc-1.jpg') }});"></div>
+                    <div class="popular-course-thumb bg-img" style="background-image: url({{ $product->file_src('gallery') }});"></div>
                 </div>
             </div>
             @endforeach

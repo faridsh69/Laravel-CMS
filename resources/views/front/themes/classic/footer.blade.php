@@ -2,24 +2,24 @@
     <div class="main-footer-area section-padding-100-0">
         <div class="container">
             <div class="row">
-                <!-- Footer Widget Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
+                <div class="col-12 col-sm-6">
                     <div class="footer-widget mb-100">
                         <div class="widget-title">
-                            <a href="#"><img src="{{ asset('images/front/themes/classic/img/core-img/logo2.png') }}" alt=""></a>
+                            <h6>{{ config('setting-general.app_title') }}</h6>
                         </div>
-                        <p>Cras vitae turpis lacinia, lacinia lacus non, fermentum nisi. Donec et sollicitudin est, in euismod erat. Ut at erat et arcu pulvinar cursus a eget.</p>
+                        <p>{{ config('setting-general.default_meta_title') }}</p>
                         <div class="footer-social-info">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
-                            <a href="#"><i class="fa fa-behance"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="http://facebook.com/{{ config('setting-contact.facebook') }}" target="_blank"><i class="fa fa-facebook"></i></a>
+                            <a href="http://twitter.com/{{ config('setting-contact.twitter') }}" target="_blank"><i class="fa fa-twitter"></i></a>
+                            <a href="http://instagram.com/{{ config('setting-contact.instagram') }}" target="_blank"> <i class="active fa fa-instagram"></i></a>
+                            <a href="http://google-plus.com/{{ config('setting-contact.google_plus') }}" target="_blank"><i class="fa fa-google-plus"></i></a>
+                            <a href="http://skype.com/{{ config('setting-contact.skype') }}" target="_blank"><i class="fa fa-skype"></i></a>
+                            <a href="http://github.com/{{ config('setting-contact.github') }}" target="_blank"><i class="fa fa-github"></i></a>
+                            <a href="http://linkedin.com/{{ config('setting-contact.linkedin') }}" target="_blank"><i class="fa fa-linkedin"></i></a>
                         </div>
                     </div>
                 </div>
-                <!-- Footer Widget Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
+                <!-- <div class="col-12 col-sm-6 col-lg-3">
                     <div class="footer-widget mb-100">
                         <div class="widget-title">
                             <h6>Usefull Links</h6>
@@ -34,7 +34,6 @@
                         </nav>
                     </div>
                 </div>
-                <!-- Footer Widget Area -->
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="footer-widget mb-100">
                         <div class="widget-title">
@@ -49,24 +48,23 @@
                             <a href="{{ asset('images/front/themes/classic/img/bg-img/gallery6.jpg') }}" class="gallery-img" title="Gallery Image 6"><img src="{{ asset('images/front/themes/classic/img/bg-img/gallery6.jpg') }}" alt=""></a>
                         </div>
                     </div>
-                </div>
-                <!-- Footer Widget Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
+                </div> -->
+                <div class="col-12 col-sm-6">
                     <div class="footer-widget mb-100">
                         <div class="widget-title">
-                            <h6>Contact</h6>
+                            <h6>{{ __('Contact') }}</h6>
                         </div>
                         <div class="single-contact d-flex mb-30">
                             <i class="icon-placeholder"></i>
-                            <p>4127/ 5B-C Mislane Road, Gibraltar, UK</p>
+                            <p>{{ config('setting-contact.address') }}</p>
                         </div>
                         <div class="single-contact d-flex mb-30">
                             <i class="icon-telephone-1"></i>
-                            <p>Main: 203-808-8613 <br>Office: 203-808-8648</p>
+                            <p>Main: {{ config('setting-contact.phone') }} <br>Office: {{ config('setting-contact.telephone') }}</p>
                         </div>
                         <div class="single-contact d-flex">
                             <i class="icon-contract"></i>
-                            <p>office@yourbusiness.com</p>
+                            <p>{{ config('setting-contact.email') }}</p>
                         </div>
                     </div>
                 </div>

@@ -7,20 +7,20 @@
                         <div class="col-12 col-lg-5">
                             <div class="contact-information wow fadeInUp" data-wow-delay="400ms">
                                 <div class="section-heading text-left">
-                                    <h3>Contact Us</h3>
-                                    <p class="mt-30">Contact us description.</p>
+                                    <h3>{{ __('Contact Us') }}</h3>
+                                    <p class="mt-30"></p>
                                 </div>
 
                                 <div class="contact-social-info d-flex mb-30">
-                                    <a target="_blank" href="http://facebook.com/{{ config('setting-contact.facebook') }}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                    <a target="_blank" href="http://twitter.com/{{ config('setting-contact.twitter') }}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                    <a target="_blank" href="http://instagram.com/{{ config('setting-contact.instagram') }}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                    <a target="_blank" href="http://google-plus.com/{{ config('setting-contact.google_plus') }}"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                                    <a target="_blank" href="http://skype.com/{{ config('setting-contact.skype') }}"><i class="fa fa-skype" aria-hidden="true"></i></a>
-                                    <a target="_blank" href="http://telegram.com/{{ config('setting-contact.telegram') }}"><i class="fa fa-telegram" aria-hidden="true"></i></a>
-                                    <a target="_blank" href="http://linkedin.com/{{ config('setting-contact.linkedin') }}"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                                    <a target="_blank" href="http://github.com/{{ config('setting-contact.github') }}"><i class="fa fa-github" aria-hidden="true"></i></a>
-                                    <a target="_blank" href="http://stackoverflow.com/{{ config('setting-contact.stackoverflow') }}"><i class="fa fa-stackoverflow" aria-hidden="true"></i></a>
+                                    <a target="_blank" href="http://facebook.com/{{ config('setting-contact.facebook') }}"><i class="fa fa-facebook"></i></a>
+                                    <a target="_blank" href="http://twitter.com/{{ config('setting-contact.twitter') }}"><i class="fa fa-twitter"></i></a>
+                                    <a target="_blank" href="http://instagram.com/{{ config('setting-contact.instagram') }}"><i class="fa fa-instagram"></i></a>
+                                    <a target="_blank" href="http://google-plus.com/{{ config('setting-contact.google_plus') }}"><i class="fa fa-google-plus"></i></a>
+                                    <a target="_blank" href="http://skype.com/{{ config('setting-contact.skype') }}"><i class="fa fa-skype"></i></a>
+                                    <a target="_blank" href="http://telegram.com/{{ config('setting-contact.telegram') }}"><i class="fa fa-telegram"></i></a>
+                                    <a target="_blank" href="http://linkedin.com/{{ config('setting-contact.linkedin') }}"><i class="fa fa-linkedin"></i></a>
+                                    <a target="_blank" href="http://github.com/{{ config('setting-contact.github') }}"><i class="fa fa-github"></i></a>
+                                    <a target="_blank" href="http://stackoverflow.com/{{ config('setting-contact.stackoverflow') }}"><i class="fa fa-stackoverflow"></i></a>
                                 </div>
 
                                 @if( config('setting-contact.address') )
@@ -43,6 +43,7 @@
                                             Office: {{ config('setting-contact.telephone') }}
                                         @endif
                                         @if( config('setting-contact.fax') )
+                                            <br>
                                             Fax: {{ config('setting-contact.fax') }}
                                         @endif
                                     </p>
@@ -59,9 +60,10 @@
                         <div class="col-12 col-lg-7">
                             <div class="contact-form-area wow fadeInUp" data-wow-delay="500ms">
                                 <form action="{{ route('front.page.submit-form', 1) }}" method="post">
+                                    @csrf
                                     <input type="text" class="form-control" id="name" placeholder="Name">
                                     <input type="email" class="form-control" id="email" placeholder="E-mail">
-                                    <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+                                    <textarea name="message" class="form-control" id="message" cols="30" rows="8" placeholder="Message"></textarea>
                                     <button class="btn academy-btn mt-30" type="submit">Contact Us</button>
                                 </form>
                             </div>

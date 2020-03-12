@@ -3,8 +3,8 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-heading text-center mx-auto white wow fadeInUp" data-wow-delay="300ms">
-                    <span>our testimonials</span>
-                    <h3>See what our satisfied customers are saying about us</h3>
+                    <span>{{ __('our testimonials') }}</span>
+                    <h3>{{ __('See what our satisfied customers are saying about us') }}</h3>
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="load-more-btn text-center wow fadeInUp" data-wow-delay="800ms">
-                    <a href="javascript:void(0)" class="btn academy-btn">See More</a>
+                    <a href="javascript:void(0)" class="btn academy-btn">{{ __('See More') }}</a>
                 </div>
             </div>
         </div>
