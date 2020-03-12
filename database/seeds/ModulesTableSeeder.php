@@ -286,7 +286,52 @@ class ModulesTableSeeder extends Seeder
                 'title' => 'What is the best benefit of laravel cms???',
                 'description' => 'It is complete and very fast and easy to develop',
             ],
-
+            // Partner
+            [
+                'type' => 'partner',
+                'image' => $image_folder_name . 'partner-1.png',
+            ],
+            [
+                'type' => 'partner',
+                'image' => $image_folder_name . 'partner-2.png',
+            ],
+            [
+                'type' => 'partner',
+                'image' => $image_folder_name . 'partner-3.png',
+            ],
+            [
+                'type' => 'partner',
+                'image' => $image_folder_name . 'partner-4.png',
+            ],
+            [
+                'type' => 'partner',
+                'image' => $image_folder_name . 'partner-5.png',
+            ],
+            // Team
+            [
+                'type' => 'team',
+                'title' => '#13 Customer',
+                'full_name' => 'Eric Ez',
+                'image' => $image_folder_name . 'team-1.png',
+            ],
+            [
+                'type' => 'team',
+                'title' => 'Manager',
+                'full_name' => 'Navid Ma',
+                'image' => $image_folder_name . 'team-2.png',
+            ],
+            [
+                'type' => 'team',
+                'title' => '#4 Customer',
+                'full_name' => 'Elizabeth Sm',
+                'image' => $image_folder_name . 'team-3.png',
+            ],
+            [
+                'type' => 'team',
+                'title' => 'Chief Technology Officer',
+                'full_name' => 'Farid Sh',
+                'image' => $image_folder_name . 'team-4.png',
+            ],
         ];
 
         $order = 3;
@@ -295,7 +340,12 @@ class ModulesTableSeeder extends Seeder
             $module['order'] = $order;
             $module['language'] = 'en';
             $module['activated'] = 1;
-            $module['image'] = asset($module['image']);
+            if(isset($module['image'])){
+                $module['image'] = asset($module['image']);
+            }
+            if(!isset($module['title'])){
+                $module['title'] = $module['type'];
+            }
             Module::firstOrCreate($module);
             // if( isset($module['parent_url']) ){
             //     $parent = Module::where('url', $module['parent_url'])->first();
@@ -303,73 +353,5 @@ class ModulesTableSeeder extends Seeder
             //     unset($module['parent_url']);
             // }
         }
-
-
-    
-
-
-
-        $partners = [
-            [
-                'image' => $image_folder_name . '9-partner-1.png',
-            ],
-            [
-                'image' => $image_folder_name . '9-partner-2.png',
-            ],
-            [
-                'image' => $image_folder_name . '9-partner-3.png',
-            ],
-            [
-                'image' => $image_folder_name . '9-partner-4.png',
-            ],
-            [
-                'image' => $image_folder_name . '9-partner-5.png',
-            ],
-        ];
-
-        foreach($partners as $partner){
-            $partner['image'] = asset($partner['image']);
-            $partner['type'] = 'partner';
-            $partner['title'] = 'partner';
-            $partner['language'] = 'en';
-            $partner['activated'] = 1;
-            
-            Module::updateOrCreate($partner);
-        }
-
-        
-
-        $teams = [
-            [
-                'title' => '#13 Customer',
-                'full_name' => 'Eric Ez',
-                'image' => $image_folder_name . '8-feedback-1.png',
-            ],
-            [
-                'title' => 'Manager',
-                'full_name' => 'Navid Ma',
-                'image' => $image_folder_name . '8-feedback-2.png',
-            ],
-            [
-                'title' => '#4 Customer',
-                'full_name' => 'Farima El',
-                'image' => $image_folder_name . '8-feedback-3.png',
-            ],
-            [
-                'title' => 'Chief Technology Officer',
-                'full_name' => 'Farid Sh',
-                'image' => $image_folder_name . '8-feedback-4.png',
-            ],
-        ];
-
-        foreach($teams as $team){
-            $team['image'] = asset($team['image']);
-            $team['type'] = 'team';
-            $team['language'] = 'en';
-            $team['activated'] = 1;
-            
-            Module::updateOrCreate($team);
-        }
-
     }
 }
