@@ -6,7 +6,7 @@ use App\Services\BaseModel;
 
 class Module extends BaseModel
 {
-	// title, description, content, icon, image, url, +type, parent_id, order, full_name, product_id, activated, language
+	// title, description, content, icon, image, url, type, parent_id, order, full_name, product_id, activated, language
 
     public $columns = [
         [

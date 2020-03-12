@@ -9,16 +9,9 @@ use App\Models\SettingContact;
 
 class CmsLaravelSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    // user
-    // field 
     // tags 
-    // blogs 
     // category 
+    // blogs 
     public function run()
     {
     	$folder_name = 'cms-la';
@@ -56,7 +49,7 @@ class CmsLaravelSeeder extends Seeder
         $blocks = Block::whereNotIn('type', ['menu', 'header', 'content', 'footer', 'breadcrumb', 'form'])->get();
         foreach($blocks as $block){
         	$block->activated = 0;
-        	$block->save();
+        	// $block->save();
         }
         $block_content = Block::where('type', 'content')
         	->first()

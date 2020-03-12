@@ -44,7 +44,7 @@ class ModulesTableSeeder extends Seeder
 
         foreach($countings as $counting){
             $counting['type'] = 'counting';
-            $counting['language'] = config('app.locale');
+            $counting['language'] = 'en';
             $counting['activated'] = 1;
             
             Module::firstOrCreate($counting);
@@ -108,7 +108,7 @@ class ModulesTableSeeder extends Seeder
         ];
 
         foreach($features as $feature){
-            $feature['language'] = config('app.locale');
+            $feature['language'] = 'en';
             $feature['activated'] = 1;
             
             Module::updateOrCreate($feature);
@@ -144,7 +144,7 @@ class ModulesTableSeeder extends Seeder
         foreach($testimonials as $testimonial){
             $testimonial['image'] = asset($testimonial['image']);
         	$testimonial['type'] = 'testimonial';
-            $testimonial['language'] = config('app.locale');
+            $testimonial['language'] = 'en';
             $testimonial['activated'] = 1;
             
             Module::updateOrCreate($testimonial);
@@ -174,7 +174,7 @@ class ModulesTableSeeder extends Seeder
         foreach($sliders as $slider){
             $slider['image'] = asset($slider['image']);
         	$slider['type'] = 'header';
-            $slider['language'] = config('app.locale');
+            $slider['language'] = 'en';
             $slider['activated'] = 1;
             
             Module::updateOrCreate($slider);
@@ -202,7 +202,7 @@ class ModulesTableSeeder extends Seeder
             $service['image'] = asset($service['image']);
         	$service['type'] = 'service';
         	$service['title'] = 'service';
-            $service['language'] = config('app.locale');
+            $service['language'] = 'en';
             $service['activated'] = 1;
             
             Module::updateOrCreate($service);
@@ -230,7 +230,7 @@ class ModulesTableSeeder extends Seeder
             $partner['image'] = asset($partner['image']);
             $partner['type'] = 'partner';
             $partner['title'] = 'partner';
-            $partner['language'] = config('app.locale');
+            $partner['language'] = 'en';
             $partner['activated'] = 1;
             
             Module::updateOrCreate($partner);
@@ -317,7 +317,7 @@ class ModulesTableSeeder extends Seeder
                 unset($menu['parent_url']);
             }
         	$menu['type'] = 'menu';
-            $menu['language'] = config('app.locale');
+            $menu['language'] = 'en';
             $menu['activated'] = 1;
             
             Module::updateOrCreate($menu);
@@ -341,7 +341,7 @@ class ModulesTableSeeder extends Seeder
         foreach($products as $product){
             $product['title'] = 'product';
             $product['type'] = 'product';
-            $product['language'] = config('app.locale');
+            $product['language'] = 'en';
             $product['activated'] = 1;
             
             Module::updateOrCreate($product);
@@ -364,7 +364,7 @@ class ModulesTableSeeder extends Seeder
 
         foreach($faqs as $faq){
             $faq['type'] = 'faq';
-            $faq['language'] = config('app.locale');
+            $faq['language'] = 'en';
             $faq['activated'] = 1;
             
             Module::updateOrCreate($faq);
@@ -396,10 +396,39 @@ class ModulesTableSeeder extends Seeder
         foreach($teams as $team){
             $team['image'] = asset($team['image']);
             $team['type'] = 'team';
-            $team['language'] = config('app.locale');
+            $team['language'] = 'en';
             $team['activated'] = 1;
             
             Module::updateOrCreate($team);
+        }
+
+        $pricings = [
+            [
+                'title' => 'Basic',
+                'description' => '3.99$ per month',
+                'content' => 'Basic features',
+                'order' => 1,
+            ],
+            [
+                'title' => 'Standard',
+                'description' => '9.99$ per month',
+                'content' => 'Standard features',
+                'order' => 2,
+            ],
+            [
+                'title' => 'Advanced',
+                'description' => '19.99$ per month',
+                'content' => 'Advanced features',
+                'order' => 3,
+            ],
+        ];
+
+        foreach($pricings as $pricing){
+            $pricing['type'] = 'pricing';
+            $pricing['language'] = 'en';
+            $pricing['activated'] = 1;
+            
+            Module::updateOrCreate($pricing);
         }
     }
 }

@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersTableSeeder::class);
         $this->call(FilesTableSeeder::class);
         $this->call(SettingsTableSeeder::class);
-        $this->call(BitcointProductsTableSeeder::class);
+        // $this->call(BitcointProductsTableSeeder::class);
         $this->call(PagesTableSeeder::class);
         $this->call(BlocksTableSeeder::class);
         $this->call(ModulesTableSeeder::class);
