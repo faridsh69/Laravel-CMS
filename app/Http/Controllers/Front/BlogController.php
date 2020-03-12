@@ -16,41 +16,22 @@ class BlogController extends Controller
 
     public $meta;
 
-    public function __construct()
-    {
-        $this->blog_page = Page::where('url', 'blog')->active()->first();
-        abort_if(! $this->blog_page, 404);
-
-        $this->meta = [
-            'title' => config('setting-general.default_meta_title') . ' | ' . $this->blog_page->title,
-            'description' => $this->blog_page->description ?: config('setting-general.default_meta_description'),
-            'keywords' => $this->blog_page->keywords,
-            'image' => $this->blog_page->asset_image ?: asset(config('setting-general.default_meta_image')),
-            'google_index' => config('setting-general.google_index') ?: $this->blog_page->google_index,
-            'canonical_url' => $this->blog_page->canonical_url ?: url()->current(),
-        ];
-    }
-
-    public function postComment(Request $request, $blog_id)
-    {
-        $blog = Blog::where('id', $blog_id)->active()->first();
-        abort_if(! $blog, 404);
-
-        $user = Auth::User();
-        $user->comment($blog, $request->input('comment'), $request->input('rate'));
-
-        $request->session()->flash('alert-success', __('comment_created'));
-
-        return redirect()->back();
-    }
-
     public function index()
     {
+        $this->meta = [
+            'title' => config('setting-general.default_meta_title') . ' | ' . 'Blogs',
+            'description' => config('setting-general.default_meta_description'),
+            'keywords' => '',
+            'image' => config('setting-general.default_meta_image'),
+            'google_index' => config('setting-general.google_index'),
+            'canonical_url' => url()->current(),
+        ];
+
         $blogs = Blog::orderBy('id', 'desc')
             ->active()
             ->paginate(config('setting-general.pagination_number'));
 
-        return view('front.page', ['page' => $this->blog_page, 'blogs' => $blogs]);
+        return view('front.components.blog.index', ['blogs' => $blogs, 'meta' => $this->meta]);
     }
 
     public function show($blog_id)
@@ -69,6 +50,21 @@ class BlogController extends Controller
 
         return view('front.components.blog.show', ['blog' => $blog, 'meta' => $this->meta]);
     }
+
+    public function postComment(Request $request, $blog_id)
+    {
+        $blog = Blog::where('id', $blog_id)->active()->first();
+        abort_if(! $blog, 404);
+
+        $user = Auth::User();
+        $user->comment($blog, $request->input('comment'), $request->input('rate'));
+
+        $request->session()->flash('alert-success', __('comment_created'));
+
+        return redirect()->back();
+    }
+
+
 
     public function getCategories()
     {

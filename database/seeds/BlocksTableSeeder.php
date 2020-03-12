@@ -61,7 +61,7 @@ class BlocksTableSeeder extends Seeder
                 'order' => 21,
                 'type' => 'introduce',
                 'show_all_pages' => 0,
-                'pages_list' => [1],
+                'pages_list' => [1, 2],
                 'activated' => 1,
             ],
             [
@@ -115,7 +115,7 @@ class BlocksTableSeeder extends Seeder
             [
                 'id' => 14,
                 'order' => 42,
-                'type' => 'partner',
+                'type' => 'faq',
                 'show_all_pages' => 0,
                 'pages_list' => [1],
                 'activated' => 1,
@@ -123,41 +123,41 @@ class BlocksTableSeeder extends Seeder
             [
                 'id' => 15,
                 'order' => 45,
-                'type' => 'faq',
+                'type' => 'partner',
                 'show_all_pages' => 0,
                 'pages_list' => [1],
                 'activated' => 1,
             ],
             [
-            	'id' => 16,
+                'id' => 16,
                 'order' => 48,
-            	'type' => 'subscribe',
+                'type' => 'team',
                 'show_all_pages' => 0,
-                'pages_list' => [1],
+                'pages_list' => [2], // about page
                 'activated' => 1,
             ],
             [
-            	'id' => 17,
+                'id' => 17,
                 'order' => 51,
-            	'type' => 'team',
-                'show_all_pages' => 0,
-                'pages_list' => [1], // about page only
-                'activated' => 1,
-            ],
-            [
-                'id' => 18,
-                'order' => 54,
                 'type' => 'blog',
                 'show_all_pages' => 0,
                 'pages_list' => [1],
                 'activated' => 1,
             ],
             [
+            	'id' => 18,
+                'order' => 54,
+            	'type' => 'subscribe',
+                'show_all_pages' => 1,
+                'pages_list' => [],
+                'activated' => 1,
+            ],            
+            [
                 'id' => 19,
                 'order' => 57,
                 'type' => 'map',
                 'show_all_pages' => 0,
-                'pages_list' => [1], // contact page only
+                'pages_list' => [3], // contact page
                 'activated' => 0,
             ],
             [
@@ -165,7 +165,7 @@ class BlocksTableSeeder extends Seeder
                 'order' => 60,
             	'type' => 'contact',
                 'show_all_pages' => 0,
-                'pages_list' => [1], // contact page only
+                'pages_list' => [3], // contact page
                 'activated' => 1,
             ],
             [
@@ -189,15 +189,7 @@ class BlocksTableSeeder extends Seeder
                 'order' => 11,
                 'type' => 'form',
                 'show_all_pages' => 0,
-                'pages_list' => [5],
-                'activated' => 1,
-            ],
-            [
-                'id' => 24,
-                'order' => 12,
-                'type' => 'form',
-                'show_all_pages' => 0,
-                'pages_list' => [4],
+                'pages_list' => [4], // job page
                 'activated' => 1,
             ],
         ];

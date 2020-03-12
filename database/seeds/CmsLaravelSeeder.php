@@ -134,3 +134,70 @@ class CmsLaravelSeeder extends Seeder
         SettingContact::updateOrCreate(['id' => 1], $contact_settings);
     }
 }
+
+            // [
+            //     'title' => 'How to use',
+            //     'url' => 'how-to-use',
+            //     'order' => 4,
+            // ],
+            // [
+            //     'title' => 'Introduction',
+            //     'url' => 'introduction',
+            //     'parent_url' => 'how-to-use',
+            //     'order' => 7,
+            // ],
+            // [
+            //     'title' => 'Form / Table',
+            //     'url' => 'form-table',
+            //     'parent_url' => 'how-to-use',
+            //     'order' => 10,
+            // ],
+            // [
+            //     'title' => 'Models',
+            //     'url' => 'models',
+            //     'parent_url' => 'how-to-use',
+            //     'order' => 13,
+            // ],
+            // [
+            //     'title' => 'Translation',
+            //     'url' => 'translation',
+            //     'parent_url' => 'how-to-use',
+            //     'order' => 16,
+            // ],
+            // [
+            //     'title' => 'Notification',
+            //     'url' => 'Notification',
+            //     'parent_url' => 'how-to-use',
+            //     'order' => 19,
+            // ],
+            // [
+            //     'title' => 'Packages',
+            //     'url' => 'packages',
+            //     'parent_url' => 'how-to-use',
+            //     'order' => 22,
+            // ],
+            // [
+            //     'title' => 'Products',
+            //     'url' => 'product',
+            //     'order' => 25,
+            // ],
+            // [
+            //     'title' => 'Basket',
+            //     'url' => 'basket',
+            //     'order' => 28,
+            // ],
+            // [
+            //     'title' => 'Blog',
+            //     'url' => 'blog',
+            //     'order' => 31,
+            // ],
+            // [
+            //     'title' => 'About Us',
+            //     'url' => 'about-us',
+            //     'order' => 34,
+            // ],
+            // [
+            //     'title' => 'Contact Us',
+            //     'url' => 'contact-us',
+            //     'order' => 37,
+            // ],

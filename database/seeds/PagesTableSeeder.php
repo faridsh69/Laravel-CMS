@@ -9,64 +9,45 @@ class PagesTableSeeder extends Seeder
     {
     	$pages = [
             [
-            	'id' => 1,
             	'title' => 'Home',
             	'url' => null,
-            	'content' => '',
-            	'description' => '',
+            	'content' => null,
+            	'description' => 'Home page description',
             	'activated' => 1,
             	'google_index' => 1,
             ],
             [
-            	'id' => 2,
-            	'title' => 'About Us',
-            	'url' => 'about-us',
-            	'content' => '<h1>About Us</h1>',
-            	'description' => 'description about about us page',
-            	'activated' => 1,
-            	'google_index' => 1,
-            ],
-            [
-            	'id' => 3,
-            	'title' => 'Products',
-            	'url' => 'product',
-            	'content' => '<h1>Products</h1>',
-                'description' => 'description about Services page',
-            	'view_code_url' => 'front.components.product.index',
-            	'activated' => 1,
-            	'google_index' => 1,
-            ],
-            [
-                'id' => 4,
-                'title' => 'Blog',
-                'url' => 'blog',
-                'content' => '<h1>Blog</h1>',
-                'description' => 'description about BLOGS page',
-                'activated' => 1,
-                'google_index' => 1,
-            ],
-            [
-            	'id' => 5,
-            	'title' => 'Contact Us',
-            	'url' => 'contact-us',
+            	'title' => 'About',
+            	'url' => 'about',
             	'content' => '<h1>Contact Us</h1>',
-            	'description' => 'description about contact us page',
+            	'description' => 'About page description',
             	'activated' => 1,
             	'google_index' => 1,
             ],
             [
-                'id' => 6,
-                'title' => 'Basket',
-                'url' => 'basket',
-                'description' => 'description about basket page',
+            	'title' => 'Contact',
+            	'url' => 'contact',
+            	'content' => '<h1>Contact Us</h1>',
+            	'description' => 'Contact page description',
+            	'activated' => 1,
+            	'google_index' => 1,
+            ],
+            [
+                'title' => 'Job',
+                'url' => 'job',
+                'content' => null,
+                'description' => 'Job page description',
                 'activated' => 1,
                 'google_index' => 1,
             ],
         ];
 
         foreach($pages as $page){
-            $page['language'] = config('app.locale');
-            Page::updateOrCreate(['id' => $page['id']], $page);
+            $page['language'] = 'en';
+            Page::firstOrCreate(
+                ['url' => $page['url']],
+                $page
+            );
         }
     }
 }
