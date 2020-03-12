@@ -246,30 +246,30 @@ class ModulesTableSeeder extends Seeder
             [
                 'type' => 'testimonial',
                 'title' => '#13 Customer',
-                'full_name' => 'Eric Ez',
+                'full_name' => 'Taylor Otwell',
                 'description' => '“ I love this business! ”',
-                'image' => $image_folder_name . 'feedback-1.png',
+                'image' => $image_folder_name . 'testimonial-1.png',
             ],
             [
                 'type' => 'testimonial',
                 'title' => 'Manager',
                 'full_name' => 'Navid Ma',
                 'description' => '“ I love this business! ”',
-                'image' => $image_folder_name . 'feedback-2.png',
+                'image' => $image_folder_name . 'testimonial-2.png',
             ],
             [
                 'type' => 'testimonial',
                 'title' => '#4 Customer',
                 'full_name' => 'Elizabeth Sm',
                 'description' => '“ I love this business! ”',
-                'image' => $image_folder_name . 'feedback-3.png',
+                'image' => $image_folder_name . 'testimonial-3.png',
             ],
             [
                 'type' => 'testimonial',
                 'title' => 'Chief Technology Officer',
                 'full_name' => 'Farid Sh',
                 'description' => '“ I love this business! ”',
-                'image' => $image_folder_name . 'feedback-4.png',
+                'image' => $image_folder_name . 'testimonial-4.png',
             ],
             // FAQ
             [
@@ -312,7 +312,7 @@ class ModulesTableSeeder extends Seeder
             [
                 'type' => 'team',
                 'title' => '#13 Customer',
-                'full_name' => 'Eric Ez',
+                'full_name' => 'Taylor Otwell',
                 'image' => $image_folder_name . 'team-1.png',
             ],
             [
@@ -343,6 +343,9 @@ class ModulesTableSeeder extends Seeder
             $module['activated'] = 1;
             if(isset($module['image'])){
                 $module['image'] = asset($module['image']);
+            }
+            if(isset($module['video'])){
+                $module['video'] = asset($module['video']);
             }
             if(!isset($module['title'])){
                 $module['title'] = $module['type'];
