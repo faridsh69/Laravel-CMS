@@ -181,7 +181,7 @@ class FieldsTableSeeder extends Seeder
             'description' => 'What do you think about this website blogs.',
             'activated' => 1,
             'language' => 'en',
-        	'block_id' => 24,
+        	'block_id' => 23,
         ]);
 
         $blog_survey_form->fields()->sync([

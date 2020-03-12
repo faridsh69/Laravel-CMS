@@ -8,7 +8,7 @@ class CreateSpatieTagsTable extends Migration
 	public function up()
 	{
 		// this migration is running from package files
-		return true;
+		// return true;
 		Schema::create('tagging_tagged', function(Blueprint $table) {
 			$table->increments('id');
 			if(config('tagging.primary_keys_type') === 'string') {
@@ -45,7 +45,7 @@ class CreateSpatieTagsTable extends Migration
 
 	public function down()
 	{
-		return true;
+		// return true;
 		Schema::disableForeignKeyConstraints();
 		Schema::table('tagging_tags', function ($table) {
 			$table->dropForeign('tagging_tags_tag_group_id_foreign');
