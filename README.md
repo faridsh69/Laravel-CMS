@@ -2,127 +2,130 @@
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
-## Laravel CMS is an open source project that creates a complete infrastructure with standard code for anyone who wants to use Larval. Preparing an structure to visualization laravel development in future :x
+## Laravel CMS is an open source project that creates a complete infrastructure with standard code for anyone who wants to use Laravel. Preparing an structure to visualization Laravel development in the future:
 
 ### Specify columns in model => migration, form, seeder, factory, table, api, export to pdf and excel will be ready with complete admin panel codes!
 
-#### Prepared services for notification, saving gallery images, creating backup, API authentication, create blogs with comments, rate, category and tag, create page and menu, policies, routes, controllers, unit tests.
+#### Prepared services for notification, saving gallery images, creating backup, API authentication, create blogs with comments, rate, categorize and tag, create pages and menus, policies, routes, controllers, and unit tests.
 
-#### Provided structure for adding theme to laravel project with blocks and widgets.
+#### Provided structure for adding theme to Laravel project with blocks and widgets.
 
 
 Auto generate:
 
-	migrations, 
-	
-	seeders, 
-	
-	factory, 
-	
-	routes, 
-	
-	controller, 
-	
-	view, 
-	
-	forms, 
-	
-	tables, 
-	
-	export pdf, 
-	
-	export excel, 
-	
-	import excel, 
-	
-	print, 
-	
-	unit test,
-	
-	policies
+1. migrations
+1. seeders
+1. factory
+1. routes
+1. controller
+1. view
+1. forms
+1. tables
+1. export pdf
+1. export excel
+1. import excel
+1. print
+1. unit test
+1. policies
 
 
 Controller sample code:
 
-	namespace App\Http\Controllers\Admin\Blog;
-	use App\Base\BaseListController;
-	class ResourceController extends BaseListController
-	{
-		public $model = 'Blog';
-	}
+```php
+namespace App\Http\Controllers\Admin\Blog;
+use App\Base\BaseListController;
+class ResourceController extends BaseListController
+{
+	public $model = 'Blog';
+}
+```
 
 Migrations:
 
-	use App\Base\BaseMigration;
-	class CreateBlogsTable extends BaseMigration
-	{
-	    public $model = 'Blog';
-	}
+```php
+use App\Base\BaseMigration;
+class CreateBlogsTable extends BaseMigration
+{
+public $model = 'Blog';
+}
+```
 
 Tests:
 
-	namespace Tests\Unit;
-	use App\Base\BaseTest;
-	class BlogTest extends BaseTest
-	{
-	    public $model = 'Blog';
+```php
+namespace Tests\Unit;
+use App\Base\BaseTest;
+class BlogTest extends BaseTest
+{
+    public $model = 'Blog';
 
-	    public function test()
-	    {
-		$this->resourceTest();
-	    }
-	}
+    public function test()
+    {
+	$this->resourceTest();
+    }
+}
+```
 
 RouteServiceProvider
 
-	public function map()
-	{
-	    $this->mapAdminRoutes();
-	    $this->mapApiRoutes();
-	    $this->mapAuthRoutes();
-	    $this->mapFrontRoutes();
-	}
+```php
+public function map()
+{
+    $this->mapAdminRoutes();
+    $this->mapApiRoutes();
+    $this->mapAuthRoutes();
+    $this->mapFrontRoutes();
+}
+```
 
 Factories always will generated automaticly for seed or unit test
 
-	use App\Base\BaseFactory;
-	$base_factory = new BaseFactory();
-	$base_factory->index($factory);
+```php
+use App\Base\BaseFactory;
+$base_factory = new BaseFactory();
+$base_factory->index($factory);
+```
 
 Form:
 
-	namespace App\Forms;
-	use App\Base\BaseForm;
-	class BlogForm extends BaseForm
-	{
-	    public $model_name = 'Blog';
-	}
+```php
+namespace App\Forms;
+use App\Base\BaseForm;
+class BlogForm extends BaseForm
+{
+    public $model_name = 'Blog';
+}
+```
 
 Policy: (You can ovveride any functions that you want to customise)
 
-	namespace App\Policies;
-	use App\Base\BasePolicy;
-	class BlogPolicy extends BasePolicy
-	{
-	    public $model = 'Blog';
-	}
+```php
+namespace App\Policies;
+use App\Base\BasePolicy;
+class BlogPolicy extends BasePolicy
+{
+    public $model = 'Blog';
+}
+```
 
-# Model: Just need to define columns array, and let system handle every thing.
+Model: Just need to define columns array, and let the system handle everything.
 
-	public $columns = [
-	    [
-		'name' => 'title',
-		'type' => 'string',
-		'database' => '',
-		'rule' => 'required|max:60|min:5|unique:blogs,title,',
-		'help' => 'Title should be unique, minimum 5 and maximum 60 characters.',
-		'form_type' => '',
-		'table' => true,
-	    ],
-	    .
-	    .
-	    .
-	];
+```php
+public $columns = [
+    [
+	'name' => 'title',
+	'type' => 'string',
+	'database' => '',
+	'rule' => 'required|max:60|min:5|unique:blogs,title,',
+	'help' => 'Title should be unique, minimum 5 and maximum 60 characters.',
+	'form_type' => '',
+	'table' => true,
+    ],
+    .
+    .
+    .
+];
+```
 
 ## Used Packages
 
@@ -154,82 +157,82 @@ Policy: (You can ovveride any functions that you want to customise)
 
 ## How to use
 	
-	You just need to define what you want from this project !!!
-	Define public $columns in each model
+You just need to define what you want from this project !!!
+Define public $columns in each model
 
-	'name': name of column in table and field in inputs and factory and everywhere.
-	'type': use for form and migrations that show type of column
-	'database': a method that will run affter each migration column like:
-		nullable, unique, default(true), unsigned
-	'rule': validation after form in update and create
-	'help': help block under each field in forms
-	'form_type': type of each column, like
-		ckeditor, date, email, switch, checkbox, image, textarea, none(for dont show in db)
-	'table': boolean that use for show that item in tables
-	'relation': used for relation columns just need to define name of table
-
-
-	This is my array in blog model:
-
-	public $columns = [
-        [
-            'name' => 'title',
-            'type' => 'string',
-            'database' => 'unique',
-            'rule' => 'required|max:60|min:10|unique:blogs,title,',
-            'help' => 'Title should be unique, minimum 10 and maximum 60 characters.',
-            'form_type' => '',
-            'table' => true,
-        ],
-        [
-            'name' => 'url',
-            'type' => 'string',
-            'database' => 'unique',
-            'rule' => 'required|max:80|regex:/^[a-z0-9-]+$/|unique:blogs,url,',
-            'help' => 'Url should be unique, contain lowercase characters and numbers and -',
-            'form_type' => '',
-            'table' => true,
-        ],
-    ];
+'name': name of column in table and field in inputs and factory and everywhere.
+'type': use for form and migrations that show type of column
+'database': a method that will run affter each migration column like:
+`nullable, unique, default(true), unsigned`
+'rule': validation after form in update and create
+'help': help block under each field in forms
+'form_type': type of each column, like
+`ckeditor, date, email, switch, checkbox, image, textarea, none(for dont show in db)`
+'table': boolean that use for show that item in tables
+'relation': used for relation columns just need to define name of table
 
 
+This is my array in blog model:
+
+```php
+public $columns = [
+[
+    'name' => 'title',
+    'type' => 'string',
+    'database' => 'unique',
+    'rule' => 'required|max:60|min:10|unique:blogs,title,',
+    'help' => 'Title should be unique, minimum 10 and maximum 60 characters.',
+    'form_type' => '',
+    'table' => true,
+],
+[
+    'name' => 'url',
+    'type' => 'string',
+    'database' => 'unique',
+    'rule' => 'required|max:80|regex:/^[a-z0-9-]+$/|unique:blogs,url,',
+    'help' => 'Url should be unique, contain lowercase characters and numbers and -',
+    'form_type' => '',
+    'table' => true,
+],
+];
+```
 
 
 
 ## Features
 
-	migration:
+migration:
 
-		https://github.com/faridsh69/cms/blob/master/database/migrations/2014_10_12_000010_create_users_table.php 
+https://github.com/faridsh69/cms/blob/master/database/migrations/2014_10_12_000010_create_users_table.php 
 
-		<?php
-		use App\Services\MigrationService;
-		class CreateUsersTable extends MigrationService
-		{
-		    public $model = 'User';
-		}
+```php
+use App\Services\MigrationService;
+class CreateUsersTable extends MigrationService
+{
+    public $model = 'User';
+}
 
+```
+Controller:
 
-	Controller:
+https://github.com/faridsh69/cms/blob/master/app/Http/Controllers/Admin/Blog/ResourceController.php
 
-		https://github.com/faridsh69/cms/blob/master/app/Http/Controllers/Admin/Blog/ResourceController.php
+```php
+namespace App\Http\Controllers\Admin\Blog;
+use App\Http\Controllers\Base\ListController;
+class ResourceController extends ListController
+{
+	public $model = 'Blog';
+}
+```
 
-		<?php
-		namespace App\Http\Controllers\Admin\Blog;
-		use App\Http\Controllers\Base\ListController;
-		class ResourceController extends ListController
-		{
-			public $model = 'Blog';
-		}
+Seeders:
 
-	Seeders:
+Factory:
 
-	Factory:
+Unittest:
 
-	Unittest:
-
-	...
-
+...
 
 ## Install
 
