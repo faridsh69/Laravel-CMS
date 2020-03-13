@@ -20,8 +20,8 @@ $database = [
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'cms'),
-            'username' => env('DB_USERNAME', 'root'),
+            'database' => env('DB_DATABASE', 'forge'),
+            'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
@@ -35,11 +35,6 @@ $database = [
             ]) : [],
             'dump' => [
                 'dump_binary_path' => env('DB_DUMP_PATH', ''),
-                // 'dump_binary_path' => 'C:\xampp\mysql\bin', // only the path, so without `mysqldump` or `pg_dump`
-                // 'use_single_transaction',
-                // 'timeout' => 60 * 5, // 5 minute timeout
-                // 'exclude_tables' => ['table1', 'table2'],
-                // 'add_extra_option' => '--optionname=optionvalue',
             ],
         ],
 
@@ -99,10 +94,15 @@ $database = [
         ],
     ],
 ];
-if(isset($_SERVER['SERVER_NAME'])){
-    $server_name = $_SERVER['SERVER_NAME'];
-    $database_name = 'faridsh_0' . substr($server_name, 4, 6);
-    $database['connections']['mysql']['database'] = $database_name;
+if(env('DB_DATABASE') == ''){
+    if(isset($_SERVER['SERVER_NAME'])){
+        // database prefix for multiple sites
+        $prefix = 'faridsh_0';
+        $server_name = $_SERVER['SERVER_NAME'];
+        // cut after www.
+        $database_name = $prefix . substr($server_name, 4, 6);
+        $database['connections']['mysql']['database'] = $database_name;
+    }
 }
 
 return $database;

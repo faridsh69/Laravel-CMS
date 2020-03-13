@@ -19,7 +19,7 @@ class PagesTableSeeder extends Seeder
             [
             	'title' => 'About',
             	'url' => 'about',
-            	'content' => '<h1>Contact Us</h1>',
+            	'content' => '<h1>About Us</h1>',
             	'description' => 'About page description',
             	'activated' => 1,
             	'google_index' => 1,

@@ -12,16 +12,10 @@ class ModulesTableSeeder extends Seeder
      */
     public function run()
     {
-        // title, description, content, icon, image, url, type, parent_id, order, full_name, product_id, activated, language
-
-        $database_name = config('database.connections.mysql.database');
-        $folder_name = substr($database_name, 9, 6);
+        $folder_name = env('SEEDER_FOLDER_NAME') ?: 'cms-laravel';
         $image_folder_name = '/storage/files/photos/' . $folder_name . '/';
         $video_folder_name = '/storage/files/videos/' . $folder_name . '/';
-        // $modules = Module::get();
-        // foreach($modules as $module){
-        //     $module->delete();
-        // }
+        
         $modules = [
             // Menu
             [
@@ -340,7 +334,6 @@ class ModulesTableSeeder extends Seeder
             $order += 3;
             $module['order'] = $order;
             $module['language'] = 'en';
-            $module['activated'] = 1;
             if(isset($module['image'])){
                 $module['image'] = asset($module['image']);
             }

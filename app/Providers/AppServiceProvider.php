@@ -25,12 +25,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // if(isset($_SERVER['SERVER_NAME'])){
-        //     $server_name = $_SERVER['SERVER_NAME'];
-        //     $database_name = 'faridsh_0' . substr($server_name, 4, 6);
-        //     config(['database.connections.mysql.database' => $database_name]);
-        // }
-
         $seconds = 5;
         if(! Schema::hasTable('setting_generals') || SettingGeneral::first() === null){
             return 'general settings does not exist!';
@@ -68,16 +62,7 @@ class AppServiceProvider extends ServiceProvider
         config(['mail.reply_to.address' => config('setting-developer.email_username')]);
         if(config('setting-developer.auto_language')){
             $language = 'en';
-            // try{
-            //     if(isset($_SERVER['REMOTE_ADDR'])){
-            //         $ip = $_SERVER['REMOTE_ADDR'];
-            //         $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}"));
-            //         if(isset($details->country) && $details->country === 'IR'){
-            //             $language = 'fa';
-            //         }
-            //     }
-            // }
-            // catch(Exception $e){}
+            // you can check the user ip and set language here
             App::setLocale($language);
         }
         Validator::extend('seo_headings', '\App\Rules\SeoHeading@passes');

@@ -71,11 +71,6 @@ $output = [
             'answer',
             'blog',
             'comment',
-            'field',
-            'form',
-            'module',
-            'product',
-            'tag',
         ],
         'admin_routes' => [
             'activity',

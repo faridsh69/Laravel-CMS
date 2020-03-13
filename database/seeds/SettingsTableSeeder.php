@@ -9,25 +9,22 @@ class SettingsTableSeeder extends Seeder
 {
 	public function run()
 	{
-	    $database_name = config('database.connections.mysql.database');
-	    $folder_name = substr($database_name, 9, 6);
+		$folder_name = env('SEEDER_FOLDER_NAME') ?: 'cms-laravel';
 		$image_folder_name = '/storage/files/photos/' . $folder_name . '/';
 		$video_folder_name = '/storage/files/videos/' . $folder_name . '/';
 		$general_settings = [
 			'app_title' => 'App Title',
 			'default_meta_title' => 'App Title',
 			'default_meta_description' => 'App desciption about this website that will be show on social networks.',
-			'logo' => asset($image_folder_name . '1-logo.png'),
-			'favicon' => asset($image_folder_name . '2-favicon.png'),
-			'default_meta_image' => asset($image_folder_name . '1-logo.png'),
-			'default_user_image' => asset($image_folder_name . '3-user.png'),
-			'default_product_image' => asset($image_folder_name . '1-logo.png'),
+			'logo' => asset($image_folder_name . 'setting-logo.png'),
+			'favicon' => asset($image_folder_name . 'setting-favicon.png'),
+			'default_meta_image' => asset($image_folder_name . 'setting-logo.png'),
+			'default_user_image' => asset($image_folder_name . 'setting-default-user.png'),
+			'default_product_image' => asset($image_folder_name . 'setting-default-product.png'),
 			'google_index' => '1',
 			'pagination_number' => '8',
 			'android_application_url' => 'https://play.google.com/store/apps',
 			'ios_application_url' => 'https://sibapp.com/applications',
-			'introduce_video_url' => asset($video_folder_name . '5-video.mp4'),
-			'introduce_video_cover_photo' => asset($image_folder_name . '4-video.png'),
 			'google_map_code' => 'AIzaSyAwuyLRa1uKNtbgx6xAJVmWy-zADgegA2s',
 			'google_analytics_id' => null,
 			'site_verification_google_code' => null,
@@ -77,14 +74,14 @@ class SettingsTableSeeder extends Seeder
 			'sms_driver' => 'raygansms',
 			'sms_sender' => '9830006859000705',
 			'sms_api_key' => 'muhammadc22:1234567891',
-			'user_registered_sms' => true,
-			'user_registered_mail' => false,
+			'user_registered_sms' => false,
+			'user_registered_mail' => true,
 			'user_logined_sms' => false,
-			'user_logined_mail' => false,
+			'user_logined_mail' => true,
 			'profile_updated_sms' => false,
-			'profile_updated_mail' => false,
+			'profile_updated_mail' => true,
 			'factor_created_sms' => true,
-			'factor_created_mail' => false,			
+			'factor_created_mail' => true,			
         ];
         SettingGeneral::updateOrCreate(['id' => 1], $general_settings);
         SettingDeveloper::updateOrCreate(['id' => 1], $developer_settings);

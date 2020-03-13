@@ -13,7 +13,7 @@
 		$page = new \App\Models\Page();
 	}
 	$blocks = \App\Models\Block::getPageBlocks($page->id);
-	$modules = \App\Models\Module::orderBy('order', 'asc')->active()->language()->get();
+	$modules = \App\Models\Module::orderBy('order', 'asc')->orderBy('id', 'desc')->active()->language()->get();
 @endphp
 @section('content')
 	@foreach($blocks as $block)
