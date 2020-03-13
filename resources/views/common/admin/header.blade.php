@@ -42,7 +42,6 @@
 	<link href="{{ asset('/css/admin/locale-fa.css') }}" rel="stylesheet" >
 	@else
 	@endif
-	
 	<link href="{{ asset('css/admin/custome.css') }}" rel="stylesheet" />
 
 	@stack('style')

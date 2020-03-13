@@ -3,7 +3,6 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-heading text-center mx-auto wow fadeInUp" data-wow-delay="300ms">
-                    <span>{{ __('The Best') }}</span>
                     <h3>{{ __('Top Service') }}</h3>
                 </div>
             </div>

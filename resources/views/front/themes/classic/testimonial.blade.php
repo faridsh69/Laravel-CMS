@@ -3,8 +3,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-heading text-center mx-auto white wow fadeInUp" data-wow-delay="300ms">
-                    <span>{{ __('our testimonials') }}</span>
-                    <h3>{{ __('See what our satisfied customers are saying about us') }}</h3>
+                    <h3>{{ __('our testimonials') }}</h3>
                 </div>
             </div>
         </div>

@@ -9,9 +9,9 @@
                         </div>
                         <div class="login-content">
                             @if(!\Auth::id())
-                            <a href="{{ route('auth.register') }}">Register</a>
+                            <a href="{{ route('auth.register') }}">{{ __('register') }}</a>
                             /
-                            <a href="{{ route('auth.login') }}">Login</a>
+                            <a href="{{ route('auth.login') }}">{{ __('login') }}</a>
                             @else
                             <a href="{{ route('admin.dashboard.list.index') }}">{{ \Auth::user()->full_name }} Dashboard</a>                          
                             @endif
@@ -49,50 +49,6 @@
                                     @endif
                                 </li>
                             @endforeach
-                            </ul>
-                            <ul class="display-none">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="#">Pages</a>
-                                    <ul class="dropdown">
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="about-us.html">About Us</a></li>
-                                        <li><a href="course.html">Course</a></li>
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                        <li><a href="elements.html">Elements</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Mega Menu</a>
-                                    <div class="megamenu">
-                                        <ul class="single-mega cn-col-4">
-                                            <li><a href="#">Home</a></li>
-                                            <li><a href="#">Services &amp; Features</a></li>
-                                            <li><a href="#">Accordions and tabs</a></li>
-                                            <li><a href="#">Menu ideas</a></li>
-                                            <li><a href="#">Students Gallery</a></li>
-                                        </ul>
-                                        <ul class="single-mega cn-col-4">
-                                            <li><a href="#">Home</a></li>
-                                            <li><a href="#">Services &amp; Features</a></li>
-                                            <li><a href="#">Accordions and tabs</a></li>
-                                            <li><a href="#">Menu ideas</a></li>
-                                            <li><a href="#">Students Gallery</a></li>
-                                        </ul>
-                                        <ul class="single-mega cn-col-4">
-                                            <li><a href="#">Home</a></li>
-                                            <li><a href="#">Services &amp; Features</a></li>
-                                            <li><a href="#">Accordions and tabs</a></li>
-                                            <li><a href="#">Menu ideas</a></li>
-                                            <li><a href="#">Students Gallery</a></li>
-                                        </ul>
-                                        <div class="single-mega cn-col-4">
-                                            <img src="{{ asset('images/front/themes/classic/img/bg-img/bg-1.jpg') }}" alt="">
-                                        </div>
-                                    </div>
-                                </li>
-                                <li><a href="about-us.html">About Us</a></li>
-                                <li><a href="course.html">Course</a></li>
-                                <li><a href="contact.html">Contact</a></li>
                             </ul>
                         </div>
                     </div>

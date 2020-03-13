@@ -11,57 +11,42 @@ use App\Models\SettingGeneral;
 use App\Models\SettingDeveloper;
 use App\Models\SettingContact;
 
-class CmsLaravelSeeder extends Seeder
+class NeuropmrSeeder extends Seeder
 {
     public function run()
     {
-        $folder_name = 'cms-laravel';
+        $folder_name = 'neuropmrx';
 		$image_folder_name = '/storage/files/photos/' . $folder_name . '/';
 		$video_folder_name = '/storage/files/videos/' . $folder_name . '/';
 
         // Category
         $categories = [
             [
-                'title' => 'Model',
+                'title' => 'سکته مغزی',
             ],
             [
-                'title' => 'Migration',
+                'title' => 'توانبخشی',
             ],
             [
-                'title' => 'Seeder',
-            ],
-            [
-                'title' => 'Factory',
-            ],
-            [
-                'title' => 'Policy',
-            ],
-            [
-                'title' => 'Test',
-            ],
-            [
-                'title' => 'Controller',
-            ],
-            [
-                'title' => 'Form',
+                'title' => 'مغزواعصاب',
             ],
         ];
 
         foreach($categories as $category){
-            $category['language'] = 'en';
+            $category['language'] = 'fa';
             Category::firstOrCreate($category);
         }
 
         // Tag
         $tags = [
             [
-                'name' => 'Development',
+                'name' => 'سکته مغزی',
             ],
             [
-                'name' => 'Movie',
+                'name' => 'توانبخشی',
             ],
             [
-                'name' => '2020',
+                'name' => 'مغزواعصاب',
             ],
         ];
 
@@ -74,11 +59,11 @@ class CmsLaravelSeeder extends Seeder
         $users = [
             [
                 'id' => 1,
-                'first_name' => 'Farid',
+                'first_name' => 'Farzad',
                 'last_name' => 'Shahidi',
-                'url' => 'farid-shahidi',
-                'email' => 'farid.sh69@gmail.com',
-                'phone' => '+4915730275229',
+                'url' => 'farzad-shahidi',
+                'email' => 'info@neuropmr.ir',
+                'phone' => '09132193852',
                 'password' => bcrypt('1111'),
                 'activated' => 1,
             ],
@@ -90,63 +75,43 @@ class CmsLaravelSeeder extends Seeder
         // Page
         $pages = [
             [
-                'title' => 'Home',
+                'title' => 'خانه',
                 'url' => null,
                 'content' => null,
                 'image' => asset($image_folder_name . 'setting-logo.png'),
-                'description' => 'CMS Laravel is an open source project with Laravel developed by both basic and advanced services and packages.',
+                'description' => 'سامانه بیماری های مغزواعصاب و توانبخشی',
                 'activated' => 1,
                 'google_index' => 1,
                 'view_code_url' => '',
             ],
             [
-                'title' => 'Document',
-                'url' => 'document',
-                'content' => null,
-                'image' => asset($image_folder_name . 'setting-logo.png'),
-                'description' => 'How to use laravel cms and understand new design patterns that used in this cms.',
-                'activated' => 1,
-                'google_index' => 1,
-                'view_code_url' => 'front.components.documents.index',
-            ],
-            [
-                'title' => 'Model Service',
-                'url' => 'document-model',
-                'image' => asset($image_folder_name . 'documents/model.png'),
-                'description' => 'How to write your models in cms-laravel to see how whole project will run with just one array in your model and try to find out why this cms can help to develop more easier and faster.',
-                'view_code_url' => 'front.components.documents.model',
-                'content' => '',
-                'activated' => 1,
-                'google_index' => 1,
-            ],
-            [
-                'title' => 'About',
+                'title' => 'خانه',
                 'url' => 'about',
-                'content' => '<h1>About</h1>',
-                'description' => 'About page description',
-                'activated' => 0,
+                'content' => '<h1>درباره ما</h1>',
+                'description' => 'درباره ما',
+                'activated' => 1,
                 'google_index' => 1,
             ],
             [
-                'title' => 'Contact',
+                'title' => 'تماس با ما',
                 'url' => 'contact',
                 'content' => '',
-                'description' => 'Contact with me on whats app +4915730275229',
+                'description' => 'تماس با ما',
                 'activated' => 1,
                 'google_index' => 1,
             ],
         ];
 
         foreach($pages as $page){
-            $page['language'] = 'en';
+            $page['language'] = 'fa';
             Page::updateOrCreate(['url' => $page['url']], $page);
         }
 
         // Setting
         $general_settings = [
-            'app_title' => 'Laravel CMS',
-            'default_meta_title' => 'Laravel CMS',
-            'default_meta_description' => 'Laravel CMS is an open source project with Laravel developed by both basic and advanced services and packages.',
+            'app_title' => 'سامانه بیماری های مغزواعصاب و توانبخشی',
+            'default_meta_title' => 'سامانه بیماری های مغزواعصاب و توانبخشی',
+            'default_meta_description' => 'سامانه بیماری های مغزواعصاب و توانبخشی در راستای بهبود بخش درمان بیماران مغز و اعصاب دست به ساخت اپلیکیشن کرده است.',
             'logo' => asset($image_folder_name . 'setting-logo.png'),
             'favicon' => asset($image_folder_name . 'setting-favicon.png'),
             'default_meta_image' => asset($image_folder_name . 'setting-logo.png'),
@@ -162,27 +127,28 @@ class CmsLaravelSeeder extends Seeder
         ];
 
         $contact_settings = [
-            'email' => 'farid.sh69@gmail.com',
-            'phone' => '+4915730275229',
-            'whatsapp' => '+4915730275229',
-            'telephone' => '+4915730275229',
-            'fax' => '+4915730275229',
-            'address' => 'Frankfurt Rhine-Main Metropolitan Area',
-            'latitude' => '8.6821',
-            'longitude' => '50.1109',
-            'google_plus' => 'farid.sh69',
-            'twitter' => 'faridsh69',
-            'facebook' => 'faridsh69',
-            'skype' => 'live:farid.sh69',
-            'instagram' => 'it_manager_sh',
-            'telegram' => 'faridsh69',
-            'linkedin' => 'fullstackphpjs',
-            'github' => 'faridsh69',
-            'stackoverflow' => 'fullstackphpjs',
+            'email' => 'info@neuropmr.ir',
+            'phone' => '09132193852',
+            'whatsapp' => '',
+            'telephone' => '',
+            'fax' => '',
+            'address' => 'تهران ایران',
+            'latitude' => '51.3890',
+            'longitude' => '35.6892',
+            'google_plus' => '',
+            'twitter' => '',
+            'facebook' => '',
+            'skype' => '',
+            'instagram' => '',
+            'telegram' => '',
+            'linkedin' => '',
+            'github' => '',
+            'stackoverflow' => '',
         ];
 
         $developer_settings = [
-            'app_language' => 'en',
+            'app_language' => 'fa',
+            'auto_language' => false,
             'theme' => 'classic',
             'theme_color_1' => '',
             'theme_color_2' => '',
@@ -211,38 +177,32 @@ class CmsLaravelSeeder extends Seeder
             // Menu
             [
                 'type' => 'menu',
-                'title' => 'Home',
+                'title' => 'خانه',
                 'url' => '/',
             ],
             [
                 'type' => 'menu',
-                'title' => 'Document',
-                'url' => 'document',
+                'title' => 'درباره ما',
+                'url' => 'about',
             ],
             [
                 'type' => 'menu',
-                'title' => 'Model',
-                'url' => 'document-model',
-                'parent_url' => 'document',
-            ],
-            [
-                'type' => 'menu',
-                'title' => 'Contact',
+                'title' => 'تماس با ما',
                 'url' => 'contact',
             ],
 
             // Header
             [
                 'type' => 'header',
-                'title' => 'Laravel CMS',
-                'description' => 'Full Featured CMS',
+                'title' => 'سامانه بیماری های مغزواعصاب و توانبخشی',
+                'description' => 'سامانه بیماری های مغزواعصاب و توانبخشی',
                 'url' => 'document',
                 'image' => $image_folder_name . 'header-1.png',
             ],
             [
                 'type' => 'header',
-                'title' => 'Laravel CMS Models',
-                'description' => 'Write What you need in your model columns',
+                'title' => 'سامانه بیماری های مغزواعصاب و توانبخشی',
+                'description' => 'سامانه بیماری های مغزواعصاب و توانبخشی',
                 'url' => 'document-model',
                 'image' => $image_folder_name . 'header-2.png',
             ],
@@ -254,55 +214,53 @@ class CmsLaravelSeeder extends Seeder
             // Main Feature
             [
                 'type' => 'main_feature',
-                'title' => 'Easy to use',
+                'title' => 'آموزش جامع',
                 'icon' => 'icon-agenda-1', // ti-mobile
-                'description' => 'Feature Description, Feature Description, Feature Description',
             ],
             [
                 'type' => 'main_feature',
-                'title' => 'Loved by all developers',
+                'title' => 'مورد تایید پزشکان',
                 'icon' => 'icon-assistance', // ti-money
-                'description' => 'Feature Description, Feature Description, Feature Description',
             ],
             [
                 'type' => 'main_feature',
-                'title' => 'Fully supported',
+                'title' => 'پشتیبانی 24 ساعته',
                 'icon' => 'icon-telephone-3', // ti-settings
             ],
             // Feature
             [
                 'type' => 'feature',
-                'title' => 'Open source',
+                'title' => 'مشخصات دقیق',
                 'icon' => 'icon-id-card',
                 'description' => 'Feel free to contribute to this open source project.',
             ],
             [
                 'type' => 'feature',
-                'title' => 'Multi language',
+                'title' => 'برنامه جهانی',
                 'icon' => 'icon-worldwide',
                 'description' => 'This cms is multi lingual, both admin and front side.',
             ],
             [
                 'type' => 'feature',
-                'title' => 'Understable',
+                'title' => 'قابل استفاده هر جا',
                 'icon' => 'icon-map',
                 'description' => 'You can read document and find out its design patterns.',
             ],
             [
                 'type' => 'feature',
-                'title' => 'Everything is ready',
+                'title' => 'سلامتی همیشگی',
                 'icon' => 'icon-like',
                 'description' => 'Everything is ready, you just need to write your logic.',
             ],
             [
                 'type' => 'feature',
-                'title' => 'Responsive Themes',
+                'title' => 'سریع و آسان',
                 'icon' => 'icon-responsive',
                 'description' => '4 well designed themes are ready for this cms.',
             ],
             [
                 'type' => 'feature',
-                'title' => 'Fast response',
+                'title' => 'سریع',
                 'icon' => 'icon-message',
                 'description' => 'Appropriate Caches used in this cms.',
             ],
@@ -310,7 +268,7 @@ class CmsLaravelSeeder extends Seeder
             [
                 'type' => 'introduce',
                 'title' => 'Why Laravel CMS',
-                'description' => 'Developed by farid shahidi - farid.sh69@gmail.com',
+                'description' => 'Developed by Dr Farzad Shahidi',
                 'content' => '
 Laravel CMS is an open source project that creates a complete infrastructure with standard code for anyone who wants to use Laravel. Preparing an structure to visualization Laravel development in the future:
 <br>
@@ -332,25 +290,25 @@ Provided structure for adding theme to Laravel project with blocks and widgets.
             // Counting
             [
                 'type' => 'counting',
-                'title' => 'Services Available',
+                'title' => 'صفحات اپلیکیشن',
                 'description' => 130,
                 'icon' => 'icon-agenda-1',
             ],
             [
                 'type' => 'counting',
-                'title' => 'Developers',
+                'title' => 'پزشکان',
                 'description' => 339,
                 'icon' => 'icon-assistance',
             ],
             [
                 'type' => 'counting',
-                'title' => 'Automated Tests',
-                'description' => 187,
+                'title' => 'بیماران بهبود یافته',
+                'description' => 1087,
                 'icon' => 'icon-id-card',
             ],
             [
                 'type' => 'counting',
-                'title' => 'Projects',
+                'title' => 'کاربران فعال',
                 'description' => 237,
                 'icon' => 'icon-message',
             ],
@@ -362,27 +320,31 @@ Provided structure for adding theme to Laravel project with blocks and widgets.
             // Services
             [
                 'type' => 'service',
-                'title' => 'Model',
-                'url' => 'document-model',
-                'image' => $image_folder_name . 'documents/model.png',
+                'title' => 'Application page 1',
+                'description' => 'Description Application page 1',
+                'url' => 'application-1',
+                'image' => $image_folder_name . 'service-1.png',
             ],
             [
                 'type' => 'service',
-                'title' => 'Form',
-                'url' => 'document/form',
-                'image' => $image_folder_name . 'documents/form.png',
+                'title' => 'Application page 2',
+                'description' => 'Description Application page 2',
+                'url' => 'application-1',
+                'image' => $image_folder_name . 'service-2.png',
             ],
             [
                 'type' => 'service',
-                'title' => 'Migration',
-                'url' => 'document/form',
-                'image' => $image_folder_name . 'documents/migration.png',
+                'title' => 'Application page 3',
+                'description' => 'Description Application page 3',
+                'url' => 'application-1',
+                'image' => $image_folder_name . 'service-3.png',
             ],
             [
                 'type' => 'service',
-                'title' => 'Notification',
-                'url' => 'document/form',
-                'image' => $image_folder_name . 'documents/notification.png',
+                'title' => 'Application page 4',
+                'description' => 'Description Application page 4',
+                'url' => 'application-1',
+                'image' => $image_folder_name . 'service-4.png',
             ],
             // Pricing
             [
@@ -395,28 +357,28 @@ Provided structure for adding theme to Laravel project with blocks and widgets.
             // Testimonial
             [
                 'type' => 'testimonial',
-                'title' => 'Consultant',
-                'full_name' => 'Taylor Otwell',
+                'title' => 'مشاور پزشکی',
+                'full_name' => 'دکتر علی ربیعی',
                 'description' => '“ I love this cms, it really complete and well designed. ”',
                 'image' => $image_folder_name . 'testimonial-1.png',
             ],
             [
                 'type' => 'testimonial',
-                'title' => 'Manager',
-                'full_name' => 'Navid Ma',
+                'title' => 'مدیر پروژه',
+                'full_name' => 'دکتر اسد احمدی',
                 'description' => '“ We used all of our experience in many enterprise projects in this cms ”',
                 'image' => $image_folder_name . 'testimonial-2.png',
             ],
             [
                 'type' => 'testimonial',
-                'title' => 'Graphic Designer',
+                'title' => 'طراح گرافیک',
                 'full_name' => 'Elizabeth Sm',
                 'description' => '“ I desgined all of its themes on edge of technology ”',
                 'image' => $image_folder_name . 'testimonial-3.png',
             ],
             [
                 'type' => 'testimonial',
-                'title' => 'Chief Technology Officer',
+                'title' => 'برنامه نویس',
                 'full_name' => 'Farid Sh',
                 'description' => '“ Love beautifull code? I do too! ”',
                 'image' => $image_folder_name . 'testimonial-4.png',
@@ -496,7 +458,7 @@ Provided structure for adding theme to Laravel project with blocks and widgets.
         foreach($modules as $module){
             $order += 3;
             $module['order'] = $order;
-            $module['language'] = 'en';
+            $module['language'] = 'fa';
             $module['activated'] = 1;
             if(isset($module['image'])){
                 $module['image'] = asset($module['image']);
