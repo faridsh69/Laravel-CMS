@@ -199,7 +199,7 @@ class CmsLaravelSeeder extends Seeder
         SettingContact::updateOrCreate(['id' => 1], $contact_settings);
 
         // Block
-        $blocks = Block::whereIn('type', ['map', 'blog', 'product', 'Pricing'])->get();
+        $blocks = Block::whereIn('type', ['map', 'blog', 'product', 'service', 'pricing', 'video'])->get();
 
         foreach($blocks as $block){
             $block->activated = 0;
