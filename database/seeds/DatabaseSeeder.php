@@ -7,13 +7,11 @@ class DatabaseSeeder extends Seeder
 {
     public function run()
     {
-        $this->call(SettingsTableSeeder::class);
-        $this->call(NeuropmrSeeder::class);
-        dd(1);
         $this->call(CategoriesTableSeeder::class);
         $this->call(TagsTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(FilesTableSeeder::class);
+        $this->call(SettingsTableSeeder::class);
         $this->call(BitcointProductsTableSeeder::class);
         $this->call(PagesTableSeeder::class);
         $this->call(BlocksTableSeeder::class);
@@ -21,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(FieldsTableSeeder::class);
         $this->call(RolesTableSeeder::class);
         $this->call(BaseSeeder::class);
+        $this->call(NeuropmrSeeder::class);
         // $this->call(CmsLaravelSeeder::class);
     }
 }

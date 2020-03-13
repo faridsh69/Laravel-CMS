@@ -15,7 +15,7 @@ class NeuropmrSeeder extends Seeder
 {
     public function run()
     {
-        $folder_name = 'neuropmrx';
+        $folder_name = 'neuropmr';
 		$image_folder_name = '/storage/files/photos/' . $folder_name . '/';
 		$video_folder_name = '/storage/files/videos/' . $folder_name . '/';
 
