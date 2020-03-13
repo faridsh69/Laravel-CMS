@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(FieldsTableSeeder::class);
         $this->call(RolesTableSeeder::class);
         $this->call(BaseSeeder::class);
-        $this->call(NeuropmrSeeder::class);
         // $this->call(CmsLaravelSeeder::class);
+        // $this->call(NeuropmrSeeder::class);
     }
 }

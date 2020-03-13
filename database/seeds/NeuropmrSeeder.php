@@ -85,7 +85,7 @@ class NeuropmrSeeder extends Seeder
                 'view_code_url' => '',
             ],
             [
-                'title' => 'خانه',
+                'title' => 'درباره ما',
                 'url' => 'about',
                 'content' => '<h1>درباره ما</h1>',
                 'description' => 'درباره ما',
