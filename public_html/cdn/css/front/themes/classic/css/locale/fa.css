@@ -61,3 +61,6 @@ span, button, h3, a{
 input::-webkit-input-placeholder {
     font-family: 'IRANSans',"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
+.owl-stage{
+    transform: none !important;
+}

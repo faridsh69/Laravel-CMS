@@ -8,6 +8,22 @@ class SettingDeveloper extends BaseModel
 {
     public $columns = [
         [
+            'name' => 'scripts',
+            'type' => 'text',
+            'database' => 'nullable',
+            'rule' => '',
+            'help' => 'This codes run on all pages',
+            'form_type' => 'textarea',
+        ],
+        [
+            'name' => 'styles',
+            'type' => 'text',
+            'database' => 'nullable',
+            'rule' => '',
+            'help' => 'This styles go into header of all pages',
+            'form_type' => 'textarea',
+        ],
+        [
             'name' => 'app_debug',
             'type' => 'boolean',
             'database' => 'default',
@@ -89,22 +105,6 @@ class SettingDeveloper extends BaseModel
             'rule' => 'boolean',
             'help' => 'Lazy loading is neccessary for fast website fast loading.',
             'form_type' => 'checkbox-m',
-        ],
-        [
-            'name' => 'scripts',
-            'type' => 'text',
-            'database' => 'nullable',
-            'rule' => '',
-            'help' => 'This codes run on all pages',
-            'form_type' => 'textarea',
-        ],
-        [
-            'name' => 'styles',
-            'type' => 'text',
-            'database' => 'nullable',
-            'rule' => '',
-            'help' => 'This styles go into header of all pages',
-            'form_type' => 'textarea',
         ],
         [
             'name' => 'seo_title_min',
