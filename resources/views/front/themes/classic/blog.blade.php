@@ -1,4 +1,4 @@
-<div class="blog-area mt-50 section-padding-100">
+<div class="blog-area mt-50 section-padding-100" id="blog">
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-8">

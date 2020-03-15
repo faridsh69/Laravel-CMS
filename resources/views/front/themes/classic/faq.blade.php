@@ -1,4 +1,4 @@
-<div class="col-12">
+<div class="col-12" id="faq">
     <div class="elements-title mb-50">
         <h2>{{ __('Frequency Asked Questions') }}</h2>
     </div>

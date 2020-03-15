@@ -1,4 +1,4 @@
-<div class="top-popular-courses-area section-padding-100-70">
+<div class="top-popular-courses-area section-padding-100-70" id="product">
     <div class="container">
         <div class="row">
             <div class="col-12">

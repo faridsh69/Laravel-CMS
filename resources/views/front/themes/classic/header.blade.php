@@ -1,4 +1,4 @@
-<section class="hero-area">
+<section class="hero-area" id="header">
     <div class="hero-slides owl-carousel">
         @foreach($modules->where('type', 'header') as $header)
         <div class="single-hero-slide bg-img" style="background-image: url({{ $header->image }});">

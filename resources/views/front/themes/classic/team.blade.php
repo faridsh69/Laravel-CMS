@@ -1,4 +1,4 @@
-<section class="teachers-area section-padding-0-100">
+<section class="teachers-area section-padding-0-100" id="team">
     <div class="container">
         <div class="row">
             <div class="col-12">

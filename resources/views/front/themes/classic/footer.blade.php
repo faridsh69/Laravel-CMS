@@ -1,4 +1,4 @@
-<footer class="footer-area">
+<footer class="footer-area" id="footer">
     <div class="main-footer-area section-padding-100-0">
         <div class="container">
             <div class="row">
@@ -83,3 +83,28 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         </div>
     </div>
 </footer>
+<div class="fixed-social-media">
+    @if(config('setting-contact.instagram'))
+    <a target="_blank" title="Instagram" href="http://instagram.com/{{ config('setting-contact.instagram') }}" >
+        <img src="{{ asset('/images/front/general/instagram.png') }}">
+    </a>
+    <br>
+    @endif
+    @if(config('setting-contact.telegram'))
+    <a target="_blank" title="Telegram" href="http://t.me/{{ config('setting-contact.telegram') }}" >
+        <img src="{{ asset('/images/front/general/telegram.png') }}">
+    </a>
+    <br>
+    @endif
+    @if(config('setting-contact.phone'))
+    <a target="_blank" title="Call" href="tel:{{ config('setting-contact.phone') }}" >
+        <img src="{{ asset('/images/front/general/phone.png') }}">
+    </a>
+    <br>
+    @endif
+    @if(config('setting-contact.whatsapp'))
+    <a target="_blank" title="Whatsapp" href="https://wa.me/{{ config('setting-contact.whatsapp') }}/?text=help" >
+        <img src="{{ asset('/images/front/general/whatsapp.png') }}">
+    </a>
+    @endif
+</div>

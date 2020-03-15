@@ -1,4 +1,4 @@
-<div class="top-popular-courses-area section-padding-100-70">
+<div class="top-popular-courses-area section-padding-100-70" id="service">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -14,7 +14,9 @@
                     <div class="popular-course-content">
                         <h5>{{ $service->title }}</h5>
                         <p>{{ $service->description }}</p>
+                        @if($service->url)
                         <a href="{{ $service->url }}" class="btn academy-btn btn-sm">{{ __('See More') }}</a>
+                        @endif
                     </div>
                     <div class="popular-course-thumb bg-img" style="background-image: url({{ $service->image }});"></div>
                 </div>

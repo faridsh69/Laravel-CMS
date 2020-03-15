@@ -1,4 +1,4 @@
-<div class="map-area wow fadeInUp" data-wow-delay="300ms">
+<div class="map-area wow fadeInUp" data-wow-delay="300ms" id="map">
     <div id="googleMap"></div>
 </div>
 @push('scripts')

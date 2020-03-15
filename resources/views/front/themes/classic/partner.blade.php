@@ -1,4 +1,4 @@
-<div class="partner-area section-padding-0-100">
+<div class="partner-area section-padding-0-100" id="partner">
     <div class="container">
         <div class="row">
             <div class="col-12">

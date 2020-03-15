@@ -1,4 +1,4 @@
-<header class="header-area">
+<header class="header-area" id="menu">
     <div class="top-header">
         <div class="container h-100">
             <div class="row h-100">

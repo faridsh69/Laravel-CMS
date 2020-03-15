@@ -1,4 +1,4 @@
-<div class="call-to-action-area">
+<div class="call-to-action-area" id="subscribe">
     <div class="container">
         <div class="row">
             <div class="col-12">

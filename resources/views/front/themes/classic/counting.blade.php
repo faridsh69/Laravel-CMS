@@ -1,4 +1,4 @@
-<div class="col-12">
+<div class="col-12" id="counting">
     <div class="elements-title mb-50">
         <h2>{{ __('milestone') }}</h2>
     </div>

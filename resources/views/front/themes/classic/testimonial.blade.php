@@ -1,4 +1,4 @@
-<div class="testimonials-area section-padding-100 bg-img bg-overlay" style="background-image: url({{ asset('images/front/themes/classic/img/bg-img/bg-2.jpg') }});">
+<div class="testimonials-area section-padding-100 bg-img bg-overlay" style="background-image: url({{ asset('images/front/themes/classic/img/bg-img/bg-2.jpg') }});" id="testimonial">
     <div class="container">
         <div class="row">
             <div class="col-12">

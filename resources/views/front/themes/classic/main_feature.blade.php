@@ -1,4 +1,4 @@
-<div class="top-features-area wow fadeInUp" data-wow-delay="300ms">
+<div class="top-features-area wow fadeInUp" data-wow-delay="300ms" id="main_feature">
     <div class="container">
         <div class="row">
             <div class="col-12">

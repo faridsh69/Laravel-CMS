@@ -1,4 +1,4 @@
-<div class="top-popular-courses-area section-padding-100-70">
+<div class="top-popular-courses-area section-padding-100-70" id="pricing">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -16,7 +16,9 @@
                         <h5>{{ $pricing->title }}</h5>
                         <p>{{ $pricing->description }}</p>
                         <p>{{ $pricing->content }}</p>
+                        @if($pricing->url)
                         <a href="{{ $pricing->url }}" class="btn academy-btn btn-sm">{{ __('See More') }}</a>
+                        @endif
                     </div>
                 </div>
             </div>

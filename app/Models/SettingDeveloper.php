@@ -70,7 +70,7 @@ class SettingDeveloper extends BaseModel
             'name' => 'direction',
             'type' => 'boolean',
             'database' => 'nullable',
-            'rule' => 'required',
+            'rule' => 'boolean',
             'form_type' => 'switch-bootstrap-m',
             'help' => 'Select direction for texts',
         ],

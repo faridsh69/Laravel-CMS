@@ -1,4 +1,4 @@
-<div class="academy-courses-area section-padding-100-0">
+<div class="academy-courses-area section-padding-100-0" id="feature">
     <div class="container">
         <div class="row">
             @foreach($modules->where('type', 'feature')->take(6) as $feature_item)
