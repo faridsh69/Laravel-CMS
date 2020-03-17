@@ -213,9 +213,6 @@ public $columns = [
 	</tbody>
 </table> 
 
-## Features
-
-
 ## Install
 
 ``` bash
