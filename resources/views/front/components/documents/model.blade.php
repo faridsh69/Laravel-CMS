@@ -116,13 +116,3 @@ class Blog extends App\Services\BaseModel
 <h2>conclusion</h2>
 <p>The most important part in development is storing data in database and editing them.<br>
 With Laravel cms you dont have to develop any repeated and extra codes for getting to this aim, just you have to define your models and tell cms that what type of input you want!</p>
-
-
-
-
-
-
-
-
-
-

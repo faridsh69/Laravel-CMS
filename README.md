@@ -140,19 +140,53 @@ public $columns = [
 
 ## How to use
 	
-You just need to define what you want from this project !!!
-Define public $columns in each model
+Define the login of models and database design all in your models.
 
-'name': name of column in table and field in inputs and factory and everywhere.
-'type': use for form and migrations that show type of column
-'database': a method that will run affter each migration column like:
-`nullable, unique, default(true), unsigned`
-'rule': validation after form in update and create
-'help': help block under each field in forms
-'form_type': type of each column, like
-`ckeditor, date, email, switch, checkbox, image, textarea, none(for dont show in db)`
-'table': boolean that use for show that item in tables
-'relation': used for relation columns just need to define name of table
+<table class="table">
+	<thead>
+		<th>Attribute</th>
+		<th>Use</th>
+		<th>Example values</th>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Name</td>
+			<td>Name of column in database.<br>Name of field in form.<br>Used in factory.</td>
+			<td>title, description, url, content,<br> full_name, image, language, user_id,<br> category, phone, address, email, password</td>
+		</tr>
+		<tr>
+			<td>Type</td>
+			<td>Type of column in database.<br>Used in factory.</td>
+			<td><code>string, text, boolean, <br>integer, bigInteger, tinyInteger, unsignedBigInteger,<br> array, decimal, float, file, date, time, timestamp</code></td>
+		</tr>
+		<tr>
+			<td>Database</td>
+			<td>properties of column in database.</td>
+			<td><code>nullable, unsigned, unique, default, none</code></td>
+		</tr>
+		<tr>
+			<td>Rule</td>
+			<td>Rules for store and edit data.</td>
+			<td><code>required, nullable, image, max:190,<br> min:3, unique, boolean, exists:users,id,<br> numeric, file|image|mimetypes:image/*</code></td>
+		</tr>
+		<tr>
+			<td>Help</td>
+			<td>Help block in forms.</td>
+			<td>Title should be unique and must not be same with H1.</td>
+		</tr>
+		<tr>
+			<td>Form Type</td>
+			<td>Define type of input in form.</td>
+			<td><code>textarea, ckeditor, entity, checkbox,<br> enum, color, date, time, switch,<br> password, email, file, number, none</code></td>
+		</tr>
+		<tr>
+			<td>Table</td>
+			<td>Show field in table or not.</td>
+			<td><code>true, false</code></td>
+		</tr>		
+	</tbody>
+</table> 
+
 
 
 This is my array in blog model:
@@ -181,41 +215,8 @@ public $columns = [
 ```
 
 
-
 ## Features
 
-migration:
-
-https://github.com/faridsh69/cms/blob/master/database/migrations/2014_10_12_000010_create_users_table.php 
-
-```php
-use App\Services\MigrationService;
-class CreateUsersTable extends MigrationService
-{
-    public $model = 'User';
-}
-
-```
-Controller:
-
-https://github.com/faridsh69/cms/blob/master/app/Http/Controllers/Admin/Blog/ResourceController.php
-
-```php
-namespace App\Http\Controllers\Admin\Blog;
-use App\Http\Controllers\Base\ListController;
-class ResourceController extends ListController
-{
-	public $model = 'Blog';
-}
-```
-
-Seeders:
-
-Factory:
-
-Unittest:
-
-...
 
 ## Install
 
