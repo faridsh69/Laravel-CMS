@@ -146,25 +146,29 @@ Define the login of models and database design all in your models.
 This is my array in blog model:
 
 ```php
-public $columns = [
-	[
-	    'name' => 'title',
-	    'type' => 'string',
-	    'database' => 'unique',
-	    'rule' => 'required|max:60|min:10|unique:blogs,title,',
-	    'help' => 'Title should be unique, minimum 10 and maximum 60 characters.',
-	    'form_type' => '',
-	    'table' => true,
-	],
-	[
-	    'name' => 'url',
-	    'type' => 'string',
-	    'database' => 'unique',
-	    'rule' => 'required|max:80|regex:/^[a-z0-9-]+$/|unique:blogs,url,',
-	    'help' => 'Url should be unique, contain lowercase characters and numbers and -',
-	    'form_type' => '',
-	    'table' => true,
-	],
+
+	class User extends Authenticatable
+	{
+		public $columns = [
+		[
+			'name' => 'first_name',
+			'type' => 'string',
+			'database' => 'nullable',
+			'rule' => 'required|max:100',
+			'help' => 'Write your first name',
+			'form_type' => 'text',
+			'table' => true,
+		],
+		[
+			'name' => 'gender',
+			'type' => 'boolean',
+			'database' => 'default',
+			'rule' => 'boolean',
+			'help' => 'Male of female',
+			'form_type' => 'checkbox',
+			'table' => false,
+		],
+	...
 ];
 ```
 
@@ -212,6 +216,21 @@ public $columns = [
 		</tr>		
 	</tbody>
 </table> 
+
+	class Blog extends App\Services\BaseModel
+	{
+		public $columns = [
+			['name' => 'title'],
+			['name' => 'url'],
+			['name' => 'description'],
+			['name' => 'content'],
+			['name' => 'keywords'],
+			['name' => 'image'],
+			['name' => 'activated'],
+			['name' => 'google_index'],
+			['name' => 'canonical_url']
+		];
+	}
 
 ## Install
 
