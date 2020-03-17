@@ -142,6 +142,32 @@ public $columns = [
 	
 Define the login of models and database design all in your models.
 
+
+This is my array in blog model:
+
+```php
+public $columns = [
+	[
+	    'name' => 'title',
+	    'type' => 'string',
+	    'database' => 'unique',
+	    'rule' => 'required|max:60|min:10|unique:blogs,title,',
+	    'help' => 'Title should be unique, minimum 10 and maximum 60 characters.',
+	    'form_type' => '',
+	    'table' => true,
+	],
+	[
+	    'name' => 'url',
+	    'type' => 'string',
+	    'database' => 'unique',
+	    'rule' => 'required|max:80|regex:/^[a-z0-9-]+$/|unique:blogs,url,',
+	    'help' => 'Url should be unique, contain lowercase characters and numbers and -',
+	    'form_type' => '',
+	    'table' => true,
+	],
+];
+```
+
 <table class="table">
 	<thead>
 		<th>Attribute</th>
@@ -186,34 +212,6 @@ Define the login of models and database design all in your models.
 		</tr>		
 	</tbody>
 </table> 
-
-
-
-This is my array in blog model:
-
-```php
-public $columns = [
-[
-    'name' => 'title',
-    'type' => 'string',
-    'database' => 'unique',
-    'rule' => 'required|max:60|min:10|unique:blogs,title,',
-    'help' => 'Title should be unique, minimum 10 and maximum 60 characters.',
-    'form_type' => '',
-    'table' => true,
-],
-[
-    'name' => 'url',
-    'type' => 'string',
-    'database' => 'unique',
-    'rule' => 'required|max:80|regex:/^[a-z0-9-]+$/|unique:blogs,url,',
-    'help' => 'Url should be unique, contain lowercase characters and numbers and -',
-    'form_type' => '',
-    'table' => true,
-],
-];
-```
-
 
 ## Features
 
