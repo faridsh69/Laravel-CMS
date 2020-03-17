@@ -27,11 +27,11 @@ Auto generate:
 1. policies
 
 
-Controller sample code:
+Admin Controllers:
 
 ```php
 namespace App\Http\Controllers\Admin\Blog;
-use App\Base\BaseListController;
+use App\Services\BaseListController;
 class ResourceController extends BaseListController
 {
 	public $model = 'Blog';
@@ -41,10 +41,21 @@ class ResourceController extends BaseListController
 Migrations:
 
 ```php
-use App\Base\BaseMigration;
+use App\Services\BaseMigration;
 class CreateBlogsTable extends BaseMigration
 {
-public $model = 'Blog';
+	public $model = 'Blog';
+}
+```
+
+Form:
+
+```php
+namespace App\Forms;
+use App\Services\BaseForm;
+class BlogForm extends BaseForm
+{
+    public $model_name = 'Blog';
 }
 ```
 
@@ -52,7 +63,7 @@ Tests:
 
 ```php
 namespace Tests\Unit;
-use App\Base\BaseTest;
+use App\Services\BaseTest;
 class BlogTest extends BaseTest
 {
     public $model = 'Blog';
@@ -64,46 +75,23 @@ class BlogTest extends BaseTest
 }
 ```
 
-RouteServiceProvider
+Policy:
 
 ```php
-public function map()
+namespace App\Policies;
+use App\Services\BasePolicy;
+class BlogPolicy extends BasePolicy
 {
-    $this->mapAdminRoutes();
-    $this->mapApiRoutes();
-    $this->mapAuthRoutes();
-    $this->mapFrontRoutes();
+    public $model = 'Blog';
 }
 ```
 
 Factories always will generated automaticly for seed or unit test
 
 ```php
-use App\Base\BaseFactory;
+use App\Services\BaseFactory;
 $base_factory = new BaseFactory();
 $base_factory->index($factory);
-```
-
-Form:
-
-```php
-namespace App\Forms;
-use App\Base\BaseForm;
-class BlogForm extends BaseForm
-{
-    public $model_name = 'Blog';
-}
-```
-
-Policy: (You can ovveride any functions that you want to customise)
-
-```php
-namespace App\Policies;
-use App\Base\BasePolicy;
-class BlogPolicy extends BasePolicy
-{
-    public $model = 'Blog';
-}
 ```
 
 Model: Just need to define columns array, and let the system handle everything.
@@ -119,9 +107,6 @@ public $columns = [
 	'form_type' => '',
 	'table' => true,
     ],
-    .
-    .
-    .
 ];
 ```
 
