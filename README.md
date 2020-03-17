@@ -142,9 +142,6 @@ public $columns = [
 	
 Define the login of models and database design all in your models.
 
-
-This is my array in blog model:
-
 ```php
 
 class User extends Authenticatable
