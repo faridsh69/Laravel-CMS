@@ -147,27 +147,27 @@ This is my array in blog model:
 
 ```php
 
-	class User extends Authenticatable
-	{
-		public $columns = [
-		[
-			'name' => 'first_name',
-			'type' => 'string',
-			'database' => 'nullable',
-			'rule' => 'required|max:100',
-			'help' => 'Write your first name',
-			'form_type' => 'text',
-			'table' => true,
-		],
-		[
-			'name' => 'gender',
-			'type' => 'boolean',
-			'database' => 'default',
-			'rule' => 'boolean',
-			'help' => 'Male of female',
-			'form_type' => 'checkbox',
-			'table' => false,
-		],
+class User extends Authenticatable
+{
+	public $columns = [
+	[
+		'name' => 'first_name',
+		'type' => 'string',
+		'database' => 'nullable',
+		'rule' => 'required|max:100',
+		'help' => 'Write your first name',
+		'form_type' => 'text',
+		'table' => true,
+	],
+	[
+		'name' => 'gender',
+		'type' => 'boolean',
+		'database' => 'default',
+		'rule' => 'boolean',
+		'help' => 'Male of female',
+		'form_type' => 'checkbox',
+		'table' => false,
+	],
 	...
 ];
 ```
@@ -217,20 +217,23 @@ This is my array in blog model:
 	</tbody>
 </table> 
 
-	class Blog extends App\Services\BaseModel
-	{
-		public $columns = [
-			['name' => 'title'],
-			['name' => 'url'],
-			['name' => 'description'],
-			['name' => 'content'],
-			['name' => 'keywords'],
-			['name' => 'image'],
-			['name' => 'activated'],
-			['name' => 'google_index'],
-			['name' => 'canonical_url']
-		];
-	}
+```php
+
+class Blog extends App\Services\BaseModel
+{
+	public $columns = [
+		['name' => 'title'],
+		['name' => 'url'],
+		['name' => 'description'],
+		['name' => 'content'],
+		['name' => 'keywords'],
+		['name' => 'image'],
+		['name' => 'activated'],
+		['name' => 'google_index'],
+		['name' => 'canonical_url']
+	];
+}
+```
 
 ## Install
 
