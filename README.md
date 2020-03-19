@@ -154,7 +154,7 @@ Setting in Admin Panel
 
 	API authentication by OAUTH2
 
- 
+
 ## Used Packages
 
 	admin theme: "kinshines/metronic"
@@ -286,7 +286,6 @@ php artisan migrate
 
 php artisan db:seed
 
-./vendor/bin/phpunit
 ```
 
 ## Usage
@@ -312,12 +311,17 @@ php artisan backup:run
 php artisan passport:client --password
 php artisan passport:install
 php artisan apidoc:generate
+
+./vendor/bin/phpunit
+./vendor/bin/ecs check app --fix
+
 ```
 
 
 ## Demo
 
 [www.cms-laravel.com](http://www.cms-laravel.com)
+[www.cms-laravel.com/document](http://www.cms-laravel.com/document)
 
 ## Codestyle
 
