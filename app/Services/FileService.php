@@ -14,6 +14,7 @@ class FileService extends BaseService
 
     public function save($file, $model, $title = 'file')
     {
+        // this service can upload both single and array of files
         $gallery = $file;
         if(! is_array($file)){
             $gallery = [$file];

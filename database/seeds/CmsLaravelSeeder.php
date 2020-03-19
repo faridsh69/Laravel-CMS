@@ -394,8 +394,8 @@ class CmsLaravelSeeder extends Seeder
             ],
             [
                 'type' => 'header',
-                'title' => 'Laravel CMS Models',
-                'description' => 'Write What you need in your model columns',
+                'title' => 'Everything Is Ready!',
+                'description' => 'Just define your logic',
                 'url' => 'document-model',
                 'image' => $image_folder_name . 'header-2.png',
             ],
@@ -516,25 +516,25 @@ Provided structure for adding theme to Laravel project with blocks and widgets.
             [
                 'type' => 'service',
                 'title' => 'Model',
-                'url' => 'document-model',
+                'url' => 'model',
                 'image' => $image_folder_name . 'documents/model.png',
             ],
             [
                 'type' => 'service',
                 'title' => 'Form',
-                'url' => 'document/form',
+                'url' => 'form',
                 'image' => $image_folder_name . 'documents/form.png',
             ],
             [
                 'type' => 'service',
                 'title' => 'Migration',
-                'url' => 'document/form',
+                'url' => 'form',
                 'image' => $image_folder_name . 'documents/migration.png',
             ],
             [
                 'type' => 'service',
                 'title' => 'Notification',
-                'url' => 'document/form',
+                'url' => 'form',
                 'image' => $image_folder_name . 'documents/notification.png',
             ],
             // Pricing

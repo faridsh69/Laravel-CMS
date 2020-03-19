@@ -50,7 +50,7 @@ class BlocksTableSeeder extends Seeder
             ],
             [
             	'id' => 6,
-                'order' => 18,
+                'order' => 29,
             	'type' => 'content',
                 'show_all_pages' => 1,
                 'pages_list' => [],
@@ -198,6 +198,7 @@ class BlocksTableSeeder extends Seeder
             $block_model = Block::updateOrCreate(
                 ['id' => $block['id']],
                 [
+                    'title' => $block['type'],
                     'order' => $block['order'],
                     'type' => $block['type'],
                     'show_all_pages' => $block['show_all_pages'],

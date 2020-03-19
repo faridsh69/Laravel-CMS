@@ -48,7 +48,9 @@ class CreateSpatieTagsTable extends Migration
 
 	public function down()
 	{
-		return true;
+		if(Schema::hasTable('tagging_tagged')){
+			return true;
+		}
 		Schema::disableForeignKeyConstraints();
 		Schema::table('tagging_tags', function ($table) {
 			$table->dropForeign('tagging_tags_tag_group_id_foreign');

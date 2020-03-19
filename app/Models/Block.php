@@ -7,6 +7,7 @@ use App\Services\BaseModel;
 class Block extends BaseModel
 {
     public $columns = [
+        ['name' => 'title'],
         [
             'name' => 'type',
             'type' => 'string',

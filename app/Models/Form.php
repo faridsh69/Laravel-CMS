@@ -33,12 +33,29 @@ class Form extends BaseModel
             'help' => 'Select a block with form type.',
             'form_type' => 'entity',
             'class' => 'App\Models\Block',
-            'property' => 'id',
+            'property' => 'title',
             'property_key' => 'id',
             'multiple' => false,
             'table' => false,
         ],
-        // ['name' => 'authentication'], // always need authentication
+        [
+            'name' => 'authentication',
+            'type' => 'boolean',
+            'database' => 'default',
+            'rule' => 'boolean',
+            'help' => 'Only authenticated users can answer this form.',
+            'form_type' => 'checkbox-m',
+            'table' => false,
+        ],
+        [
+            'name' => 'notification',
+            'type' => 'boolean',
+            'database' => 'default',
+            'rule' => 'boolean',
+            'help' => 'Send sms and email to admin and user.',
+            'form_type' => 'checkbox-m',
+            'table' => false,
+        ],
     ];
 
     public function fields()

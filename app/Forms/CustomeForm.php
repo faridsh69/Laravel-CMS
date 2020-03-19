@@ -23,10 +23,20 @@ class CustomeForm extends Form
                     'text' => $help,
                 ],
             ];
+
             if(explode('_', $form_type)[0] === 'upload'){
-                $file_accept = explode('_', $form_type)[1];
+                $file_accept = 'file';
+                $field_type_array = explode('_', $form_type);
+                if(isset($field_type_array[1])){
+                    $file_accept = $field_type_array[1];
+                }
+                $file_multiple = false;
+                if(isset($field_type_array[2])){
+                    $file_multiple = true;
+                }
                 $form_type = 'file';
             }
+
             // default type for form input type is text-m
             $input_type = 'text-m';
 
@@ -77,11 +87,8 @@ class CustomeForm extends Form
                 if($file_accept !== 'file'){
                     $options['attr']['accept'] = $file_accept . '/*';
                 }
-                if($this->model){
-                    $options['files_src'] = $this->model->files_src($name);
-                }else{
-                    $options['files_src'] = json_encode([]);
-                }
+                $options['attr']['multiple'] = $file_multiple;
+                $options['files_src'] = json_encode([]);
             }
 
             $this->add($name, $input_type, $options);

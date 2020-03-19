@@ -23,6 +23,12 @@ class PageController extends Controller
     public function postSubmitForm($form_id, Request $request, \App\Models\Answer $answer)
     {
         $form_model = Form::find($form_id);
+        if($form_model->authentication == true){
+            if (!\Auth::check()) {
+                return redirect()->route('auth.login');
+            }
+        }
+
         $form = \FormBuilder::create(\App\Forms\CustomeForm::class, ['form_model' => $form_model]);
 
         if (! $form->isValid()) {
@@ -32,7 +38,8 @@ class PageController extends Controller
         $main_data = $data;
         $files = [];
         foreach($main_data as $key => $item){
-            if(is_object($item)){
+            // single file or multiple file
+            if(is_object($item) || is_array($item)){
                 $files[$key] = $item;
                 unset($data[$key]);
             }
@@ -47,6 +54,15 @@ class PageController extends Controller
         foreach($files as $column => $file) {
             $file_service = new \App\Services\FileService();
             $file_service->save($file, $answer, $column);
+        }
+
+        // send sms to user and admin
+        if($form_model->notification == true){
+            $form_submitted =  new \App\Notifications\FormSubmitted();
+
+            $admin_user = \App\Models\User::getAdminUser();
+            $admin_user->notify($form_submitted);
+            \Auth::user()->notify($form_submitted);
         }
 
         $request->session()->flash('alert-success', 'Congratulation, Your answer saved successfully!');

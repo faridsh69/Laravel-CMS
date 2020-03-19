@@ -8,6 +8,13 @@ use Tests\TestCase;
 class SettingTest extends TestCase
 {
 	public $methods = [
+        'dashboard.list.index',
+        'dashboard.activity',
+        'dashboard.profile',
+        'dashboard.identify',
+        'category.tree',
+        'report.list.index',
+        'media.list.index',
         'setting.general',
         'setting.contact',
         'setting.developer',
@@ -17,9 +24,6 @@ class SettingTest extends TestCase
         'setting.api',
         'setting.seo.crowl',
         'setting.seo.content-rules',
-        'report.list.index',
-        'dashboard.list.index',
-        'media.list.index',
     ];
 
     public function test()

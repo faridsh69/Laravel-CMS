@@ -28,19 +28,6 @@ class Factor extends BaseModel
     const PAYMENT_ONLINE = 'پرداخت آنلاین';
 
     public $columns = [
-        // ['name' => 'title'],
-        // ['name' => 'file'],
-        // ['name' => 'image'],
-        // ['name' => 'video'],
-        // ['name' => 'audio'],
-        // ['name' => 'text'],
-        // ['name' => 'upload_file'],
-        // ['name' => 'upload_image'],
-        // ['name' => 'upload_video'],
-        // ['name' => 'upload_audio'],
-        // ['name' => 'upload_text'],
-        // ['name' => 'upload_file_gallery'],
-        // ['name' => 'gallery'],
         // // [
         // //     'name' => 'gallery',
         // //     'type' => 'files_array',
@@ -115,10 +102,6 @@ class Factor extends BaseModel
         //     'table' => false,
         // ],
 
-
-
-
-
     	[
             'name' => 'total_price',
             'type' => 'unsignedBigInteger',
@@ -179,7 +162,8 @@ class Factor extends BaseModel
             'database' => 'nullable',
             'rule' => '',
             'help' => '',
-            'form_type' => 'enum', // it should have enum types
+            'form_type' => 'enum',
+            'form_enum_class' => 'FactorStatus',
             'table' => true,
         ],
         [

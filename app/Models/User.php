@@ -281,7 +281,7 @@ class User extends Authenticatable
         return $this->first_name . ' ' . $this->last_name;
     }
 
-    public function getAdminUser()
+    public static function getAdminUser()
     {
         return self::where('id', 1)->first();
     }

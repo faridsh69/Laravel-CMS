@@ -103,7 +103,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <br>
     @endif
     @if(config('setting-contact.whatsapp'))
-    <a target="_blank" title="Whatsapp" href="https://wa.me/{{ config('setting-contact.whatsapp') }}/?text=help" >
+    <a target="_blank" title="Whatsapp" href="https://api.whatsapp.com/send?phone={{ config('setting-contact.whatsapp') }}" >
         <img src="{{ asset('/images/front/general/whatsapp.png') }}">
     </a>
     @endif

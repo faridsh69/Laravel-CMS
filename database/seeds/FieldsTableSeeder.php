@@ -100,6 +100,15 @@ class FieldsTableSeeder extends Seeder
                 'activated' => 1,
             ],
             [
+                'form_type' => 'upload_file_multiple',
+                'name' => 'documents',
+                'order' => 25,
+                'help' => 'select multiple file',
+                'rule' => 'nullable',
+                'options' => '',
+                'activated' => 1,
+            ],
+            [
                 'form_type' => 'upload_image',
                 'name' => 'profile_picture',
                 'order' => 26,
@@ -166,6 +175,8 @@ class FieldsTableSeeder extends Seeder
             'activated' => 1,
             'language' => 'en',
             'block_id' => 23,
+            'authentication' => 1,
+            'notification' => 1,
         ]);
 
         $fields = Field::get();
