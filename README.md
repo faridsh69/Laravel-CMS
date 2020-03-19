@@ -1,4 +1,4 @@
-# Laravel CMS - Just Think About Logic
+# Laravel CMS - Every thing is ready!
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
@@ -59,6 +59,19 @@ class BlogForm extends BaseForm
 }
 ```
 
+
+API:
+
+```php
+<?php
+namespace App\Http\Controllers\Api\V1;
+use App\Services\BaseApiController;
+class ProductController extends BaseApiController
+{
+    public $model = 'Product';
+}
+```
+
 Tests:
 
 ```php
@@ -110,6 +123,38 @@ public $columns = [
 ];
 ```
 
+Setting in Admin Panel
+
+	App Debug
+	App Environment
+	App Language
+	Theme
+	Direction
+
+	App Tile
+	Logo
+	Favicon
+	Google Index
+	Google Map Code
+	Google Analytics
+	Hotjar
+	Crisp ID
+	Email, Phone and other contact informations
+
+	Global Script
+	Global Styles
+	Throttle
+	Seo Parameters to check on data entry
+	SMS and Email authentication
+	Notification Sending Trigger
+
+	Manage Backup
+
+	Check Logs
+
+	API authentication by OAUTH2
+
+ 
 ## Used Packages
 
 	admin theme: "kinshines/metronic"
