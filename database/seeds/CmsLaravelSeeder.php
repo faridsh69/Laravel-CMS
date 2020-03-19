@@ -92,32 +92,113 @@ class CmsLaravelSeeder extends Seeder
             [
                 'title' => 'Open Source Full-Featured CMS',
                 'url' => null,
-                'content' => null,
                 'image' => asset($image_folder_name . 'setting-logo.png'),
                 'description' => 'CMS Laravel is an open source project with Laravel contains all usefull packages and services for developing in the fastest way.',
-                'activated' => 1,
-                'google_index' => 1,
-                'view_code_url' => '',
             ],
             [
                 'title' => 'Document',
                 'url' => 'document',
-                'content' => null,
                 'image' => asset($image_folder_name . 'setting-logo.png'),
                 'description' => 'How to use laravel cms and understand new design patterns that used in this cms.',
-                'activated' => 1,
-                'google_index' => 1,
-                'view_code_url' => 'front.components.documents.index',
+                'view_code_url' => 'front.components.documents.getting-started',
             ],
             [
-                'title' => 'Model Service',
-                'url' => 'document-model',
+                'title' => 'Getting Started',
+                'url' => 'getting-started',
+                'image' => asset($image_folder_name . 'setting-logo.png'),
+                'description' => 'How to use laravel cms and understand new design patterns that used in this cms.',
+                'view_code_url' => 'front.components.documents.getting-started',
+            ],
+            [
+                'title' => 'Model',
+                'url' => 'model',
                 'image' => asset($image_folder_name . 'documents/model.png'),
                 'description' => 'How to write your models in cms-laravel to see how whole project will run with just one array in your model and try to find out why this cms can help to develop more easier and faster.',
                 'view_code_url' => 'front.components.documents.model',
-                'content' => '',
-                'activated' => 1,
-                'google_index' => 1,
+            ],
+            [
+                'title' => 'Setting',
+                'url' => 'setting',
+                'image' => asset($image_folder_name . 'documents/setting.png'),
+                'description' => 'Everything is configured in settings at laravel CMS. Feel free to check settings section.',
+                'view_code_url' => 'front.components.documents.setting',
+            ],
+            [
+                'title' => 'Migration',
+                'url' => 'migration',
+                'image' => asset($image_folder_name . 'documents/migration.png'),
+                'description' => 'How to use migration service to create or modify tables based on model changes.',
+                'view_code_url' => 'front.components.documents.migration',
+            ],
+            [
+                'title' => 'Form',
+                'url' => 'form',
+                'image' => asset($image_folder_name . 'documents/form.png'),
+                'description' => 'Get familiar with all forms types and use them, all type of form inputs craeted and is ready to develop by laravel-form-builder',
+                'view_code_url' => 'front.components.documents.form',
+            ],
+            [
+                'title' => 'Factory',
+                'url' => 'factory',
+                'image' => asset($image_folder_name . 'documents/factory.png'),
+                'description' => 'Factory is used for seed fake data in database and also it used in tests. factory will generate automatically based on your model columns.',
+                'view_code_url' => 'front.components.documents.factory',
+            ],
+            [
+                'title' => 'Seeder',
+                'url' => 'seeder',
+                'image' => asset($image_folder_name . 'documents/seeder.png'),
+                'description' => 'You dont need to write any seeders, just add models that you want to seed fake data to config/services.php file.',
+                'view_code_url' => 'front.components.documents.seeder',
+            ],
+            [
+                'title' => 'Route',
+                'url' => 'route',
+                'image' => asset($image_folder_name . 'documents/route.png'),
+                'description' => 'Routes seperated in admin, auth, api and front part and take a look they are easy to read and understand.',
+                'view_code_url' => 'front.components.documents.route',
+            ],
+            [
+                'title' => 'Controller',
+                'url' => 'controller',
+                'image' => asset($image_folder_name . 'documents/controller.png'),
+                'description' => 'Every controller in cms admin is extended from baseListController and every thing will be ready.',
+                'view_code_url' => 'front.components.documents.controller',
+            ],
+            [
+                'title' => 'Export, Import, Print',
+                'url' => 'export-import-print',
+                'image' => asset($image_folder_name . 'documents/export-import-print.png'),
+                'description' => 'Admin panel contains three urls to import, export and print all the data in that table.',
+                'view_code_url' => 'front.components.documents.export-import-print',
+            ],
+            [
+                'title' => 'API',
+                'url' => 'api',
+                'image' => asset($image_folder_name . 'documents/api.png'),
+                'description' => 'All apis is ready! There is a powefull baseApiController that needed to be extended and your api is fully ready.',
+                'view_code_url' => 'front.components.documents.api',
+            ],
+            [
+                'title' => 'Notification',
+                'url' => 'notification',
+                'image' => asset($image_folder_name . 'documents/notification.png'),
+                'description' => 'Sending notification for different events like login, register, update profile and create a factor with multilanuage support is ready to use.',
+                'view_code_url' => 'front.components.documents.notification',
+            ],
+            [
+                'title' => 'Test',
+                'url' => 'test',
+                'image' => asset($image_folder_name . 'documents/test.png'),
+                'description' => 'For all admin routes there are tests that can be run by vendor/bin/phpunit.',
+                'view_code_url' => 'front.components.documents.test',
+            ],
+            [
+                'title' => 'File',
+                'url' => 'file',
+                'image' => asset($image_folder_name . 'documents/file.png'),
+                'description' => 'Uploading video, multiple files, validation on it, create thumbnail for images is ready now.',
+                'view_code_url' => 'front.components.documents.file',
             ],
             [
                 'title' => 'About',
@@ -221,8 +302,80 @@ class CmsLaravelSeeder extends Seeder
             ],
             [
                 'type' => 'menu',
+                'title' => 'Getting Started',
+                'url' => 'getting-started',
+                'parent_url' => 'document',
+            ],
+            [
+                'type' => 'menu',
+                'title' => 'Setting',
+                'url' => 'setting',
+                'parent_url' => 'document',
+            ],
+            [
+                'type' => 'menu',
                 'title' => 'Model',
-                'url' => 'document-model',
+                'url' => 'model',
+                'parent_url' => 'document',
+            ],
+            [
+                'type' => 'menu',
+                'title' => 'Form',
+                'url' => 'form',
+                'parent_url' => 'document',
+            ],
+            [
+                'type' => 'menu',
+                'title' => 'Migration',
+                'url' => 'migration',
+                'parent_url' => 'document',
+            ],
+            [
+                'type' => 'menu',
+                'title' => 'Factory',
+                'url' => 'factory',
+                'parent_url' => 'document',
+            ],
+            [
+                'type' => 'menu',
+                'title' => 'Seeder',
+                'url' => 'seeder',
+                'parent_url' => 'document',
+            ],
+            [
+                'type' => 'menu',
+                'title' => 'Route',
+                'url' => 'route',
+                'parent_url' => 'document',
+            ],
+            [
+                'type' => 'menu',
+                'title' => 'Controller',
+                'url' => 'controller',
+                'parent_url' => 'document',
+            ],
+            [
+                'type' => 'menu',
+                'title' => 'API',
+                'url' => 'api',
+                'parent_url' => 'document',
+            ],
+            [
+                'type' => 'menu',
+                'title' => 'File',
+                'url' => 'file',
+                'parent_url' => 'document',
+            ],
+            [
+                'type' => 'menu',
+                'title' => 'Notification',
+                'url' => 'notification',
+                'parent_url' => 'document',
+            ],
+            [
+                'type' => 'menu',
+                'title' => 'Test',
+                'url' => 'test',
                 'parent_url' => 'document',
             ],
             [
@@ -485,7 +638,7 @@ Provided structure for adding theme to Laravel project with blocks and widgets.
             ],
         ];
 
-        $modules_old = Module::whereIn('type', ['menu', 'header', 'main_feature', 'feature', 'product', 'pricing', 'service', 'partner', 'introduce', 'video', 'faq', 'testimonial'])->get();
+        $modules_old = Module::whereIn('type', ['menu', 'header', 'breadcrumb', 'main_feature', 'feature', 'product', 'pricing', 'service', 'partner', 'introduce', 'video', 'faq', 'testimonial'])->get();
 
         foreach($modules_old as $module){
             $module->activated = 0;
@@ -508,7 +661,7 @@ Provided structure for adding theme to Laravel project with blocks and widgets.
                 $module['title'] = $module['type'];
             }
             if( isset($module['parent_url']) ){
-                $parent = Module::where('url', $module['parent_url'])->first();
+                $parent = Module::where('url', $module['parent_url'])->orderBy('id', 'desc')->first();
                 $module['parent_id'] = $parent->id;
                 unset($module['parent_url']);
             }

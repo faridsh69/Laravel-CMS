@@ -1,12 +1,17 @@
-
-<div class="text-center">
-	<h1>Laravel CMS -  How to use base model service</h1>
-	<p>How to write your models in cms-laravel <br>to see how whole project will run with just one <b>array</b> in your model <br>and try to find out why this cms can help to develop more <b>easier</b> and <b>faster</b>.</p>
-	<img src="{{ $page->image }}">
-</div>
-<h2>Benefits</h2>
+@extends('front.components.documents.index')
+@section('document-data')
+<h1>Model Service</h1>
+<ul class="service-guide">
+	<li><a href="#benefits">Benefits</a></li>
+	<li><a href="#how-to-use">How to use</a></li>
+	<li><a href="#used-packages">Used Packages</a></li>
+	<li><a href="#refrences">Refrences</a></li>
+</ul>
+<p>How to write your models in cms-laravel <br>how project will run with just one <b>array</b> in your model <br>Try to find out why this cms can help to develop more <b>easier</b> and <b>faster</b>.</p><br>
+<img src="{{ $page->image }}">
+<h2 id="benefits">Benefits</h2>
 <p>You want to define columns in model, then develop them in your migrations file, and your forms and all part of your project.<br> When you want to change any column you should search through all your codes and its disgusting,<br> So just define an array about what columns you want in database, forms and table then change it just one time in your model ;)</p>
-<h2>How to use</h2>
+<h2 id="how-to-use">How to use</h2>
 <p>In models we have a $columns array and project is running based on its items, for example we have:
 <pre>
 class User extends Authenticatable
@@ -38,7 +43,6 @@ class User extends Authenticatable
 <p>$column['help']: is using in form inputs help, and this cms is using <a target="blank" href="https://github.com/kristijanhusak/laravel-form-builder">laravel-form-builder</a>.</p>
 <p>$column['form_type']: is using in form inputs and all type of color, date, time, email, password, file, entity, enum and ckeditor can be selected.</p>
 <p>$column['table']: defines that it will show in table or not, this cms is using <a target="blank" href="https://github.com/yajra/laravel-datatables">laravel-datatables</a>.</p>
-<h3>Laravel CMS model column properties</h3>
 <table class="table">
 	<thead>
 		<th>Attribute</th>
@@ -83,7 +87,6 @@ class User extends Authenticatable
 		</tr>		
 	</tbody>
 </table>
-<h4>Other usefull base model features</h4>
 <p>You dont need to define all of this properties again and again, just for usual columns write the name of columns and other parts with autogenerate.</p>
 <pre>
 class Blog extends App\Services\BaseModel
@@ -102,6 +105,17 @@ class Blog extends App\Services\BaseModel
 }
 </pre>
 <p>Blog model is just this and alot of developments for creating migration, seeder, faker and form is skiped! <br>Just test it you would love it.</p>
-<h2>conclusion</h2>
-<p>The most important part in development is storing data in database and editing them.<br>
-With Laravel cms you dont have to develop any repeated and extra codes for getting to this aim, just you have to define your models and tell cms that what type of input you want!</p>
+<h4 id="used-packages">Used Packages</h4>
+<pre>
+form builder: "kris/laravel-form-builder": "^1.20",
+tables: "yajra/laravel-datatables-oracle": "~9.0"
+</pre>
+<h4 id="refrences">Refrences</h4>
+<a href="https://github.com/faridsh69/cms/blob/master/app/Services/BaseModel.php">BaseModel.php</a><br>
+<a href="https://github.com/faridsh69/cms/blob/master/app/Models/Blog.php">Models/Blog.php</a>
+@endsection
+
+
+
+
+
