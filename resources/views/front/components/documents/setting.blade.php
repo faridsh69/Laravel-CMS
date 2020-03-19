@@ -7,10 +7,10 @@
 	<li><a href="#used-packages">Used Packages</a></li>
 	<li><a href="#refrences">Refrences</a></li>
 </ul>
-<p>Everything is configured in settings at laravel CMS. Feel free to check settings section. </p><br>
 <img src="{{ $page->image }}">
 <h2 id="benefits">Benefits</h2>
-<p>This is list of configures that can be change by admin panel setting section:
+<p>Everything is configured in settings at laravel CMS. Feel free to check settings section.</p>
+<p>This is list of configures that can be change by admin panel setting section:</p>
 <pre>
 App Debug
 App Environment
@@ -43,7 +43,7 @@ API authentication by OAUTH2
 </pre>
 </p>
 <h2 id="how-to-use">How to use</h2>
-use all this commands in your admin panel( not need to have access to shell )
+<p>Use all this commands in your admin panel( not need to have access to shell )</p>
 <pre>
 $commands = [
 [

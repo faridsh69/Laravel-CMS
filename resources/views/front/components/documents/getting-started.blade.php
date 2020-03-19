@@ -7,16 +7,15 @@
 	<li><a href="#used-packages">Used Packages</a></li>
 	<li><a href="#refrences">Refrences</a></li>
 </ul>
-<p>How to use laravel cms and understand new design patterns that used in this cms. </p><br>
 <img src="{{ $page->image }}">
 <h2 id="benefits">Benefits</h2>
-# Laravel CMS is an open source project that creates a complete infrastructure with standard code for anyone who wants to use Laravel. Preparing an structure to make GUI in Laravel development in the future
-<br>
-<br>
+<p>How to use laravel cms and understand new design patterns that used in this cms. </p>
+<p>
+# Laravel CMS is an open source project that creates a complete infrastructure with standard code for anyone who wants to use Laravel. Preparing an structure to make GUI in Laravel development in the future</p>
+<p>
 # Prepared services for notification, saving gallery images, creating backup, API authentication, create blogs with comments, rate, categorize and tag, create pages and menus, policies, routes, controllers, and unit tests. Provided structure for adding theme to Laravel project with blocks and modules.
-<br>
-<br>
-Auto generate:
+</p>
+<p>Auto generate:</p>
 <pre>
 migrations
 seeders
@@ -35,15 +34,14 @@ unit test
 policies
 </pre>
 <h2 id="how-to-use">How to use</h2>
-Specify $columns in model then migration, form, seeder, factory, test, admin controller, admin routes, table, api, export to pdf and excel and policies with role and permission will be ready!
-<br><br>
+<p> Specify $columns in model then migration, form, seeder, factory, test, admin controller, admin routes, table, api, export to pdf and excel and policies with role and permission will be ready!</p>
 <pre>
 git clone https://github.com/faridsh69/cms.git
 composer update
 php artisan migrate
 php artisan db:seed
 </pre>
-<h4 id="used-packages">Used Packages</h4>
+<h2 id="used-packages">Used Packages</h2>
 <pre>
 admin theme: "kinshines/metronic"
 form builder: "kris/laravel-form-builder": "^1.20",
@@ -71,6 +69,6 @@ captcha: "anhskohbo/no-captcha"
 category: "lazychaser/laravel-nestedset"
 comment o rate: "actuallymab/laravel-comment"
 </pre>
-<h2 id="refrences">Refrences</h4>
+<h2 id="refrences">Refrences</h2>
 <a target="blank" href="https://github.com/faridsh69/cms/blob/master/app/Services">Writen Services</a><br>
 @endsection

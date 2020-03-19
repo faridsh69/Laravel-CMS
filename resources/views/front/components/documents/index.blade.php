@@ -24,9 +24,8 @@
 	    margin-top: 5px;	
 	}
 	.service-guide{
-		margin-top: 15px;
-		margin-bottom: 15px;
-		margin-left: 15px;
+		margin: 15px;
+		margin-bottom: 40px;
 	}
 	.service-guide li{
 		margin-top: 5px;
@@ -65,8 +64,9 @@
 			['title' => 'File', 'url' => 'file'],
 			['title' => 'Notification', 'url' => 'notification'],
 			['title' => 'Test', 'url' => 'test'],
-			['title' => 'Authentication', 'url' => 'authentication'],
 			['title' => 'Code Style', 'url' => 'code-style'],
+			['title' => 'Authentication', 'url' => 'authentication'],
+			['title' => 'Authorization', 'url' => 'authorization'],
 		];
 		@endphp
 		<ul class="document-list">

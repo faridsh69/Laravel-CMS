@@ -277,6 +277,13 @@ class BaseListController extends Controller
         return redirect()->route('admin.' . $this->model_sm . '.list.index');
     }
 
+    public function getPrint()
+    {
+        $list = $this->repository->all();
+
+        return view('layout.print', compact('list'));
+    }
+
     public function getPdf()
     {
         $list = $this->repository->all();
@@ -284,13 +291,6 @@ class BaseListController extends Controller
         return \PDF::loadView('layout.print', compact('list'))
             ->setPaper('a4', 'landscape')
             ->download($this->model . '.pdf');
-    }
-
-    public function getPrint()
-    {
-        $list = $this->repository->all();
-
-        return view('layout.print', compact('list'));
     }
 
     public function getExport()
