@@ -1,15 +1,4 @@
-@push('style')
-<style>
-	pre{
-		font-size: 87.5%;
-	    color: #e83e8c;
-	    word-break: break-word;
-	}
-	a{
-		color: #007bff;
-	}
-</style>
-@endpush
+
 <div class="text-center">
 	<h1>Laravel CMS -  How to use base model service</h1>
 	<p>How to write your models in cms-laravel <br>to see how whole project will run with just one <b>array</b> in your model <br>and try to find out why this cms can help to develop more <b>easier</b> and <b>faster</b>.</p>

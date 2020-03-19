@@ -90,11 +90,11 @@ class CmsLaravelSeeder extends Seeder
         // Page
         $pages = [
             [
-                'title' => 'Home',
+                'title' => 'Open Source Full-Featured CMS',
                 'url' => null,
                 'content' => null,
                 'image' => asset($image_folder_name . 'setting-logo.png'),
-                'description' => 'CMS Laravel is an open source project with Laravel developed by both basic and advanced services and packages.',
+                'description' => 'CMS Laravel is an open source project with Laravel contains all usefull packages and services for developing in the fastest way.',
                 'activated' => 1,
                 'google_index' => 1,
                 'view_code_url' => '',
