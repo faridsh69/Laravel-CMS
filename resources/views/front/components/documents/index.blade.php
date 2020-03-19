@@ -36,7 +36,7 @@
 		content: "* ";
 		color: #ff2d20;
 	}
-	h2, h3, h4{
+	h2{
 		padding-top: 100px;
 	}
 	pre{
@@ -65,6 +65,8 @@
 			['title' => 'File', 'url' => 'file'],
 			['title' => 'Notification', 'url' => 'notification'],
 			['title' => 'Test', 'url' => 'test'],
+			['title' => 'Authentication', 'url' => 'authentication'],
+			['title' => 'Code Style', 'url' => 'code-style'],
 		];
 		@endphp
 		<ul class="document-list">

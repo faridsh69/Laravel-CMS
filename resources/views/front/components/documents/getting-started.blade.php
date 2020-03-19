@@ -71,6 +71,6 @@ captcha: "anhskohbo/no-captcha"
 category: "lazychaser/laravel-nestedset"
 comment o rate: "actuallymab/laravel-comment"
 </pre>
-<h4 id="refrences">Refrences</h4>
+<h2 id="refrences">Refrences</h4>
 <a target="blank" href="https://github.com/faridsh69/cms/blob/master/app/Services">Writen Services</a><br>
 @endsection

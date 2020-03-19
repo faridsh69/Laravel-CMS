@@ -105,12 +105,12 @@ class Blog extends App\Services\BaseModel
 }
 </pre>
 <p>Blog model is just this and alot of developments for creating migration, seeder, faker and form is skiped! <br>Just test it you would love it.</p>
-<h4 id="used-packages">Used Packages</h4>
+<h2 id="used-packages">Used Packages</h2>
 <pre>
 form builder: "kris/laravel-form-builder": "^1.20",
 tables: "yajra/laravel-datatables-oracle": "~9.0"
 </pre>
-<h4 id="refrences">Refrences</h4>
+<h2 id="refrences">Refrences</h2>
 <a href="https://github.com/faridsh69/cms/blob/master/app/Services/BaseModel.php">BaseModel.php</a><br>
 <a href="https://github.com/faridsh69/cms/blob/master/app/Models/Blog.php">Models/Blog.php</a>
 @endsection

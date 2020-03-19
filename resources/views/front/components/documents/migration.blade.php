@@ -13,14 +13,14 @@
 <p>You need to change migration every time to want to change your model but here base on the model columns migration file will run automatically, because of some special columns like latitude and longitude you can add some extra codes to BaseMigration to run migration by your thoughts.</p>
 <h2 id="how-to-use">How to use</h2>
 In migration define the $model and $rebuild, if $rebuild is true then that table will be droped and migrate again, before drop that table automatically it will create a backup of that table to dont loos your data
-<h4 id="used-packages">Used Packages</h4>
+<h2 id="used-packages">Used Packages</h2>
 <pre>
 activity user log: "spatie/laravel-activitylog": "^3.5",
 role&permission: "spatie/laravel-permission"
 comment o rate: "actuallymab/laravel-comment"
 </pre>
-<h4 id="refrences">Refrences</h4>
-<a target="blank" href="https://github.com/faridsh69/cms/blob/master/app/Services/BaseMigration.php">Base Migration</a><br>
-<a target="blank" href="https://github.com/faridsh69/cms/blob/master/database/migrations/2019_05_10_105731_create_blogs_table.php">Blog Migration</a><br>
+<h2 id="refrences">Refrences</h2>
+<a target="blank" href="https://github.com/faridsh69/cms/blob/master/app/Services/BaseMigration.php">Base Migration Service</a><br>
+<a target="blank" href="https://github.com/faridsh69/cms/blob/master/database/migrations/2019_05_10_105731_create_blogs_table.php">Example: Blog Migration</a><br>
 
 @endsection

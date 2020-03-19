@@ -128,13 +128,13 @@ $commands = [
 ],
 ];
 </pre>
-<h4 id="used-packages">Used Packages</h4>
+<h2 id="used-packages">Used Packages</h2>
 <pre>
 log: "rap2hpoutre/laravel-log-viewer": "^1.1",
 api authentication: "laravel/passport"
 backup: "spatie/laravel-backup"
 </pre>
-<h4 id="refrences">Refrences</h4>
+<h2 id="refrences">Refrences</h2>
 <a target="blank" href="https://github.com/faridsh69/cms/blob/master/app/Models/SettingDeveloper.php">Setting Developer</a><br>
 <a target="blank" href="https://github.com/faridsh69/cms/blob/master/app/Models/SettingGeneral.php">Setting General</a><br>
 <a target="blank" href="https://github.com/faridsh69/cms/blob/master/app/Models/SettingContact.php">Setting Contact</a><br>
