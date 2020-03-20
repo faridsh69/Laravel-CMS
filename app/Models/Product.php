@@ -129,6 +129,4 @@ class Product extends BaseModel implements Commentable
 
         return config('setting-general.default_product_image');
     }
-
-
 }

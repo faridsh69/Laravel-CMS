@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Category;
-use App\Models\Page;
 use App\Models\Tag;
 use Auth;
 use Illuminate\Http\Request;
@@ -63,8 +62,6 @@ class BlogController extends Controller
 
         return redirect()->back();
     }
-
-
 
     public function getCategories()
     {

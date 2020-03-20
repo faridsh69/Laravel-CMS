@@ -32,10 +32,10 @@ class ResourceController extends BaseListController
                 ]
             );
             if(isset($parent)){
-                // $parent->appendNode($node);
+                $parent->appendNode($node);
             }
             if(isset($category->children)){
-                // $this->saveTree($category->children, $node);
+                $this->saveTree($category->children, $node);
             }
         }
     }

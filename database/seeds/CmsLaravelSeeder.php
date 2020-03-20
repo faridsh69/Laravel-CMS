@@ -1,15 +1,15 @@
 <?php
 
-use Illuminate\Database\Seeder;
-use App\Models\Category;
-use App\Models\Page;
-use App\Models\Tag;
 use App\Models\Block;
-use App\Models\User;
+use App\Models\Category;
 use App\Models\Module;
-use App\Models\SettingGeneral;
-use App\Models\SettingDeveloper;
+use App\Models\Page;
 use App\Models\SettingContact;
+use App\Models\SettingDeveloper;
+use App\Models\SettingGeneral;
+use App\Models\Tag;
+use App\Models\User;
+use Illuminate\Database\Seeder;
 
 class CmsLaravelSeeder extends Seeder
 {
@@ -94,6 +94,7 @@ class CmsLaravelSeeder extends Seeder
                 'url' => null,
                 'image' => asset($image_folder_name . 'setting-logo.png'),
                 'description' => 'CMS Laravel is an open source project with Laravel contains all usefull packages and services for developing in the fastest way.',
+                'view_code_url' => 'front.components.documents.getting-started',
             ],
             [
                 'title' => 'Document',
@@ -657,10 +658,10 @@ Provided structure for adding theme to Laravel project with blocks and widgets.
             if(isset($module['video'])){
                 $module['video'] = asset($module['video']);
             }
-            if(!isset($module['title'])){
+            if(! isset($module['title'])){
                 $module['title'] = $module['type'];
             }
-            if( isset($module['parent_url']) ){
+            if(isset($module['parent_url'])){
                 $parent = Module::where('url', $module['parent_url'])->orderBy('id', 'desc')->first();
                 $module['parent_id'] = $parent->id;
                 unset($module['parent_url']);

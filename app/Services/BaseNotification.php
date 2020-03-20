@@ -81,7 +81,7 @@ class BaseNotification extends Notification
 
     public function toMail($notifiable)
     {
-        return (new MailMessage)
+        return (new MailMessage())
             ->subject($this->mail_subject)
             ->greeting($this->heading_title)
             ->line($this->message)

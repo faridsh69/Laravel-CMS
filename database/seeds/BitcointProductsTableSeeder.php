@@ -1,15 +1,13 @@
 <?php
 
 use App\Models\Product;
-use Illuminate\Database\Seeder;
 use App\Models\Tagend;
+use Illuminate\Database\Seeder;
 
 class BitcointProductsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
     public function run()
     {

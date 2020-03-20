@@ -1,5 +1,5 @@
 <?php
-$sidebar = [
+return [
 	[
 		'order' => 0,
 		'title' => 'Dashboard',
@@ -24,7 +24,7 @@ $sidebar = [
 		'permission' => 'SettingGeneral',
 		'type' => 'tree',
 		'icon' => 'flaticon-cogwheel',
-		'children' => [	
+		'children' => [
 			[
 				'order' => 7-1,
 				'title' => 'General',
@@ -221,5 +221,3 @@ $sidebar = [
 		'icon' => 'flaticon-comment',
 	],
 ];
-
-return $sidebar;

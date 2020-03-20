@@ -102,9 +102,9 @@ class FactorService extends BaseService
         foreach($basket_product as $item)
         {
             if($item->discount_price){
-                $total_price += ( $item->pivot->count * $item->discount_price );
+                $total_price += $item->pivot->count * $item->discount_price;
             }else{
-                $total_price += ( $item->pivot->count * $item->price );
+                $total_price += $item->pivot->count * $item->price;
             }
         }
         return $total_price;

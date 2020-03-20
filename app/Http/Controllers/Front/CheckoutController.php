@@ -246,7 +246,7 @@ class CheckoutController extends Controller
             }
 
             $gateway->setCallback(url('checkout/payment/verify'));
-            $gateway->price((10 * $factor->total_price))->ready();
+            $gateway->price(10 * $factor->total_price)->ready();
 
             $refId =  $gateway->refId(); // شماره ارجاع بانک
             $transID = $gateway->transactionId(); // شماره تراکنش

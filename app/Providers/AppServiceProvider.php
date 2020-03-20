@@ -67,7 +67,7 @@ class AppServiceProvider extends ServiceProvider
             App::setLocale($language);
         }
         Validator::extend('seo_headings', '\App\Rules\SeoHeading@passes');
-        
+
         $modules = Cache::remember('modules', $seconds, function () {
             return \App\Models\Module::active()
                 ->language()

@@ -7,15 +7,13 @@ class ModulesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
     public function run()
     {
         $folder_name = env('SEEDER_FOLDER_NAME') ?: 'cms-laravel';
         $image_folder_name = '/storage/files/photos/' . $folder_name . '/';
         $video_folder_name = '/storage/files/videos/' . $folder_name . '/';
-        
+
         $modules = [
             // Menu
             [
@@ -340,7 +338,7 @@ class ModulesTableSeeder extends Seeder
             if(isset($module['video'])){
                 $module['video'] = asset($module['video']);
             }
-            if(!isset($module['title'])){
+            if(! isset($module['title'])){
                 $module['title'] = $module['type'];
             }
             Module::firstOrCreate($module);

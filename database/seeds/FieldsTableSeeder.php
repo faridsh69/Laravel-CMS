@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Models\Field;
 use App\Models\Form;
+use Illuminate\Database\Seeder;
 
 class FieldsTableSeeder extends Seeder
 {

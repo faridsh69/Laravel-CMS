@@ -11,7 +11,7 @@ class CreateSpatieTagsTable extends Migration
 		if(Schema::hasTable('tagging_tagged')){
 			return true;
 		}
-		
+
 		Schema::create('tagging_tagged', function(Blueprint $table) {
 			$table->increments('id');
 			if(config('tagging.primary_keys_type') === 'string') {

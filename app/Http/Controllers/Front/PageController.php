@@ -23,8 +23,8 @@ class PageController extends Controller
     public function postSubmitForm($form_id, Request $request, \App\Models\Answer $answer)
     {
         $form_model = Form::find($form_id);
-        if($form_model->authentication == true){
-            if (!\Auth::check()) {
+        if($form_model->authentication === true){
+            if (! \Auth::check()) {
                 return redirect()->route('auth.login');
             }
         }
@@ -57,7 +57,7 @@ class PageController extends Controller
         }
 
         // send sms to user and admin
-        if($form_model->notification == true){
+        if($form_model->notification === true){
             $form_submitted =  new \App\Notifications\FormSubmitted();
 
             $admin_user = \App\Models\User::getAdminUser();

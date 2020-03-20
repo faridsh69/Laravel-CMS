@@ -94,7 +94,7 @@ $database = [
         ],
     ],
 ];
-if(env('DB_DATABASE') == ''){
+if(env('DB_DATABASE') === ''){
     if(isset($_SERVER['SERVER_NAME'])){
         // database prefix for multiple sites
         $prefix = 'faridsh_0';

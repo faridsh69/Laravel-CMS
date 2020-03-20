@@ -8,7 +8,7 @@ Route::group(['prefix' => 'product', 'as' => 'product.'], function () {
 	Route::get('tag/{tag_url}', 'ProductController@getTag')->name('tag');
 	Route::get('{blog_url}', 'ProductController@show')->name('show');
 	Route::post('{blog_url}/comment', 'ProductController@postComment')->name('comment')
-		->middleware('auth', 'throttle:5,1');
+	    ->middleware('auth', 'throttle:5,1');
 });
 
 Route::group(['prefix' => 'basket', 'as' => 'basket.'], function () {
@@ -22,7 +22,7 @@ Route::group(['prefix' => 'basket', 'as' => 'basket.'], function () {
 	Route::get('quick-register/{phone}', 'BasketController@getQuickRegister');
 });
 
-Route::group(['prefix' => 'checkout', 'as' => 'checkout.', 'middleware' => ['auth'] ], function () {
+Route::group(['prefix' => 'checkout', 'as' => 'checkout.', 'middleware' => ['auth']], function () {
 	Route::get('address', 'CheckoutController@getAddress')->name('address');
 	Route::post('address', 'CheckoutController@postAddress')->name('post-address');
 	Route::get('address/init', 'CheckoutController@getAddressInit')->name('init-address');
@@ -44,7 +44,7 @@ Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
 	Route::get('tag/{tag_url}', 'BlogController@getTag')->name('tag');
 	Route::get('{blog_url}', 'BlogController@show')->name('show');
 	Route::post('{blog_url}/comment', 'BlogController@postComment')->name('comment')
-		->middleware('auth', 'throttle:5,1');
+	    ->middleware('auth', 'throttle:5,1');
 });
 Route::post('submit-form/{form_id}', 'PageController@postSubmitForm')->name('page.submit-form');
 Route::get('{page_url?}', 'PageController@getIndex')->name('page.index');

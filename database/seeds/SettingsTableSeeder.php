@@ -11,7 +11,6 @@ class SettingsTableSeeder extends Seeder
 	{
 		$folder_name = env('SEEDER_FOLDER_NAME') ?: 'cms-laravel';
 		$image_folder_name = '/storage/files/photos/' . $folder_name . '/';
-		$video_folder_name = '/storage/files/videos/' . $folder_name . '/';
 		$general_settings = [
 			'app_title' => 'App Title',
 			'default_meta_title' => 'App Title',
@@ -81,7 +80,7 @@ class SettingsTableSeeder extends Seeder
 			'profile_updated_sms' => false,
 			'profile_updated_mail' => false,
 			'factor_created_sms' => true,
-			'factor_created_mail' => true,			
+			'factor_created_mail' => true,
         ];
         SettingGeneral::updateOrCreate(['id' => 1], $general_settings);
         SettingDeveloper::updateOrCreate(['id' => 1], $developer_settings);

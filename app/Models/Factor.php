@@ -270,9 +270,9 @@ class Factor extends BaseModel
         foreach($factor_product as $item)
         {
             if($item->pivot->discount_price){
-                $total_price += ( $item->pivot->count * $item->pivot->discount_price );
+                $total_price += $item->pivot->count * $item->pivot->discount_price;
             }else{
-                $total_price += ( $item->pivot->count * $item->pivot->price );
+                $total_price += $item->pivot->count * $item->pivot->price;
             }
         }
         return $total_price;

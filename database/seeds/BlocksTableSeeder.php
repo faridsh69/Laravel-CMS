@@ -151,7 +151,7 @@ class BlocksTableSeeder extends Seeder
                 'show_all_pages' => 1,
                 'pages_list' => [],
                 'activated' => 1,
-            ],            
+            ],
             [
                 'id' => 19,
                 'order' => 57,

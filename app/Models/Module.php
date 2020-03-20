@@ -26,7 +26,7 @@ class Module extends BaseModel
         ['name' => 'image'],
         ['name' => 'url'],
         ['name' => 'video'], // for video block
-        ['name' => 'icon'], 
+        ['name' => 'icon'],
         ['name' => 'full_name'],
         [
             'name' => 'parent_id',
