@@ -109,7 +109,8 @@ class BaseForm extends Form
                 $enum_class =  new $enum_class_name();
                 $options['choices'] = $enum_class::data;
                 $input_type = 'select';
-                $options['attr'] = ['class' => 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker'];
+                $options['attr']['class'] = 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker';
+                $options['attr']['data-live-search'] = 'true';
             }
             // create option from a list of models item with specific attribute
             elseif($form_type === 'entity'){

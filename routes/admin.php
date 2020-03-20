@@ -27,6 +27,7 @@ Route::group(['prefix' => $model_sm, 'namespace' => $model, 'as' => $model_sm . 
 });
 }
 Route::get('', 'Dashboard\DashboardController@redirect')->name('redirect');
+Route::get('icons/list', 'Dashboard\DashboardController@getIconsList')->name('icons.list');
 Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'as' => 'dashboard.'], function () {
 	Route::get('', 'DashboardController@index')->name('list.index');
 	Route::get('activity', 'DashboardController@getActivity')->name('activity');

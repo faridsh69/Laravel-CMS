@@ -29,7 +29,7 @@ class BaseModel extends Model
                     'database' => '',
                     'rule' => 'required|min:' . config('setting-developer.seo_title_min')
                     . '|max:' . config('setting-developer.seo_title_max'),
-                    'help' => 'Title should be unique and must not be same with H1.',
+                    'help' => 'Title should be unique.',
                     'form_type' => '',
                     'table' => true,
                 ],
@@ -103,7 +103,7 @@ class BaseModel extends Model
                     'type' => 'string',
                     'database' => 'nullable',
                     'rule' => '',
-                    'help' => 'Select Icon from https://themify.me/themify-icons',
+                    'help' => 'Click: <a target="blank" href="/admin/icons/list">List of Icons</a>',
                     'form_type' => '',
                     'table' => false,
                 ],

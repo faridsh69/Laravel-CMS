@@ -408,55 +408,55 @@ class CmsLaravelSeeder extends Seeder
             [
                 'type' => 'main_feature',
                 'title' => 'Easy to use',
-                'icon' => 'icon-agenda-1', // ti-mobile
+                'icon' => 'fa fa-book', // ti-mobile
                 'description' => 'Feature Description, Feature Description, Feature Description',
             ],
             [
                 'type' => 'main_feature',
                 'title' => 'Loved by all developers',
-                'icon' => 'icon-assistance', // ti-money
+                'icon' => 'fa fa-users', // ti-money
                 'description' => 'Feature Description, Feature Description, Feature Description',
             ],
             [
                 'type' => 'main_feature',
                 'title' => 'Fully supported',
-                'icon' => 'icon-telephone-3', // ti-settings
+                'icon' => 'fa fa-phone', // ti-settings
             ],
             // Feature
             [
                 'type' => 'feature',
                 'title' => 'Open source',
-                'icon' => 'icon-id-card',
+                'icon' => 'fa fa-cloud-upload',
                 'description' => 'Feel free to contribute to this open source project.',
             ],
             [
                 'type' => 'feature',
                 'title' => 'Multi language',
-                'icon' => 'icon-worldwide',
+                'icon' => 'fa fa-language',
                 'description' => 'This cms is multi lingual, both admin and front side.',
             ],
             [
                 'type' => 'feature',
                 'title' => 'Understable',
-                'icon' => 'icon-map',
+                'icon' => 'fa fa-binoculars',
                 'description' => 'You can read document and find out its design patterns.',
             ],
             [
                 'type' => 'feature',
                 'title' => 'Everything is ready',
-                'icon' => 'icon-like',
+                'icon' => 'fa fa-thumbs-o-up',
                 'description' => 'Everything is ready, you just need to write your logic.',
             ],
             [
                 'type' => 'feature',
                 'title' => 'Responsive Themes',
-                'icon' => 'icon-responsive',
+                'icon' => 'fa fa-desktop',
                 'description' => '4 well designed themes are ready for this cms.',
             ],
             [
                 'type' => 'feature',
                 'title' => 'Fast response',
-                'icon' => 'icon-message',
+                'icon' => 'fa fa-tachometer',
                 'description' => 'Appropriate Caches used in this cms.',
             ],
             // Introduce
@@ -487,25 +487,25 @@ Provided structure for adding theme to Laravel project with blocks and widgets.
                 'type' => 'counting',
                 'title' => 'Services Available',
                 'description' => 130,
-                'icon' => 'icon-agenda-1',
+                'icon' => 'fa fa-book',
             ],
             [
                 'type' => 'counting',
                 'title' => 'Developers',
                 'description' => 339,
-                'icon' => 'icon-assistance',
+                'icon' => 'fa fa-users',
             ],
             [
                 'type' => 'counting',
                 'title' => 'Automated Tests',
                 'description' => 187,
-                'icon' => 'icon-id-card',
+                'icon' => 'fa fa-cloud-upload',
             ],
             [
                 'type' => 'counting',
                 'title' => 'Projects',
                 'description' => 237,
-                'icon' => 'icon-message',
+                'icon' => 'fa fa-tachometer',
             ],
             // Products
             [

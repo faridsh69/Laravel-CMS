@@ -289,6 +289,7 @@
     "google index" : "Google Index",
     "canonical url" : "Canonical Url",
     "icon" : "Icon",
+    "icons" : "Icons",
     "first name" : "First name",
     "last_name" : "Last Name",
     "first_name" : "First Name",
@@ -449,8 +450,8 @@
     "not verified" : "not verified",
     "verify" : "verify",
     "user not found" : "User not found!",
-    "password sent to your phone" : "Password sent to your phone",
-    "password sent to your email" : "Password sent to your email",
+    "password sent to your phone" : "New password sent to your phone",
+    "password sent to your email" : "New password sent to your email",
     "basket" : "Basket",
     "milestone" : "Milestone",
     "shippings" : "Shippings"

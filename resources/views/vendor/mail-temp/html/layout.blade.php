@@ -21,9 +21,24 @@
                 width: 100% !important;
             }
         }
+        @if(config('app.locale') === 'fa')
+            h1{
+                text-align: right !important;
+                font-size: 27px !important;
+                direction: rtl;
+            }
+            tr{
+                text-align: right !important;
+                direction: rtl;
+            }
+            body {
+                /*font-family: 'IRANSans',"Helvetica Neue",Helvetica,Arial,sans-serif !important;*/
+                font-family: traditional arabic,helvetica,tahoma;
+            }
+        @endif
     </style>
 
-    <table class="wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+    <table class="wrapper container-table" width="100%" cellpadding="0" cellspacing="0" role="presentation">
         <tr>
             <td align="center">
                 <table class="content" width="100%" cellpadding="0" cellspacing="0" role="presentation">

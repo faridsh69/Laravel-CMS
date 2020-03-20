@@ -202,4 +202,11 @@ class DashboardController extends BaseAdminController
         $this->request->session()->flash('alert-success', __($document_title . ' uploaded'));
         return redirect()->back();
     }
+
+    public function getIconsList()
+    {
+        $this->meta['title'] = __('icons');
+
+        return view('admin.dashboard.icons', ['meta' => $this->meta]);
+    }
 }

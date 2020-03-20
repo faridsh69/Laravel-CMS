@@ -84,56 +84,56 @@ class ModulesTableSeeder extends Seeder
             [
                 'type' => 'main_feature',
                 'title' => 'Feature Title 1',
-                'icon' => 'icon-agenda-1', // ti-mobile
+                'icon' => 'fa fa-book',
                 'description' => 'Feature Description, Feature Description, Feature Description',
             ],
             [
                 'type' => 'main_feature',
                 'title' => 'Feature Title 2',
-                'icon' => 'icon-assistance', // ti-money
+                'icon' => 'fa fa-users',
                 'description' => 'Feature Description, Feature Description, Feature Description',
             ],
             [
                 'type' => 'main_feature',
                 'title' => 'Feature Title 3',
-                'icon' => 'icon-telephone-3', // ti-settings
+                'icon' => 'fa fa-phone', // ti-settings
                 'description' => 'Feature Description, Feature Description, Feature Description',
             ],
             // Feature
             [
                 'type' => 'feature',
                 'title' => 'Feature Title 1',
-                'icon' => 'icon-id-card',
+                'icon' => 'fa fa-cloud-upload',
                 'description' => 'Feature Description, Feature Description, Feature Description',
             ],
             [
                 'type' => 'feature',
                 'title' => 'Feature Title 2',
-                'icon' => 'icon-worldwide',
+                'icon' => 'fa fa-language',
                 'description' => 'Feature Description, Feature Description, Feature Description',
             ],
             [
                 'type' => 'feature',
                 'title' => 'Feature Title 3',
-                'icon' => 'icon-map',
+                'icon' => 'fa fa-binoculars',
                 'description' => 'Feature Description, Feature Description, Feature Description',
             ],
             [
                 'type' => 'feature',
                 'title' => 'Feature Title 4',
-                'icon' => 'icon-like',
+                'icon' => 'fa fa-thumbs-o-up',
                 'description' => 'Feature Description, Feature Description, Feature Description',
             ],
             [
                 'type' => 'feature',
                 'title' => 'Feature Title 5',
-                'icon' => 'icon-responsive',
+                'icon' => 'fa fa-desktop',
                 'description' => 'Feature Description, Feature Description, Feature Description',
             ],
             [
                 'type' => 'feature',
                 'title' => 'Feature Title 6',
-                'icon' => 'icon-message',
+                'icon' => 'fa fa-tachometer',
                 'description' => 'Feature Description, Feature Description, Feature Description',
             ],
             // Introduce
@@ -162,19 +162,19 @@ class ModulesTableSeeder extends Seeder
                 'type' => 'counting',
                 'title' => 'Developers',
                 'description' => 339,
-                'icon' => 'icon-assistance',
+                'icon' => 'fa fa-users',
             ],
             [
                 'type' => 'counting',
                 'title' => 'Online Students',
                 'description' => 187,
-                'icon' => 'icon-id-card',
+                'icon' => 'fa fa-cloud-upload',
             ],
             [
                 'type' => 'counting',
                 'title' => 'Projects',
                 'description' => 37,
-                'icon' => 'icon-message',
+                'icon' => 'fa fa-tachometer',
             ],
             // Products
             [

@@ -81,17 +81,23 @@ class BaseNotification extends Notification
 
     public function toMail($notifiable)
     {
-        return (new MailMessage())
+        return (new MailMessage)
             ->subject($this->mail_subject)
-            ->markdown(
-                'vendor.mail.general',
-                [
-                    'heading_title' => $this->heading_title,
-                    'mail_message' => $this->message,
-                    'app_url' => $this->app_url,
-                    'app_title' => $this->app_title,
-                ]
-            );
+            ->greeting($this->heading_title)
+            ->line($this->message)
+            ->action($this->app_title, $this->app_url);
+
+        // return (new MailMessage())
+        //     ->subject($this->mail_subject);
+        //     ->markdown(
+        //         'vendor.mail.general',
+        //         [
+        //             'heading_title' => $this->heading_title,
+        //             'mail_message' => $this->message,
+        //             'app_url' => $this->app_url,
+        //             'app_title' => $this->app_title,
+        //         ]
+        //     );
     }
 
     public function toSlack($notifiable)
