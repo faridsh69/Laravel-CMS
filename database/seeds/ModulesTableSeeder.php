@@ -154,7 +154,7 @@ class ModulesTableSeeder extends Seeder
                 'type' => 'counting',
                 'title' => 'Courses Available',
                 'description' => 130,
-                'icon' => 'icon-agenda-1',
+                'icon' => 'fa fa-book',
             ],
             [
                 'type' => 'counting',

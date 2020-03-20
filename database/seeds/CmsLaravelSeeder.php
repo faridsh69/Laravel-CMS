@@ -240,7 +240,7 @@ class CmsLaravelSeeder extends Seeder
             'google_analytics_id' => null,
             'site_verification_google_code' => null,
             'hotjar_id' => null,
-            'crisp_id' => null,
+            'crisp_id' => 'c6b3db25-3302-4828-b315-60ca45b03b4e',
         ];
 
         $contact_settings = [
@@ -270,8 +270,8 @@ class CmsLaravelSeeder extends Seeder
             'theme_color_2' => '',
             'scripts' => '<script> console.log("Laravel is running..."); </script>',
             'styles' => '<style>  </style>',
-            'email_username' => 'farid@cms-laravel.com',
-            'email_password' => 'Farid1111111',
+            'email_username' => 'cms.laravel.os@gmail.com',
+            'email_password' => 'uqiawbziifrgskhu',
             'sms_driver' => 'raygansms',
             'sms_sender' => '9830006859000705',
             'sms_api_key' => 'muhammadc22:1234567891',
