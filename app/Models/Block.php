@@ -52,17 +52,19 @@ class Block extends BaseModel
     public static function getPageBlocks($page_id)
     {
         $blocks = self::active()
+            ->with('pages')
             ->orderBy('order', 'asc')
             ->get();
 
         $output_blocks = [];
         foreach($blocks as $block)
         {
-            if($block->show_all_pages && array_search($page_id, $block->pages->pluck('id')->toArray(), true) === false){
+            $block_pages = $block->pages;
+            if($block->show_all_pages && array_search($page_id, $block_pages->pluck('id')->toArray(), true) === false){
                 $output_blocks[] = $block;
             }
 
-            if(! $block->show_all_pages && array_search($page_id, $block->pages->pluck('id')->toArray(), true) !== false){
+            if(! $block->show_all_pages && array_search($page_id, $block_pages->pluck('id')->toArray(), true) !== false){
                 $output_blocks[] = $block;
             }
         }

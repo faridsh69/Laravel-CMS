@@ -12,7 +12,6 @@ class SettingTest extends TestCase
         'dashboard.activity',
         'dashboard.profile',
         'dashboard.identify',
-        'category.tree',
         'report.list.index',
         'media.list.index',
         'setting.general',

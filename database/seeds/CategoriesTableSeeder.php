@@ -8,48 +8,28 @@ class CategoriesTableSeeder extends Seeder
 {
     public function run()
     {
-        $blog_categories = [
+        $categories = [
             [
-                'id' => 1,
-                'title' => 'News',
-                'children' => [
-                    ['id' => 2, 'title' => 'Sport'],
-                    ['id' => 3, 'title' => 'Social'],
-                    ['id' => 4, 'title' => 'Politics'],
-                    [
-                        'id' => 5,
-                        'title' => 'World',
-                    ],
-                ],
+                'title' => 'News'
+            ],
+            [
+                'title' => 'Sport'
+            ],
+            [
+                'title' => 'Social'
+            ],
+            [
+                'title' => 'Politics'
             ],
         ];
 
-        $this->saveTree($blog_categories, null);
-    }
-
-    public function saveTree($categories, $parent)
-    {
-        $order = 0;
-        foreach($categories as $category)
-        {
+        $order = 1;
+        foreach($categories as $category){
+            $category['language'] = 'en';
+            $category['order'] = $order;
+            $category['url'] = Str::slug($category['title']);
+            Category::firstOrCreate($category);
             $order ++;
-            $node = Category::updateOrCreate(
-                ['id' => $category['id']],
-                [
-                    'title' => $category['title'],
-                    'url' => Str::slug($category['title']),
-                    'order' => $order,
-                    'activated' => 1,
-                    'google_index' => 1,
-                ]
-            );
-
-            if(isset($parent)){
-                $parent->appendNode($node);
-            }
-            if(isset($category['children'])){
-                $this->saveTree($category['children'], $node);
-            }
         }
     }
 }

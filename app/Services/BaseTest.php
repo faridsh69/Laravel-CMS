@@ -13,7 +13,6 @@ class BaseTest extends TestCase
     public $model;
 
     public $methods = [
-        // 'pdf',
         'print',
         'export',
         'datatable',

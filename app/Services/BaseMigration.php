@@ -89,10 +89,6 @@ class BaseMigration extends Migration
                     $table->{$type}($name)->{$database}(true);
                 }
             }
-            // for sortable models need to add another column based on trait soratable
-            if($table_name === 'categories'){
-                $table->nestedSet();
-            }
             // for users table need to have rememberToken
             if($table_name === 'users'){
                 $table->rememberToken();

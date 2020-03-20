@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Conner\Tagging\Model\Tag as TagSpatie;
+use Conner\Tagging\Model\Tag as ConnerTag;
 
-class Tag extends TagSpatie
+class Tag extends ConnerTag
 {
     public $columns = [
         [

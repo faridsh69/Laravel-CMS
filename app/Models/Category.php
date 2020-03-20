@@ -3,12 +3,9 @@
 namespace App\Models;
 
 use App\Services\BaseModel;
-use Kalnoy\Nestedset\NodeTrait;
 
 class Category extends BaseModel
 {
-    use NodeTrait;
-
     public $columns = [
         ['name' => 'title'],
         ['name' => 'url'],

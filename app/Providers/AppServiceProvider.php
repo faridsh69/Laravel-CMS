@@ -10,6 +10,7 @@ use Cache;
 use Illuminate\Support\ServiceProvider;
 use Schema;
 use Validator;
+use View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $seconds = 5;
+        $seconds = 60;
         if(! Schema::hasTable('setting_generals') || SettingGeneral::first() === null){
             return 'general settings does not exist!';
         }
@@ -66,5 +67,15 @@ class AppServiceProvider extends ServiceProvider
             App::setLocale($language);
         }
         Validator::extend('seo_headings', '\App\Rules\SeoHeading@passes');
+        
+        $modules = Cache::remember('modules', $seconds, function () {
+            return \App\Models\Module::active()
+                ->language()
+                ->with('children')
+                ->orderBy('order', 'asc')
+                ->orderBy('id', 'desc')
+                ->get();
+        });
+        View::share('modules', $modules);
     }
 }

@@ -49,7 +49,7 @@ class User extends Authenticatable
             'name' => 'phone',
             'type' => 'string',
             'database' => 'nullable',
-            'rule' => 'nullable|phone:AUTO,US,DE,ES,IR',
+            'rule' => 'nullable|numeric',
             'help' => 'International format +4917...',
             'form_type' => 'phone',
             'table' => true,
@@ -58,7 +58,7 @@ class User extends Authenticatable
             'name' => 'telephone',
             'type' => 'string',
             'database' => 'nullable',
-            'rule' => 'nullable|phone:AUTO',
+            'rule' => 'nullable|numeric',
             'help' => 'Home Number',
             'form_type' => '',
             'table' => false,
@@ -293,7 +293,10 @@ class User extends Authenticatable
 
     public function files($title)
     {
-        return $this->files_relation()->where('title', $title)->get();
+        return \Cache::remember('user.' . $this->id . '-' . $title, 60, function () use ($title) {
+            return $this->files_relation()->where('title', $title)->get();
+        });
+        // return $this->files_relation()->where('title', $title)->get();
     }
 
     public function files_src($title)
@@ -309,43 +312,4 @@ class User extends Authenticatable
 
         return config('setting-general.default_user_image');
     }
-
-    public function file_src_thumbnail($title)
-    {
-        if($this->files($title)->first()){
-            return $this->files($title)->first()->file_src_thumbnail;
-        }
-
-        return config('setting-general.default_user_image');
-    }
-
-    // public function getImageAttribute($image)
-    // {
-    //     if(isset($image) && $image) {
-    //         return $image;
-    //     }
-
-    //     return asset(config('setting-general.default_user_image'));
-    // }
-
-    // public function images()
-    // {
-    //     return $this->morphMany('App\Models\Image', 'imageable');
-    // }
-
-    // public function getNationalCardImagesAttribute()
-    // {
-    //     return $this->images->where('title', 'national_card');
-    // }
-
-    // public function getBankCardImagesAttribute()
-    // {
-    //     return $this->images->where('title', 'bank_card');
-    // }
-
-    // public function getCertificateCardImagesAttribute()
-    // {
-    //     return $this->images->where('title', 'certificate_card');
-    // }
-
 }

@@ -9,18 +9,9 @@ foreach($models as $model_sm)
 Route::group(['prefix' => $model_sm, 'namespace' => $model, 'as' => $model_sm . '.'], function () use ($class_name) {
 	Route::get('datatable', 'ResourceController@getDatatable')->middleware('can:datatable,' . $class_name)->name('datatable');
 	Route::get('export', 'ResourceController@getExport')->middleware('can:export,' . $class_name)->name('export');
-	Route::get('pdf', 'ResourceController@getPdf')
-	    ->middleware('can:pdf,' . $class_name)
-	    ->name('pdf');
-	Route::get('print', 'ResourceController@getPrint')
-	    ->middleware('can:print,' . $class_name)
-	    ->name('print');
-	Route::get('import', 'ResourceController@getImport')
-	    ->middleware('can:import,' . $class_name)
-	    ->name('import');
-	Route::get('change-status/{id}', 'ResourceController@getChangeStatus')
-	    ->middleware('can:change-status,' . $class_name)
-	    ->name('change-status');
+	Route::get('import', 'ResourceController@getImport')->middleware('can:import,' . $class_name)->name('import');
+	Route::get('print', 'ResourceController@getPrint')->middleware('can:print,' . $class_name)->name('print');
+	Route::get('change-status/{id}', 'ResourceController@getChangeStatus')->middleware('can:change-status,' . $class_name)->name('change-status');
 	Route::resource('list', 'ResourceController');
 	Route::get('list/{list}/restore', 'ResourceController@getRestore')->name('list.restore');
 	Route::get('', 'ResourceController@getRedirect')->name('redirect');

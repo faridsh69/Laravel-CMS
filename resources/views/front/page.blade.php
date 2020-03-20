@@ -12,8 +12,9 @@
 	}else{
 		$page = new \App\Models\Page();
 	}
-	$blocks = \App\Models\Block::getPageBlocks($page->id);
-	$modules = \App\Models\Module::orderBy('order', 'asc')->orderBy('id', 'desc')->active()->language()->get();
+	$blocks = Cache::remember('blocks.page.' . $page->id, 60, function () use($page) {
+		return \App\Models\Block::getPageBlocks($page->id);
+	});
 @endphp
 @section('content')
 	@foreach($blocks as $block)

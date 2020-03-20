@@ -9,30 +9,6 @@ class ResourceController extends BaseListController
 {
     public $model = 'Category';
 
-    public function index()
-    {
-        $this->authorize('index', $this->model_class);
-        $this->meta['link_name'] = __(strtolower($this->model . '_create'));
-        $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.create');
-        $this->meta['search'] = 1;
-
-        $columns = [];
-        foreach(collect($this->model_columns)->where('table', true) as $column)
-        {
-            $columns[] = [
-                'field' => $column['name'],
-                'title' => preg_replace('/([a-z])([A-Z])/s', '$1 $2', \Str::studly($column['name'])),
-            ];
-        }
-        $categories = $this->repository->orderBy('order', 'asc')->get()->toTree();
-
-        return view('admin.list.tree-table', [
-            'meta' => $this->meta,
-            'columns' => $columns,
-            'categories' => $categories,
-        ]);
-    }
-
     public function postTree()
     {
     	$tree_json = $this->request->categorytree;
@@ -56,16 +32,16 @@ class ResourceController extends BaseListController
                 ]
             );
             if(isset($parent)){
-                $parent->appendNode($node);
+                // $parent->appendNode($node);
             }
             if(isset($category->children)){
-                $this->saveTree($category->children, $node);
+                // $this->saveTree($category->children, $node);
             }
         }
     }
 
     public function getTree()
     {
-    	return $this->repository->orderBy('order', 'asc')->get()->toTree();
+    	return $this->repository->orderBy('order', 'asc')->get();
     }
 }
