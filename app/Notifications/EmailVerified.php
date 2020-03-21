@@ -11,8 +11,8 @@ class EmailVerified extends BaseNotification
     {
         $channel_list = [
             DatabaseChannel::class,
+            'mail',
         ];
-        $channel_list[] = 'mail';
 
         return $channel_list;
     }

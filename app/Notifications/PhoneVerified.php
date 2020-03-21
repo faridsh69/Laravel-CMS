@@ -12,8 +12,8 @@ class PhoneVerified extends BaseNotification
     {
         $channel_list = [
             DatabaseChannel::class,
+            SmsChannel::class,
         ];
-        $channel_list[] = SmsChannel::class;
 
         return $channel_list;
     }
