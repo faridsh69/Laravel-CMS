@@ -200,17 +200,17 @@ class Factor extends BaseModel
 
 	public function address()
     {
-        return $this->belongsTo('App\Models\Address', 'address_id', 'id');
+        return $this->belongsTo(Address::class, 'address_id', 'id');
     }
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User', 'user_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function tagends()
     {
-        return $this->belongsToMany('App\Models\Tagend')->withPivot('value');
+        return $this->belongsToMany(Tagend::class)->withPivot('value');
     }
 
     public function fillFactorProducts()

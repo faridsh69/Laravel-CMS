@@ -45,6 +45,6 @@ class Answer extends BaseModel
 
     public function form()
     {
-        return $this->belongsTo('App\Models\Form', 'form_id', 'id');
+        return $this->belongsTo(Form::class, 'form_id', 'id');
     }
 }

@@ -61,13 +61,4 @@ class Tag extends ConnerTag
     {
         return $this->columns;
     }
-
-    public function getAssetImageAttribute()
-    {
-        if(isset($this->image) && $this->image) {
-            return asset($this->image);
-        }
-
-        return asset(config('setting-general.default_meta_image'));
-    }
 }

@@ -104,12 +104,12 @@ class Product extends BaseModel implements Commentable
 
     public function category()
     {
-        return $this->belongsTo('App\Models\Category', 'category_id', 'id');
+        return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
     public function related_products()
     {
-        return $this->belongsToMany('App\Models\Product', 'related_products', 'product_id', 'related_product_id');
+        return $this->belongsToMany(Product::class, 'related_products', 'product_id', 'related_product_id');
     }
 
     public function file_src($title)

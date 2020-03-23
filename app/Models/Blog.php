@@ -30,7 +30,7 @@ class Blog extends BaseModel implements Commentable
             'rule' => 'nullable|exists:categories,id',
             'help' => '',
             'form_type' => 'entity',
-            'class' => 'App\Models\Category',
+            'class' => Category::class,
             'property' => 'title',
             'property_key' => 'id',
             'multiple' => false,
@@ -43,7 +43,7 @@ class Blog extends BaseModel implements Commentable
             'rule' => 'nullable',
             'help' => '',
             'form_type' => 'entity',
-            'class' => 'App\Models\Tag',
+            'class' => Tag::class,
             'property' => 'name',
             'property_key' => 'id',
             'multiple' => true,
@@ -56,7 +56,7 @@ class Blog extends BaseModel implements Commentable
             'rule' => 'nullable',
             'help' => '',
             'form_type' => 'entity',
-            'class' => 'App\Models\Blog',
+            'class' => Blog::class,
             'property' => 'title',
             'property_key' => 'id',
             'multiple' => true,
@@ -77,11 +77,11 @@ class Blog extends BaseModel implements Commentable
 
     public function category()
     {
-        return $this->belongsTo('App\Models\Category', 'category_id', 'id');
+        return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
     public function related_blogs()
     {
-        return $this->belongsToMany('App\Models\Blog', 'related_blogs', 'blog_id', 'related_blog_id');
+        return $this->belongsToMany(Blog::class, 'related_blogs', 'blog_id', 'related_blog_id');
     }
 }

@@ -59,8 +59,8 @@ class Field extends BaseModel
         ['name' => 'activated'],
     ];
 
-    public function fields()
+    public function forms()
     {
-        return $this->belongsToMany('App\Models\Field', 'field_form', 'form_id', 'field_id');
+        return $this->belongsToMany(Form::class, 'field_form', 'field_id', 'form_id');
     }
 }

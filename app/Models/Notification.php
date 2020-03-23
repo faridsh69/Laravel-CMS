@@ -76,16 +76,8 @@ class Notification extends BaseModel
         ],
     ];
 
-    // public function getDataAttribute($data)
-    // {
-    //     if(isset($data) && $data !== '[]'){
-    //         return json_decode($data)->data;
-    //     }
-    //     return '-';
-    // }
-
     public function user()
     {
-        return $this->belongsTo('App\Models\User', 'notifiable_id', 'id');
+        return $this->belongsTo(User::class, 'notifiable_id', 'id');
     }
 }

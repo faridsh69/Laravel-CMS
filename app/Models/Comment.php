@@ -97,12 +97,12 @@ class Comment extends CommentSpatie
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User', 'commented_id', 'id');
+        return $this->belongsTo(User::class, 'commented_id', 'id');
     }
 
     public function blog()
     {
-        return $this->belongsTo('App\Models\Blog', 'commentable_id', 'id');
+        return $this->belongsTo(Blog::class, 'commentable_id', 'id');
     }
 
     // $user->comment(Commentable $model, $comment = '', $rate = 0);

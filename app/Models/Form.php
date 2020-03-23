@@ -60,7 +60,7 @@ class Form extends BaseModel
 
     public function fields()
     {
-        return $this->belongsToMany('App\Models\Field', 'field_form', 'form_id', 'field_id')
+        return $this->belongsToMany(Field::class, 'field_form', 'form_id', 'field_id')
             ->orderBy('order', 'asc');
     }
 }

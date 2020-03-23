@@ -37,11 +37,11 @@ class Category extends BaseModel
 
     public function products()
     {
-        return $this->hasMany('App\Models\Product', 'category_id', 'id');
+        return $this->hasMany(Product::class, 'category_id', 'id');
     }
 
     public function blogs()
     {
-        return $this->hasMany('App\Models\Blog', 'category_id', 'id');
+        return $this->hasMany(Blog::class, 'category_id', 'id');
     }
 }

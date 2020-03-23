@@ -46,7 +46,7 @@ class Block extends BaseModel
 
     public function pages()
     {
-        return $this->belongsToMany('App\Models\Page', 'block_page', 'block_id', 'page_id');
+        return $this->belongsToMany(Page::class, 'block_page', 'block_id', 'page_id');
     }
 
     public static function getPageBlocks($page_id)

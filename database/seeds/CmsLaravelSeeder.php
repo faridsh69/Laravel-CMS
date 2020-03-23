@@ -271,7 +271,7 @@ class CmsLaravelSeeder extends Seeder
             'scripts' => '<script> console.log("Laravel is running..."); </script>',
             'styles' => '<style>  </style>',
             'email_username' => 'cms.laravel.os@gmail.com',
-            'email_password' => 'uqiawbziifrgskhu',
+            'email_password' => 'uqiawbziifrgskhu1',
             'sms_driver' => 'raygansms',
             'sms_sender' => '9830006859000705',
             'sms_api_key' => 'muhammadc22:1234567891',

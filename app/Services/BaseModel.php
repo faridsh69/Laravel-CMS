@@ -20,7 +20,7 @@ class BaseModel extends Model
     public function getColumns()
     {
         $table_name = $this->getTable();
-        $seconds = 60;
+        $seconds = 1;
         return Cache::remember('models.' . $table_name, $seconds, function () {
             $default_columns = [
                 'title' => [

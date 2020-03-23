@@ -257,7 +257,7 @@ class User extends Authenticatable
 
     public function addresses()
     {
-        return $this->hasMany('App\Models\Address', 'user_id', 'id');
+        return $this->hasMany(Address::class, 'user_id', 'id');
     }
 
     public function routeNotificationForSlack($notification)
@@ -272,8 +272,7 @@ class User extends Authenticatable
 
     public function canCommentWithoutApprove(): bool
     {
-        return false;
-        return $this->activated;
+        return true;
     }
 
     public function getFullNameAttribute()
@@ -288,7 +287,7 @@ class User extends Authenticatable
 
     public function files_relation()
     {
-        return $this->morphMany('App\Models\File', 'fileable');
+        return $this->morphMany(File::class, 'fileable');
     }
 
     public function files($title)
@@ -296,7 +295,6 @@ class User extends Authenticatable
         return \Cache::remember('user.' . $this->id . '-' . $title, 60, function () use ($title) {
             return $this->files_relation()->where('title', $title)->get();
         });
-        // return $this->files_relation()->where('title', $title)->get();
     }
 
     public function files_src($title)

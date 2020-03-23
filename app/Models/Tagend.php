@@ -97,14 +97,14 @@ class Tagend extends BaseModel
 
 	public function scopeForced($query)
     {
-        return $query->where('title', 'NOT LIKE', '%ارسال%')
+        return $query->where('title', 'NOT LIKE', '%post%')
             ->where('is_copon', 0)
             ->where('activated', 1);
     }
 
     public function scopeShipping($query)
     {
-        return $query->where('title', 'like', '%ارسال%')
+        return $query->where('title', 'like', '%post%')
             ->where('is_copon', 0)
             ->active();
     }
