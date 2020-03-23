@@ -127,30 +127,21 @@
 					<span style="color: red">Null</span>
 				@endif
 			@elseif(!is_object($data[$column['name']]) )
-				{!! $data[$column['name']] === null ? '<span style="color: red">Null</span>' : $data[$column['name']] !!}
+				@if($data[$column['name']] === null)
+					<span style="color: red">Null</span>
+				@else
+					@if($column['form_type'] === 'entity')
+						@php
+							$related_model = (new $column['class'])->find($data[$column['name']]);
+						@endphp
+
+						@each('admin.list.show-related-table', [ [$related_model] ], 'items')
+					@else
+						{{ $data[$column['name']] }}
+					@endif
+				@endif
 			@else
-				<table class="table m-table m-table--head-separator-primary mb-5">
-					<thead>
-						<th>ID</th>
-						<th>Title</th>
-						<th>Activated</th>
-						<th>Created at</th>
-						<th>Updated at</th>
-						<th>Show</th>
-					</thead>
-					<tbody>
-						@foreach($data[$column['name']] as $item)
-						<tr>
-							<td>{{ $item->id }}</td>
-							<td>{{ $item->title }}</td>
-							<td>{{ $item->activated }}</td>
-							<td>{{ $item->created_at }}</td>
-							<td>{{ $item->updated_at }}</td>
-							<td><a href="" target="blank"><i class="fa fa-eye"></i></a></td>
-						</tr>
-						@endforeach
-					</tbody>
-				</table>
+				@each('admin.list.show-related-table', [$data[$column['name']]], 'items')
 			@endif
 			</div>
 		@endforeach
