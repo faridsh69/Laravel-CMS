@@ -251,10 +251,6 @@ class User extends Authenticatable
         'deleted_at',
     ];
 
-    // protected $casts = [
-    //     'email_verified_at' => 'datetime',
-    // ];
-
     public function addresses()
     {
         return $this->hasMany(Address::class, 'user_id', 'id');
@@ -275,7 +271,7 @@ class User extends Authenticatable
         return true;
     }
 
-    public function getFullNameAttribute()
+    public function getNameAttribute()
     {
         return $this->first_name . ' ' . $this->last_name;
     }

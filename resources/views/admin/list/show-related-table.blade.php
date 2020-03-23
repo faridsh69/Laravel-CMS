@@ -2,6 +2,7 @@
 	<thead>
 		<th>ID</th>
 		<th>Title</th>
+		<th>Name</th>
 		<th>Activated</th>
 		<th>Created at</th>
 		<th>Updated at</th>
@@ -12,6 +13,7 @@
 		<tr>
 			<td>{{ $item->id }}</td>
 			<td>{{ $item->title }}</td>
+			<td>{{ $item->name }}</td>
 			<td>{{ $item->activated }}</td>
 			<td>{{ $item->created_at }}</td>
 			<td>{{ $item->updated_at }}</td>
