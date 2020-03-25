@@ -84,6 +84,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     </div>
 </footer>
 <div class="fixed-social-media">
+@if(false)
     @if(config('setting-contact.instagram'))
     <a target="_blank" title="Instagram" href="http://instagram.com/{{ config('setting-contact.instagram') }}" >
         <img src="{{ asset('/images/front/general/instagram.png') }}">
@@ -107,4 +108,5 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         <img src="{{ asset('/images/front/general/whatsapp.png') }}">
     </a>
     @endif
+@endif
 </div>

@@ -38,7 +38,7 @@
 @endif
 @if(config('setting-general.crisp_id'))
     <!-- crisp codes -->
-    <script data-cfasync='false'>
+    <script defer>
         window.$crisp=[];
         CRISP_RUNTIME_CONFIG = {
           locale : 'fa'
