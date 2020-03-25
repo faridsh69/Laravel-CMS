@@ -94,7 +94,7 @@ class CmsLaravelSeeder extends Seeder
                 'url' => null,
                 'image' => asset($image_folder_name . 'setting-logo.png'),
                 'description' => 'CMS Laravel is an open source project with Laravel contains all usefull packages and services for developing in the fastest way.',
-                'view_code_url' => 'front.components.documents.getting-started',
+                'view_code_url' => 'front.components.documents.laravel-mistakes',
             ],
             [
                 'title' => 'Document',
