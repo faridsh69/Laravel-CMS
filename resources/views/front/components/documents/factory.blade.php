@@ -101,7 +101,7 @@ elseif($type === 'array'){
 use Faker\Generator as Faker;
 </pre>
 <h2 id="refrences">Refrences</h2>
-<a target="blank" href="https://github.com/faridsh69/cms/blob/master/app/Services/BaseFactory.php">Base Factory</a><br>
-<a target="blank" href="https://github.com/faridsh69/cms/blob/master/config/services.php">Config.Services.Models.Factory</a><br>
+<a target="blank" href="https://github.com/faridsh69/Laravel-CMS/blob/master/app/Services/BaseFactory.php">Base Factory</a><br>
+<a target="blank" href="https://github.com/faridsh69/Laravel-CMS/blob/master/config/services.php">Config.Services.Models.Factory</a><br>
 
 @endsection

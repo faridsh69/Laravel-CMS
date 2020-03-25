@@ -66,8 +66,8 @@ role&permission: "spatie/laravel-permission"
 file manager: "unisharp/laravel-filemanager": "dev-master",
 </pre>
 <h2 id="refrences">Refrences</h2>
-<a target="blank" href="https://github.com/faridsh69/cms/tree/master/routes">Routes folder</a><br>
-<a target="blank" href="https://github.com/faridsh69/cms/blob/master/app/Providers/RouteServiceProvider.php">RouteServiceProvider</a><br>
+<a target="blank" href="https://github.com/faridsh69/Laravel-CMS/tree/master/routes">Routes folder</a><br>
+<a target="blank" href="https://github.com/faridsh69/Laravel-CMS/blob/master/app/Providers/RouteServiceProvider.php">RouteServiceProvider</a><br>
 
 
 @endsection

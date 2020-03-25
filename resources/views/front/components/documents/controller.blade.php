@@ -82,6 +82,6 @@ pdf: "barryvdh/laravel-dompdf"
 category: "lazychaser/laravel-nestedset"
 </pre>
 <h2 id="refrences">Refrences</h2>
-<a target="blank" href="https://github.com/faridsh69/cms/blob/master/app/Services/BaseListController.php">Base List Controller Service</a><br>
-<a target="blank" href="https://github.com/faridsh69/cms/blob/master/app/Http/Controllers/Admin/Blog/ResourceController.php">Example: Blog Resource Controller</a><br>
+<a target="blank" href="https://github.com/faridsh69/Laravel-CMS/blob/master/app/Services/BaseListController.php">Base List Controller Service</a><br>
+<a target="blank" href="https://github.com/faridsh69/Laravel-CMS/blob/master/app/Http/Controllers/Admin/Blog/ResourceController.php">Example: Blog Resource Controller</a><br>
 @endsection

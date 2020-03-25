@@ -70,5 +70,5 @@ category: "lazychaser/laravel-nestedset"
 comment o rate: "actuallymab/laravel-comment"
 </pre>
 <h2 id="refrences">Refrences</h2>
-<a target="blank" href="https://github.com/faridsh69/cms/blob/master/app/Services">Writen Services</a><br>
+<a target="blank" href="https://github.com/faridsh69/Laravel-CMS/blob/master/app/Services">Writen Services</a><br>
 @endsection

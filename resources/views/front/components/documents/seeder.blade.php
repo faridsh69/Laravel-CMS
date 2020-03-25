@@ -19,8 +19,8 @@ When you have no records in your table and if your model name existed in config.
 use Faker\Generator as Faker;
 </pre>
 <h2 id="refrences">Refrences</h2>
-<a target="blank" href="https://github.com/faridsh69/cms/blob/master/app/Services/BaseSeeder.php">Base Seeder Service</a><br>
-<a target="blank" href="https://github.com/faridsh69/cms/blob/master/database/seeds/DatabaseSeeder.php">DatabaseSeeder.php</a><br>
+<a target="blank" href="https://github.com/faridsh69/Laravel-CMS/blob/master/app/Services/BaseSeeder.php">Base Seeder Service</a><br>
+<a target="blank" href="https://github.com/faridsh69/Laravel-CMS/blob/master/database/seeds/DatabaseSeeder.php">DatabaseSeeder.php</a><br>
 
 
 @endsection

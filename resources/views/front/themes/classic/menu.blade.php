@@ -55,7 +55,9 @@
 
                     <div class="calling-info">
                         <div class="call-center">
-                            <a href="tel:{{ config('setting-contact.phone') }}"><i class="icon-telephone-2"></i> <span>{{ config('setting-contact.phone') }}</span></a>
+                            <a target="_blank" href="https://api.whatsapp.com/send?phone={{ config('setting-contact.phone') }}"><i class="fa fa-whatsapp"></i> <span>{{ config('setting-contact.phone') }}</span></a>
+
+                            <!-- <a target="_blank" href="tel:{{ config('setting-contact.phone') }}"><i class="fa fa-whatsapp"></i> <span>{{ config('setting-contact.phone') }}</span></a> -->
                         </div>
                     </div>
                 </nav>

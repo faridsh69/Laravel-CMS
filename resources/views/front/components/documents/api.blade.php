@@ -7,7 +7,7 @@
 	<li><a href="#used-packages">Used Packages</a></li>
 	<li><a href="#refrences">Refrences</a></li>
 </ul>
-<p></p><br>
+<br>
 <img src="{{ $page->image }}">
 <h2 id="benefits">Benefits</h2>
 <p>All apis is ready! There is a powefull baseApiController that needed to be extended and your api is fully ready.</p>
@@ -28,6 +28,6 @@ class ProductController extends BaseApiController
 api authentication: "laravel/passport"
 </pre>
 <h2 id="refrences">Refrences</h2>
-<a target="blank" href="https://github.com/faridsh69/cms/blob/master/app/Services/BaseApiController.php">Base API Controller</a><br>
-<a target="blank" href="https://github.com/faridsh69/cms/blob/master/app/Http/Controllers/Api/V1/ProductController.php">Example: Product API</a><br>
+<a target="blank" href="https://github.com/faridsh69/Laravel-CMS/blob/master/app/Services/BaseApiController.php">Base API Controller</a><br>
+<a target="blank" href="https://github.com/faridsh69/Laravel-CMS/blob/master/app/Http/Controllers/Api/V1/ProductController.php">Example: Product API</a><br>
 @endsection

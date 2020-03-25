@@ -52,5 +52,5 @@ image: "unisharp/laravel-filemanager": "dev-master",
 form builder: "kris/laravel-form-builder": "^1.20",
 </pre>
 <h2 id="refrences">Refrences</h2>
-<a target="blank" href="https://github.com/faridsh69/cms/blob/master/app/Services/FileService.php">Base File Upload Service</a><br>
+<a target="blank" href="https://github.com/faridsh69/Laravel-CMS/blob/master/app/Services/FileService.php">Base File Upload Service</a><br>
 @endsection

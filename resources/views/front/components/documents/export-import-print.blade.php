@@ -26,6 +26,6 @@ import with csv: "Maatwebsite/Laravel-Excel"
 pdf: "barryvdh/laravel-dompdf"
 </pre>
 <h2 id="refrences">Refrences</h2>
-<a target="blank" href="https://github.com/faridsh69/cms/blob/master/app/Services/BaseExport.php">Base Export Service</a><br>
-<a target="blank" href="https://github.com/faridsh69/cms/blob/master/app/Services/BaseImport.php">Base Import Service</a><br>
+<a target="blank" href="https://github.com/faridsh69/Laravel-CMS/blob/master/app/Services/BaseExport.php">Base Export Service</a><br>
+<a target="blank" href="https://github.com/faridsh69/Laravel-CMS/blob/master/app/Services/BaseImport.php">Base Import Service</a><br>
 @endsection

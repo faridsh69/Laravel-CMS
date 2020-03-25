@@ -20,7 +20,7 @@ role&permission: "spatie/laravel-permission"
 comment o rate: "actuallymab/laravel-comment"
 </pre>
 <h2 id="refrences">Refrences</h2>
-<a target="blank" href="https://github.com/faridsh69/cms/blob/master/app/Services/BaseMigration.php">Base Migration Service</a><br>
-<a target="blank" href="https://github.com/faridsh69/cms/blob/master/database/migrations/2019_05_10_105731_create_blogs_table.php">Example: Blog Migration</a><br>
+<a target="blank" href="https://github.com/faridsh69/Laravel-CMS/blob/master/app/Services/BaseMigration.php">Base Migration Service</a><br>
+<a target="blank" href="https://github.com/faridsh69/Laravel-CMS/blob/master/database/migrations/2019_05_10_105731_create_blogs_table.php">Example: Blog Migration</a><br>
 
 @endsection

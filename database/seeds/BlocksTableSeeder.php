@@ -50,7 +50,7 @@ class BlocksTableSeeder extends Seeder
             ],
             [
             	'id' => 6,
-                'order' => 29,
+                'order' => 25,
             	'type' => 'content',
                 'show_all_pages' => 1,
                 'pages_list' => [],

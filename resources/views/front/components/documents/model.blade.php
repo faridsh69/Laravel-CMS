@@ -111,8 +111,8 @@ form builder: "kris/laravel-form-builder": "^1.20",
 tables: "yajra/laravel-datatables-oracle": "~9.0"
 </pre>
 <h2 id="refrences">Refrences</h2>
-<a href="https://github.com/faridsh69/cms/blob/master/app/Services/BaseModel.php">BaseModel.php</a><br>
-<a href="https://github.com/faridsh69/cms/blob/master/app/Models/Blog.php">Models/Blog.php</a>
+<a href="https://github.com/faridsh69/Laravel-CMS/blob/master/app/Services/BaseModel.php">BaseModel.php</a><br>
+<a href="https://github.com/faridsh69/Laravel-CMS/blob/master/app/Models/Blog.php">Models/Blog.php</a>
 @endsection
 
 

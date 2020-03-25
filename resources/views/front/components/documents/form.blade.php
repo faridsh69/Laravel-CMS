@@ -20,7 +20,7 @@ captcha: "anhskohbo/no-captcha"
 HTML editor: ckeditor4
 </pre>
 <h2 id="refrences">Refrences</h2>
-<a target="blank" href="https://github.com/faridsh69/cms/blob/master/app/Services/BaseForm.php">Base Form Service</a><br>
-<a target="blank" href="https://github.com/faridsh69/cms/blob/master/app/Forms/BlogForm.php">Example: Blog Form</a><br>
+<a target="blank" href="https://github.com/faridsh69/Laravel-CMS/blob/master/app/Services/BaseForm.php">Base Form Service</a><br>
+<a target="blank" href="https://github.com/faridsh69/Laravel-CMS/blob/master/app/Forms/BlogForm.php">Example: Blog Form</a><br>
 
 @endsection
