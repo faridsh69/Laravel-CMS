@@ -72,6 +72,9 @@ $output = [
             'blog',
             'comment',
         ],
+        'front_routes' => [
+            'blog',
+        ],
         'admin_routes' => [
             'activity',
             'answer',

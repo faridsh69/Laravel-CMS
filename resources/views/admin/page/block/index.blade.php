@@ -2,11 +2,6 @@
 
 @push('style')
 <link href="{{ asset('css/admin/table/jquery-ui.bundle.css') }}" rel="stylesheet" />
-
-@if(false)
-@include('front.widgets.styles.' . config('setting-developer.theme'))
-@endif
-
 @endpush
 
 @push('script')
@@ -73,13 +68,9 @@
 								
 								<li class="m-portlet__nav-item">
 									<a href="javascript:void(0)" class="m-portlet__nav-link m-portlet__nav-link--icon">
-										<!-- <i class="la la-refresh"></i> -->
 									</a>
 								</li>
 								<li class="m-portlet__nav-item">
-									<!-- <a href="javascript:void(0)" class="m-portlet__nav-link m-portlet__nav-link--icon">
-										<i class="la la-close"></i>
-									</a> -->
 									<span class="m-switch m-switch--outline m-switch--icon m-switch--success m-switch--sm">
 										<label>
 											<input type="checkbox" onclick="changeStatus({{$block->id}})" 
@@ -128,11 +119,6 @@
 							</ul>
 						</div>
 					</div>
-					@if(false)
-						<div class="m-portlet__body m-sortable-table-body">
-							@includeIf('front.widgets.' . $block->widget_type . '.' . config('setting-developer.theme'))
-						</div>
-					@endif
 				</div>
 			</div>
 			@endforeach

@@ -30,7 +30,7 @@ class BlogController extends Controller
             ->active()
             ->paginate(config('setting-general.pagination_number'));
 
-        return view('front.components.blog.index', ['blogs' => $blogs, 'meta' => $this->meta]);
+        return view('front.list.index', ['blogs' => $blogs, 'meta' => $this->meta]);
     }
 
     public function show($blog_id)

@@ -1,25 +1,35 @@
 <?php
-Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
-	Route::get('', 'BlogController@index')->name('index');
-	Route::get('categories', 'BlogController@getCategories')->name('categories');
-	Route::get('category/{category_url}', 'BlogController@getCategory')->name('category');
-	Route::get('tags', 'BlogController@getTags')->name('tags');
-	Route::get('tag/{tag_url}', 'BlogController@getTag')->name('tag');
-	Route::get('{blog_url}', 'BlogController@show')->name('show');
-	Route::post('{blog_url}/comment', 'BlogController@postComment')->name('comment')
-	    ->middleware('auth', 'throttle:5,1');
-});
+$models = Config::get('services.models.front_routes');
 
-Route::group(['prefix' => 'product', 'as' => 'product.'], function () {
-	Route::get('', 'ProductController@index')->name('index');
-	Route::get('categories', 'ProductController@getCategories')->name('categories');
-	Route::get('category/{category_url}', 'ProductController@getCategory')->name('category');
-	Route::get('tags', 'ProductController@getTags')->name('tags');
-	Route::get('tag/{tag_url}', 'ProductController@getTag')->name('tag');
-	Route::get('{blog_url}', 'ProductController@show')->name('show');
-	Route::post('{blog_url}/comment', 'ProductController@postComment')->name('comment')
-	    ->middleware('auth', 'throttle:5,1');
+foreach($models as $model_sm)
+{
+	$model = ucfirst($model_sm);
+	$class_name = 'App\\Models\\' . $model;
+Route::group(['prefix' => $model_sm, 'namespace' => $model, 'as' => $model_sm . '.'], function () use ($class_name) {
+	Route::resource('list', 'ResourceController');
 });
+}
+// Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
+// 	Route::get('', 'BlogController@index')->name('index');
+// 	Route::get('categories', 'BlogController@getCategories')->name('categories');
+// 	Route::get('category/{category_url}', 'BlogController@getCategory')->name('category');
+// 	Route::get('tags', 'BlogController@getTags')->name('tags');
+// 	Route::get('tag/{tag_url}', 'BlogController@getTag')->name('tag');
+// 	Route::get('{blog_url}', 'BlogController@show')->name('show');
+// 	Route::post('{blog_url}/comment', 'BlogController@postComment')->name('comment')
+// 	    ->middleware('auth', 'throttle:5,1');
+// });
+
+// Route::group(['prefix' => 'product', 'as' => 'product.'], function () {
+// 	Route::get('', 'ProductController@index')->name('index');
+// 	Route::get('categories', 'ProductController@getCategories')->name('categories');
+// 	Route::get('category/{category_url}', 'ProductController@getCategory')->name('category');
+// 	Route::get('tags', 'ProductController@getTags')->name('tags');
+// 	Route::get('tag/{tag_url}', 'ProductController@getTag')->name('tag');
+// 	Route::get('{blog_url}', 'ProductController@show')->name('show');
+// 	Route::post('{blog_url}/comment', 'ProductController@postComment')->name('comment')
+// 	    ->middleware('auth', 'throttle:5,1');
+// });
 
 Route::group(['prefix' => 'basket', 'as' => 'basket.'], function () {
 	Route::get('product/init', 'BasketController@getProductInit');
