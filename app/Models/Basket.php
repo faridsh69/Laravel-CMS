@@ -23,4 +23,10 @@ class Basket extends BaseModel
     {
         return $this->belongsToMany(Product::class)->withPivot('count');
     }
+
+    public static function getTotalPriceByRestaurantId($restaurantId)
+    {
+        // $restaurantId
+        return 12;
+    }
 }

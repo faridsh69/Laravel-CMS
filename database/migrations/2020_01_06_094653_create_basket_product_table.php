@@ -12,7 +12,7 @@ class CreateBasketProductTable extends Migration
     public function up()
     {
         Schema::create('basket_product', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->integer('count')->unsigned()->default(1);
             $table->unsignedBigInteger('basket_id')->nullable();
             $table->foreign('basket_id')->references('id')->on('baskets');

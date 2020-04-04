@@ -1,4 +1,14 @@
 <?php
+Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
+	Route::get('', 'BlogController@index')->name('index');
+	Route::get('categories', 'BlogController@getCategories')->name('categories');
+	Route::get('category/{category_url}', 'BlogController@getCategory')->name('category');
+	Route::get('tags', 'BlogController@getTags')->name('tags');
+	Route::get('tag/{tag_url}', 'BlogController@getTag')->name('tag');
+	Route::get('{blog_url}', 'BlogController@show')->name('show');
+	Route::post('{blog_url}/comment', 'BlogController@postComment')->name('comment')
+	    ->middleware('auth', 'throttle:5,1');
+});
 
 Route::group(['prefix' => 'product', 'as' => 'product.'], function () {
 	Route::get('', 'ProductController@index')->name('index');
@@ -36,16 +46,6 @@ Route::group(['prefix' => 'checkout', 'as' => 'checkout.', 'middleware' => ['aut
 	Route::post('payment/verify', 'CheckoutController@getPaymentVerify')->name('post-payment-verify');
 });
 
-Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
-	Route::get('', 'BlogController@index')->name('index');
-	Route::get('categories', 'BlogController@getCategories')->name('categories');
-	Route::get('category/{category_url}', 'BlogController@getCategory')->name('category');
-	Route::get('tags', 'BlogController@getTags')->name('tags');
-	Route::get('tag/{tag_url}', 'BlogController@getTag')->name('tag');
-	Route::get('{blog_url}', 'BlogController@show')->name('show');
-	Route::post('{blog_url}/comment', 'BlogController@postComment')->name('comment')
-	    ->middleware('auth', 'throttle:5,1');
-});
 Route::post('submit-form/{form_id}', 'PageController@postSubmitForm')->name('page.submit-form');
 Route::get('{page_url?}', 'PageController@getIndex')->name('page.index');
 
