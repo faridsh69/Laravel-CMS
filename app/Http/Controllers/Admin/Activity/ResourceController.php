@@ -25,7 +25,7 @@ class ResourceController extends BaseListController
             ];
         }
 
-        return view('admin.list.table', ['meta' => $this->meta, 'columns' => $columns, 'model_sm' => $this->model_sm]);
+        return view('admin.list.index', ['meta' => $this->meta, 'columns' => $columns, 'model_sm' => $this->model_sm]);
     }
 
     public function create(){return $this->getRedirect(); }

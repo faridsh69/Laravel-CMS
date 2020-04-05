@@ -1,4 +1,4 @@
-@extends('layout.admin')
+@extends('admin.common.layout')
 
 @section('content')
 <table class="table table-striped table-bordered">

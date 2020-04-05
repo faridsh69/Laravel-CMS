@@ -96,7 +96,7 @@ class DashboardController extends BaseAdminController
     	    ->orderBy('id', 'desc')
     	    ->get();
 
-    	return view('admin.dashboard.activity', ['activities' => $activities, 'meta' => $this->meta]);
+    	return view('admin.page.dashboard.activity', ['activities' => $activities, 'meta' => $this->meta]);
     }
 
     public function getIdentify()

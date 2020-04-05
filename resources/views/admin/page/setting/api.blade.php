@@ -1,4 +1,4 @@
-@extends('layout.admin')
+@extends('admin.common.layout')
 
 @push('script')
 <script src="{{ asset('js/admin/vue/vue.min.js') }}"></script>

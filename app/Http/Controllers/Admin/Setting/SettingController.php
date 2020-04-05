@@ -69,7 +69,7 @@ class SettingController extends BaseAdminController
 	{
         $this->meta['title'] = __('log_manager');
 
-		return view('admin.setting.log', ['meta' => $this->meta]);
+		return view('admin.page.setting.log', ['meta' => $this->meta]);
 	}
 
 	public function getLogView(LogViewerController $LogViewerController)

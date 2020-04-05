@@ -1,4 +1,4 @@
-@extends('layout.admin')
+@extends('admin.common.layout')
 
 @push('style')
 <link href="{{ asset('css/admin/table/jquery-ui.bundle.css') }}" rel="stylesheet" />

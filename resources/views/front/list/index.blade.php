@@ -1,12 +1,15 @@
 @extends('front.common.layout')
-@section('content')
+@section('content_block')
 <div class="row">
-	@foreach($blogs as $blog)
+	@foreach($list as $item)
 	<div class="col-sm-6 col-md-4">
-		<img src="{{ $blog->image }}">
-		<b>{{ $blog->title }}</b>
-		<p>{{ $blog->description }}</p>
-		<a href="{{ route('front.blog.list.show', $blog->url) }}">
+		<a href="{{ route('front.' . class_basename($item) . '.show', $item->url) }}">
+			<div>
+				<img src="{{ $item->image_default() }}" style="height: 100px;">
+			</div>
+			<b>{{ $item->title }}</b>
+			<p>{{ $item->description }}</p>
+		</a>
 	</div>
 	@endforeach
 </div>

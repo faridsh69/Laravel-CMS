@@ -11,7 +11,6 @@ Route::group([], function () {
 });
 
 Route::group(['prefix' => 'v1', 'as' => 'v1.', 'namespace' => 'V1'], function () {
-	Route::resource('shop', 'ShopController');
 	Route::resource('category', 'CategoryController');
 	Route::resource('product', 'ProductController');
 });

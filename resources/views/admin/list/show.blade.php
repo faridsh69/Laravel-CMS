@@ -1,4 +1,4 @@
-@extends('layout.admin')
+@extends('admin.common.layout')
 
 @section('content')
 <div class="m-portlet m-portlet--bordered-semi">
@@ -91,13 +91,13 @@
 							$related_model = (new $column['class'])->find($data[$column['name']]);
 						@endphp
 
-						@each('admin.list.show-related-table', [ [$related_model] ], 'items')
+						@each('admin.common.show-related-table', [ [$related_model] ], 'items')
 					@else
 						{{ $data[$column['name']] }}
 					@endif
 				@endif
 			@else
-				@each('admin.list.show-related-table', [$data[$column['name']]], 'items')
+				@each('admin.common.show-related-table', [$data[$column['name']]], 'items')
 			@endif
 			</div>
 		@endforeach

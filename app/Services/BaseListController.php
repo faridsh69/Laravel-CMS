@@ -281,14 +281,14 @@ class BaseListController extends Controller
     {
         $list = $this->repository->all();
 
-        return view('layout.print', compact('list'));
+        return view('admin.common.print', compact('list'));
     }
 
     public function getPdf()
     {
         $list = $this->repository->all();
 
-        return \PDF::loadView('layout.print', compact('list'))
+        return \PDF::loadView('admin.common.print', compact('list'))
             ->setPaper('a4', 'landscape')
             ->download($this->model . '.pdf');
     }

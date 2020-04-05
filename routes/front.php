@@ -5,10 +5,12 @@ foreach($models as $model_sm)
 {
 	$model = ucfirst($model_sm);
 	$class_name = 'App\\Models\\' . $model;
-Route::group(['prefix' => $model_sm, 'namespace' => $model, 'as' => $model_sm . '.'], function () use ($class_name) {
-	Route::resource('list', 'ResourceController');
+	Route::group(['prefix' => $model_sm, 'namespace' => $model, 'as' => $model_sm . '.'], function () use ($class_name) {
+	Route::get('category', 'ResourceController@getCategories');
+	Route::resource('', 'ResourceController');
 });
 }
+Route::get('{page_url?}', 'PageController@getIndex')->name('page.index');
 // Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
 // 	Route::get('', 'BlogController@index')->name('index');
 // 	Route::get('categories', 'BlogController@getCategories')->name('categories');
@@ -31,33 +33,43 @@ Route::group(['prefix' => $model_sm, 'namespace' => $model, 'as' => $model_sm . 
 // 	    ->middleware('auth', 'throttle:5,1');
 // });
 
-Route::group(['prefix' => 'basket', 'as' => 'basket.'], function () {
-	Route::get('product/init', 'BasketController@getProductInit');
-	Route::post('add', 'BasketController@postAdd');
-	Route::post('product/filter', 'BasketController@getProductFilter');
-	Route::get('', 'BasketController@getIndex');
-	Route::get('init', 'BasketController@getInit');
-	Route::post('count', 'BasketController@postBasketCount');
-	Route::post('count/view', 'BasketController@postBasketCountView');
-	Route::get('quick-register/{phone}', 'BasketController@getQuickRegister');
-});
+// Route::group(['prefix' => 'basket', 'as' => 'basket.'], function () {
+// 	Route::get('product/init', 'BasketController@getProductInit');
+// 	Route::post('add', 'BasketController@postAdd');
+// 	Route::post('product/filter', 'BasketController@getProductFilter');
+// 	Route::get('', 'BasketController@getIndex');
+// 	Route::get('init', 'BasketController@getInit');
+// 	Route::post('count', 'BasketController@postBasketCount');
+// 	Route::post('count/view', 'BasketController@postBasketCountView');
+// 	Route::get('quick-register/{phone}', 'BasketController@getQuickRegister');
+// });
 
-Route::group(['prefix' => 'checkout', 'as' => 'checkout.', 'middleware' => ['auth']], function () {
-	Route::get('address', 'CheckoutController@getAddress')->name('address');
-	Route::post('address', 'CheckoutController@postAddress')->name('post-address');
-	Route::get('address/init', 'CheckoutController@getAddressInit')->name('init-address');
-	Route::get('shipping', 'CheckoutController@getShipping')->name('shipping');
-	Route::post('shipping', 'CheckoutController@postShipping')->name('post-shipping');
-	Route::post('discount', 'CheckoutController@postDiscount')->name('post-discount');
-	Route::get('payment', 'CheckoutController@getPayment')->name('payment');
-	Route::get('payment/local', 'CheckoutController@getPaymentLocal')->name('payment-local');
-	Route::get('payment/online/{bank}', 'CheckoutController@getPaymentOnline')->name('payment-online');
-	Route::get('payment/verify', 'CheckoutController@getPaymentVerify')->name('payment-verify');
-	Route::post('payment/verify', 'CheckoutController@getPaymentVerify')->name('post-payment-verify');
-});
+// Route::group(['prefix' => 'checkout', 'as' => 'checkout.', 'middleware' => ['auth']], function () {
+// 	Route::get('address', 'CheckoutController@getAddress')->name('address');
+// 	Route::post('address', 'CheckoutController@postAddress')->name('post-address');
+// 	Route::get('address/init', 'CheckoutController@getAddressInit')->name('init-address');
+// 	Route::get('shipping', 'CheckoutController@getShipping')->name('shipping');
+// 	Route::post('shipping', 'CheckoutController@postShipping')->name('post-shipping');
+// 	Route::post('discount', 'CheckoutController@postDiscount')->name('post-discount');
+// 	Route::get('payment', 'CheckoutController@getPayment')->name('payment');
+// 	Route::get('payment/local', 'CheckoutController@getPaymentLocal')->name('payment-local');
+// 	Route::get('payment/online/{bank}', 'CheckoutController@getPaymentOnline')->name('payment-online');
+// 	Route::get('payment/verify', 'CheckoutController@getPaymentVerify')->name('payment-verify');
+// 	Route::post('payment/verify', 'CheckoutController@getPaymentVerify')->name('post-payment-verify');
+// });
 
-Route::post('submit-form/{form_id}', 'PageController@postSubmitForm')->name('page.submit-form');
-Route::get('{page_url?}', 'PageController@getIndex')->name('page.index');
+// Route::post('submit-form/{form_id}', 'PageController@postSubmitForm')->name('page.submit-form');
+
+
+
+
+
+
+
+
+
+
+
 
 // windy map
 // Route::get('distance/{coordinate}', 'PageController@getIndex')->name('distance.coordinate');

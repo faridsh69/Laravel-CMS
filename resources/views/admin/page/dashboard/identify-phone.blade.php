@@ -1,4 +1,4 @@
-@extends('layout.admin')
+@extends('admin.common.layout')
 
 @section('content')
 <form class="m-form m-form--fit m-form--label-align-right" method="post" action="{{ route('admin.dashboard.identify.phone-verify') }}">

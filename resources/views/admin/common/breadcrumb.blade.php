@@ -31,8 +31,5 @@
 				@endforeach
 			</ul>
 		</div>
-		@if(false)
-		@include('common.admin.circle-menu')
-		@endif
 	</div>
 </div>

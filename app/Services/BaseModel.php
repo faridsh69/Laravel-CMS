@@ -321,6 +321,11 @@ class BaseModel extends Model
         return $query->where('language', config('app.locale'));
     }
 
+    public function scopeOfType($query, $type)
+    {
+        return $query->where('type', $type);
+    }
+
     public function files_relation()
     {
         return $this->morphMany('App\Models\File', 'fileable');
@@ -340,6 +345,15 @@ class BaseModel extends Model
     {
         if($this->files($title)->first()){
             return $this->files($title)->first()->src;
+        }
+
+        return config('setting-general.default_meta_image');
+    }
+
+    public function image_default()
+    {
+        if(isset($this->image) && $this->image) {
+            return $this->image;
         }
 
         return config('setting-general.default_meta_image');

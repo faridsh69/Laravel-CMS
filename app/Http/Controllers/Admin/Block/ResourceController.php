@@ -27,7 +27,7 @@ class ResourceController extends BaseListController
             ->where('type', '!=', 'loading')
             ->get();
 
-        return view('admin.list.sortable-table', ['meta' => $this->meta, 'columns' => $columns, 'blocks' => $blocks]);
+        return view('admin.page.block.index', ['meta' => $this->meta, 'columns' => $columns, 'blocks' => $blocks]);
     }
 
     public function postSort()

@@ -1,4 +1,4 @@
-@extends('layout.admin')
+@extends('admin.common.layout')
 
 @section('content')
 	<iframe src="{{ route('unisharp.lfm.show', ['type' => 'file']) }}" class="iframe"></iframe>

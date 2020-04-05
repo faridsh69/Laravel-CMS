@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Http\Controllers\Controller;
-use App\Models\Shop;
 use Auth;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
@@ -72,19 +71,6 @@ class BaseApiController extends Controller
         $this->message_update = __($this->model_sm . '_update');
         $this->message_delete = __($this->model_sm . '_delete');
         $this->message_restore = __($this->model_sm . '_restore');
-        // $this->shop_subdomain = Route::current()->parameter('shop_subdomain');
-        // $this->shop = Shop::where('url', $this->shop_subdomain)->first();
-        // if(!$this->shop){
-        //     $this->response['status'] = 404;
-        //     $this->response['message'] = $this->message_not_found;
-        // }
-        // $this->middleware(function ($request, $next) {
-        //     $shop_url = Route::current()->parameter('shop_subdomain');
-        //     $auth_user = \Auth::user();
-        //     abort_if(!$auth_user->hasAnyRole([$shop_url . '_manager', 'shop_manager']), 403);
-
-        //     return $next($request);
-        // });
     }
 
     /**

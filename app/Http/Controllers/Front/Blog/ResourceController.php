@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Blog;
+namespace App\Http\Controllers\Front\Blog;
 
-use App\Services\BaseListController;
+use App\Services\BaseFrontController;
 
-class ResourceController extends BaseListController
+class ResourceController extends BaseFrontController
 {
 	public $model = 'Blog';
 }

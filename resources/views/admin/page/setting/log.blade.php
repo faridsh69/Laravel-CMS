@@ -1,4 +1,4 @@
-@extends('layout.admin')
+@extends('admin.common.layout')
 
 @section('content')
 	<iframe src="{{ route('admin.setting.log-view') }}" class="iframe"></iframe>

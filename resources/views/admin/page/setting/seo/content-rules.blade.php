@@ -1,4 +1,4 @@
-@extends('layout.admin')
+@extends('admin.common.layout')
 @push('style')
 <style>
 	.seo-rules li{
