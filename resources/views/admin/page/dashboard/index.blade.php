@@ -1,4 +1,4 @@
-@extends('layout.admin')
+@extends('admin.common.layout')
 
 @section('content')
 <div class="m-alert m-alert--icon m-alert--outline alert alert-success alert-dismissible fade show" role="alert">

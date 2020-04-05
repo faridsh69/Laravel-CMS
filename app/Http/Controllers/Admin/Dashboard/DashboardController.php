@@ -31,7 +31,7 @@ class DashboardController extends BaseAdminController
     public function index()
     {
         $this->meta['title'] = __('dashboard');
-        return view('admin.dashboard.index', ['meta' => $this->meta]);
+        return view('admin.page.dashboard.index', ['meta' => $this->meta]);
     }
 
     public function redirect()

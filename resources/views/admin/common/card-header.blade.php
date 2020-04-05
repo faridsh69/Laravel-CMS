@@ -17,6 +17,6 @@
 		</div>
 	</div>
 	@if($meta['search'])
-		@include('common.admin.table-search')
+		@include('admin.common.table-search')
 	@endif
 </div>

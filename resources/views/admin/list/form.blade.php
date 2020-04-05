@@ -1,4 +1,4 @@
-@extends('layout.admin')
+@extends('admin.common.layout')
 
 @push('script')
 <script src="{{ asset('js/admin/form/ckeditor4/ckeditor.js') }}"></script>
@@ -7,6 +7,5 @@
 @endpush
 
 @section('content')
-@include('front.components.alert')
 {!! form($form) !!}
 @endsection

@@ -88,7 +88,7 @@ class BaseListController extends Controller
             ];
         }
 
-        return view('admin.list.index', ['meta' => $this->meta, 'columns' => $columns]);
+        return view('admin.list.table', ['meta' => $this->meta, 'columns' => $columns]);
     }
 
     /**
