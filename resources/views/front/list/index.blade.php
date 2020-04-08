@@ -2,7 +2,7 @@
 @section('content_block')
 <div class="row">
 	@foreach($list as $item)
-	<div class="col-sm-6 col-md-4 mb-4 p-2"  style="border: 1px solid #ddd">
+	<div class="col-sm-6 col-md-4 mb-4 p-2">
 		<a href="{{ route('front.' . lcfirst(class_basename($item)) . '.show', $item->url) }}">
 			<div>
 				<img src="{{ $item->image_default() }}" style="height: 100px;">
@@ -14,5 +14,10 @@
 	</div>
 	@endforeach
 </div>
-
+<br>
+<div class="row">
+	<div class="col-12">
+		{{ $list->links() }}
+	</div>
+</div>
 @endsection

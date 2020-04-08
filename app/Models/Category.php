@@ -7,6 +7,7 @@ use App\Services\BaseModel;
 class Category extends BaseModel
 {
     public $columns = [
+        ['name' => 'type'],
         ['name' => 'title'],
         ['name' => 'url'],
         ['name' => 'description'],
@@ -28,20 +29,8 @@ class Category extends BaseModel
         ['name' => 'language'],
     ];
 
-    protected $appends = ['text'];
-
-    public function getTextAttribute()
-    {
-        return $this->title;
-    }
-
     public function products()
     {
         return $this->hasMany(Product::class, 'category_id', 'id');
-    }
-
-    public function blogs()
-    {
-        return $this->hasMany(Blog::class, 'category_id', 'id');
     }
 }

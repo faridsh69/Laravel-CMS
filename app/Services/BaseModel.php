@@ -21,7 +21,7 @@ class BaseModel extends Model
     {
         $table_name = $this->getTable();
         $seconds = 1;
-        return Cache::remember('models.' . $table_name, $seconds, function () {
+        return Cache::remember('models.' . $table_name, $seconds, function () use($table_name) {
             $default_columns = [
                 'title' => [
                     'name' => 'title',
@@ -55,7 +55,7 @@ class BaseModel extends Model
                     'name' => 'url',
                     'type' => 'string',
                     'database' => 'nullable',
-                    'rule' => '',
+                    'rule' => 'required|unique:'.$table_name.',url,',
                     // 'rule' => 'max:' . config('setting-developer.seo_url_max')
                     // . '|regex:/^[a-z0-9-]+$/',
                     'help' => 'Url should be unique, contain [a-z, 0-9, -], required for seo',

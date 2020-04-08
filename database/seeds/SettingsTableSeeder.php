@@ -21,7 +21,7 @@ class SettingsTableSeeder extends Seeder
 			'default_user_image' => asset($image_folder_name . 'setting-default-user.png'),
 			'default_product_image' => asset($image_folder_name . 'setting-default-product.png'),
 			'google_index' => '1',
-			'pagination_number' => '8',
+			'pagination_number' => '6',
 			'android_application_url' => 'https://play.google.com/store/apps',
 			'ios_application_url' => 'https://sibapp.com/applications',
 			'google_map_code' => 'AIzaSyAwuyLRa1uKNtbgx6xAJVmWy-zADgegA2s',

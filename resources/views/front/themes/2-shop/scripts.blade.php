@@ -1,1 +1,0 @@
-<script src="{{ asset('js/front/themes/1-original/app.js') }}"></script>

@@ -1,5 +1,5 @@
 <script src="{{ asset('js/front/themes/' . config('setting-developer.theme') . '/app.js') }}"></script>
-@includeIf('front.themes.' . config('setting-developer.theme') . '.scripts')
+@includeIf('front.theme.' . config('setting-developer.theme') . '.scripts')
 @stack('scripts')
 {!! config('setting-developer.scripts') !!}
 

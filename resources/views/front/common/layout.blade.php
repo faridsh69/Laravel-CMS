@@ -12,12 +12,12 @@
 	}else{
 		$page = new \App\Models\Page();
 	}
-	$blocks = Cache::remember('blocks.page.' . $page->id, 2, function () use($page) {
+	$blocks = Cache::remember('blocks.page.' . $page->id, 1, function () use($page) {
 		return \App\Models\Block::getPageBlocks($page->id);
 	});
 @endphp
 @section('content')
 	@foreach($blocks as $block)
-		@include('front.themes.' . config('setting-developer.theme') . '.' . $block->type)
+		@include('front.theme.' . config('setting-developer.theme') . '.' . $block->type)
 	@endforeach
 @endsection

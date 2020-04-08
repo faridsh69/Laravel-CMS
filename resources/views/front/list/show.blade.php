@@ -1,6 +1,6 @@
 @extends('front.common.layout')
 
-@section('content')
+@section('content_block')
 <div class="m-portlet m-portlet--bordered-semi">
 	<div class="m-portlet__head">
 		<div class="m-portlet__head-caption">
