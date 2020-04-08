@@ -6,11 +6,12 @@ foreach($models as $model_sm)
 	$model = ucfirst($model_sm);
 	$class_name = 'App\\Models\\' . $model;
 	Route::group(['prefix' => $model_sm, 'namespace' => $model, 'as' => $model_sm . '.'], function () use ($class_name) {
-	Route::get('category', 'ResourceController@getCategories');
-	Route::resource('', 'ResourceController');
+	// Route::get('category', 'ResourceController@getCategories');
+	Route::get('', 'ResourceController@index');
+	Route::get('{url}', 'ResourceController@show');
 });
 }
-Route::get('{page_url?}', 'PageController@getIndex')->name('page.index');
+Route::get('{page_url?}', 'Page\ResourceController@index')->name('page.index');
 // Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
 // 	Route::get('', 'BlogController@index')->name('index');
 // 	Route::get('categories', 'BlogController@getCategories')->name('categories');

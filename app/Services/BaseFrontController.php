@@ -10,6 +10,7 @@ use Kris\LaravelFormBuilder\FormBuilder;
 use Maatwebsite\Excel\Facades\Excel;
 use Route;
 use View;
+use Spatie\Activitylog\Models\Activity;
 
 class BaseFrontController extends Controller
 {
@@ -75,24 +76,21 @@ class BaseFrontController extends Controller
      */
     public function show($url)
     {
-        $model = $this->repository->findOrFail($id);
+        $model = $this->repository->where('url', $url)->first();
         $data = $model;
-        // show file attributes
+
         foreach($this->model_columns as $column){
             if($column['form_type'] === 'file' && $column['file_manager'] === false){
                 $data[$column['name']] = $data->files_src($column['name']);
             }
         }
 
-        $activities = \Spatie\Activitylog\Models\Activity::where('subject_type', $this->model_class)
-            ->where('subject_id', $id)
-            ->get();
+        if(env('APP_ENV') !== 'testing'){
+            activity($this->model)->performedOn($model)->causedBy(Auth::user())
+                ->log($this->model . ' View');
+        }
 
-        $this->meta['title'] = $this->model_trans . __('show');
-        $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.edit', $model);
-        $this->meta['link_name'] = $this->model_trans . __('edit form');
-
-        return view('admin.list.show', ['data' => $data, 'meta' => $this->meta, 'activities' => $activities]);
+        return view('front.list.show', ['data' => $data, 'meta' => $this->meta]);
     }
 
     public function getCategories () 
