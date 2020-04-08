@@ -21,6 +21,7 @@ class Category extends BaseModel
         ['name' => 'url'],
         ['name' => 'description'],
         ['name' => 'image'],
+        ['name' => 'icon'],
         ['name' => 'activated'],
         ['name' => 'google_index'],
         ['name' => 'canonical_url'],
@@ -28,11 +29,15 @@ class Category extends BaseModel
         [
             'name' => 'parent_id',
             'type' => 'unsignedBigInteger',
-            'database' => 'none',
+            'database' => 'nullable',
             'relation' => 'categories',
             'rule' => 'nullable|exists:categories,id',
             'help' => '',
-            'form_type' => 'none',
+            'form_type' => 'entity',
+            'class' => Category::class,
+            'property' => 'title',
+            'property_key' => 'id',
+            'multiple' => false,
             'table' => true,
         ],
         ['name' => 'language'],
@@ -43,13 +48,28 @@ class Category extends BaseModel
         return $query->where('type', $type);
     }
 
+    public function models()
+    {
+        return $this->hasMany('App\\Models\\' . $this->type);
+    }
+
     public function parent()
     {
-        return $this->belongsTo(Module::class, 'parent_id', 'id');
+        return $this->belongsTo(Category::class, 'parent_id', 'id');
     }
 
     public function children()
     {
-        return $this->hasMany(Module::class, 'parent_id', 'id');
+        return $this->hasMany(Category::class, 'parent_id', 'id');
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+        self::updating(function($model){
+            if($model->parent_id == $model->id){
+                abort(500);
+            }
+        });
     }
 }

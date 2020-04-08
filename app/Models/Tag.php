@@ -2,63 +2,32 @@
 
 namespace App\Models;
 
-use Conner\Tagging\Model\Tag as ConnerTag;
+use App\Services\BaseModel;
 
-class Tag extends ConnerTag
+class Tag extends BaseModel
 {
     public $columns = [
         [
-            'name' => 'name',
+            'name' => 'type',
             'type' => 'string',
-            'database' => '',
-            'rule' => 'required|max:125',
-            'help' => '',
-            'form_type' => '',
+            'database' => 'nullable',
+            'rule' => 'required',
+            'help' => 'This tag is for which models?',
+            'form_type' => 'enum',
+            'form_enum_class' => 'ModelType',
             'table' => true,
         ],
-        [
-            'name' => 'slug',
-            'type' => 'string',
-            'database' => 'unique',
-            'rule' => 'required|max:125',
-            'help' => 'slug used for url and routings',
-            'form_type' => '',
-            'table' => true,
-        ],
-        [
-            'name' => 'suggest',
-            'type' => 'boolean',
-            'database' => 'default',
-            'rule' => 'boolean',
-            'help' => '',
-            'form_type' => 'none',
-            'table' => true,
-        ],
-        [
-            'name' => 'count',
-            'type' => 'integer',
-            'database' => 'unsigned',
-            'rule' => '',
-            'help' => '',
-            'form_type' => 'none',
-            'table' => true,
-        ],
+        ['name' => 'title'],
+        ['name' => 'url'],
+        ['name' => 'icon'],
+        ['name' => 'activated'],
+        ['name' => 'google_index'],
+        ['name' => 'canonical_url'],
+        ['name' => 'language'],
     ];
 
-    protected $appends = ['url', 'title'];
-
-    public function getUrlAttribute()
+    public function scopeOfType($query, $type)
     {
-        return $this->slug;
-    }
-
-    public function getTitleAttribute()
-    {
-        return $this->name;
-    }
-
-    public function getColumns()
-    {
-        return $this->columns;
+        return $query->where('type', $type);
     }
 }

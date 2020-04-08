@@ -11,7 +11,7 @@ return [
 
     'locale' => env('APP_LOCALE', 'en'),
 
-    'timezone' => 'Asia/Tehran',
+    'timezone' => 'Europe/Berlin',
 
     'fallback_locale' => 'en_US',
 

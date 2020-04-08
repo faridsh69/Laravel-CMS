@@ -2,16 +2,10 @@
 
 namespace App\Models;
 
-use Actuallymab\LaravelComment\Contracts\Commentable;
-use Actuallymab\LaravelComment\HasComments;
 use App\Services\BaseModel;
-use Conner\Tagging\Taggable;
 
-class Blog extends BaseModel implements Commentable
+class Blog extends BaseModel
 {
-    use Taggable;
-    use HasComments;
-
     public $columns = [
         ['name' => 'title'],
         ['name' => 'url'],

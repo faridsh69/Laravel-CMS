@@ -66,12 +66,12 @@ class Module extends BaseModel
 
     public function parent()
     {
-        return $this->belongsTo(Module::class, 'parent_id', 'id');
+        return $this->belongsTo(static::class, 'parent_id', 'id');
     }
 
     public function children()
     {
-        return $this->hasMany(Module::class, 'parent_id', 'id');
+        return $this->hasMany(static::class, 'parent_id', 'id');
     }
 
     public function product()

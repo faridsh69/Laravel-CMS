@@ -2,13 +2,10 @@
 
 namespace App\Models;
 
-use Actuallymab\LaravelComment\Models\Comment as CommentSpatie;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Services\BaseModel;
 
-class Comment extends CommentSpatie
+class Comment extends BaseModel
 {
-	use SoftDeletes;
-
     public $columns = [
         // blog id
         [

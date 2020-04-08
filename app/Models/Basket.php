@@ -8,10 +8,7 @@ class Basket extends BaseModel
 {
     public $columns = [
         ['name' => 'activated'],
-        [
-            'name' => 'user_id',
-            'relation' => 'users',
-        ],
+        ['name' => 'user_id'],
     ];
 
     public function user()
