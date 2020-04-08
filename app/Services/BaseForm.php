@@ -125,6 +125,12 @@ class BaseForm extends Form
                 }else{
                     $options['empty_value'] = 'Nothing selected';
                 }
+                if(isset($column['query_builder'])){
+                    $q = explode('|', $column['query_builder']);
+                    $options['query_builder'] = function ($query) use ($q) {
+                        return $query->where($q[0], $q[1]);
+                    };
+                }
             }
             // all input files
             elseif($form_type === 'file'){

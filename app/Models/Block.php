@@ -7,7 +7,6 @@ use App\Services\BaseModel;
 class Block extends BaseModel
 {
     public $columns = [
-        ['name' => 'title'],
         [
             'name' => 'type',
             'type' => 'string',
@@ -18,6 +17,7 @@ class Block extends BaseModel
             'form_enum_class' => 'BlockType',
             'table' => true,
         ],
+        ['name' => 'title'],
         ['name' => 'order'],
         ['name' => 'activated'],
         [
@@ -43,6 +43,11 @@ class Block extends BaseModel
             'table' => true,
         ],
     ];
+
+    public function scopeOfType($query, $type)
+    {
+        return $query->where('type', $type);
+    }
 
     public function pages()
     {

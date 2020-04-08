@@ -7,7 +7,16 @@ use App\Services\BaseModel;
 class Category extends BaseModel
 {
     public $columns = [
-        ['name' => 'type'],
+        [
+            'name' => 'type',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => 'required',
+            'help' => 'This category is for which models?',
+            'form_type' => 'enum',
+            'form_enum_class' => 'ModelType',
+            'table' => true,
+        ],
         ['name' => 'title'],
         ['name' => 'url'],
         ['name' => 'description'],
@@ -29,8 +38,18 @@ class Category extends BaseModel
         ['name' => 'language'],
     ];
 
-    public function products()
+    public function scopeOfType($query, $type)
     {
-        return $this->hasMany(Product::class, 'category_id', 'id');
+        return $query->where('type', $type);
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo(Module::class, 'parent_id', 'id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany(Module::class, 'parent_id', 'id');
     }
 }

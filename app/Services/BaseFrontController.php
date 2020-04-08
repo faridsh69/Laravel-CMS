@@ -14,35 +14,46 @@ use Spatie\Activitylog\Models\Activity;
 
 class BaseFrontController extends Controller
 {
-    // public $model = 'Blog';
+    // ModelName
     public $model;
 
-    // public $model_sm = 'blog';
+    // modelname
     public $model_sm;
 
-    // public $model_trans = 'Blog';
+    // Model name
     public $model_trans;
 
-    // App\Models\Blog
+    // App\Models\ModelName
     public $model_class;
 
-    // App\Models\Blog
+    // an array of columns
     public $model_columns;
 
+    // an instance of this model
     public $repository;
 
+    // an instance of Illuminate\Http\Request
     public $request;
 
+    // meta title, description and other used in header
     public $meta;
 
     public function __construct(Request $request)
     {
-        $this->model_trans = __(strtolower($this->model));
+        $this->model_sm = strtolower($this->model);
+        $this->model_trans = __($this->model_sm);
         $this->model_class = 'App\\Models\\' . $this->model;
-        $this->model_sm = lcfirst($this->model);
         $this->repository = new $this->model_class();
         $this->request = $request;
         $this->model_columns = $this->repository->getColumns();
+        $this->meta = [
+            'title' => config('setting-general.default_meta_title') . ' | ' . $this->model_trans,
+            'description' => __('List of all '.$this->model_trans.' in this site is ready for you that is paginated and you can search between them.'),
+            'keywords' => '',
+            'image' => config('setting-general.default_meta_image'),
+            'google_index' => config('setting-general.google_index'),
+            'canonical_url' => url()->current(),
+        ];
     }
 
     /**
@@ -52,15 +63,6 @@ class BaseFrontController extends Controller
      */
     public function index()
     {
-        $this->meta = [
-            'title' => config('setting-general.default_meta_title') . ' | ' . 'Blogs',
-            'description' => config('setting-general.default_meta_description'),
-            'keywords' => '',
-            'image' => config('setting-general.default_meta_image'),
-            'google_index' => config('setting-general.google_index'),
-            'canonical_url' => url()->current(),
-        ];            
-
         $list = $this->repository->active()->language()
             ->orderBy('updated_at', 'desc')
             ->paginate(config('setting-general.pagination_number'));
@@ -76,7 +78,7 @@ class BaseFrontController extends Controller
      */
     public function show($url)
     {
-        $model = $this->repository->where('url', $url)->first();
+        $model = $this->repository->language()->where('url', $url)->first();
         $data = $model;
 
         foreach($this->model_columns as $column){
@@ -89,6 +91,11 @@ class BaseFrontController extends Controller
             activity($this->model)->performedOn($model)->causedBy(Auth::user())
                 ->log($this->model . ' View');
         }
+
+        $this->meta['title'] = config('setting-general.default_meta_title'). ' | '. $this->model_trans. ' | '. $data->title;
+        $this->meta['description'] = $data->description;
+        $this->meta['google_index'] = $data->google_index;
+        $this->meta['image'] = $data->image;
 
         return view('front.list.show', ['data' => $data, 'meta' => $this->meta]);
     }

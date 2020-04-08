@@ -49,9 +49,9 @@ class BaseListController extends Controller
 
     public function __construct(Request $request, FormBuilder $form_builder)
     {
-        $this->model_trans = __(strtolower($this->model));
+        $this->model_sm = strtolower($this->model);
+        $this->model_trans = __($this->model_sm);
         $this->model_class = 'App\\Models\\' . $this->model;
-        $this->model_sm = lcfirst($this->model);
         $this->model_form = 'App\\Forms\\' . $this->model . 'Form';
         $this->repository = new $this->model_class();
         $this->request = $request;
@@ -60,8 +60,8 @@ class BaseListController extends Controller
         if(Route::has('admin.' . $this->model_sm . '.list.index')){
             $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.index');
         }
-        $this->meta['link_name'] = __(strtolower($this->model . '_manager'));
-        $this->meta['title'] = __(strtolower($this->model . '_manager'));
+        $this->meta['link_name'] = __($this->model_sm . '_manager');
+        $this->meta['title'] = __($this->model_sm . '_manager');
     }
 
     /**
