@@ -23,8 +23,17 @@
 			language: {{$item->language}}
 			<br>
 		</small>
+		<br>
 		@if($item->category)
 		<p>{{ __('category') }}: <a href="{{ route('front.blog.category.show', $item->category->url) }}"><i class="fa {{ $item->category->icon }}"></i>{{ $item->category->title }}</a></p>
+		@endif
+		@if($item->tags)
+		<ul>{{ __('tags') }}: 
+			@foreach($item->tags as $tag)
+			<li><a href="{{ route('front.blog.tag.show', $tag->url) }}"><i class="fa {{ $tag->icon }}"></i>{{ $tag->title }}</a></li>
+			@endforeach
+		</ul>
+		<br>
 		@endif
 		@if($item->keywords)
 		<p>{{ __('keywords') }}: {{ $item->keywords }}</p>

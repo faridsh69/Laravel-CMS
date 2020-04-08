@@ -67,7 +67,11 @@ class BaseFrontController extends Controller
             ->orderBy('updated_at', 'desc')
             ->paginate(config('setting-general.pagination_number'));
 
-        return view('front.list.index', ['meta' => $this->meta, 'list' => $list]);
+        $categories = Category::ofType($this->model_sm)->active()->language()
+            ->orderBy('updated_at', 'desc')
+            ->get();
+
+        return view('front.list.index', ['meta' => $this->meta, 'list' => $list, 'categories' => $categories]);
     }
 
     /**
@@ -116,6 +120,10 @@ class BaseFrontController extends Controller
             ->orderBy('updated_at', 'desc')
             ->paginate(config('setting-general.pagination_number'));
 
+        if($list->count() == 0){
+            return redirect()->route('front.'. $this->model_sm. '.index');
+        }
+
         return view('front.list.index', ['meta' => $this->meta, 'list' => $list, 'category' => $category]);
     }
 
@@ -123,13 +131,14 @@ class BaseFrontController extends Controller
     {
         $categories = Category::ofType($this->model_sm)->active()->language()
             ->orderBy('updated_at', 'desc')
-            ->paginate(config('setting-general.pagination_number'));
+            ->get();
 
         $list = $this->repository->active()->language()
             ->orderBy('updated_at', 'desc')
             ->paginate(config('setting-general.pagination_number'));
 
         $this->meta['title'] = $this->model_trans. ' | Category';
+        $this->meta['canonical_url'] = route('front.'. $this->model_sm. 'index');
 
         return view('front.list.index', ['meta' => $this->meta, 'list' => $list, 'categories' => $categories]);
     }

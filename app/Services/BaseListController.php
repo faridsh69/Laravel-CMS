@@ -481,21 +481,11 @@ class BaseListController extends Controller
         }
 
         // array columns
+        // tag, related_blogs, related_products, pages, related_pages, rol->users, permissions, form->fields
         foreach(collect($this->model_columns)->where('type', 'array')->pluck('name') as $array_column) {
-            if(array_search($array_column, ['users', 'permissions', 'tags'], true) === false){
+            if(array_search($array_column, ['users', 'permissions'], true) === false){
                 $model->{$array_column}()->sync($data[$array_column], true);
             }
-        }
-        // tag, related_blogs, related_products, pages, related_pages, rol->users, permissions, form->fields
-
-        // Tag
-        if($model_name === 'Product' || $model_name === 'Blog')
-        {
-            if(! isset($data['tags'])){
-                $data['tags'] = [];
-            }
-            $tag_names = \Conner\Tagging\Model\Tag::whereIn('id', $data['tags'])->pluck('name')->toArray();
-            $model->retag($tag_names);
         }
 
         // Role

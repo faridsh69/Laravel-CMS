@@ -31,19 +31,21 @@ class Blog extends BaseModel
             'multiple' => false,
             'table' => false,
         ],
-        // [
-        //     'name' => 'tags',
-        //     'type' => 'array',
-        //     'database' => 'none',
-        //     'rule' => 'nullable',
-        //     'help' => '',
-        //     'form_type' => 'entity',
-        //     'class' => Tag::class,
-        //     'property' => 'name',
-        //     'property_key' => 'id',
-        //     'multiple' => true,
-        //     'table' => false,
-        // ],
+        [
+            'name' => 'tags',
+            'type' => 'array',
+            'database' => 'none',
+            'rule' => 'nullable',
+            'help' => '',
+            'form_type' => 'entity',
+            'class' => Tag::class,
+            'property' => 'title',
+            'property_key' => 'id',
+            'query_builder' => 'type|blog',
+            'multiple' => true,
+            'table' => false,
+        ],
+
         // [
         //     'name' => 'related_blogs',
         //     'type' => 'array',
@@ -60,19 +62,14 @@ class Blog extends BaseModel
         ['name' => 'language'],
     ];
 
-    public function canBeRated(): bool
-    {
-        return true;
-    }
-
-    public function mustBeApproved(): bool
-    {
-        return false;
-    }
-
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'model_tag', 'model_id', 'tag_id');
     }
 
     public function related_blogs()
