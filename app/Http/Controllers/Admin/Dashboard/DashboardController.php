@@ -207,6 +207,6 @@ class DashboardController extends BaseAdminController
     {
         $this->meta['title'] = __('icons');
 
-        return view('admin.dashboard.icons', ['meta' => $this->meta]);
+        return view('admin.page.dashboard.icons', ['meta' => $this->meta]);
     }
 }

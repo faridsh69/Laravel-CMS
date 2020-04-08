@@ -12,14 +12,11 @@ class CreateFactorTagendTable extends Migration
     public function up()
     {
         Schema::create('factor_tagend', function (Blueprint $table) {
-            $table->increments('id');
+            $table->unsignedBigInteger('id');
             $table->integer('value');
             $table->unsignedBigInteger('factor_id')->nullable();
             $table->foreign('factor_id')->references('id')->on('factors');
-            $table->unsignedBigInteger('tagend_id')->nullable();
-            $table->foreign('tagend_id')->references('id')->on('tagends');
-            $table->timestamps();
-            $table->softDeletes();
+            $table->unsignedBigInteger('tagend_id');
         });
     }
 

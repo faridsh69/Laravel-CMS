@@ -9,12 +9,10 @@ class CreateBlockPageTable extends Migration
     public function up()
     {
         Schema::create('block_page', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->bigInteger('block_id')->unsigned()->nullable();
-            $table->foreign('block_id')->references('id')->on('blocks')->onDelete('cascade');
-            $table->bigInteger('page_id')->unsigned()->nullable();
-            $table->foreign('page_id')->references('id')->on('pages')->onDelete('cascade');
-            $table->timestamps();
+            $table->unsignedBigInteger('block_id');
+            $table->foreign('block_id')->references('id')->on('blocks')->onUpdate('cascade')->onDelete('cascade');
+            $table->unsignedBigInteger('page_id');
+            $table->foreign('page_id')->references('id')->on('pages')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

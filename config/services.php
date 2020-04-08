@@ -70,7 +70,9 @@ $output = [
             'address',
             'answer',
             'blog',
+            'category',
             'comment',
+            'tag',
         ],
         'front_routes' => [
             'blog',

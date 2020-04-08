@@ -103,7 +103,7 @@ class BaseModel extends Model
                     'type' => 'string',
                     'database' => 'nullable',
                     'rule' => '',
-                    'help' => 'Click: <a target="blank" href="/admin/icons/list">List of Icons</a>',
+                    'help' => 'Click: <a target="blank" href="/admin/icons/list">List of Icons</a> - for example: fa-glass',
                     'form_type' => '',
                     'table' => false,
                 ],

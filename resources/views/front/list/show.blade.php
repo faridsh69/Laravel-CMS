@@ -1,49 +1,51 @@
 @extends('front.common.layout')
 @section('content_block')
 <div class="row">
-	<div class="col-sm-3">
-		<img src="{{ $data->image }}" alt="{{ $data->title }}">
+	<div class="col-sm-2">
+		@if($item->image)
+		<img src="{{ $item->image }}" alt="{{ $item->title }}">
+		@endif
 	</div>
-	<div class="col-sm-6"> 
-		<h1>{{ $data->title }}</h1>
+	<div class="col-sm-7"> 
+		<h1>{{ $item->title }}</h1>
 		<p>
-			{{ __('description') }}: {{ $data->description }}
+			{{ __('description') }}: {{ $item->description }}
 		</p>
 	</div>
 	<div class="col-sm-3">
 		<small>
 			{{ __('created at') }}:
-			{{ $data->created_at }}
+			{{ $item->created_at }}
 			<br>
 			{{ ('updated at') }}:
-			{{ $data->updated_at }}	
+			{{ $item->updated_at }}	
 			<br>
-			language: {{$data->language}}
+			language: {{$item->language}}
 			<br>
-		</small>	
+		</small>
+		@if($item->category)
+		<p>{{ __('category') }}: <a href="{{ route('front.blog.category.show', $item->category->url) }}"><i class="fa {{ $item->category->icon }}"></i>{{ $item->category->title }}</a></p>
+		@endif
+		@if($item->keywords)
+		<p>{{ __('keywords') }}: {{ $item->keywords }}</p>
+		@endif
 	</div>
 </div>
 <hr>
-{!! $data->content !!}
+{!! $item->content !!}
 <hr>
-@if($data->category)
-<p>{{ __('category') }}: <a href="{{ $data->category->url }}"><b>{{ $data->category->title }}</b></a></p>
-@endif
-@if($data->keywords)
-<p>{{ __('keywords') }}: {{ $data->keywords }}</p>
-@endif
 
-@foreach($data->getColumns() as $column)
+@foreach($item->getColumns() as $column)
 	@php
 		$file_accept = '';
 		if($column['form_type'] === 'file')
 		{
 			$file_accept = $column['file_accept'];
 			if($column['file_manager'] === true){
-				$files_src = explode(',',  $data[$column['name']] );
+				$files_src = explode(',',  $item[$column['name']] );
 				if($files_src == ['']){ $files_src = [];}
 			}else{
-				$files_src = json_decode($data[$column['name']]);
+				$files_src = json_decode($item[$column['name']]);
 			}
 		}
 	@endphp
@@ -78,22 +80,22 @@
 		@if(count($files_src) === 0)
 			<span style="color: red">Null</span>
 		@endif
-	@elseif(!is_object($data[$column['name']]) )
-		@if($data[$column['name']] === null)
+	@elseif(!is_object($item[$column['name']]) )
+		@if($item[$column['name']] === null)
 			<span style="color: red">Null</span>
 		@else
 			@if($column['form_type'] === 'entity')
 				@php
-					$related_model = (new $column['class'])->find($data[$column['name']]);
+					$related_model = (new $column['class'])->find($item[$column['name']]);
 				@endphp
 
 				@each('admin.common.show-related-table', [ [$related_model] ], 'items')
 			@else
-				{{ $data[$column['name']] }}
+				{{ $item[$column['name']] }}
 			@endif
 		@endif
 	@else
-		@each('admin.common.show-related-table', [$data[$column['name']]], 'items')
+		@each('admin.common.show-related-table', [$item[$column['name']]], 'items')
 	@endif
 	</div>
 @endforeach

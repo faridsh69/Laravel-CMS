@@ -105,5 +105,7 @@ return [
         'google_analytics_id' => 'la-google',
         'site_verification_google_code' => 'la-google',
         'google_map_code' => 'la-map-marker',
+        'icon' => 'la-image',
+        'order' => 'la-angle-double-up',
     ],
 ];

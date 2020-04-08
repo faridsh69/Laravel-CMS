@@ -78,44 +78,59 @@ class BaseFrontController extends Controller
      */
     public function show($url)
     {
-        $model = $this->repository->language()->where('url', $url)->first();
-        $data = $model;
+        $item = $this->repository->where('url', $url)->firstOrFail();
 
         foreach($this->model_columns as $column){
             if($column['form_type'] === 'file' && $column['file_manager'] === false){
-                $data[$column['name']] = $data->files_src($column['name']);
+                $item[$column['name']] = $item->files_src($column['name']);
             }
         }
 
         if(env('APP_ENV') !== 'testing'){
-            activity($this->model)->performedOn($model)->causedBy(Auth::user())
+            activity($this->model)->performedOn($item)->causedBy(Auth::user())
                 ->log($this->model . ' View');
         }
 
-        $this->meta['title'] = config('setting-general.default_meta_title'). ' | '. $this->model_trans. ' | '. $data->title;
-        $this->meta['description'] = $data->description;
-        $this->meta['google_index'] = $data->google_index;
-        $this->meta['image'] = $data->image;
+        $this->meta['title'] = $this->model_trans. ' | '. $item->title;
+        $this->meta['description'] = $item->description;
+        $this->meta['google_index'] = $item->google_index;
+        $this->meta['image'] = $item->image;
+        if($item->canonical_url){ $this->meta['canonical_url'] = $item->canonical_url; }
 
-        return view('front.list.show', ['data' => $data, 'meta' => $this->meta]);
+        return view('front.list.show', ['item' => $item, 'meta' => $this->meta]);
+    }
+
+    public function getCategory($url)
+    {
+        $category = Category::where('url', $url)->firstOrFail();
+
+        if(env('APP_ENV') !== 'testing'){
+            activity('Category')->performedOn($category)->causedBy(Auth::user())
+                ->log('Category View');
+        }
+
+        $this->meta['title'] = $this->model_trans. ' | Category | '. $category->title;
+        $this->meta['description'] = $category->description;
+
+        $list = $category->models()->active()->language()
+            ->orderBy('updated_at', 'desc')
+            ->paginate(config('setting-general.pagination_number'));
+
+        return view('front.list.index', ['meta' => $this->meta, 'list' => $list, 'category' => $category]);
     }
 
     public function getCategories () 
     {
-        $this->meta = [
-            'title' => config('setting-general.default_meta_title') . ' | ' . __('blog categories'),
-            'description' => __('blog categories description'),
-            'keywords' => '',
-            'image' => config('setting-general.default_meta_image'),
-            'google_index' => config('setting-general.google_index'),
-            'canonical_url' => url()->current(),
-        ];
-
-        // $list = Category::ofType('blog')->active()->language()
-        $list = Category::active()->language()
+        $categories = Category::ofType($this->model_sm)->active()->language()
             ->orderBy('updated_at', 'desc')
             ->paginate(config('setting-general.pagination_number'));
 
-        return view('front.list.index', ['meta' => $this->meta, 'list' => $list]);
+        $list = $this->repository->active()->language()
+            ->orderBy('updated_at', 'desc')
+            ->paginate(config('setting-general.pagination_number'));
+
+        $this->meta['title'] = $this->model_trans. ' | Category';
+
+        return view('front.list.index', ['meta' => $this->meta, 'list' => $list, 'categories' => $categories]);
     }
 }

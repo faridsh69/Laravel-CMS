@@ -21,13 +21,16 @@ class Tag extends BaseModel
         ['name' => 'url'],
         ['name' => 'icon'],
         ['name' => 'activated'],
-        ['name' => 'google_index'],
-        ['name' => 'canonical_url'],
         ['name' => 'language'],
     ];
 
     public function scopeOfType($query, $type)
     {
         return $query->where('type', $type);
+    }
+
+    public function models()
+    {
+        return $this->belongsToMany('App\\Models\\' . ucfirst($this->type), 'model_tag', 'tag_id', 'model_id');
     }
 }

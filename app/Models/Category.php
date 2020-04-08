@@ -20,11 +20,8 @@ class Category extends BaseModel
         ['name' => 'title'],
         ['name' => 'url'],
         ['name' => 'description'],
-        ['name' => 'image'],
         ['name' => 'icon'],
         ['name' => 'activated'],
-        ['name' => 'google_index'],
-        ['name' => 'canonical_url'],
         ['name' => 'order'],
         [
             'name' => 'parent_id',
@@ -50,7 +47,7 @@ class Category extends BaseModel
 
     public function models()
     {
-        return $this->hasMany('App\\Models\\' . $this->type);
+        return $this->hasMany('App\\Models\\' . ucfirst($this->type), 'category_id', 'id');
     }
 
     public function parent()

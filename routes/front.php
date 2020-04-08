@@ -6,11 +6,14 @@ foreach($models as $model_sm)
 	$model = ucfirst($model_sm);
 	$class_name = 'App\\Models\\' . $model;
 	Route::group(['prefix' => $model_sm, 'namespace' => $model, 'as' => $model_sm . '.'], function () use ($class_name) {
-		// Route::get('category', 'ResourceController@getCategories');
 		Route::get('', 'FrontController@index')->name('index');
+		Route::get('category', 'FrontController@getCategories')->name('category.index');
+		Route::get('category/{url}', 'FrontController@getCategory')->name('category.show');
 		Route::get('{url}', 'FrontController@show')->name('show');
 	});
 }
+
+
 Route::get('{page_url?}', 'Page\FrontController@index')->name('page.index');
 
 
