@@ -58,6 +58,7 @@ class BitcointProductsTableSeeder extends Seeder
     	foreach($products as $product){
             $order += 3;
             $product['order'] = $order;
+            $product['language'] = 'en';
             $product['url'] = '';
     		$product['content'] = '';
             $product['category_id'] = 1;

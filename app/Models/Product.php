@@ -2,18 +2,21 @@
 
 namespace App\Models;
 
-use Actuallymab\LaravelComment\Contracts\Commentable;
-use Actuallymab\LaravelComment\HasComments;
 use App\Services\BaseModel;
 
-class Product extends BaseModel implements Commentable
+class Product extends BaseModel
 {
-    use HasComments;
-
     // title, price, discount_price, inventory, order, url, category_id, description, content, image, activated, tags, ready_time, comment, rate, gallery
 
     public $columns = [
         ['name' => 'title'],
+        ['name' => 'url'],
+        ['name' => 'description'],
+        ['name' => 'category_id'],
+        ['name' => 'content'],
+        ['name' => 'image'],
+        ['name' => 'video'],
+        ['name' => 'activated'],
         [
             'name' => 'price',
             'type' => 'bigInteger',
@@ -32,10 +35,6 @@ class Product extends BaseModel implements Commentable
             'form_type' => 'none',
             'table' => false,
         ],
-        ['name' => 'url'],
-        ['name' => 'description'],
-        ['name' => 'content'],
-        ['name' => 'gallery'],
         [
             'name' => 'inventory',
             'type' => 'bigInteger',
@@ -45,11 +44,9 @@ class Product extends BaseModel implements Commentable
             'form_type' => 'none',
             'table' => false,
         ],
-        ['name' => 'activated'],
         ['name' => 'order'],
-        ['name' => 'category_id'],
         ['name' => 'tags'],
-        ['name' => 'related_items'],
+        ['name' => 'relateds'],
         ['name' => 'language'],
     ];
 

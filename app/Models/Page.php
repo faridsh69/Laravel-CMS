@@ -25,20 +25,9 @@ class Page extends BaseModel
             'form_type' => '',
             'table' => false,
         ],
+        ['name' => 'tags'],
+        ['name' => 'relateds'],
         ['name' => 'language'],
-        [
-            'name' => 'related_pages',
-            'type' => 'array',
-            'database' => 'none',
-            'rule' => 'nullable',
-            'help' => '',
-            'form_type' => 'entity',
-            'class' => 'App\Models\Page',
-            'property' => 'title',
-            'property_key' => 'id',
-            'multiple' => true,
-            'table' => false,
-        ],
     ];
 
     public function blocks()

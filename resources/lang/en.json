@@ -84,6 +84,8 @@
     "picture" : "Picture",
     "photo" : "Photo",
     "gallery" : "Gallery",
+    "image_gallery" : "Image Gallery",
+    "video_gallery" : "Video Gallery",
     "price" : "Price",
     "archive" : "Archive",
     "delete" : "Delete",

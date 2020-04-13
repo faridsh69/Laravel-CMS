@@ -317,7 +317,7 @@ class BaseModel extends Model
                     'table' => false,
                 ],
                 'image_gallery' => [
-                    'name' => 'gallery',
+                    'name' => 'image_gallery',
                     'type' => 'file',
                     'database' => 'none',
                     'rule' => 'nullable',
@@ -329,7 +329,7 @@ class BaseModel extends Model
                     'table' => false,
                 ],
                 'video_gallery' => [
-                    'name' => 'gallery',
+                    'name' => 'video_gallery',
                     'type' => 'file',
                     'database' => 'none',
                     'rule' => 'nullable',

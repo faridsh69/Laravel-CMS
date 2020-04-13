@@ -30,21 +30,21 @@ $output = [
             'tolerance' => env('STRIPE_WEBHOOK_TOLERANCE', 300),
         ],
     ],
-    'rules' => [
-        'title' => 'required|max:60|min:5|unique:blogs,title,',
-        'url' => 'required|max:80|regex:/^[a-z0-9-]+$/|unique:blogs,url,',
-        'meta_description' => 'required|max:191|min:30',
-        'image' => 'nullable|max:191|url',
-        'canonical_url' => 'nullable|max:191|url',
-    ],
+    // 'rules' => [
+    //     'title' => 'required|max:60|min:5|unique:blogs,title,',
+    //     'url' => 'required|max:80|regex:/^[a-z0-9-]+$/|unique:blogs,url,',
+    //     'meta_description' => 'required|max:191|min:30',
+    //     'image' => 'nullable|max:191|url',
+    //     'canonical_url' => 'nullable|max:191|url',
+    // ],
     'social_companies' => [
         'GOOGLE',
         'TWITTER',
         'FACEBOOK',
         'LINKEDIN',
-        // 'GITHUB',
-        // 'GITLAB',
-        // 'BITBUCKET',
+        'GITHUB',
+        'GITLAB',
+        'BITBUCKET',
     ],
     'models' => [
         'factory' => [
@@ -76,6 +76,7 @@ $output = [
         ],
         'front_routes' => [
             'blog',
+            'product',
         ],
         'admin_routes' => [
             'activity',

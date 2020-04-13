@@ -29,10 +29,10 @@
 				@foreach($files_src as $src)
 				<div class="col-sm-4">
 					@if($file_accept === 'image')
-				    	<img alt="image" src="{{ $src }}" style="max-height: 160px;">
+				    	<img alt="image" src="{{ $src }}" style="max-width: 100%;">
 					@elseif($file_accept === 'video')
-						<video controls>
-							<source src="{{ $src }}">
+						<video controls style="max-width: 100%;">
+							<source src="{{ $src }}"> 
 						</video>
 					@elseif($file_accept === 'audio')
 						<audio controls>
@@ -57,7 +57,7 @@
 	</div>
 	<div class="col-sm-3">
 		<div class="mb-3">
-			<img src="{{ asset('images/front/general/unlike.png') }}" alt="like" id="like" style="height: 40px;">
+			<img src="{{ asset('images/front/general/unlike.png') }}" alt="like" id="like" style="height: 40px; cursor: pointer;">
 			<span class="ml-3">0</span>
 		</div>
 		<small>
