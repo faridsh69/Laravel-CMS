@@ -7,17 +7,14 @@ use App\Models\Form;
 use App\Models\Page;
 use Illuminate\Http\Request;
 
-class ResourceController extends Controller
+class FrontController extends Controller
 {
     public function index($page_url = null, Request $request)
     {
         $page = Page::where('url', $page_url)->active()->first();
         abort_if(! $page, 404);
-        if(config('app.name') === 'map'){
-            return view('front.test.map.offline-city');
-        }
 
-        return view('front.list.index', ['list' => [], 'page' => $page]);
+        return view('front.common.layout', ['list' => [], 'page' => $page]);
     }
 
     public function postSubmitForm($form_id, Request $request, \App\Models\Answer $answer)
