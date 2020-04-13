@@ -1,20 +1,65 @@
 @extends('front.common.layout')
 @section('content_block')
 <div class="row">
-	@if($item->image)
-	<div class="col-sm-2">
-		<img src="{{ $item->image }}" alt="{{ $item->title }}">
-	</div>
-	<div class="col-sm-7">
-	@else
 	<div class="col-sm-9">
-	@endif
 		<h1>{{ $item->title }}</h1>
 		<p>
 			{{ __('description') }}: {{ $item->description }}
 		</p>
+		<hr>
+		{!! $item->content !!}
+		<hr>
+		@foreach($item->getColumns() as $column)
+			@php
+				$file_accept = '';
+				if($column['form_type'] === 'file')
+				{
+					$file_accept = $column['file_accept'];
+					if($column['file_manager'] === true){
+						$files_src = explode(',',  $item[$column['name']] );
+						if($files_src == ['']){ $files_src = [];}
+					}else{
+						$files_src = json_decode($item[$column['name']]);
+					}
+				}
+			@endphp
+			@if($file_accept)
+			<b>{{ __($column['name']) }}</b>
+			<div class="row mt-3">
+				@foreach($files_src as $src)
+				<div class="col-sm-4">
+					@if($file_accept === 'image')
+				    	<img alt="image" src="{{ $src }}" style="max-height: 160px;">
+					@elseif($file_accept === 'video')
+						<video controls>
+							<source src="{{ $src }}">
+						</video>
+					@elseif($file_accept === 'audio')
+						<audio controls>
+							<source src="{{ $src }}">
+						</audio>
+					@else
+						{{ $src }}
+					@endif
+					<div class="mt-2">
+						<a download href="{{ $src }}" class="btn btn-outline-info"><span>
+						    <i class="fa fa-download"></i></span>
+						</a>
+						<a target="blank" href="{{ $src }}" class="btn btn-outline-success"><span>
+						    <i class="fa fa-eye"></i></span>
+						</a>
+					</div>
+				</div>
+				@endforeach
+			</div>
+			@endif
+		@endforeach
 	</div>
 	<div class="col-sm-3">
+		<div class="mb-3">
+			<img src="{{ asset('images/front/general/unlike.png') }}" alt="like" id="like" style="height: 40px;">
+			<span class="ml-3">0</span>
+		</div>
 		<small>
 			{{ __('created at') }}:
 			{{ $item->created_at }}
@@ -48,75 +93,20 @@
 		</ul>
 		<br>
 		@endif
+		<a href="whatsapp://send?text={{ route('front.blog.show', $item->url) }}" data-action="share/whatsapp/share"><i class="fa fa-share"></i> Share via Whatsapp</a>
 	</div>
 </div>
-<hr>
-{!! $item->content !!}
-<hr>
-
-@foreach($item->getColumns() as $column)
-	@php
-		$file_accept = '';
-		if($column['form_type'] === 'file')
-		{
-			$file_accept = $column['file_accept'];
-			if($column['file_manager'] === true){
-				$files_src = explode(',',  $item[$column['name']] );
-				if($files_src == ['']){ $files_src = [];}
-			}else{
-				$files_src = json_decode($item[$column['name']]);
-			}
-		}
-	@endphp
-	<h6 class="m--font-boldest m--font-brand">{{ __($column['name']) }}</h6>
-	<div class="mb-4 show-file">
-	@if($file_accept)
-		@foreach($files_src as $src)
-		<div class="show-file">
-			@if($file_accept === 'image')
-		    	<img alt="image" src="{{ $src }}">
-			@elseif($file_accept === 'video')
-				<video controls>
-					<source src="{{ $src }}">
-				</video>
-			@elseif($file_accept === 'audio')
-				<audio controls>
-					<source src="{{ $src }}">
-				</audio>
-			@else
-				{{ $src }}
-			@endif
-			<div class="file-tools mt-2">
-				<a download href="{{ $src }}" class="btn btn-outline-info m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air"><span>
-				    <i class="la la-download"></i></span>
-				</a>
-				<a target="blank" href="{{ $src }}" class="btn btn-outline-success m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air"><span>
-				    <i class="la la-eye"></i></span>
-				</a>
-			</div>
-		</div>
-		@endforeach
-		@if(count($files_src) === 0)
-			<span style="color: red">Null</span>
-		@endif
-	@elseif(!is_object($item[$column['name']]) )
-		@if($item[$column['name']] === null)
-			<span style="color: red">Null</span>
-		@else
-			@if($column['form_type'] === 'entity')
-				@php
-					$related_model = (new $column['class'])->find($item[$column['name']]);
-				@endphp
-
-				@each('admin.common.show-related-table', [ [$related_model] ], 'items')
-			@else
-				{{ $item[$column['name']] }}
-			@endif
-		@endif
-	@else
-		@each('admin.common.show-related-table', [$item[$column['name']]], 'items')
-	@endif
-	</div>
-@endforeach
-
 @endsection
+@push('scripts')
+<script>
+	var unlikeSrc = "http:{{ asset('/images/front/general/unlike.png') }}";
+	var likeSrc = "http:{{ asset('/images/front/general/like.png') }}";
+	document.getElementById('like').addEventListener('click', function(event){
+		if(event.target.src == likeSrc){
+			event.target.src = unlikeSrc;
+		}else{
+			event.target.src = likeSrc;
+		}
+	});
+</script>
+@endpush

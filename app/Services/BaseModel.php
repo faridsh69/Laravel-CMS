@@ -203,8 +203,8 @@ class BaseModel extends Model
                     'rule' => 'nullable|max:191',
                     'help' => 'Upload and select file from file manager',
                     'form_type' => 'file',
-                    'file_manager' => true,
-                    'file_accept' => 'file',
+                    'file_manager' => true, // its uploaded from file manager
+                    'file_accept' => 'file', // file, image, video, audio, text
                     'file_multiple' => true,
                     'table' => false,
                 ],
@@ -216,7 +216,7 @@ class BaseModel extends Model
                     'help' => 'Upload and select image from file manager',
                     'form_type' => 'file',
                     'file_manager' => true,
-                    'file_accept' => 'image', // file, image, video, audio, text
+                    'file_accept' => 'image',
                     'file_multiple' => true,
                     'table' => false,
                 ],
@@ -256,8 +256,8 @@ class BaseModel extends Model
                     'file_multiple' => true,
                     'table' => false,
                 ],
-                'upload_file' => [
-                    'name' => 'upload_file',
+                'manual_file_upload' => [
+                    'name' => 'manual_file_upload',
                     'type' => 'file',
                     'database' => 'none',
                     'rule' => 'nullable|file|max:9000',
@@ -268,8 +268,8 @@ class BaseModel extends Model
                     'file_multiple' => false,
                     'table' => false,
                 ],
-                'upload_image' => [
-                    'name' => 'upload_image',
+                'manual_image_upload' => [
+                    'name' => 'manual_image_upload',
                     'type' => 'file',
                     'database' => 'none',
                     'rule' => 'nullable|file|image|mimetypes:image/*|dimensions:min_width=1,min_height=1|max:2000',
@@ -280,8 +280,8 @@ class BaseModel extends Model
                     'file_multiple' => false,
                     'table' => false,
                 ],
-                'upload_video' => [
-                    'name' => 'upload_video',
+                'manual_video_upload' => [
+                    'name' => 'manual_video_upload',
                     'type' => 'file',
                     'database' => 'none',
                     'rule' => 'nullable|file|mimetypes:video/*|max:9000',
@@ -292,8 +292,8 @@ class BaseModel extends Model
                     'file_multiple' => false,
                     'table' => false,
                 ],
-                'upload_audio' => [
-                    'name' => 'upload_audio',
+                'manual_audio_upload' => [
+                    'name' => 'manual_audio_upload',
                     'type' => 'file',
                     'database' => 'none',
                     'rule' => 'nullable|file|mimetypes:audio/*|max:9000',
@@ -304,11 +304,11 @@ class BaseModel extends Model
                     'file_multiple' => false,
                     'table' => false,
                 ],
-                'upload_text' => [
-                    'name' => 'upload_text',
+                'manual_text_upload' => [
+                    'name' => 'manual_text_upload',
                     'type' => 'file',
                     'database' => 'none',
-                    'rule' => 'nullable|file|max:25000',
+                    'rule' => 'nullable|file|max:2500',
                     'help' => '',
                     'form_type' => 'file',
                     'file_manager' => false,
@@ -316,19 +316,7 @@ class BaseModel extends Model
                     'file_multiple' => false,
                     'table' => false,
                 ],
-                'upload_file_gallery' => [
-                    'name' => 'upload_file_gallery',
-                    'type' => 'file',
-                    'database' => 'none',
-                    'rule' => 'nullable',
-                    'help' => '',
-                    'form_type' => 'file',
-                    'file_manager' => false,
-                    'file_accept' => 'file',
-                    'file_multiple' => true,
-                    'table' => false,
-                ],
-                'gallery' => [
+                'image_gallery' => [
                     'name' => 'gallery',
                     'type' => 'file',
                     'database' => 'none',
@@ -337,6 +325,18 @@ class BaseModel extends Model
                     'form_type' => 'file',
                     'file_manager' => false,
                     'file_accept' => 'image',
+                    'file_multiple' => true,
+                    'table' => false,
+                ],
+                'video_gallery' => [
+                    'name' => 'gallery',
+                    'type' => 'file',
+                    'database' => 'none',
+                    'rule' => 'nullable',
+                    'help' => '',
+                    'form_type' => 'file',
+                    'file_manager' => false,
+                    'file_accept' => 'video',
                     'file_multiple' => true,
                     'table' => false,
                 ],
