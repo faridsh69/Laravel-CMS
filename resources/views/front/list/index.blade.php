@@ -24,6 +24,28 @@
 				<a href="{{ route('front.' . lcfirst(class_basename($list[0])) . '.category.index') }}"> Check other categories </a>
 			</div>
 		</div>
+		@elseif(isset($tag))
+		<div class="row">
+			<div class="col-12"> 
+				<h1>{{ __('tag') }}: <i class="fa {{ $tag->icon }}"></i> {{ $tag->title }}</h1>
+				<p>
+					{{ __('description') }}: {{ $tag->description }}
+				</p>
+			</div>
+			<div class="col-12">
+				<small>
+					{{ __('created at') }}:
+					{{ $tag->created_at }}
+					<br>
+					{{ ('updated at') }}:
+					{{ $tag->updated_at }}	
+					<br>
+					language: {{$tag->language}}
+					<br>
+				</small>
+				<a href="{{ route('front.' . lcfirst(class_basename($list[0])) . '.tag.index') }}"> Check other tags </a>
+			</div>
+		</div>
 		@elseif(isset($categories))
 		{{ __('categories') }}:
 		<ul>

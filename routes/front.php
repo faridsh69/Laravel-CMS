@@ -9,6 +9,8 @@ foreach($models as $model_sm)
 		Route::get('', 'FrontController@index')->name('index');
 		Route::get('category', 'FrontController@getCategories')->name('category.index');
 		Route::get('category/{url}', 'FrontController@getCategory')->name('category.show');
+		Route::get('tag', 'FrontController@getTags')->name('tag.index');
+		Route::get('tag/{url}', 'FrontController@getTag')->name('tag.show');
 		Route::get('{url}', 'FrontController@show')->name('show');
 	});
 }

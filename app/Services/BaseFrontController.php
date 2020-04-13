@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Tag;
 use Auth;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
@@ -138,8 +139,47 @@ class BaseFrontController extends Controller
             ->paginate(config('setting-general.pagination_number'));
 
         $this->meta['title'] = $this->model_trans. ' | Category';
-        $this->meta['canonical_url'] = route('front.'. $this->model_sm. 'index');
+        $this->meta['canonical_url'] = route('front.'. $this->model_sm. '.index');
 
         return view('front.list.index', ['meta' => $this->meta, 'list' => $list, 'categories' => $categories]);
+    }
+
+    public function getTag($url)
+    {
+        $tag = Tag::where('url', $url)->firstOrFail();
+
+        if(env('APP_ENV') !== 'testing'){
+            activity('Tag')->performedOn($tag)->causedBy(Auth::user())
+                ->log('Tag View');
+        }
+
+        $this->meta['title'] = $this->model_trans. ' | Tag | '. $tag->title;
+        $this->meta['description'] = $tag->description;
+
+        $list = $tag->models()->active()->language()
+            ->orderBy('updated_at', 'desc')
+            ->paginate(config('setting-general.pagination_number'));
+
+        if($list->count() == 0){
+            return redirect()->route('front.'. $this->model_sm. '.index');
+        }
+
+        return view('front.list.index', ['meta' => $this->meta, 'list' => $list, 'tag' => $tag]);
+    }
+
+    public function getTags () 
+    {
+        $tags = Tag::ofType($this->model_sm)->active()->language()
+            ->orderBy('updated_at', 'desc')
+            ->get();
+
+        $list = $this->repository->active()->language()
+            ->orderBy('updated_at', 'desc')
+            ->paginate(config('setting-general.pagination_number'));
+
+        $this->meta['title'] = $this->model_trans. ' | Tag';
+        $this->meta['canonical_url'] = route('front.'. $this->model_sm. '.index');
+
+        return view('front.list.index', ['meta' => $this->meta, 'list' => $list, 'tags' => $tags]);
     }
 }
