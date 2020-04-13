@@ -19,9 +19,15 @@ class BaseModel extends Model
 
     public function getColumns()
     {
-        $table_name = $this->getTable();
+        $constructor = [
+            'model' => class_basename($this),
+            'model_sm' => strtolower(class_basename($this)),
+            'model_class' => 'App\\Models\\'. class_basename($this),
+            'table_name' => $this->getTable(),
+        ];
+
         $seconds = 1;
-        return Cache::remember('models.' . $table_name, $seconds, function () use($table_name) {
+        return Cache::remember('model'. $constructor['model'] , $seconds, function () use($constructor) {
             $default_columns = [
                 'title' => [
                     'name' => 'title',
@@ -55,7 +61,7 @@ class BaseModel extends Model
                     'name' => 'url',
                     'type' => 'string',
                     'database' => 'nullable',
-                    'rule' => 'required|unique:'.$table_name.',url,',
+                    'rule' => 'required|unique:'. $constructor['table_name']. ',url,',
                     // 'rule' => 'max:' . config('setting-developer.seo_url_max')
                     // . '|regex:/^[a-z0-9-]+$/',
                     'help' => 'Url should be unique, contain [a-z, 0-9, -], required for seo',
@@ -128,6 +134,48 @@ class BaseModel extends Model
                     'property' => 'phone',
                     'property_key' => 'id',
                     'multiple' => false,
+                    'table' => false,
+                ],
+                'category_id' => [
+                    'name' => 'category_id',
+                    'type' => 'unsignedBigInteger',
+                    'database' => 'nullable',
+                    'relation' => 'categories',
+                    'rule' => 'nullable|exists:categories,id',
+                    'help' => '',
+                    'form_type' => 'entity',
+                    'class' => 'App\Models\Category',
+                    'property' => 'title',
+                    'property_key' => 'id',
+                    'query_builder' => 'type|'. $constructor['model_sm'],
+                    'multiple' => false,
+                    'table' => false,
+                ],
+                'tags' => [
+                    'name' => 'tags',
+                    'type' => 'array',
+                    'database' => 'none',
+                    'rule' => 'nullable',
+                    'help' => '',
+                    'form_type' => 'entity',
+                    'class' => 'App\Models\Tag',
+                    'property' => 'title',
+                    'property_key' => 'id',
+                    'query_builder' => 'type|'. $constructor['model_sm'],
+                    'multiple' => true,
+                    'table' => false,
+                ],
+                'relateds' => [
+                    'name' => 'relateds',
+                    'type' => 'array',
+                    'database' => 'none',
+                    'rule' => 'nullable',
+                    'help' => 'Select related items to suggest to user.',
+                    'form_type' => 'entity',
+                    'class' => $constructor['model_class'],
+                    'property' => 'title',
+                    'property_key' => 'id',
+                    'multiple' => true,
                     'table' => false,
                 ],
                 'language' => [
@@ -324,6 +372,21 @@ class BaseModel extends Model
     public function scopeOfType($query, $type)
     {
         return $query->where('type', $type);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Category', 'category_id', 'id');
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany('App\Models\Tag', 'model_tag', 'model_id', 'tag_id');
+    }
+
+    public function relateds()
+    {
+        return $this->belongsToMany('App\\Models\\'. class_basename($this), 'model_related', 'model_id', 'related_id');
     }
 
     public function files_relation()

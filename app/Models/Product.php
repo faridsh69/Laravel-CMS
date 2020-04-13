@@ -5,11 +5,9 @@ namespace App\Models;
 use Actuallymab\LaravelComment\Contracts\Commentable;
 use Actuallymab\LaravelComment\HasComments;
 use App\Services\BaseModel;
-use Conner\Tagging\Taggable;
 
 class Product extends BaseModel implements Commentable
 {
-    use Taggable;
     use HasComments;
 
     // title, price, discount_price, inventory, order, url, category_id, description, content, image, activated, tags, ready_time, comment, rate, gallery
@@ -49,46 +47,9 @@ class Product extends BaseModel implements Commentable
         ],
         ['name' => 'activated'],
         ['name' => 'order'],
-        [
-            'name' => 'category_id',
-            'type' => 'unsignedBigInteger',
-            'database' => 'nullable',
-            'relation' => 'categories',
-            'rule' => 'nullable|exists:categories,id',
-            'help' => '',
-            'form_type' => 'entity',
-            'class' => 'App\Models\Category',
-            'property' => 'title',
-            'property_key' => 'id',
-            'multiple' => false,
-            'table' => false,
-        ],
-        [
-            'name' => 'tags',
-            'type' => 'array',
-            'database' => 'none',
-            'rule' => 'nullable',
-            'help' => '',
-            'form_type' => 'entity',
-            'class' => 'App\Models\Tag',
-            'property' => 'name',
-            'property_key' => 'id',
-            'multiple' => true,
-            'table' => false,
-        ],
-        [
-            'name' => 'related_products',
-            'type' => 'array',
-            'database' => 'none',
-            'rule' => 'nullable',
-            'help' => '',
-            'form_type' => 'entity',
-            'class' => 'App\Models\Product',
-            'property' => 'title',
-            'property_key' => 'id',
-            'multiple' => true,
-            'table' => false,
-        ],
+        ['name' => 'category_id'],
+        ['name' => 'tags'],
+        ['name' => 'related_items'],
         ['name' => 'language'],
     ];
 

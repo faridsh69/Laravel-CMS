@@ -27,7 +27,7 @@
 		@elseif(isset($tag))
 		<div class="row">
 			<div class="col-12"> 
-				<h1>{{ __('tag') }}: <i class="fa {{ $tag->icon }}"></i> {{ $tag->title }}</h1>
+				<h1>{{ __('Tag') }}: <i class="fa {{ $tag->icon }}"></i> {{ $tag->title }}</h1>
 				<p>
 					{{ __('description') }}: {{ $tag->description }}
 				</p>
@@ -51,6 +51,13 @@
 		<ul>
 			@foreach($categories as $category)
 			<li style="padding: 10px;"><a href="{{ route('front.' . lcfirst(class_basename($list[0])) . '.category.show', $category->url) }}"><i class="fa {{ $category->icon }}"></i> {{ $category->title }}</a></li>
+			@endforeach
+		</ul>
+		@elseif(isset($tags))
+		{{ __('tags') }}:
+		<ul>
+			@foreach($tags as $tag)
+			<li style="padding: 10px;"><a href="{{ route('front.' . lcfirst(class_basename($list[0])) . '.tag.show', $tag->url) }}"><i class="fa {{ $tag->icon }}"></i> {{ $tag->title }}</a></li>
 			@endforeach
 		</ul>
 		@endif

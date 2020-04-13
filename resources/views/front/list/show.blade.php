@@ -1,12 +1,14 @@
 @extends('front.common.layout')
 @section('content_block')
 <div class="row">
+	@if($item->image)
 	<div class="col-sm-2">
-		@if($item->image)
 		<img src="{{ $item->image }}" alt="{{ $item->title }}">
-		@endif
 	</div>
-	<div class="col-sm-7"> 
+	<div class="col-sm-7">
+	@else
+	<div class="col-sm-9">
+	@endif
 		<h1>{{ $item->title }}</h1>
 		<p>
 			{{ __('description') }}: {{ $item->description }}
@@ -27,7 +29,7 @@
 		@if($item->category)
 		<p>{{ __('category') }}: <a href="{{ route('front.blog.category.show', $item->category->url) }}"><i class="fa {{ $item->category->icon }}"></i>{{ $item->category->title }}</a></p>
 		@endif
-		@if($item->tags)
+		@if(count($item->tags) > 0)
 		<ul>{{ __('tags') }}: 
 			@foreach($item->tags as $tag)
 			<li><a href="{{ route('front.blog.tag.show', $tag->url) }}"><i class="fa {{ $tag->icon }}"></i>{{ $tag->title }}</a></li>
@@ -36,7 +38,15 @@
 		<br>
 		@endif
 		@if($item->keywords)
-		<p>{{ __('keywords') }}: {{ $item->keywords }}</p>
+		<p>{{ __('keywords') }}: <small>{{ $item->keywords }}</small></p>
+		@endif
+		@if(count($item->relateds) > 0)
+		<ul>{{ __('Related') }}: 
+			@foreach($item->relateds as $related)
+			<li><a href="{{ route('front.blog.show', $related->url) }}">{{ $related->title }}</a></li>
+			@endforeach
+		</ul>
+		<br>
 		@endif
 	</div>
 </div>

@@ -9,10 +9,9 @@ class CreateFieldFormTable extends Migration
     public function up()
     {
         Schema::create('field_form', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->bigInteger('form_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('form_id');
             $table->foreign('form_id')->references('id')->on('forms')->onDelete('cascade');
-            $table->bigInteger('field_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('field_id');
             $table->foreign('field_id')->references('id')->on('fields')->onDelete('cascade');
         });
     }

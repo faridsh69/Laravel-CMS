@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateModelTagTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up()
     {
         Schema::create('model_tag', function (Blueprint $table) {
@@ -18,9 +15,6 @@ class CreateModelTagTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down()
     {
         Schema::dropIfExists('model_tag');
