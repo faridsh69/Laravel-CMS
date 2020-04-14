@@ -59,7 +59,7 @@ class BitcointProductsTableSeeder extends Seeder
             $order += 3;
             $product['order'] = $order;
             $product['language'] = 'en';
-            $product['url'] = '';
+            $product['url'] = Str::slug($product['title']);
     		$product['content'] = '';
             $product['category_id'] = 1;
     		$product['discount_price'] = null;

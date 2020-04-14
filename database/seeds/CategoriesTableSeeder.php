@@ -10,16 +10,17 @@ class CategoriesTableSeeder extends Seeder
     {
         $categories = [
             [
-                'title' => 'News',
+                'type' => 
+                'title' => 'Health',
             ],
             [
-                'title' => 'Sport',
+                'title' => 'Financial',
             ],
             [
                 'title' => 'Social',
             ],
             [
-                'title' => 'Politics',
+                'title' => 'Personality',
             ],
         ];
 

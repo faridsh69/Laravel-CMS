@@ -249,11 +249,6 @@ class User extends Authenticatable
         'deleted_at',
     ];
 
-    public function addresses()
-    {
-        return $this->hasMany(Address::class, 'user_id', 'id');
-    }
-
     public function routeNotificationForSlack($notification)
     {
         return 'https://hooks.slack.com/services/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';
@@ -264,11 +259,6 @@ class User extends Authenticatable
         return $this->columns;
     }
 
-    public function canCommentWithoutApprove(): bool
-    {
-        return true;
-    }
-
     public function getNameAttribute()
     {
         return $this->first_name . ' ' . $this->last_name;
@@ -277,6 +267,16 @@ class User extends Authenticatable
     public static function getAdminUser()
     {
         return self::where('id', 1)->first();
+    }
+
+    public function addresses()
+    {
+        return $this->hasMany(Address::class, 'user_id', 'id');
+    }
+
+    public function activities()
+    {
+        return $this->hasMany(Activity::class, 'user_id', 'id');
     }
 
     public function files_relation()

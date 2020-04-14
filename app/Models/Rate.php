@@ -4,16 +4,12 @@ namespace App\Models;
 
 use App\Services\BaseModel;
 
-class Comment extends BaseModel
+class Rate extends BaseModel
 {
     public $columns = [
         ['name' => 'user_id'],
-        ['name' => 'content'],
-        ['name' => 'activated'],
-        ['name' => 'image_gallery'],
-        ['name' => 'video_gallery'],
         [
-            'name' => 'commentable_type',
+            'name' => 'likeable_type',
             'type' => 'string',
             'database' => 'nullable',
             'rule' => '',
@@ -22,7 +18,7 @@ class Comment extends BaseModel
             'table' => true,
         ],
         [
-            'name' => 'commentable_id',
+            'name' => 'likeable_id',
             'type' => 'unsignedBigIntiger',
             'database' => 'nullable',
             'rule' => '',
@@ -32,7 +28,7 @@ class Comment extends BaseModel
         ],
     ];
 
-    public function commentable()
+    public function likeable()
     {
         return $this->morphTo();
     }

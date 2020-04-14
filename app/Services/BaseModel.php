@@ -374,6 +374,11 @@ class BaseModel extends Model
         return $query->where('type', $type);
     }
 
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id', 'id');
+    }
+
     public function category()
     {
         return $this->belongsTo('App\Models\Category', 'category_id', 'id');
@@ -381,7 +386,22 @@ class BaseModel extends Model
 
     public function tags()
     {
-        return $this->belongsToMany('App\Models\Tag', 'model_tag', 'model_id', 'tag_id');
+        return $this->morphToMany('App\Models\Tag', 'taggable');
+    }
+
+    public function comments()
+    {
+        return $this->morphMany('App\Models\Comment', 'commentable');
+    }
+
+    public function likes()
+    {
+        return $this->morphMany('App\Models\Like', 'likeable');
+    }
+
+    public function activities()
+    {
+        return $this->morphMany('App\Models\Activity', 'activitiable');
     }
 
     public function relateds()

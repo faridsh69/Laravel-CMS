@@ -2,87 +2,44 @@
 
 namespace App\Models;
 
-use Spatie\Activitylog\Models\Activity as ActivitySpatie;
+use App\Services\BaseModel;
 
-class Activity extends ActivitySpatie
+class Activity extends BaseModel
 {
     public $columns = [
+        ['name' => 'title'],
+        ['name' => 'user_id'],
         [
-            'name' => 'log_name',
+            'name' => 'activitiable_type',
             'type' => 'string',
             'database' => 'nullable',
-            'rule' => 'nullable',
-            'help' => '',
-            'form_type' => '',
-            'table' => false,
-        ],
-        [
-            'name' => 'description',
-            'type' => 'text',
-            'database' => '',
             'rule' => '',
             'help' => '',
             'form_type' => '',
             'table' => true,
         ],
         [
-            'name' => 'subject_type',
-            'type' => 'string',
+            'name' => 'activitiable_id',
+            'type' => 'unsignedBigIntiger',
             'database' => 'nullable',
-            'rule' => 'nullable',
-            'help' => '',
-            'form_type' => '',
-            'table' => false,
-        ],
-        [
-            'name' => 'subject_id',
-            'type' => 'integer',
-            'database' => 'nullable',
-            'rule' => 'nullable',
-            'help' => '',
-            'form_type' => '',
-            'table' => true,
-        ],
-        [
-            'name' => 'causer_type',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => 'nullable',
-            'help' => '',
-            'form_type' => '',
-            'table' => false,
-        ],
-        [
-            'name' => 'causer_id',
-            'type' => 'integer',
-            'database' => 'nullable',
-            'rule' => 'nullable',
-            'help' => '',
-            'form_type' => '',
-            'table' => false,
-        ],
-        [
-            'name' => 'causer',
-            'type' => 'string',
-            'database' => 'none',
             'rule' => '',
             'help' => '',
-            'form_type' => 'none',
+            'form_type' => '',
             'table' => true,
         ],
         [
             'name' => 'properties',
             'type' => 'text',
             'database' => 'nullable',
-            'rule' => 'nullable',
+            'rule' => '',
             'help' => '',
             'form_type' => '',
             'table' => false,
         ],
     ];
 
-    public function getColumns()
+    public function activitiable()
     {
-        return $this->columns;
+        return $this->morphTo();
     }
 }

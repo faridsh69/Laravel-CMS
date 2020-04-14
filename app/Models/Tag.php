@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Services\BaseModel;
+use Illuminate\Database\Eloquent\Relations\Relation;
 
 class Tag extends BaseModel
 {
@@ -24,13 +25,13 @@ class Tag extends BaseModel
         ['name' => 'language'],
     ];
 
-    public function scopeOfType($query, $type)
-    {
-        return $query->where('type', $type);
-    }
-
     public function models()
     {
-        return $this->belongsToMany('App\\Models\\' . ucfirst($this->type), 'model_tag', 'tag_id', 'model_id');
+        return $this->belongsToMany('App\\Models\\' . ucfirst($this->type), 'taggables', 'tag_id', 'taggable_id');
     }
+    
+    // Relation::morphMap([
+    //     'blogs' => 'App\Models\Blog',
+    //     'products' => 'App\Models\Product',
+    // ]);
 }
