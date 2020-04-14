@@ -4,17 +4,27 @@ namespace App\Models;
 
 use App\Services\BaseModel;
 
-class Blog extends BaseModel
+class Hotel extends BaseModel
 {
     public $columns = [
         ['name' => 'title'],
         ['name' => 'url'],
         ['name' => 'description'],
+        ['name' => 'price'],
+        ['name' => 'discount_price'],
+        ['name' => 'city'],
+        ['name' => 'address'],
+        ['name' => 'phone'],
+        ['name' => 'telephone'],
+        ['name' => 'email'],
+        ['name' => 'website'],
+        ['name' => 'year'],
+        ['name' => 'rooms'],
+        ['name' => 'properties'],
         ['name' => 'content'],
         ['name' => 'image'],
+        ['name' => 'video'],
         ['name' => 'activated'],
-        ['name' => 'google_index'],
-        ['name' => 'canonical_url'],
         ['name' => 'category_id'],
         ['name' => 'tags'],
         ['name' => 'relateds'],

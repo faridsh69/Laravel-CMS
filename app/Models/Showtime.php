@@ -4,17 +4,20 @@ namespace App\Models;
 
 use App\Services\BaseModel;
 
-class Blog extends BaseModel
+class Showtime extends BaseModel
 {
     public $columns = [
         ['name' => 'title'],
         ['name' => 'url'],
         ['name' => 'description'],
+        ['name' => 'opening_hours'],
+        ['name' => 'price'],
+        ['name' => 'discount_price'],
+        ['name' => 'properties'],
         ['name' => 'content'],
         ['name' => 'image'],
+        ['name' => 'video'],
         ['name' => 'activated'],
-        ['name' => 'google_index'],
-        ['name' => 'canonical_url'],
         ['name' => 'category_id'],
         ['name' => 'tags'],
         ['name' => 'relateds'],

@@ -4,12 +4,12 @@ namespace App\Models;
 
 use App\Services\BaseModel;
 
-class Rate extends BaseModel
+class Follow extends BaseModel
 {
     public $columns = [
         ['name' => 'user_id'],
         [
-            'name' => 'rateable_type',
+            'name' => 'followable_type',
             'type' => 'string',
             'database' => 'nullable',
             'rule' => '',
@@ -18,7 +18,7 @@ class Rate extends BaseModel
             'table' => true,
         ],
         [
-            'name' => 'rateable_id',
+            'name' => 'followable_id',
             'type' => 'unsignedBigIntiger',
             'database' => 'nullable',
             'rule' => '',
@@ -28,7 +28,7 @@ class Rate extends BaseModel
         ],
     ];
 
-    public function rateable()
+    public function followable()
     {
         return $this->morphTo();
     }

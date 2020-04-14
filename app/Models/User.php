@@ -279,6 +279,31 @@ class User extends Authenticatable
         return $this->hasMany(Activity::class, 'user_id', 'id');
     }
 
+    public function likes()
+    {
+        return $this->hasMany(Like::class, 'user_id', 'id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'user_id', 'id');
+    }
+
+    public function rates()
+    {
+        return $this->hasMany(Rate::class, 'user_id', 'id');
+    }
+
+    public function followings()
+    {
+        return $this->hasMany(Follow::class, 'user_id', 'id');
+    }
+
+    public function followers()
+    {
+        return $this->morphMany(Follow::class, 'followable');
+    }
+
     public function files_relation()
     {
         return $this->morphMany(File::class, 'fileable');

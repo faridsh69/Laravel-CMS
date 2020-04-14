@@ -38,7 +38,7 @@ class Answer extends BaseModel
             'database' => 'none',
             'rule' => '',
             'help' => '',
-            'form_type' => 'none',
+            'form_type' => 'none', // this parameter is just for show in table
             'table' => true,
         ],
     ];

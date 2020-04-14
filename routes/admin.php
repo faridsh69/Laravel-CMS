@@ -6,15 +6,15 @@ foreach($models as $model_sm)
 {
 	$model = ucfirst($model_sm);
 	$class_name = 'App\\Models\\' . $model;
-Route::group(['prefix' => $model_sm, 'namespace' => $model, 'as' => $model_sm . '.'], function () use ($class_name) {
-	Route::get('datatable', 'ResourceController@getDatatable')->middleware('can:datatable,' . $class_name)->name('datatable');
-	Route::get('export', 'ResourceController@getExport')->middleware('can:export,' . $class_name)->name('export');
-	Route::get('import', 'ResourceController@getImport')->middleware('can:import,' . $class_name)->name('import');
-	Route::get('print', 'ResourceController@getPrint')->middleware('can:print,' . $class_name)->name('print');
-	Route::get('change-status/{id}', 'ResourceController@getChangeStatus')->middleware('can:change-status,' . $class_name)->name('change-status');
-	Route::resource('list', 'ResourceController');
-	Route::get('list/{list}/restore', 'ResourceController@getRestore')->name('list.restore');
-	Route::get('', 'ResourceController@getRedirect')->name('redirect');
+Route::group(['prefix' => $model_sm, 'as' => $model_sm . '.'], function () use ($class_name) {
+	Route::get('datatable', 'AdminController@getDatatable')->middleware('can:datatable,' . $class_name)->name('datatable');
+	Route::get('export', 'AdminController@getExport')->middleware('can:export,' . $class_name)->name('export');
+	Route::get('import', 'AdminController@getImport')->middleware('can:import,' . $class_name)->name('import');
+	Route::get('print', 'AdminController@getPrint')->middleware('can:print,' . $class_name)->name('print');
+	Route::get('change-status/{id}', 'AdminController@getChangeStatus')->middleware('can:change-status,' . $class_name)->name('change-status');
+	Route::resource('list', 'AdminController');
+	Route::get('list/{list}/restore', 'AdminController@getRestore')->name('list.restore');
+	Route::get('', 'AdminController@getRedirect')->name('redirect');
 });
 }
 Route::get('', 'Dashboard\DashboardController@redirect')->name('redirect');

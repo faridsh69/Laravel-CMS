@@ -49,10 +49,16 @@ class BaseListController extends Controller
 
     public function __construct(Request $request, FormBuilder $form_builder)
     {
+        if($this->model === null){
+            $this->model = ucfirst($request->segment(2));
+        }
+        $this->model_form = 'App\\Forms\\' . $this->model . 'Form';
+        if(!file_exists($this->model_form)){
+            $this->model_form = $this->model_form = 'App\Forms\Form';
+        }
         $this->model_sm = strtolower($this->model);
         $this->model_trans = __($this->model_sm);
         $this->model_class = 'App\\Models\\' . $this->model;
-        $this->model_form = 'App\\Forms\\' . $this->model . 'Form';
         $this->repository = new $this->model_class();
         $this->request = $request;
         $this->form_builder = $form_builder;
@@ -100,7 +106,6 @@ class BaseListController extends Controller
     {
         $this->authorize('create', $this->model_class);
         $this->meta['title'] = __(strtolower($this->model . '_create'));
-
         $form = $this->form_builder->create($this->model_form, [
             'method' => 'POST',
             'url' => route('admin.' . $this->model_sm . '.list.store'),

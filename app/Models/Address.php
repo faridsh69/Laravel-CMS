@@ -7,6 +7,9 @@ use App\Services\BaseModel;
 class Address extends BaseModel
 {
     public $columns = [
+        ['name' => 'full_name'],
+        ['name' => 'activated'],
+        ['name' => 'user_id'],
         [
             'name' => 'country',
             'type' => 'string',
@@ -56,8 +59,7 @@ class Address extends BaseModel
             'name' => 'phone',
             'type' => 'string',
             'database' => 'nullable',
-            'rule' => 'nullable|min:5|max:16',
-            //     'rule' => 'phone:AUTO,mobile',
+            'rule' => 'nullable|max:30',
             'help' => 'Mobile Number',
             'form_type' => '',
             'table' => true,
@@ -66,14 +68,11 @@ class Address extends BaseModel
             'name' => 'telephone',
             'type' => 'string',
             'database' => 'nullable',
-            'rule' => 'nullable|min:5|max:16',
+            'rule' => 'nullable|max:30',
             'help' => 'Home Number',
             'form_type' => '',
             'table' => false,
         ],
-        ['name' => 'full_name'],
-        ['name' => 'activated'],
-        ['name' => 'user_id'],
         [
             'name' => 'latitude',
             'type' => 'decimal',

@@ -6,7 +6,6 @@ use App\Services\BaseModel;
 
 class Field extends BaseModel
 {
-    // title, type, required, activated, options, order
     public $columns = [
         [
             'name' => 'name',

@@ -399,6 +399,16 @@ class BaseModel extends Model
         return $this->morphMany('App\Models\Like', 'likeable');
     }
 
+    public function rates()
+    {
+        return $this->morphMany('App\Models\Rate', 'rateable');
+    }
+
+    public function follows()
+    {
+        return $this->morphMany('App\Models\Rate', 'rateable');
+    }
+
     public function activities()
     {
         return $this->morphMany('App\Models\Activity', 'activitiable');
