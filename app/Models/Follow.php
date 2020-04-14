@@ -19,7 +19,7 @@ class Follow extends BaseModel
         ],
         [
             'name' => 'followable_id',
-            'type' => 'unsignedBigIntiger',
+            'type' => 'unsignedBigInteger',
             'database' => 'nullable',
             'rule' => '',
             'help' => '',

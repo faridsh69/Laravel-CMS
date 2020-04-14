@@ -19,7 +19,7 @@ class Like extends BaseModel
         ],
         [
             'name' => 'likeable_id',
-            'type' => 'unsignedBigIntiger',
+            'type' => 'unsignedBigInteger',
             'database' => 'nullable',
             'rule' => '',
             'help' => '',

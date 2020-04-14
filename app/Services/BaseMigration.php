@@ -34,6 +34,7 @@ class BaseMigration extends Migration
     {
         $columns = $this->columns;
         $table_name = $this->table_name;
+
         Schema::defaultStringLength(191);
         if($this->rebuild === true){
             $model_class = 'App\\Models\\' . $this->model;
@@ -69,6 +70,9 @@ class BaseMigration extends Migration
             }
             Schema::dropIfExists($this->table_name);
         }
+        if(Schema::hasTable($table_name) === true){
+            return false;
+        }
         Schema::create($table_name, function (Blueprint $table) use ($columns, $table_name) {
             $table->bigIncrements('id');
             foreach($columns as $column){
@@ -92,11 +96,6 @@ class BaseMigration extends Migration
             // for users table need to have rememberToken
             if($table_name === 'users'){
                 $table->rememberToken();
-            }
-            // for addresses table need to have latitude, longitude
-            if($table_name === 'addresses'){
-                $table->decimal('latitude', 10, 8)->nullable();
-                $table->decimal('longitude', 11, 8)->nullable();
             }
             // for all tables timestamps and softDelete created
             $table->timestamps();

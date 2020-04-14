@@ -10,7 +10,6 @@ class CategoriesTableSeeder extends Seeder
     {
         $categories = [
             [
-                'type' => 
                 'title' => 'Health',
             ],
             [

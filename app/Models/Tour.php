@@ -11,7 +11,7 @@ class Tour extends BaseModel
         ['name' => 'url'],
         ['name' => 'description'],
         ['name' => 'opening_hours'],
-        ['name' => 'leader'],
+        ['name' => 'director'],
         ['name' => 'price'],
         ['name' => 'discount_price'],
         ['name' => 'properties'],

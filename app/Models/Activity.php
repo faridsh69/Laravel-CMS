@@ -20,7 +20,7 @@ class Activity extends BaseModel
         ],
         [
             'name' => 'activitiable_id',
-            'type' => 'unsignedBigIntiger',
+            'type' => 'unsignedBigInteger',
             'database' => 'nullable',
             'rule' => '',
             'help' => '',

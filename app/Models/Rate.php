@@ -19,7 +19,7 @@ class Rate extends BaseModel
         ],
         [
             'name' => 'rateable_id',
-            'type' => 'unsignedBigIntiger',
+            'type' => 'unsignedBigInteger',
             'database' => 'nullable',
             'rule' => '',
             'help' => '',

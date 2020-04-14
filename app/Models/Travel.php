@@ -10,7 +10,7 @@ class Travel extends BaseModel
         ['name' => 'title'],
         ['name' => 'url'],
         ['name' => 'description'],
-        ['name' => 'init'],
+        ['name' => 'origin'],
         ['name' => 'destination'],
         ['name' => 'date'],
         ['name' => 'time'],
