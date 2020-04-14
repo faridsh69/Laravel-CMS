@@ -17,8 +17,14 @@ class BaseFactory
             $model = new $class_name();
             $columns = $model->getColumns();
 
-            $factory->define($class_name, function (Faker $faker) use ($columns) {
+            $factory->define($class_name, function (Faker $faker) use ($columns, $model_name) {
                 $output = [];
+                $random_int = rand(1000, 9999);
+                $images = [];
+                $random_count = rand(0,3);
+                for($i = 0; $i < $random_count; $i ++){
+                    $images[] = asset('images/front/general/'. $i. '.png');
+                }
                 foreach($columns as $column){
                     $fake_data = null;
 
@@ -26,12 +32,15 @@ class BaseFactory
                     $type = $column['type'];
                     $form_type = $column['form_type'];
                     $database = isset($column['database']) ? $column['database'] : null;
+                    $file_accept = isset($column['file_accept']) ? $column['file_accept'] : null;
 
                     if($name === 'url'){
-                        $fake_data = 'fake-' . $faker->slug();
+                        // $fake_data = 'fake-' . $faker->slug();
+                        $fake_data = $model_name. '-url-'. $random_int;
                     }
                     elseif($name === 'title'){
-                        $fake_data = $faker->jobTitle();
+                        // $fake_data = $faker->jobTitle();
+                        $fake_data = $model_name. ' title '. $random_int;
                     }
                     elseif($name === 'description'){
                         $fake_data = $faker->realText(100);
@@ -39,8 +48,14 @@ class BaseFactory
                     elseif($name === 'content'){
                         $fake_data = '<h1>h1</h1><h2>h2</h2>' . $faker->realText(400);
                     }
-                    elseif($form_type === 'file' || $name === 'canonical_url'){
+                    elseif($name === 'canonical_url'){
                         $fake_data = null;
+                    }
+                    elseif($name === 'activated'){
+                        $fake_data = 1;
+                    }
+                    elseif($form_type === 'file' && $file_accept === 'image'){
+                        $fake_data = implode('|||', $images);
                     }
                     elseif($name === 'keywords'){
                         $fake_data = $faker->realText(100);
@@ -88,6 +103,10 @@ class BaseFactory
                         $password = $faker->realText(10);
                         $fake_data = $password;
                     }
+                    elseif($type === 'array'){
+                        $random_related_count = rand(2, 4);
+                        $fake_data = range(1, $random_related_count);
+                    }
                     elseif($database === 'none'){
                         continue;
                     }
@@ -103,9 +122,7 @@ class BaseFactory
                     elseif($type === 'string'){
                         $fake_data = 'Fake ' . $faker->realText(20);
                     }
-                    elseif($type === 'array'){
-                        $fake_data = [1];
-                    }
+
                     $output[$name] = $fake_data;
                 }
 
