@@ -49,7 +49,6 @@ class BaseListController extends Controller
 
     public function __construct(Request $request, FormBuilder $form_builder)
     {
-        dd(1);
         if($this->model === null){
             $this->model = ucfirst($request->segment(2));
         }
@@ -267,7 +266,7 @@ class BaseListController extends Controller
         return redirect()->route('admin.' . $this->model_sm . '.list.index');
     }
 
-    public function getRestore($id)
+    public function restore($id)
     {
         $model = $this->repository->withTrashed()->findOrFail($id);
         $this->authorize('restore', $model);
@@ -411,7 +410,7 @@ class BaseListController extends Controller
         ]);
     }
 
-    public function getRedirect()
+    public function redirect()
     {
         return redirect()->route('admin.' . $this->model_sm . '.list.index');
     }

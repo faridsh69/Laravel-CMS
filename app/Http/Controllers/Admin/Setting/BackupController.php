@@ -54,7 +54,7 @@ class BackupController extends BaseAdminController
         // reverse the backups, so the newest one would be on top
         $backups = array_reverse($backups);
 
-        return view('admin.setting.backup', ['backups' => $backups, 'meta' => $this->meta]);
+        return view('admin.page.setting.backup', ['backups' => $backups, 'meta' => $this->meta]);
     }
 
     /**

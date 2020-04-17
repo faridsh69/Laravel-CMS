@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\Media;
 
 use App\Services\BaseAdminController;
 
-class ResourceController extends BaseAdminController
+class MediaController extends BaseAdminController
 {
     /**
      * Display a listing of the resource.
@@ -18,17 +18,7 @@ class ResourceController extends BaseAdminController
         return view('admin.page.media.index', ['meta' => $this->meta]);
     }
 
-    public function create(){return $this->getRedirect(); }
-
-    public function show($id){return $this->getRedirect(); }
-
-    public function edit($id){return $this->getRedirect(); }
-
-    public function update($id){return $this->getRedirect(); }
-
-    public function destroy($id){return $this->getRedirect(); }
-
-    public function getRedirect()
+    public function redirect()
     {
         return redirect()->route('admin.media.list.index');
     }

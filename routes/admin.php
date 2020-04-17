@@ -13,11 +13,13 @@ Route::group(['prefix' => $model_sm, 'as' => $model_sm . '.'], function () use (
 	Route::get('print', 'AdminController@getPrint')->middleware('can:print,' . $class_name)->name('print');
 	Route::get('change-status/{id}', 'AdminController@getChangeStatus')->middleware('can:change-status,' . $class_name)->name('change-status');
 	Route::resource('list', 'AdminController');
-	Route::get('list/{list}/restore', 'AdminController@getRestore')->name('list.restore');
-	Route::get('', 'AdminController@getRedirect')->name('redirect');
+	Route::get('list/{list}/restore', 'AdminController@restore')->name('list.restore');
+	Route::get('', 'AdminController@redirect')->name('redirect');
 });
 }
 Route::get('', 'Dashboard\DashboardController@redirect')->name('redirect');
+Route::get('media', 'Media\MediaController@redirect')->name('redirect');
+Route::get('media/list', 'Media\MediaController@index')->name('media.list.index');
 Route::get('icons/list', 'Dashboard\DashboardController@getIconsList')->name('icons.list');
 Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'as' => 'dashboard.'], function () {
 	Route::get('', 'DashboardController@index')->name('list.index');
