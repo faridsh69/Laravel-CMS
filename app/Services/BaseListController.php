@@ -49,6 +49,7 @@ class BaseListController extends Controller
 
     public function __construct(Request $request, FormBuilder $form_builder)
     {
+        dd(1);
         if($this->model === null){
             $this->model = ucfirst($request->segment(2));
         }

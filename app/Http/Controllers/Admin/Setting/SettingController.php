@@ -81,7 +81,7 @@ class SettingController extends BaseAdminController
 	{
         $this->meta['title'] = __('api_manager');
 
-		return view('admin.setting.api', ['meta' => $this->meta]);
+		return view('admin.page.setting.api', ['meta' => $this->meta]);
 	}
 
 	public function redirect()
@@ -191,6 +191,6 @@ class SettingController extends BaseAdminController
 
         $this->meta['title'] = __('advance_setting');
 
-		return view('admin.setting.advance', ['meta' => $this->meta, 'commands' => $commands]);
+		return view('admin.page.setting.advance', ['meta' => $this->meta, 'commands' => $commands]);
 	}
 }

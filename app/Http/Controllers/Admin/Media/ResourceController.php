@@ -15,7 +15,7 @@ class ResourceController extends BaseAdminController
     {
         $this->meta['title'] = __('media_manager');
 
-        return view('admin.media.index', ['meta' => $this->meta]);
+        return view('admin.page.media.index', ['meta' => $this->meta]);
     }
 
     public function create(){return $this->getRedirect(); }

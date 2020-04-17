@@ -153,7 +153,6 @@ $output = [
             'home',
             'hotel',
             'like',
-            'media',
             'module',
             'movie',
             'music',

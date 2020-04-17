@@ -30,7 +30,7 @@ class ReportController extends BaseAdminController
 
         $activities = Activity::orderBy('id', 'desc')->take(5)->get();
 
-        return view('admin.report.index', [
+        return view('admin.page.report.index', [
             'meta' => $this->meta,
             'data' => $data,
             'count' => $count,
