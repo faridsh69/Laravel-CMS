@@ -61,7 +61,7 @@ return [
             ],
         ],
         'image' => [
-            'folder_name'  => 'files/photos',
+            'folder_name'  => 'photos',
             'startup_view' => 'list',
             'max_size'     => 3000,
             'valid_mime'   => [
@@ -69,7 +69,7 @@ return [
             ],
         ],
         'video'  => [
-            'folder_name'  => 'files/videos',
+            'folder_name'  => 'videos',
             'startup_view' => 'list',
             'max_size'     => 20000,
             'valid_mime'   => [
@@ -77,7 +77,7 @@ return [
             ],
         ],
         'audio'  => [
-            'folder_name'  => 'files/audios',
+            'folder_name'  => 'audios',
             'startup_view' => 'list',
             'max_size'     => 10000,
             'valid_mime'   => [
@@ -85,7 +85,7 @@ return [
             ],
         ],
         'text'  => [
-            'folder_name'  => 'files/texts',
+            'folder_name'  => 'texts',
             'startup_view' => 'list',
             'max_size'     => 90000,
             'valid_mime'   => [

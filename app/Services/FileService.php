@@ -8,9 +8,9 @@ use Image;
 
 class FileService extends BaseService
 {
-    public $upload_path_prefix = 'public/files/upload/';
+    public $upload_path_prefix = 'public/upload/';
 
-    public $src_path_prefix = 'storage/files/upload/';
+    public $src_path_prefix = 'storage/upload/';
 
     public function save($file, $model, $title = 'file')
     {

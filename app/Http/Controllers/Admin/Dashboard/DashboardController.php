@@ -103,7 +103,7 @@ class DashboardController extends BaseAdminController
     {
         $this->meta['title'] = __('identify');
 
-        return view('admin.dashboard.identify', ['meta' => $this->meta]);
+        return view('admin.page.dashboard.identify', ['meta' => $this->meta]);
     }
 
     public function getIdentifyEmail()
