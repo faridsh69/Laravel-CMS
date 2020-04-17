@@ -223,9 +223,13 @@ class BaseListController extends Controller
 
         if (! $form->isValid()){
             if(env('APP_ENV') === 'testing'){
-                dd($form->getErrors());
+                $errors = $form->getErrors();
+                if(strpos(json_encode($errors), 'failed to upload') === false){
+                    dd($errors);
+                }
+            }else{
+                return redirect()->back()->withErrors($form->getErrors())->withInput();
             }
-            return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
         $data = $form->getFieldValues();
         $main_data = $data;

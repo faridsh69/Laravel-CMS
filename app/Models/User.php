@@ -128,7 +128,7 @@ class User extends Authenticatable
             'name' => 'profile_picture',
             'type' => 'file',
             'database' => 'none',
-            'rule' => 'nullable|file|image|mimetypes:image/*|max:2000|dimensions:min_width=100,min_height=100|',
+            'rule' => 'nullable|file|image|mimetypes:image/*|max:2000|dimensions:min_width=100,min_height=100',
             'help' => 'Upload profile picture, minimum acceptable width and heigth is 100px.',
             'form_type' => 'file',
             'file_manager' => false,
@@ -140,7 +140,7 @@ class User extends Authenticatable
             'name' => 'cover_photo',
             'type' => 'file',
             'database' => 'none',
-            'rule' => 'nullable|file|image|mimetypes:image/*|max:2000',
+            'rule' => 'nullable|file|image|mimetypes:image/*|max:4000',
             'help' => 'Upload cover photo',
             'form_type' => 'file',
             'file_manager' => false,
@@ -311,9 +311,10 @@ class User extends Authenticatable
 
     public function files($title)
     {
-        return \Cache::remember('user.' . $this->id . '-' . $title, 60, function () use ($title) {
-            return $this->files_relation()->where('title', $title)->get();
-        });
+        return $this->files_relation()->where('title', $title)->get();
+        // return \Cache::remember('user.' . $this->id . '-' . $title, 1, function () use ($title) {
+        //     return $this->files_relation()->where('title', $title)->get();
+        // });
     }
 
     public function files_src($title)

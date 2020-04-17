@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Faker\Generator as Faker;
+use Illuminate\Http\UploadedFile;
 
 class BaseFactory
 {
@@ -21,8 +22,8 @@ class BaseFactory
                 $output = [];
                 $random_int = rand(1000, 9999);
                 $images = [];
-                $random_count = rand(0,3);
-                for($i = 0; $i < $random_count; $i ++){
+                $random_count = rand(1,3);
+                for($i = 1; $i <= $random_count; $i ++){
                     $images[] = asset('images/front/general/'. $i. '.png');
                 }
                 foreach($columns as $column){
@@ -33,6 +34,7 @@ class BaseFactory
                     $form_type = $column['form_type'];
                     $database = isset($column['database']) ? $column['database'] : null;
                     $file_accept = isset($column['file_accept']) ? $column['file_accept'] : null;
+                    $file_manager = isset($column['file_manager']) ? $column['file_manager'] : null;
 
                     if($name === 'url'){
                         // $fake_data = 'fake-' . $faker->slug();
@@ -55,7 +57,15 @@ class BaseFactory
                         $fake_data = 1;
                     }
                     elseif($form_type === 'file' && $file_accept === 'image'){
-                        $fake_data = implode('|||', $images);
+                        if($file_manager === false){
+                            $base_path = realpath(dirname(__FILE__) . 
+                                '/../../public_html/cdn/images/front/general/random');
+                            $path = $base_path. '\\'. $random_count. '.png';
+                            $fake_data = new UploadedFile($path, $random_count. '.png', 'image/jpeg');
+                            // dd($fake_data);
+                        }else{
+                            $fake_data = implode('|||', $images);
+                        }
                     }
                     elseif($name === 'keywords'){
                         $fake_data = $faker->realText(100);
@@ -100,7 +110,7 @@ class BaseFactory
                         $fake_data = 'en';
                     }
                     elseif($name === 'password'){
-                        $password = $faker->realText(10);
+                        $password = '123456';
                         $fake_data = $password;
                     }
                     elseif($type === 'array'){
