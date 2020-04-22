@@ -7,9 +7,9 @@ foreach($models as $model)
 	$model_name = ucfirst($model);
 	$class_name = 'App\\Models\\' . $model_name;
 	$controller_name = 'AdminController';
-	$controller_file = __DIR__ . '/' . $model_name . '/ResourceController.php';
+	$controller_file = __DIR__ . '\..\app\Http\Controllers\Admin\\' . $model_name . '/ResourceController.php';
 	if (file_exists($controller_file)) {
-		$controller_name = $model_name . '\ResourceController.php';
+		$controller_name = $model_name . '\ResourceController';
 	}
 Route::group(['prefix' => $model, 'as' => $model . '.'], function () use ($class_name, $controller_name) {
 	Route::get('datatable', $controller_name . '@getDatatable')->middleware('can:datatable,' . $class_name)->name('datatable');
@@ -25,7 +25,7 @@ Route::group(['prefix' => $model, 'as' => $model . '.'], function () use ($class
 Route::get('', 'Dashboard\DashboardController@redirect')->name('redirect');
 Route::get('media', 'Media\MediaController@redirect')->name('redirect');
 Route::get('media/list', 'Media\MediaController@index')->name('media.list.index');
-Route::get('icons/list', 'Dashboard\DashboardController@getIconsList')->name('icons.list');
+Route::get('icon/list', 'Dashboard\DashboardController@getIconsList')->name('icon.list');
 Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'as' => 'dashboard.'], function () {
 	Route::get('', 'DashboardController@index')->name('list.index');
 	Route::get('activity', 'DashboardController@getActivity')->name('activity');
@@ -39,10 +39,10 @@ Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'as' => 'dash
 	Route::post('identify/phone', 'DashboardController@postIdentifyPhone')->name('identify.phone-verify');
 	Route::post('identify/{document}', 'DashboardController@postIdentifyDocument')->name('identify.document');
 });
-Route::group(['prefix' => 'category', 'namespace' => 'Category', 'as' => 'category.'], function () {
-	Route::get('tree', 'ResourceController@getTree')->name('tree');
-	Route::post('tree', 'ResourceController@postTree')->name('tree.store');
-});
+// Route::group(['prefix' => 'category', 'namespace' => 'Category', 'as' => 'category.'], function () {
+// 	Route::get('tree', 'ResourceController@getTree')->name('tree');
+// 	Route::post('tree', 'ResourceController@postTree')->name('tree.store');
+// });
 Route::group(['prefix' => 'block', 'namespace' => 'Block', 'as' => 'block.'], function () {
 	Route::post('sort', 'ResourceController@postSort')->name('sort.store');
 });
