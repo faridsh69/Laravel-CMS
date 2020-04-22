@@ -8,18 +8,19 @@ use Illuminate\Support\Facades\Schema;
 
 class BaseMigration extends Migration
 {
+    // models of migration tables
+    public $models;
+
+    // model of migration table
     public $model;
 
-    public $table_name;
-
-    public $columns;
-
+    // drop and rebuild table
     public $rebuild = false;
 
+    // create backup before rebuild
     public $backup = false;
 
-    public $models = [];
-
+    // seed data after rebuild
     public $seed = false;
 
     public function __construct()
