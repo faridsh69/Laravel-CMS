@@ -49,18 +49,19 @@ class BaseListController extends Controller
 
     public function __construct(Request $request, FormBuilder $form_builder)
     {
+        $this->request = $request;
         if($this->model === null){
-            $this->model = ucfirst($request->segment(2));
+            $this->model = ucfirst($this->request->segment(2));
         }
         $this->model_form = 'App\\Forms\\' . $this->model . 'Form';
-        if(!file_exists($this->model_form)){
+        $form_file = __DIR__ . '\..\Forms\\' . $this->model . 'Form.php';
+        if(!file_exists($form_file)){
             $this->model_form = $this->model_form = 'App\Forms\Form';
         }
         $this->model_sm = strtolower($this->model);
         $this->model_trans = __($this->model_sm);
         $this->model_class = 'App\\Models\\' . $this->model;
         $this->repository = new $this->model_class();
-        $this->request = $request;
         $this->form_builder = $form_builder;
         $this->model_columns = $this->repository->getColumns();
         if(Route::has('admin.' . $this->model_sm . '.list.index')){
@@ -77,7 +78,7 @@ class BaseListController extends Controller
      */
     public function index()
     {
-        $this->authorize('index', $this->model_class);
+        // $this->authorize('index', $this->model_class);
         if(Route::has('admin.' . $this->model_sm . '.list.index')){
             $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.create');
         }
