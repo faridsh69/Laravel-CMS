@@ -1,6 +1,6 @@
 <?php
 
-$models = Config::get('services.models.admin_routes');
+$models = Config::get('cms.admin_routes');
 
 foreach($models as $model_sm)
 {

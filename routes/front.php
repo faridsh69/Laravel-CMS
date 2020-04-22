@@ -1,5 +1,6 @@
 <?php
-$models = Config::get('services.models.front_routes');
+
+$models = Config::get('cms.front_routes');
 
 foreach($models as $model_sm)
 {

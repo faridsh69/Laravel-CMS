@@ -9,7 +9,7 @@ class BaseFactory
 {
     public function index($factory)
     {
-        $factory_models = config('services.models.factory');
+        $factory_models = config('cms.factory');
 
         foreach($factory_models as $factory_model)
         {

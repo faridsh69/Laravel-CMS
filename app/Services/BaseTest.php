@@ -30,7 +30,8 @@ class BaseTest extends TestCase
         foreach($models as $model)
         {
             echo("\nTesting " . $model . '...');
-            $class_name = 'App\\Models\\' . $model;
+            $model_name = ucfirst($model);
+            $class_name = 'App\\Models\\' . $model_name;
             $model_class = new $class_name();
 
             $user = User::first();

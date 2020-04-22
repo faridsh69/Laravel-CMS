@@ -8,7 +8,7 @@ class BaseSeeder extends Seeder
 {
 	public function run()
 	{
-		$models = config('services.models.seeder');
+		$models = config('cms.seeder');
 
 	    foreach($models as $model) {
 	    	$model_class_name = 'App\\Models\\' . ucfirst($model);
