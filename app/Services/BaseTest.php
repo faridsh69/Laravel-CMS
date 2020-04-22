@@ -85,6 +85,7 @@ class BaseTest extends TestCase
             {
                 $this->_checkMethod($method, $model);
             }
+            echo('Done!');
         }
     }
 
