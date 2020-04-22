@@ -55,13 +55,13 @@ class CmsLaravelSeeder extends Seeder
         // Tag
         $tags = [
             [
-                'name' => 'Development',
+                'title' => 'Development',
             ],
             [
-                'name' => 'Movie',
+                'title' => 'Movie',
             ],
             [
-                'name' => '2020',
+                'title' => '2020',
             ],
         ];
 
