@@ -9,7 +9,7 @@ class RolesTableSeeder extends Seeder
 {
     public function run()
     {
-        $models = config('services.models.permissions');
+        $models = config('cms.permissions');
         $roles = [];
 
         foreach($models as $model)

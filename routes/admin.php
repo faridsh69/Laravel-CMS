@@ -2,19 +2,24 @@
 
 $models = Config::get('cms.admin_routes');
 
-foreach($models as $model_sm)
+foreach($models as $model)
 {
-	$model = ucfirst($model_sm);
-	$class_name = 'App\\Models\\' . $model;
-Route::group(['prefix' => $model_sm, 'as' => $model_sm . '.'], function () use ($class_name) {
-	Route::get('datatable', 'AdminController@getDatatable')->middleware('can:datatable,' . $class_name)->name('datatable');
-	Route::get('export', 'AdminController@getExport')->middleware('can:export,' . $class_name)->name('export');
-	Route::get('import', 'AdminController@getImport')->middleware('can:import,' . $class_name)->name('import');
-	Route::get('print', 'AdminController@getPrint')->middleware('can:print,' . $class_name)->name('print');
-	Route::get('change-status/{id}', 'AdminController@getChangeStatus')->middleware('can:change-status,' . $class_name)->name('change-status');
-	Route::resource('list', 'AdminController');
-	Route::get('list/{list}/restore', 'AdminController@restore')->name('list.restore');
-	Route::get('', 'AdminController@redirect')->name('redirect');
+	$model_name = ucfirst($model);
+	$class_name = 'App\\Models\\' . $model_name;
+	$controller_name = 'AdminController';
+	$controller_file = __DIR__ . '/' . $model_name . '/ResourceController.php';
+	if (file_exists($controller_file)) {
+		$controller_name = $model_name . '\ResourceController.php';
+	}
+Route::group(['prefix' => $model, 'as' => $model . '.'], function () use ($class_name, $controller_name) {
+	Route::get('datatable', $controller_name . '@getDatatable')->middleware('can:datatable,' . $class_name)->name('datatable');
+	Route::get('export', $controller_name . '@getExport')->middleware('can:export,' . $class_name)->name('export');
+	Route::get('import', $controller_name . '@getImport')->middleware('can:import,' . $class_name)->name('import');
+	Route::get('print', $controller_name . '@getPrint')->middleware('can:print,' . $class_name)->name('print');
+	Route::get('change-status/{id}', $controller_name . '@getChangeStatus')->middleware('can:change-status,' . $class_name)->name('change-status');
+	Route::resource('list', $controller_name . '');
+	Route::get('list/{list}/restore', $controller_name . '@restore')->name('list.restore');
+	Route::get('', $controller_name . '@redirect')->name('redirect');
 });
 }
 Route::get('', 'Dashboard\DashboardController@redirect')->name('redirect');

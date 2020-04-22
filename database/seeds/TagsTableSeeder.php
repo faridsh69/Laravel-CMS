@@ -1,6 +1,6 @@
 <?php
 
-use Conner\Tagging\Model\Tag;
+use App\Models\Tag;
 use Illuminate\Database\Seeder;
 
 class TagsTableSeeder extends Seeder
@@ -9,13 +9,13 @@ class TagsTableSeeder extends Seeder
     {
         $tags = [
         	[
-	        	'name' => 'Development',
+	        	'title' => 'Development',
         	],
         	[
-	        	'name' => 'Movie',
+	        	'title' => 'Movie',
         	],
         	[
-	        	'name' => '2020',
+	        	'title' => '2020',
         	],
         ];
 

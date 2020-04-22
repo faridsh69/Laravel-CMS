@@ -23,7 +23,7 @@ class Comment extends BaseModel
         ],
         [
             'name' => 'commentable_id',
-            'type' => 'unsignedBigIntiger',
+            'type' => 'unsignedBigInteger',
             'database' => 'nullable',
             'rule' => '',
             'help' => '',

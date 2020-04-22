@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ModulesTableSeeder::class);
         $this->call(FieldsTableSeeder::class);
         $this->call(RolesTableSeeder::class);
-        $this->call(BaseSeeder::class);
+        // $this->call(BaseSeeder::class);
         $this->call(CmsLaravelSeeder::class);
     }
 }
