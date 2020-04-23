@@ -11,7 +11,7 @@ use Kris\LaravelFormBuilder\FormBuilder;
 use Maatwebsite\Excel\Facades\Excel;
 use Route;
 use View;
-use Spatie\Activitylog\Models\Activity;
+use App\Models\Activity;
 
 class BaseFrontController extends Controller
 {

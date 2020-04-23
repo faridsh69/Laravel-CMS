@@ -12,7 +12,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Route;
-use Spatie\Activitylog\Models\Activity;
+use App\Models\Activity;
 
 class DashboardController extends BaseAdminController
 {
@@ -92,7 +92,7 @@ class DashboardController extends BaseAdminController
     {
         $this->meta['title'] = __('activity');
         $this->meta['alert'] = '';
-    	$activities = Activity::where('causer_id', Auth::id())
+    	$activities = Activity::where('user_id', Auth::id())
     	    ->orderBy('id', 'desc')
     	    ->get();
 

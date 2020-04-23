@@ -4,6 +4,7 @@ namespace App\Services;
 
 use Faker\Generator as Faker;
 use Illuminate\Http\UploadedFile;
+use Str;
 
 class BaseFactory
 {
@@ -13,7 +14,7 @@ class BaseFactory
 
         foreach($factory_models as $factory_model)
         {
-            $model_name = ucfirst($factory_model);
+            $model_name = Str::studly($factory_model);
             $class_name = 'App\\Models\\' . $model_name;
             $model = new $class_name();
             $columns = $model->getColumns();

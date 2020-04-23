@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\User;
+use Str;
 use Tests\TestCase;
 
 class BaseTest extends TestCase
@@ -30,7 +31,7 @@ class BaseTest extends TestCase
         foreach($models as $model)
         {
             echo("\nTesting " . $model . '...');
-            $model_name = ucfirst($model);
+            $model_name = Str::studly($model);
             $class_name = 'App\\Models\\' . $model_name;
             $model_class = new $class_name();
 

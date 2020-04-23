@@ -44,7 +44,7 @@
 								<br>
 								<span class="m-widget2__user-name">
 									<a href="javascript:void(0)" class="m-widget2__link">
-										{{ $activity->causer->full_name }}
+										{{ $activity->user->full_name }}
 										<br>
 										{{ $activity->created_at }}
 									</a>

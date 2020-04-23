@@ -17,6 +17,12 @@ class TagsTableSeeder extends Seeder
         	[
 	        	'title' => '2020',
         	],
+            [
+                'title' => 'Fitness',
+            ],
+            [
+                'title' => 'Funny',
+            ],
         ];
 
     	foreach($tags as $tag)

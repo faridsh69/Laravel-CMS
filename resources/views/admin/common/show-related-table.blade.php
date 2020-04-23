@@ -17,7 +17,7 @@
 			<td>{{ $item->activated }}</td>
 			<td>{{ $item->created_at }}</td>
 			<td>{{ $item->updated_at }}</td>
-			<td><a href="{{ route('admin.' . Str::snake(class_basename($item)) . '.list.show', $item->id)}}" target="blank"><i class="fa fa-eye"></i></a></td>
+			<td><a href="{{ route('admin.' . Str::kebab(class_basename($item)) . '.list.show', $item->id)}}" target="blank"><i class="fa fa-eye"></i></a></td>
 		</tr>
 		@endforeach
 	</tbody>

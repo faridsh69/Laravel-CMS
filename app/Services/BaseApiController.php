@@ -7,7 +7,7 @@ use Auth;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Route;
-use Spatie\Activitylog\Models\Activity;
+use App\Models\Activity;
 use View;
 
 class BaseApiController extends Controller

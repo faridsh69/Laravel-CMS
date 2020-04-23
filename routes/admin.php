@@ -4,7 +4,7 @@ $models = Config::get('cms.admin_routes');
 
 foreach($models as $model)
 {
-	$model_name = ucfirst($model);
+	$model_name = \Str::studly($model);
 	$class_name = 'App\\Models\\' . $model_name;
 	$controller_name = 'AdminController';
 	$controller_file = __DIR__ . '\..\app\Http\Controllers\Admin\\' . $model_name . '/ResourceController.php';
@@ -25,7 +25,7 @@ Route::group(['prefix' => $model, 'as' => $model . '.'], function () use ($class
 Route::get('', 'Dashboard\DashboardController@redirect')->name('redirect');
 Route::get('media', 'Media\MediaController@redirect')->name('redirect');
 Route::get('media/list', 'Media\MediaController@index')->name('media.list.index');
-Route::get('icon/list', 'Dashboard\DashboardController@getIconsList')->name('icon.list');
+Route::get('icon/list', 'Dashboard\DashboardController@getIconsList')->name('icon.list.index');
 Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'as' => 'dashboard.'], function () {
 	Route::get('', 'DashboardController@index')->name('list.index');
 	Route::get('activity', 'DashboardController@getActivity')->name('activity');

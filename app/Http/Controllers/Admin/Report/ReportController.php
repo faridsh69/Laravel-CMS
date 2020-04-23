@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Report;
 
 use App\Services\BaseAdminController;
-use Spatie\Activitylog\Models\Activity;
+use App\Models\Activity;
 
 class ReportController extends BaseAdminController
 {

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Maatwebsite\Excel\Facades\Excel;
 use Route;
+use Str;
 use View;
 
 class BaseListController extends Controller
@@ -50,15 +51,18 @@ class BaseListController extends Controller
     public function __construct(Request $request, FormBuilder $form_builder)
     {
         $this->request = $request;
+        $this->model_sm = strtolower($this->model);
         if($this->model === null){
-            $this->model = ucfirst($this->request->segment(2));
+            $url_model = $this->request->segment(2);
+            $this->model = Str::studly($url_model);
+            $this->model_sm = strtolower($url_model);
         }
         $this->model_form = 'App\\Forms\\' . $this->model . 'Form';
         $form_file = __DIR__ . '\..\Forms\\' . $this->model . 'Form.php';
         if(!file_exists($form_file)){
             $this->model_form = $this->model_form = 'App\Forms\Form';
         }
-        $this->model_sm = strtolower($this->model);
+        
         $this->model_trans = __($this->model_sm);
         $this->model_class = 'App\\Models\\' . $this->model;
         $this->repository = new $this->model_class();
@@ -78,10 +82,6 @@ class BaseListController extends Controller
      */
     public function index()
     {
-        $x = activity($this->model)->performedOn(Auth::user())->causedBy(Auth::user())
-                ->log($this->model . ' Created');
-        dd($x);
-
         $this->authorize('index', $this->model_class);
         if(Route::has('admin.' . $this->model_sm . '.list.index')){
             $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.create');
@@ -175,8 +175,8 @@ class BaseListController extends Controller
             }
         }
 
-        $activities = \Spatie\Activitylog\Models\Activity::where('subject_type', $this->model_class)
-            ->where('subject_id', $id)
+        $activities = \App\Models\Activity::where('activitiable_type', $this->model_class)
+            ->where('activitiable_id', $id)
             ->get();
 
         $this->meta['title'] = $this->model_trans . __('show');
@@ -357,18 +357,18 @@ class BaseListController extends Controller
             });
         }
         elseif($this->model === 'Comment') {
-            $datatable->addColumn('blog_id', function($model) {
-                if($model->blog){
-                    return $model->blog->id;
-                }
-                return null;
-            });
-            $datatable->addColumn('author', function($model) {
-                if($model->user){
-                    return $model->user->full_name;
-                }
-                return null;
-            });
+            // $datatable->addColumn('blog_id', function($model) {
+            //     if($model->blog){
+            //         return $model->blog->id;
+            //     }
+            //     return null;
+            // });
+            // $datatable->addColumn('author', function($model) {
+            //     if($model->user){
+            //         return $model->user->full_name;
+            //     }
+            //     return null;
+            // });
         }
         elseif($this->model === 'Block') {
             $datatable->addColumn('pages', function($model) {
@@ -406,11 +406,11 @@ class BaseListController extends Controller
     {
         $model = $this->repository->findOrFail($id);
 
-        if($this->model === 'Comment'){
-            $model->approved = ! $model->approved;
-        }else{
-            $model->activated = ! $model->activated;
-        }
+        // if($this->model === 'Comment'){
+        //     $model->approved = ! $model->approved;
+        // }else{
+        //     $model->activated = ! $model->activated;
+        // }
 
         $model->update();
 
@@ -523,12 +523,12 @@ class BaseListController extends Controller
         }
 
         // Comment
-        if($model_name === 'Comment'){
-            $model->commented_id = Auth::id();
-            $model->commented_type = 'App\Models\User';
-            $model->commentable_type = 'App\Models\Blog';
-            $model->update();
-            $model->approve();
-        }
+        // if($model_name === 'Comment'){
+        //     $model->commented_id = Auth::id();
+        //     $model->commented_type = 'App\Models\User';
+        //     $model->commentable_type = 'App\Models\Blog';
+        //     $model->update();
+        //     $model->approve();
+        // }
     }
 }

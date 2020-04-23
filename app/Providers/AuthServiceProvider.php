@@ -53,6 +53,22 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Tag' => TagPolicy::class,
         'App\Models\Tagend' => TagendPolicy::class,
         'App\Models\User' => UserPolicy::class,
+        'App\Models\Car' => UserPolicy::class,
+        'App\Models\Cinema' => UserPolicy::class,
+        'App\Models\Food' => UserPolicy::class,
+        'App\Models\FoodProgram' => UserPolicy::class,
+        'App\Models\Music' => UserPolicy::class,
+        'App\Models\Movie' => UserPolicy::class,
+        'App\Models\Gym' => UserPolicy::class,
+        'App\Models\GymAction' => UserPolicy::class,
+        'App\Models\GymProgram' => UserPolicy::class,
+        'App\Models\Home' => UserPolicy::class,
+        'App\Models\Hotel' => UserPolicy::class,
+        'App\Models\Restaurant' => UserPolicy::class,
+        'App\Models\Shop' => UserPolicy::class,
+        'App\Models\Showtime' => UserPolicy::class,
+        'App\Models\Travel' => UserPolicy::class,
+        'App\Models\Tour' => UserPolicy::class,
     ];
 
     /**
