@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('auth.common.layout')
 not used
 @section('content')
 <div class="container">

@@ -75,7 +75,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        activity('User')->performedOn($auth_user)
+        activity('User Registered')->performedOn($auth_user)
             ->causedBy($auth_user)
             ->log('User Registered');
         $user_registered = new UserRegistered();

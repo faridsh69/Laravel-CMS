@@ -78,7 +78,11 @@ class BaseListController extends Controller
      */
     public function index()
     {
-        // $this->authorize('index', $this->model_class);
+        $x = activity($this->model)->performedOn(Auth::user())->causedBy(Auth::user())
+                ->log($this->model . ' Created');
+        dd($x);
+
+        $this->authorize('index', $this->model_class);
         if(Route::has('admin.' . $this->model_sm . '.list.index')){
             $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.create');
         }
@@ -145,7 +149,7 @@ class BaseListController extends Controller
         $this->_saveRelatedDataAfterCreate($this->model, $main_data, $model);
 
         if(env('APP_ENV') !== 'testing'){
-            activity($this->model)->performedOn($model)->causedBy(Auth::user())
+            activity('Created')->performedOn($model)->causedBy(Auth::user())
                 ->log($this->model . ' Created');
         }
         $this->request->session()->flash('alert-success', $this->model_trans . __('created successfully'));
@@ -241,7 +245,7 @@ class BaseListController extends Controller
         $this->_saveRelatedDataAfterCreate($this->model, $main_data, $model);
 
         if(env('APP_ENV') !== 'testing'){
-            activity($this->model)->performedOn($model)->causedBy(Auth::user())
+            activity('Updated')->performedOn($model)->causedBy(Auth::user())
                 ->log($this->model . ' Updated');
         }
         $this->request->session()->flash('alert-success', $this->model_trans . __('updated successfully'));
@@ -263,7 +267,7 @@ class BaseListController extends Controller
         $model->delete();
 
         if(env('APP_ENV') !== 'testing'){
-            activity($this->model)->performedOn($model)->causedBy(Auth::user())
+            activity('Deleted')->performedOn($model)->causedBy(Auth::user())
                 ->log($this->model . ' Deleted');
         }
         $this->request->session()->flash('alert-success', $this->model_trans . __('deleted successfully'));
@@ -279,7 +283,7 @@ class BaseListController extends Controller
         $model->restore();
 
         if(env('APP_ENV') !== 'testing'){
-            activity($this->model)->performedOn($model)->causedBy(Auth::user())
+            activity('Restored')->performedOn($model)->causedBy(Auth::user())
                 ->log($this->model . ' Restored');
         }
         $this->request->session()->flash('alert-success', $this->model_trans . __('restored successfully'));

@@ -1,4 +1,4 @@
-@extends('layout.auth')
+@extends('auth.common.layout')
 
 @section('content')
 <div class="m-stack__item m-stack__item--fluid">

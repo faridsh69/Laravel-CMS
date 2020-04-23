@@ -1,4 +1,4 @@
-@extends('layout.auth')
+@extends('auth.common.layout')
 
 @section('content')
 <div class="m-stack__item m-stack__item--fluid">
@@ -47,7 +47,7 @@
 					</button>
 				</div>
 				<div class="text-center">
-				@foreach(config('services.social_companies') as $social_company)
+				@foreach(config('cms.social_companies') as $social_company)
 					@php 
 						$social = strtolower($social_company);
 						if($social == 'google')	{

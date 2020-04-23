@@ -55,6 +55,9 @@
         "classmap": [
             "database/seeds",
             "database/factories"
+        ],
+        "files": [
+            "app/Services/CmsServiceProvider.php"
         ]
     },
     "autoload-dev": {
