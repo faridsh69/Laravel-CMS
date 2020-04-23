@@ -38,8 +38,8 @@ class BaseMigration extends Migration
 
         Schema::defaultStringLength(191);
         if($this->rebuild === true){
-            $model_class = 'App\\Models\\' . $this->model;
-            $repository = new $model_class();
+            $model_namespance = 'App\\Models\\' . $this->model;
+            $repository = new $model_namespance();
             $count = $repository::count();
             if($count > 0){
                 if($this->backup === true){

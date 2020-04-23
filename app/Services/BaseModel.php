@@ -171,7 +171,7 @@ class BaseModel extends Model
         $constructor = [
             'model' => class_basename($this),
             'model_sm' => strtolower(class_basename($this)),
-            'model_class' => 'App\\Models\\'. class_basename($this),
+            'model_namespance' => 'App\\Models\\'. class_basename($this),
             'table_name' => $this->getTable(),
         ];
 
@@ -321,7 +321,7 @@ class BaseModel extends Model
                     'rule' => 'nullable',
                     'help' => 'Select related items to suggest to user.',
                     'form_type' => 'entity',
-                    'class' => $constructor['model_class'],
+                    'class' => $constructor['model_namespance'],
                     'property' => 'title',
                     'property_key' => 'id',
                     'multiple' => true,

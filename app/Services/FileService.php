@@ -21,9 +21,9 @@ class FileService extends BaseService
         }
         foreach($gallery as $file){
             $class_name = class_basename($model);
-            $model_class = 'App\\Models\\' . $class_name;
+            $model_namespance = 'App\\Models\\' . $class_name;
             $class_name = strtolower($class_name);
-            $fileable_type = $model_class;
+            $fileable_type = $model_namespance;
             $fileable_id = $model->id;
             $size = $file->getSize();
             $mime_type = $file->getMimeType();

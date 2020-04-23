@@ -1,26 +1,27 @@
 <?php
 
-$models = Config::get('cms.admin_routes');
+$model_slugs = Config::get('cms.admin_routes');
 
-foreach($models as $model)
+foreach($model_slugs as $model_slug)
 {
-	$model_name = \Str::studly($model);
-	$class_name = 'App\\Models\\' . $model_name;
-	$controller_name = 'AdminController';
-	$controller_file = __DIR__ . '\..\app\Http\Controllers\Admin\\' . $model_name . '/ResourceController.php';
+	$model_name = \Str::studly($model_slug);
+	$model_namespance = config('cms.config.models_namespace'). $model_name;
+	$controller_file = __DIR__. '\..\app\Http\Controllers\Admin\\'. $model_name. '\ResourceController.php';
 	if (file_exists($controller_file)) {
-		$controller_name = $model_name . '\ResourceController';
+		$controller_name = $model_name. '\ResourceController';
+	}else{
+		$controller_name = 'AdminController';
 	}
-Route::group(['prefix' => $model, 'as' => $model . '.'], function () use ($class_name, $controller_name) {
-	Route::get('datatable', $controller_name . '@getDatatable')->middleware('can:datatable,' . $class_name)->name('datatable');
-	Route::get('export', $controller_name . '@getExport')->middleware('can:export,' . $class_name)->name('export');
-	Route::get('import', $controller_name . '@getImport')->middleware('can:import,' . $class_name)->name('import');
-	Route::get('print', $controller_name . '@getPrint')->middleware('can:print,' . $class_name)->name('print');
-	Route::get('change-status/{id}', $controller_name . '@getToggleActivated')->middleware('can:change-status,' . $class_name)->name('change-status');
-	Route::resource('list', $controller_name . '');
-	Route::get('list/{list}/restore', $controller_name . '@restore')->name('list.restore');
-	Route::get('', $controller_name . '@redirect')->name('redirect');
-});
+	Route::group(['prefix' => $model_slug, 'as' => $model_slug. '.'], function () use ($model_namespance, $controller_name) {
+		Route::get('datatable', $controller_name. '@getDatatable')->middleware('can:datatable,'. $model_namespance)->name('datatable');
+		Route::get('export', $controller_name. '@getExport')->middleware('can:export,'. $model_namespance)->name('export');
+		Route::get('import', $controller_name. '@getImport')->middleware('can:import,'. $model_namespance)->name('import');
+		Route::get('print', $controller_name. '@getPrint')->middleware('can:print,'. $model_namespance)->name('print');
+		Route::get('toggle-activated/{id}', $controller_name. '@getToggleActivated')->middleware('can:toggle-activated,'. $model_namespance)->name('toggle-activated');
+		Route::resource('list', $controller_name. '');
+		Route::get('list/{id}/restore', $controller_name. '@restore')->name('list.restore');
+		Route::get('', $controller_name. '@redirect')->name('redirect');
+	});
 }
 Route::get('', 'Dashboard\DashboardController@redirect')->name('redirect');
 Route::get('media', 'Media\MediaController@redirect')->name('redirect');

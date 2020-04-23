@@ -25,7 +25,7 @@ class BaseFrontController extends Controller
     public $model_trans;
 
     // App\Models\ModelName
-    public $model_class;
+    public $model_namespance;
 
     // an array of columns
     public $model_columns;
@@ -43,8 +43,8 @@ class BaseFrontController extends Controller
     {
         $this->model_sm = strtolower($this->model);
         $this->model_trans = __($this->model_sm);
-        $this->model_class = 'App\\Models\\' . $this->model;
-        $this->repository = new $this->model_class();
+        $this->model_namespance = 'App\\Models\\' . $this->model;
+        $this->repository = new $this->model_namespance();
         $this->request = $request;
         $this->model_columns = $this->repository->getColumns();
         $this->meta = [

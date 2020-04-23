@@ -33,7 +33,7 @@ class BaseTest extends TestCase
             echo("\nTesting " . $model . '...');
             $model_name = Str::studly($model);
             $class_name = 'App\\Models\\' . $model_name;
-            $model_class = new $class_name();
+            $model_namespance = new $class_name();
 
             $user = User::first();
             $this->actingAs($user);
@@ -52,7 +52,7 @@ class BaseTest extends TestCase
                 ->assertRedirect(route('admin.' . strtolower($model) . '.list.index'));
 
             // get fake model that created at this test
-            $fake_model = $model_class->orderBy('id', 'desc')->first();
+            $fake_model = $model_namespance->orderBy('id', 'desc')->first();
 
             // show fake model
             $this

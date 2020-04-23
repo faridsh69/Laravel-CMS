@@ -6,7 +6,7 @@ use App\Services\BaseListController;
 
 class ResourceController extends BaseListController
 {
-    public $model = 'File';
+    public $model_name = 'File';
 
     public function getRemoveBySrc()
     {

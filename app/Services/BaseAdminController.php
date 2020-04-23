@@ -5,7 +5,7 @@ namespace App\Services;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
 
-class BaseAdminController extends BaseListController
+class BaseAdminController extends BaseResourceController
 {
     // for setting sections
     public $section;
@@ -27,10 +27,10 @@ class BaseAdminController extends BaseListController
         $this->meta['link_name'] = __('dashboard');
         if($this->model){
             $this->meta['title'] = __(strtolower($this->model . '_manager'));
-            $this->model_class = 'App\\Models\\' . $this->model;
-            $this->repository = new $this->model_class();
+            $this->model_namespance = 'App\\Models\\' . $this->model;
+            $this->repository = new $this->model_namespance();
             $this->model_columns = $this->repository->getColumns();
-            $this->repository = new $this->model_class();
+            $this->repository = new $this->model_namespance();
             $this->section = strtolower(str_replace('Setting', '', $this->model));
         }
         $this->model_sm = lcfirst($this->model);

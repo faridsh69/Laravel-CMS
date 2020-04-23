@@ -22,7 +22,7 @@ class BaseApiController extends Controller
     public $model_form;
 
     // App\Models\Blog
-    public $model_class;
+    public $model_namespance;
 
     public $model_columns;
 
@@ -58,8 +58,8 @@ class BaseApiController extends Controller
     {
         $this->model_sm = lcfirst($this->model);
         $this->model_form = 'App\\Forms\\' . $this->model . 'Form';
-        $this->model_class = 'App\\Models\\' . $this->model;
-        $this->repository = new $this->model_class();
+        $this->model_namespance = 'App\\Models\\' . $this->model;
+        $this->repository = new $this->model_namespance();
         $this->model_columns = $this->repository->getColumns();
         $this->model_rules = $this->getRules($this->model_columns);
         $this->request = $request;
@@ -80,7 +80,7 @@ class BaseApiController extends Controller
      */
     public function index()
     {
-        // $this->authorize('index', $this->model_class);
+        // $this->authorize('index', $this->model_namespance);
 
         $list = $this->repository->orderBy('updated_at', 'desc')->get(); // orderBy
 
@@ -108,7 +108,7 @@ class BaseApiController extends Controller
      */
     public function store()
     {
-        // $this->authorize('create', $this->model_class);
+        // $this->authorize('create', $this->model_namespance);
         $main_data = $this->request->all();
         $validator = \Validator::make($main_data, $this->model_rules);
         if ($validator->fails()) {

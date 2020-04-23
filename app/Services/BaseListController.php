@@ -7,31 +7,30 @@ use Auth;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Maatwebsite\Excel\Facades\Excel;
-use Route;
 use Str;
-use View;
 
-class BaseListController extends Controller
+class BaseResourceController extends Controller
 {
-    // public $model = 'Blog';
-    public $model;
+    // FoodProgram
+    public $model_name;
 
-    // public $model_sm = 'blog';
-    public $model_sm;
+    // food-program
+    public $model_slug;
 
-    // public $model_trans = 'Blog';
-    public $model_trans;
+    // Food Program
+    public $model_translated;
 
-    // public $model_form = '\App\Forms\BlogForm';
+    // '\App\Forms\FoodProgramForm'
     public $model_form;
 
-    // App\Models\Blog
-    public $model_class;
+    // App\Models\FoodProgram
+    public $model_namespace;
 
-    // App\Models\Blog
+    // Columns of this model
     public $model_columns;
 
-    public $repository;
+    // A new instance of this model
+    public $model_repository;
 
     public $request;
 
@@ -74,9 +73,6 @@ class BaseListController extends Controller
         $this->meta['link_name'] = __('create_new'). $this->model_translated;
         $this->meta['title'] = $this->model_translated. __('manager');
         $this->meta['search'] = 1;
-        // if(Route::has('admin.'. $this->model_slug. '.list.index')){
-        //     $this->meta['link_route'] = route('admin.'. $this->model_slug. '.list.create');
-        // }
         $columns = [];
         foreach(collect($this->model_columns)->where('table', true) as $column)
         {
@@ -184,6 +180,7 @@ class BaseListController extends Controller
                 return redirect()->back()->withErrors($form->getErrors())->withInput();
             }
         }
+
         $this->model_repository->saveWithRelations($form->getFieldValues(), $model);
 
         if(env('APP_ENV') !== 'testing'){
@@ -212,7 +209,7 @@ class BaseListController extends Controller
             activity('Deleted')->performedOn($model)->causedBy(Auth::user())
                 ->log($this->model_name. ' Deleted');
         }
-        $this->request->session()->flash('alert-success', $this->model_translated. __('deleted successfully'));
+        $this->request->session()->flash('alert-success', $this->model_translated. __('deleted_successfully'));
 
         return redirect()->route('admin.'. $this->model_slug. '.list.index');
     }
@@ -228,7 +225,7 @@ class BaseListController extends Controller
             activity('Restored')->performedOn($model)->causedBy(Auth::user())
                 ->log($this->model_name. ' Restored');
         }
-        $this->request->session()->flash('alert-success', $this->model_translated. __('restored successfully'));
+        $this->request->session()->flash('alert-success', $this->model_translated. __('restored_successfully'));
 
         return redirect()->route('admin.'. $this->model_slug. '.list.index');
     }
@@ -253,7 +250,7 @@ class BaseListController extends Controller
     {
         $class_name = 'App\Services\BaseExport';
         $base_export = new $class_name();
-        $base_export->setModel($this->model);
+        $base_export->setModel($this->model_name);
 
         return Excel::download($base_export, $this->model_name. '.xlsx');
     }
@@ -262,7 +259,7 @@ class BaseListController extends Controller
     {
         $class_name = 'App\Services\BaseImport';
         $base_import = new $class_name();
-        $base_import->setModel($this->model);
+        $base_import->setModel($this->model_name);
 
         Excel::import($base_import, storage_path('app/public/import.xlsx'));
 

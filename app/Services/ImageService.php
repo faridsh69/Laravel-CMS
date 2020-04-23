@@ -10,8 +10,8 @@ class TempImageService extends BaseService
 	public function save($file, $model, $title = null)
 	{
   //       $class_name = class_basename($model);
-  //       $model_class = 'App\\Models\\' . $class_name;
-  //       $repository = new $model_class();
+  //       $model_namespance = 'App\\Models\\' . $class_name;
+  //       $repository = new $model_namespance();
   //       $relationForGallery = $title . '_images';
 		// $index = count($repository->find($model->id)->{$relationForGallery});
 		// $name_file_main = 'main.jpg';
@@ -25,7 +25,7 @@ class TempImageService extends BaseService
 
 		// $image_model = [
   //           'title' => $title,
-  //           'imageable_type' => $model_class,
+  //           'imageable_type' => $model_namespance,
   //           'imageable_id' => $model->id,
   //           'src_main' => $path_model . $main_name,
   //           'src_thumbnail' => $path_model . $thumbnail_name,

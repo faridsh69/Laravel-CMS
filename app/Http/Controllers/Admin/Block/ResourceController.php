@@ -7,14 +7,12 @@ use App\Services\BaseListController;
 
 class ResourceController extends BaseListController
 {
-    public $model = 'Block';
-
     public function index()
     {
-        $this->authorize('index', $this->model_class);
-        $this->meta['link_name'] = __(strtolower($this->model . '_create'));
-        $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.create');
-        $this->meta['search'] = 1;
+        $this->authorize('index', $this->model_namespace);
+        $this->meta['link_route'] = route('admin.'. $this->model_slug. '.list.create');
+        $this->meta['link_name'] = __('create_new'). $this->model_translated;
+        $this->meta['title'] = $this->model_translated. __('manager');
         $columns = [];
         foreach(collect($this->model_columns)->where('table', true) as $column)
         {
@@ -35,9 +33,9 @@ class ResourceController extends BaseListController
     	$block_sort_json = $this->request->blockSort;
     	$block_sort = json_decode($block_sort_json);
     	$this->saveSort($block_sort);
-    	$this->request->session()->flash('alert-success', $this->model . ' Order Updated Successfully!');
+    	$this->request->session()->flash('alert-success', $this->model_name. ' Order Updated Successfully!');
 
-        return redirect()->route('admin.' . $this->model_sm . '.list.index');
+        return redirect()->route('admin.'. $this->model_slug. '.list.index');
     }
 
     public function saveSort($block_ids)

@@ -461,6 +461,8 @@
     "create_new" : "Create New ",
     "created_successfully" : " Created Successfully!",
     "updated_successfully" : " Updated Successfully!",
+    "deleted_successfully" : " Deleted Successfully!",
+    "restored_successfully" : " Restored Successfully!",
     "update" : "Update ",
     "manager" : " Manager",
     "food_program" : "Food Program",
