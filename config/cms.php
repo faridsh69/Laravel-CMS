@@ -1,6 +1,9 @@
 <?php
 
 $cms = [
+    'config' => [
+        'models_namespace' => 'App\Models\\',
+    ],
 	'factory' => [
         'address',
         'answer',

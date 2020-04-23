@@ -41,79 +41,61 @@ class BaseListController extends Controller
         'title' => '',
         'description' => 'Admin Panel Page For Full Features, Best UI-UX Cms.',
         'keywords' => '',
-        'image' => '/cdn/upload/images/logo.png',
+        'image' => '',
         'alert' => '',
-        'link_route' => '/admin',
+        'link_route' => 'admin',
         'link_name' => 'Dashboard',
         'search' => 0,
     ];
 
     public function __construct(Request $request, FormBuilder $form_builder)
     {
-        $this->request = $request;
-        $this->model_sm = strtolower($this->model);
-        if($this->model === null){
-            $url_model = $this->request->segment(2);
-            $this->model = Str::studly($url_model);
-            $this->model_sm = strtolower($url_model);
-        }
-        $this->model_form = 'App\\Forms\\' . $this->model . 'Form';
-        $form_file = __DIR__ . '\..\Forms\\' . $this->model . 'Form.php';
-        if(!file_exists($form_file)){
-            $this->model_form = $this->model_form = 'App\Forms\Form';
-        }
-        
-        $this->model_trans = __($this->model_sm);
-        $this->model_class = 'App\\Models\\' . $this->model;
-        $this->repository = new $this->model_class();
         $this->form_builder = $form_builder;
-        $this->model_columns = $this->repository->getColumns();
-        if(Route::has('admin.' . $this->model_sm . '.list.index')){
-            $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.index');
+        $this->request = $request;
+        $this->model_slug = $this->request->segment(2);
+        $this->model_name = Str::studly($this->model_slug);
+        $this->model_translated = __(Str::snake($this->model_name));
+        $this->model_namespace = config('cms.config.models_namespace'). $this->model_name;
+        $this->model_repository = new $this->model_namespace;
+        $this->model_columns = $this->model_repository->getColumns();
+        $this->model_form = 'App\Forms\Form';
+        if(file_exists(__DIR__. '\..\Forms\\'. $this->model_name. 'Form.php')){
+            $this->model_form = 'App\\Forms\\'. $this->model_name. 'Form';
         }
-        $this->meta['link_name'] = __($this->model_sm . '_manager');
-        $this->meta['title'] = __($this->model_sm . '_manager');
+        $this->meta['link_route'] = route('admin.'. $this->model_slug. '.list.index');
+        $this->meta['link_name'] = $this->model_translated. __('manager');
+        $this->meta['title'] = $this->model_translated. __('manager');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $this->authorize('index', $this->model_class);
-        if(Route::has('admin.' . $this->model_sm . '.list.index')){
-            $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.create');
-        }
-        $this->meta['link_name'] = __(strtolower($this->model . '_create'));
-        $this->meta['title'] = __(strtolower($this->model . '_manager'));
+        $this->authorize('index', $this->model_namespace);
+        $this->meta['link_route'] = route('admin.'. $this->model_slug. '.list.create');
+        $this->meta['link_name'] = __('create_new'). $this->model_translated;
+        $this->meta['title'] = $this->model_translated. __('manager');
         $this->meta['search'] = 1;
-
+        // if(Route::has('admin.'. $this->model_slug. '.list.index')){
+        //     $this->meta['link_route'] = route('admin.'. $this->model_slug. '.list.create');
+        // }
         $columns = [];
         foreach(collect($this->model_columns)->where('table', true) as $column)
         {
             $columns[] = [
                 'field' => $column['name'],
-                'title' => preg_replace('/([a-z])([A-Z])/s', '$1 $2', \Str::studly($column['name'])),
+                'title' => preg_replace('/([a-z])([A-Z])/s', '$1 $2', Str::studly($column['name'])),
             ];
         }
 
         return view('admin.list.index', ['meta' => $this->meta, 'columns' => $columns]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        $this->authorize('create', $this->model_class);
-        $this->meta['title'] = __(strtolower($this->model . '_create'));
+        $this->authorize('create', $this->model_namespace);
+        $this->meta['title'] = __('create_new'). $this->model_translated;
         $form = $this->form_builder->create($this->model_form, [
             'method' => 'POST',
-            'url' => route('admin.' . $this->model_sm . '.list.store'),
+            'url' => route('admin.'. $this->model_slug. '.list.store'),
             'class' => 'm-form m-form--state',
             'id' =>  'admin_form',
             'enctype' => 'multipart/form-data',
@@ -122,44 +104,30 @@ class BaseListController extends Controller
         return view('admin.list.form', ['form' => $form, 'meta' => $this->meta]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store()
     {
-        $this->authorize('create', $this->model_class);
+        $this->authorize('create', $this->model_namespace);
         $form = $this->form_builder->create($this->model_form);
-
         if (! $form->isValid()) {
             if(env('APP_ENV') === 'testing'){
                 dd($form->getErrors(), $this->model, $form->getFieldValues());
             }
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
-        $data = $form->getFieldValues();
-        $model = $this->repository->saveWithRelations($data);
+        $model = $this->model_repository->saveWithRelations($form->getFieldValues());
 
         if(env('APP_ENV') !== 'testing'){
             activity('Created')->performedOn($model)->causedBy(Auth::user())
-                ->log($this->model . ' Created');
+                ->log($this->model_name. ' Created');
         }
-        $this->request->session()->flash('alert-success', $this->model_trans . __('created successfully'));
+        $this->request->session()->flash('alert-success', $this->model_translated. __('created_successfully'));
 
-        return redirect()->route('admin.' . $this->model_sm . '.list.index');
+        return redirect()->route('admin.'. $this->model_slug. '.list.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        $model = $this->repository->findOrFail($id);
+        $model = $this->model_repository->findOrFail($id);
         $this->authorize('view', $model);
         $data = $model;
         // show file attributes
@@ -169,32 +137,26 @@ class BaseListController extends Controller
             }
         }
 
-        $activities = \App\Models\Activity::where('activitiable_type', $this->model_class)
+        $activities = \App\Models\Activity::where('activitiable_type', $this->model_namespace)
             ->where('activitiable_id', $id)
             ->get();
 
-        $this->meta['title'] = $this->model_trans . __('show');
-        $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.edit', $model);
-        $this->meta['link_name'] = $this->model_trans . __('edit form');
+        $this->meta['title'] = $this->model_translated. __('show');
+        $this->meta['link_route'] = route('admin.'. $this->model_slug. '.list.edit', $model);
+        $this->meta['link_name'] = $this->model_translated. __('edit form');
 
         return view('admin.list.show', ['data' => $data, 'meta' => $this->meta, 'activities' => $activities]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        $model = $this->repository->findOrFail($id);
+        $model = $this->model_repository->findOrFail($id);
         $this->authorize('update', $model);
 
-        $this->meta['title'] = __('edit') . $this->model_trans . ' - #' . $id;
+        $this->meta['title'] = __('edit'). $this->model_translated. ' - #'. $id;
         $form = $this->form_builder->create($this->model_form, [
             'method' => 'PUT',
-            'url' => route('admin.' . $this->model_sm . '.list.update', $model),
+            'url' => route('admin.'. $this->model_slug. '.list.update', $model),
             'class' => 'm-form m-form--state',
             'id' => 'admin_form',
             'model' => $model,
@@ -204,22 +166,14 @@ class BaseListController extends Controller
         return view('admin.list.form', ['form' => $form, 'meta' => $this->meta]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update($id)
     {
-        $model = $this->repository->findOrFail($id);
+        $model = $this->model_repository->findOrFail($id);
         $this->authorize('update', $model);
 
         $form = $this->form_builder->create($this->model_form, [
             'model' => $model,
         ]);
-
         if (! $form->isValid()){
             if(env('APP_ENV') === 'testing'){
                 $errors = $form->getErrors();
@@ -230,16 +184,15 @@ class BaseListController extends Controller
                 return redirect()->back()->withErrors($form->getErrors())->withInput();
             }
         }
-        $data = $form->getFieldValues();
-        $this->repository->saveWithRelations($data, $model);
+        $this->model_repository->saveWithRelations($form->getFieldValues(), $model);
 
         if(env('APP_ENV') !== 'testing'){
             activity('Updated')->performedOn($model)->causedBy(Auth::user())
-                ->log($this->model . ' Updated');
+                ->log($this->model_name. ' Updated');
         }
-        $this->request->session()->flash('alert-success', $this->model_trans . __('updated successfully'));
+        $this->request->session()->flash('alert-success', $this->model_translated. __('updated_successfully'));
 
-        return redirect()->route('admin.' . $this->model_sm . '.list.index');
+        return redirect()->route('admin.'. $this->model_slug. '.list.index');
     }
 
     /**
@@ -250,50 +203,50 @@ class BaseListController extends Controller
      */
     public function destroy($id)
     {
-        $model = $this->repository->findOrFail($id);
+        $model = $this->model_repository->findOrFail($id);
         $this->authorize('delete', $model);
 
         $model->delete();
 
         if(env('APP_ENV') !== 'testing'){
             activity('Deleted')->performedOn($model)->causedBy(Auth::user())
-                ->log($this->model . ' Deleted');
+                ->log($this->model_name. ' Deleted');
         }
-        $this->request->session()->flash('alert-success', $this->model_trans . __('deleted successfully'));
+        $this->request->session()->flash('alert-success', $this->model_translated. __('deleted successfully'));
 
-        return redirect()->route('admin.' . $this->model_sm . '.list.index');
+        return redirect()->route('admin.'. $this->model_slug. '.list.index');
     }
 
     public function restore($id)
     {
-        $model = $this->repository->withTrashed()->findOrFail($id);
+        $model = $this->model_repository->withTrashed()->findOrFail($id);
         $this->authorize('restore', $model);
 
         $model->restore();
 
         if(env('APP_ENV') !== 'testing'){
             activity('Restored')->performedOn($model)->causedBy(Auth::user())
-                ->log($this->model . ' Restored');
+                ->log($this->model_name. ' Restored');
         }
-        $this->request->session()->flash('alert-success', $this->model_trans . __('restored successfully'));
+        $this->request->session()->flash('alert-success', $this->model_translated. __('restored successfully'));
 
-        return redirect()->route('admin.' . $this->model_sm . '.list.index');
+        return redirect()->route('admin.'. $this->model_slug. '.list.index');
     }
 
     public function getPrint()
     {
-        $list = $this->repository->all();
+        $list = $this->model_repository->all();
 
         return view('admin.common.print', compact('list'));
     }
 
     public function getPdf()
     {
-        $list = $this->repository->all();
+        $list = $this->model_repository->all();
 
         return \PDF::loadView('admin.common.print', compact('list'))
             ->setPaper('a4', 'landscape')
-            ->download($this->model . '.pdf');
+            ->download($this->model_name. '.pdf');
     }
 
     public function getExport()
@@ -302,7 +255,7 @@ class BaseListController extends Controller
         $base_export = new $class_name();
         $base_export->setModel($this->model);
 
-        return Excel::download($base_export, $this->model . '.xlsx');
+        return Excel::download($base_export, $this->model_name. '.xlsx');
     }
 
     public function getImport()
@@ -313,12 +266,12 @@ class BaseListController extends Controller
 
         Excel::import($base_import, storage_path('app/public/import.xlsx'));
 
-        return redirect()->route('admin.' . $this->model_sm . '.list.index');
+        return redirect()->route('admin.'. $this->model_slug. '.list.index');
     }
 
     public function getToggleActivated($id)
     {
-        $model = $this->repository->findOrFail($id);
+        $model = $this->model_repository->findOrFail($id);
         $model->activated = !$model->activated;
         $model->update();
 
@@ -329,39 +282,39 @@ class BaseListController extends Controller
 
     public function redirect()
     {
-        return redirect()->route('admin.' . $this->model_sm . '.list.index');
+        return redirect()->route('admin.'. $this->model_slug. '.list.index');
     }    
 
     public function getDatatable()
     {
-        $list = $this->repository->orderBy('updated_at', 'desc')->get();
+        $list = $this->model_repository->orderBy('updated_at', 'desc')->get();
 
         $datatable = datatables()
             ->of($list)
             ->addColumn('show_url', function($model) {
-                return route('admin.' . $this->model_sm . '.list.show', $model);
+                return route('admin.'. $this->model_slug. '.list.show', $model);
             })
             ->addColumn('edit_url', function($model) {
-                return route('admin.' . $this->model_sm . '.list.edit', $model);
+                return route('admin.'. $this->model_slug. '.list.edit', $model);
             })
             ->addColumn('delete_url', function($model) {
-                return route('admin.' . $this->model_sm . '.list.destroy', $model);
+                return route('admin.'. $this->model_slug. '.list.destroy', $model);
             });
-        if($this->model === 'Notification') {
+        if($this->model_name === 'Notification') {
             $datatable->addColumn('user', function($model) {
-                return $model->user->id . ' - ' . $model->user->full_name;
+                return $model->user->id. ' - '. $model->user->full_name;
             })->addColumn('type', function($model) {
                 return str_replace('App\Notifications\\', '', $model->type);
             })->addColumn('data', function($model) {
                 return json_decode($model->data)->data;
             });
         }
-        elseif($this->model === 'Activity') {
+        elseif($this->model_name === 'Activity') {
             $datatable->addColumn('causer', function($model) {
                 return $model->causer->full_name;
             });
         }
-        elseif($this->model === 'Comment') {
+        elseif($this->model_name === 'Comment') {
             // $datatable->addColumn('blog_id', function($model) {
             //     if($model->blog){
             //         return $model->blog->id;
@@ -375,7 +328,7 @@ class BaseListController extends Controller
             //     return null;
             // });
         }
-        elseif($this->model === 'Block') {
+        elseif($this->model_name === 'Block') {
             $datatable->addColumn('pages', function($model) {
                 $pages = $model->pages()->pluck('title')->toArray();
                 $output = 'Just in: ';
@@ -383,14 +336,14 @@ class BaseListController extends Controller
                     $output = 'Not in: ';
                 }
                 if($pages){
-                    $output .= implode(',<br>', $pages);
+                    $output.= implode(',<br>', $pages);
                 }else{
-                    $output .= '-';
+                    $output.= '-';
                 }
                 return $output;
             });
         }
-        elseif($this->model === 'Role') {
+        elseif($this->model_name === 'Role') {
             $datatable->addColumn('permissions', function($model) {
                 return implode(',<br>', $model->permissions()->pluck('name')->toArray());
             })
@@ -400,7 +353,7 @@ class BaseListController extends Controller
         }
 
         $datatable->addColumn('image', function($model) {
-            return '<img style="width:80%" src="' . $model->image . '">';
+            return '<img style="width:80%" src="'. $model->image. '">';
         });
 
         return $datatable->rawColumns(['id', 'order', 'image', 'content', 'users', 'permissions'])

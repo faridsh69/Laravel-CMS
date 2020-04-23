@@ -23,45 +23,21 @@ class BasePolicy
         return $user->can('index_' . $this->model_sm);
     }
 
-    /**
-     * Determine whether the user can view the blog.
-     *
-     * @param  \App\Models\User  $user
-     * @return mixed
-     */
     public function view(User $user, $list)
     {
         return $user->can('view_' . $this->model_sm);
     }
 
-    /**
-     * Determine whether the user can create blogs.
-     *
-     * @param  \App\Models\User  $user
-     * @return mixed
-     */
     public function create(User $user)
     {
         return $user->can('create_' . $this->model_sm);
     }
 
-    /**
-     * Determine whether the user can update the blog.
-     *
-     * @param  \App\Models\User  $user
-     * @return mixed
-     */
     public function update(User $user, $list)
     {
         return $user->can('update_' . $this->model_sm);
     }
 
-    /**
-     * Determine whether the user can delete the blog.
-     *
-     * @param  \App\Models\User  $user
-     * @return mixed
-     */
     public function delete(User $user, $list)
     {
         return $user->can('delete_' . $this->model_sm);
