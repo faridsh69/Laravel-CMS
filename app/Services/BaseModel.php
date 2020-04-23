@@ -17,7 +17,156 @@ class BaseModel extends Model
         'deleted_at',
     ];
 
-    public function getColumns()
+    public function saveWithRelations($data, $model = null)
+    {
+        $data_without_file_and_array = $this->_clearFilesAndArrays($data);
+        if($model){
+            $this->update($data_without_file_and_array);
+        }else{
+            $model = $this->create($data_without_file_and_array);
+        }
+        $this->_saveRelatedDataAfterCreate($data, $model);
+
+        return $model;
+    }
+
+    private function _clearFilesAndArrays($data)
+    {
+        // convert boolean input values: null and false => 0, true => 1
+        foreach(collect($this->getColumns())->where('type', 'boolean')->pluck('name') as $boolean_column)
+        {
+            if(! isset($data[$boolean_column]))
+            {
+                $data[$boolean_column] = 0;
+            }
+        }
+
+        // unset file and array attributes before saving
+        foreach(collect($this->getColumns())->whereIn('type', ['file', 'array', 'captcha'])->pluck('name') as $file_or_array_column)
+        {
+            unset($data[$file_or_array_column]);
+        }
+
+        return $data;
+    }
+
+    private function _saveRelatedDataAfterCreate($data, $model)
+    {
+        // files column
+        foreach(collect($this->getColumns())->where('type', 'file')->pluck('name') as $file_column) {
+            $file = $data[$file_column];
+            if($file){
+                $file_service = new \App\Services\FileService();
+                $file_service->save($file, $model, $file_column);
+            }
+        }
+
+        // array columns like tag, related_models, ...
+        foreach(collect($this->getColumns())->where('type', 'array')->pluck('name') as $array_column) {
+            $model->{$array_column}()->sync($data[$array_column], true);
+            // dd($model);
+        }
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('activated', 1);
+    }
+
+    public function scopeMine($query)
+    {
+        return $query->where('user_id', Auth::id());
+    }
+
+    public function scopeLanguage($query)
+    {
+        return $query->where('language', config('app.locale'));
+    }
+
+    public function scopeOfType($query, $type)
+    {
+        return $query->where('type', $type);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id', 'id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Category', 'category_id', 'id');
+    }
+
+    public function tags()
+    {
+        return $this->morphToMany('App\Models\Tag', 'taggable');
+    }
+
+    public function comments()
+    {
+        return $this->morphMany('App\Models\Comment', 'commentable');
+    }
+
+    public function likes()
+    {
+        return $this->morphMany('App\Models\Like', 'likeable');
+    }
+
+    public function rates()
+    {
+        return $this->morphMany('App\Models\Rate', 'rateable');
+    }
+
+    public function follows()
+    {
+        return $this->morphMany('App\Models\Rate', 'rateable');
+    }
+
+    public function activities()
+    {
+        return $this->morphMany('App\Models\Activity', 'activitiable');
+    }
+
+    public function relateds()
+    {
+        return $this->belongsToMany('App\\Models\\'. class_basename($this), 'model_related', 'model_id', 'related_id');
+    }
+
+    public function files_relation()
+    {
+        return $this->morphMany('App\Models\File', 'fileable');
+    }
+
+    public function files($title)
+    {
+        return $this->files_relation()->where('title', $title)->get();
+    }
+
+    public function files_src($title)
+    {
+        return json_encode($this->files($title)->pluck('src'));
+    }
+
+    public function file_src($title)
+    {
+        if($this->files($title)->first()){
+            return $this->files($title)->first()->src;
+        }
+
+        return config('setting-general.default_meta_image');
+    }
+
+    public function image_default()
+    {
+        if(isset($this->image) && $this->image) {
+            return $this->image;
+        }
+
+        return config('setting-general.default_meta_image');
+    }
+
+        public function getColumns()
     {
         $constructor = [
             'model' => class_basename($this),
@@ -597,104 +746,6 @@ class BaseModel extends Model
         });
     }
 
-
-    public function scopeActive($query)
-    {
-        return $query->where('activated', 1);
-    }
-
-    public function scopeMine($query)
-    {
-        return $query->where('user_id', Auth::id());
-    }
-
-    public function scopeLanguage($query)
-    {
-        return $query->where('language', config('app.locale'));
-    }
-
-    public function scopeOfType($query, $type)
-    {
-        return $query->where('type', $type);
-    }
-
-    public function user()
-    {
-        return $this->belongsTo('App\Models\User', 'user_id', 'id');
-    }
-
-    public function category()
-    {
-        return $this->belongsTo('App\Models\Category', 'category_id', 'id');
-    }
-
-    public function tags()
-    {
-        return $this->morphToMany('App\Models\Tag', 'taggable');
-    }
-
-    public function comments()
-    {
-        return $this->morphMany('App\Models\Comment', 'commentable');
-    }
-
-    public function likes()
-    {
-        return $this->morphMany('App\Models\Like', 'likeable');
-    }
-
-    public function rates()
-    {
-        return $this->morphMany('App\Models\Rate', 'rateable');
-    }
-
-    public function follows()
-    {
-        return $this->morphMany('App\Models\Rate', 'rateable');
-    }
-
-    public function activities()
-    {
-        return $this->morphMany('App\Models\Activity', 'activitiable');
-    }
-
-    public function relateds()
-    {
-        return $this->belongsToMany('App\\Models\\'. class_basename($this), 'model_related', 'model_id', 'related_id');
-    }
-
-    public function files_relation()
-    {
-        return $this->morphMany('App\Models\File', 'fileable');
-    }
-
-    public function files($title)
-    {
-        return $this->files_relation()->where('title', $title)->get();
-    }
-
-    public function files_src($title)
-    {
-        return json_encode($this->files($title)->pluck('src'));
-    }
-
-    public function file_src($title)
-    {
-        if($this->files($title)->first()){
-            return $this->files($title)->first()->src;
-        }
-
-        return config('setting-general.default_meta_image');
-    }
-
-    public function image_default()
-    {
-        if(isset($this->image) && $this->image) {
-            return $this->image;
-        }
-
-        return config('setting-general.default_meta_image');
-    }
 
         // $files = $this->files($title);
         // if($files->count() > 1){

@@ -16,7 +16,7 @@ Route::group(['prefix' => $model, 'as' => $model . '.'], function () use ($class
 	Route::get('export', $controller_name . '@getExport')->middleware('can:export,' . $class_name)->name('export');
 	Route::get('import', $controller_name . '@getImport')->middleware('can:import,' . $class_name)->name('import');
 	Route::get('print', $controller_name . '@getPrint')->middleware('can:print,' . $class_name)->name('print');
-	Route::get('change-status/{id}', $controller_name . '@getChangeStatus')->middleware('can:change-status,' . $class_name)->name('change-status');
+	Route::get('change-status/{id}', $controller_name . '@getToggleActivated')->middleware('can:change-status,' . $class_name)->name('change-status');
 	Route::resource('list', $controller_name . '');
 	Route::get('list/{list}/restore', $controller_name . '@restore')->name('list.restore');
 	Route::get('', $controller_name . '@redirect')->name('redirect');
