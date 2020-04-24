@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateBasketProductTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up()
     {
         Schema::create('basket_product', function (Blueprint $table) {
@@ -20,9 +17,6 @@ class CreateBasketProductTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down()
     {
         Schema::dropIfExists('basket_product');

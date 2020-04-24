@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateJobsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up()
     {
         Schema::defaultStringLength(191);
@@ -23,9 +20,6 @@ class CreateJobsTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down()
     {
         Schema::dropIfExists('jobs');

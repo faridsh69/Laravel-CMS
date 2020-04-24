@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateFactorTagendTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up()
     {
         Schema::create('factor_tagend', function (Blueprint $table) {
@@ -20,9 +17,6 @@ class CreateFactorTagendTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down()
     {
         Schema::dropIfExists('factor_tagend');

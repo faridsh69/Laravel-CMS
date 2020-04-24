@@ -27,6 +27,9 @@ class BaseMigration extends Migration
     {
         if($this->model_slugs === []){
             $this->model_slugs = [$this->model_slug];
+            if($this->model_slug === null){
+                $this->model_slugs = config('cms.migration');
+            }
         }
         foreach($this->model_slugs as $model_slug){
             $model_name = Str::studly($model_slug);
@@ -51,18 +54,23 @@ class BaseMigration extends Migration
         foreach($this->_migrations as $_migration)
         {
             if(Schema::hasTable($_migration->model_table) === false){
+                echo 'creating '. $_migration->model_table;
                 $this->_createMigration($_migration->model_table, $_migration->model_columns);
             }else{
                 if($this->backup === true){
+                    echo 'backuping '. $_migration->model_table;
                     $this->_createBackupTable($_migration->model_table, $_migration->model_repository);
                 }
                 if($this->update === true){
+                    echo 'updating '. $_migration->model_table;
                     $this->_updateMigration($_migration->model_table, $_migration->model_columns);
                 }else{
+                    echo 'rebuilding '. $_migration->model_table;
                     $this->_dropTable($_migration->model_table);
                     $this->_createMigration($_migration->model_table, $_migration->model_columns);
                 }
             }
+            echo "\n";
         }
     }
 

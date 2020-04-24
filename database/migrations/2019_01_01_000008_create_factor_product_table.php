@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateFactorProductTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up()
     {
         Schema::create('factor_product', function (Blueprint $table) {
@@ -25,9 +22,6 @@ class CreateFactorProductTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down()
     {
         Schema::dropIfExists('factor_product');
