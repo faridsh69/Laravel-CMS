@@ -63,8 +63,8 @@ class BaseResourceController extends BaseAdminController
         if(file_exists(__DIR__. '\..\Forms\\'. $this->model_name. 'Form.php')){
             $this->model_form = 'App\\Forms\\'. $this->model_name. 'Form';
         }
-        $this->meta['link_route'] = route('admin.'. $this->model_slug. '.list.index');
-        $this->meta['link_name'] = $this->model_translated. __('manager');
+        // $this->meta['link_route'] = route('admin.'. $this->model_slug. '.list.index');
+        // $this->meta['link_name'] = $this->model_translated. __('manager');
         $this->meta['title'] = $this->model_translated. __('manager');
     }
 

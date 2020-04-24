@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers\Admin\Setting;
 
-use App\Services\BaseAdminController;
+use App\Services\BaseResourceController;
 use Artisan;
 use Auth;
 use Cache;
 use Rap2hpoutre\LaravelLogViewer\LogViewerController;
 use Symfony\Component\Console\Output\BufferedOutput;
 
-class SettingController extends BaseAdminController
+class SettingController extends BaseResourceController
 {
-    public function getSettingForm()
+    public function index()
     {
-        $this->meta['title'] = __(strtolower($this->model . '_manager'));
-        $this->authorize('index', $this->model_class);
-        $model = $this->repository->first();
+        $this->authorize('index', $this->model_namespace);
+    	$section = explode('-', $this->model_slug)[1];
+        $model = $this->model_repository->first();
         $form = $this->form_builder->create($this->model_form, [
             'method' => 'PUT',
-            'url' => route('admin.setting.' . $this->section),
+            'url' => route('admin.setting.'. $section),
             'class' => 'm-form m-form--state',
             'id' =>  'admin_form',
             'model' => $model,
@@ -27,16 +27,15 @@ class SettingController extends BaseAdminController
         return view('admin.list.form', ['form' => $form, 'meta' => $this->meta]);
     }
 
-    public function putSettingForm()
+    public function putUpdate()
     {
-        $this->authorize('index', $this->model_class);
-        $model = $this->repository->first();
+        $this->authorize('index', $this->model_namespace);
+        $model = $this->model_repository->first();
 
         $form = $this->form_builder->create($this->model_form, [
             'model' => $model,
         ]);
-
-        if (! $form->isValid()) {
+        if (!$form->isValid()) {
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
         $updated_data = $form->getFieldValues();
@@ -54,16 +53,21 @@ class SettingController extends BaseAdminController
 	        Cache::forget('setting.' . $section);
 	    }
 
-        activity($this->model)
+        activity('Update')
             ->performedOn($model)
             ->causedBy(Auth::user())
-            ->log('setting.' . $this->section . ' Updated: <br>' . json_encode($model));
+            ->log($this->model_name. ' Updated');
 
-        $this->request->session()->flash('alert-success', $this->model . ' Updated Successfully!');
+        $this->request->session()->flash('alert-success', $this->model_translated . ' Updated Successfully!');
         sleep(1);
-
-        return redirect()->route('admin.setting.' . $this->section);
+        $section = explode('-', $this->model_slug)[1];
+        return redirect()->route('admin.setting.' . $section);
     }
+
+	public function redirect()
+	{
+		return redirect()->route('admin.setting.general');
+	}
 
 	public function getLog()
 	{
@@ -75,6 +79,8 @@ class SettingController extends BaseAdminController
 
 	public function getLogView(LogViewerController $LogViewerController)
 	{
+		$this->authorize('index_settinggeneral');
+
 		return $LogViewerController->index();
 	}
 
@@ -84,11 +90,6 @@ class SettingController extends BaseAdminController
         $this->meta['title'] = __('api_manager');
 
 		return view('admin.page.setting.api', ['meta' => $this->meta]);
-	}
-
-	public function redirect()
-	{
-		return redirect()->route('admin.setting.general');
 	}
 
 	public function getCommand($command)

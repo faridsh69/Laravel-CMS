@@ -60,7 +60,7 @@ Route::group(['prefix' => 'setting', 'namespace' => 'Setting', 'as' => 'setting.
 	Route::resource('backup', 'BackupController');
 
 	Route::group(['prefix' => 'seo', 'namespace' => 'Seo', 'as' => 'seo.'], function () {
-		Route::get('', 'SeoController@getCrowl')->name('crowl.redirect');
+		Route::get('', 'SeoController@redirectToCrowl')->name('crowl.redirect');
 		Route::get('content-rules', 'SeoController@getContentRules')->name('content-rules');
 		Route::get('crowl', 'SeoController@getCrowl')->name('crowl');
 		Route::get('crowl-run', 'SeoController@getCrowlRun')->name('crowl-run');

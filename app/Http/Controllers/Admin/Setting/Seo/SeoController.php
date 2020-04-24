@@ -7,6 +7,11 @@ use App\Services\BaseAdminController;
 
 class SeoController extends BaseAdminController
 {
+	public function redirectToCrowl()
+	{
+		return redirect()->route('admin.setting.seo.crowl');
+	}
+
 	public function getCrowl()
 	{
 		$this->authorize('index_settinggeneral');

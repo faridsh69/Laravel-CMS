@@ -500,5 +500,9 @@
     "tagend" : "Tagend",
     "travel" : "Travel",
     "tour" : "Tour",
-    "user" : "User"
+    "user" : "User",
+    "setting_general" : "General Setting",
+    "setting_developer" : "Developer Setting",
+    "setting_contact" : "Contact Setting"
+
 }
