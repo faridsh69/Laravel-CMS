@@ -463,6 +463,7 @@
     "updated_successfully" : " Updated Successfully!",
     "deleted_successfully" : " Deleted Successfully!",
     "restored_successfully" : " Restored Successfully!",
+    "verified_successfully" : " Verified Successfully!",
     "update" : "Update ",
     "manager" : " Manager",
     "food_program" : "Food Program",

@@ -24,8 +24,6 @@ foreach($model_slugs as $model_slug)
 	});
 }
 Route::get('', 'Dashboard\DashboardController@redirect')->name('redirect');
-Route::get('media', 'Media\MediaController@redirect')->name('redirect');
-Route::get('media/list', 'Media\MediaController@index')->name('media.list.index');
 Route::get('icon/list', 'Dashboard\DashboardController@getIconsList')->name('icon.list.index');
 Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'as' => 'dashboard.'], function () {
 	Route::get('', 'DashboardController@index')->name('list.index');
@@ -39,13 +37,6 @@ Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'as' => 'dash
 	Route::get('identify/phone', 'DashboardController@getIdentifyPhone')->name('identify.phone');
 	Route::post('identify/phone', 'DashboardController@postIdentifyPhone')->name('identify.phone-verify');
 	Route::post('identify/{document}', 'DashboardController@postIdentifyDocument')->name('identify.document');
-});
-// Route::group(['prefix' => 'category', 'namespace' => 'Category', 'as' => 'category.'], function () {
-// 	Route::get('tree', 'ResourceController@getTree')->name('tree');
-// 	Route::post('tree', 'ResourceController@postTree')->name('tree.store');
-// });
-Route::group(['prefix' => 'block', 'namespace' => 'Block', 'as' => 'block.'], function () {
-	Route::post('sort', 'ResourceController@postSort')->name('sort.store');
 });
 Route::group(['prefix' => 'setting', 'namespace' => 'Setting', 'as' => 'setting.'], function () {
 	Route::get('', 'GeneralController@redirect')->name('general.redirect');
@@ -80,8 +71,14 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'as' => 'user.'], funct
 	Route::get('identify/{id}', 'ResourceController@getIdentify')->name('identify');
 	Route::get('identify/{id}/{document}', 'ResourceController@getIdentifyDocument')->name('identify.document');
 });
+Route::group(['prefix' => 'block', 'namespace' => 'Block', 'as' => 'block.'], function () {
+	Route::post('sort', 'ResourceController@postSort')->name('sort.store');
+});
 Route::group(['prefix' => 'report', 'namespace' => 'Report', 'as' => 'report.'], function () {
-	Route::get('list', 'ReportController@index')->name('list.index');
+	Route::get('', 'ReportController@index')->name('index');
+});
+Route::group(['prefix' => 'media', 'namespace' => 'Media', 'as' => 'media.'], function () {
+	Route::get('', 'MediaController@index')->name('index');
 });
 Route::group(['prefix' => 'file', 'namespace' => 'File', 'as' => 'file.'], function () {
 	Route::get('remove-by-src', 'ResourceController@getRemoveBySrc')->name('remove-by-src');

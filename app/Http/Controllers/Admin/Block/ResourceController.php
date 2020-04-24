@@ -3,24 +3,29 @@
 namespace App\Http\Controllers\Admin\Block;
 
 use App\Models\Block;
-use App\Services\BaseListController;
+use App\Services\BaseResourceController;
+use Str;
 
-class ResourceController extends BaseListController
+class ResourceController extends BaseResourceController
 {
+    public $model_slug = 'block';
+
     public function index()
     {
         $this->authorize('index', $this->model_namespace);
         $this->meta['link_route'] = route('admin.'. $this->model_slug. '.list.create');
         $this->meta['link_name'] = __('create_new'). $this->model_translated;
         $this->meta['title'] = $this->model_translated. __('manager');
+        $this->meta['search'] = 1;
         $columns = [];
         foreach(collect($this->model_columns)->where('table', true) as $column)
         {
             $columns[] = [
                 'field' => $column['name'],
-                'title' => preg_replace('/([a-z])([A-Z])/s', '$1 $2', \Str::studly($column['name'])),
+                'title' => preg_replace('/([a-z])([A-Z])/s', '$1 $2', Str::studly($column['name'])),
             ];
         }
+
         $blocks = Block::orderBy('order', 'asc')
             ->where('type', '!=', 'loading')
             ->get();
@@ -30,6 +35,7 @@ class ResourceController extends BaseListController
 
     public function postSort()
     {
+        $this->authorize('index', $this->model_namespace);
     	$block_sort_json = $this->request->blockSort;
     	$block_sort = json_decode($block_sort_json);
     	$this->saveSort($block_sort);
@@ -40,6 +46,7 @@ class ResourceController extends BaseListController
 
     public function saveSort($block_ids)
     {
+        $this->authorize('index', $this->model_namespace);
     	foreach($block_ids as $block_order => $block_id)
     	{
     		$block = Block::find($block_id);

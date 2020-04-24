@@ -10,6 +10,7 @@ class Activity extends BaseModel
         ['name' => 'title'],
         ['name' => 'description'],
         ['name' => 'user_id'],
+        ['name' => 'activated'],
         [
             'name' => 'activitiable_type',
             'type' => 'string',

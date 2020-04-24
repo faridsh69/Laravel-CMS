@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Admin\User;
 
-use App\Services\BaseListController;
+use App\Services\BaseResourceController;
 use Carbon\Carbon;
 
-class ResourceController extends BaseListController
+class ResourceController extends BaseResourceController
 {
-    public $model = 'User';
-
     public function getLogin($id)
 	{
         if (\Auth::loginUsingId($id)){
@@ -20,21 +18,23 @@ class ResourceController extends BaseListController
 
 	public function getIdentify($id)
 	{
-		$model = $this->repository->findOrFail($id);
+		$model = $this->model_repository->findOrFail($id);
         $this->authorize('view', $model);
-        $this->meta['title'] = $this->model_trans . __('identify');
+        $this->meta['title'] = $this->model_translated . __('identify');
 
-		return view('admin.list.user-identify', ['meta' => $this->meta, 'user' => $model]);
+		return view('admin.page.user.identify', ['meta' => $this->meta, 'user' => $model]);
 	}
 
 	public function getIdentifyDocument($id, $document_title)
 	{
-		$model = $this->repository->findOrFail($id);
+		$model = $this->model_repository->findOrFail($id);
         $this->authorize('view', $model);
 
         $document_title_verified_at = $document_title . '_verified_at';
         $model->{$document_title_verified_at} = Carbon::now();
         $model->update();
+
+        $this->request->session()->flash('alert-success', $this->document_title. __('verified_successfully'));
 
         return redirect()->back();
 	}

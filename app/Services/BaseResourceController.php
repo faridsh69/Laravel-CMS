@@ -9,7 +9,7 @@ use Kris\LaravelFormBuilder\FormBuilder;
 use Maatwebsite\Excel\Facades\Excel;
 use Str;
 
-class BaseResourceController extends Controller
+class BaseResourceController extends BaseAdminController
 {
     // FoodProgram
     public $model_name;
@@ -36,22 +36,24 @@ class BaseResourceController extends Controller
 
     public $form_builder;
 
-    public $meta = [
-        'title' => '',
-        'description' => 'Admin Panel Page For Full Features, Best UI-UX Cms.',
-        'keywords' => '',
-        'image' => '',
-        'alert' => '',
-        'link_route' => 'admin',
-        'link_name' => 'Dashboard',
-        'search' => 0,
-    ];
+    // public $meta = [
+    //     'title' => '',
+    //     'description' => 'Admin Panel Page For Full Features, Best UI-UX Cms.',
+    //     'keywords' => '',
+    //     'image' => '',
+    //     'alert' => '',
+    //     'link_route' => 'admin',
+    //     'link_name' => 'Dashboard',
+    //     'search' => 0,
+    // ];
 
     public function __construct(Request $request, FormBuilder $form_builder)
     {
         $this->form_builder = $form_builder;
         $this->request = $request;
-        $this->model_slug = $this->request->segment(2);
+        if(!$this->model_slug){
+            $this->model_slug = $this->request->segment(2);
+        }
         $this->model_name = Str::studly($this->model_slug);
         $this->model_translated = __(Str::snake($this->model_name));
         $this->model_namespace = config('cms.config.models_namespace'). $this->model_name;
@@ -298,18 +300,18 @@ class BaseResourceController extends Controller
                 return route('admin.'. $this->model_slug. '.list.destroy', $model);
             });
         if($this->model_name === 'Notification') {
-            $datatable->addColumn('user', function($model) {
-                return $model->user->id. ' - '. $model->user->full_name;
-            })->addColumn('type', function($model) {
-                return str_replace('App\Notifications\\', '', $model->type);
-            })->addColumn('data', function($model) {
-                return json_decode($model->data)->data;
-            });
+            // $datatable->addColumn('user', function($model) {
+            //     return $model->user->id. ' - '. $model->user->full_name;
+            // })->addColumn('type', function($model) {
+            //     return str_replace('App\Notifications\\', '', $model->type);
+            // })->addColumn('data', function($model) {
+            //     return json_decode($model->data)->data;
+            // });
         }
         elseif($this->model_name === 'Activity') {
-            $datatable->addColumn('causer', function($model) {
-                return $model->causer->full_name;
-            });
+            // $datatable->addColumn('causer', function($model) {
+            //     return $model->causer->full_name;
+            // });
         }
         elseif($this->model_name === 'Comment') {
             // $datatable->addColumn('blog_id', function($model) {

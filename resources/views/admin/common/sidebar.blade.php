@@ -245,6 +245,9 @@
 			@elseif($item['type'] === 'submenu')
 			@php
 				$item['route'] = 'admin.' . strtolower($item['title']) . '.list.index';
+				if(!Route::has($item['route'])){
+					$item['route'] = 'admin.' . strtolower($item['title']) . '.index';
+				}
 				if(!isset($item['permission']) ){
 					$item['permission'] = $item['title'];
 				}

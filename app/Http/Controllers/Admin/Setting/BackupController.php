@@ -10,10 +10,6 @@ use Storage;
 
 class BackupController extends BaseAdminController
 {
-    public $model = 'Backup';
-
-    public $model_sm = 'backup';
-
     public $disk_name;
 
     public $backup_name;
@@ -23,16 +19,11 @@ class BackupController extends BaseAdminController
         $this->request = $request;
         $this->disk_name = config('backup.backup.destination.disks')[0];
         $this->backup_name = config('backup.backup.name');
-        $this->meta['title'] = __(strtolower($this->model . '_manager'));
+        $this->meta['title'] = __('backup_manager');
         $this->meta['link_route'] = route('admin.setting.backup.create');
-        $this->meta['link_name'] = __(strtolower($this->model . '_create'));
+        $this->meta['link_name'] = __('backup_create');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $disk = Storage::disk($this->disk_name);
@@ -57,11 +48,6 @@ class BackupController extends BaseAdminController
         return view('admin.page.setting.backup', ['backups' => $backups, 'meta' => $this->meta]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         Artisan::call('backup:run');
@@ -74,47 +60,29 @@ class BackupController extends BaseAdminController
         return redirect()->route('admin.setting.backup.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $backup_item_name
-     * @return \Illuminate\Http\Response
-     */
     public function show($backup_item_name)
     {
-        $disk_name = config('backup.backup.destination.disks')[0];
-        $backup_name = config('backup.backup.name');
-
-        $file = $backup_name . '/' . $backup_item_name;
-        $disk = Storage::disk($disk_name);
+        $file = $this->backup_name . '/' . $backup_item_name;
+        $disk = Storage::disk($this->disk_name);
         if ($disk->exists($file)) {
-            $fs = Storage::disk($disk_name)->getDriver();
-            $stream = $fs->readStream($file);
+            $file_storage = Storage::disk($this->disk_name)->getDriver();
+            $stream = $file_storage->readStream($file);
             return \Response::stream(function () use ($stream) {
                 fpassthru($stream);
             }, 200, [
                 'Content-Type' => $fs->getMimetype($file),
                 'Content-Length' => $fs->getSize($file),
-                // 'Content-disposition' => 'attachment; filename=\"' . basename($file) . '\"',
             ]);
-        } else {
+        } else 
+        {
             abort(404, "The backup file doesn't exist.");
         }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $backup_item_name
-     * @return \Illuminate\Http\Response
-     */
     public function edit($backup_item_name)
     {
-        $disk_name = config('backup.backup.destination.disks')[0];
-        $backup_name = config('backup.backup.name');
-
-        $disk = Storage::disk($disk_name);
-        $file = $backup_name . '/' . $backup_item_name;
+        $disk = Storage::disk($this->disk_name);
+        $file = $this->backup_name . '/' . $backup_item_name;
 
         if ($disk->exists($file)) {
             $disk->delete($file);
@@ -122,11 +90,6 @@ class BackupController extends BaseAdminController
 
         $this->request->session()->flash('alert-success', 'Backup Deleted');
 
-        return redirect()->route('admin.setting.backup.index');
-    }
-
-    public function getRedirect()
-    {
         return redirect()->route('admin.setting.backup.index');
     }
 }

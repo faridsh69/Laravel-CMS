@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers\Admin\File;
 
-use App\Services\BaseListController;
+use App\Services\BaseResourceController;
 
-class ResourceController extends BaseListController
+class ResourceController extends BaseResourceController
 {
-    public $model_name = 'File';
+    public $model_slug = 'file';
 
     public function getRemoveBySrc()
     {
 		$src = $this->request->input('src');
 		$file = $this->repository->where('src', $src)->first();
+		$file_model_namespace = $file->fileable_type;
+		$this->authorize('index', $file_model_namespace);
 		$this->destroy($file->id);
 
 		return 'File deleted successfully';

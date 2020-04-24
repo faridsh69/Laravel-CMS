@@ -9,7 +9,8 @@ class ReportController extends BaseAdminController
 {
     public function index()
     {
-        $this->meta['title'] = __('report');
+        // @TODO check permission for report here and in route
+        $this->meta['title'] = __('report'). __('manager');
 
         // $yesterday_time = \Carbon\Carbon::now()->subdays(1);
         $last_week_time = \Carbon\Carbon::now()->subdays(7);

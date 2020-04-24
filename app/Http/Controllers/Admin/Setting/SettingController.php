@@ -67,6 +67,7 @@ class SettingController extends BaseAdminController
 
 	public function getLog()
 	{
+        $this->authorize('index_settinggeneral');
         $this->meta['title'] = __('log_manager');
 
 		return view('admin.page.setting.log', ['meta' => $this->meta]);
@@ -79,6 +80,7 @@ class SettingController extends BaseAdminController
 
 	public function getApi()
 	{
+		$this->authorize('index_settinggeneral');
         $this->meta['title'] = __('api_manager');
 
 		return view('admin.page.setting.api', ['meta' => $this->meta]);

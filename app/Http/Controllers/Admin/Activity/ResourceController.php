@@ -2,15 +2,27 @@
 
 namespace App\Http\Controllers\Admin\Activity;
 
-use App\Services\BaseListController;
+use App\Services\BaseResourceController;
 
-class ResourceController extends BaseListController
+class ResourceController extends BaseResourceController
 {
-    public $model_name = 'Activity';
+    public $model_slug = 'activity';
 
-    public function create(){return $this->getRedirect(); }
+    public function create(){
+    	$this->request->session()->flash('alert-danger', $this->model_translated. __(' create does not exist!'));
 
-    public function edit($id){return $this->getRedirect(); }
+    	return $this->redirect(); 
+    }
 
-    public function update($id){return $this->getRedirect(); }
+    public function edit($id){
+    	$this->request->session()->flash('alert-danger', $this->model_translated. __(' edit does not exist!'));
+
+    	return $this->redirect(); 
+    }
+
+    public function update($id){
+    	$this->request->session()->flash('alert-danger', $this->model_translated. __(' update does not exist!'));
+
+    	return $this->redirect(); 
+    }
 }

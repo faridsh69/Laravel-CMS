@@ -53,7 +53,7 @@ class SmsChannel extends BaseChannel
                 'SendDateInTimeStamp' => time(),
             ]);
 
-            $curl_service = new \App\Services\CurlService();
+            $curl_service = new \App\Services\BaseCurlService();
             $raygansms_api = $curl_service->call_curl($url, 'POST', $post_data, null, $api_key);
             $result = json_decode($raygansms_api, true);
             if($result === null || $result['Code'] !== 0){

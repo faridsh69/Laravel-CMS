@@ -9,7 +9,7 @@ class SeoController extends BaseAdminController
 {
 	public function getCrowl()
 	{
-		$this->authorize('index_settingdeveloper');
+		$this->authorize('index_settinggeneral');
 		$this->meta['title'] = __('seo crowl site');
 
 		return view('admin.page.setting.seo.crowl', ['meta' => $this->meta]);
@@ -17,7 +17,7 @@ class SeoController extends BaseAdminController
 
 	public function getContentRules()
 	{
-		$this->authorize('index_settingdeveloper');
+		$this->authorize('index_settinggeneral');
 		$this->meta['title'] = __('seo content rules');
 
 		return view('admin.page.setting.seo.content-rules', ['meta' => $this->meta]);
@@ -25,6 +25,9 @@ class SeoController extends BaseAdminController
 
 	public function getCrowlRun()
 	{
+		$this->authorize('index_settinggeneral');
+		$this->meta['title'] = 'Seo Crwol Website';
+
 		$blogs = Blog::get();
 		$title_range = [];
 		$title_unique = [];
@@ -114,9 +117,6 @@ class SeoController extends BaseAdminController
 			'content unique' => $content_unique,
 			'content header' => $content_header,
 		];
-
-		$this->authorize('index_settingdeveloper');
-		$this->meta['title'] = 'Seo Crwol Website';
 
 		return view('admin.page.setting.seo.crowl', [
 			'meta' => $this->meta,
