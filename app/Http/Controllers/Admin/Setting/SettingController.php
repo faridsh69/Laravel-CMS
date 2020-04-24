@@ -11,6 +11,8 @@ use Symfony\Component\Console\Output\BufferedOutput;
 
 class SettingController extends BaseResourceController
 {
+	public $model_slug = 'setting-general';
+
     public function index()
     {
         $this->authorize('index', $this->model_namespace);
