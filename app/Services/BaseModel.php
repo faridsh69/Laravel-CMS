@@ -56,7 +56,7 @@ class BaseModel extends Model
         foreach(collect($this->getColumns())->where('type', 'file')->pluck('name') as $file_column) {
             $file = $data[$file_column];
             if($file){
-                $file_service = new \App\Services\FileService();
+                $file_service = new \App\Services\BaseFileService();
                 $file_service->save($file, $model, $file_column);
             }
         }
