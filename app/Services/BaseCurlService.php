@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-class CurlService extends BaseService
+class BaseCurlService extends BaseService
 {
     public function call_curl($url, $method = 'get', $body = null, $authorization = null, $user_password = null)
     {

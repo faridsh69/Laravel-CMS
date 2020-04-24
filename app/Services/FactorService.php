@@ -13,7 +13,7 @@ class FactorService extends BaseService
     public function _sendNotifications()
     {
         // todo
-        // send sms to maghaze dar o moshtari
+        // send sms to customer and seller
     }
 
     public static function _decreaseInventory()

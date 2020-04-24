@@ -6,7 +6,7 @@ use App\Models\File;
 use Illuminate\Support\Facades\Storage;
 use Image;
 
-class FileService extends BaseService
+class BaseFileService extends BaseService
 {
     public $upload_path_prefix = 'public/upload/';
 
