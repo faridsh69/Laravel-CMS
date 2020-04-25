@@ -299,7 +299,7 @@
 	],
 ];
 
-$sidebar_items = Cache::remember('sidebar', 1, function () use($sidebar_menu_items) {
+$sidebar_items = Cache::remember('sidebar', 100, function () use($sidebar_menu_items) {
 	$list = [];
 	foreach(collect($sidebar_menu_items)->sortBy('order') as $menu_items)
 	{
