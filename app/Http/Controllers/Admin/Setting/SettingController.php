@@ -16,7 +16,7 @@ class SettingController extends BaseResourceController
     public function index()
     {
     	$section = explode('-', $this->model_slug)[1];
-    	$this->authorize('manage', $section. '_setting');
+    	$this->authorize('manage', 'setting_'. $section);
         $model = $this->model_repository->first();
         $form = $this->form_builder->create($this->model_form, [
             'method' => 'PUT',
@@ -32,7 +32,7 @@ class SettingController extends BaseResourceController
     public function putUpdate()
     {
     	$section = explode('-', $this->model_slug)[1];
-    	$this->authorize('manage', $section. '_setting');
+    	$this->authorize('manage', 'setting_'. $section);
         $model = $this->model_repository->first();
         $form = $this->form_builder->create($this->model_form, [
             'model' => $model,
@@ -86,7 +86,7 @@ class SettingController extends BaseResourceController
 
 	public function command($command)
 	{
-		$this->authorize('manage', 'advance_setting');
+		$this->authorize('manage', 'setting_advance');
         echo '<br> php artisan ' . $command . ' is running...';
 		$output = new BufferedOutput();
 		if(strpos($command, 'api') === false && strpos($command, 'passport') === false){
@@ -102,7 +102,7 @@ class SettingController extends BaseResourceController
 
 	public function advance()
 	{
-		$this->authorize('manage', 'advance_setting');
+		$this->authorize('manage', 'setting_advance');
 		$commands = [
 			[
 				'id' => 1,

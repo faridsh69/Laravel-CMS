@@ -12,13 +12,6 @@ class BasePolicy
 
     public $model_slug;
 
-    public function __construct()
-    {
-        if(!$this->model_slug){
-            $this->model_slug = Request::segment(2);
-        }
-    }
-
     public function index(User $user)
     {
         return $user->can($this->model_slug. '_index');

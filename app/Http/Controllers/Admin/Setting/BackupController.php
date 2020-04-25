@@ -16,7 +16,6 @@ class BackupController extends BaseAdminController
 
     public function __construct(Request $request)
     {
-        $this->authorize('manage', 'backup');
         $this->request = $request;
         $this->disk_name = config('backup.backup.destination.disks')[0];
         $this->backup_name = config('backup.backup.name');
@@ -27,6 +26,7 @@ class BackupController extends BaseAdminController
 
     public function index()
     {
+        $this->authorize('manage', 'backup');
         $disk = Storage::disk($this->disk_name);
         $files = $disk->allFiles($this->backup_name);
 
@@ -51,6 +51,7 @@ class BackupController extends BaseAdminController
 
     public function create()
     {
+        $this->authorize('manage', 'backup');
         Artisan::call('backup:run');
         activity('Backup')
             ->causedBy(Auth::user())
@@ -63,6 +64,7 @@ class BackupController extends BaseAdminController
 
     public function show($backup_item_name)
     {
+        $this->authorize('manage', 'backup');
         $file = $this->backup_name . '/' . $backup_item_name;
         $disk = Storage::disk($this->disk_name);
         if ($disk->exists($file)) {
@@ -82,6 +84,7 @@ class BackupController extends BaseAdminController
 
     public function edit($backup_item_name)
     {
+        $this->authorize('manage', 'backup');
         $disk = Storage::disk($this->disk_name);
         $file = $this->backup_name . '/' . $backup_item_name;
 

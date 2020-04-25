@@ -15,7 +15,7 @@ class SeoController extends BaseAdminController
 	public function crowl()
 	{
 		$this->authorize('manage', 'seo');
-		$this->meta['title'] = __('seo crowl site');
+		$this->meta['title'] = __('seo_crowl_site');
 
 		return view('admin.page.setting.seo.crowl', ['meta' => $this->meta]);
 	}
@@ -23,7 +23,7 @@ class SeoController extends BaseAdminController
 	public function contentRules()
 	{
 		$this->authorize('manage', 'seo');
-		$this->meta['title'] = __('seo content rules');
+		$this->meta['title'] = __('seo_content_rules');
 
 		return view('admin.page.setting.seo.content-rules', ['meta' => $this->meta]);
 	}
@@ -31,7 +31,7 @@ class SeoController extends BaseAdminController
 	public function crowlRun()
 	{
 		$this->authorize('manage', 'seo');
-		$this->meta['title'] = 'Seo Crwol Website';
+		$this->meta['title'] = __('seo_crwol_website');
 
 		$blogs = Blog::get();
 		$title_range = [];

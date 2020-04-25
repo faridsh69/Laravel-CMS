@@ -10,10 +10,10 @@ class RolesTableSeeder extends Seeder
     public function run()
     {
         $system_slugs = [
-            'general_setting',
-            'contact_setting',
-            'developer_setting',
-            'advance_setting',
+            'setting_general',
+            'setting_contact',
+            'setting_developer',
+            'setting_advance',
             'api',
             'log',
             'backup',
