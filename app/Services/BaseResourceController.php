@@ -2,11 +2,9 @@
 
 namespace App\Services;
 
-use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
-use Maatwebsite\Excel\Facades\Excel;
 use Str;
 
 class BaseResourceController extends BaseAdminController
@@ -36,17 +34,6 @@ class BaseResourceController extends BaseAdminController
 
     public $form_builder;
 
-    // public $meta = [
-    //     'title' => '',
-    //     'description' => 'Admin Panel Page For Full Features, Best UI-UX Cms.',
-    //     'keywords' => '',
-    //     'image' => '',
-    //     'alert' => '',
-    //     'link_route' => 'admin',
-    //     'link_name' => 'Dashboard',
-    //     'search' => 0,
-    // ];
-
     public function __construct(Request $request, FormBuilder $form_builder)
     {
         $this->form_builder = $form_builder;
@@ -65,7 +52,7 @@ class BaseResourceController extends BaseAdminController
         }
         // $this->meta['link_route'] = route('admin.'. $this->model_slug. '.list.index');
         // $this->meta['link_name'] = $this->model_translated. __('manager');
-        $this->meta['title'] = $this->model_translated. __('manager');
+        // $this->meta['title'] = $this->model_translated. __('manager');
     }
 
     public function index()
@@ -194,12 +181,6 @@ class BaseResourceController extends BaseAdminController
         return redirect()->route('admin.'. $this->model_slug. '.list.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $model = $this->model_repository->findOrFail($id);
@@ -219,7 +200,7 @@ class BaseResourceController extends BaseAdminController
     public function restore($id)
     {
         $model = $this->model_repository->withTrashed()->findOrFail($id);
-        $this->authorize('restore', $model);
+        $this->authorize('delete', $model);
 
         $model->restore();
 
@@ -234,6 +215,7 @@ class BaseResourceController extends BaseAdminController
 
     public function getPrint()
     {
+        $this->authorize('index', $this->model_namespace);
         $list = $this->model_repository->all();
 
         return view('admin.common.print', compact('list'));
@@ -241,6 +223,7 @@ class BaseResourceController extends BaseAdminController
 
     public function getPdf()
     {
+        $this->authorize('index', $this->model_namespace);
         $list = $this->model_repository->all();
 
         return \PDF::loadView('admin.common.print', compact('list'))
@@ -250,20 +233,22 @@ class BaseResourceController extends BaseAdminController
 
     public function getExport()
     {
-        $class_name = 'App\Services\BaseExport';
-        $base_export = new $class_name();
-        $base_export->setModel($this->model_name);
+        $this->authorize('index', $this->model_namespace);
+        $export_class_name = 'App\Services\BaseExport';
+        $export_repository = new $export_class_name();
+        $export_repository->setModel($this->model_name);
 
-        return Excel::download($base_export, $this->model_name. '.xlsx');
+        return \Maatwebsite\Excel\Facades\Excel::download($export_repository, $this->model_name. '.xlsx');
     }
 
     public function getImport()
     {
-        $class_name = 'App\Services\BaseImport';
-        $base_import = new $class_name();
-        $base_import->setModel($this->model_name);
+        $this->authorize('index', $this->model_namespace);
+        $import_class_name = 'App\Services\BaseImport';
+        $import_repository = new $import_class_name();
+        $import_repository->setModel($this->model_name);
 
-        Excel::import($base_import, storage_path('app/public/import.xlsx'));
+        \Maatwebsite\Excel\Facades\Excel::import($import_repository, storage_path('app/public/import.xlsx'));
 
         return redirect()->route('admin.'. $this->model_slug. '.list.index');
     }
@@ -271,6 +256,7 @@ class BaseResourceController extends BaseAdminController
     public function getToggleActivated($id)
     {
         $model = $this->model_repository->findOrFail($id);
+        $this->authorize('update', $model);
         $model->activated = !$model->activated;
         $model->update();
 
@@ -282,10 +268,11 @@ class BaseResourceController extends BaseAdminController
     public function redirect()
     {
         return redirect()->route('admin.'. $this->model_slug. '.list.index');
-    }    
+    }
 
     public function getDatatable()
     {
+        $this->authorize('index', $this->model_namespace);
         $list = $this->model_repository->orderBy('updated_at', 'desc')->get();
 
         $datatable = datatables()

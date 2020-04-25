@@ -4,22 +4,18 @@ $model_slugs = Config::get('cms.admin_routes');
 
 foreach($model_slugs as $model_slug)
 {
-	$model_name = \Str::studly($model_slug);
-	$model_namespance = config('cms.config.models_namespace'). $model_name;
-	$controller_file = __DIR__. '\..\app\Http\Controllers\Admin\\'. $model_name. '\ResourceController.php';
-	if (file_exists($controller_file)) {
-		$controller_name = $model_name. '\ResourceController';
-	}else{
+	$controller_name = \Str::studly($model_slug). '\ResourceController';
+	if (!file_exists(__DIR__. '\..\app\Http\Controllers\Admin\\'. $controller_name. '.php')) {
 		$controller_name = 'AdminController';
 	}
-	Route::group(['prefix' => $model_slug, 'as' => $model_slug. '.'], function () use ($model_namespance, $controller_name) {
-		Route::get('datatable', $controller_name. '@getDatatable')->middleware('can:datatable,'. $model_namespance)->name('datatable');
-		Route::get('export', $controller_name. '@getExport')->middleware('can:export,'. $model_namespance)->name('export');
-		Route::get('import', $controller_name. '@getImport')->middleware('can:import,'. $model_namespance)->name('import');
-		Route::get('print', $controller_name. '@getPrint')->middleware('can:print,'. $model_namespance)->name('print');
-		Route::get('toggle-activated/{id}', $controller_name. '@getToggleActivated')->middleware('can:toggle-activated,'. $model_namespance)->name('toggle-activated');
-		Route::resource('list', $controller_name. '');
+	Route::group(['prefix' => $model_slug, 'as' => $model_slug. '.'], function () use ($controller_name) {
+		Route::get('datatable', $controller_name. '@datatable')->name('datatable');
+		Route::get('export', $controller_name. '@export')->name('export');
+		Route::get('import', $controller_name. '@import')->name('import');
+		Route::get('print', $controller_name. '@print')->name('print');
+		Route::get('toggle-activated/{id}', $controller_name. '@toggleActivated')->name('toggle-activated');
 		Route::get('list/{id}/restore', $controller_name. '@restore')->name('list.restore');
+		Route::resource('list', $controller_name);
 		Route::get('', $controller_name. '@redirect')->name('redirect');
 	});
 }

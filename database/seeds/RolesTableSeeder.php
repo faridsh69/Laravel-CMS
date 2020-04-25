@@ -9,30 +9,30 @@ class RolesTableSeeder extends Seeder
 {
     public function run()
     {
-        $models = config('cms.permissions');
+        $model_slugs = config('cms.policies');
         $roles = [];
-
-        foreach($models as $model)
+        $permissions = [];
+        foreach($model_slugs as $model_slug)
         {
-            $permission = [];
-            $permission[] = Permission::updateOrCreate(['name' => 'index_' . $model]);
-            $permission[] = Permission::updateOrCreate(['name' => 'view_' . $model]);
-            $permission[] = Permission::updateOrCreate(['name' => 'create_' . $model]);
-            $permission[] = Permission::updateOrCreate(['name' => 'update_' . $model]);
-            $permission[] = Permission::updateOrCreate(['name' => 'delete_' . $model]);
+            $model_permissions = [];
+            $model_permissions[] = Permission::updateOrCreate(['name' => $model_slug. '_index']);
+            $model_permissions[] = Permission::updateOrCreate(['name' => $model_slug. '_view']);
+            $model_permissions[] = Permission::updateOrCreate(['name' => $model_slug. '_create']);
+            $model_permissions[] = Permission::updateOrCreate(['name' => $model_slug. '_update']);
+            $model_permissions[] = Permission::updateOrCreate(['name' => $model_slug. '_delete']);
 
-            $role = Role::updateOrCreate(['name' => $model . '_manager']);
-            $roles[] = $role->name;
-            $role->syncPermissions($permission);
-        }
+            $model_role = Role::updateOrCreate(['name' => $model_slug . '_manager']);
+            $model_role->syncPermissions($model_permissions);
+            $roles[] = $model_role->name;
 
-        $user = User::where('id', 1)->first();
-        if($user){
-            $user->syncRoles($roles);
+            $permissions = array_merge($permissions, $model_permissions);
         }
-        $user_2 = User::where('id', 2)->first();
-        if($user_2){
-            $user_2->syncRoles($roles);
+        $role_manager = Role::updateOrCreate(['name' => 'manager']);
+        $role_manager->syncPermissions($permissions);
+
+        $admin_users = User::getAdminUsers();
+        foreach($admin_users as $admin_user){
+            $admin_user->syncRoles([$role_manager]);
         }
     }
 }

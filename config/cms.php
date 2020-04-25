@@ -110,7 +110,7 @@ $cms = [
         'travel',
         'tour',
     ],
-    'permissions' => [
+    'policies' => [
         'activity',
         'answer',
         'address',
@@ -141,12 +141,8 @@ $cms = [
         'permission',
         'product',
         'rate',
-        'report',
         'restaurant',
         'role',
-        'setting-general',
-        'setting-contact',
-        'setting-developer',
         'shop',
         'showtime',
         'tag',
