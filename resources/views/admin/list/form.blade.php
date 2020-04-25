@@ -7,5 +7,6 @@
 @endpush
 
 @section('content')
+@include('admin.common.alert')
 {!! form($form) !!}
 @endsection

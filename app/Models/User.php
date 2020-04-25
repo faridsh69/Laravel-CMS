@@ -330,4 +330,70 @@ class User extends Authenticatable
 
         return config('setting-general.default_user_image');
     }
+
+    public function saveWithRelations($data, $model = null)
+    {
+        $data_without_file_and_array = $this->_clearFilesAndArrays($data, $model);
+        if($model){
+            $this->update($data_without_file_and_array);
+        }else{
+            $model = $this->create($data_without_file_and_array);
+        }
+        $this->_saveRelatedDataAfterCreate($data, $model);
+
+        return $model;
+    }
+
+    private function _clearFilesAndArrays($data, $model)
+    {
+        foreach(collect($this->getColumns())->where('type', 'boolean')->pluck('name') as $boolean_column)
+        {
+            if(! isset($data[$boolean_column]))
+            {
+                $data[$boolean_column] = 0;
+            }
+        }
+        foreach(collect($this->getColumns())->whereIn('type', ['file', 'array', 'captcha'])->pluck('name') as $file_or_array_column)
+        {
+            unset($data[$file_or_array_column]);
+        }
+        unset($data['password_confirmation']);
+        if(isset($data['password'])) {
+            $data['password'] = \Hash::make($data['password']);
+        }
+        else{
+            if($model){ // update mode
+                $data['password'] = $model->password;
+                 if($model->email !== $data['email']){
+                    $model->activation_code = null;
+                    $model->email_verified_at = null;
+                }
+
+                if($model->phone !== $data['phone']){
+                    $model->activation_code = null;
+                    $model->phone_verified_at = null;
+                }
+            }
+            else{ // create mode
+                if($data['password'] == ''){
+                    $data['password'] = \Hash::make($data['email']);
+                }
+            }
+        }
+        return $data;
+    }
+
+    private function _saveRelatedDataAfterCreate($data, $model)
+    {
+        foreach(collect($this->getColumns())->where('type', 'file')->pluck('name') as $file_column) {
+            $file = $data[$file_column];
+            if($file){
+                $file_service = new \App\Services\BaseFileService();
+                $file_service->save($file, $model, $file_column);
+            }
+        }
+        foreach(collect($this->getColumns())->where('type', 'array')->pluck('name') as $array_column) {
+            $model->{$array_column}()->sync($data[$array_column], true);
+        }
+    }
 }

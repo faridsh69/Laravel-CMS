@@ -6,6 +6,7 @@ use Auth;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Str;
+use Route;
 
 class BaseResourceController extends BaseAdminController
 {
@@ -50,9 +51,10 @@ class BaseResourceController extends BaseAdminController
         if(!file_exists(__DIR__. '\..\..\\'. $this->model_form. '.php')){
             $this->model_form = 'App\Forms\Form';
         }
-        // $this->meta['link_route'] = route('admin.'. $this->model_slug. '.list.index');
-        // $this->meta['link_name'] = $this->model_translated. __('manager');
-        // $this->meta['title'] = $this->model_translated. __('manager');
+        if(Route::has('admin.'. $this->model_slug. '.list.index')){
+            $this->meta['link_route'] = route('admin.'. $this->model_slug. '.list.index');
+            $this->meta['link_name'] = $this->model_translated. __('manager');
+        }
     }
 
     public function index()
