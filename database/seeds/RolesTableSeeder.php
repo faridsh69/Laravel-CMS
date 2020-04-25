@@ -10,16 +10,16 @@ class RolesTableSeeder extends Seeder
     public function run()
     {
         $system_slugs = [
-            'media',
-            'report',
-            'seo',
-            'backup',
-            'api',
-            'log',
-            'advance_setting',
             'general_setting',
             'contact_setting',
             'developer_setting',
+            'advance_setting',
+            'api',
+            'log',
+            'backup',
+            'seo',
+            'media',
+            'report',
         ];
         $model_slugs = config('cms.policies');
         $roles = [];
@@ -42,11 +42,11 @@ class RolesTableSeeder extends Seeder
         foreach($system_slugs as $system_slug)
         {
             $system_permission = Permission::updateOrCreate(['name' => $system_slug. '_manager']);
-            $system_role = Role::updateOrCreate(['name' => $model_slug . '_manager']);
+            $system_role = Role::updateOrCreate(['name' => $system_slug . '_manager']);
             $system_role->syncPermissions([$system_permission]);
             $roles[] = $system_role->name;
 
-            $permissions = array_merge($permissions, $system_role);
+            $permissions[] = $system_permission;
         }
 
         $role_manager = Role::updateOrCreate(['name' => 'manager']);

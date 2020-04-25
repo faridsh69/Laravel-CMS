@@ -48,7 +48,7 @@ class DashboardController extends BaseAdminController
         return redirect()->back();
     }
 
-    public function getProfile()
+    public function profile()
     {
     	$form = $this->form_builder->create($this->model_form, [
             'method' => 'PUT',
@@ -88,7 +88,7 @@ class DashboardController extends BaseAdminController
         return redirect()->route('admin.dashboard.profile');
     }
 
-    public function getActivity()
+    public function activity()
     {
         $this->meta['title'] = __('activity');
         $this->meta['alert'] = '';
@@ -99,14 +99,14 @@ class DashboardController extends BaseAdminController
     	return view('admin.page.dashboard.activity', ['activities' => $activities, 'meta' => $this->meta]);
     }
 
-    public function getIdentify()
+    public function identify()
     {
         $this->meta['title'] = __('identify');
 
         return view('admin.page.dashboard.identify', ['meta' => $this->meta]);
     }
 
-    public function getIdentifyEmail()
+    public function identifyEmail()
     {
         $auth_user = Auth::user();
         if($auth_user->email_verified_at){
@@ -147,7 +147,7 @@ class DashboardController extends BaseAdminController
 
     }
 
-    public function getIdentifyPhone()
+    public function identifyPhone()
     {
         $auth_user = Auth::user();
         if($auth_user->phone_verified_at){
@@ -203,7 +203,7 @@ class DashboardController extends BaseAdminController
         return redirect()->back();
     }
 
-    public function getIconsList()
+    public function iconsList()
     {
         $this->meta['title'] = __('icons');
 

@@ -73,7 +73,7 @@ class BaseModel extends Model
         return $query->where('activated', 1);
     }
 
-    public function scopeMine($query)
+    public function scopeAuthUser($query)
     {
         return $query->where('user_id', Auth::id());
     }

@@ -46,9 +46,9 @@ class BaseResourceController extends BaseAdminController
         $this->model_namespace = config('cms.config.models_namespace'). $this->model_name;
         $this->model_repository = new $this->model_namespace;
         $this->model_columns = $this->model_repository->getColumns();
-        $this->model_form = 'App\Forms\Form';
-        if(file_exists(__DIR__. '\..\Forms\\'. $this->model_name. 'Form.php')){
-            $this->model_form = 'App\\Forms\\'. $this->model_name. 'Form';
+        $this->model_form = 'App\Forms\\'. $this->model_name. 'Form';
+        if(!file_exists(__DIR__. '\..\..\\'. $this->model_form. '.php')){
+            $this->model_form = 'App\Forms\Form';
         }
         // $this->meta['link_route'] = route('admin.'. $this->model_slug. '.list.index');
         // $this->meta['link_name'] = $this->model_translated. __('manager');
@@ -273,7 +273,12 @@ class BaseResourceController extends BaseAdminController
     public function datatable()
     {
         $this->authorize('index', $this->model_namespace);
-        $list = $this->model_repository->orderBy('updated_at', 'desc')->get();
+        $list = $this->model_repository->orderBy('updated_at', 'desc');
+        if(Auth::user()->hasRole($this->model_slug. '_manager')){
+            $list = $list->get();
+        }else{
+            $list = $list->authUser()->get();
+        }
 
         $datatable = datatables()
             ->of($list)

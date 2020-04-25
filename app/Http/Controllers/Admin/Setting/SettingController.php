@@ -11,6 +11,8 @@ use Symfony\Component\Console\Output\BufferedOutput;
 
 class SettingController extends BaseResourceController
 {
+	public $model_slug = 'setting-general';
+
     public function index()
     {
     	$section = explode('-', $this->model_slug)[1];
@@ -60,7 +62,7 @@ class SettingController extends BaseResourceController
 		return redirect()->route('admin.setting.general');
 	}
 
-	public function getLog()
+	public function log()
 	{
         $this->authorize('manage', 'log');
         $this->meta['title'] = __('log_manager');
@@ -68,13 +70,13 @@ class SettingController extends BaseResourceController
 		return view('admin.page.setting.log', ['meta' => $this->meta]);
 	}
 
-	public function getLogView(LogViewerController $LogViewerController)
+	public function logView(LogViewerController $LogViewerController)
 	{
 		$this->authorize('manage', 'log');
 		return $LogViewerController->index();
 	}
 
-	public function getApi()
+	public function api()
 	{
 		$this->authorize('manage', 'api');
         $this->meta['title'] = __('api_manager');
@@ -82,7 +84,7 @@ class SettingController extends BaseResourceController
 		return view('admin.page.setting.api', ['meta' => $this->meta]);
 	}
 
-	public function getCommand($command)
+	public function command($command)
 	{
 		$this->authorize('manage', 'advance_setting');
         echo '<br> php artisan ' . $command . ' is running...';
@@ -98,7 +100,7 @@ class SettingController extends BaseResourceController
         echo '<br><br><a href="/admin/setting/advance">Go back</a>';
 	}
 
-	public function getAdvance()
+	public function advance()
 	{
 		$this->authorize('manage', 'advance_setting');
 		$commands = [
