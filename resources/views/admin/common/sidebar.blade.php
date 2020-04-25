@@ -1,131 +1,112 @@
 @php
-	$sidebar = [
+	$sidebar_menu_items = [
 	[
 		'order' => 0,
-		'title' => 'Dashboard',
-		'permission' => '*',
-		'type' => 'submenu',
+		'title' => 'dashboard',
 		'icon' => 'flaticon-line-graph',
 		'badge' => [
-			'count' => 0,
+			'count' => 1,
 			'type' => 'danger',
 		],
+		// 'permission' => '*',
 	],
 	[
 		'order' => 1,
 		'title' => 'management',
 		'type' => 'section',
-		'permission' => 'User',
+		// 'permission' => 'User',
 	],
 	[
-		'order' => 3,
-		'title' => 'Setting',
-		'route' => 'setting',
-		'permission' => 'SettingGeneral',
+		'order' => 2,
+		'title' => 'setting',
 		'type' => 'tree',
 		'icon' => 'flaticon-cogwheel',
+		// 'route' => 'setting',
+		// 'permission' => 'SettingGeneral',
 		'children' => [
 			[
-				'order' => 7-1,
-				'title' => 'General',
-				'route' => 'admin.setting.general',
+				'title' => 'setting-general',
+				// 'route' => 'admin.setting.general',
 			],
 			[
-				'order' => 7-2,
-				'title' => 'Developer',
-				'route' => 'admin.setting.developer',
+				'title' => 'setting-developer',
+				// 'route' => 'admin.setting.developer',
 			],
 			[
-				'order' => 7-3,
-				'title' => 'Contact Info',
-				'route' => 'admin.setting.contact',
+				'title' => 'setting-contact',
+				// 'route' => 'admin.setting.contact',
 			],
 			[
-				'order' => 7-4,
-				'title' => 'Advance',
-				'route' => 'admin.setting.advance',
+				'title' => 'setting-advance',
+				// 'route' => 'admin.setting.advance',
 			],
 			[
-				'order' => 7-7,
-				'title' => 'Backup',
-				'route' => 'admin.setting.backup.index',
+				'title' => 'backup',
+				// 'route' => 'admin.setting.backup.index',
 			],
 			[
-				'order' => 7-6,
-				'title' => 'Logs',
-				'route' => 'admin.setting.log',
+				'title' => 'log',
+				// 'route' => 'admin.setting.log',
 			],
 			[
-				'order' => 7-5,
-				'title' => 'API',
-				'route' => 'admin.setting.api',
+				'title' => 'api',
+				// 'route' => 'admin.setting.api',
 			],
 			[
-				'order' => 7-6,
-				'title' => 'Seo Content Rules',
-				'route' => 'admin.setting.seo.content-rules',
+				'title' => 'seo-content-rules',
+				// 'route' => 'admin.setting.seo.content-rules',
 			],
 			[
 				'order' => 7-7,
-				'title' => 'Seo Crowl Site',
-				'route' => 'admin.setting.seo.crowl',
+				'title' => 'seo-crowl',
+				// 'route' => 'admin.setting.seo.crowl',
 			],
 		],
 	],
 	[
 		'order' => 6,
-		'title' => 'User',
-		'type' => 'submenu',
+		'title' => 'user',
 		'icon' => 'flaticon-users',
 	],
 	[
 		'order' => 9,
-		'title' => 'Role',
-		'type' => 'submenu',
+		'title' => 'role',
 		'icon' => 'flaticon-user',
 	],
 	[
 		'order' => 12,
-		'title' => 'Permission',
-		'type' => 'submenu',
+		'title' => 'permission',
 		'icon' => 'flaticon-interface-9',
 	],
 	[
 		'order' => 15,
-		'title' => 'Notification',
-		'type' => 'submenu',
+		'title' => 'notification',
 		'icon' => 'flaticon-notes',
 	],
 	[
 		'order' => 18,
-		'title' => 'Report',
-		'permission' => 'Activity',
-		'type' => 'submenu',
+		'title' => 'report',
 		'icon' => 'flaticon-graphic-2',
 	],
 	[
 		'order' => 21,
-		'title' => 'Activity',
-		'permission' => 'Activity',
-		'type' => 'submenu',
+		'title' => 'activity',
 		'icon' => 'flaticon-share',
 	],
 	[
 		'order' => 24,
 		'title' => 'theme',
 		'type' => 'section',
-		'permission' => 'Block',
+		// 'permission' => 'Block',
 	],
 	[
 		'order' => 27,
-		'title' => 'Block',
-		'type' => 'submenu',
+		'title' => 'block',
 		'icon' => 'flaticon-app',
 	],
 	[
 		'order' => 27,
-		'title' => 'Module',
-		'type' => 'submenu',
+		'title' => 'module',
 		'icon' => 'flaticon-layers',
 	],
 	[
@@ -136,88 +117,73 @@
 	],
 	[
 		'order' => 56,
-		'title' => 'Factor',
-		'type' => 'submenu',
+		'title' => 'factor',
 		'icon' => 'flaticon-business',
 	],
 	[
 		'order' => 57,
-		'title' => 'Product',
-		'type' => 'submenu',
+		'title' => 'product',
 		'icon' => 'flaticon-tool',
 	],
 	[
 		'order' => 58,
-		'title' => 'Tagend',
-		'type' => 'submenu',
+		'title' => 'tagend',
 		'icon' => 'flaticon-piggy-bank',
 	],
 	[
 		'order' => 60,
 		'title' => 'content',
 		'type' => 'section',
-		'permission' => 'Blog',
+		// 'permission' => 'Blog',
 	],
 	[
 		'order' => 63,
-		'title' => 'Blog',
-		'type' => 'submenu',
+		'title' => 'blog',
 		'icon' => 'flaticon-list-3',
 	],
 	[
 		'order' => 66,
-		'title' => 'Page',
-		'type' => 'submenu',
+		'title' => 'page',
 		'icon' => 'flaticon-web',
 	],
 	[
 		'order' => 69,
-		'title' => 'Category',
-		'type' => 'submenu',
+		'title' => 'category',
 		'icon' => 'flaticon-map',
 	],
 	[
 		'order' => 72,
-		'title' => 'Tag',
-		'type' => 'submenu',
+		'title' => 'tag',
 		'icon' => 'flaticon-interface-9',
 	],
 	[
 		'order' => 75,
-		'title' => 'Media',
-		'permission' => 'File',
-		'type' => 'submenu',
+		'title' => 'media',
 		'icon' => 'flaticon-open-box',
 	],
 	[
 		'order' => 76,
-		'title' => 'File',
-		'permission' => 'File',
-		'type' => 'submenu',
+		'title' => 'file',
 		'icon' => 'flaticon-attachment',
 	],
 	[
 		'order' => 78,
-		'title' => 'Comment',
-		'type' => 'submenu',
+		'title' => 'comment',
 		'icon' => 'flaticon-chat-1',
 	],
 	[
 		'order' => 81,
-		'title' => 'Form',
-		'type' => 'submenu',
+		'title' => 'form',
 		'icon' => 'flaticon-edit',
 	],
 	[
 		'order' => 84,
-		'title' => 'Field',
-		'type' => 'submenu',
+		'title' => 'field',
 		'icon' => 'flaticon-list',
 	],
 	[
 		'order' => 87,
-		'title' => 'Answer',
-		'type' => 'submenu',
+		'title' => 'answer',
 		'icon' => 'flaticon-comment',
 	],
 ];
@@ -232,49 +198,57 @@
 		data-menu-vertical="true"
 			data-menu-scrollable="false" data-menu-dropdown-timeout="500">
 		<ul class="m-menu__nav m-menu__nav--dropdown-submenu-arrow">
-		@foreach(collect($sidebar)->sortBy('order') as $item)
-			@if($item['type'] == 'section')
+		@foreach(collect($sidebar_menu_items)->sortByDesc('order') as $menu_item)
+			@php
+				if(!isset($menu_item['type'])){
+					$menu_item['type'] = 'submenu';
+				}
+			@endphp
+			@if($menu_item['type'] === 'section')
+
+				@if(false)
 				@can('index', 'App\\Models\\' . $item['permission'])
+				@endcan
+				@endif
+
 				<li class="m-menu__section">
 					<h4 class="m-menu__section-text">
-						{{ __($item['title']) }}
+						{{ __($menu_item['title']) }}
 					</h4>
 					<i class="m-menu__section-icon flaticon-more-v3"></i>
 				</li>
-				@endcan
-			@elseif($item['type'] === 'submenu')
+
+			@elseif($menu_item['type'] === 'submenu')
 			@php
-				$item['route'] = 'admin.' . strtolower($item['title']) . '.list.index';
-				if(!Route::has($item['route'])){
-					$item['route'] = 'admin.' . strtolower($item['title']) . '.index';
+				$menu_item['route'] = 'admin.'. $menu_item['title']. '.list.index';
+				if(!Route::has($menu_item['route'])){
+					$menu_item['route'] = 'admin.' . $menu_item['title']. '.index';
 				}
-				if(!isset($item['permission']) ){
-					$item['permission'] = $item['title'];
+				if(!isset($menu_item['permission']) ){
+					$menu_item['permission'] = $menu_item['title'];
 				}
 				$permission = false;
-				if($item['permission'] === '*'){
-					$permission = true;
-				}
 			@endphp
-			@can('index', 'App\\Models\\' . $item['permission'])
-			@php $permission = true @endphp
+			@can('index', 'App\Models\Blog')
+			123123
+			@php $permission = true; dd(1) @endphp
 			@endcan
 				@if($permission)
 				<li aria-haspopup="true" class="m-menu__item 
-					@if(Request::segment(2) == strtolower($item['title'])) m-menu__item--active @endif" >
+					@if(Request::segment(2) == $item['title']) m-menu__item--active @endif" >
 					<a href="{{ route($item['route']) }}" class="m-menu__link ">
 						<i class="m-menu__link-icon {{ $item['icon'] }}"></i>
 						<span class="m-menu__link-title">
 							<span class="m-menu__link-wrap">
 								<span class="m-menu__link-text">
-									{{ __(strtolower($item['title'])) }}
+									{{ __($item['title']) }}
 								</span>
 							</span>
 						</span>
 					</a>
 				</li>
 				@endif
-			@elseif($item['type'] === 'tree')
+			@elseif($menu_item['type'] === 'tree-xxxxx')
 			@can('index', 'App\\Models\\' . $item['permission'])
 			<li class="m-menu__item m-menu__item--submenu  
 				@if(Request::segment(2) == $item['route']) m-menu__item--open m-menu__item--expanded @endif" aria-haspopup="true" data-menu-submenu-toggle="hover">
@@ -313,3 +287,14 @@
 		</ul>
 	</div>
 </div>
+@push('script')
+<script>
+	$(document).ready(function(){
+		// $('.m-menu__section').each(function(){
+		// 	if($(this).next().hasClass('m-menu__section')) { 
+		// 		$(this).remove(); 
+		// 	}
+		// });
+	});
+</script>
+@endpush

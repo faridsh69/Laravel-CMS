@@ -239,6 +239,15 @@ class User extends Authenticatable
             'form_type' => 'confirm_password',
             'table' => false,
         ],
+        [
+            'name' => 'remember_token',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => '',
+            'help' => '',
+            'form_type' => 'none',
+            'table' => false,
+        ],
     ];
 
     protected $guarded = [];

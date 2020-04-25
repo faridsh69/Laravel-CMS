@@ -97,21 +97,14 @@ class BaseMigration extends Migration
                 $type = isset($column['type']) ? $column['type'] : '';
                 $database = isset($column['database']) ? $column['database'] : '';
                 $relation = isset($column['relation']) ? $column['relation'] : '';
-                // if database attribute is 'none' it means it dont need database column
                 if($database === 'none'){
                     continue;
                 }
                 $table->{$type}($name)->{$database}(true);
-                // for create foreign key relation attribute should be defined
                 if($relation){
                     $table->foreign($name)->references('id')->on($relation);
                 }
             }
-            // for users table need to have rememberToken
-            if($model_table === 'users'){
-                $table->rememberToken();
-            }
-            // for all tables timestamps and softDelete created
             $table->timestamps();
             $table->softDeletes();
         });
