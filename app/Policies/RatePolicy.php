@@ -2,9 +2,9 @@
 
 namespace App\Policies;
 
-use App\Services\BasePolicy;
+use App\Services\BaseAuthPolicy;
 
-class RatePolicy extends BasePolicy 
+class RatePolicy extends BaseAuthPolicy 
 {
 	public $model_slug = 'rate';
 }

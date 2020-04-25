@@ -12,30 +12,45 @@
 	[
 		'order' => 1,
 		'title' => 'post',
-		'icon' => 'flaticon-line-graph',
+		'icon' => 'flaticon-file',
 	],
 	[
 		'order' => 2,
 		'title' => 'story',
-		'icon' => 'flaticon-line-graph',
+		'icon' => 'flaticon-profile',
 	],
 	[
 		'order' => 3,
 		'title' => 'advertise',
-		'icon' => 'flaticon-line-graph',
+		'icon' => 'flaticon-alert-1',
 	],
 	[
 		'order' => 4,
+		'title' => 'like',
+		'icon' => 'flaticon-interface-5',
+	],
+	[
+		'order' => 5,
+		'title' => 'follow',
+		'icon' => 'flaticon-visible',
+	],
+	[
+		'order' => 6,
+		'title' => 'rate',
+		'icon' => 'flaticon-interface-3',
+	],
+	[
+		'order' => 7,
 		'title' => 'factor',
 		'icon' => 'flaticon-business',
 	],
 	[
-		'order' => 5,
+		'order' => 8,
 		'title' => 'management',
 		'type' => 'section',
 	],
 	[
-		'order' => 6,
+		'order' => 9,
 		'title' => 'setting',
 		'type' => 'tree',
 		'icon' => 'flaticon-cogwheel',
@@ -88,12 +103,12 @@
 		],
 	],
 	[
-		'order' => 7,
+		'order' => 10,
 		'title' => 'user',
-		'icon' => 'flaticon-users',
+		'icon' => 'flaticon-user-ok',
 	],
 	[
-		'order' => 9,
+		'order' => 11,
 		'title' => 'role',
 		'icon' => 'flaticon-user',
 	],
@@ -128,11 +143,6 @@
 		'icon' => 'flaticon-tool',
 	],
 	[
-		'order' => 25,
-		'title' => 'advertise',
-		'icon' => 'flaticon-line-graph',
-	],
-	[
 		'order' => 26,
 		'title' => 'address',
 		'icon' => 'flaticon-placeholder-2',
@@ -148,11 +158,6 @@
 		'icon' => 'flaticon-technology',
 	],
 	[
-		'order' => 29,
-		'title' => 'follow',
-		'icon' => 'flaticon-visible',
-	],
-	[
 		'order' => 30,
 		'title' => 'food',
 		'icon' => 'flaticon-tea-cup',
@@ -160,7 +165,7 @@
 	[
 		'order' => 31,
 		'title' => 'food-program',
-		'icon' => 'flaticon-book',
+		'icon' => 'flaticon-time-3',
 	],
 	[
 		'order' => 32,
@@ -188,11 +193,6 @@
 		'icon' => 'flaticon-rocket',
 	],
 	[
-		'order' => 35,
-		'title' => 'like',
-		'icon' => 'flaticon-interface-5',
-	],
-	[
 		'order' => 36,
 		'title' => 'movie',
 		'icon' => 'flaticon-browser',
@@ -201,11 +201,6 @@
 		'order' => 36,
 		'title' => 'music',
 		'icon' => 'flaticon-music',
-	],
-	[
-		'order' => 37,
-		'title' => 'rate',
-		'icon' => 'flaticon-interface-3',
 	],
 	[
 		'order' => 38,
@@ -225,7 +220,7 @@
 	[
 		'order' => 40,
 		'title' => 'tour',
-		'icon' => 'flaticon-users',
+		'icon' => 'flaticon-map-location',
 	],
 	[
 		'order' => 41,

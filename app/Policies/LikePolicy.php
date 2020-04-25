@@ -2,9 +2,9 @@
 
 namespace App\Policies;
 
-use App\Services\BasePolicy;
+use App\Services\BaseAuthPolicy;
 
-class LikePolicy extends BasePolicy 
+class LikePolicy extends BaseAuthPolicy 
 {
 	public $model_slug = 'like';
 }

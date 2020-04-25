@@ -2,9 +2,9 @@
 
 namespace App\Policies;
 
-use App\Services\BasePolicy;
+use App\Services\BaseAuthPolicy;
 
-class FollowPolicy extends BasePolicy 
+class FollowPolicy extends BaseAuthPolicy 
 {
 	public $model_slug = 'follow';
 }
