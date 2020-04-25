@@ -40,7 +40,6 @@ class BaseModel extends Model
                 $data[$boolean_column] = 0;
             }
         }
-
         // unset file and array attributes before saving
         foreach(collect($this->getColumns())->whereIn('type', ['file', 'array', 'captcha'])->pluck('name') as $file_or_array_column)
         {
@@ -60,11 +59,9 @@ class BaseModel extends Model
                 $file_service->save($file, $model, $file_column);
             }
         }
-
-        // array columns like tag, related_models, ...
+        // save relations with array type column like tags, related_models, ...
         foreach(collect($this->getColumns())->where('type', 'array')->pluck('name') as $array_column) {
             $model->{$array_column}()->sync($data[$array_column], true);
-            // dd($model);
         }
     }
 

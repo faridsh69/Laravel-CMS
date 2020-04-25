@@ -25,4 +25,14 @@ class Permission extends PermissionSpatie
     {
         return $this->columns;
     }
+
+    public function saveWithRelations($data, $model = null)
+    {
+        if($model){
+            $this->update($data);
+        }else{
+            $model = $this->create($data);
+        }
+        return $model;
+    }
 }

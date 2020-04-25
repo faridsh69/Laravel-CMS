@@ -34,16 +34,11 @@ class AuthServiceProvider extends ServiceProvider
             }
         });
 
-        $this->registerPolicies();
-
         Gate::define('manage', function ($user, $page) {
             return $user->can($page. '_manager');
         });
 
-        Gate::before(function ($user, $ability) {
-            return $user->hasRole('manager') ? true : null;
-        });
-
+        $this->registerPolicies();
         Passport::routes();
     }
 }

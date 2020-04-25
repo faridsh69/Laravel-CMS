@@ -68,6 +68,28 @@ class BaseFactory
                             $fake_data = implode('|||', $images);
                         }
                     }
+                    elseif($form_type === 'file' && $file_accept === 'video'){
+                        if($file_manager === false){
+                            $base_path = realpath(dirname(__FILE__) . 
+                                '/../../public_html/cdn/images/front/general/random');
+                            $path = $base_path. '\\'. $random_count. '.png';
+                            $fake_data = new UploadedFile($path, $random_count. '.png', 'image/jpeg');
+                            // dd($fake_data);
+                        }else{
+                            $fake_data = implode('|||', $images);
+                        }
+                    }
+                    elseif($form_type === 'file' && $file_accept === 'audio'){
+                        if($file_manager === false){
+                            $base_path = realpath(dirname(__FILE__) . 
+                                '/../../public_html/cdn/images/front/general/random');
+                            $path = $base_path. '\\'. $random_count. '.png';
+                            $fake_data = new UploadedFile($path, $random_count. '.png', 'image/jpeg');
+                            // dd($fake_data);
+                        }else{
+                            $fake_data = implode('|||', $images);
+                        }
+                    }
                     elseif($name === 'keywords'){
                         $fake_data = $faker->realText(100);
                     }
