@@ -7,8 +7,9 @@ use Carbon\Carbon;
 
 class ResourceController extends BaseResourceController
 {
-    public function getLogin($id)
+    public function login($id)
 	{
+        $this->authorize('index', $this->model_namespace);
         if (\Auth::loginUsingId($id)){
             return redirect('/');
         }
@@ -16,7 +17,7 @@ class ResourceController extends BaseResourceController
         return back()->withError('Error occurred.');
 	}
 
-	public function getIdentify($id)
+	public function identify($id)
 	{
 		$model = $this->model_repository->findOrFail($id);
         $this->authorize('view', $model);
@@ -25,7 +26,7 @@ class ResourceController extends BaseResourceController
 		return view('admin.page.user.identify', ['meta' => $this->meta, 'user' => $model]);
 	}
 
-	public function getIdentifyDocument($id, $document_title)
+	public function identifyDocument($id, $document_title)
 	{
 		$model = $this->model_repository->findOrFail($id);
         $this->authorize('view', $model);

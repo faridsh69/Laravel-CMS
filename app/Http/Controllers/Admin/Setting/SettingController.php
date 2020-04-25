@@ -11,12 +11,10 @@ use Symfony\Component\Console\Output\BufferedOutput;
 
 class SettingController extends BaseResourceController
 {
-	public $model_slug = 'setting-general';
-
     public function index()
     {
-        $this->authorize('index', $this->model_namespace);
     	$section = explode('-', $this->model_slug)[1];
+    	$this->authorize('manage', $section. '_setting');
         $model = $this->model_repository->first();
         $form = $this->form_builder->create($this->model_form, [
             'method' => 'PUT',
@@ -31,30 +29,21 @@ class SettingController extends BaseResourceController
 
     public function putUpdate()
     {
-        $this->authorize('index', $this->model_namespace);
+    	$section = explode('-', $this->model_slug)[1];
+    	$this->authorize('manage', $section. '_setting');
         $model = $this->model_repository->first();
-
         $form = $this->form_builder->create($this->model_form, [
             'model' => $model,
         ]);
         if (!$form->isValid()) {
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
-        $updated_data = $form->getFieldValues();
-        foreach(collect($this->model_columns)
-            ->where('type', 'boolean')
-            ->pluck('name') as $boolean_column) {
-            if(! isset($updated_data[$boolean_column]))
-            {
-                $updated_data[$boolean_column] = 0;
-            }
-        }
-        $model->update($updated_data);
 
-        foreach(['developer', 'general', 'contact'] as $section){
-	        Cache::forget('setting.' . $section);
+        $this->model_repository->saveWithRelations($form->getFieldValues(), $model);
+
+        foreach(['developer', 'general', 'contact'] as $cache_section){
+	        Cache::forget('setting.' . $cache_section);
 	    }
-
         activity('Update')
             ->performedOn($model)
             ->causedBy(Auth::user())
@@ -62,7 +51,7 @@ class SettingController extends BaseResourceController
 
         $this->request->session()->flash('alert-success', $this->model_translated . ' Updated Successfully!');
         sleep(1);
-        $section = explode('-', $this->model_slug)[1];
+
         return redirect()->route('admin.setting.' . $section);
     }
 
@@ -73,7 +62,7 @@ class SettingController extends BaseResourceController
 
 	public function getLog()
 	{
-        $this->authorize('index_settinggeneral');
+        $this->authorize('manage', 'log');
         $this->meta['title'] = __('log_manager');
 
 		return view('admin.page.setting.log', ['meta' => $this->meta]);
@@ -81,14 +70,13 @@ class SettingController extends BaseResourceController
 
 	public function getLogView(LogViewerController $LogViewerController)
 	{
-		$this->authorize('index_settinggeneral');
-
+		$this->authorize('manage', 'log');
 		return $LogViewerController->index();
 	}
 
 	public function getApi()
 	{
-		$this->authorize('index_settinggeneral');
+		$this->authorize('manage', 'api');
         $this->meta['title'] = __('api_manager');
 
 		return view('admin.page.setting.api', ['meta' => $this->meta]);
@@ -96,6 +84,7 @@ class SettingController extends BaseResourceController
 
 	public function getCommand($command)
 	{
+		$this->authorize('manage', 'advance_setting');
         echo '<br> php artisan ' . $command . ' is running...';
 		$output = new BufferedOutput();
 		if(strpos($command, 'api') === false && strpos($command, 'passport') === false){
@@ -111,6 +100,7 @@ class SettingController extends BaseResourceController
 
 	public function getAdvance()
 	{
+		$this->authorize('manage', 'advance_setting');
 		$commands = [
 			[
 				'id' => 1,

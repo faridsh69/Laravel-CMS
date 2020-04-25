@@ -16,6 +16,7 @@ class BackupController extends BaseAdminController
 
     public function __construct(Request $request)
     {
+        $this->authorize('manage', 'backup');
         $this->request = $request;
         $this->disk_name = config('backup.backup.destination.disks')[0];
         $this->backup_name = config('backup.backup.name');

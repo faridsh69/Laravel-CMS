@@ -38,15 +38,14 @@ class ResourceController extends BaseResourceController
         $this->authorize('index', $this->model_namespace);
     	$block_sort_json = $this->request->blockSort;
     	$block_sort = json_decode($block_sort_json);
-    	$this->saveSort($block_sort);
+    	$this->_saveSort($block_sort);
     	$this->request->session()->flash('alert-success', $this->model_name. ' Order Updated Successfully!');
 
         return redirect()->route('admin.'. $this->model_slug. '.list.index');
     }
 
-    public function saveSort($block_ids)
+    private function _saveSort($block_ids)
     {
-        $this->authorize('index', $this->model_namespace);
     	foreach($block_ids as $block_order => $block_id)
     	{
     		$block = Block::find($block_id);

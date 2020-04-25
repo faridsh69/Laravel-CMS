@@ -213,7 +213,7 @@ class BaseResourceController extends BaseAdminController
         return redirect()->route('admin.'. $this->model_slug. '.list.index');
     }
 
-    public function getPrint()
+    public function print()
     {
         $this->authorize('index', $this->model_namespace);
         $list = $this->model_repository->all();
@@ -221,7 +221,7 @@ class BaseResourceController extends BaseAdminController
         return view('admin.common.print', compact('list'));
     }
 
-    public function getPdf()
+    public function pdf()
     {
         $this->authorize('index', $this->model_namespace);
         $list = $this->model_repository->all();
@@ -231,7 +231,7 @@ class BaseResourceController extends BaseAdminController
             ->download($this->model_name. '.pdf');
     }
 
-    public function getExport()
+    public function export()
     {
         $this->authorize('index', $this->model_namespace);
         $export_class_name = 'App\Services\BaseExport';
@@ -241,7 +241,7 @@ class BaseResourceController extends BaseAdminController
         return \Maatwebsite\Excel\Facades\Excel::download($export_repository, $this->model_name. '.xlsx');
     }
 
-    public function getImport()
+    public function import()
     {
         $this->authorize('index', $this->model_namespace);
         $import_class_name = 'App\Services\BaseImport';
@@ -253,7 +253,7 @@ class BaseResourceController extends BaseAdminController
         return redirect()->route('admin.'. $this->model_slug. '.list.index');
     }
 
-    public function getToggleActivated($id)
+    public function toggleActivated($id)
     {
         $model = $this->model_repository->findOrFail($id);
         $this->authorize('update', $model);
@@ -270,7 +270,7 @@ class BaseResourceController extends BaseAdminController
         return redirect()->route('admin.'. $this->model_slug. '.list.index');
     }
 
-    public function getDatatable()
+    public function datatable()
     {
         $this->authorize('index', $this->model_namespace);
         $list = $this->model_repository->orderBy('updated_at', 'desc')->get();

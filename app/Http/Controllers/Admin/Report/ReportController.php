@@ -9,10 +9,10 @@ class ReportController extends BaseAdminController
 {
     public function index()
     {
-        // @TODO check permission for report here and in route
+        $this->authorize('manage', 'report');
         $this->meta['title'] = __('report'). __('manager');
 
-        // $yesterday_time = \Carbon\Carbon::now()->subdays(1);
+        $yesterday_time = \Carbon\Carbon::now()->subdays(1);
         $last_week_time = \Carbon\Carbon::now()->subdays(7);
         $count = [
             'tags' => \App\Models\Tag::count(),

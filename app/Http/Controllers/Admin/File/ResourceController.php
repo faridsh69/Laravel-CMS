@@ -16,6 +16,8 @@ class ResourceController extends BaseResourceController
 		$this->authorize('index', $file_model_namespace);
 		$this->destroy($file->id);
 
-		return 'File deleted successfully';
+		return response()->json([
+            'data' => ['message' => __('File deleted successfully!')],
+        ]);
     }
 }

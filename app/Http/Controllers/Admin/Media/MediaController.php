@@ -8,6 +8,7 @@ class MediaController extends BaseAdminController
 {
     public function index()
     {
+    	$this->authorize('manage', 'media');
         $this->meta['title'] = __('media_manager');
 
         return view('admin.page.media.index', ['meta' => $this->meta]);

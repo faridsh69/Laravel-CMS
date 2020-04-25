@@ -7,30 +7,33 @@ use App\Services\BaseAdminController;
 
 class SeoController extends BaseAdminController
 {
+	public function __construct()
+    {
+    	$this->authorize('manage', 'seo');
+    }
+
 	public function redirectToCrowl()
 	{
 		return redirect()->route('admin.setting.seo.crowl');
 	}
 
-	public function getCrowl()
+	public function crowl()
 	{
-		$this->authorize('index_settinggeneral');
+		
 		$this->meta['title'] = __('seo crowl site');
 
 		return view('admin.page.setting.seo.crowl', ['meta' => $this->meta]);
 	}
 
-	public function getContentRules()
+	public function contentRules()
 	{
-		$this->authorize('index_settinggeneral');
 		$this->meta['title'] = __('seo content rules');
 
 		return view('admin.page.setting.seo.content-rules', ['meta' => $this->meta]);
 	}
 
-	public function getCrowlRun()
+	public function crowlRun()
 	{
-		$this->authorize('index_settinggeneral');
 		$this->meta['title'] = 'Seo Crwol Website';
 
 		$blogs = Blog::get();
