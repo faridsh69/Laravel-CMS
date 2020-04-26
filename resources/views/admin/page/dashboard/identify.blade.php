@@ -44,6 +44,9 @@
 		</form>
 	@endif
 	<div class="show-file">
+		@if( count(json_decode(Auth::user()->files_src($document_title))) === 0)
+			{{ __('no_file_existed') }}
+		@endif
 		@foreach(json_decode(\Auth::user()->files_src($document_title)) as $src)
 			<img src="{{ $src }}" alt="{{ $document_title }} image">
 			<div class="file-tools mt-2">

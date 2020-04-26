@@ -510,6 +510,7 @@
     "setting_general" : "General Setting",
     "setting_developer" : "Developer Setting",
     "setting_contact" : "Contact Setting",
-    "setting_advance" : "Advance Setting"
+    "setting_advance" : "Advance Setting",
+    "no_file_existed" : "No file existed."
 
 }

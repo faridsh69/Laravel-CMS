@@ -191,13 +191,15 @@ class DashboardController extends BaseAdminController
     public function postIdentifyDocument($document_title = 'national_card')
     {
         $auth_user = Auth::user();
-        $file_service = new \App\Services\FileService();
+        $file_service = new \App\Services\BaseFileService();
         $file_service->save($this->request->file($document_title), $auth_user, $document_title);
 
         $profile_updated = new ProfileUpdated();
         $profile_updated->setCode($auth_user->id);
-        $admin = $this->repository->getAdminUser();
-        $admin->notify($profile_updated);
+        $admin_users = $this->repository->getAdminUsers();
+        foreach($admin_users as $admin){
+            $admin->notify($profile_updated);
+        }
 
         $this->request->session()->flash('alert-success', __($document_title . ' uploaded'));
         return redirect()->back();

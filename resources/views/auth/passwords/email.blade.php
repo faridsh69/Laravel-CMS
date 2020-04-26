@@ -25,9 +25,6 @@
                     <button id="m_login_forget_password_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">
                         {{ __('send') }}
                     </button>
-                    <button id="m_login_forget_password_cancel" class="btn btn-outline-focus m-btn m-btn--pill m-btn--custom">
-                        {{ __('cancel') }}
-                    </button>
                 </div>
             </form>
         </div>
