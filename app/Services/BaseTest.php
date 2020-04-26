@@ -9,7 +9,7 @@ use Tests\TestCase;
 class BaseTest extends TestCase
 {
     // an aray of models that want to test
-    public $models;
+    public $model_names;
 
     // single model to test
     public $model;

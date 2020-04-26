@@ -21,7 +21,7 @@ class BaseModel extends Model
     {
         $data_without_file_and_array = $this->_clearFilesAndArrays($data);
         if($model){
-            $this->update($data_without_file_and_array);
+            $model->update($data_without_file_and_array);
         }else{
             $model = $this->create($data_without_file_and_array);
         }
@@ -127,7 +127,7 @@ class BaseModel extends Model
 
     public function relateds()
     {
-        return $this->belongsToMany('App\\Models\\'. class_basename($this), 'model_related', 'model_id', 'related_id');
+        return $this->belongsToMany(config('cms.config.models_namespace'). class_basename($this), 'model_related', 'model_id', 'related_id');
     }
 
     public function files_relation()
@@ -163,12 +163,12 @@ class BaseModel extends Model
         return config('setting-general.default_meta_image');
     }
 
-        public function getColumns()
+    public function getColumns()
     {
         $constructor = [
             'model' => class_basename($this),
             'model_sm' => strtolower(class_basename($this)),
-            'model_namespance' => 'App\\Models\\'. class_basename($this),
+            'model_namespance' => config('cms.config.models_namespace'). class_basename($this),
             'table_name' => $this->getTable(),
         ];
 
@@ -332,6 +332,7 @@ class BaseModel extends Model
                     'help' => 'Specify language.',
                     'form_type' => 'enum',
                     'form_enum_class' => 'AppLanguage',
+                    'table' => false,
                 ],
                 'order' => [
                     'name' => 'order',

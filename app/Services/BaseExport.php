@@ -7,35 +7,30 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 
 class BaseExport implements FromCollection, WithHeadings
 {
-	public $fields;
+	public $model_columns;
 
-    public $model;
+    public $model_repository;
 
-    /**
-     * @return \Illuminate\Support\Collection
-     */
     public function collection()
     {
-        return $this->model->select($this->fields)->get();
+        return $this->model_repository->select($this->model_columns)->get();
     }
 
     public function headings(): array
     {
-        return [$this->fields];
+        return [$this->model_columns];
     }
 
-    public function setModel($model)
+    public function setModelName($model_name)
     {
-        $class_name = 'App\\Models\\' . $model;
-        $this->model = new $class_name();
-        $this->fields = collect($this->model->getColumns())
+        $model_namespace = config('cms.config.models_namespace'). $model_name;
+        $this->model_repository = new $model_namespace();
+        $this->model_columns = collect($this->model_repository->getColumns())
             ->where('database', '!=', 'none')
             ->pluck('name')
             ->toArray();
-        if($model !== 'Tag'){
-            $this->fields[] = 'created_at';
-            $this->fields[] = 'updated_at';
-            $this->fields[] = 'deleted_at';
-        }
+            $this->model_columns[] = 'created_at';
+            $this->model_columns[] = 'updated_at';
+            $this->model_columns[] = 'deleted_at';
     }
 }

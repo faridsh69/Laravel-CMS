@@ -10,24 +10,24 @@ class BaseFactory
 {
     public function index($factory)
     {
-        $factory_models = config('cms.factory');
+        $model_slugs = config('cms.factory');
 
-        foreach($factory_models as $factory_model)
+        foreach($model_slugs as $model_slug)
         {
-            $model_name = Str::studly($factory_model);
-            $class_name = 'App\\Models\\' . $model_name;
-            $model = new $class_name();
-            $columns = $model->getColumns();
+            $model_name = Str::studly($model_slug);
+            $models_namespace = config('cms.config.models_namespace'). $model_name;
+            $model_repository = new $models_namespace();
+            $model_columns = $model_repository->getColumns();
 
-            $factory->define($class_name, function (Faker $faker) use ($columns, $model_name) {
+            $factory->define($models_namespace, function (Faker $faker) use ($model_columns, $model_name, $model_slug) {
                 $output = [];
                 $random_int = rand(1000, 9999);
                 $images = [];
                 $random_count = rand(1,3);
                 for($i = 1; $i <= $random_count; $i ++){
-                    $images[] = asset('images/front/general/'. $i. '.png');
+                    $images[] = asset('images/front/general/test/'. $i. '.png');
                 }
-                foreach($columns as $column){
+                foreach($model_columns as $column){
                     $fake_data = null;
 
                     $name = $column['name'];
@@ -39,7 +39,7 @@ class BaseFactory
 
                     if($name === 'url'){
                         // $fake_data = 'fake-' . $faker->slug();
-                        $fake_data = $model_name. '-url-'. $random_int;
+                        $fake_data = $model_slug. '-url-'. $random_int;
                     }
                     elseif($name === 'title'){
                         // $fake_data = $faker->jobTitle();
@@ -60,10 +60,9 @@ class BaseFactory
                     elseif($form_type === 'file' && $file_accept === 'image'){
                         if($file_manager === false){
                             $base_path = realpath(dirname(__FILE__) . 
-                                '/../../public_html/cdn/images/front/general/random');
+                                '/../../public_html/cdn/images/front/general/test');
                             $path = $base_path. '\\'. $random_count. '.png';
                             $fake_data = new UploadedFile($path, $random_count. '.png', 'image/jpeg');
-                            // dd($fake_data);
                         }else{
                             $fake_data = implode('|||', $images);
                         }
@@ -71,7 +70,7 @@ class BaseFactory
                     elseif($form_type === 'file' && $file_accept === 'video'){
                         if($file_manager === false){
                             $base_path = realpath(dirname(__FILE__) . 
-                                '/../../public_html/cdn/images/front/general/random');
+                                '/../../public_html/cdn/images/front/general/test');
                             $path = $base_path. '\\'. $random_count. '.png';
                             $fake_data = new UploadedFile($path, $random_count. '.png', 'image/jpeg');
                             // dd($fake_data);
@@ -82,7 +81,7 @@ class BaseFactory
                     elseif($form_type === 'file' && $file_accept === 'audio'){
                         if($file_manager === false){
                             $base_path = realpath(dirname(__FILE__) . 
-                                '/../../public_html/cdn/images/front/general/random');
+                                '/../../public_html/cdn/images/front/general/test');
                             $path = $base_path. '\\'. $random_count. '.png';
                             $fake_data = new UploadedFile($path, $random_count. '.png', 'image/jpeg');
                             // dd($fake_data);

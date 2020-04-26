@@ -84,7 +84,7 @@ class BaseFrontController extends Controller
     public function show($url)
     {
         $item = $this->repository->where('url', $url)->firstOrFail();
-
+        // dd( $item->image );
         foreach($this->model_columns as $column){
             if($column['form_type'] === 'file' && $column['file_manager'] === false){
                 $item[$column['name']] = $item->files_src($column['name']);

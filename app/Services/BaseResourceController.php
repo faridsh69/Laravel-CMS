@@ -171,7 +171,6 @@ class BaseResourceController extends BaseAdminController
                 return redirect()->back()->withErrors($form->getErrors())->withInput();
             }
         }
-
         $this->model_repository->saveWithRelations($form->getFieldValues(), $model);
 
         if(env('APP_ENV') !== 'testing'){
@@ -238,7 +237,7 @@ class BaseResourceController extends BaseAdminController
         $this->authorize('index', $this->model_namespace);
         $export_class_name = 'App\Services\BaseExport';
         $export_repository = new $export_class_name();
-        $export_repository->setModel($this->model_name);
+        $export_repository->setModelName($this->model_name);
 
         return \Maatwebsite\Excel\Facades\Excel::download($export_repository, $this->model_name. '.xlsx');
     }
@@ -248,7 +247,7 @@ class BaseResourceController extends BaseAdminController
         $this->authorize('index', $this->model_namespace);
         $import_class_name = 'App\Services\BaseImport';
         $import_repository = new $import_class_name();
-        $import_repository->setModel($this->model_name);
+        $import_repository->setModelName($this->model_name);
 
         \Maatwebsite\Excel\Facades\Excel::import($import_repository, storage_path('app/public/import.xlsx'));
 

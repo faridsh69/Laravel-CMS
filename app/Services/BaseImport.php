@@ -10,9 +10,9 @@ class BaseImport implements ToModel
 
     public $excel_fields;
 
-    public $model;
+    public $model_repository;
 
-    public $class_name;
+    public $model_namespace;
 
     public function model(array $row)
     {
@@ -20,14 +20,14 @@ class BaseImport implements ToModel
         {
             $this->excel_fields[$model_field] = $row[$key];
         }
-        return new $this->class_name($this->excel_fields);
+        return new $this->model_namespace($this->excel_fields);
     }
 
-    public function setModel($model)
+    public function setModelName($model_name)
     {
-        $this->class_name = 'App\\Models\\' . $model;
-        $this->model = new $this->class_name();
-        $this->model_fields = collect($this->model->getColumns())->pluck('name')->toArray();
+        $this->model_namespace = config('cms.config.models_namespace'). $model_name;
+        $this->model_repository = new $this->model_namespace;
+        $this->model_fields = collect($this->model_repository->getColumns())->pluck('name')->toArray();
         $this->excel_fields = [];
     }
 }

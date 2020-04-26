@@ -17,8 +17,8 @@ class BaseSeeder extends Seeder
             $model_name = Str::studly($model_name);
             $class_name = 'App\\Models\\' . $model_name;
             $repository = new $class_name();
-	    	if(!$repository->first()){
-	    		for($i = 0; $i < 10; $i ++){
+	    	if($repository->first()){
+	    		for($i = 0; $i < 4; $i ++){
 		    		$fake_data = factory($class_name)->raw();
 	        		$repository->saveWithRelations($fake_data);
 	        	}

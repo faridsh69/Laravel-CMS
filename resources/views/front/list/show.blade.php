@@ -77,7 +77,9 @@
 		@if(count($item->tags) > 0)
 		<ul>{{ __('tags') }}: 
 			@foreach($item->tags as $tag)
+				@if($tag->url)
 			<li><a href="{{ route('front.blog.tag.show', $tag->url) }}"><i class="fa {{ $tag->icon }}"></i>{{ $tag->title }}</a></li>
+				@endif
 			@endforeach
 		</ul>
 		<br>
