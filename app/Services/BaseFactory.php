@@ -22,20 +22,12 @@ class BaseFactory
             $factory->define($models_namespace, function (Faker $faker) use ($model_columns, $model_name, $model_slug) {
                 $output = [];
                 $random_int = rand(1000, 9999);
-                $images = [];
-                $random_count = rand(1,3);
-                for($i = 1; $i <= $random_count; $i ++){
-                    $images[] = asset('images/front/general/test/'. $i. '.png');
-                }
                 foreach($model_columns as $column){
                     $fake_data = null;
-
                     $name = $column['name'];
                     $type = $column['type'];
-                    $form_type = $column['form_type'];
+                    $form_type = isset($column['form_type']) ? $column['form_type'] : '';
                     $database = isset($column['database']) ? $column['database'] : null;
-                    $file_accept = isset($column['file_accept']) ? $column['file_accept'] : null;
-                    $file_manager = isset($column['file_manager']) ? $column['file_manager'] : null;
 
                     if($name === 'url'){
                         // $fake_data = 'fake-' . $faker->slug();
@@ -57,36 +49,38 @@ class BaseFactory
                     elseif($name === 'activated'){
                         $fake_data = 1;
                     }
-                    elseif($form_type === 'file' && $file_accept === 'image'){
-                        if($file_manager === false){
-                            $base_path = realpath(dirname(__FILE__) . 
-                                '/../../public_html/cdn/images/front/general/test');
-                            $path = $base_path. '\\'. $random_count. '.png';
-                            $fake_data = new UploadedFile($path, $random_count. '.png', 'image/jpeg');
+                    elseif($form_type === 'file')
+                    {
+                        $file_accept = isset($column['file_accept']) ? $column['file_accept'] : null;
+                        $file_manager = isset($column['file_manager']) ? $column['file_manager'] : null;
+                        if($file_accept === 'image'){
+                            $extention = 'png';
+                        }elseif($file_accept === 'video'){
+                            $extention = 'mp4';
+                        }elseif($file_accept === 'audio'){
+                            $extention = 'mp3';
                         }else{
-                            $fake_data = implode('|||', $images);
+                            $extention = 'pdf';
                         }
-                    }
-                    elseif($form_type === 'file' && $file_accept === 'video'){
-                        if($file_manager === false){
-                            $base_path = realpath(dirname(__FILE__) . 
-                                '/../../public_html/cdn/images/front/general/test');
-                            $path = $base_path. '\\'. $random_count. '.png';
-                            $fake_data = new UploadedFile($path, $random_count. '.png', 'image/jpeg');
-                            // dd($fake_data);
-                        }else{
-                            $fake_data = implode('|||', $images);
+                        $filemanager_files = [];
+                        $upload_files = [];
+                        $random_count = rand(0,3);
+                        for($i = 1; $i <= $random_count; $i ++){
+                            $filemanager_files[] = asset('images/front/general/test/'. 
+                                $file_accept. '/'. $i. '.'. $extention);
+                            $upload_files[] = $i. '.'. $extention;
                         }
-                    }
-                    elseif($form_type === 'file' && $file_accept === 'audio'){
-                        if($file_manager === false){
-                            $base_path = realpath(dirname(__FILE__) . 
-                                '/../../public_html/cdn/images/front/general/test');
-                            $path = $base_path. '\\'. $random_count. '.png';
-                            $fake_data = new UploadedFile($path, $random_count. '.png', 'image/jpeg');
-                            // dd($fake_data);
+
+                        if($file_manager === true){
+                            $fake_data = implode(',', $filemanager_files);
                         }else{
-                            $fake_data = implode('|||', $images);
+                            $base_path = realpath(dirname(__FILE__). 
+                                '/../../public_html/cdn/images/front/general/test/'. $file_accept);
+                            $fake_data = [];
+                            foreach($upload_files as $file){
+                                $path = $base_path. '\\'. $file;
+                                $fake_data[] = new UploadedFile($path, $file, $extention);
+                            }
                         }
                     }
                     elseif($name === 'keywords'){
@@ -157,8 +151,6 @@ class BaseFactory
 
                     $output[$name] = $fake_data;
                 }
-
-                // if fake user is generation it needs confirmation password
                 if(isset($password)){
                     $output['password_confirmation'] = $password;
                 }

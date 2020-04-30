@@ -164,7 +164,7 @@ class BaseResourceController extends BaseAdminController
         if (! $form->isValid()){
             if(env('APP_ENV') === 'testing'){
                 $errors = $form->getErrors();
-                if(strpos(json_encode($errors), 'failed to upload') === false){
+                if(strpos(json_encode($errors), 'file') === false){
                     dd($errors);
                 }
             }else{
