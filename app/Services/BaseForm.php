@@ -109,7 +109,7 @@ class BaseForm extends Form
                 $input_type = 'select';
                 $options['attr']['class'] = 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker';
                 $options['attr']['data-live-search'] = 'true';
-                if(isset($column['multiple']) && $column['multiple'] === true){
+                if(isset($column['multiple']) && $column['multiple'] == true){
                     $options['attr']['multiple'] = 'true';
                 }
             }

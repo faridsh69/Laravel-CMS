@@ -126,6 +126,8 @@ class BaseMigration extends Migration
                 unset($drop_columns[$column_key]);
             }
         }
+        echo 'droping '. count($drop_columns). ' columns. ';
+        echo 'adding '. count($add_columns). ' columns. ';
         Schema::table($model_table, function (Blueprint $table) use ($add_columns, $drop_columns) {
             foreach($drop_columns as $drop_column){
                 if(strpos($drop_column, '_id') !== false){

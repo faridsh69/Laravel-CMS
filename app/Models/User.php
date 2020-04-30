@@ -212,7 +212,7 @@ class User extends Authenticatable
             'table' => false,
         ],
         [
-            'name' => 'notification',
+            'name' => 'subscribe',
             'type' => 'boolean',
             'database' => 'default',
             'rule' => 'boolean',

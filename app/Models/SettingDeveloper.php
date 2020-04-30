@@ -114,7 +114,7 @@ class SettingDeveloper extends BaseModel
             'help' => 'Enable or disable notifications',
             'form_type' => 'enum',
             'form_enum_class' => 'NotificationEvent',
-            'multiple' => false,
+            'multiple' => true,
         ],
         [
             'name' => 'sms_driver',
@@ -190,4 +190,16 @@ class SettingDeveloper extends BaseModel
             'form_type' => '',
         ],
     ];
+
+    protected $casts = [
+        'notification_events' => 'array',
+    ];
+
+    public static function boot()
+    {
+        parent::boot();
+        self::updating(function($model){
+            $model->notification_events = json_encode($model->notification_events);
+        });
+    }
 }
