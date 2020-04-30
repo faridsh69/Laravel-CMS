@@ -93,7 +93,7 @@ class BaseFactory
                         $fake_data = $faker->name();
                     }
                     elseif($name === 'phone' || $name === 'telephone'){
-                        $fake_data = '+989120568203';
+                        $fake_data = '+49153000';
                     }
                     elseif($name === 'national_code'){
                         $fake_data = '1270739034';
@@ -146,7 +146,7 @@ class BaseFactory
                         $fake_data = 1;
                     }
                     elseif($type === 'string'){
-                        $fake_data = 'Fake ' . $faker->realText(20);
+                        $fake_data = 'Fake ' . $faker->realText(15);
                     }
 
                     $output[$name] = $fake_data;

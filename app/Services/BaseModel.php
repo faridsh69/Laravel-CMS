@@ -211,7 +211,7 @@ class BaseModel extends Model
                     // . '|regex:/^[a-z0-9-]+$/',
                     'help' => 'Url should be unique, contain [a-z, 0-9, -], required for seo',
                     'form_type' => '',
-                    'table' => false,
+                    'table' => true,
                 ],
                 'keywords' => [
                     'name' => 'keywords',
@@ -279,7 +279,7 @@ class BaseModel extends Model
                     'property' => 'email',
                     'property_key' => 'id',
                     'multiple' => false,
-                    'table' => false,
+                    'table' => true,
                 ],
                 'category_id' => [
                     'name' => 'category_id',
@@ -294,7 +294,7 @@ class BaseModel extends Model
                     'property_key' => 'id',
                     'query_builder' => 'type|'. $constructor['model_name'],
                     'multiple' => false,
-                    'table' => false,
+                    'table' => true,
                 ],
                 'tags' => [
                     'name' => 'tags',
@@ -308,7 +308,7 @@ class BaseModel extends Model
                     'property_key' => 'id',
                     'query_builder' => 'type|'. $constructor['model_name'],
                     'multiple' => true,
-                    'table' => false,
+                    'table' => true,
                 ],
                 'relateds' => [
                     'name' => 'relateds',

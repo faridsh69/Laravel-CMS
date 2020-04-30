@@ -301,25 +301,6 @@ class BaseResourceController extends BaseAdminController
             //     return json_decode($model->data)->data;
             // });
         }
-        elseif($this->model_name === 'Activity') {
-            // $datatable->addColumn('causer', function($model) {
-            //     return $model->causer->full_name;
-            // });
-        }
-        elseif($this->model_name === 'Comment') {
-            // $datatable->addColumn('blog_id', function($model) {
-            //     if($model->blog){
-            //         return $model->blog->id;
-            //     }
-            //     return null;
-            // });
-            // $datatable->addColumn('author', function($model) {
-            //     if($model->user){
-            //         return $model->user->full_name;
-            //     }
-            //     return null;
-            // });
-        }
         elseif($this->model_name === 'Block') {
             $datatable->addColumn('pages', function($model) {
                 $pages = $model->pages()->pluck('title')->toArray();
@@ -343,10 +324,20 @@ class BaseResourceController extends BaseAdminController
                 return implode(',<br>', \App\Models\User::role($model->name)->select('email')->pluck('email')->toArray());
             });
         }
-
-        $datatable->addColumn('image', function($model) {
-            return '<img style="width:80%" src="'. $model->image. '">';
+        if( collect($this->model_columns)->where('name', 'tags')->count() > 0){
+            $datatable->addColumn('tags', function($model) {
+                return implode(', ', $model->tags->pluck('title')->toArray());
+            });
+        }
+        $datatable->addColumn('user_id', function($model) {
+            return $model->user ? $model->user->name: '';
         });
+        $datatable->addColumn('category_id', function($model) {
+            return $model->category ? $model->category->title: '';
+        });
+        // $datatable->addColumn('image', function($model) {
+        //     return '<img style="width:80%" src="'. $model->image. '">';
+        // });
 
         return $datatable->rawColumns(['id', 'order', 'image', 'content', 'users', 'permissions'])
             ->toJson();
