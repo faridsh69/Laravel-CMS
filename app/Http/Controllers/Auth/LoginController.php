@@ -52,7 +52,7 @@ class LoginController extends Controller
         $user_logined = new UserLogined();
         $auth_user->notify($user_logined);
 
-        return route('admin.dashboard.list.index');
+        return route('admin.dashboard.index');
     }
 
     /**
@@ -88,7 +88,7 @@ class LoginController extends Controller
                 ->causedBy(Auth::user())
                 ->log('User Login');
 
-            return redirect()->route('admin.dashboard.list.index');
+            return redirect()->route('admin.dashboard.index');
         }
 
         return view('auth.register', ['name' => $userSocial->getName(), 'email' => $userSocial->getEmail()]);

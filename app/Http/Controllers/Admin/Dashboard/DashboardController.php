@@ -26,7 +26,7 @@ class DashboardController extends BaseResourceController
 
     public function redirect()
     {
-        return redirect()->route('admin.dashboard.list.index');
+        return redirect()->route('admin.dashboard.index');
     }
 
     public function postAddress()
@@ -190,7 +190,7 @@ class DashboardController extends BaseResourceController
             $admin->notify($profile_updated);
         }
 
-        $this->request->session()->flash('alert-success', __($document_title . ' uploaded'));
+        $this->request->session()->flash('alert-success', __($document_title) . __('uploaded'));
         return redirect()->back();
     }
 

@@ -212,6 +212,15 @@ class User extends Authenticatable
             'table' => false,
         ],
         [
+            'name' => 'notification',
+            'type' => 'boolean',
+            'database' => 'default',
+            'rule' => 'boolean',
+            'help' => 'Do you want to receive app notifications?',
+            'form_type' => 'switch-bootstrap-m',
+            'table' => false,
+        ],
+        [
             'name' => 'status',
             'type' => 'string',
             'database' => 'nullable',

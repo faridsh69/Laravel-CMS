@@ -15,7 +15,7 @@ class BaseNotification extends Notification
 {
 	use Queueable;
 
-	public $class_name; // user_logined
+	public $model_snake_class_name; // user_logined
 
     public $heading_title; // dear customer
 
@@ -35,9 +35,9 @@ class BaseNotification extends Notification
     {
         $this->app_url = URL::to('/');
         $this->app_title = __(config('app.name'));
-        $this->class_name = Str::snake(class_basename($this));
-        $this->mail_subject = __($this->class_name . '_subject');
-        $this->message_template = __($this->class_name . '_message');
+        $this->model_snake_class_name = Str::snake(class_basename($this));
+        $this->mail_subject = __($this->model_snake_class_name . '_subject');
+        $this->message_template = __($this->model_snake_class_name . '_message');
         $this->heading_title = __('dear_user');
         $this->message = sprintf($this->message_template, $this->app_title);
         $this->sms_message = sprintf(" %s \n %s \n %s", $this->heading_title, $this->message, $this->app_title);
@@ -46,14 +46,18 @@ class BaseNotification extends Notification
 
     public function via($notifiable)
     {
+        if(!$notifiable->notification){
+            // return [];
+        }
+
         $channel_list = [
             DatabaseChannel::class,
             // 'slack',
         ];
-        if(config('setting-developer.' . $this->class_name . '_sms') !== 0){
+        if(config('setting-developer.' . $this->model_snake_class_name . '_sms') !== 0){
             $channel_list[] = SmsChannel::class;
         }
-        if(config('setting-developer.' . $this->class_name . '_mail') !== 0){
+        if(config('setting-developer.' . $this->model_snake_class_name . '_mail') !== 0){
             $channel_list[] = 'mail';
         }
 
@@ -86,18 +90,6 @@ class BaseNotification extends Notification
             ->greeting($this->heading_title)
             ->line($this->message)
             ->action($this->app_title, $this->app_url);
-
-        // return (new MailMessage())
-        //     ->subject($this->mail_subject);
-        //     ->markdown(
-        //         'vendor.mail.general',
-        //         [
-        //             'heading_title' => $this->heading_title,
-        //             'mail_message' => $this->message,
-        //             'app_url' => $this->app_url,
-        //             'app_title' => $this->app_title,
-        //         ]
-        //     );
     }
 
     public function toSlack($notifiable)
@@ -108,6 +100,5 @@ class BaseNotification extends Notification
 
     public function editContent()
     {
-
     }
 }

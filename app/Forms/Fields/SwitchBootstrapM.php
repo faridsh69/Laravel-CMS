@@ -37,6 +37,9 @@ class SwitchBootstrapM extends FormField
         elseif($this->name === 'direction'){
             $options['choices'] = ['LTR', 'RTL'];
         }
+        elseif($this->name === 'notification'){
+            $options['choices'] = ['YES', 'NO'];
+        }
         elseif($this->name === 'sign'){
             $options['choices'] = ['positive', 'negative'];
         }
