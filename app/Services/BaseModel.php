@@ -130,28 +130,48 @@ class BaseModel extends Model
         return $this->belongsToMany(config('cms.config.models_namespace'). class_basename($this), 'model_related', 'model_id', 'related_id');
     }
 
-    public function files_relation()
+    public function files()
     {
         return $this->morphMany('App\Models\File', 'fileable');
     }
 
-    public function files($title)
+    public function files_for($title)
     {
-        return $this->files_relation()->where('title', $title)->get();
+        return $this->files()->where('title', $title)->get();
     }
 
-    public function files_src($title)
+    public function files_src_for($title)
     {
-        return json_encode($this->files($title)->pluck('src'));
+        return $this->files_for($title)->pluck('src')->toArray();
     }
 
-    public function file_src($title)
+    public function file_src_for($title)
     {
-        if($this->files($title)->first()){
-            return $this->files($title)->first()->src;
+        if($this->files_for($title)->first()){
+            return $this->files_for($title)->first()->src;
         }
 
         return config('setting-general.default_meta_image');
+    }
+
+    public function srcs($title)
+    {
+        $isFileManager = collect($this->getColumns())->where('name', $title)->first()['file_manager'];
+        $srcs = [];
+        if($isFileManager === true && $this->{$title}){
+            $srcs = explode(',', $this->{$title});
+        } 
+        else {
+            $srcs = $this->files_src_for($title);
+        }
+
+        return $srcs;
+    }
+
+    public function src($title)
+    {
+        $srcs = $this->srcs($title);
+        return count($srcs) > 0 ? $srcs[0] : config('setting-general.default_meta_image');
     }
 
     public function image_default()
@@ -206,9 +226,8 @@ class BaseModel extends Model
                     'name' => 'url',
                     'type' => 'string',
                     'database' => 'nullable',
-                    'rule' => 'required|unique:'. $constructor['table_name']. ',url,',
-                    // 'rule' => 'max:' . config('setting-developer.seo_url_max')
-                    // . '|regex:/^[a-z0-9-]+$/',
+                    // 'rule' => 'required|unique:'. $constructor['table_name']. ',url,',
+                    'rule' => 'required|max:'. config('setting-developer.seo_url_max'),
                     'help' => 'Url should be unique, contain [a-z, 0-9, -], required for seo',
                     'form_type' => '',
                     'table' => true,

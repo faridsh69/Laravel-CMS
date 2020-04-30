@@ -140,23 +140,17 @@ class BaseForm extends Form
                 $file_multiple = isset($column['file_multiple']) ? $column['file_multiple'] : false;
 
                 $options['file_accept'] = $file_accept;
+                $options['srcs'] = [];
+                if($this->model){
+                    $options['srcs'] = $this->model->srcs($name);
+                }
                 if($file_manager === true){
                     $input_type = 'file-manager';
-                    if($this->model && $this->model->{$name}){
-                        $options['files_src'] = json_encode(explode(',', $this->model->{$name}));
-                    }else{
-                        $options['files_src'] = json_encode([]);
-                    }
                 } else {
                     $input_type = 'file-upload';
                     $options['attr']['multiple'] = $file_multiple;
                     if($file_accept !== 'file'){
                         $options['attr']['accept'] = $file_accept . '/*';
-                    }
-                    if($this->model){
-                        $options['files_src'] = $this->model->files_src($name);
-                    }else{
-                        $options['files_src'] = json_encode([]);
                     }
                 }
             }

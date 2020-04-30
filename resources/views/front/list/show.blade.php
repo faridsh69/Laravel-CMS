@@ -15,18 +15,13 @@
 				if($column['form_type'] === 'file')
 				{
 					$file_accept = $column['file_accept'];
-					if($column['file_manager'] === true){
-						$files_src = explode(',',  $item[$column['name']] );
-						if($files_src == ['']){ $files_src = [];}
-					}else{
-						$files_src = json_decode($item[$column['name']]);
-					}
+					$srcs = $item->srcs($column['name']);
 				}
 			@endphp
 			@if($file_accept)
 			<b>{{ __($column['name']) }}</b>
-			<div class="row mt-3">
-				@foreach($files_src as $src)
+			<div class="row mt-3 mb-5">
+				@foreach($srcs as $src)
 				<div class="col-sm-4">
 					@if($file_accept === 'image')
 				    	<img alt="image" src="{{ $src }}" style="max-width: 100%;">

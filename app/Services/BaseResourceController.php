@@ -117,13 +117,6 @@ class BaseResourceController extends BaseAdminController
         $model = $this->model_repository->findOrFail($id);
         $this->authorize('view', $model);
         $data = $model;
-        // show file attributes
-        foreach($this->model_columns as $column){
-            if($column['form_type'] === 'file' && $column['file_manager'] === false){
-                $data[$column['name']] = $data->files_src($column['name']);
-            }
-        }
-
         $activities = \App\Models\Activity::where('activitiable_type', $this->model_namespace)
             ->where('activitiable_id', $id)
             ->get();
@@ -293,13 +286,13 @@ class BaseResourceController extends BaseAdminController
                 return route('admin.'. $this->model_slug. '.list.destroy', $model);
             });
         if($this->model_name === 'Notification') {
-            // $datatable->addColumn('user', function($model) {
-            //     return $model->user->id. ' - '. $model->user->full_name;
-            // })->addColumn('type', function($model) {
-            //     return str_replace('App\Notifications\\', '', $model->type);
-            // })->addColumn('data', function($model) {
-            //     return json_decode($model->data)->data;
-            // });
+            $datatable->addColumn('user', function($model) {
+                return $model->user->name;
+            })->addColumn('type', function($model) {
+                return str_replace('App\Notifications\\', '', $model->type);
+            })->addColumn('data', function($model) {
+                return json_decode($model->data)->data;
+            });
         }
         elseif($this->model_name === 'Block') {
             $datatable->addColumn('pages', function($model) {

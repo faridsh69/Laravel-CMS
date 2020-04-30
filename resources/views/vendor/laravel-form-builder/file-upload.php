@@ -13,7 +13,7 @@
 	<?= Form::input('file', $name, '', $options['attr']) ?>
 
 	<?php include 'help_block.php' ?>
-	<?php foreach (json_decode($options['files_src']) as $src): ?>
+	<?php foreach ($options['srcs'] as $src): ?>
 		<div class="show-file">
 			<?php if ($options['file_accept'] === 'image'): ?>
 				<img src="<?php echo $src; ?>" alt="image">

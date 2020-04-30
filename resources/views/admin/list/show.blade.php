@@ -43,18 +43,13 @@
 				if($column['form_type'] === 'file')
 				{
 					$file_accept = $column['file_accept'];
-					if($column['file_manager'] === true){
-						$files_src = explode(',',  $data[$column['name']] );
-						if($files_src == ['']){ $files_src = [];}
-					}else{
-						$files_src = json_decode($data[$column['name']]);
-					}
+					$srcs = $data->srcs($column['name']); 
 				}
 			@endphp
 			<h6 class="m--font-boldest m--font-brand">{{ __($column['name']) }}</h6>
 			<div class="mb-4 show-file">
 			@if($file_accept)
-				@foreach($files_src as $src)
+				@foreach($srcs as $src)
 				<div class="show-file">
 					@if($file_accept === 'image')
 				    	<img alt="image" src="{{ $src }}">
@@ -79,7 +74,7 @@
 					</div>
 				</div>
 				@endforeach
-				@if(count($files_src) === 0)
+				@if(count($srcs) === 0)
 					<span style="color: red">Null</span>
 				@endif
 			@elseif(!is_object($data[$column['name']]) )

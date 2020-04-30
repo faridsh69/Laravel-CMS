@@ -68,7 +68,7 @@
 			<div class="col-sm-6 col-md-4 mb-4 p-2">
 				<a href="{{ route('front.' . lcfirst(class_basename($item)) . '.show', $item->url) }}">
 					<div>
-						<img src="{{ $item->image_default() }}" style="height: 100px;">
+						<img src="{{ $item->src('image') }}" style="height: 100px;">
 					</div>
 					<b>{{ $item->title }}</b>
 					<p style="height: 50px; overflow: hidden; text-overflow: ellipsis;">{{ $item->description }}</p>

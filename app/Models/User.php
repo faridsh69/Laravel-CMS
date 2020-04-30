@@ -322,31 +322,39 @@ class User extends Authenticatable
         return $this->morphMany(Follow::class, 'followable');
     }
 
-    public function files_relation()
+    public function files()
     {
-        return $this->morphMany(File::class, 'fileable');
+        return $this->morphMany('App\Models\File', 'fileable');
     }
 
-    public function files($title)
+    public function files_for($title)
     {
-        return $this->files_relation()->where('title', $title)->get();
-        // return \Cache::remember('user.' . $this->id . '-' . $title, 1, function () use ($title) {
-        //     return $this->files_relation()->where('title', $title)->get();
-        // });
+        return $this->files()->where('title', $title)->get();
     }
 
-    public function files_src($title)
+    public function files_src_for($title)
     {
-        return json_encode($this->files($title)->pluck('src'));
+        return $this->files_for($title)->pluck('src')->toArray();
     }
 
-    public function file_src($title)
+    public function srcs($title)
     {
-        if($this->files($title)->first()){
-            return $this->files($title)->first()->src;
+        $isFileManager = collect($this->getColumns())->where('name', $title)->first()['file_manager'];
+        $srcs = [];
+        if($isFileManager === true && $this->{$title}){
+            $srcs = explode(',', $this->{$title});
+        } 
+        else {
+            $srcs = $this->files_src_for($title);
         }
 
-        return config('setting-general.default_user_image');
+        return $srcs;
+    }
+
+    public function src($title)
+    {
+        $srcs = $this->srcs($title);
+        return count($srcs) > 0 ? $srcs[0] : config('setting-general.default_user_image');
     }
 
     public function saveWithRelations($data, $model = null)
