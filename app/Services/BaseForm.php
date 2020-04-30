@@ -22,16 +22,14 @@ class BaseForm extends Form
         if(isset($this->model->id)){
             $this->id = $this->model ? $this->model->id : 0;
         }
-        // you can add another fields with define addTop function in form
         $this->addTop();
 
         foreach($this->model_columns as $column)
         {
             $name = $column['name'];
-            $rule = $column['rule'];
-            $form_type = $column['form_type'];
+            $rule = isset($column['rule']) ? $column['rule'] : '';
+            $form_type = isset($column['form_type']) ? $column['form_type'] : '';
             $help = isset($column['help']) ? $column['help'] : ' ';
-
             $database = isset($column['database']) ? $column['database'] : null;
             // if column is unique it will add id for edit mode
             if($database === 'unique' || strpos($rule, 'unique') !== false){

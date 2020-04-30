@@ -18,8 +18,7 @@ foreach($models as $model_sm)
 }
 
 Route::get('{page_url?}', 'Page\FrontController@index')->name('page.index');
-
-
+Route::post('form/{form_id}/submit', 'PageController@postSubmitForm')->name('page.submit-form');
 
 // Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
 // 	Route::get('', 'BlogController@index')->name('index');
@@ -68,7 +67,6 @@ Route::get('{page_url?}', 'Page\FrontController@index')->name('page.index');
 // 	Route::post('payment/verify', 'CheckoutController@getPaymentVerify')->name('post-payment-verify');
 // });
 
-// Route::post('submit-form/{form_id}', 'PageController@postSubmitForm')->name('page.submit-form');
 
 
 

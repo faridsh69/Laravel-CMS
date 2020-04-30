@@ -11,8 +11,8 @@ class Form extends BaseForm
 	public function __construct()
     {
         $this->model_name = Str::studly(Request::segment(2));
-        $class_name = 'App\\Models\\' . $this->model_name;
-        $model = new $class_name();
-        $this->columns = $model->getColumns();
+        $model_namespace = config('cms.config.models_namespace'). $this->model_name;
+        $model_repository = new $model_namespace;
+        $this->model_columns = $model_repository->getColumns();
     }
 }

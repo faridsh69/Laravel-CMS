@@ -166,14 +166,13 @@ class BaseModel extends Model
     public function getColumns()
     {
         $constructor = [
-            'model' => class_basename($this),
-            'model_sm' => strtolower(class_basename($this)),
-            'model_namespance' => config('cms.config.models_namespace'). class_basename($this),
+            'model_name' => class_basename($this),
+            'model_namespace' => (new \ReflectionClass($this))->getName(),
             'table_name' => $this->getTable(),
         ];
 
         $seconds = 1;
-        return Cache::remember('model'. $constructor['model'] , $seconds, function () use($constructor) {
+        return Cache::remember('model'. $constructor['model_name'] , $seconds, function () use($constructor) {
             $default_columns = [
                 'title' => [
                     'name' => 'title',
@@ -293,7 +292,7 @@ class BaseModel extends Model
                     'class' => 'App\Models\Category',
                     'property' => 'title',
                     'property_key' => 'id',
-                    'query_builder' => 'type|'. $constructor['model_sm'],
+                    'query_builder' => 'type|'. $constructor['model_name'],
                     'multiple' => false,
                     'table' => false,
                 ],
@@ -307,7 +306,7 @@ class BaseModel extends Model
                     'class' => 'App\Models\Tag',
                     'property' => 'title',
                     'property_key' => 'id',
-                    'query_builder' => 'type|'. $constructor['model_sm'],
+                    'query_builder' => 'type|'. $constructor['model_name'],
                     'multiple' => true,
                     'table' => false,
                 ],
@@ -318,7 +317,7 @@ class BaseModel extends Model
                     'rule' => 'nullable',
                     'help' => 'Select related items to suggest to user.',
                     'form_type' => 'entity',
-                    'class' => $constructor['model_namespance'],
+                    'class' => $constructor['model_namespace'],
                     'property' => 'title',
                     'property_key' => 'id',
                     'multiple' => true,
@@ -735,7 +734,7 @@ class BaseModel extends Model
             $columns = $this->columns;
             foreach($columns as $key => $column)
             {
-                if(array_key_exists($column['name'], $default_columns)){
+                if(array_key_exists($column['name'], $default_columns) && !isset($column['type'])){
                     $columns[$key] = $default_columns[$column['name']];
                 }
             }

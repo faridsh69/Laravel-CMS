@@ -3,30 +3,20 @@
 namespace App\Http\Controllers\Admin\Dashboard;
 
 use App\Models\Address;
+use App\Models\Activity;
 use App\Notifications\EmailVerified;
 use App\Notifications\PhoneVerified;
 use App\Notifications\ProfileUpdated;
-use App\Services\BaseAdminController;
+use App\Services\BaseResourceController;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Route;
-use App\Models\Activity;
 
-class DashboardController extends BaseAdminController
+class DashboardController extends BaseResourceController
 {
-	public function __construct(Request $request, FormBuilder $form_builder)
-    {
-        $this->model_class = 'App\\Models\\User';
-        $this->model_form = 'App\\Forms\\UserForm';
-        $this->repository = new $this->model_class();
-        $this->request = $request;
-        $this->form_builder = $form_builder;
-        $this->model_columns = $this->repository->getColumns();
-        $this->meta['title'] = __('profile');
-        $this->meta['link_name'] = __('dashboard');
-    }
+    public $model_slug = 'user';
 
     public function index()
     {
@@ -50,6 +40,10 @@ class DashboardController extends BaseAdminController
 
     public function profile()
     {
+        $this->meta['title'] = __('profile');
+        $this->meta['link_name'] = __('dashboard');
+        $this->meta['link_route'] = route('admin.dashboard.index');;
+
     	$form = $this->form_builder->create($this->model_form, [
             'method' => 'PUT',
             'url' => route('admin.dashboard.update-profile'),
@@ -74,16 +68,14 @@ class DashboardController extends BaseAdminController
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
         $data = $form->getFieldValues();
-        $main_data = $data;
-        $data = $this->_changeDataBeforeCreate('User', $data, $model);
+        
+        $model->saveWithRelations($data, $model);
 
-        $model->update($data);
-        $this->_saveRelatedDataAfterCreate($this->model, $main_data, $model);
-        activity('User')
+        activity('Updated')
             ->performedOn($model)
             ->causedBy(Auth::user())
             ->log('User Profile Updated');
-        $this->request->session()->flash('alert-success', $this->model . ' Updated Successfully!');
+        $this->request->session()->flash('alert-success', 'Profile Updated Successfully!');
 
         return redirect()->route('admin.dashboard.profile');
     }
@@ -141,9 +133,8 @@ class DashboardController extends BaseAdminController
             $this->request->session()->flash('alert-success', __('email_verified'));
             return redirect()->route('admin.dashboard.identify');
         }
-
-            $this->request->session()->flash('alert-danger', __('wrong_activation_code'));
-            return redirect()->back();
+        $this->request->session()->flash('alert-danger', __('wrong_activation_code'));
+        return redirect()->back();
 
     }
 
@@ -182,10 +173,8 @@ class DashboardController extends BaseAdminController
             $this->request->session()->flash('alert-success', __('phone_verified'));
             return redirect()->route('admin.dashboard.identify');
         }
-
-            $this->request->session()->flash('alert-danger', __('wrong_activation_code'));
-            return redirect()->back();
-
+        $this->request->session()->flash('alert-danger', __('wrong_activation_code'));
+        return redirect()->back();
     }
 
     public function postIdentifyDocument($document_title = 'national_card')
@@ -196,7 +185,7 @@ class DashboardController extends BaseAdminController
 
         $profile_updated = new ProfileUpdated();
         $profile_updated->setCode($auth_user->id);
-        $admin_users = $this->repository->getAdminUsers();
+        $admin_users = $this->model_repository->getAdminUsers();
         foreach($admin_users as $admin){
             $admin->notify($profile_updated);
         }

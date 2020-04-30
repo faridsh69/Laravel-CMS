@@ -35,7 +35,7 @@ class BaseTest extends TestCase
         {
             echo("\nTesting ". $model_slug. '...');
             $model_name = Str::studly($model_slug);
-            $model_namespace = 'App\\Models\\'. $model_name;
+            $model_namespace = config('cms.config.models_namespace'). $model_name;
             $model_repository = new $model_namespace();
 
             $user = User::first();
@@ -87,13 +87,13 @@ class BaseTest extends TestCase
 
             foreach($this->methods as $method)
             {
-                $this->_checkMethod($method, $model);
+                $this->_checkMethod($method, $model_slug);
             }
             echo('Done!');
         }
     }
 
-    private function _checkMethod($mothod_name, $model)
+    private function _checkMethod($mothod_name, $model_slug)
     {
         $this
             ->get(route('admin.'. $model_slug. '.'. $mothod_name))

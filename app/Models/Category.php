@@ -47,7 +47,7 @@ class Category extends BaseModel
 
     public function models()
     {
-        return $this->hasMany('App\\Models\\' . ucfirst($this->type), 'category_id', 'id');
+        return $this->hasMany(config('cms.config.models_namespace'). $this->type, 'category_id', 'id');
     }
 
     public function parent()

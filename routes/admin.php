@@ -24,7 +24,7 @@ Route::get('icon/list', 'Dashboard\DashboardController@iconsList')->name('icon.l
 Route::get('report', 'Report\ReportController@index')->name('report.index');
 Route::get('media', 'Media\MediaController@index')->name('media.index');
 Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'as' => 'dashboard.'], function () {
-	Route::get('', 'DashboardController@index')->name('list.index');
+	Route::get('', 'DashboardController@index')->name('index');
 	Route::get('activity', 'DashboardController@activity')->name('activity');
 	Route::get('profile', 'DashboardController@profile')->name('profile');
 	Route::put('profile', 'DashboardController@updateProfile')->name('update-profile');
