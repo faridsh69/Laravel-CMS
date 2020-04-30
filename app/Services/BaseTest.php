@@ -9,10 +9,10 @@ use Tests\TestCase;
 class BaseTest extends TestCase
 {
     // an aray of models that want to test
-    public $model_names;
+    public $model_slugs;
 
     // single model to test
-    public $model;
+    public $model_slug;
 
     public $methods = [
         'print',
@@ -24,60 +24,63 @@ class BaseTest extends TestCase
 
     public function resourceTest()
     {
-        $models = $this->models;
-        if(isset($this->model) && !isset($this->models)){
-            $models = [$this->model];
+        if($this->model_slugs === []){
+            $this->model_slugs = [$this->model_slug];
+            if($this->model_slug === null){
+                $this->model_slugs = config('cms.admin_tests');
+            }
         }
-        foreach($models as $model)
+
+        foreach($this->model_slugs as $model_slug)
         {
-            echo("\nTesting " . $model . '...');
-            $model_name = Str::studly($model);
-            $class_name = 'App\\Models\\' . $model_name;
-            $model_namespance = new $class_name();
+            echo("\nTesting ". $model_slug. '...');
+            $model_name = Str::studly($model_slug);
+            $model_namespace = 'App\\Models\\'. $model_name;
+            $model_repository = new $model_namespace();
 
             $user = User::first();
             $this->actingAs($user);
 
             // redirect
             $this
-                ->get(route('admin.' . strtolower($model) . '.redirect'))
-                ->assertRedirect(route('admin.' . strtolower($model) . '.list.index'));
+                ->get(route('admin.'. $model_slug. '.redirect'))
+                ->assertRedirect(route('admin.'. $model_slug. '.list.index'));
 
             // create fake data for store in database
-            $fake_data = factory($class_name)->raw();
+            $fake_data = factory($model_namespace)->raw();
 
             // store fake model
             $this
-                ->post(route('admin.' . strtolower($model) . '.list.store', $fake_data))
-                ->assertRedirect(route('admin.' . strtolower($model) . '.list.index'));
+                ->post(route('admin.'. $model_slug. '.list.store', $fake_data))
+                ->assertRedirect(route('admin.'. $model_slug. '.list.index'));
 
             // get fake model that created at this test
-            $fake_model = $model_namespance->orderBy('id', 'desc')->first();
+            $fake_model = $model_repository->orderBy('id', 'desc')->first();
 
             // show fake model
             $this
-                ->get(route('admin.' . strtolower($model) . '.list.show', $fake_model))
+                ->get(route('admin.'. $model_slug. '.list.show', $fake_model))
                 ->assertOk();
 
             // edit fake model
             $this
-                ->get(route('admin.' . strtolower($model) . '.list.edit', $fake_model))
+                ->get(route('admin.'. $model_slug. '.list.edit', $fake_model))
                 ->assertOk();
 
             // update fake model
             $this
-                ->put(route('admin.' . strtolower($model) . '.list.update', $fake_model), $fake_data)
-                ->assertRedirect(route('admin.' . strtolower($model) . '.list.index'));
+                ->put(route('admin.'. $model_slug. '.list.update', $fake_model), $fake_data)
+                ->assertRedirect(route('admin.'. $model_slug. '.list.index'));
 
             // delete fake model
             $this
-                ->delete(route('admin.' . strtolower($model) . '.list.destroy', $fake_model))
-                ->assertRedirect(route('admin.' . strtolower($model) . '.list.index'));
+                ->delete(route('admin.'. $model_slug. '.list.destroy', $fake_model))
+                ->assertRedirect(route('admin.'. $model_slug. '.list.index'));
 
             // restore fake model
             $this
-                ->get(route('admin.' . strtolower($model) . '.list.restore', $fake_model))
-                ->assertRedirect(route('admin.' . strtolower($model) . '.list.index'));
+                ->get(route('admin.'. $model_slug. '.list.restore', $fake_model))
+                ->assertRedirect(route('admin.'. $model_slug. '.list.index'));
 
             // force delete fake model
             $fake_model->forceDelete();
@@ -93,7 +96,7 @@ class BaseTest extends TestCase
     private function _checkMethod($mothod_name, $model)
     {
         $this
-            ->get(route('admin.' . strtolower($model) . '.' . $mothod_name))
+            ->get(route('admin.'. $model_slug. '.'. $mothod_name))
             ->assertOk();
     }
 }

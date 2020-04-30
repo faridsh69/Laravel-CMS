@@ -8,9 +8,7 @@
 					<div class="m-stack m-stack--ver m-stack--desktop">
 						@include('admin.common.brand')
 						<div class="m-stack__item m-stack__item--fluid m-header-head" id="m_header_nav">
-							@if(false)
 							@include('admin.common.horizontal-menu')
-							@endif
 							@include('admin.common.toolbar')
 						</div>
 					</div>
@@ -19,15 +17,16 @@
 			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
 				@include('admin.common.sidebar')
 				<div class="m-grid__item m-grid__item--fluid m-wrapper">
-					@if(Route::currentRouteName() != 'admin.dashboard.index' || true)
-					@include('admin.common.breadcrumb')
-					@endif
+					<div class="m-subheader ">
+						<div class="d-flex align-items-center">
+							@include('admin.common.breadcrumb')
+							@include('admin.common.circle-menu')
+						</div>
+					</div>
 					<div class="m-content">
 						@include('admin.common.page-alert')
 						<div class="m-portlet m-portlet--mobile">
-							@if(Route::currentRouteName() != 'admin.dashboard.index' || true)
 							@include('admin.common.card-header')
-							@endif
 							<div class="m-portlet__body">
 								@yield('content')
 							</div>

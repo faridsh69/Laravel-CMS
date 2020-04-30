@@ -9,159 +9,124 @@ use Kris\LaravelFormBuilder\FormBuilder;
 use Route;
 use App\Models\Activity;
 use View;
+use Str;
 
 class BaseApiController extends Controller
 {
-    // Blog
-    public $model;
+    // FoodProgram
+    public $model_name;
 
-    // blog
-    public $model_sm;
+    // food-program
+    public $model_slug;
 
-    // \App\Forms\BlogForm
+    // Food Program
+    public $model_translated;
+
+    // '\App\Forms\FoodProgramForm'
     public $model_form;
 
-    // App\Models\Blog
-    public $model_namespance;
+    // App\Models\FoodProgram
+    public $model_namespace;
 
+    // Columns of this model
     public $model_columns;
 
-    public $model_rules;
-
-    public $repository;
+    // A new instance of this model
+    public $model_repository;
 
     public $request;
 
     public $form_builder;
 
+    public $model_rules;
+
     public $message_not_found;
-
-    public $message_list;
-
-    public $message_store;
-
-    public $message_show;
-
-    public $message_update;
-
-    public $message_delete;
-
-    public $message_restore;
 
     public $response = [
         'status' => 200, // 200, 404,
         'message' => '',
         'data' => '',
     ];
-
     public function __construct(Request $request, FormBuilder $form_builder)
     {
-        $this->model_sm = lcfirst($this->model);
-        $this->model_form = 'App\\Forms\\' . $this->model . 'Form';
-        $this->model_namespance = 'App\\Models\\' . $this->model;
-        $this->repository = new $this->model_namespance();
-        $this->model_columns = $this->repository->getColumns();
-        $this->model_rules = $this->getRules($this->model_columns);
-        $this->request = $request;
         $this->form_builder = $form_builder;
-        $this->message_not_found = __($this->model_sm . '_not_found');
-        $this->message_list = __($this->model_sm . '_list');
-        $this->message_store = __($this->model_sm . '_store');
-        $this->message_show = __($this->model_sm . '_show');
-        $this->message_update = __($this->model_sm . '_update');
-        $this->message_delete = __($this->model_sm . '_delete');
-        $this->message_restore = __($this->model_sm . '_restore');
+        $this->request = $request;
+        if(!$this->model_slug){
+            $this->model_slug = $this->request->segment(2);
+        }
+        $this->model_name = Str::studly($this->model_slug);
+        $this->model_translated = __(Str::snake($this->model_name));
+        $this->model_namespace = config('cms.config.models_namespace'). $this->model_name;
+        $this->model_repository = new $this->model_namespace;
+        $this->model_columns = $this->model_repository->getColumns();
+        $this->model_rules = collect($this->model_columns)->pluck('rule', 'name')->toArray();
+        $this->model_form = 'App\Forms\\'. $this->model_name. 'Form';
+        if(!file_exists(__DIR__. '\..\..\\'. $this->model_form. '.php')){
+            $this->model_form = 'App\Forms\Form';
+        }
+        $this->message_not_found = __('not_found');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        // $this->authorize('index', $this->model_namespance);
+        $this->authorize('index', $this->model_namespace);
+        $list = $this->model_repository->orderBy('updated_at', 'desc')->get(); // orderBy
 
-        $list = $this->repository->orderBy('updated_at', 'desc')->get(); // orderBy
-
-        $this->response['message'] = $this->message_list;
+        $this->response['message'] = __('list_successfully');
         $this->response['data'] = $list;
 
         return response()->json($this->response);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         abort(404);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store()
     {
-        // $this->authorize('create', $this->model_namespance);
+        $this->authorize('create', $this->model_namespace);
         $main_data = $this->request->all();
         $validator = \Validator::make($main_data, $this->model_rules);
         if ($validator->fails()) {
             return response()->json($validator->messages(), 200);
         }
-        $model_store = $this->repository->create($main_data);
+        $model_store = $this->model_repository->create($main_data);
 
         if(env('APP_ENV') !== 'testing'){
-            activity($this->model)
+            activity($this->model_name)
                 ->performedOn($model_store)
                 ->causedBy(Auth::user())
-                ->log($this->model . ' Created');
+                ->log($this->model_name. ' Created');
         }
 
-        $this->response['message'] = $this->message_store;
+        $this->response['message'] = $this->model_translated. __('created_successfully');
         $this->response['data'] = $model_store;
 
         return response()->json($this->response);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        $model_view = $this->repository->where('id', $id)->first();
+        $model_view = $this->model_repository->where('id', $id)->first();
         if(! $model_view){
             $this->response['status'] = 404;
             $this->response['message'] = $this->message_not_found;
             return response()->json($this->response);
         }
-        // $this->authorize('view', $model_view);
+        $this->authorize('view', $model_view);
 
         $main_data = $model_view->getAttributes();
 
-        $this->response['message'] = $this->message_show;
+        $this->response['message'] = __('show_successfully');
         $this->response['data'] = $main_data;
 
         return response()->json($this->response);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        $model_edit = $this->repository
+        $model_edit = $this->model_repository
             ->where('id', $id)
             ->first();
 
@@ -170,7 +135,7 @@ class BaseApiController extends Controller
             $this->response['message'] = $this->message_not_found;
             return response()->json($this->response);
         }
-        // $this->authorize('update', $model_edit);
+        $this->authorize('update', $model_edit);
 
         $main_data = $model_edit->getAttributes();
 
@@ -180,22 +145,15 @@ class BaseApiController extends Controller
         return response()->json($this->response);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update($id)
     {
-        $model_update = $this->repository->where('id', $id)->first();
+        $model_update = $this->model_repository->where('id', $id)->first();
         if(! $model_update){
             $this->response['status'] = 404;
             $this->response['message'] = $this->message_not_found;
             return response()->json($this->response);
         }
-        // $this->authorize('update', $model_update);
+        $this->authorize('update', $model_update);
 
         $main_data = $this->request->all();
         $validator = \Validator::make($main_data, $this->model_rules);
@@ -206,51 +164,40 @@ class BaseApiController extends Controller
         $model_update->update($main_data);
 
         if(env('APP_ENV') !== 'testing'){
-            activity($this->model)
+            activity($this->model_name)
                 ->performedOn($model_update)
                 ->causedBy(Auth::user())
-                ->log($this->model . ' Updated');
+                ->log($this->model_name. ' Updated');
         }
 
-        $this->response['message'] = $this->message_update;
+        $this->response['message'] = $this->model_translated. __('updated_successfully');
         $this->response['data'] = $model_update;
 
         return response()->json($this->response);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        $model_delete = $this->repository->where('id', $id)->first();
+        $model_delete = $this->model_repository->where('id', $id)->first();
         if(! $model_delete){
             $this->response['status'] = 404;
             $this->response['message'] = $this->message_not_found;
             return response()->json($this->response);
         }
-        // $this->authorize('delete', $model_delete);
+        $this->authorize('delete', $model_delete);
 
         $model_delete->delete();
 
         if(env('APP_ENV') !== 'testing'){
-            activity($this->model)
+            activity($this->model_name)
                 ->performedOn($model_delete)
                 ->causedBy(Auth::user())
-                ->log($this->model . ' Deleted');
+                ->log($this->model_name. ' Deleted');
         }
 
-        $this->response['message'] = $this->message_delete;
+        $this->response['message'] = $this->model_translated. __('deleted_successfully');
         $this->response['data'] = $model_delete;
 
         return response()->json($this->response);
-    }
-
-    public function getRules($columns)
-    {
-        return collect($columns)->pluck('rule', 'name')->toArray();
     }
 }

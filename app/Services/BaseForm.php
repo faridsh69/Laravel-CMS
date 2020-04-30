@@ -6,15 +6,15 @@ use Kris\LaravelFormBuilder\Form;
 
 class BaseForm extends Form
 {
-    public $columns;
+    public $model_columns;
 
     public $id;
 
     public function __construct()
     {
-        $class_name = 'App\\Models\\' . $this->model_name;
-        $model = new $class_name();
-        $this->columns = $model->getColumns();
+        $model_namespace = config('cms.config.models_namespace'). $this->model_name;
+        $model_repository = new $model_namespace;
+        $this->model_columns = $model_repository->getColumns();
     }
 
     public function buildForm()
@@ -25,7 +25,7 @@ class BaseForm extends Form
         // you can add another fields with define addTop function in form
         $this->addTop();
 
-        foreach($this->columns as $column)
+        foreach($this->model_columns as $column)
         {
             $name = $column['name'];
             $rule = $column['rule'];

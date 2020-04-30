@@ -12,20 +12,20 @@
 						<ul class="m-nav">
 							<li class="m-nav__section m-nav__section--first m--hide">
 								<span class="m-nav__section-text">
-									Quick Actions {{ $model = Request::segment(1) }}
+									Quick Actions {{ $model_name = Request::segment(2) }}
 								</span>
 							</li>
-							@if (Route::has('admin.'.$model.'.list.create'))
+							@if (Route::has('admin.'.$model_name.'.list.create'))
 							<li class="m-nav__item">
-								<a href="{{ route('admin.'.$model.'.list.create') }}" class="m-nav__link">
+								<a href="{{ route('admin.'.$model_name.'.list.create') }}" class="m-nav__link">
 									<i class="m-nav__link-icon flaticon-share"></i>
 									<span class="m-nav__link-text">
-										Create {{ ucfirst($model) }}
+										Create {{ ucfirst($model_name) }}
 									</span>
 								</a>
 							</li>
 							<li class="m-nav__item">
-								<a href="{{ route('admin.'.$model.'.export') }}" class="m-nav__link">
+								<a href="{{ route('admin.'.$model_name.'.export') }}" class="m-nav__link">
 									<i class="m-nav__link-icon flaticon-download"></i>
 									<span class="m-nav__link-text">
 										Export Excel
@@ -33,7 +33,7 @@
 								</a>
 							</li>
 							<li class="m-nav__item">
-								<a href="{{ route('admin.'.$model.'.import') }}" class="m-nav__link">
+								<a href="{{ route('admin.'.$model_name.'.import') }}" class="m-nav__link">
 									<i class="m-nav__link-icon flaticon-up-arrow"></i>
 									<span class="m-nav__link-text">
 										Import Excel
@@ -41,15 +41,7 @@
 								</a>
 							</li>
 							<li class="m-nav__item">
-								<a href="{{ route('admin.'.$model.'.pdf') }}" class="m-nav__link">
-									<i class="m-nav__link-icon flaticon-file"></i>
-									<span class="m-nav__link-text">
-										Download PDF
-									</span>
-								</a>
-							</li>
-							<li class="m-nav__item">
-								<a href="{{ route('admin.'.$model.'.print') }}" class="m-nav__link">
+								<a href="{{ route('admin.'.$model_name.'.print') }}" class="m-nav__link">
 									<i class="m-nav__link-icon flaticon-clipboard"></i>
 									<span class="m-nav__link-text">
 										Print

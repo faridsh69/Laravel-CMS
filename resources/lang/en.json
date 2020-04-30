@@ -511,6 +511,8 @@
     "setting_developer" : "Developer Setting",
     "setting_contact" : "Contact Setting",
     "setting_advance" : "Advance Setting",
-    "no_file_existed" : "No file existed."
-
+    "no_file_existed" : "No file existed.",
+    "not_found" : "Not Found.",
+    "list_successfully" : "List Found Successfully.",
+    "show_successfully" : "Item Found Successfully."
 }

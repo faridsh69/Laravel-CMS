@@ -37,7 +37,8 @@
 				<tr>
 					@if(count($list) > 0)
 						<td>ID</td>
-						@foreach($list[0]->getColumns() as $key)
+						@foreach( collect($list[0]->getColumns())
+							->where('type', '!=', 'file')->where('type', '!=', 'array') as $key)
 						<td>{{ $key['name'] }}</td>
 						@endforeach
 						<td>Created at</td>
@@ -57,6 +58,6 @@
 	</div>
 </div>
 <script>
-	// window.print();
+	window.print();
 </script>
 </body></html>
