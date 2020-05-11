@@ -10,8 +10,6 @@ class GymAction extends BaseModel
         ['name' => 'title'],
         ['name' => 'url'],
         ['name' => 'description'],
-        ['name' => 'calorie'],
-        ['name' => 'properties'],
         ['name' => 'content'],
         ['name' => 'image'],
         ['name' => 'video'],

@@ -1,6 +1,14 @@
 # Laravel CMS - Every thing is ready!
 
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+### Why every time change models you have to write new migration?
+### Why every time change models you have to edit forms, tables, factory, seeder, controllers code?
+### Why you need to write repeated tests for your models?
+### Why you need to write repeated services like role, permission, log viewer, settings, routes for your new project?
+### Why you need to write repeated codes for your APIs?
+### Why you have not easy to use services for upload file, blogs with comments, rate, categorize and tag?
+### Why you need to write structure for your theme?
+### Why you are not using laravel CMS? :D
+
 
 ##### # Laravel CMS is an open source project that creates a complete infrastructure with standard code for anyone who wants to use Laravel. Preparing an structure to make GUI in Laravel development in the future
 
