@@ -1,20 +1,36 @@
 # Laravel CMS - Every thing is ready!
 
-### Why every time change models you have to write new migration?
+### Why every time change models you have to write new migration file?
+When you change your models based on the old model and new model your table will edit automatically! and if your table is not exist laravel cms will create it for you.
 ### Why every time change models you have to edit forms, tables, factory, seeder, controllers code?
+all form field types are defined and you just need to define what type of field you need for each columns. controller files all ready for a lot of logic that is needed for every enterprise projects.
 ### Why you need to write repeated tests for your models?
+Tests are ready for all models, you can change name of your models in config/cms.php
 ### Why you need to write repeated services like role, permission, log viewer, settings, routes for your new project?
+All of neccessary services are ready in this project, just check this code and start to using it.
 ### Why you need to write repeated codes for your APIs?
-### Why you have not easy to use services for upload file, blogs with comments, rate, categorize and tag?
+List of models that their api is ready is in config/cms.php just check them and easily your api,s are ready.
+### Why you dont use services for upload file, blogs with comments, rate, categorize and tag that are ready?
+You can't imaging that the best solution for save file is developed in this project, all files will save in storage/public/upload/Your-Model-Name/Model-ID/Model-Column.extention !
+For adding tag, category, blog and all neccessery features in all projects like comment, rate, like, share, download image, music, video is ready to use in the easiest way.
 ### Why you need to write structure for your theme?
+Theme structure with block and widget is developed in this project and dont hesitate to check resources/front/themes folder 
 ### Why you are not using laravel CMS? :D
+I dont accept any donate, This project is not for money, My main goal is to develope some codes that can help other developers stop developing repeated code and just skip a lot of steps for having a good project. just think about logic.
+ 
+## Demo
 
+[www.cms-laravel.com](http://www.cms-laravel.com)
 
-##### # Laravel CMS is an open source project that creates a complete infrastructure with standard code for anyone who wants to use Laravel. Preparing an structure to make GUI in Laravel development in the future
+[www.cms-laravel.com/document](http://www.cms-laravel.com/document)
 
-##### # Specify $columns in model then migration, form, seeder, factory, test, admin controller, admin routes, table, api, export to pdf and excel and policies with role and permission will be ready!
+[www.cms-laravel.com/admin](http://www.cms-laravel.com/admin)
 
-##### # Prepared services for notification, saving gallery images, creating backup, API authentication, create blogs with comments, rate, categorize and tag, create pages and menus, policies, routes, controllers, and unit tests. Provided structure for adding theme to Laravel project with blocks and modules.
+Check admin panel with username: farid.sh69@gmail.com & password: 1111
+
+##### Laravel CMS is an open source project that creates a complete infrastructure with standard code for anyone who wants to use Laravel. Preparing an structure to make GUI in Laravel development in the future
+##### Specify $columns in model then migration, form, seeder, factory, test, admin controller, admin routes, table, api, export to pdf and excel and policies with role and permission will be ready!
+##### Prepared services for notification, saving files, creating backup, API authentication, create blogs with comments, rate, categorize and tag, create pages and menus, policies, routes, controllers, and unit tests. Provided structure for adding theme to Laravel project with blocks and modules.
 
 
 Auto generate:
