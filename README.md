@@ -3,7 +3,7 @@
 ### Why every time change models you have to write new migration file?
 When you change your models based on the old model and new model your table will edit automatically! and if your table is not exist laravel cms will create it for you.
 ### Why every time change models you have to edit forms, tables, factory, seeder, controllers code?
-all form field types are defined and you just need to define what type of field you need for each columns. controller files all ready for a lot of logic that is needed for every enterprise projects.
+all form field types are defined and you just need to define what type of field you need for each columns. controller files all ready with a lot of logic codes that is needed for every enterprise projects. you can extend theme and add your logic.
 ### Why you need to write repeated tests for your models?
 Tests are ready for all models, you can change name of your models in config/cms.php
 ### Why you need to write repeated services like role, permission, log viewer, settings, routes for your new project?
@@ -17,7 +17,7 @@ For adding tag, category, blog and all neccessery features in all projects like 
 Theme structure with block and widget is developed in this project and dont hesitate to check resources/front/themes folder 
 ### Why you are not using laravel CMS? :D
 I dont accept any donate, This project is not for money, My main goal is to develope some codes that can help other developers stop developing repeated code and just skip a lot of steps for having a good project. just think about logic.
- 
+
 ## Demo
 
 [www.cms-laravel.com](http://www.cms-laravel.com)
