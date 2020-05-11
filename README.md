@@ -7,14 +7,14 @@ all form field types are defined and you just need to define what type of field 
 ### Why you need to write repeated tests for your models?
 Tests are ready for all models, you can change name of your models in config/cms.php
 ### Why you need to write repeated services like role, permission, log viewer, settings, routes for your new project?
-All of neccessary services are ready in this project, just check this code and start to using it.
+All of neccessary services are ready in this project, just check this code and start to using them.
 ### Why you need to write repeated codes for your APIs?
-List of models that their api is ready is in config/cms.php just check them and easily your api,s are ready.
+List of models that their api is ready is in config/cms.php just check them and be sure your api is ready with authentication.
 ### Why you dont use services for upload file, blogs with comments, rate, categorize and tag that are ready?
 You can't imaging that the best solution for save file is developed in this project, all files will save in storage/public/upload/Your-Model-Name/Model-ID/Model-Column.extention !
-For adding tag, category, blog and all neccessery features in all projects like comment, rate, like, share, download image, music, video is ready to use in the easiest way.
+For adding tag, category, blog and all neccessery features in all projects like comment, rate, like, share, download image, music, video is ready to use in extendable way.
 ### Why you need to write structure for your theme?
-Theme structure with block and widget is developed in this project and dont hesitate to check resources/front/themes folder 
+Theme structure with block and widget is developed in this project and dont hesitate to check resources/front/themes folder.
 ### Why you are not using laravel CMS? :D
 I dont accept any donate, This project is not for money, My main goal is to develope some codes that can help other developers stop developing repeated code and just skip a lot of steps for having a good project. just think about logic.
 
