@@ -1,19 +1,20 @@
 <?php
 
-$models = Config::get('cms.front_routes');
+$model_slugs = Config::get('cms.front_routes');
 
-foreach($models as $model_sm)
+foreach($model_slugs as $model_slug)
 {
-	$model = ucfirst($model_sm);
-	$class_name = 'App\\Models\\' . $model;
-	Route::group(['prefix' => $model_sm, 'namespace' => $model, 'as' => $model_sm . '.'], function ()
-	{
-		Route::get('', 'FrontController@index')->name('index');
-		Route::get('category', 'FrontController@getCategories')->name('category.index');
-		Route::get('category/{url}', 'FrontController@getCategory')->name('category.show');
-		Route::get('tag', 'FrontController@getTags')->name('tag.index');
-		Route::get('tag/{url}', 'FrontController@getTag')->name('tag.show');
-		Route::get('{url}', 'FrontController@show')->name('show');
+	$controller_name = \Str::studly($model_slug). '\FrontController';
+	if (!file_exists(__DIR__. '\..\app\Http\Controllers\Front\\'. $controller_name. '.php')) {
+		$controller_name = 'FrontController';
+	}
+	Route::group(['prefix' => $model_slug, 'as' => $model_slug. '.'], function () use ($controller_name) {
+		Route::get('', $controller_name. '@index')->name('index');
+		Route::get('category', $controller_name. '@getCategories')->name('category.index');
+		Route::get('category/{url}', $controller_name. '@getCategory')->name('category.show');
+		Route::get('tag', $controller_name. '@getTags')->name('tag.index');
+		Route::get('tag/{url}', $controller_name. '@getTag')->name('tag.show');
+		Route::get('{url}', $controller_name. '@show')->name('show');
 	});
 }
 

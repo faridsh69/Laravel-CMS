@@ -21,7 +21,7 @@
 					language: {{$category->language}}
 					<br>
 				</small>
-				<a href="{{ route('front.' . lcfirst(class_basename($list[0])) . '.category.index') }}"> Check other categories </a>
+				<a href="{{ route('front.'. Str::kebab(class_basename($list[0])). '.category.index') }}"> Check other categories </a>
 			</div>
 		</div>
 		@elseif(isset($tag))
@@ -43,21 +43,21 @@
 					language: {{$tag->language}}
 					<br>
 				</small>
-				<a href="{{ route('front.' . lcfirst(class_basename($list[0])) . '.tag.index') }}"> Check other tags </a>
+				<a href="{{ route('front.'. Str::kebab(class_basename($list[0])). '.tag.index') }}"> Check other tags </a>
 			</div>
 		</div>
 		@elseif(isset($categories))
 		{{ __('categories') }}:
 		<ul>
 			@foreach($categories as $category)
-			<li style="padding: 10px;"><a href="{{ route('front.' . lcfirst(class_basename($list[0])) . '.category.show', $category->url) }}"><i class="fa {{ $category->icon }}"></i> {{ $category->title }}</a></li>
+			<li style="padding: 10px;"><a href="{{ route('front.'. Str::kebab(class_basename($list[0])). '.category.show', $category->url) }}"><i class="fa {{ $category->icon }}"></i> {{ $category->title }}</a></li>
 			@endforeach
 		</ul>
 		@elseif(isset($tags))
 		{{ __('tags') }}:
 		<ul>
 			@foreach($tags as $tag)
-			<li style="padding: 10px;"><a href="{{ route('front.' . lcfirst(class_basename($list[0])) . '.tag.show', $tag->url) }}"><i class="fa {{ $tag->icon }}"></i> {{ $tag->title }}</a></li>
+			<li style="padding: 10px;"><a href="{{ route('front.'. Str::kebab(class_basename($list[0])). '.tag.show', $tag->url) }}"><i class="fa {{ $tag->icon }}"></i> {{ $tag->title }}</a></li>
 			@endforeach
 		</ul>
 		@endif
@@ -66,7 +66,7 @@
 		<div class="row">
 			@foreach($list as $item)
 			<div class="col-sm-6 col-md-4 mb-4 p-2">
-				<a href="{{ route('front.' . lcfirst(class_basename($item)) . '.show', $item->url) }}">
+				<a href="{{ route('front.'. Str::kebab(class_basename($item)). '.show', $item->url) }}">
 					<div>
 						<img src="{{ $item->src('image') }}" style="height: 100px;">
 					</div>
