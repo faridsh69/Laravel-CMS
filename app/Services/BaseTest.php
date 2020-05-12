@@ -14,12 +14,18 @@ class BaseTest extends TestCase
     // single model to test
     public $model_slug;
 
-    public $methods = [
+    public $resource_methods = [
         'print',
         'export',
         'datatable',
         'list.index',
         'list.create',
+    ];
+
+    public $front_methods = [
+        'index',
+        'category.index',
+        'tag.index',
     ];
 
     public function resourceTest()
@@ -33,7 +39,7 @@ class BaseTest extends TestCase
 
         foreach($this->model_slugs as $model_slug)
         {
-            echo("\nTesting ". $model_slug. '...');
+            echo("\nResource Testing ". $model_slug. '...');
             $model_name = Str::studly($model_slug);
             $model_namespace = config('cms.config.models_namespace'). $model_name;
             $model_repository = new $model_namespace();
@@ -85,18 +91,69 @@ class BaseTest extends TestCase
             // force delete fake model
             $fake_model->forceDelete();
 
-            foreach($this->methods as $method)
+            foreach($this->resource_methods as $method)
             {
-                $this->_checkMethod($method, $model_slug);
+                $this
+                    ->get(route('admin.'. $model_slug. '.'. $method))
+                    ->assertOk();
             }
             echo('Done!');
         }
     }
 
-    private function _checkMethod($mothod_name, $model_slug)
+    public function frontTest()
     {
-        $this
-            ->get(route('admin.'. $model_slug. '.'. $mothod_name))
-            ->assertOk();
+        if($this->model_slugs === []){
+            $this->model_slugs = [$this->model_slug];
+            if($this->model_slug === null){
+                $this->model_slugs = config('cms.admin_tests');
+            }
+        }
+
+        foreach($this->model_slugs as $model_slug)
+        {
+            echo("\nFront Testing ". $model_slug. '...');
+            $model_name = Str::studly($model_slug);
+            $model_namespace = config('cms.config.models_namespace'). $model_name;
+            $model_repository = new $model_namespace();
+
+            $user = User::first();
+            $this->actingAs($user);
+
+            // get fake model that created at this test
+            $fake_model = $model_repository->orderBy('id', 'desc')->first();
+
+            // show fake model
+            $this
+                ->get(route('front.'. $model_slug. '.show', $fake_model->url))
+                ->assertOk();
+
+            // get model category
+            $category_model = \App\Models\Category::ofType($model_slug)->first();
+            // show category of model
+            if($category_model){
+                $this
+                    ->get(route('front.'. $model_slug. '.category.show', $category_model->url))
+                    ->assertOk();
+            }
+
+            // get model tag
+            $tag_model = \App\Models\Tag::ofType($model_slug)->first();
+            
+            // show tag of model
+            if($tag_model){
+                $this
+                    ->get(route('front.'. $model_slug. '.tag.show', $tag_model->url))
+                    ->assertOk();
+            }
+
+            foreach($this->front_methods as $method)
+            {
+                $this
+                    ->get(route('front.'. $model_slug. '.'. $method))
+                    ->assertOk();
+            }
+            echo('Done!');
+        }
     }
 }
