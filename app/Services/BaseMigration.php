@@ -115,7 +115,7 @@ class BaseMigration extends Migration
         $old_database_columns = Schema::getColumnListing($model_table);
         $extra_columns = ['id', 'created_at', 'updated_at', 'deleted_at'];
         $drop_columns = $old_database_columns;
-        $add_columns = $model_columns;
+        $add_columns = collect($model_columns)->where('database', '!=', 'none')->toArray();
         foreach($old_database_columns as $column_key => $old_database_column){
             $array_index = array_search($old_database_column, collect($model_columns)->pluck('name')->toArray());
             if($array_index !== false){
@@ -126,8 +126,8 @@ class BaseMigration extends Migration
                 unset($drop_columns[$column_key]);
             }
         }
-        echo 'droping '. count($drop_columns). ' columns. ';
-        echo 'adding '. count($add_columns). ' columns. ';
+        echo ' droping '. count($drop_columns). ' columns. ';
+        echo 'adding '. count($add_columns). ' columns.';
         Schema::table($model_table, function (Blueprint $table) use ($add_columns, $drop_columns) {
             foreach($drop_columns as $drop_column){
                 if(strpos($drop_column, '_id') !== false){
