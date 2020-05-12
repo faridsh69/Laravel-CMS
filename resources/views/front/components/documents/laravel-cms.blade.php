@@ -1,7 +1,7 @@
 @extends('front.components.documents.index')
 @section('document-data')
-<h1>Laravel Usually Performance Mistakes </h1>
-<ul class="service-guide">
+<h1>Laravel CMS </h1>
+<!-- <ul class="service-guide">
 	<li><a href="#">Use relation in foreach array</a></li>
 	<li><a href="#">Use relation in foreach without using 'with'</a></li>
 	<li><a href="#">Auth::user()->id</a></li>
@@ -9,7 +9,7 @@
 	<li><a href="#">Use yield for script and style</a></li>
 </ul>
 <img src="{{ $page->image }}">
-
+ -->
 <h2> Why every time change models you have to write new migration file? </h2>
 <p>
 When you change your models based on the old model and new model your table will edit automatically! and if your table is not exist laravel cms will create it for you.
