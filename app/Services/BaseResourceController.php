@@ -48,6 +48,7 @@ class BaseResourceController extends BaseAdminController
         $this->model_repository = new $this->model_namespace;
         $this->model_columns = $this->model_repository->getColumns();
         $this->model_form = 'App\Forms\\'. $this->model_name. 'Form';
+        dd($this->model_form);
         if(!file_exists(__DIR__. '\..\..\\'. $this->model_form. '.php')){
             $this->model_form = 'App\Forms\Form';
         }
