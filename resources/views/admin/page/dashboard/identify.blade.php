@@ -44,10 +44,10 @@
 		</form>
 	@endif
 	<div class="show-file">
-		@if( count(json_decode(Auth::user()->files_src($document_title))) === 0)
+		@if( count(Auth::user()->srcs($document_title)) === 0)
 			{{ __('no_file_existed') }}
 		@endif
-		@foreach(json_decode(\Auth::user()->files_src($document_title)) as $src)
+		@foreach(Auth::user()->srcs($document_title) as $src)
 			<img src="{{ $src }}" alt="{{ $document_title }} image">
 			<div class="file-tools mt-2">
 				<a download href="{{ $src }}" class="btn btn-outline-info m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air"><span>
