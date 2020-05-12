@@ -78,7 +78,7 @@ class BaseFactory
                                 '/../../public_html/cdn/images/front/general/test/'. $file_accept);
                             $fake_data = [];
                             foreach($upload_files as $file){
-                                $path = $base_path. '\\'. $file;
+                                $path = $base_path. '/'. $file;
                                 $fake_data[] = new UploadedFile($path, $file, $extention);
                             }
                         }
