@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Str;
 
-$database = [
+return [
     'default' => env('DB_CONNECTION', 'mysql'),
 
     'connections' => [
@@ -94,15 +94,3 @@ $database = [
         ],
     ],
 ];
-if(env('DB_DATABASE') === ''){
-    if(isset($_SERVER['SERVER_NAME'])){
-        // database prefix for multiple sites
-        $prefix = 'faridsh_0';
-        $server_name = $_SERVER['SERVER_NAME'];
-        // cut after www.
-        $database_name = $prefix . substr($server_name, 4, 6);
-        $database['connections']['mysql']['database'] = $database_name;
-    }
-}
-
-return $database;

@@ -26,6 +26,21 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if(env('DB_DATABASE') === ''){
+            $database_name = 'cms';
+            if(isset($_SERVER['SERVER_NAME'])){
+                $domain_map = [
+                    'www.localhost' => 'cms',
+                    'cms.test' => 'test_cms',
+                ];
+                $server_name = $_SERVER['SERVER_NAME'];
+                $database_name = $domain_map[$server_name];
+            }
+            config(['database.connections.mysql.database' => $database_name]);
+            // dd( config('database.connections.mysql.database') );
+        }
+
+
         $seconds = 60;
         if(! Schema::hasTable('setting_generals') || SettingGeneral::first() === null){
             return 'general settings does not exist!';
