@@ -113,7 +113,6 @@ class BaseFrontController extends Controller
         $this->meta['title'] = $this->model_translated. ' | Category | '. $category->title;
         $this->meta['description'] = $category->description;
 
-        dd($category->models());
         $list = $category->models()->active()->language()
             ->orderBy('updated_at', 'desc')
             ->paginate(config('setting-general.pagination_number'));
