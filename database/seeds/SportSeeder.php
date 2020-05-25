@@ -2,6 +2,7 @@
 
 use App\Models\Block;
 use App\Models\Category;
+use App\Models\GymAction;
 use App\Models\Module;
 use App\Models\Page;
 use App\Models\SettingContact;
@@ -23,44 +24,59 @@ class SportSeeder extends Seeder
         // Category
         $categories = [
             [
-             'type' => 'gym-action',
+             	'type' => 'gym-action',
+             	'url' => 'jolo-bazo',
                 'title' => 'ﺟﻠﻮ ﺑﺎﺯﻭ',
             ],
             [
-             'type' => 'gym-action',
+             	'type' => 'gym-action',
+             	'url' => 'posht-bazo',
                 'title' => 'ﭘﺸﺖ ﺑﺎﺯﻭ',
             ],
             [
-             'type' => 'gym-action',
+             	'type' => 'gym-action',
+             	'url' => 'shekam',
                 'title' => 'ﭘﻬﻠﻮ ﻭ ﺷﮑﻢ',
             ],
             [
-             'type' => 'gym-action',
+             	'type' => 'gym-action',
+             	'url' => 'jolo-ran',
                 'title' => 'ﺟﻠﻮ ﺭاﻥ',
             ],
             [
-             'type' => 'gym-action',
+             	'type' => 'gym-action',
+             	'url' => 'posht-ran',
                 'title' => 'ﭘﺸﺖ ﺭاﻥ',
             ],
             [
-             'type' => 'gym-action',
+             	'type' => 'gym-action',
+             	'url' => 'zirbaghal',
                 'title' => 'ﺯﯾﺮﺑﻐﻞ',
             ],
             [
-             'type' => 'gym-action',
+             	'type' => 'gym-action',
+             	'url' => 'sine',
                 'title' => 'ﺳﯿﻨﻪ',
             ],
             [
-             'type' => 'gym-action',
+             	'type' => 'gym-action',
+             	'url' => 'sarshone',
                 'title' => 'ﺳﺮﺷﺎﻧﻪ',
             ],
             [
-             'type' => 'gym-action',
+             	'type' => 'gym-action',
+             	'url' => 'kool',
                 'title' => 'ﮐﻮﻝ',
             ],
             [
-             'type' => 'gym-action',
+             	'type' => 'gym-action',
+             	'url' => 'sagh-pa',
                 'title' => 'ﺳﺎﻕ ﭘﺎ',
+            ],
+            [
+             	'type' => 'gym-action',
+             	'url' => 'saed',
+                'title' => 'ساعد',
             ],
         ];
 
@@ -72,23 +88,28 @@ class SportSeeder extends Seeder
         // Tag
         $tags = [
             [
-             'type' => 'gym-action',
+             	'type' => 'gym-action',
+             	'url' => 'havazi',
                 'title' => 'ﻫﻮاﺯﯼ',
             ],
             [
-             'type' => 'gym-action',
+             	'type' => 'gym-action',
+             	'url' => 'azole saz',
                 'title' => 'ﻋﻀﻠﻪ ﺳﺎﺯ',
             ],
             [
-             'type' => 'gym-action',
+             	'type' => 'gym-action',
+             	'url' => 'harekate-sangin',
                 'title' => 'ﺣﺮﮐﺖ ﺳﻨﮕﯿﻦ',
             ],
             [
-             'type' => 'gym-action',
+             	'type' => 'gym-action',
+             	'url' => 'harekate-sabok',
                 'title' => 'ﺣﺮﮐﺖ ﺳﺒﮏ',
             ],
             [
-             'type' => 'gym-action',
+             	'type' => 'gym-action',
+             	'url' => 'esteghamati',
                 'title' => 'اﺳﺘﻘﺎﻣﺘﯽ',
             ],
         ];
@@ -528,5 +549,68 @@ class SportSeeder extends Seeder
             }
             Module::firstOrCreate($module);
         }
-    }
+
+	    // Gym Action
+	    $gym_actions = [
+	        [
+	            'title' => 'جلو بازو سیم کش از پشت',
+	            'url' => 'jolo-bazo-sim-kesh',
+	            'description' => '',
+	            'content' => 'یک دسته را به قرقره دستگاه سیم کش وصل کنید ، دستگیره را در دست چپ خود بکشید و یک قدم به جلو (به دور از دستگاه) بردارید تا اینکه در کابل تنش ایجاد شود و بازوی شما کمی به پشت بدن شما کشیده شود. پای خود را محکم کنید تا پای راست شما در جلو باشد. دسته را بچرخانید اما اجازه ندهید که آرنج شما به جلو حرکت کند..
+',
+	            'image' => 'jolo-bazo-sim-kesh.jpg',
+	            'category' => 'ﺟﻠﻮ ﺑﺎﺯﻭ',
+	            'tags' => 'ﻋﻀﻠﻪ ﺳﺎﺯ|ﺣﺮﮐﺖ ﺳﻨﮕﯿﻦ',
+	            'relateds' => '',
+	            'activated' => 1,
+	        ],
+	        [
+	            'title' => 'چلو بازو لاری با هارتل',
+	            'url' => 'jolo-bazo-sim-kesh',
+	            'description' => '',
+	            'content' => 'روی یک نیمکت لاری بنشینید و ارتفاع را طوری تنظیم کنید که زیر بغل شما بالای نیمکت قرار بگیرد.هارتل را در عرض شانه ها با بازوها بکشید(اجازه دهید ارنج ها کمی خم باشد). هازتل را بالا بکشید و قسمت پشتی بازوهای خود را در برابر نیمکت نگه دارید. سه ثانیه طول بکشد تا هارتل به پایین پایین بیاید.
+',
+	            'image' => 'jolo-bazo-lari.jpg',
+	            'category' => 'ﺟﻠﻮ ﺑﺎﺯﻭ',
+	            'tags' => 'ﻋﻀﻠﻪ ﺳﺎﺯ|ﺣﺮﮐﺖ ﺳﻨﮕﯿﻦ',
+	            'relateds' => '',
+	            'activated' => 1,
+	        ],
+	        [
+	            'title' => 'جلو بازو هارتل مچ برعکس',
+	            'url' => 'jolo-bazo-moch-barax',
+	            'description' => '',
+	            'content' => 'رهارتل را در هر پهنای آن  که راحت باشید بچرخانید. بازوها را در دوطرف خود نگه دارید ، هارتل را بالا بیاورید.
+
+',
+	            'image' => 'jolo-bazo-moch-barax.jpg',
+	            'category' => 'ﺟﻠﻮ ﺑﺎﺯﻭ',
+	            'tags' => 'ﻋﻀﻠﻪ ﺳﺎﺯ|ﺣﺮﮐﺖ ﺳﻨﮕﯿﻦ',
+	            'relateds' => '',
+	            'activated' => 1,
+	        ],
+	    ];
+
+	    foreach($gym_actions as $gym_action){
+	    	$category = Category::ofType('gym-action')->where('title', $gym_action['category'])->first();
+	    	$gym_action_model = new GymAction();
+	    	$gym_action_model->title = $gym_action['title'];
+	    	$gym_action_model->url = $gym_action['url'];
+	    	$gym_action_model->description = $gym_action['description'];
+	    	$gym_action_model->content = $gym_action['content'];
+	    	$gym_action_model->image = asset($image_folder_name. 'gym-action/'. $gym_action['image']);
+	    	$gym_action_model->category_id = $category->id;
+	        $gym_action_model->language = $language;
+	        $gym_action_model->activated = 1;
+
+	        if( !GymAction::where('url', $gym_action_model->url)->first() ){
+		        $gym_action_model->save();
+
+		        $tags = Tag::ofType('gym-action')->whereIn('title', explode('|', $gym_action['tags']))->get();
+		        $gym_action_model->tags()->sync($tags);
+		        $gym_actions_related = GymAction::orderBy('id', 'desc')->take(4)->get();
+		        $gym_action_model->relateds()->sync($gym_actions_related);
+		    }
+	    }
+	}
 }
