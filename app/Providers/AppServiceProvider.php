@@ -30,14 +30,34 @@ class AppServiceProvider extends ServiceProvider
             $database_name = 'cms';
             if(isset($_SERVER['SERVER_NAME'])){
                 $domain_map = [
-                    'www.localhost' => 'cms',
-                    'cms.test' => 'test_cms',
+                    'www.cms.test' => 'cms',
+                    'www.sport.test' => 'test_cms',
+                    'www.azimizarf.ir' => 'faridsh_0azimiz',
+                    'www.dairytools.ir' => 'faridsh_0dairyt',
+                    'www.faridshahidi.ir' => 'faridsh_0farids',
+                    'www.fitnesgym.ir' => 'faridsh_0fitnes',
+                    'www.googleshops.ir' => 'faridsh_0google',
+                    'www.iranzibai.ir' => 'faridsh_0iranzi',
+                    'www.khodro-emdad.ir' => 'faridsh_0khodro',
+                    'www.maedejalalkhah.ir' => 'faridsh_0maedej',
+                    'www.marklebas.ir' => 'faridsh_0markle',
+                    'www.mdfdecor.ir' => 'faridsh_0mdfdec',
+                    'www.mobileforoshy.ir' => 'faridsh_0mobile',
+                    'www.moneyconverter.ir' => 'faridsh_0moneyc',
+                    'www.navidmansouri.ir' => 'faridsh_0navidm',
+                    'www.remotedeveloper.ir' => 'faridsh_0remote',
+                    'www.repairsite.ir' => 'faridsh_0repair',
+                    'www.reservehospital.ir' => 'faridsh_0reserv',
+                    'www.rotbeyek.ir' => 'faridsh_0rotbey',
+                    'www.sanatishir.ir' => 'faridsh_0sanati',
+                    'www.shopsang.ir' => 'faridsh_0shopsa',
+                    'www.supermarkety.ir' => 'faridsh_0superm',
+                    'www.tankouk.com' => 'faridsh_0tankou',
                 ];
                 $server_name = $_SERVER['SERVER_NAME'];
                 $database_name = $domain_map[$server_name];
             }
             config(['database.connections.mysql.database' => $database_name]);
-            // dd( config('database.connections.mysql.database') );
         }
 
 
