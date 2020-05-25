@@ -363,9 +363,9 @@ class BaseModel extends Model
                 ],
                 'file' => [
                     'name' => 'file',
-                    'type' => 'string',
+                    'type' => 'text',
                     'database' => 'nullable',
-                    'rule' => 'nullable|max:191',
+                    'rule' => 'nullable',
                     'help' => 'Upload and select file from file manager',
                     'form_type' => 'file',
                     'file_manager' => true, // its uploaded from file manager
@@ -375,9 +375,9 @@ class BaseModel extends Model
                 ],
                 'image' => [
                     'name' => 'image',
-                    'type' => 'string',
+                    'type' => 'text',
                     'database' => 'nullable',
-                    'rule' => 'nullable|max:191',
+                    'rule' => 'nullable',
                     'help' => 'Upload and select image from file manager',
                     'form_type' => 'file',
                     'file_manager' => true,
@@ -387,9 +387,9 @@ class BaseModel extends Model
                 ],
                 'video' => [
                     'name' => 'video',
-                    'type' => 'string',
+                    'type' => 'text',
                     'database' => 'nullable',
-                    'rule' => 'nullable|max:191',
+                    'rule' => 'nullable',
                     'help' => 'Upload and select video from file manager',
                     'form_type' => 'file',
                     'file_manager' => true,
@@ -399,9 +399,9 @@ class BaseModel extends Model
                 ],
                 'audio' => [
                     'name' => 'audio',
-                    'type' => 'string',
+                    'type' => 'text',
                     'database' => 'nullable',
-                    'rule' => 'nullable|max:191',
+                    'rule' => 'nullable',
                     'help' => 'Upload and select audio from file manager',
                     'form_type' => 'file',
                     'file_manager' => true,

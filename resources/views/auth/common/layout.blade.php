@@ -23,7 +23,7 @@
 		@endif
 		@stack('style')
 
-		<link rel="shortcut icon" href="{{ asset(config('setting-general.favicon')) }}" />
+		<link rel="shortcut icon" href="{{ config('setting-general.favicon') }}" />
 	</head>
 	<body class="m--skin- m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default"  >
 		<div class="m-grid m-grid--hor m-grid--root m-page">

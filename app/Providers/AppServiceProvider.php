@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         if(env('DB_DATABASE') === ''){
-            $database_name = 'cms';
+            $database_name = '';
             if(isset($_SERVER['SERVER_NAME'])){
                 $domain_map = [
                     'www.cms.test' => 'cms',

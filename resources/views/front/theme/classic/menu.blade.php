@@ -5,7 +5,7 @@
                 <div class="col-12 h-100">
                     <div class="header-content h-100 d-flex align-items-center justify-content-between">
                         <div class="academy-logo">
-                            <a href="{{ route('front.page.index', '')}}"><img src="{{ asset(config('setting-general.logo')) }}" alt="website logo" class="logo"></a>
+                            <a href="{{ route('front.page.index', '')}}"><img src="{{ config('setting-general.logo') }}" alt="website logo" class="logo"></a>
                         </div>
                         <div class="login-content">
                             @if(!\Auth::id())

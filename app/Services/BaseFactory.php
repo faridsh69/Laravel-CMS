@@ -30,11 +30,9 @@ class BaseFactory
                     $database = isset($column['database']) ? $column['database'] : null;
 
                     if($name === 'url'){
-                        // $fake_data = 'fake-' . $faker->slug();
                         $fake_data = $model_slug. '-url-'. $random_int;
                     }
                     elseif($name === 'title'){
-                        // $fake_data = $faker->jobTitle();
                         $fake_data = $model_name. ' title '. $random_int;
                     }
                     elseif($name === 'description'){
@@ -45,6 +43,9 @@ class BaseFactory
                     }
                     elseif($name === 'canonical_url'){
                         $fake_data = null;
+                    }
+                    elseif($name === 'google_index'){
+                        $fake_data = 0;
                     }
                     elseif($name === 'activated'){
                         $fake_data = 1;
@@ -64,7 +65,7 @@ class BaseFactory
                         }
                         $filemanager_files = [];
                         $upload_files = [];
-                        $random_count = rand(0,3);
+                        $random_count = rand(0,5);
                         for($i = 1; $i <= $random_count; $i ++){
                             $filemanager_files[] = asset('images/front/general/test/'. 
                                 $file_accept. '/'. $i. '.'. $extention);
@@ -87,7 +88,7 @@ class BaseFactory
                         $fake_data = $faker->realText(100);
                     }
                     elseif($name === 'icon'){
-                        $fake_data = $faker->word();
+                        $fake_data = 'fa fa-book';
                     }
                     elseif($name === 'full_name'){
                         $fake_data = $faker->name();
@@ -126,7 +127,7 @@ class BaseFactory
                         $fake_data = 'en';
                     }
                     elseif($name === 'password'){
-                        $password = '123456';
+                        $password = '1111';
                         $fake_data = $password;
                     }
                     elseif($type === 'array'){

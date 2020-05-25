@@ -22,7 +22,7 @@
 			<b>{{ __($column['name']) }}</b>
 			<div class="row mt-3 mb-5">
 				@foreach($srcs as $src)
-				<div class="col-sm-4">
+				<div class="col-sm-12">
 					@if($file_accept === 'image')
 				    	<img alt="image" src="{{ $src }}" style="max-width: 100%;">
 					@elseif($file_accept === 'video')

@@ -5,7 +5,7 @@ not used
     <div class="m-login__wrapper padding-0">
         <div class="m-login__logo">
             <a href="javascript:void(0)">
-                <img src="{{ asset(config('setting-general.logo')) }}">
+                <img src="{{ config('setting-general.logo') }}">
             </a>
         </div>
         <div class="m-login__signup1">

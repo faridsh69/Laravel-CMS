@@ -51,7 +51,7 @@
 			    background-size: cover;
 			}
 		</style>
-		<link rel="shortcut icon" href="{{ asset(config('setting-general.favicon')) }}" />
+		<link rel="shortcut icon" href="{{ config('setting-general.favicon') }}" />
 	</head>
 	<!-- end::Head -->
     <!-- end::Body -->

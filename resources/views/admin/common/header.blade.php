@@ -34,7 +34,7 @@
 	<meta property="twitter:domain" content="{{ url('/') }}">
 
 	<link rel="canonical" href="{{ url()->current() }}">
-	<link rel="shortcut icon" href="{{ asset(config('setting-general.favicon')) }}" />
+	<link rel="shortcut icon" href="{{ config('setting-general.favicon') }}" />
 
 	<link href="{{ asset('css/admin/vendors.bundle.css') }}" rel="stylesheet" />
 	<link href="{{ asset('css/admin/style.bundle.css') }}" rel="stylesheet" />

@@ -11,7 +11,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <meta name="theme-color" content="{{ config('setting-developer.theme_color_1') }}">
 <link rel="canonical" href="{{ $meta['canonical_url'] }}">
-<link rel="shortcut icon" href="{{ asset(config('setting-general.favicon')) }}" />
+<link rel="shortcut icon" href="{{ config('setting-general.favicon') }}" />
 
 <meta itemprop="name" content="{{ $meta['title'] }}">
 <meta itemprop="description" content="{{ $meta['description'] }}">

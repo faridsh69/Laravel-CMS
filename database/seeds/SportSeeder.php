@@ -18,8 +18,8 @@ class SportSeeder extends Seeder
     {
     	$language = 'fa';
         $folder_name = 'sport';
-  		$image_folder_name = '/storage/files/photos/' . $folder_name . '/';
-  		$video_folder_name = '/storage/files/videos/' . $folder_name . '/';
+  		$image_folder_name = '/storage/photos/' . $folder_name . '/';
+  		$video_folder_name = '/storage/videos/' . $folder_name . '/';
 
         // Category
         $categories = [
@@ -554,11 +554,11 @@ class SportSeeder extends Seeder
 	    $gym_actions = [
 	        [
 	            'title' => 'جلو بازو سیم کش از پشت',
-	            'url' => 'jolo-bazo-sim-kesh',
+	            'url' => 'front-arm-drawer',
 	            'description' => '',
 	            'content' => 'یک دسته را به قرقره دستگاه سیم کش وصل کنید ، دستگیره را در دست چپ خود بکشید و یک قدم به جلو (به دور از دستگاه) بردارید تا اینکه در کابل تنش ایجاد شود و بازوی شما کمی به پشت بدن شما کشیده شود. پای خود را محکم کنید تا پای راست شما در جلو باشد. دسته را بچرخانید اما اجازه ندهید که آرنج شما به جلو حرکت کند..
 ',
-	            'image' => 'jolo-bazo-sim-kesh.jpg',
+	            'image' => 'front-arm/drawer.jpg',
 	            'category' => 'ﺟﻠﻮ ﺑﺎﺯﻭ',
 	            'tags' => 'ﻋﻀﻠﻪ ﺳﺎﺯ|ﺣﺮﮐﺖ ﺳﻨﮕﯿﻦ',
 	            'relateds' => '',
@@ -566,11 +566,11 @@ class SportSeeder extends Seeder
 	        ],
 	        [
 	            'title' => 'چلو بازو لاری با هارتل',
-	            'url' => 'jolo-bazo-lari',
+	            'url' => 'front-arm-lari',
 	            'description' => '',
 	            'content' => 'روی یک نیمکت لاری بنشینید و ارتفاع را طوری تنظیم کنید که زیر بغل شما بالای نیمکت قرار بگیرد.هارتل را در عرض شانه ها با بازوها بکشید(اجازه دهید ارنج ها کمی خم باشد). هازتل را بالا بکشید و قسمت پشتی بازوهای خود را در برابر نیمکت نگه دارید. سه ثانیه طول بکشد تا هارتل به پایین پایین بیاید.
 ',
-	            'image' => 'jolo-bazo-lari.jpg',
+	            'image' => 'front-arm/lari.jpg',
 	            'category' => 'ﺟﻠﻮ ﺑﺎﺯﻭ',
 	            'tags' => 'ﻋﻀﻠﻪ ﺳﺎﺯ|ﺣﺮﮐﺖ ﺳﻨﮕﯿﻦ',
 	            'relateds' => '',
@@ -578,12 +578,12 @@ class SportSeeder extends Seeder
 	        ],
 	        [
 	            'title' => 'جلو بازو هارتل مچ برعکس',
-	            'url' => 'jolo-bazo-moch-barax',
+	            'url' => 'front-arm-halter',
 	            'description' => '',
 	            'content' => 'رهارتل را در هر پهنای آن  که راحت باشید بچرخانید. بازوها را در دوطرف خود نگه دارید ، هارتل را بالا بیاورید.
 
 ',
-	            'image' => 'jolo-bazo-moch-barax.jpg',
+	            'image' => 'front-arm/halter.jpg',
 	            'category' => 'ﺟﻠﻮ ﺑﺎﺯﻭ',
 	            'tags' => 'ﻋﻀﻠﻪ ﺳﺎﺯ|ﺣﺮﮐﺖ ﺳﻨﮕﯿﻦ',
 	            'relateds' => '',
