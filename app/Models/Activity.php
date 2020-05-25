@@ -55,7 +55,9 @@ class Activity extends BaseModel
 
     public function causedBy($user)
     {
-        $this->user_id = $user->id;
+        if($user){
+            $this->user_id = $user->id;
+        }
 
         return $this;
     }
