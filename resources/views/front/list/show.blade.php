@@ -17,6 +17,7 @@
 					$file_accept = $column['file_accept'];
 					$srcs = $item->srcs($column['name']);
 				}
+				$model_slug = \Str::kebab(class_basename($item));
 			@endphp
 			@if($file_accept)
 			<b>{{ __($column['name']) }}</b>
@@ -67,13 +68,13 @@
 		</small>
 		<br>
 		@if($item->category)
-		<p>{{ __('category') }}: <a href="{{ route('front.blog.category.show', $item->category->url) }}"><i class="fa {{ $item->category->icon }}"></i>{{ $item->category->title }}</a></p>
+		<p>{{ __('category') }}: <a href="{{ route('front.'. $model_slug .'.category.show', $item->category->url) }}"><i class="fa {{ $item->category->icon }}"></i>{{ $item->category->title }}</a></p>
 		@endif
 		@if(count($item->tags) > 0)
 		<ul>{{ __('tags') }}: 
 			@foreach($item->tags as $tag)
 				@if($tag->url)
-			<li><a href="{{ route('front.blog.tag.show', $tag->url) }}"><i class="fa {{ $tag->icon }}"></i>{{ $tag->title }}</a></li>
+			<li><a href="{{ route('front.'. $model_slug .'.tag.show', $tag->url) }}"><i class="fa {{ $tag->icon }}"></i>{{ $tag->title }}</a></li>
 				@endif
 			@endforeach
 		</ul>
@@ -85,12 +86,12 @@
 		@if(count($item->relateds) > 0)
 		<ul>{{ __('Related') }}: 
 			@foreach($item->relateds as $related)
-			<li><a href="{{ route('front.blog.show', $related->url) }}">{{ $related->title }}</a></li>
+			<li><a href="{{ route('front.'. $model_slug .'.show', $related->url) }}">{{ $related->title }}</a></li>
 			@endforeach
 		</ul>
 		<br>
 		@endif
-		<a href="whatsapp://send?text={{ route('front.blog.show', $item->url) }}" data-action="share/whatsapp/share"><i class="fa fa-share"></i> Share via Whatsapp</a>
+		<a href="whatsapp://send?text={{ route('front.'. $model_slug .'.show', $item->url) }}" data-action="share/whatsapp/share"><i class="fa fa-share"></i> Share via Whatsapp</a>
 	</div>
 </div>
 @endsection
