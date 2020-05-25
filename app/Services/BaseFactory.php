@@ -65,7 +65,7 @@ class BaseFactory
                         }
                         $filemanager_files = [];
                         $upload_files = [];
-                        $random_count = rand(0,5);
+                        $random_count = rand(0,3);
                         for($i = 1; $i <= $random_count; $i ++){
                             $filemanager_files[] = asset('images/front/general/test/'. 
                                 $file_accept. '/'. $i. '.'. $extention);
