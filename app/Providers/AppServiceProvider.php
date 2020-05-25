@@ -30,30 +30,31 @@ class AppServiceProvider extends ServiceProvider
             $database_name = 'cms';
             if(isset($_SERVER['SERVER_NAME'])){
                 $domain_map = [
-                    'www.cms-laravel.com' => 'faridsh_0cms-la',
-                    'www.tankouk.com' => 'faridsh_0tankou',
                     'www.cms.test' => 'cms',
                     'www.sport.test' => 'test_cms',
-                    'www.azimizarf.ir' => 'faridsh_0azimiz',
-                    'www.dairytools.ir' => 'faridsh_0dairyt',
+                    'www.cms-laravel.com' => 'faridsh_0cms-la',
+                    'www.tankouk.com' => 'faridsh_0tankou',
                     'www.faridshahidi.ir' => 'faridsh_0farids',
-                    'www.fitnesgym.ir' => 'faridsh_0fitnes',
-                    'www.googleshops.ir' => 'faridsh_0google',
-                    'www.iranzibai.ir' => 'faridsh_0iranzi',
-                    'www.khodro-emdad.ir' => 'faridsh_0khodro',
-                    'www.maedejalalkhah.ir' => 'faridsh_0maedej',
-                    'www.marklebas.ir' => 'faridsh_0markle',
-                    'www.mdfdecor.ir' => 'faridsh_0mdfdec',
-                    'www.mobileforoshy.ir' => 'faridsh_0mobile',
-                    'www.moneyconverter.ir' => 'faridsh_0moneyc',
                     'www.navidmansouri.ir' => 'faridsh_0navidm',
-                    'www.remotedeveloper.ir' => 'faridsh_0remote',
-                    'www.repairsite.ir' => 'faridsh_0repair',
-                    'www.reservehospital.ir' => 'faridsh_0reserv',
-                    'www.rotbeyek.ir' => 'faridsh_0rotbey',
-                    'www.sanatishir.ir' => 'faridsh_0sanati',
+                    'www.moneyconverter.ir' => 'faridsh_0moneyc',
+                    'www.khodro-emdad.ir' => 'faridsh_0khodro',
+
                     'www.shopsang.ir' => 'faridsh_0shopsa',
+                    'www.azimizarf.ir' => 'faridsh_0azimiz',
+                    'www.iranzibai.ir' => 'faridsh_0iranzi',
+                    'www.repairsite.ir' => 'faridsh_0repair',
+                    'www.mdfdecor.ir' => 'faridsh_0mdfdec',
+                    'www.sanatishir.ir' => 'faridsh_0sanati',
+                    'www.rotbeyek.ir' => 'faridsh_0rotbey',
+                    'www.remotedeveloper.ir' => 'faridsh_0remote',
+                    'www.googleshops.ir' => 'faridsh_0google',
                     'www.supermarkety.ir' => 'faridsh_0superm',
+                    'www.dairytools.ir' => 'faridsh_0dairyt',
+                    'www.fitnesgym.ir' => 'faridsh_0fitnes',
+                    'www.mobileforoshy.ir' => 'faridsh_0mobile',
+                    'www.maedejalalkhah.ir' => 'faridsh_0maedej',
+                    'www.reservehospital.ir' => 'faridsh_0reserv',
+                    'www.marklebas.ir' => 'faridsh_0markle',
                 ];
                 $server_name = $_SERVER['SERVER_NAME'];
                 $database_name = $domain_map[$server_name];
@@ -62,7 +63,7 @@ class AppServiceProvider extends ServiceProvider
         }
 
 
-        $seconds = 60;
+        $seconds = 1;
         if(! Schema::hasTable('setting_generals') || SettingGeneral::first() === null){
             return 'general settings does not exist!';
         }
