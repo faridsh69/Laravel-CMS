@@ -30,6 +30,8 @@ class AppServiceProvider extends ServiceProvider
             $database_name = 'cms';
             if(isset($_SERVER['SERVER_NAME'])){
                 $domain_map = [
+                    'www.cms-laravel.com' => 'faridsh_0cms-la',
+                    'www.tankouk.com' => 'faridsh_0tankou',
                     'www.cms.test' => 'cms',
                     'www.sport.test' => 'test_cms',
                     'www.azimizarf.ir' => 'faridsh_0azimiz',
@@ -52,7 +54,6 @@ class AppServiceProvider extends ServiceProvider
                     'www.sanatishir.ir' => 'faridsh_0sanati',
                     'www.shopsang.ir' => 'faridsh_0shopsa',
                     'www.supermarkety.ir' => 'faridsh_0superm',
-                    'www.tankouk.com' => 'faridsh_0tankou',
                 ];
                 $server_name = $_SERVER['SERVER_NAME'];
                 $database_name = $domain_map[$server_name];
