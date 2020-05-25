@@ -24,57 +24,57 @@ class SportSeeder extends Seeder
         // Category
         $categories = [
             [
-             	'type' => 'gym-action',
+             	'type' => 'GymAction',
              	'url' => 'jolo-bazo',
                 'title' => 'ﺟﻠﻮ ﺑﺎﺯﻭ',
             ],
             [
-             	'type' => 'gym-action',
+             	'type' => 'GymAction',
              	'url' => 'posht-bazo',
                 'title' => 'ﭘﺸﺖ ﺑﺎﺯﻭ',
             ],
             [
-             	'type' => 'gym-action',
+             	'type' => 'GymAction',
              	'url' => 'shekam',
                 'title' => 'ﭘﻬﻠﻮ ﻭ ﺷﮑﻢ',
             ],
             [
-             	'type' => 'gym-action',
+             	'type' => 'GymAction',
              	'url' => 'jolo-ran',
                 'title' => 'ﺟﻠﻮ ﺭاﻥ',
             ],
             [
-             	'type' => 'gym-action',
+             	'type' => 'GymAction',
              	'url' => 'posht-ran',
                 'title' => 'ﭘﺸﺖ ﺭاﻥ',
             ],
             [
-             	'type' => 'gym-action',
+             	'type' => 'GymAction',
              	'url' => 'zirbaghal',
                 'title' => 'ﺯﯾﺮﺑﻐﻞ',
             ],
             [
-             	'type' => 'gym-action',
+             	'type' => 'GymAction',
              	'url' => 'sine',
                 'title' => 'ﺳﯿﻨﻪ',
             ],
             [
-             	'type' => 'gym-action',
+             	'type' => 'GymAction',
              	'url' => 'sarshone',
                 'title' => 'ﺳﺮﺷﺎﻧﻪ',
             ],
             [
-             	'type' => 'gym-action',
+             	'type' => 'GymAction',
              	'url' => 'kool',
                 'title' => 'ﮐﻮﻝ',
             ],
             [
-             	'type' => 'gym-action',
+             	'type' => 'GymAction',
              	'url' => 'sagh-pa',
                 'title' => 'ﺳﺎﻕ ﭘﺎ',
             ],
             [
-             	'type' => 'gym-action',
+             	'type' => 'GymAction',
              	'url' => 'saed',
                 'title' => 'ساعد',
             ],
@@ -88,27 +88,27 @@ class SportSeeder extends Seeder
         // Tag
         $tags = [
             [
-             	'type' => 'gym-action',
+             	'type' => 'GymAction',
              	'url' => 'havazi',
                 'title' => 'ﻫﻮاﺯﯼ',
             ],
             [
-             	'type' => 'gym-action',
+             	'type' => 'GymAction',
              	'url' => 'azole saz',
                 'title' => 'ﻋﻀﻠﻪ ﺳﺎﺯ',
             ],
             [
-             	'type' => 'gym-action',
+             	'type' => 'GymAction',
              	'url' => 'harekate-sangin',
                 'title' => 'ﺣﺮﮐﺖ ﺳﻨﮕﯿﻦ',
             ],
             [
-             	'type' => 'gym-action',
+             	'type' => 'GymAction',
              	'url' => 'harekate-sabok',
                 'title' => 'ﺣﺮﮐﺖ ﺳﺒﮏ',
             ],
             [
-             	'type' => 'gym-action',
+             	'type' => 'GymAction',
              	'url' => 'esteghamati',
                 'title' => 'اﺳﺘﻘﺎﻣﺘﯽ',
             ],
@@ -592,7 +592,7 @@ class SportSeeder extends Seeder
 	    ];
 
 	    foreach($gym_actions as $gym_action){
-	    	$category = Category::ofType('gym-action')->where('title', $gym_action['category'])->first();
+	    	$category = Category::ofType('GymAction')->where('title', $gym_action['category'])->first();
 	    	$gym_action_model = new GymAction();
 	    	$gym_action_model->title = $gym_action['title'];
 	    	$gym_action_model->url = $gym_action['url'];
@@ -606,7 +606,7 @@ class SportSeeder extends Seeder
 	        if( !GymAction::where('url', $gym_action_model->url)->first() ){
 		        $gym_action_model->save();
 
-		        $tags = Tag::ofType('gym-action')->whereIn('title', explode('|', $gym_action['tags']))->get();
+		        $tags = Tag::ofType('GymAction')->whereIn('title', explode('|', $gym_action['tags']))->get();
 		        $gym_action_model->tags()->sync($tags);
 		        $gym_actions_related = GymAction::orderBy('id', 'desc')->take(4)->get();
 		        $gym_action_model->relateds()->sync($gym_actions_related);
