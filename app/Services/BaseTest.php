@@ -5,6 +5,8 @@ namespace App\Services;
 use App\Models\User;
 use Str;
 use Tests\TestCase;
+use App\Models\Tag;
+use App\Models\Category;
 
 class BaseTest extends TestCase
 {
@@ -28,14 +30,9 @@ class BaseTest extends TestCase
         'tag.index',
     ];
 
-    public function resourceTest()
+    public function adminTest()
     {
-        if($this->model_slugs === []){
-            $this->model_slugs = [$this->model_slug];
-            if($this->model_slug === null){
-                $this->model_slugs = config('cms.admin_tests');
-            }
-        }
+        $this->model_slugs = config('cms.admin_tests');
 
         foreach($this->model_slugs as $model_slug)
         {
@@ -103,16 +100,11 @@ class BaseTest extends TestCase
 
     public function frontTest()
     {
-        if($this->model_slugs === []){
-            $this->model_slugs = [$this->model_slug];
-            if($this->model_slug === null){
-                $this->model_slugs = config('cms.admin_tests');
-            }
-        }
+        $this->model_slugs = config('cms.front_tests');
 
         foreach($this->model_slugs as $model_slug)
         {
-            echo("\nFront Testing ". $model_slug. '...');
+            echo "\nFront Testing ". $model_slug. '...';
             $model_name = Str::studly($model_slug);
             $model_namespace = config('cms.config.models_namespace'). $model_name;
             $model_repository = new $model_namespace();
@@ -129,22 +121,24 @@ class BaseTest extends TestCase
                 ->assertOk();
 
             // get model category
-            $category_model = \App\Models\Category::ofType($model_slug)->first();
+            $category_model = Category::ofType($model_name)->first();
             // show category of model
             if($category_model){
                 $this
                     ->get(route('front.'. $model_slug. '.category.show', $category_model->url))
                     ->assertOk();
+                echo "With Category...";
             }
 
             // get model tag
-            $tag_model = \App\Models\Tag::ofType($model_slug)->first();
+            $tag_model = Tag::ofType($model_name)->first();
             
             // show tag of model
             if($tag_model){
                 $this
                     ->get(route('front.'. $model_slug. '.tag.show', $tag_model->url))
                     ->assertOk();
+                echo "With Tag...";
             }
 
             foreach($this->front_methods as $method)

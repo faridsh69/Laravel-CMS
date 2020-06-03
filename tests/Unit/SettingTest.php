@@ -33,11 +33,11 @@ class SettingTest extends TestCase
 
         foreach($this->methods as $method)
         {
-            $this->_checkMethod($method);
+            $this->checkMethod($method);
         }
     }
 
-    private function _checkMethod($mothod_name)
+    private function checkMethod($mothod_name)
     {
         $this
             ->get(route('admin.' . $mothod_name))

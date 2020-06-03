@@ -19,18 +19,18 @@ class BaseModel extends Model
 
     public function saveWithRelations($data, $model = null)
     {
-        $data_without_file_and_array = $this->_clearFilesAndArrays($data);
+        $data_without_file_and_array = $this->clearFilesAndArrays($data);
         if($model){
             $model->update($data_without_file_and_array);
         }else{
             $model = $this->create($data_without_file_and_array);
         }
-        $this->_saveRelatedDataAfterCreate($data, $model);
+        $this->saveRelatedDataAfterCreate($data, $model);
 
         return $model;
     }
 
-    private function _clearFilesAndArrays($data)
+    private function clearFilesAndArrays($data)
     {
         // convert boolean input values: null and false => 0, true => 1
         foreach(collect($this->getColumns())->where('type', 'boolean')->pluck('name') as $boolean_column)
@@ -49,12 +49,12 @@ class BaseModel extends Model
         return $data;
     }
 
-    private function _saveRelatedDataAfterCreate($data, $model)
+    private function saveRelatedDataAfterCreate($data, $model)
     {
         // files column
         foreach(collect($this->getColumns())->where('type', 'file')->pluck('name') as $file_column) {
-            $file = $data[$file_column];
-            if($file){
+            if(isset($data[$file_column]) && $data[$file_column]){
+                $file = $data[$file_column];
                 $file_service = new \App\Services\BaseFileService();
                 $file_service->save($file, $model, $file_column);
             }

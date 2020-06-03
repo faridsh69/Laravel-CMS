@@ -176,6 +176,18 @@ class User extends Authenticatable
             'table' => false,
         ],
         [
+            'name' => 'national_card',
+            'type' => 'file',
+            'database' => 'none',
+            'rule' => 'nullable',
+            'help' => '',
+            'form_type' => 'none',
+            'file_manager' => false,
+            'file_accept' => 'image',
+            'file_multiple' => true,
+            'table' => false,
+        ],
+        [
             'name' => 'national_card_verified_at',
             'type' => 'timestamp',
             'database' => 'nullable',
@@ -185,12 +197,36 @@ class User extends Authenticatable
             'table' => false,
         ],
         [
+            'name' => 'bank_card',
+            'type' => 'file',
+            'database' => 'none',
+            'rule' => 'nullable',
+            'help' => '',
+            'form_type' => 'none',
+            'file_manager' => false,
+            'file_accept' => 'image',
+            'file_multiple' => true,
+            'table' => false,
+        ],
+        [
             'name' => 'bank_card_verified_at',
             'type' => 'timestamp',
             'database' => 'nullable',
             'rule' => '',
             'help' => '',
             'form_type' => 'none',
+            'table' => false,
+        ],
+        [
+            'name' => 'certificate_card',
+            'type' => 'file',
+            'database' => 'none',
+            'rule' => 'nullable',
+            'help' => '',
+            'form_type' => 'none',
+            'file_manager' => false,
+            'file_accept' => 'image',
+            'file_multiple' => true,
             'table' => false,
         ],
         [
@@ -359,18 +395,18 @@ class User extends Authenticatable
 
     public function saveWithRelations($data, $model = null)
     {
-        $data_without_file_and_array = $this->_clearFilesAndArrays($data, $model);
+        $data_without_file_and_array = $this->clearFilesAndArrays($data, $model);
         if($model){
             $this->update($data_without_file_and_array);
         }else{
             $model = $this->create($data_without_file_and_array);
         }
-        $this->_saveRelatedDataAfterCreate($data, $model);
+        $this->saveRelatedDataAfterCreate($data, $model);
 
         return $model;
     }
 
-    private function _clearFilesAndArrays($data, $model)
+    private function clearFilesAndArrays($data, $model)
     {
         foreach(collect($this->getColumns())->where('type', 'boolean')->pluck('name') as $boolean_column)
         {
@@ -409,11 +445,11 @@ class User extends Authenticatable
         return $data;
     }
 
-    private function _saveRelatedDataAfterCreate($data, $model)
+    private function saveRelatedDataAfterCreate($data, $model)
     {
         foreach(collect($this->getColumns())->where('type', 'file')->pluck('name') as $file_column) {
-            $file = $data[$file_column];
-            if($file){
+            if(isset($data[$file_column]) && $data[$file_column]){
+                $file = $data[$file_column];
                 $file_service = new \App\Services\BaseFileService();
                 $file_service->save($file, $model, $file_column);
             }

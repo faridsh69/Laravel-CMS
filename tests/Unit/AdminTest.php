@@ -4,10 +4,10 @@ namespace Tests\Unit;
 
 use App\Services\BaseTest;
 
-class FrontTest extends BaseTest
+class AdminTest extends BaseTest
 {
     public function test()
     {
-        $this->frontTest();
+        $this->adminTest();
     }
 }
