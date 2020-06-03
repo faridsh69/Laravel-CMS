@@ -61,7 +61,7 @@ class BaseApiController extends Controller
         $this->model_columns = $this->model_repository->getColumns();
         $this->model_rules = collect($this->model_columns)->pluck('rule', 'name')->toArray();
         $this->model_form = 'App\Forms\\'. $this->model_name. 'Form';
-        if(!file_exists(__DIR__. '\..\..\\'. $this->model_form. '.php')){
+        if(!file_exists(__DIR__. '/../../'. $this->model_form. '.php')){
             $this->model_form = 'App\Forms\Form';
         }
         $this->message_not_found = __('not_found');
