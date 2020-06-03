@@ -43,7 +43,7 @@
 					language: {{$tag->language}}
 					<br>
 				</small>
-				<a href="{{ route('front.'. Str::kebab(class_basename($list[0])). '.tag.index') }}"> Check other tags </a>
+				<a href="{{ route('front.'. Str::kebab($tag->type). '.tag.index') }}"> Check other tags </a>
 			</div>
 		</div>
 		@elseif(isset($categories))
@@ -76,6 +76,13 @@
 				</a>
 			</div>
 			@endforeach
+			@if(count($list) == 0)
+				<div class="col-12">
+					<div class="alert alert-danger alert-dismissible" role="alert">
+						{{ __('list_is_empty') }}
+		            </div>
+		        </div>
+			@endif
 		</div>
 		<br>
 		<div class="row">

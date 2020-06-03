@@ -515,6 +515,7 @@
     "setting_advance" : "Advance Setting",
     "no_file_existed" : "No file existed.",
     "not_found" : "Not Found.",
+    "list_is_empty" : "This list is empty.",
     "list_successfully" : "List Found Successfully.",
     "show_successfully" : "Item Found Successfully."
 }

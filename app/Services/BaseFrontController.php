@@ -156,10 +156,6 @@ class BaseFrontController extends Controller
             ->orderBy('updated_at', 'desc')
             ->paginate(config('setting-general.pagination_number'));
 
-        if($list->count() == 0){
-            return redirect()->route('front.'. $this->model_slug. '.index');
-        }
-
         return view('front.list.index', ['meta' => $this->meta, 'list' => $list, 'tag' => $tag]);
     }
 
