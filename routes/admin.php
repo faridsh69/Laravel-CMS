@@ -4,8 +4,8 @@ $model_slugs = Config::get('cms.admin_routes');
 
 foreach($model_slugs as $model_slug)
 {
-	$controller_name = \Str::studly($model_slug). '\ResourceController';
-	if (!file_exists(__DIR__. '\..\app\Http\Controllers\Admin\\'. $controller_name. '.php')) {
+	$controller_name = \Str::studly($model_slug). '/ResourceController';
+	if (!file_exists(__DIR__. '/../app/Http/Controllers/Admin/'. $controller_name. '.php')) {
 		$controller_name = 'AdminController';
 	}
 	Route::group(['prefix' => $model_slug, 'as' => $model_slug. '.'], function () use ($controller_name) {
