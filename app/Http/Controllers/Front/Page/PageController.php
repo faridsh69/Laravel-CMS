@@ -7,7 +7,7 @@ use App\Models\Form;
 use App\Models\Page;
 use Illuminate\Http\Request;
 
-class FrontController extends Controller
+class PageController extends Controller
 {
     public function index($page_url = null, Request $request)
     {

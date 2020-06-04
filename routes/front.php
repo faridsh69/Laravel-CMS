@@ -18,7 +18,7 @@ foreach($model_slugs as $model_slug)
 	});
 }
 
-Route::get('{page_url?}', 'Page\FrontController@index')->name('page.index');
+Route::get('{page_url?}', 'Page\PageController@index')->name('page.index');
 Route::post('form/{form_id}/submit', 'PageController@postSubmitForm')->name('page.submit-form');
 
 // Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {

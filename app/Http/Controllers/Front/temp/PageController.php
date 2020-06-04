@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 
 namespace App\Http\Controllers\Front;
 
@@ -13,9 +13,6 @@ class PageController extends Controller
     {
         $page = Page::where('url', $page_url)->active()->first();
         abort_if(! $page, 404);
-        if(config('app.name') === 'map'){
-            return view('front.test.map.offline-city');
-        }
 
         return view('front.page', ['page' => $page]);
     }
@@ -70,3 +67,4 @@ class PageController extends Controller
         return redirect()->back();
     }
 }
+ -->

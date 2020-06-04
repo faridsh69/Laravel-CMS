@@ -323,10 +323,10 @@ class BaseResourceController extends BaseAdminController
             });
         }
         $datatable->addColumn('user_id', function($model) {
-            return $model->user ? $model->user->name: '';
+            return $model->user ? $model->user->id. ' '. $model->user->name: '';
         });
         $datatable->addColumn('category_id', function($model) {
-            return $model->category ? $model->category->title: '';
+            return $model->category ? $model->category->id. '-'. $model->category->title: '';
         });
         // $datatable->addColumn('image', function($model) {
         //     return '<img style="width:80%" src="'. $model->image. '">';
