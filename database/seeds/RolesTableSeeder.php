@@ -27,11 +27,11 @@ class RolesTableSeeder extends Seeder
         foreach($model_slugs as $model_slug)
         {
             $model_permissions = [];
-            $model_permissions[] = Permission::updateOrCreate(['name' => $model_slug. '_index']);
-            $model_permissions[] = Permission::updateOrCreate(['name' => $model_slug. '_view']);
-            $model_permissions[] = Permission::updateOrCreate(['name' => $model_slug. '_create']);
-            $model_permissions[] = Permission::updateOrCreate(['name' => $model_slug. '_update']);
-            $model_permissions[] = Permission::updateOrCreate(['name' => $model_slug. '_delete']);
+            $model_permissions[] = Permission::updateOrCreate(['name' => $model_slug . '_index']);
+            $model_permissions[] = Permission::updateOrCreate(['name' => $model_slug . '_view']);
+            $model_permissions[] = Permission::updateOrCreate(['name' => $model_slug . '_create']);
+            $model_permissions[] = Permission::updateOrCreate(['name' => $model_slug . '_update']);
+            $model_permissions[] = Permission::updateOrCreate(['name' => $model_slug . '_delete']);
 
             $model_role = Role::updateOrCreate(['name' => $model_slug . '_manager']);
             $model_role->syncPermissions($model_permissions);
@@ -41,7 +41,7 @@ class RolesTableSeeder extends Seeder
         }
         foreach($system_slugs as $system_slug)
         {
-            $system_permission = Permission::updateOrCreate(['name' => $system_slug. '_manager']);
+            $system_permission = Permission::updateOrCreate(['name' => $system_slug . '_manager']);
             $system_role = Role::updateOrCreate(['name' => $system_slug . '_manager']);
             $system_role->syncPermissions([$system_permission]);
             $roles[] = $system_role->name;

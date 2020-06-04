@@ -23,7 +23,7 @@ class FilesTableSeeder extends Seeder
 
     	foreach($files as $file)
     	{
-        	// File::firstOrCreate($file);
+        	File::firstOrCreate($file);
     	}
     }
 }

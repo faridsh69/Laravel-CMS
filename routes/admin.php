@@ -4,19 +4,19 @@ $model_slugs = Config::get('cms.admin_routes');
 
 foreach($model_slugs as $model_slug)
 {
-	$controller_name = \Str::studly($model_slug). '\ResourceController';
-	if (!file_exists(__DIR__. '/../app/Http/Controllers/Admin/'. \Str::studly($model_slug). '/ResourceController.php')) {
+	$controller_name = \Str::studly($model_slug) . '\ResourceController';
+	if (! file_exists(__DIR__ . '/../app/Http/Controllers/Admin/' . \Str::studly($model_slug) . '/ResourceController.php')) {
 		$controller_name = 'AdminController';
 	}
-	Route::group(['prefix' => $model_slug, 'as' => $model_slug. '.'], function () use ($controller_name) {
-		Route::get('datatable', $controller_name. '@datatable')->name('datatable');
-		Route::get('export', $controller_name. '@export')->name('export');
-		Route::get('import', $controller_name. '@import')->name('import');
-		Route::get('print', $controller_name. '@print')->name('print');
-		Route::get('toggle-activated/{id}', $controller_name. '@toggleActivated')->name('toggle-activated');
-		Route::get('list/{id}/restore', $controller_name. '@restore')->name('list.restore');
+	Route::group(['prefix' => $model_slug, 'as' => $model_slug . '.'], function () use ($controller_name) {
+		Route::get('datatable', $controller_name . '@datatable')->name('datatable');
+		Route::get('export', $controller_name . '@export')->name('export');
+		Route::get('import', $controller_name . '@import')->name('import');
+		Route::get('print', $controller_name . '@print')->name('print');
+		Route::get('toggle-activated/{id}', $controller_name . '@toggleActivated')->name('toggle-activated');
+		Route::get('list/{id}/restore', $controller_name . '@restore')->name('list.restore');
 		Route::resource('list', $controller_name);
-		Route::get('', $controller_name. '@redirect')->name('redirect');
+		Route::get('', $controller_name . '@redirect')->name('redirect');
 	});
 }
 Route::get('', 'Dashboard\DashboardController@redirect')->name('redirect');

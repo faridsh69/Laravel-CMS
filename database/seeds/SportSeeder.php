@@ -612,12 +612,12 @@ class SportSeeder extends Seeder
 	    	$gym_action_model->url = $gym_action['url'];
 	    	$gym_action_model->description = $gym_action['description'];
 	    	$gym_action_model->content = $gym_action['content'];
-	    	$gym_action_model->image = asset($image_folder_name. 'gym-action/'. $gym_action['image']);
+	    	$gym_action_model->image = asset($image_folder_name . 'gym-action/' . $gym_action['image']);
 	    	$gym_action_model->category_id = $category->id;
 	        $gym_action_model->language = $language;
 	        $gym_action_model->activated = 1;
 
-	        if( !GymAction::where('url', $gym_action_model->url)->first() ){
+	        if(! GymAction::where('url', $gym_action_model->url)->first()){
 		        $gym_action_model->save();
 
 		        $tags = Tag::ofType('GymAction')->whereIn('title', explode('|', $gym_action['tags']))->get();
