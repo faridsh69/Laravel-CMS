@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Dashboard;
 
-use App\Models\Address;
 use App\Models\Activity;
+use App\Models\Address;
 use App\Notifications\EmailVerified;
 use App\Notifications\PhoneVerified;
 use App\Notifications\ProfileUpdated;
 use App\Services\BaseResourceController;
 use Auth;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
-use Kris\LaravelFormBuilder\FormBuilder;
 use Route;
 
 class DashboardController extends BaseResourceController
@@ -42,7 +40,7 @@ class DashboardController extends BaseResourceController
     {
         $this->meta['title'] = __('profile');
         $this->meta['link_name'] = __('dashboard');
-        $this->meta['link_route'] = route('admin.dashboard.index');;
+        $this->meta['link_route'] = route('admin.dashboard.index');
 
     	$form = $this->form_builder->create($this->model_form, [
             'method' => 'PUT',
@@ -68,7 +66,7 @@ class DashboardController extends BaseResourceController
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
         $data = $form->getFieldValues();
-        
+
         $model->saveWithRelations($data, $model);
 
         activity('Updated')

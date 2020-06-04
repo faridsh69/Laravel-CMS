@@ -15,7 +15,7 @@ class BaseFactory
         foreach($model_slugs as $model_slug)
         {
             $model_name = Str::studly($model_slug);
-            $models_namespace = config('cms.config.models_namespace'). $model_name;
+            $models_namespace = config('cms.config.models_namespace') . $model_name;
             $model_repository = new $models_namespace();
             $model_columns = $model_repository->getColumns();
 
@@ -30,10 +30,10 @@ class BaseFactory
                     $database = isset($column['database']) ? $column['database'] : null;
 
                     if($name === 'url'){
-                        $fake_data = $model_slug. '-url-'. $random_int;
+                        $fake_data = $model_slug . '-url-' . $random_int;
                     }
                     elseif($name === 'title'){
-                        $fake_data = $model_name. ' title '. $random_int;
+                        $fake_data = $model_name . ' title ' . $random_int;
                     }
                     elseif($name === 'description'){
                         $fake_data = $faker->realText(100);
@@ -65,21 +65,21 @@ class BaseFactory
                         }
                         $filemanager_files = [];
                         $upload_files = [];
-                        $random_count = rand(0,3);
+                        $random_count = rand(0, 3);
                         for($i = 1; $i <= $random_count; $i ++){
-                            $filemanager_files[] = asset('images/front/general/test/'. 
-                                $file_accept. '/'. $i. '.'. $extention);
-                            $upload_files[] = $i. '.'. $extention;
+                            $filemanager_files[] = asset('images/front/general/test/' .
+                                $file_accept . '/' . $i . '.' . $extention);
+                            $upload_files[] = $i . '.' . $extention;
                         }
 
                         if($file_manager === true){
                             $fake_data = implode(',', $filemanager_files);
                         }else{
-                            $base_path = realpath(dirname(__FILE__). 
-                                '/../../public_html/cdn/images/front/general/test/'. $file_accept);
+                            $base_path = realpath(dirname(__FILE__) .
+                                '/../../public_html/cdn/images/front/general/test/' . $file_accept);
                             $fake_data = [];
                             foreach($upload_files as $file){
-                                $path = $base_path. '/'. $file;
+                                $path = $base_path . '/' . $file;
                                 $fake_data[] = new UploadedFile($path, $file, $extention);
                             }
                         }

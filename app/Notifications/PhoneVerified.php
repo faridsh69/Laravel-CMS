@@ -10,11 +10,9 @@ class PhoneVerified extends BaseNotification
 {
 	public function via($notifiable)
     {
-        $channel_list = [
+        return [
             DatabaseChannel::class,
             SmsChannel::class,
         ];
-
-        return $channel_list;
     }
 }

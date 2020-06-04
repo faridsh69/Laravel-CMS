@@ -32,22 +32,22 @@ class ResourceController extends BaseResourceController
         activity($this->model_name)
             ->performedOn($model)
             ->causedBy(Auth::user())
-            ->log($this->model_name. ' Sended');
+            ->log($this->model_name . ' Sended');
 
-        $this->request->session()->flash('alert-success', $this->model_name. ' Sent Successfully!');
+        $this->request->session()->flash('alert-success', $this->model_name . ' Sent Successfully!');
 
-        return redirect()->route('admin.'. $this->model_slug. '.list.index');
+        return redirect()->route('admin.' . $this->model_slug . '.list.index');
     }
 
     public function edit($id){
-        $this->request->session()->flash('alert-danger', $this->model_translated. __(' edit does not exist!'));
+        $this->request->session()->flash('alert-danger', $this->model_translated . __(' edit does not exist!'));
 
-        return $this->redirect(); 
+        return $this->redirect();
     }
 
     public function update($id){
-        $this->request->session()->flash('alert-danger', $this->model_translated. __(' update does not exist!'));
+        $this->request->session()->flash('alert-danger', $this->model_translated . __(' update does not exist!'));
 
-        return $this->redirect(); 
+        return $this->redirect();
     }
 }

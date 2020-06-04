@@ -30,41 +30,6 @@ class BaseModel extends Model
         return $model;
     }
 
-    private function clearFilesAndArrays($data)
-    {
-        // convert boolean input values: null and false => 0, true => 1
-        foreach(collect($this->getColumns())->where('type', 'boolean')->pluck('name') as $boolean_column)
-        {
-            if(! isset($data[$boolean_column]))
-            {
-                $data[$boolean_column] = 0;
-            }
-        }
-        // unset file and array attributes before saving
-        foreach(collect($this->getColumns())->whereIn('type', ['file', 'array', 'captcha'])->pluck('name') as $file_or_array_column)
-        {
-            unset($data[$file_or_array_column]);
-        }
-
-        return $data;
-    }
-
-    private function saveRelatedDataAfterCreate($data, $model)
-    {
-        // files column
-        foreach(collect($this->getColumns())->where('type', 'file')->pluck('name') as $file_column) {
-            if(isset($data[$file_column]) && $data[$file_column]){
-                $file = $data[$file_column];
-                $file_service = new \App\Services\BaseFileService();
-                $file_service->save($file, $model, $file_column);
-            }
-        }
-        // save relations with array type column like tags, related_models, ...
-        foreach(collect($this->getColumns())->where('type', 'array')->pluck('name') as $array_column) {
-            $model->{$array_column}()->sync($data[$array_column], true);
-        }
-    }
-
     public function scopeActive($query)
     {
         return $query->where('activated', 1);
@@ -127,7 +92,7 @@ class BaseModel extends Model
 
     public function relateds()
     {
-        return $this->belongsToMany(config('cms.config.models_namespace'). class_basename($this), 'model_related', 'model_id', 'related_id');
+        return $this->belongsToMany(config('cms.config.models_namespace') . class_basename($this), 'model_related', 'model_id', 'related_id');
     }
 
     public function files()
@@ -160,7 +125,7 @@ class BaseModel extends Model
         $srcs = [];
         if($isFileManager === true && $this->{$title}){
             $srcs = explode(',', $this->{$title});
-        } 
+        }
         else {
             $srcs = $this->files_src_for($title);
         }
@@ -192,7 +157,7 @@ class BaseModel extends Model
         ];
 
         $seconds = 1;
-        return Cache::remember('model'. $constructor['model_name'] , $seconds, function () use($constructor) {
+        return Cache::remember('model' . $constructor['model_name'], $seconds, function () use($constructor) {
             $default_columns = [
                 'title' => [
                     'name' => 'title',
@@ -227,7 +192,7 @@ class BaseModel extends Model
                     'type' => 'string',
                     'database' => 'nullable',
                     // 'rule' => 'required|unique:'. $constructor['table_name']. ',url,',
-                    'rule' => 'required|max:'. config('setting-developer.seo_url_max'),
+                    'rule' => 'required|max:' . config('setting-developer.seo_url_max'),
                     'help' => 'Url should be unique, contain [a-z, 0-9, -], required for seo',
                     'form_type' => '',
                     'table' => true,
@@ -311,7 +276,7 @@ class BaseModel extends Model
                     'class' => 'App\Models\Category',
                     'property' => 'title',
                     'property_key' => 'id',
-                    'query_builder' => 'type|'. $constructor['model_name'],
+                    'query_builder' => 'type|' . $constructor['model_name'],
                     'multiple' => false,
                     'table' => true,
                 ],
@@ -325,7 +290,7 @@ class BaseModel extends Model
                     'class' => 'App\Models\Tag',
                     'property' => 'title',
                     'property_key' => 'id',
-                    'query_builder' => 'type|'. $constructor['model_name'],
+                    'query_builder' => 'type|' . $constructor['model_name'],
                     'multiple' => true,
                     'table' => true,
                 ],
@@ -705,7 +670,7 @@ class BaseModel extends Model
             $columns = $this->columns;
             foreach($columns as $key => $column)
             {
-                if(array_key_exists($column['name'], $default_columns) && !isset($column['type'])){
+                if(array_key_exists($column['name'], $default_columns) && ! isset($column['type'])){
                     $columns[$key] = $default_columns[$column['name']];
                 }
             }
@@ -714,6 +679,40 @@ class BaseModel extends Model
         });
     }
 
+    private function clearFilesAndArrays($data)
+    {
+        // convert boolean input values: null and false => 0, true => 1
+        foreach(collect($this->getColumns())->where('type', 'boolean')->pluck('name') as $boolean_column)
+        {
+            if(! isset($data[$boolean_column]))
+            {
+                $data[$boolean_column] = 0;
+            }
+        }
+        // unset file and array attributes before saving
+        foreach(collect($this->getColumns())->whereIn('type', ['file', 'array', 'captcha'])->pluck('name') as $file_or_array_column)
+        {
+            unset($data[$file_or_array_column]);
+        }
+
+        return $data;
+    }
+
+    private function saveRelatedDataAfterCreate($data, $model)
+    {
+        // files column
+        foreach(collect($this->getColumns())->where('type', 'file')->pluck('name') as $file_column) {
+            if(isset($data[$file_column]) && $data[$file_column]){
+                $file = $data[$file_column];
+                $file_service = new \App\Services\BaseFileService();
+                $file_service->save($file, $model, $file_column);
+            }
+        }
+        // save relations with array type column like tags, related_models, ...
+        foreach(collect($this->getColumns())->where('type', 'array')->pluck('name') as $array_column) {
+            $model->{$array_column}()->sync($data[$array_column], true);
+        }
+    }
 
         // $files = $this->files($title);
         // if($files->count() > 1){

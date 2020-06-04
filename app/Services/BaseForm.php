@@ -12,8 +12,8 @@ class BaseForm extends Form
 
     public function __construct()
     {
-        $model_namespace = config('cms.config.models_namespace'). $this->model_name;
-        $model_repository = new $model_namespace;
+        $model_namespace = config('cms.config.models_namespace') . $this->model_name;
+        $model_repository = new $model_namespace();
         $this->model_columns = $model_repository->getColumns();
     }
 
@@ -109,7 +109,7 @@ class BaseForm extends Form
                 $input_type = 'select';
                 $options['attr']['class'] = 'form-control m-bootstrap-select m-bootstrap-select--pill m-bootstrap-select--air m_selectpicker';
                 $options['attr']['data-live-search'] = 'true';
-                if(isset($column['multiple']) && $column['multiple'] == true){
+                if(isset($column['multiple']) && $column['multiple'] === true){
                     $options['attr']['multiple'] = 'true';
                 }
             }

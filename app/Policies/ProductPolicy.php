@@ -4,7 +4,7 @@ namespace App\Policies;
 
 use App\Services\BasePolicy;
 
-class ProductPolicy extends BasePolicy 
+class ProductPolicy extends BasePolicy
 {
 	public $model_slug = 'product';
 }

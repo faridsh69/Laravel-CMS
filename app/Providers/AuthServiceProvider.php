@@ -2,11 +2,11 @@
 
 namespace App\Providers;
 
+use Cache;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Passport\Passport;
 use Str;
-use Cache;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -26,8 +26,8 @@ class AuthServiceProvider extends ServiceProvider
             $policies = [];
             foreach($model_slugs as $model_slug){
                 $model_name = Str::studly($model_slug);
-                $model_namespace = $models_namespace. $model_name;
-                $model_policy = 'App\Policies\\'. $model_name. 'Policy';
+                $model_namespace = $models_namespace . $model_name;
+                $model_policy = 'App\Policies\\' . $model_name . 'Policy';
                 $policies[$model_namespace] = $model_policy;
             }
 
@@ -36,7 +36,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('manage', function ($user, $page) {
-            return $user->can($page. '_manager');
+            return $user->can($page . '_manager');
         });
 
         Passport::routes();

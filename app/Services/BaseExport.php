@@ -23,7 +23,7 @@ class BaseExport implements FromCollection, WithHeadings
 
     public function setModelName($model_name)
     {
-        $model_namespace = config('cms.config.models_namespace'). $model_name;
+        $model_namespace = config('cms.config.models_namespace') . $model_name;
         $this->model_repository = new $model_namespace();
         $this->model_columns = collect($this->model_repository->getColumns())
             ->where('database', '!=', 'none')

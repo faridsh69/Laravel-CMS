@@ -27,9 +27,9 @@ class Tag extends BaseModel
 
     public function models()
     {
-        return $this->belongsToMany(config('cms.config.models_namespace'). $this->type, 'taggables', 'tag_id', 'taggable_id');
+        return $this->belongsToMany(config('cms.config.models_namespace') . $this->type, 'taggables', 'tag_id', 'taggable_id');
     }
-    
+
     // Relation::morphMap([
     //     'blogs' => 'App\Models\Blog',
     //     'products' => 'App\Models\Product',

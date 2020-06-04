@@ -4,7 +4,7 @@ namespace App\Policies;
 
 use App\Services\BasePolicy;
 
-class ActivityPolicy extends BasePolicy 
+class ActivityPolicy extends BasePolicy
 {
 	public $model_slug = 'activity';
 }

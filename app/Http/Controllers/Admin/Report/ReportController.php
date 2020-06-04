@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers\Admin\Report;
 
-use App\Services\BaseAdminController;
 use App\Models\Activity;
+use App\Services\BaseAdminController;
 
 class ReportController extends BaseAdminController
 {
     public function index()
     {
         $this->authorize('manage', 'report');
-        $this->meta['title'] = __('report'). __('manager');
+        $this->meta['title'] = __('report') . __('manager');
 
-        $yesterday_time = \Carbon\Carbon::now()->subdays(1);
         $last_week_time = \Carbon\Carbon::now()->subdays(7);
         $count = [
             'tags' => \App\Models\Tag::count(),

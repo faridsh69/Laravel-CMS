@@ -22,7 +22,7 @@ class BaseFileService extends BaseService
         }
         foreach($gallery as $file){
             $model_name = class_basename($model);
-            $model_namespance = config('cms.config.models_namespace'). $model_name;
+            $model_namespance = config('cms.config.models_namespace') . $model_name;
             $model_slug = Str::kebab($model_name);
             $fileable_type = $model_namespance;
             $fileable_id = $model->id;

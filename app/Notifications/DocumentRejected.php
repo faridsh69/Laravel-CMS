@@ -4,4 +4,5 @@ namespace App\Notifications;
 
 use App\Services\BaseNotification;
 
-class DocumentRejected extends BaseNotification {}
+class DocumentRejected extends BaseNotification
+{}

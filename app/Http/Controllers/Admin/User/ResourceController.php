@@ -35,7 +35,7 @@ class ResourceController extends BaseResourceController
         $model->{$document_title_verified_at} = Carbon::now();
         $model->update();
 
-        $this->request->session()->flash('alert-success', $this->document_title. __('verified_successfully'));
+        $this->request->session()->flash('alert-success', $this->document_title . __('verified_successfully'));
 
         return redirect()->back();
 	}

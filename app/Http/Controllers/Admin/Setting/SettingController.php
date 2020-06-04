@@ -16,12 +16,12 @@ class SettingController extends BaseResourceController
     public function index()
     {
     	$section = explode('-', $this->model_slug)[1];
-    	$this->meta['title'] = __($section. '_manager');
-    	$this->authorize('manage', 'setting_'. $section);
+    	$this->meta['title'] = __($section . '_manager');
+    	$this->authorize('manage', 'setting_' . $section);
         $model = $this->model_repository->first();
         $form = $this->form_builder->create($this->model_form, [
             'method' => 'PUT',
-            'url' => route('admin.setting.'. $section),
+            'url' => route('admin.setting.' . $section),
             'class' => 'm-form m-form--state',
             'id' =>  'admin_form',
             'model' => $model,
@@ -33,12 +33,12 @@ class SettingController extends BaseResourceController
     public function putUpdate()
     {
     	$section = explode('-', $this->model_slug)[1];
-    	$this->authorize('manage', 'setting_'. $section);
+    	$this->authorize('manage', 'setting_' . $section);
         $model = $this->model_repository->first();
         $form = $this->form_builder->create($this->model_form, [
             'model' => $model,
         ]);
-        if (!$form->isValid()) {
+        if (! $form->isValid()) {
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
 
@@ -50,7 +50,7 @@ class SettingController extends BaseResourceController
         activity('Update')
             ->performedOn($model)
             ->causedBy(Auth::user())
-            ->log($this->model_name. ' Updated');
+            ->log($this->model_name . ' Updated');
 
         $this->request->session()->flash('alert-success', $this->model_translated . ' Updated Successfully!');
         sleep(1);

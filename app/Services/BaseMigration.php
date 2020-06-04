@@ -33,8 +33,8 @@ class BaseMigration extends Migration
         }
         foreach($this->model_slugs as $model_slug){
             $model_name = Str::studly($model_slug);
-            $model_namespace = config('cms.config.models_namespace'). $model_name;
-            $model_repository = new $model_namespace;
+            $model_namespace = config('cms.config.models_namespace') . $model_name;
+            $model_repository = new $model_namespace();
             $model_columns = $model_repository->getColumns();
             $model_table = $model_repository->getTable();
             $this->_migrations[] = (object) [
@@ -54,18 +54,18 @@ class BaseMigration extends Migration
         foreach($this->_migrations as $_migration)
         {
             if(Schema::hasTable($_migration->model_table) === false){
-                echo 'creating '. $_migration->model_table;
+                echo 'creating ' . $_migration->model_table;
                 $this->_createMigration($_migration->model_table, $_migration->model_columns);
             }else{
                 if($this->backup === true){
-                    echo 'backuping '. $_migration->model_table;
+                    echo 'backuping ' . $_migration->model_table;
                     $this->_createBackupTable($_migration->model_table, $_migration->model_repository);
                 }
                 if($this->update === true){
-                    echo 'updating '. $_migration->model_table;
+                    echo 'updating ' . $_migration->model_table;
                     $this->_updateMigration($_migration->model_table, $_migration->model_columns);
                 }else{
-                    echo 'rebuilding '. $_migration->model_table;
+                    echo 'rebuilding ' . $_migration->model_table;
                     $this->_dropTable($_migration->model_table);
                     $this->_createMigration($_migration->model_table, $_migration->model_columns);
                 }
@@ -90,7 +90,7 @@ class BaseMigration extends Migration
 
     private function _createMigration($model_table, $model_columns)
     {
-        Schema::create($model_table, function (Blueprint $table) use ($model_columns, $model_table) {
+        Schema::create($model_table, function (Blueprint $table) use ($model_columns) {
             $table->bigIncrements('id');
             foreach($model_columns as $column){
                 $name = $column['name'];
@@ -117,17 +117,17 @@ class BaseMigration extends Migration
         $drop_columns = $old_database_columns;
         $add_columns = collect($model_columns)->where('database', '!=', 'none')->toArray();
         foreach($old_database_columns as $column_key => $old_database_column){
-            $array_index = array_search($old_database_column, collect($model_columns)->pluck('name')->toArray());
+            $array_index = array_search($old_database_column, collect($model_columns)->pluck('name')->toArray(), true);
             if($array_index !== false){
                 unset($drop_columns[$column_key]);
                 unset($add_columns[$array_index]);
             }
-            if(array_search($old_database_column, $extra_columns) !== false){
+            if(array_search($old_database_column, $extra_columns, true) !== false){
                 unset($drop_columns[$column_key]);
             }
         }
-        echo ' droping '. count($drop_columns). ' columns. ';
-        echo 'adding '. count($add_columns). ' columns.';
+        echo ' droping ' . count($drop_columns) . ' columns. ';
+        echo 'adding ' . count($add_columns) . ' columns.';
         Schema::table($model_table, function (Blueprint $table) use ($add_columns, $drop_columns) {
             foreach($drop_columns as $drop_column){
                 if(strpos($drop_column, '_id') !== false){
@@ -157,7 +157,7 @@ class BaseMigration extends Migration
             ->get()
             ->makeVisible('deleted_at')
             ->toArray();
-        $backup_table_name = $model_table. '_backup_'. strtotime('now');
+        $backup_table_name = $model_table . '_backup_' . strtotime('now');
         Schema::create($backup_table_name, function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('row_data')->nullabe();

@@ -25,8 +25,8 @@ class BaseImport implements ToModel
 
     public function setModelName($model_name)
     {
-        $this->model_namespace = config('cms.config.models_namespace'). $model_name;
-        $this->model_repository = new $this->model_namespace;
+        $this->model_namespace = config('cms.config.models_namespace') . $model_name;
+        $this->model_repository = new $this->model_namespace();
         $this->model_fields = collect($this->model_repository->getColumns())->pluck('name')->toArray();
         $this->excel_fields = [];
     }

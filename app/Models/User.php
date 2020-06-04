@@ -320,7 +320,7 @@ class User extends Authenticatable
 
     public static function getAdminUsers()
     {
-        return self::whereIn('id', [1,2])->get();
+        return self::whereIn('id', [1, 2])->get();
     }
 
     public function addresses()
@@ -379,7 +379,7 @@ class User extends Authenticatable
         $srcs = [];
         if($isFileManager === true && $this->{$title}){
             $srcs = explode(',', $this->{$title});
-        } 
+        }
         else {
             $srcs = $this->files_src_for($title);
         }
@@ -437,7 +437,7 @@ class User extends Authenticatable
                 }
             }
             else{ // create mode
-                if($data['password'] == ''){
+                if($data['password'] === ''){
                     $data['password'] = \Hash::make($data['email']);
                 }
             }

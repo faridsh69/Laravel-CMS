@@ -5,8 +5,8 @@ namespace App\Services;
 use Auth;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
-use Str;
 use Route;
+use Str;
 
 class BaseResourceController extends BaseAdminController
 {
@@ -39,30 +39,30 @@ class BaseResourceController extends BaseAdminController
     {
         $this->form_builder = $form_builder;
         $this->request = $request;
-        if(!$this->model_slug){
+        if(! $this->model_slug){
             $this->model_slug = $this->request->segment(2);
         }
         $this->model_name = Str::studly($this->model_slug);
         $this->model_translated = __(Str::snake($this->model_name));
-        $this->model_namespace = config('cms.config.models_namespace'). $this->model_name;
-        $this->model_repository = new $this->model_namespace;
+        $this->model_namespace = config('cms.config.models_namespace') . $this->model_name;
+        $this->model_repository = new $this->model_namespace();
         $this->model_columns = $this->model_repository->getColumns();
-        $this->model_form = 'App\Forms\\'. $this->model_name. 'Form';
-        if(!file_exists(__DIR__. '/../../app/Forms/'. $this->model_name. 'Form.php')){
+        $this->model_form = 'App\Forms\\' . $this->model_name . 'Form';
+        if(! file_exists(__DIR__ . '/../../app/Forms/' . $this->model_name . 'Form.php')){
             $this->model_form = 'App\Forms\Form';
         }
-        if(Route::has('admin.'. $this->model_slug. '.list.index')){
-            $this->meta['link_route'] = route('admin.'. $this->model_slug. '.list.index');
-            $this->meta['link_name'] = $this->model_translated. __('manager');
+        if(Route::has('admin.' . $this->model_slug . '.list.index')){
+            $this->meta['link_route'] = route('admin.' . $this->model_slug . '.list.index');
+            $this->meta['link_name'] = $this->model_translated . __('manager');
         }
     }
 
     public function index()
     {
         $this->authorize('index', $this->model_namespace);
-        $this->meta['link_route'] = route('admin.'. $this->model_slug. '.list.create');
-        $this->meta['link_name'] = __('create_new'). $this->model_translated;
-        $this->meta['title'] = $this->model_translated. __('manager');
+        $this->meta['link_route'] = route('admin.' . $this->model_slug . '.list.create');
+        $this->meta['link_name'] = __('create_new') . $this->model_translated;
+        $this->meta['title'] = $this->model_translated . __('manager');
         $this->meta['search'] = 1;
         $columns = [];
         foreach(collect($this->model_columns)->where('table', true) as $column)
@@ -79,10 +79,10 @@ class BaseResourceController extends BaseAdminController
     public function create()
     {
         $this->authorize('create', $this->model_namespace);
-        $this->meta['title'] = __('create_new'). $this->model_translated;
+        $this->meta['title'] = __('create_new') . $this->model_translated;
         $form = $this->form_builder->create($this->model_form, [
             'method' => 'POST',
-            'url' => route('admin.'. $this->model_slug. '.list.store'),
+            'url' => route('admin.' . $this->model_slug . '.list.store'),
             'class' => 'm-form m-form--state',
             'id' =>  'admin_form',
             'enctype' => 'multipart/form-data',
@@ -105,11 +105,11 @@ class BaseResourceController extends BaseAdminController
 
         if(env('APP_ENV') !== 'testing'){
             activity('Created')->performedOn($model)->causedBy(Auth::user())
-                ->log($this->model_name. ' Created');
+                ->log($this->model_name . ' Created');
         }
-        $this->request->session()->flash('alert-success', $this->model_translated. __('created_successfully'));
+        $this->request->session()->flash('alert-success', $this->model_translated . __('created_successfully'));
 
-        return redirect()->route('admin.'. $this->model_slug. '.list.index');
+        return redirect()->route('admin.' . $this->model_slug . '.list.index');
     }
 
     public function show($id)
@@ -121,9 +121,9 @@ class BaseResourceController extends BaseAdminController
             ->where('activitiable_id', $id)
             ->get();
 
-        $this->meta['title'] = $this->model_translated. __('show');
-        $this->meta['link_route'] = route('admin.'. $this->model_slug. '.list.edit', $model);
-        $this->meta['link_name'] = $this->model_translated. __('edit form');
+        $this->meta['title'] = $this->model_translated . __('show');
+        $this->meta['link_route'] = route('admin.' . $this->model_slug . '.list.edit', $model);
+        $this->meta['link_name'] = $this->model_translated . __('edit form');
 
         return view('admin.list.show', ['data' => $data, 'meta' => $this->meta, 'activities' => $activities]);
     }
@@ -133,10 +133,10 @@ class BaseResourceController extends BaseAdminController
         $model = $this->model_repository->findOrFail($id);
         $this->authorize('update', $model);
 
-        $this->meta['title'] = __('edit'). $this->model_translated. ' - #'. $id;
+        $this->meta['title'] = __('edit') . $this->model_translated . ' - #' . $id;
         $form = $this->form_builder->create($this->model_form, [
             'method' => 'PUT',
-            'url' => route('admin.'. $this->model_slug. '.list.update', $model),
+            'url' => route('admin.' . $this->model_slug . '.list.update', $model),
             'class' => 'm-form m-form--state',
             'id' => 'admin_form',
             'model' => $model,
@@ -168,11 +168,11 @@ class BaseResourceController extends BaseAdminController
 
         if(env('APP_ENV') !== 'testing'){
             activity('Updated')->performedOn($model)->causedBy(Auth::user())
-                ->log($this->model_name. ' Updated');
+                ->log($this->model_name . ' Updated');
         }
-        $this->request->session()->flash('alert-success', $this->model_translated. __('updated_successfully'));
+        $this->request->session()->flash('alert-success', $this->model_translated . __('updated_successfully'));
 
-        return redirect()->route('admin.'. $this->model_slug. '.list.index');
+        return redirect()->route('admin.' . $this->model_slug . '.list.index');
     }
 
     public function destroy($id)
@@ -184,11 +184,11 @@ class BaseResourceController extends BaseAdminController
 
         if(env('APP_ENV') !== 'testing'){
             activity('Deleted')->performedOn($model)->causedBy(Auth::user())
-                ->log($this->model_name. ' Deleted');
+                ->log($this->model_name . ' Deleted');
         }
-        $this->request->session()->flash('alert-success', $this->model_translated. __('deleted_successfully'));
+        $this->request->session()->flash('alert-success', $this->model_translated . __('deleted_successfully'));
 
-        return redirect()->route('admin.'. $this->model_slug. '.list.index');
+        return redirect()->route('admin.' . $this->model_slug . '.list.index');
     }
 
     public function restore($id)
@@ -200,11 +200,11 @@ class BaseResourceController extends BaseAdminController
 
         if(env('APP_ENV') !== 'testing'){
             activity('Restored')->performedOn($model)->causedBy(Auth::user())
-                ->log($this->model_name. ' Restored');
+                ->log($this->model_name . ' Restored');
         }
-        $this->request->session()->flash('alert-success', $this->model_translated. __('restored_successfully'));
+        $this->request->session()->flash('alert-success', $this->model_translated . __('restored_successfully'));
 
-        return redirect()->route('admin.'. $this->model_slug. '.list.index');
+        return redirect()->route('admin.' . $this->model_slug . '.list.index');
     }
 
     public function print()
@@ -222,7 +222,7 @@ class BaseResourceController extends BaseAdminController
 
         return \PDF::loadView('admin.common.print', compact('list'))
             ->setPaper('a4', 'landscape')
-            ->download($this->model_name. '.pdf');
+            ->download($this->model_name . '.pdf');
     }
 
     public function export()
@@ -232,7 +232,7 @@ class BaseResourceController extends BaseAdminController
         $export_repository = new $export_class_name();
         $export_repository->setModelName($this->model_name);
 
-        return \Maatwebsite\Excel\Facades\Excel::download($export_repository, $this->model_name. '.xlsx');
+        return \Maatwebsite\Excel\Facades\Excel::download($export_repository, $this->model_name . '.xlsx');
     }
 
     public function import()
@@ -244,14 +244,14 @@ class BaseResourceController extends BaseAdminController
 
         \Maatwebsite\Excel\Facades\Excel::import($import_repository, storage_path('app/public/import.xlsx'));
 
-        return redirect()->route('admin.'. $this->model_slug. '.list.index');
+        return redirect()->route('admin.' . $this->model_slug . '.list.index');
     }
 
     public function toggleActivated($id)
     {
         $model = $this->model_repository->findOrFail($id);
         $this->authorize('update', $model);
-        $model->activated = !$model->activated;
+        $model->activated = ! $model->activated;
         $model->update();
 
         return response()->json([
@@ -261,14 +261,14 @@ class BaseResourceController extends BaseAdminController
 
     public function redirect()
     {
-        return redirect()->route('admin.'. $this->model_slug. '.list.index');
+        return redirect()->route('admin.' . $this->model_slug . '.list.index');
     }
 
     public function datatable()
     {
         $this->authorize('index', $this->model_namespace);
         $list = $this->model_repository->orderBy('updated_at', 'desc');
-        if(Auth::user()->hasRole($this->model_slug. '_manager')){
+        if(Auth::user()->hasRole($this->model_slug . '_manager')){
             $list = $list->get();
         }else{
             $list = $list->authUser()->get();
@@ -277,13 +277,13 @@ class BaseResourceController extends BaseAdminController
         $datatable = datatables()
             ->of($list)
             ->addColumn('show_url', function($model) {
-                return route('admin.'. $this->model_slug. '.list.show', $model);
+                return route('admin.' . $this->model_slug . '.list.show', $model);
             })
             ->addColumn('edit_url', function($model) {
-                return route('admin.'. $this->model_slug. '.list.edit', $model);
+                return route('admin.' . $this->model_slug . '.list.edit', $model);
             })
             ->addColumn('delete_url', function($model) {
-                return route('admin.'. $this->model_slug. '.list.destroy', $model);
+                return route('admin.' . $this->model_slug . '.list.destroy', $model);
             });
         if($this->model_name === 'Notification') {
             $datatable->addColumn('user', function($model) {
@@ -317,16 +317,16 @@ class BaseResourceController extends BaseAdminController
                 return implode(',<br>', \App\Models\User::role($model->name)->select('email')->pluck('email')->toArray());
             });
         }
-        if( collect($this->model_columns)->where('name', 'tags')->count() > 0){
+        if(collect($this->model_columns)->where('name', 'tags')->count() > 0){
             $datatable->addColumn('tags', function($model) {
                 return implode(', ', $model->tags->pluck('title')->toArray());
             });
         }
         $datatable->addColumn('user_id', function($model) {
-            return $model->user ? $model->user->id. ' '. $model->user->name: '';
+            return $model->user ? $model->user->id . ' ' . $model->user->name : '';
         });
         $datatable->addColumn('category_id', function($model) {
-            return $model->category ? $model->category->id. '-'. $model->category->title: '';
+            return $model->category ? $model->category->id . '-' . $model->category->title : '';
         });
         // $datatable->addColumn('image', function($model) {
         //     return '<img style="width:80%" src="'. $model->image. '">';

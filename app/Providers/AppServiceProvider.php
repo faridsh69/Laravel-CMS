@@ -62,7 +62,6 @@ class AppServiceProvider extends ServiceProvider
             config(['database.connections.mysql.database' => $database_name]);
         }
 
-
         $seconds = 1;
         if(! Schema::hasTable('setting_generals') || SettingGeneral::first() === null){
             return 'general settings does not exist!';

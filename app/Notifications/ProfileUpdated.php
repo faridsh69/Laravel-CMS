@@ -4,4 +4,5 @@ namespace App\Notifications;
 
 use App\Services\BaseNotification;
 
-class ProfileUpdated extends BaseNotification {}
+class ProfileUpdated extends BaseNotification
+{}

@@ -1,4 +1,4 @@
-<!-- <?php
+<?php
 
 namespace App\Http\Controllers\Front;
 
@@ -67,4 +67,3 @@ class PageController extends Controller
         return redirect()->back();
     }
 }
- -->

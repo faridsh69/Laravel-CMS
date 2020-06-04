@@ -31,7 +31,7 @@ class Category extends BaseModel
             'rule' => 'nullable|exists:categories,id',
             'help' => '',
             'form_type' => 'entity',
-            'class' => Category::class,
+            'class' => self::class,
             'property' => 'title',
             'property_key' => 'id',
             'multiple' => false,
@@ -47,24 +47,24 @@ class Category extends BaseModel
 
     public function models()
     {
-        return $this->hasMany(config('cms.config.models_namespace'). $this->type, 'category_id', 'id');
+        return $this->hasMany(config('cms.config.models_namespace') . $this->type, 'category_id', 'id');
     }
 
     public function parent()
     {
-        return $this->belongsTo(Category::class, 'parent_id', 'id');
+        return $this->belongsTo(self::class, 'parent_id', 'id');
     }
 
     public function children()
     {
-        return $this->hasMany(Category::class, 'parent_id', 'id');
+        return $this->hasMany(self::class, 'parent_id', 'id');
     }
 
     public static function boot()
     {
         parent::boot();
         self::updating(function($model){
-            if($model->parent_id == $model->id){
+            if($model->parent_id === $model->id){
                 abort(500);
             }
         });

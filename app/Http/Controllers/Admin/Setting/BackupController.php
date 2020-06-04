@@ -76,7 +76,7 @@ class BackupController extends BaseAdminController
                 'Content-Type' => $fs->getMimetype($file),
                 'Content-Length' => $fs->getSize($file),
             ]);
-        } else 
+        } else
         {
             abort(404, "The backup file doesn't exist.");
         }

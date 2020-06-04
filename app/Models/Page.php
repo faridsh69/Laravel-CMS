@@ -37,6 +37,6 @@ class Page extends BaseModel
 
     public function related_pages()
     {
-        return $this->belongsToMany(Page::class, 'related_pages', 'page_id', 'related_page_id');
+        return $this->belongsToMany(self::class, 'related_pages', 'page_id', 'related_page_id');
     }
 }

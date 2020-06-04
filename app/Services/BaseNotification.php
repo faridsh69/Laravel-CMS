@@ -46,17 +46,17 @@ class BaseNotification extends Notification
 
     public function via($notifiable)
     {
-        if(!$notifiable->subscribe){
+        if(! $notifiable->subscribe){
             return [];
         }
 
         $channel_list = [
             DatabaseChannel::class,
         ];
-        if($notifiable->phone && strpos(config('setting-developer.notification_events'), $this->model_snake_class_name. '_sms') !== false){
+        if($notifiable->phone && strpos(config('setting-developer.notification_events'), $this->model_snake_class_name . '_sms') !== false){
             $channel_list[] = SmsChannel::class;
         }
-        if($notifiable->email && strpos(config('setting-developer.notification_events'), $this->model_snake_class_name. '_mail') !== false){
+        if($notifiable->email && strpos(config('setting-developer.notification_events'), $this->model_snake_class_name . '_mail') !== false){
             $channel_list[] = 'mail';
         }
 

@@ -13,9 +13,9 @@ class ResourceController extends BaseResourceController
     public function index()
     {
         $this->authorize('index', $this->model_namespace);
-        $this->meta['link_route'] = route('admin.'. $this->model_slug. '.list.create');
-        $this->meta['link_name'] = __('create_new'). $this->model_translated;
-        $this->meta['title'] = $this->model_translated. __('manager');
+        $this->meta['link_route'] = route('admin.' . $this->model_slug . '.list.create');
+        $this->meta['link_name'] = __('create_new') . $this->model_translated;
+        $this->meta['title'] = $this->model_translated . __('manager');
         $this->meta['search'] = 1;
         $columns = [];
         foreach(collect($this->model_columns)->where('table', true) as $column)
@@ -39,9 +39,9 @@ class ResourceController extends BaseResourceController
     	$block_sort_json = $this->request->blockSort;
     	$block_sort = json_decode($block_sort_json);
     	$this->_saveSort($block_sort);
-    	$this->request->session()->flash('alert-success', $this->model_name. ' Order Updated Successfully!');
+    	$this->request->session()->flash('alert-success', $this->model_name . ' Order Updated Successfully!');
 
-        return redirect()->route('admin.'. $this->model_slug. '.list.index');
+        return redirect()->route('admin.' . $this->model_slug . '.list.index');
     }
 
     private function _saveSort($block_ids)

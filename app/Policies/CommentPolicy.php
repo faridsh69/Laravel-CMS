@@ -4,7 +4,7 @@ namespace App\Policies;
 
 use App\Services\BasePolicy;
 
-class CommentPolicy extends BasePolicy 
+class CommentPolicy extends BasePolicy
 {
 	public $model_slug = 'comment';
 }

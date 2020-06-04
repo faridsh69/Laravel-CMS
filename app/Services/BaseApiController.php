@@ -3,12 +3,10 @@
 namespace App\Services;
 
 use App\Http\Controllers\Controller;
+use App\Models\Activity;
 use Auth;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
-use Route;
-use App\Models\Activity;
-use View;
 use Str;
 
 class BaseApiController extends Controller
@@ -47,21 +45,22 @@ class BaseApiController extends Controller
         'message' => '',
         'data' => '',
     ];
+
     public function __construct(Request $request, FormBuilder $form_builder)
     {
         $this->form_builder = $form_builder;
         $this->request = $request;
-        if(!$this->model_slug){
+        if(! $this->model_slug){
             $this->model_slug = $this->request->segment(2);
         }
         $this->model_name = Str::studly($this->model_slug);
         $this->model_translated = __(Str::snake($this->model_name));
-        $this->model_namespace = config('cms.config.models_namespace'). $this->model_name;
-        $this->model_repository = new $this->model_namespace;
+        $this->model_namespace = config('cms.config.models_namespace') . $this->model_name;
+        $this->model_repository = new $this->model_namespace();
         $this->model_columns = $this->model_repository->getColumns();
         $this->model_rules = collect($this->model_columns)->pluck('rule', 'name')->toArray();
-        $this->model_form = 'App\Forms\\'. $this->model_name. 'Form';
-        if(!file_exists(__DIR__. '/../../'. $this->model_form. '.php')){
+        $this->model_form = 'App\Forms\\' . $this->model_name . 'Form';
+        if(! file_exists(__DIR__ . '/../../' . $this->model_form . '.php')){
             $this->model_form = 'App\Forms\Form';
         }
         $this->message_not_found = __('not_found');
@@ -97,10 +96,10 @@ class BaseApiController extends Controller
             activity($this->model_name)
                 ->performedOn($model_store)
                 ->causedBy(Auth::user())
-                ->log($this->model_name. ' Created');
+                ->log($this->model_name . ' Created');
         }
 
-        $this->response['message'] = $this->model_translated. __('created_successfully');
+        $this->response['message'] = $this->model_translated . __('created_successfully');
         $this->response['data'] = $model_store;
 
         return response()->json($this->response);
@@ -167,10 +166,10 @@ class BaseApiController extends Controller
             activity($this->model_name)
                 ->performedOn($model_update)
                 ->causedBy(Auth::user())
-                ->log($this->model_name. ' Updated');
+                ->log($this->model_name . ' Updated');
         }
 
-        $this->response['message'] = $this->model_translated. __('updated_successfully');
+        $this->response['message'] = $this->model_translated . __('updated_successfully');
         $this->response['data'] = $model_update;
 
         return response()->json($this->response);
@@ -192,10 +191,10 @@ class BaseApiController extends Controller
             activity($this->model_name)
                 ->performedOn($model_delete)
                 ->causedBy(Auth::user())
-                ->log($this->model_name. ' Deleted');
+                ->log($this->model_name . ' Deleted');
         }
 
-        $this->response['message'] = $this->model_translated. __('deleted_successfully');
+        $this->response['message'] = $this->model_translated . __('deleted_successfully');
         $this->response['data'] = $model_delete;
 
         return response()->json($this->response);
