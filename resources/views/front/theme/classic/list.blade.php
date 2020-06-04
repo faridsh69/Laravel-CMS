@@ -5,6 +5,13 @@
                 <div class="academy-blog-posts">
                     <div class="row">
                         @each('front.theme.'. config('setting-developer.theme'). '.list-item', $list, 'item')
+                        @if(count($list) == 0)
+                            <div class="col-12">
+                                <div class="alert alert-danger alert-dismissible" role="alert">
+                                    {{ __('list_is_empty') }}
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
                 <!-- Pagination Area Start -->
@@ -22,6 +29,54 @@
                             <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                         </form>
                     </div>
+
+                    @if(isset($category))
+                    <div class="latest-blog-posts mb-30">
+                        <h5>{{ __('category') }}</h5>
+                        <div class="single-latest-blog-post d-flex mb-30">
+                            <div class="latest-blog-post-thumb">
+                                <i class="fa {{ $category->icon }}" style="font-size: 30px"></i>
+                            </div>
+                            <div class="latest-blog-post-content">
+                                <a href="{{ route('front.'. Str::kebab($category->type). '.category.show', $category->url) }}" class="post-title">
+                                    <h6>{{ $category->title }}</h6>
+                                </a>
+                                <a href="#" class="post-date">19 actions</a>
+                                <br>
+                                {{ __('description') }}: {{ $category->description }}
+                                <br>
+                                {{ __('created at') }}:
+                                {{ $category->created_at }}
+                                <br>
+                                <a href="{{ route('front.'. Str::kebab($category->type). '.category.show', $category->url) }}"> Check other categories </a>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+
+                    @if(isset($tag))
+                    <div class="latest-blog-posts mb-30">
+                        <h5>{{ __('tag') }}</h5>
+                        <div class="single-latest-blog-post d-flex mb-30">
+                            <div class="latest-blog-post-thumb">
+                                <i class="fa {{ $tag->icon }}" style="font-size: 30px"></i>
+                            </div>
+                            <div class="latest-blog-post-content">
+                                <a href="{{ route('front.'. Str::kebab($tag->type). '.tag.show', $tag->url) }}" class="post-title">
+                                    <h6>{{ $tag->title }}</h6>
+                                </a>
+                                <a href="#" class="post-date">19 actions</a>
+                                <br>
+                                {{ __('description') }}: {{ $tag->description }}
+                                <br>
+                                {{ __('created at') }}:
+                                {{ $tag->created_at }}
+                                <br>
+                                <a href="{{ route('front.'. Str::kebab($tag->type). '.tag.show', $tag->url) }}"> Check other tags </a>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
 
                     @if(isset($categories) && count($categories) > 0)
                     <div class="latest-blog-posts mb-30">

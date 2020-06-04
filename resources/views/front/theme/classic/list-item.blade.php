@@ -1,4 +1,4 @@
-<div class="col-11">
+<div class="col-6">
     <div class="single-blog-post mb-50 wow fadeInUp" data-wow-delay="50ms">
         <!-- Post Thumb -->
         <div class="blog-post-thumb mb-50">

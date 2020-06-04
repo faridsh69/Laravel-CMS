@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Route;
 use Str;
 use View;
+use Cache;
 
 class BaseFrontController extends Controller
 {
@@ -65,16 +66,33 @@ class BaseFrontController extends Controller
             ->orderBy('updated_at', 'desc')
             ->paginate(config('setting-general.pagination_number'));
 
-        $categories = Category::ofType($this->model_name)->active()->language()
+        $CategoryAndTags = $this->getCategoryAndTags();
+        return view('front.list.index', [
+            'meta' => $this->meta, 
+            'list' => $list, 
+            'categories' => $CategoryAndTags['categories'], 
+            'tags' => $CategoryAndTags['tags']
+        ]);
+    }
+
+    private function getCategoryAndTags()
+    {
+        $categories = Cache::remember('category.'. $this->model_slug, 10, function () {
+            return Category::ofType($this->model_name)->active()->language()
             ->orderBy('updated_at', 'desc')
             ->get();
+        });
 
-        $tags = Tag::ofType($this->model_name)->active()->language()
+        $tags = Cache::remember('tag.'. $this->model_slug, 10, function () {
+            return Tag::ofType($this->model_name)->active()->language()
             ->orderBy('updated_at', 'desc')
             ->get();
-        dd($tags);
+        });
 
-        return view('front.list.index', ['meta' => $this->meta, 'list' => $list, 'categories' => $categories, 'tags' => $tags]);
+        return [
+            'categories' => $categories,
+            'tags' => $tags,
+        ];
     }
 
     /**
@@ -116,11 +134,11 @@ class BaseFrontController extends Controller
             ->orderBy('updated_at', 'desc')
             ->paginate(config('setting-general.pagination_number'));
 
-        if($list->count() === 0){
-            return redirect()->route('front.' . $this->model_slug . '.index');
-        }
-
-        return view('front.list.index', ['meta' => $this->meta, 'list' => $list, 'category' => $category]);
+        return view('front.list.index', [
+            'meta' => $this->meta, 
+            'list' => $list, 
+            'category' => $category, 
+        ]);
     }
 
     public function getCategories ()
@@ -142,7 +160,6 @@ class BaseFrontController extends Controller
     public function getTag($url)
     {
         $tag = Tag::where('url', $url)->firstOrFail();
-
         if(env('APP_ENV') !== 'testing'){
             activity('Tag')->performedOn($tag)->causedBy(Auth::user())
                 ->log('Tag View');
