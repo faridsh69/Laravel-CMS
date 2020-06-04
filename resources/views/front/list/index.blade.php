@@ -27,7 +27,7 @@
 		@elseif(isset($tag))
 		<div class="row">
 			<div class="col-12"> 
-				<h1>{{ __('Tag') }}: <i class="fa {{ $tag->icon }}"></i> {{ $tag->title }}</h1>
+				<h1>{{ __('Tag') }}: <i class="fa {{ $tag->icon }}"></i> <span>{{ $tag->title }}</span> ﻫﻮاﺯﯼ  هوازی</h1>
 				<p>
 					{{ __('description') }}: {{ $tag->description }}
 				</p>

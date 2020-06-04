@@ -26,17 +26,17 @@ class SportSeeder extends Seeder
             [
              	'type' => 'GymAction',
              	'url' => 'jolo-bazo',
-                'title' => 'ﺟﻠﻮ ﺑﺎﺯﻭ',
+                'title' => 'جلو بازو',
             ],
             [
              	'type' => 'GymAction',
              	'url' => 'posht-bazo',
-                'title' => 'ﭘﺸﺖ ﺑﺎﺯﻭ',
+                'title' => 'پشت بازو',
             ],
             [
              	'type' => 'GymAction',
              	'url' => 'shekam',
-                'title' => 'ﭘﻬﻠﻮ ﻭ ﺷﮑﻢ',
+                'title' => 'پهلو و شکم',
             ],
             [
              	'type' => 'GymAction',
@@ -51,27 +51,27 @@ class SportSeeder extends Seeder
             [
              	'type' => 'GymAction',
              	'url' => 'zirbaghal',
-                'title' => 'ﺯﯾﺮﺑﻐﻞ',
+                'title' => 'زیربغل',
             ],
             [
              	'type' => 'GymAction',
              	'url' => 'sine',
-                'title' => 'ﺳﯿﻨﻪ',
+                'title' => 'سینه',
             ],
             [
              	'type' => 'GymAction',
              	'url' => 'sarshone',
-                'title' => 'ﺳﺮﺷﺎﻧﻪ',
+                'title' => 'سرشانه',
             ],
             [
              	'type' => 'GymAction',
              	'url' => 'kool',
-                'title' => 'ﮐﻮﻝ',
+                'title' => 'کول',
             ],
             [
              	'type' => 'GymAction',
              	'url' => 'sagh-pa',
-                'title' => 'ﺳﺎﻕ ﭘﺎ',
+                'title' => 'ساق پا',
             ],
             [
              	'type' => 'GymAction',
@@ -90,27 +90,27 @@ class SportSeeder extends Seeder
             [
              	'type' => 'GymAction',
              	'url' => 'havazi',
-                'title' => 'ﻫﻮاﺯﯼ',
+                'title' => 'هوازی',
             ],
             [
              	'type' => 'GymAction',
              	'url' => 'azole saz',
-                'title' => 'ﻋﻀﻠﻪ ﺳﺎﺯ',
+                'title' => 'عضله سازی',
             ],
             [
              	'type' => 'GymAction',
              	'url' => 'harekate-sangin',
-                'title' => 'ﺣﺮﮐﺖ ﺳﻨﮕﯿﻦ',
+                'title' => 'حرکت سنگین',
             ],
             [
              	'type' => 'GymAction',
              	'url' => 'harekate-sabok',
-                'title' => 'ﺣﺮﮐﺖ ﺳﺒﮏ',
+                'title' => 'حرکت سبک',
             ],
             [
              	'type' => 'GymAction',
              	'url' => 'esteghamati',
-                'title' => 'اﺳﺘﻘﺎﻣﺘﯽ',
+                'title' => 'استقامتی',
             ],
         ];
 
@@ -222,6 +222,7 @@ class SportSeeder extends Seeder
 
         $developer_settings = [
             'app_language' => $language,
+            'direction' => false,
             'theme' => 'classic',
             'theme_color_1' => '',
             'theme_color_2' => '',
@@ -259,6 +260,21 @@ class SportSeeder extends Seeder
                 'title' => 'حرکات ورزشی',
                 'url' => 'gym-action',
             ],
+			[
+                'type' => 'menu',
+                'title' => 'برنامه ورزشی',
+                'url' => 'gym-program',
+            ],
+			[
+                'type' => 'menu',
+                'title' => 'برنامه تغذیه',
+                'url' => 'food-program',
+            ],
+			[
+                'type' => 'menu',
+                'title' => 'بلاگ',
+                'url' => 'blog',
+            ],
             [
                 'type' => 'menu',
                 'title' => 'درباره ما',
@@ -285,12 +301,10 @@ class SportSeeder extends Seeder
                 'url' => 'gym-action',
                 'image' => $image_folder_name . 'header-2.png',
             ],
-            // Breadcrumb
             [
                 'type' => 'breadcrumb',
                 'image' => $image_folder_name . 'breadcrumb.png',
             ],
-            // Main Feature
             [
                 'type' => 'main_feature',
                 'title' => 'استفاده آسان',
@@ -329,7 +343,7 @@ class SportSeeder extends Seeder
             ],
             [
                 'type' => 'feature',
-                'title' => 'Everything is ready',
+                'title' => 'مناسب تمام سنین',
                 'icon' => 'fa fa-thumbs-o-up',
                 'description' => 'Everything is ready, you just need to write your logic.',
             ],
