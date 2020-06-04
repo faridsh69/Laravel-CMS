@@ -1,5 +1,7 @@
 @extends('front.common.layout')
 @section('content_block')
+@include('front.theme.'. config('setting-developer.theme'). '.list')
+@if(false)
 <div class="row">
 	<div class="col-sm-3">
 		@if(isset($category))
@@ -46,7 +48,7 @@
 				<a href="{{ route('front.'. Str::kebab($tag->type). '.tag.index') }}"> Check other tags </a>
 			</div>
 		</div>
-		@elseif(isset($categories))
+		@elseif(isset($categories) && count($categories) > 0 )
 		{{ __('categories') }}:
 		<ul>
 			@foreach($categories as $category)
@@ -92,4 +94,5 @@
 		</div>
 	</div>
 </div>
+@endif
 @endsection

@@ -26,9 +26,6 @@ class BaseFrontController extends Controller
     // App\Models\FoodProgram
     public $model_namespace;
 
-    // Columns of this model
-    public $model_columns;
-
     // A new instance of this model
     public $model_repository;
 
@@ -47,7 +44,6 @@ class BaseFrontController extends Controller
         $this->model_translatedlated = __(Str::snake($this->model_name));
         $this->model_namespace = config('cms.config.models_namespace') . $this->model_name;
         $this->model_repository = new $this->model_namespace();
-        $this->model_columns = $this->model_repository->getColumns();
         $this->meta = [
             'title' => config('setting-general.default_meta_title') . ' | ' . $this->model_translated,
             'description' => __('List of all ' . $this->model_translated . ' in this site is ready for you that is paginated and you can search between them.'),
@@ -69,11 +65,16 @@ class BaseFrontController extends Controller
             ->orderBy('updated_at', 'desc')
             ->paginate(config('setting-general.pagination_number'));
 
-        $categories = Category::ofType($this->model_slug)->active()->language()
+        $categories = Category::ofType($this->model_name)->active()->language()
             ->orderBy('updated_at', 'desc')
             ->get();
 
-        return view('front.list.index', ['meta' => $this->meta, 'list' => $list, 'categories' => $categories]);
+        $tags = Tag::ofType($this->model_name)->active()->language()
+            ->orderBy('updated_at', 'desc')
+            ->get();
+        dd($tags);
+
+        return view('front.list.index', ['meta' => $this->meta, 'list' => $list, 'categories' => $categories, 'tags' => $tags]);
     }
 
     /**
@@ -124,7 +125,7 @@ class BaseFrontController extends Controller
 
     public function getCategories ()
     {
-        $categories = Category::ofType($this->model_slug)->active()->language()
+        $categories = Category::ofType($this->model_name)->active()->language()
             ->orderBy('updated_at', 'desc')
             ->get();
 
@@ -159,7 +160,7 @@ class BaseFrontController extends Controller
 
     public function getTags ()
     {
-        $tags = Tag::ofType($this->model_slug)->active()->language()
+        $tags = Tag::ofType($this->model_name)->active()->language()
             ->orderBy('updated_at', 'desc')
             ->get();
 

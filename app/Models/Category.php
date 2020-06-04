@@ -19,8 +19,17 @@ class Category extends BaseModel
         ],
         ['name' => 'title'],
         ['name' => 'url'],
-        ['name' => 'description'],
+        [
+            'name' => 'description',
+            'type' => 'text',
+            'database' => 'nullable',
+            'rule' => 'nullable',
+            'help' => 'Description should be 50 - 70 characters, maximum 160 characters.',
+            'form_type' => 'textarea',
+            'table' => false,
+        ],
         ['name' => 'icon'],
+        ['name' => 'image'],
         ['name' => 'activated'],
         ['name' => 'order'],
         [
@@ -35,7 +44,7 @@ class Category extends BaseModel
             'property' => 'title',
             'property_key' => 'id',
             'multiple' => false,
-            'table' => true,
+            'table' => false,
         ],
         ['name' => 'language'],
     ];

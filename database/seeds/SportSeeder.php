@@ -41,12 +41,12 @@ class SportSeeder extends Seeder
             [
              	'type' => 'GymAction',
              	'url' => 'jolo-ran',
-                'title' => 'ﺟﻠﻮ ﺭاﻥ',
+                'title' => 'جلو ران',
             ],
             [
              	'type' => 'GymAction',
              	'url' => 'posht-ran',
-                'title' => 'ﭘﺸﺖ ﺭاﻥ',
+                'title' => 'پشت ران',
             ],
             [
              	'type' => 'GymAction',
@@ -116,6 +116,7 @@ class SportSeeder extends Seeder
 
         foreach($tags as $tag)
         {
+            $tag['language'] = $language;
             Tag::firstOrCreate($tag);
         }
 
@@ -579,7 +580,7 @@ class SportSeeder extends Seeder
 	            'activated' => 1,
 	        ],
 	        [
-	            'title' => 'چلو بازو لاری با هارتل',
+	            'title' => 'جلو بازو لاری',
 	            'url' => 'front-arm-lari',
 	            'description' => '',
 	            'content' => 'روی یک نیمکت لاری بنشینید و ارتفاع را طوری تنظیم کنید که زیر بغل شما بالای نیمکت قرار بگیرد.هارتل را در عرض شانه ها با بازوها بکشید(اجازه دهید ارنج ها کمی خم باشد). هازتل را بالا بکشید و قسمت پشتی بازوهای خود را در برابر نیمکت نگه دارید. سه ثانیه طول بکشد تا هارتل به پایین پایین بیاید.
