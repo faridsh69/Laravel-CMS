@@ -29,7 +29,7 @@
 				<?php echo $src; ?>
 			<?php endif; ?>
 			<div class="file-tools mt-2">
-				<a href="javascript:void(0)" class="btn btn-outline-danger m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air" onclick="removeFile('<?php echo $src; ?>')"><span>
+				<a href="javascript:void(0)" class="btn btn-outline-danger m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air" onclick="removeFile('<?php echo $src; ?>', this)"><span>
 				    <i class="la la-trash"></i></span>
 				</a>
 				<a download href="<?php echo $src; ?>" class="btn btn-outline-info m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air"><span>

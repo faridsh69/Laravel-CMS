@@ -126,10 +126,13 @@ inputsWithTypeTextarea.each(function(){
     }
 });
 
-function emptyImageInput(inputId) {
-    $('#' + inputId).removeAttr('value');
+function emptyImageInput(inputName, element) {
+    $(element).parent().parent().remove();
+    $('#' + inputName).removeAttr('value');
 };
 
-function removeFile(src){
-    $.ajax({url: '/admin/file/remove-by-src?src=' + src}).then(function(){location.reload()});
+function removeFile(src, element){
+    $.ajax({url: '/admin/file/remove-by-src?src=' + src}).then(function(){
+        $(element).parent().parent().remove();
+    });
 }

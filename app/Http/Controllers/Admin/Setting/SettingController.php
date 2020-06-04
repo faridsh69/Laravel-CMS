@@ -16,6 +16,7 @@ class SettingController extends BaseResourceController
     public function index()
     {
     	$section = explode('-', $this->model_slug)[1];
+    	$this->meta['title'] = __($section. '_manager');
     	$this->authorize('manage', 'setting_'. $section);
         $model = $this->model_repository->first();
         $form = $this->form_builder->create($this->model_form, [
