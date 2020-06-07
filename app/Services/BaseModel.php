@@ -192,10 +192,10 @@ class BaseModel extends Model
                     'type' => 'string',
                     'database' => 'nullable',
                     // 'rule' => 'required|unique:'. $constructor['table_name']. ',url,',
-                    'rule' => 'required|max:' . config('setting-developer.seo_url_max'),
+                    'rule' => 'nullable|max:' . config('setting-developer.seo_url_max'),
                     'help' => 'Url should be unique, contain [a-z, 0-9, -], required for seo',
                     'form_type' => '',
-                    'table' => true,
+                    'table' => false,
                 ],
                 'keywords' => [
                     'name' => 'keywords',
@@ -315,7 +315,7 @@ class BaseModel extends Model
                     'help' => 'Specify language.',
                     'form_type' => 'enum',
                     'form_enum_class' => 'AppLanguage',
-                    'table' => false,
+                    'table' => true,
                 ],
                 'order' => [
                     'name' => 'order',

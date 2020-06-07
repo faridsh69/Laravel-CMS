@@ -230,10 +230,10 @@ class SportSeeder extends Seeder
             'scripts' => '<script> console.log("Laravel is running..."); </script>',
             'styles' => '<style>  </style>',
             'email_username' => 'cms.laravel.os@gmail.com',
-            'email_password' => 'uqiawbziifrgskhu1',
+            'email_password' => 'uqiawbziifrgskhu',
             'sms_driver' => 'raygansms',
             'sms_sender' => '9830006859000705',
-            'sms_api_key' => 'muhammadc22:1234567891',
+            'sms_api_key' => 'muhammadc22:123456789',
         ];
         SettingGeneral::updateOrCreate(['id' => 1], $general_settings);
         SettingDeveloper::updateOrCreate(['id' => 1], $developer_settings);

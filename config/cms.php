@@ -170,7 +170,7 @@ $cms = [
         'answer',
         'block',
         'blog',
-        // 'car',
+        'car',
         'category',
         // 'cinema',
         'comment',
