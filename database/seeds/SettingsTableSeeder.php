@@ -9,7 +9,7 @@ class SettingsTableSeeder extends Seeder
 {
 	public function run()
 	{
-		$folder_name = env('SEEDER_FOLDER_NAME') ?: 'cms-laravel';
+		$folder_name = 'cms-laravel';
 		$image_folder_name = '/storage/photos/' . $folder_name . '/';
 		$general_settings = [
 			'app_title' => 'App Title',

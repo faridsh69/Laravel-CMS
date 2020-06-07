@@ -10,7 +10,7 @@ class ModulesTableSeeder extends Seeder
      */
     public function run()
     {
-        $folder_name = env('SEEDER_FOLDER_NAME') ?: 'cms-laravel';
+        $folder_name = 'cms-laravel';
         $image_folder_name = '/storage/photos/' . $folder_name . '/';
         $video_folder_name = '/storage/videos/' . $folder_name . '/';
 
