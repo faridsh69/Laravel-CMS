@@ -350,20 +350,20 @@ class SportSeeder extends Seeder
             ],
             [
                 'type' => 'feature',
-                'title' => 'گرافیم زیبا',
+                'title' => 'گرافیک زیبا',
                 'icon' => 'fa fa-desktop',
                 'description' => '4 well designed themes are ready for this cms.',
             ],
             [
                 'type' => 'feature',
-                'title' => 'ریسپامسیو',
+                'title' => 'ریسپانسیو',
                 'icon' => 'fa fa-tachometer',
                 'description' => 'Appropriate Caches used in this cms.',
             ],
             // Introduce
             [
                 'type' => 'introduce',
-                'title' => 'پرا تنکوم ؟',
+                'title' => 'چرا تنکوک ؟',
                 'description' => 'Developed by farid shahidi - farid.sh69@gmail.com',
                 'content' => '
 تنکوک سامانه حجامع ورزشی در خهدمت شماست.
@@ -392,7 +392,7 @@ class SportSeeder extends Seeder
             ],
             [
                 'type' => 'counting',
-                'title' => 'تغداد حرمات ورزشی',
+                'title' => 'تعداد حرکات ورزشی',
                 'description' => 187,
                 'icon' => 'fa fa-cloud-upload',
             ],
@@ -443,26 +443,26 @@ class SportSeeder extends Seeder
             // Testimonial
             [
                 'type' => 'testimonial',
-                'title' => 'Consultant',
+                'title' => 'مربی و مدیر سامانه',
                 'full_name' => 'ارمغان مسایلی',
                 'description' => '“ 
 من این سامانه را خیلی دوس دارم و تمام شاگردانم را تشویق میکنم اطلاعات دقیق خود را از آن دریافت نمایید. ”',
-                'image' => $image_folder_name . 'testimonial-1.png',
+                'image' => $image_folder_name . 'testimonial-3.png',
             ],
             [
                 'type' => 'testimonial',
                 'title' => 'مدیر سایت',
-                'full_name' => 'نئید منصوری',
+                'full_name' => 'نوید منصوری',
                 'description' => '“ 
 در ارتباط با ورزش تمام اطلاعات دقیق و خدمات آنلاین را از ما بخواهید ”',
                 'image' => $image_folder_name . 'testimonial-2.png',
             ],
             [
                 'type' => 'testimonial',
-                'title' => 'Graphic Designer',
+                'title' => 'طراح و گرافیست',
                 'full_name' => 'Elizabeth Sm',
                 'description' => '“ I desgined all of its themes on edge of technology ”',
-                'image' => $image_folder_name . 'testimonial-3.png',
+                'image' => $image_folder_name . 'testimonial-1.png',
             ],
             [
                 'type' => 'testimonial',
@@ -474,12 +474,12 @@ class SportSeeder extends Seeder
             // FAQ
             [
                 'type' => 'faq',
-                'title' => 'خدمات ارزنده این ساین چیسنت?',
+                'title' => 'خدمات ارزنده این سایت چیست?',
                 'description' => 'It is complete and very fast and easy to develop',
             ],
             [
                 'type' => 'faq',
-                'title' => 'روزش استفاده  صیحیح از برنامه ها جیست?',
+                'title' => 'روش استفاده  صحیح از برنامه ها چیست?',
                 'description' => 'Take a look at models and just define what you need in your project',
             ],
             // Partner
@@ -511,7 +511,7 @@ class SportSeeder extends Seeder
             // Team
             [
                 'type' => 'team',
-                'title' => 'Consultant',
+                'title' => 'مربی و مدیر سامانه',
                 'full_name' => 'ارمغان مسایلی',
                 'image' => $image_folder_name . 'team-1.png',
             ],
@@ -523,7 +523,7 @@ class SportSeeder extends Seeder
             ],
             [
                 'type' => 'team',
-                'title' => 'Graphic Designer',
+                'title' => 'طراح و گرافیست',
                 'full_name' => 'Elizabeth Sm',
                 'image' => $image_folder_name . 'team-3.png',
             ],
