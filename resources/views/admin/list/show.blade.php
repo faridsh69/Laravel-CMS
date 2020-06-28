@@ -18,6 +18,9 @@
 							{{ __('Check user identify') }}
 						</a>
 					@endif
+					<a href="{{ route('front.'. Str::kebab(class_basename($data)) .'.show', $data['url']) }}" target="_blank" class="btn btn-danger btn-sm m-btn m-btn--custom m-btn--air m-btn--pill">
+						{{ __('Show at website') }}
+					</a>
 				</h3>
 			</div>
 		</div>

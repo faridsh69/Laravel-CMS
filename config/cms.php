@@ -253,6 +253,7 @@ $cms = [
         'story',
         'travel',
         'tour',
+        'user',
     ],
     'admin_tests' => [
         'address',

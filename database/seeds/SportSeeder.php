@@ -132,16 +132,6 @@ class SportSeeder extends Seeder
                 'password' => bcrypt('1111'),
                 'activated' => 1,
             ],
-            [
-                'id' => 3,
-                'first_name' => 'Content',
-                'last_name' => 'Writer',
-                'url' => 'content-writer',
-                'email' => 'content@gmail.com',
-                'phone' => '+9120568203',
-                'password' => bcrypt('1111'),
-                'activated' => 1,
-            ],
         ];
         foreach($users as $user){
             User::updateOrCreate(['id' => $user['id']], $user);

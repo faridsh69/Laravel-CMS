@@ -42,7 +42,7 @@ class BaseFrontController extends Controller
             $this->model_slug = $this->request->segment(1);
         }
         $this->model_name = Str::studly($this->model_slug);
-        $this->model_translatedlated = __(Str::snake($this->model_name));
+        $this->model_translated = __(Str::snake($this->model_name));
         $this->model_namespace = config('cms.config.models_namespace') . $this->model_name;
         $this->model_repository = new $this->model_namespace();
         $this->meta = [

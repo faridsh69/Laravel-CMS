@@ -102,7 +102,7 @@ class User extends Authenticatable
             'type' => 'string',
             'database' => 'nullable',
             'rule' => 'nullable|url',
-            'help' => 'Url should be unique, contain lowercase characters and numbers and -',
+            'help' => 'It is used as Username.',
             'form_type' => 'none',
             'table' => false,
         ],
@@ -116,7 +116,7 @@ class User extends Authenticatable
             'table' => false,
         ],
         [
-            'name' => 'bio',
+            'name' => 'description',
             'type' => 'text',
             'database' => 'nullable',
             'rule' => 'nullable',
@@ -308,9 +308,19 @@ class User extends Authenticatable
         return 'https://hooks.slack.com/services/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';
     }
 
+    public function getTitleAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
     public function getColumns()
     {
         return $this->columns;
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('activated', 1);
     }
 
     public function getNameAttribute()
@@ -358,6 +368,16 @@ class User extends Authenticatable
         return $this->morphMany(Follow::class, 'followable');
     }
 
+    public function tags()
+    {
+        return $this->morphToMany('App\Models\Tag', 'taggable');
+    }
+
+    public function relateds()
+    {
+        return $this->belongsToMany(config('cms.config.models_namespace') . class_basename($this), 'model_related', 'model_id', 'related_id');
+    }
+
     public function files()
     {
         return $this->morphMany('App\Models\File', 'fileable');
@@ -375,6 +395,10 @@ class User extends Authenticatable
 
     public function srcs($title)
     {
+        $column = collect($this->getColumns())->where('name', $title)->first();
+        if(!$column){
+            return [];
+        }
         $isFileManager = collect($this->getColumns())->where('name', $title)->first()['file_manager'];
         $srcs = [];
         if($isFileManager === true && $this->{$title}){
