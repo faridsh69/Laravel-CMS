@@ -268,11 +268,11 @@ class BaseResourceController extends BaseAdminController
     {
         $this->authorize('index', $this->model_namespace);
         $list = $this->model_repository->orderBy('updated_at', 'desc');
-        if(Auth::user()->hasRole($this->model_slug . '_manager')){
-            $list = $list->get();
-        }else{
-            $list = $list->authUser()->get();
-        }
+        // if(Auth::user()->hasRole($this->model_slug . '_manager')){
+        //     $list = $list->get();
+        // }else{
+        //     $list = $list->authUser()->get();
+        // }
 
         $datatable = datatables()
             ->of($list)
