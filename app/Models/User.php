@@ -103,7 +103,7 @@ class User extends Authenticatable
             'database' => 'nullable',
             'rule' => 'nullable|url',
             'help' => 'It is used as Username.',
-            'form_type' => 'none',
+            'form_type' => '',
             'table' => false,
         ],
         [
