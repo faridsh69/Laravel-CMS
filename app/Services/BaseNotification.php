@@ -53,12 +53,12 @@ class BaseNotification extends Notification
         $channel_list = [
             DatabaseChannel::class,
         ];
-        if($notifiable->phone && array_search($this->model_snake_class_name. '_sms', config('setting-developer.notification_events')) !== false){
-            $channel_list[] = SmsChannel::class;
-        }
-        if($notifiable->email && array_search($this->model_snake_class_name. '_mail', config('setting-developer.notification_events')) !== false){
-            $channel_list[] = 'mail';
-        }
+        // if($notifiable->phone && array_search($this->model_snake_class_name. '_sms', config('setting-developer.notification_events')) !== false){
+        //     $channel_list[] = SmsChannel::class;
+        // }
+        // if($notifiable->email && array_search($this->model_snake_class_name. '_mail', config('setting-developer.notification_events')) !== false){
+        //     $channel_list[] = 'mail';
+        // }
 
         return $channel_list;
     }
