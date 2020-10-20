@@ -6,6 +6,8 @@ use App\Services\BaseModel;
 
 class Food extends BaseModel
 {
+    protected $table = 'foods';
+
     public $columns = [
         ['name' => 'title'],
         ['name' => 'url'],

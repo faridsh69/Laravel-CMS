@@ -6,6 +6,8 @@ use App\Services\BaseModel;
 
 class Travel extends BaseModel
 {
+    protected $table = 'travels';
+
     public $columns = [
         ['name' => 'title'],
         ['name' => 'url'],

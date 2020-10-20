@@ -6,6 +6,8 @@ use App\Services\BaseModel;
 
 class Music extends BaseModel
 {
+    protected $table = 'musics';
+
     public $columns = [
         ['name' => 'title'],
         ['name' => 'url'],
