@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if(env('DB_DATABASE') === ''){
+        if(env('DB_DATABASE') == ''){
             $database_name = '';
             if(isset($_SERVER['SERVER_NAME'])){
                 $domain_map = [
@@ -61,7 +61,6 @@ class AppServiceProvider extends ServiceProvider
             }
             config(['database.connections.mysql.database' => $database_name]);
         }
-
         $seconds = 1;
         if(! Schema::hasTable('setting_generals') || SettingGeneral::first() === null){
             return 'general settings does not exist!';
@@ -81,6 +80,7 @@ class AppServiceProvider extends ServiceProvider
             if($developer_setings_database) {return $developer_setings_database->toArray(); }
             return [];
         });
+        dd(1);
         config(['setting-general' => $general_settings]);
         config(['setting-contact' => $contact_settings]);
         config(['setting-developer' => $developer_settings]);
