@@ -80,7 +80,6 @@ class AppServiceProvider extends ServiceProvider
             if($developer_setings_database) {return $developer_setings_database->toArray(); }
             return [];
         });
-        dd(1);
         config(['setting-general' => $general_settings]);
         config(['setting-contact' => $contact_settings]);
         config(['setting-developer' => $developer_settings]);
