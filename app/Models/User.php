@@ -383,16 +383,6 @@ class User extends Authenticatable
         return $this->morphMany('App\Models\File', 'fileable');
     }
 
-    public function files_for($title)
-    {
-        return $this->files()->where('title', $title)->get();
-    }
-
-    public function files_src_for($title)
-    {
-        return $this->files_for($title)->pluck('src')->toArray();
-    }
-
     // Get file srcs from that column
     public function srcs(string $fileColumnName) : array
     {
@@ -403,11 +393,15 @@ class User extends Authenticatable
         if (isset($fileColumn['file_manager']) && $fileColumn['file_manager'])
             return explode('|', $this->{$fileColumnName});
 
-        return = $this->files_src_for($fileColumnName);
+        return $this->files()
+            ->where('title', $fileColumnName)
+            ->get()
+            ->pluck('src')
+            ->toArray();
     }
 
     // Get first file src from that column
-    private function src(string $fileColumnName) : string
+    public function src(string $fileColumnName) : string
     {
         $srcs = $this->srcs($fileColumnName);
 
