@@ -393,28 +393,31 @@ class User extends Authenticatable
         return $this->files_for($title)->pluck('src')->toArray();
     }
 
-    public function srcs($title)
+    // Get file srcs from that column
+    public function srcs(string $fileColumnName) : array
     {
-        $column = collect($this->getColumns())->where('name', $title)->first();
-        if(!$column){
+        $fileColumn = collect($this->getColumns())->where('name', $fileColumnName)->first();
+        if (! $fileColumn)
             return [];
-        }
-        $isFileManager = collect($this->getColumns())->where('name', $title)->first()['file_manager'];
-        $srcs = [];
-        if($isFileManager === true && $this->{$title}){
-            $srcs = explode(',', $this->{$title});
-        }
-        else {
-            $srcs = $this->files_src_for($title);
-        }
 
-        return $srcs;
+        if (isset($fileColumn['file_manager']) && $fileColumn['file_manager'])
+            return explode('|', $this->{$fileColumnName});
+
+        return = $this->files_src_for($fileColumnName);
     }
 
-    public function src($title)
+    // Get first file src from that column
+    private function src(string $fileColumnName) : string
     {
-        $srcs = $this->srcs($title);
-        return count($srcs) > 0 ? $srcs[0] : config('setting-general.default_user_image');
+        $srcs = $this->srcs($fileColumnName);
+
+        return count($srcs) > 0 ? $srcs[0] : $this->defaultFileSrc($fileColumnName);
+    }
+
+    // get default file src
+    private function defaultFileSrc(string $fileColumnName) : string
+    {
+        return config('setting-general.default_user_image');
     }
 
     public function saveWithRelations($data, $model = null)
