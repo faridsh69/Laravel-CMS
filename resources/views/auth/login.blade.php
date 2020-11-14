@@ -7,7 +7,7 @@
 			<a href="javascript:void(0)">
 				<img src="{{ config('setting-general.logo') }}" style="max-height: 40px">
 			</a>
-		</div>
+		</div> 
 		<div class="m-login__signin">
 			<div class="m-login__head">
 				<h3 class="m-login__title">
