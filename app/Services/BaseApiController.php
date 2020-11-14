@@ -51,7 +51,7 @@ class BaseApiController extends Controller
         $this->form_builder = $form_builder;
         $this->request = $request;
         if(! $this->model_slug){
-            $this->model_slug = $this->request->segment(2);
+            $this->model_slug = $this->request->segment(2) ?: 'user';
         }
         $this->model_name = Str::studly($this->model_slug);
         $this->model_translated = __(Str::snake($this->model_name));
