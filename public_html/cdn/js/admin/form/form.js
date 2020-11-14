@@ -127,8 +127,10 @@ inputsWithTypeTextarea.each(function(){
 });
 
 function emptyImageInput(inputName, element) {
+    var src = $(element).parent().parent().find('img').attr('src');
     $(element).parent().parent().remove();
-    $('#' + inputName).removeAttr('value');
+    selectedFiles = $('#' + inputName).val().replace(src + '|||', '').replace('|||' + src, '').replace(src, '');
+    $('#' + inputName).val(selectedFiles);
 };
 
 function removeFile(src, element){

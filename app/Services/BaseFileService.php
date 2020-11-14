@@ -29,7 +29,7 @@ class BaseFileService extends BaseService
             $size = $file->getSize();
             $mime_type = $file->getMimeType();
             $extension = $file->getClientOriginalExtension();
-            $random_code = rand(10000, 99999);
+            $random_code = rand(1000000, 9999999);
             $file_name = $title . '-' . $random_code . '.' . $extension;
             // save file
             $upload_path = $this->upload_path_prefix . $model_slug . '/' . $fileable_id . '/';

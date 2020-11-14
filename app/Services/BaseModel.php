@@ -88,21 +88,26 @@ class BaseModel extends Model
 	}
 
 	// Get file srcs from that column
-    public function srcs(string $fileColumnName) : array
-    {
-        $fileColumn = collect($this->getColumns())->where('name', $fileColumnName)->first();
-        if (! $fileColumn)
-            return [];
+	public function srcs(string $fileColumnName) : array
+	{
+		$fileColumn = collect($this->getColumns())->where('name', $fileColumnName)->first();
+		if (! $fileColumn)
+			return [];
 
-        if (isset($fileColumn['file_manager']) && $fileColumn['file_manager'])
-            return explode('|||', $this->{$fileColumnName});
+		if (isset($fileColumn['file_manager']) && $fileColumn['file_manager'])
+		{
+			if (!$this->{$fileColumnName})
+				return [];
 
-        return $this->files()
-            ->where('title', $fileColumnName)
-            ->get()
-            ->pluck('src')
-            ->toArray();
-    }
+			return explode('|||', $this->{$fileColumnName});
+		}
+
+		return $this->files()
+			->where('title', $fileColumnName)
+			->get()
+			->pluck('src')
+			->toArray();
+	}
 
 	public function image_default()
 	{
@@ -304,21 +309,9 @@ class BaseModel extends Model
 					'form_type' => '',
 					'table' => true,
 				],
-				'admin_files' => [
-					'name' => 'admin_files',
-					'type' => 'text',
-					'database' => 'nullable',
-					'rule' => 'nullable',
-					'help' => 'Upload and select file from file manager',
-					'form_type' => 'file',
-					'file_manager' => true, // its uploaded from file manager
-					'file_accept' => 'file', // file, image, video, audio
-					'file_multiple' => true,
-					'table' => false,
-				],
 				// Images that used file manager to select and upload.
-				'admin_filemanager_images' => [
-					'name' => 'admin_filemanager_images',
+				'admin_filemanager_image' => [
+					'name' => 'admin_filemanager_image',
 					'type' => 'text',
 					'database' => 'nullable',
 					'rule' => 'nullable',
@@ -329,8 +322,8 @@ class BaseModel extends Model
 					'file_multiple' => true,
 					'table' => true,
 				],
-				'admin_videos' => [
-					'name' => 'admin_videos',
+				'admin_filemanager_video' => [
+					'name' => 'admin_filemanager_video',
 					'type' => 'text',
 					'database' => 'nullable',
 					'rule' => 'nullable',
@@ -341,8 +334,8 @@ class BaseModel extends Model
 					'file_multiple' => true,
 					'table' => false,
 				],
-				'admin_audios' => [
-					'name' => 'admin_audios',
+				'admin_filemanager_audio' => [
+					'name' => 'admin_filemanager_audio',
 					'type' => 'text',
 					'database' => 'nullable',
 					'rule' => 'nullable',
@@ -353,21 +346,21 @@ class BaseModel extends Model
 					'file_multiple' => true,
 					'table' => false,
 				],
-				'user_files' => [
-					'name' => 'user_files',
-					'type' => 'file',
-					'database' => 'none',
+				'admin_filemanager_file' => [
+					'name' => 'admin_filemanager_file',
+					'type' => 'text',
+					'database' => 'nullable',
 					'rule' => 'nullable',
-					'help' => '',
+					'help' => 'Upload and select file from file manager',
 					'form_type' => 'file',
-					'file_manager' => false,
-					'file_accept' => 'file',
+					'file_manager' => true, // its uploaded from file manager
+					'file_accept' => 'file', // file, image, video, audio
 					'file_multiple' => true,
 					'table' => false,
 				],
 				// Images that is using file upload for end user.
-				'user_upload_images' => [
-					'name' => 'user_images',
+				'user_upload_image' => [
+					'name' => 'user_upload_image',
 					'type' => 'file',
 					'database' => 'none',
 					'rule' => 'nullable',
@@ -378,8 +371,8 @@ class BaseModel extends Model
 					'file_multiple' => true,
 					'table' => false,
 				],
-				'user_videos' => [
-					'name' => 'user_videos',
+				'user_upload_video' => [
+					'name' => 'user_upload_video',
 					'type' => 'file',
 					'database' => 'none',
 					'rule' => 'nullable',
@@ -390,8 +383,8 @@ class BaseModel extends Model
 					'file_multiple' => true,
 					'table' => false,
 				],
-				'user_audios' => [
-					'name' => 'user_audios',
+				'user_upload_audio' => [
+					'name' => 'user_upload_audio',
 					'type' => 'file',
 					'database' => 'none',
 					'rule' => 'nullable',
@@ -399,6 +392,18 @@ class BaseModel extends Model
 					'form_type' => 'file',
 					'file_manager' => false,
 					'file_accept' => 'audio',
+					'file_multiple' => true,
+					'table' => false,
+				],
+				'user_upload_file' => [
+					'name' => 'user_upload_file',
+					'type' => 'file',
+					'database' => 'none',
+					'rule' => 'nullable',
+					'help' => '',
+					'form_type' => 'file',
+					'file_manager' => false,
+					'file_accept' => 'file',
 					'file_multiple' => true,
 					'table' => false,
 				],
@@ -678,7 +683,9 @@ class BaseModel extends Model
 		});
 	}
 
-	private function clearFilesAndArrays($data)
+	// Before save a form data we need to write 0 for unchecked checkboxes
+	// All relational data that are array should eliminate from form data.
+	private function clearFilesAndArrays(array $data) : array
 	{
 		// convert boolean input values: null and false => 0, true => 1
 		foreach(collect($this->getColumns())->where('type', 'boolean')->pluck('name') as $boolean_column)
@@ -697,9 +704,10 @@ class BaseModel extends Model
 		return $data;
 	}
 
-	private function saveRelatedDataAfterCreate($data, $model)
+	// Save all relational data.
+	private function saveRelatedDataAfterCreate(array $data, $model) : bool
 	{
-		// files column
+		// Upload all columns with type file.
 		foreach(collect($this->getColumns())->where('type', 'file')->pluck('name') as $file_column) {
 			if(isset($data[$file_column]) && $data[$file_column]){
 				$file = $data[$file_column];
@@ -707,61 +715,11 @@ class BaseModel extends Model
 				$file_service->save($file, $model, $file_column);
 			}
 		}
-		// save relations with array type column like tags, related_models, ...
+		// save relations with array type column like tags, related_models, etc.
 		foreach(collect($this->getColumns())->where('type', 'array')->pluck('name') as $array_column) {
 			$model->{$array_column}()->sync($data[$array_column], true);
 		}
+
+		return true;
 	}
-
-		// $files = $this->files($title);
-		// if($files->count() > 1){
-		//     return $files->pluck('src')->implode('|||');
-		// }elseif($files->count() === 1){
-		//     return $files->first()->src;
-		// }
-
-		// return null;
-
-		// $file_src = $this->model->file_src($name);
-		// $file_src = explode('|||', $file_src);
-		// if($file_src === ['']){
-		//     $file_src = [];
-		// }
-		// $options['value'] = json_encode($file_src);
-
-	// public function file_src_thumbnail($title)
-	// {
-	//     $file = $this->file($title);
-	//     if($file){
-	//         return $file->src_thumbnail;
-	//     }
-	//     return null;
-	// }
-
-	// public function getAssetImageAttribute()
-	// {
-	//     if(isset($this->image) && $this->image) {
-	//         return asset($this->image);
-	//     }
-
-	//     return asset(config('setting-general.default_meta_image'));
-	// }
-
-	// protected $appends = ['file_upload', 'image_upload', 'video_upload', 'audio_upload', 'text_upload'];
-
-	// public function getFileUploadAttribute(){
-	//     $file = $this->files()->where('title', 'file_upload')->first();
-	//     if($file){
-	//         return $file->src;
-	//     }
-	//     return null;
-	// }
-
-	// public function getFileUploadOrDefaultAttribute(){
-	//     $file_upload = $this->file_upload;
-	//     if($file_upload){
-	//         return $file_upload;
-	//     }
-	//     return asset(config('setting-general.default_user_image'));
-	// }
 }

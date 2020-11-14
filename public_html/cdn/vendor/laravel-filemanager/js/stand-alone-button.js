@@ -36,6 +36,7 @@ $.fn.filemanager = function(type, options) {
 
 var inputs = $("input[accept='image/*']:not([multiple])");
 inputs.change(function(event){
+    console.log(123);
     var targetElement = event.target || window.event.srcElement;
     files = targetElement.files;
     if (FileReader && files && files.length) {
