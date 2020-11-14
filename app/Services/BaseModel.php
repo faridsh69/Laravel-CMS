@@ -339,8 +339,8 @@ class BaseModel extends Model
 					'table' => false,
 				],
 				// Images that used file manager to select and upload.
-				'admin_images' => [
-					'name' => 'admin_images',
+				'admin_filemanager_images' => [
+					'name' => 'admin_filemanager_images',
 					'type' => 'text',
 					'database' => 'nullable',
 					'rule' => 'nullable',
@@ -388,7 +388,7 @@ class BaseModel extends Model
 					'table' => false,
 				],
 				// Images that is using file upload for end user.
-				'user_images' => [
+				'user_upload_images' => [
 					'name' => 'user_images',
 					'type' => 'file',
 					'database' => 'none',
@@ -575,7 +575,7 @@ class BaseModel extends Model
 					'rule' => 'nullable|numeric',
 					'help' => '',
 					'form_type' => 'number',
-					'table' => true,
+					'table' => false,
 				],
 				'rooms' => [
 					'name' => 'rooms',
@@ -593,7 +593,7 @@ class BaseModel extends Model
 					'rule' => '',
 					'help' => '',
 					'form_type' => '',
-					'table' => true,
+					'table' => false,
 				],
 				'foundation' => [
 					'name' => 'foundation',
@@ -672,8 +672,14 @@ class BaseModel extends Model
 			$columns = $this->columns;
 			foreach($columns as $key => $column)
 			{
-				// check if column is not user defined in model then use default settings for column
-				if(array_key_exists($column['name'], $default_columns) && !isset($column['type'])){
+				if (isset($column['same_column_name']))
+				{
+					$columns[$key] = $default_columns[$column['same_column_name']];
+					$columns[$key]['name'] = $column['name'];
+				}
+				else if (array_key_exists($column['name'], $default_columns) && !isset($column['type']))
+				{
+					// check if column is not user defined in model then use default column
 					$columns[$key] = $default_columns[$column['name']];
 				}
 				else
@@ -681,7 +687,7 @@ class BaseModel extends Model
 					if (!isset($column['type']))
 					{
 						$columns[$key]['type'] = 'text';
-						$columns[$key]['database'] = '';
+						$columns[$key]['database'] = 'nullable';
 						$columns[$key]['rule'] = '';
 						$columns[$key]['help'] = '';
 						$columns[$key]['form_type'] = '';

@@ -16,7 +16,14 @@ class Advertise extends BaseModel
         ['name' => 'year'],
         ['name' => 'properties'],
         ['name' => 'content'],
-        ['name' => 'image_gallery'],
+        [
+            'name' => 'factory_images',
+            'same_column_name' => 'admin_filemanager_images',
+        ],
+        [
+            'name' => 'buyer_images',
+            'same_column_name' => 'user_upload_images',
+        ],
         ['name' => 'video_gallery'],
         ['name' => 'activated'],
         ['name' => 'category_id'],

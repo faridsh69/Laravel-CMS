@@ -137,7 +137,7 @@ class BaseMigration extends Migration
             }
             foreach($add_columns as $column){
                 $name = $column['name'];
-                $type = isset($column['type']) ? $column['type'] : '';
+                $type = $column['type'];
                 $database = isset($column['database']) ? $column['database'] : '';
                 $relation = isset($column['relation']) ? $column['relation'] : '';
                 if($database === 'none'){
