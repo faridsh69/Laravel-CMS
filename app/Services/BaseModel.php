@@ -672,8 +672,21 @@ class BaseModel extends Model
 			$columns = $this->columns;
 			foreach($columns as $key => $column)
 			{
-				if(array_key_exists($column['name'], $default_columns) && ! isset($column['type'])){
+				// check if column is not user defined in model then use default settings for column
+				if(array_key_exists($column['name'], $default_columns) && !isset($column['type'])){
 					$columns[$key] = $default_columns[$column['name']];
+				}
+				else
+				{
+					if (!isset($column['type']))
+					{
+						$columns[$key]['type'] = 'text';
+						$columns[$key]['database'] = '';
+						$columns[$key]['rule'] = '';
+						$columns[$key]['help'] = '';
+						$columns[$key]['form_type'] = '';
+						$columns[$key]['table'] = false;
+					}
 				}
 			}
 
