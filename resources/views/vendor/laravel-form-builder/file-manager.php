@@ -50,7 +50,7 @@
 			</div>
 		</div>
 	<?php endforeach; ?>
-	<div id="holder-<?php if($options['file_accept'] === 'image'){ echo $name; } ?>"></div>
+	<div id="holder-<?php echo $name; ?>" class="show-file"></div>
 
 <?php endif; ?>
 

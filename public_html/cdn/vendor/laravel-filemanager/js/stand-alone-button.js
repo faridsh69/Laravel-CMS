@@ -10,7 +10,7 @@ $.fn.filemanager = function(type, options) {
         window.SetUrl = function (items) {
             var file_path = items.map(function (item) {
               return item.url;
-            }).join(',');
+            }).join('|||');
 
             // set the value of the desired input to image url
             target_input.val('').val(file_path).trigger('change');

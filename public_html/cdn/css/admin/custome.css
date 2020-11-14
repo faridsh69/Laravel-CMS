@@ -40,11 +40,12 @@
 .rtl {
     direction: rtl;
 }
-.show-file{
+.show-file img, .show-file video{
 	border: 1px solid #eee; 
 	border-radius: 4px; 
 	padding: 5px;
 	margin-top: 8px;
+	margin-right: 5px;
 }
 .show-file img{
 	height: 100px;

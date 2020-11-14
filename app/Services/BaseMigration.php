@@ -25,9 +25,9 @@ class BaseMigration extends Migration
 
     public function __construct()
     {
-        if($this->model_slugs === []){
+        if ($this->model_slugs === []){
             $this->model_slugs = [$this->model_slug];
-            if($this->model_slug === null){
+            if ($this->model_slug === null){
                 $this->model_slugs = config('cms.migration');
             }
         }

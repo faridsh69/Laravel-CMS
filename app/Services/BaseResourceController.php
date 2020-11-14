@@ -39,9 +39,9 @@ class BaseResourceController extends BaseAdminController
     {
         $this->form_builder = $form_builder;
         $this->request = $request;
-        if(! $this->model_slug){
-            $this->model_slug = $this->request->segment(2);
-        }
+        if (! $this->model_slug)
+            $this->model_slug = $this->request->segment(2) ?: 'user';
+
         $this->model_name = Str::studly($this->model_slug);
         $this->model_translated = __(Str::snake($this->model_name));
         $this->model_namespace = config('cms.config.models_namespace') . $this->model_name;
@@ -328,9 +328,9 @@ class BaseResourceController extends BaseAdminController
         $datatable->addColumn('category_id', function($model) {
             return $model->category ? $model->category->id . '-' . $model->category->title : '';
         });
-        // $datatable->addColumn('image', function($model) {
-        //     return '<img style="width:80%" src="'. $model->image. '">';
-        // });
+        $datatable->addColumn('image', function($model) {
+            return '<img style="width:80%" src="'. $model->image. '">';
+        });
 
         return $datatable->rawColumns(['id', 'order', 'image', 'content', 'users', 'permissions'])
             ->toJson();

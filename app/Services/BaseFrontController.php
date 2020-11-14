@@ -39,7 +39,7 @@ class BaseFrontController extends Controller
     {
         $this->request = $request;
         if(! $this->model_slug){
-            $this->model_slug = $this->request->segment(1);
+            $this->model_slug = $this->request->segment(1) ?: 'user';
         }
         $this->model_name = Str::studly($this->model_slug);
         $this->model_translated = __(Str::snake($this->model_name));
