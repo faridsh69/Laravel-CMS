@@ -2,6 +2,15 @@
 @section('content_block')
 <div class="row">
 	<div class="col-sm-9">
+		<p>
+			{{ $item->id }}
+			x: 
+			{{ Auth::user()->images }} should return all images src
+			{{ Auth::user()->image }}  should return first image or default
+			{{ Auth::user()->thumbnails }} should return all images src
+			{{ Auth::user()->thumbnail }}  should return first image or default
+			{{ Auth::user()->imagesRecords }}
+		</p>
 		<h1>{{ $item->title }}</h1>
 		<p>
 			{{ __('description') }}: {{ $item->description }}

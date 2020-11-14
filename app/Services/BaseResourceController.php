@@ -328,9 +328,9 @@ class BaseResourceController extends BaseAdminController
         $datatable->addColumn('category_id', function($model) {
             return $model->category ? $model->category->id . '-' . $model->category->title : '';
         });
-        // $datatable->addColumn('image', function($model) {
-        //     return '<img style="width:80%" src="'. $model->image. '">';
-        // });
+        $datatable->addColumn('image', function($model) {
+            return '<img style="width:80%" src="'. $model->image. '">';
+        });
 
         return $datatable->rawColumns(['id', 'order', 'image', 'content', 'users', 'permissions'])
             ->toJson();
