@@ -82,49 +82,27 @@ class BaseModel extends Model
 		return $this->belongsToMany(config('cms.config.models_namespace') . class_basename($this), 'model_related', 'model_id', 'related_id');
 	}
 
-	public function files()
+	public function files() : object
 	{
 		return $this->morphMany('App\Models\File', 'fileable');
 	}
 
-	public function files_for($title)
-	{
-		return $this->files()->where('title', $title)->get();
-	}
+	// Get file srcs from that column
+    public function srcs(string $fileColumnName) : array
+    {
+        $fileColumn = collect($this->getColumns())->where('name', $fileColumnName)->first();
+        if (! $fileColumn)
+            return [];
 
-	public function files_src_for($title)
-	{
-		return $this->files_for($title)->pluck('src')->toArray();
-	}
+        if (isset($fileColumn['file_manager']) && $fileColumn['file_manager'])
+            return explode('|||', $this->{$fileColumnName});
 
-	public function file_src_for($title)
-	{
-		if($this->files_for($title)->first()){
-			return $this->files_for($title)->first()->src;
-		}
-
-		return config('setting-general.default_meta_image');
-	}
-
-	public function srcs($title)
-	{
-		$isFileManager = collect($this->getColumns())->where('name', $title)->first()['file_manager'];
-		$srcs = [];
-		if($isFileManager === true && $this->{$title}){
-			$srcs = explode(',', $this->{$title});
-		}
-		else {
-			$srcs = $this->files_src_for($title);
-		}
-
-		return $srcs;
-	}
-
-	public function src($title)
-	{
-		$srcs = $this->srcs($title);
-		return count($srcs) > 0 ? $srcs[0] : config('setting-general.default_meta_image');
-	}
+        return $this->files()
+            ->where('title', $fileColumnName)
+            ->get()
+            ->pluck('src')
+            ->toArray();
+    }
 
 	public function image_default()
 	{

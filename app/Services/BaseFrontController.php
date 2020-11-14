@@ -66,6 +66,8 @@ class BaseFrontController extends Controller
             ->orderBy('updated_at', 'desc')
             ->paginate(config('setting-general.pagination_number'));
 
+        dd($list);
+
         $CategoryAndTags = $this->getCategoryAndTags();
         return view('front.list.index', [
             'meta' => $this->meta, 
