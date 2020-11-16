@@ -65,7 +65,7 @@ class Block extends BaseModel
         foreach($blocks as $block)
         {
             $block_pages = $block->pages;
-            if (!$block_pages)
+            if ($block_pages == null)
                 continue;
             if($block->show_all_pages && array_search($page_id, $block_pages->pluck('id')->toArray(), true) === false){
                 $output_blocks[] = $block;

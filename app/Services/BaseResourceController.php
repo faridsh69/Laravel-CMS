@@ -297,9 +297,9 @@ class BaseResourceController extends BaseAdminController
         elseif($this->model_name === 'Block') {
             $datatable->addColumn('pages', function($model) {
                 $pages = $model->pages()->pluck('title')->toArray();
-                $output = 'Just in: ';
+                $output = 'Only: ';
                 if($model->show_all_pages){
-                    $output = 'Not in: ';
+                    $output = 'Except: ';
                 }
                 if($pages){
                     $output.= implode(',<br>', $pages);

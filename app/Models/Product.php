@@ -20,7 +20,6 @@ class Product extends BaseModel
             'name' => 'video',
             'same_column_name' => 'admin_filemanager_video',
         ],
-        ['name' => 'admin_videos'],
         ['name' => 'activated'],
         ['name' => 'price'],
         ['name' => 'discount_price'],

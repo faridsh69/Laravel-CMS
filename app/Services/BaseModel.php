@@ -355,6 +355,18 @@ class BaseModel extends Model
 					'table' => false,
 				],
 				// Images that used file manager to select and upload.
+				'image' => [
+					'name' => 'image',
+					'type' => 'text',
+					'database' => 'nullable',
+					'rule' => 'nullable',
+					'help' => 'Upload and select image from file manager',
+					'form_type' => 'file',
+					'file_manager' => true,
+					'file_accept' => 'image',
+					'file_multiple' => true,
+					'table' => true,
+				],
 				'admin_filemanager_image' => [
 					'name' => 'admin_filemanager_image',
 					'type' => 'text',
@@ -366,6 +378,18 @@ class BaseModel extends Model
 					'file_accept' => 'image',
 					'file_multiple' => true,
 					'table' => true,
+				],
+				'video' => [
+					'name' => 'video',
+					'type' => 'text',
+					'database' => 'nullable',
+					'rule' => 'nullable',
+					'help' => 'Upload and select video from file manager',
+					'form_type' => 'file',
+					'file_manager' => true,
+					'file_accept' => 'video',
+					'file_multiple' => true,
+					'table' => false,
 				],
 				'admin_filemanager_video' => [
 					'name' => 'admin_filemanager_video',
@@ -709,15 +733,9 @@ class BaseModel extends Model
 				{
 					$columns[$key] = $default_columns[$column['name']];
 				}
-				else
-				{
+
+				if (!isset($columns[$key]['type']))
 					$columns[$key]['type'] = 'text';
-					$columns[$key]['database'] = 'nullable';
-					$columns[$key]['rule'] = '';
-					$columns[$key]['help'] = '';
-					$columns[$key]['form_type'] = '';
-					$columns[$key]['table'] = false;
-				}
 			}
 
 			return $columns;
