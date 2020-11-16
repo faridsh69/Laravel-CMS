@@ -116,10 +116,11 @@ class BaseModel extends Model
 		if (count($srcs) > 0)
 			return $srcs[0];
 
-		$defaultModelImage = asset('/images/front/general/default/' . 'model.png');
-		$defaultGlobalImage = asset('/images/front/general/default/' . 'model.png');
+		$defaultModelImage = asset('/images/front/general/default/' . class_basename($this) . '.png');
+		if (File::exists(public_path() . $defaultModelImage))
+			return $defaultModelImage;
 
-		return ;
+		return asset('/images/front/general/default/model.png');
 	}
 
 	public function saveWithRelations($data, $model = null)
