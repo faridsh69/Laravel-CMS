@@ -13,14 +13,13 @@ class Product extends BaseModel
         ['name' => 'category_id'],
         ['name' => 'content'],
         [
-            'name' => 'images',
+            'name' => 'image',
             'same_column_name' => 'admin_filemanager_image',
         ],
         [
-            'name' => 'videos',
+            'name' => 'video',
             'same_column_name' => 'admin_filemanager_video',
         ],
-        ['name' => 'images'],
         ['name' => 'admin_videos'],
         ['name' => 'activated'],
         ['name' => 'price'],

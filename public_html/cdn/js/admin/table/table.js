@@ -93,5 +93,5 @@ jQuery(document).ready(function() {
 });
 
 function changeStatus(id){
-    $.ajax({url: "change-status/" + id});
+    $.ajax({url: "toggle-activated/" + id});
 }

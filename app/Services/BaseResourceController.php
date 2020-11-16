@@ -329,7 +329,7 @@ class BaseResourceController extends BaseAdminController
             return $model->category ? $model->category->id . '-' . $model->category->title : '';
         });
         $datatable->addColumn('image', function($model) {
-            return '<img style="width:80%" src="'. $model->image. '">';
+            return '<img style="width:80%" src="'. $model->src('image'). '">';
         });
 
         return $datatable->rawColumns(['id', 'order', 'image', 'content', 'users', 'permissions'])

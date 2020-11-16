@@ -37,23 +37,23 @@ if(query)
 {
 }
 
-function statusChanged(element, id, type)
-{
-	var status = element.value;
-	$.ajax({
-		type: "POST",
-		beforeSend: function(request) {
-		request.setRequestHeader("X-CSRF-TOKEN", $('meta[name="csrf-token"]').attr('content') );
-		},
-		url: "/admin/change-status",
-		data: {
-        	type: type,
-			id: id,
-        	status: status
-		},
-		success: function(message) {
-			console.log(message);
-			// $("#message").css();
-		}
-	});
-}
+// function statusChanged(element, id, type)
+// {
+// 	var status = element.value;
+// 	$.ajax({
+// 		type: "POST",
+// 		beforeSend: function(request) {
+// 		request.setRequestHeader("X-CSRF-TOKEN", $('meta[name="csrf-token"]').attr('content') );
+// 		},
+// 		url: "/admin/change-status",
+// 		data: {
+//         	type: type,
+// 			id: id,
+//         	status: status
+// 		},
+// 		success: function(message) {
+// 			console.log(message);
+// 			// $("#message").css();
+// 		}
+// 	});
+// }

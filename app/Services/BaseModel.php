@@ -4,6 +4,7 @@ namespace App\Services;
 
 use Auth;
 use Cache;
+use File;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -109,13 +110,16 @@ class BaseModel extends Model
 			->toArray();
 	}
 
-	public function src(string $fileColumnName) : string
+	public function src(string $fileColumnName)
 	{
 		$srcs = $this->srcs($fileColumnName);
 		if (count($srcs) > 0)
 			return $srcs[0];
 
-		return asset('/images/front/general/default/' . 'model.png');
+		$defaultModelImage = asset('/images/front/general/default/' . 'model.png');
+		$defaultGlobalImage = asset('/images/front/general/default/' . 'model.png');
+
+		return ;
 	}
 
 	public function saveWithRelations($data, $model = null)
@@ -347,7 +351,7 @@ class BaseModel extends Model
 					'rule' => 'nullable|numeric',
 					'help' => 'Sort by this column, lower order will be ahead',
 					'form_type' => '',
-					'table' => true,
+					'table' => false,
 				],
 				// Images that used file manager to select and upload.
 				'admin_filemanager_image' => [
