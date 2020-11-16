@@ -109,13 +109,13 @@ class BaseModel extends Model
 			->toArray();
 	}
 
-	public function image_default()
+	public function src(string $fileColumnName) : string
 	{
-		if(isset($this->image) && $this->image) {
-			return $this->image;
-		}
+		$srcs = $this->srcs($fileColumnName);
+		if (count($srcs) > 0)
+			return $srcs[0];
 
-		return config('setting-general.default_meta_image');
+		return asset('/images/front/general/default/' . 'model.png');
 	}
 
 	public function saveWithRelations($data, $model = null)
@@ -129,6 +129,46 @@ class BaseModel extends Model
 		$this->saveRelatedDataAfterCreate($data, $model);
 
 		return $model;
+	}
+
+	// Before save a form data we need to write 0 for unchecked checkboxes
+	// All relational data that are array should eliminate from form data.
+	private function clearFilesAndArrays(array $data) : array
+	{
+		// convert boolean input values: null and false => 0, true => 1
+		foreach(collect($this->getColumns())->where('type', 'boolean')->pluck('name') as $boolean_column)
+		{
+			if(! isset($data[$boolean_column]))
+			{
+				$data[$boolean_column] = 0;
+			}
+		}
+		// unset file and array attributes before saving
+		foreach(collect($this->getColumns())->whereIn('type', ['file', 'array', 'captcha'])->pluck('name') as $file_or_array_column)
+		{
+			unset($data[$file_or_array_column]);
+		}
+
+		return $data;
+	}
+
+	// Save all relational data.
+	private function saveRelatedDataAfterCreate(array $data, $model) : bool
+	{
+		// Upload all columns with type file.
+		foreach(collect($this->getColumns())->where('type', 'file')->pluck('name') as $file_column) {
+			if(isset($data[$file_column]) && $data[$file_column]){
+				$file = $data[$file_column];
+				$file_service = new \App\Services\BaseFileService();
+				$file_service->save($file, $model, $file_column);
+			}
+		}
+		// save relations with array type column like tags, related_models, etc.
+		foreach(collect($this->getColumns())->where('type', 'array')->pluck('name') as $array_column) {
+			$model->{$array_column}()->sync($data[$array_column], true);
+		}
+
+		return true;
 	}
 
 	public function getColumns()
@@ -662,64 +702,20 @@ class BaseModel extends Model
 				}
 				else if (array_key_exists($column['name'], $default_columns) && !isset($column['type']))
 				{
-					// check if column is not user defined in model then use default column
 					$columns[$key] = $default_columns[$column['name']];
 				}
 				else
 				{
-					if (!isset($column['type']))
-					{
-						$columns[$key]['type'] = 'text';
-						$columns[$key]['database'] = 'nullable';
-						$columns[$key]['rule'] = '';
-						$columns[$key]['help'] = '';
-						$columns[$key]['form_type'] = '';
-						$columns[$key]['table'] = false;
-					}
+					$columns[$key]['type'] = 'text';
+					$columns[$key]['database'] = 'nullable';
+					$columns[$key]['rule'] = '';
+					$columns[$key]['help'] = '';
+					$columns[$key]['form_type'] = '';
+					$columns[$key]['table'] = false;
 				}
 			}
 
 			return $columns;
 		});
-	}
-
-	// Before save a form data we need to write 0 for unchecked checkboxes
-	// All relational data that are array should eliminate from form data.
-	private function clearFilesAndArrays(array $data) : array
-	{
-		// convert boolean input values: null and false => 0, true => 1
-		foreach(collect($this->getColumns())->where('type', 'boolean')->pluck('name') as $boolean_column)
-		{
-			if(! isset($data[$boolean_column]))
-			{
-				$data[$boolean_column] = 0;
-			}
-		}
-		// unset file and array attributes before saving
-		foreach(collect($this->getColumns())->whereIn('type', ['file', 'array', 'captcha'])->pluck('name') as $file_or_array_column)
-		{
-			unset($data[$file_or_array_column]);
-		}
-
-		return $data;
-	}
-
-	// Save all relational data.
-	private function saveRelatedDataAfterCreate(array $data, $model) : bool
-	{
-		// Upload all columns with type file.
-		foreach(collect($this->getColumns())->where('type', 'file')->pluck('name') as $file_column) {
-			if(isset($data[$file_column]) && $data[$file_column]){
-				$file = $data[$file_column];
-				$file_service = new \App\Services\BaseFileService();
-				$file_service->save($file, $model, $file_column);
-			}
-		}
-		// save relations with array type column like tags, related_models, etc.
-		foreach(collect($this->getColumns())->where('type', 'array')->pluck('name') as $array_column) {
-			$model->{$array_column}()->sync($data[$array_column], true);
-		}
-
-		return true;
 	}
 }
