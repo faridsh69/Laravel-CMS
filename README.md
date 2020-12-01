@@ -34,6 +34,8 @@ I dont accept any donate, This project is not for money, My main goal is to deve
 
 Check admin panel with username: farid.sh69@gmail.com & password: 1111
 
+Check also settings pages in admin panel to see what you can do to change your project.
+
 ##### Laravel CMS is an open source project that creates a complete infrastructure with standard code for anyone who wants to use Laravel. Preparing an structure to make GUI in Laravel development in the future
 ##### Specify $columns in model then migration, form, seeder, factory, test, admin controller, admin routes, table, api, export to pdf and excel and policies with role and permission will be ready!
 ##### Prepared services for notification, saving files, creating backup, API authentication, create blogs with comments, rate, categorize and tag, create pages and menus, policies, routes, controllers, and unit tests. Provided structure for adding theme to Laravel project with blocks and modules.
