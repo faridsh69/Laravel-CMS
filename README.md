@@ -4,6 +4,10 @@
 
 ### Why every time change models you have to write new migration file?
 When you change your models based on the old model and new model your table will edit automatically! and if your table is not exist laravel cms will create it for you.
+``` bash
+php artisan cms:migration
+```
+With this command, your database tables will all sync with your models, plus forms, api, tables, ... and tests are all ready, just focus on your business ;)
 ### Why every time change models you have to edit forms, tables, factory, seeder, controllers code?
 all form field types are defined and you just need to define what type of field you need for each columns. controller files all ready with a lot of logic codes that is needed for every enterprise projects. you can extend theme and add your logic.
 ### Why you need to write repeated tests for your models?
