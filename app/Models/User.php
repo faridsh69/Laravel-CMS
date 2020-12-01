@@ -286,7 +286,7 @@ class User extends Authenticatable
             'name' => 'url',
             'type' => 'string',
             'database' => 'nullable',
-            'rule' => 'nullable|url',
+            'rule' => 'nullable',
             'help' => 'It is used as Username.',
             'form_type' => '',
             'table' => false,
