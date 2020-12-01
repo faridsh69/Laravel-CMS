@@ -732,10 +732,9 @@ class BaseModel extends Model
 				else if (array_key_exists($column['name'], $default_columns) && !isset($column['type']))
 				{
 					$columns[$key] = $default_columns[$column['name']];
-				}
-
-				if (!isset($columns[$key]['type']))
+				} else if (!isset($columns[$key]['type']))
 					$columns[$key]['type'] = 'text';
+					$columns[$key]['form_type'] = '';
 			}
 
 			return $columns;

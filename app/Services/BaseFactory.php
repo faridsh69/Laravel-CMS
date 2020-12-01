@@ -54,34 +54,22 @@ class BaseFactory
                     {
                         $file_accept = isset($column['file_accept']) ? $column['file_accept'] : null;
                         $file_manager = isset($column['file_manager']) ? $column['file_manager'] : null;
+                        
                         if($file_accept === 'image'){
-                            $extention = 'png';
+                            $fileName = 'image.png';
                         }elseif($file_accept === 'video'){
-                            $extention = 'mp4';
+                            $fileName = 'video.mp4';
                         }elseif($file_accept === 'audio'){
-                            $extention = 'mp3';
+                            $fileName = 'audio.mp3';
                         }else{
-                            $extention = 'pdf';
-                        }
-                        $filemanager_files = [];
-                        $upload_files = [];
-                        $random_count = rand(0, 3);
-                        for($i = 1; $i <= $random_count; $i ++){
-                            $filemanager_files[] = asset('images/front/general/test/' .
-                                $file_accept . '/' . $i . '.' . $extention);
-                            $upload_files[] = $i . '.' . $extention;
+                            $fileName = 'doc.pdf';
                         }
 
-                        if($file_manager === true){
-                            $fake_data = implode(',', $filemanager_files);
+                        if ($file_manager) {
+                            $fake_data = asset('seeder-test-files/' . $fileName);
                         }else{
-                            $base_path = realpath(dirname(__FILE__) .
-                                '/../../public_html/cdn/images/front/general/test/' . $file_accept);
-                            $fake_data = [];
-                            foreach($upload_files as $file){
-                                $path = $base_path . '/' . $file;
-                                $fake_data[] = new UploadedFile($path, $file, $extention);
-                            }
+                            $uploadFileTest = public_path() . '/cdn/seeder-test-files/' . $fileName;
+                            $fake_data = new UploadedFile($uploadFileTest, $uploadFileTest);
                         }
                     }
                     elseif($name === 'keywords'){

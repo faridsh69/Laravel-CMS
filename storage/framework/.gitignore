@@ -1,4 +1,5 @@
 config.php
+/laravel-excel
 routes.php
 schedule-*
 compiled.php

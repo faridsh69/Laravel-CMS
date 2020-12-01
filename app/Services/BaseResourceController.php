@@ -97,7 +97,7 @@ class BaseResourceController extends BaseAdminController
         $form = $this->form_builder->create($this->model_form);
         if (! $form->isValid()) {
             if(env('APP_ENV') === 'testing'){
-                dd($form->getErrors(), $this->model, $form->getFieldValues());
+                dd($form->getErrors(), $this->model_name, $form->getFieldValues());
             }
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
@@ -329,7 +329,9 @@ class BaseResourceController extends BaseAdminController
             return $model->category ? $model->category->id . '-' . $model->category->title : '';
         });
         $datatable->addColumn('image', function($model) {
-            return '<img style="width:80%" src="'. $model->src('image'). '">';
+            if (method_exists($model, 'src'))
+                return '<img style="width:80%" src="'. $model->src('image'). '">';
+            return '';
         });
 
         return $datatable->rawColumns(['id', 'order', 'image', 'content', 'users', 'permissions'])
