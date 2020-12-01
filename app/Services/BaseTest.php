@@ -116,9 +116,11 @@ class BaseTest extends TestCase
             $fake_model = $model_repository->orderBy('id', 'desc')->first();
 
             // show fake model
-            $this
-                ->get(route('front.' . $model_slug . '.show', $fake_model->url))
-                ->assertOk();
+            if($fake_model) {
+                $this
+                    ->get(route('front.' . $model_slug . '.show', $fake_model->url))
+                    ->assertOk();
+            }
 
             // get model category
             $category_model = Category::ofType($model_name)->first();
