@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Request;
 
 class BaseAuthPolicy
 {

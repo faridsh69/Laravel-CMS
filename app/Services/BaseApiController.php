@@ -32,7 +32,7 @@ class BaseApiController extends Controller
     public function store()
     {
         $this->authorize('create', $this->modelNamespace);
-        $main_data = $this->request->all();
+        $main_data = $this->httpRequest->all();
         $validator = \Validator::make($main_data, $this->model_rules);
         if ($validator->fails()) {
             return response()->json($validator->messages(), 200);
@@ -101,7 +101,7 @@ class BaseApiController extends Controller
         }
         $this->authorize('update', $model_update);
 
-        $main_data = $this->request->all();
+        $main_data = $this->httpRequest->all();
         $validator = \Validator::make($main_data, $this->model_rules);
         if ($validator->fails()) {
             return response()->json($validator->messages(), 200);

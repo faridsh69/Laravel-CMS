@@ -31,9 +31,9 @@ trait BaseCmsTrait
     // A new instance of this model
     public $modelRepository;
 
-    public $request;
+    public $httpRequest;
 
-    public $formBuilder;
+    public $laravelFormBuilder;
 
     public $authUser;
 
@@ -45,23 +45,23 @@ trait BaseCmsTrait
         'data' => '',
     ];
 
-    public function __construct(Request $request, FormBuilder $formBuilder)
+    public function __construct(Request $httpRequest, FormBuilder $laravelFormBuilder)
     {
-        $this->request = $request;
-        $this->modelNameSlug = $this->request->segment(2);
+        $this->httpRequest = $httpRequest;
+        $this->modelNameSlug = $this->httpRequest->segment(2);
         $this->modelName = Str::studly($this->modelNameSlug);
         $this->modelNamespace = config('cms.config.models_namespace') . $this->modelName;
         $this->modelRepository = new $this->modelNamespace();
         $this->modelColumns = $this->modelRepository->getColumns();
-        $this->modelNameTranslated = __(Str::snake($this->modelName));
+        $this->modelNameTranslate = __(Str::snake($this->modelName));
         $this->modelForm = 'App\Forms\\' . $this->modelName . 'Form';
         if (! file_exists(__DIR__ . '/../../app/Forms/' . $this->modelName . 'Form.php'))
             $this->modelForm = 'App\Forms\Form';
-        $this->formBuilder = $formBuilder;
-        if(Route::has('admin.' . $this->modelNameSlug . '.list.index')){
-            $this->meta['link_route'] = route('admin.' . $this->modelNameSlug . '.list.index');
-            $this->meta['link_name'] = $this->modelNameTranslated . __('manager');
-        }
+        $this->laravelFormBuilder = $laravelFormBuilder;
+        // if(Route::has('admin.' . $this->modelNameSlug . '.list.index')){
+        //     $this->meta['link_route'] = route('admin.' . $this->modelNameSlug . '.list.index');
+        //     $this->meta['link_name'] = $this->modelNameTranslate . __('manager');
+        // }
         $this->authUser = Auth::user();
     }
 }

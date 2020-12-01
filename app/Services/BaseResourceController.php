@@ -6,8 +6,6 @@ use Str;
 
 class BaseResourceController extends BaseAdminController
 {
-    use BaseCmsTrait;
-
     public function index()
     {
         $this->authorize('index', $this->modelNamespace);
@@ -31,7 +29,7 @@ class BaseResourceController extends BaseAdminController
     {
         $this->authorize('create', $this->modelNamespace);
         $this->meta['title'] = __('create_new') . $this->modelNameTranslate;
-        $form = $this->formBuilder->create($this->modelForm, [
+        $form = $this->laravelFormBuilder->create($this->modelForm, [
             'method' => 'POST',
             'url' => route('admin.' . $this->modelNameSlug . '.list.store'),
             'class' => 'm-form m-form--state',
@@ -45,7 +43,7 @@ class BaseResourceController extends BaseAdminController
     public function store()
     {
         $this->authorize('create', $this->modelNamespace);
-        $form = $this->formBuilder->create($this->modelForm);
+        $form = $this->laravelFormBuilder->create($this->modelForm);
         if (! $form->isValid()) {
             if(env('APP_ENV') === 'testing'){
                 dd($form->getErrors(), $this->modelName, $form->getFieldValues());
@@ -58,7 +56,7 @@ class BaseResourceController extends BaseAdminController
             activity('Created')->performedOn($model)->causedBy($this->authUser)
                 ->log($this->modelName . ' Created');
         }
-        $this->request->session()->flash('alert-success', $this->modelNameTranslate . __('created_successfully'));
+        $this->httpRequest->session()->flash('alert-success', $this->modelNameTranslate . __('created_successfully'));
 
         return redirect()->route('admin.' . $this->modelNameSlug . '.list.index');
     }
@@ -83,9 +81,8 @@ class BaseResourceController extends BaseAdminController
     {
         $model = $this->modelRepository->findOrFail($id);
         $this->authorize('update', $model);
-
         $this->meta['title'] = __('edit') . $this->modelNameTranslate . ' - #' . $id;
-        $form = $this->formBuilder->create($this->modelForm, [
+        $form = $this->laravelFormBuilder->create($this->modelForm, [
             'method' => 'PUT',
             'url' => route('admin.' . $this->modelNameSlug . '.list.update', $model),
             'class' => 'm-form m-form--state',
@@ -102,7 +99,7 @@ class BaseResourceController extends BaseAdminController
         $model = $this->modelRepository->findOrFail($id);
         $this->authorize('update', $model);
 
-        $form = $this->formBuilder->create($this->modelForm, [
+        $form = $this->laravelFormBuilder->create($this->modelForm, [
             'model' => $model,
         ]);
         if (! $form->isValid()){
@@ -121,7 +118,7 @@ class BaseResourceController extends BaseAdminController
             activity('Updated')->performedOn($model)->causedBy($this->authUser)
                 ->log($this->modelName . ' Updated');
         }
-        $this->request->session()->flash('alert-success', $this->modelNameTranslate . __('updated_successfully'));
+        $this->httpRequest->session()->flash('alert-success', $this->modelNameTranslate . __('updated_successfully'));
 
         return redirect()->route('admin.' . $this->modelNameSlug . '.list.index');
     }
@@ -137,7 +134,7 @@ class BaseResourceController extends BaseAdminController
             activity('Deleted')->performedOn($model)->causedBy($this->authUser)
                 ->log($this->modelName . ' Deleted');
         }
-        $this->request->session()->flash('alert-success', $this->modelNameTranslate . __('deleted_successfully'));
+        $this->httpRequest->session()->flash('alert-success', $this->modelNameTranslate . __('deleted_successfully'));
 
         return redirect()->route('admin.' . $this->modelNameSlug . '.list.index');
     }
@@ -153,7 +150,7 @@ class BaseResourceController extends BaseAdminController
             activity('Restored')->performedOn($model)->causedBy($this->authUser)
                 ->log($this->modelName . ' Restored');
         }
-        $this->request->session()->flash('alert-success', $this->modelNameTranslate . __('restored_successfully'));
+        $this->httpRequest->session()->flash('alert-success', $this->modelNameTranslate . __('restored_successfully'));
 
         return redirect()->route('admin.' . $this->modelNameSlug . '.list.index');
     }

@@ -17,11 +17,11 @@ class BaseFrontController extends Controller
 {
     use BaseCmsTrait;
 
-    public function __construct(Request $request)
+    public function __construct(Request $httpRequest)
     {
-        $this->request = $request;
+        $this->httpRequest = $httpRequest;
         if(! $this->modelNameSlug){
-            $this->modelNameSlug = $this->request->segment(1) ?: 'user';
+            $this->modelNameSlug = $this->httpRequest->segment(1) ?: 'user';
         }
         $this->modelName = Str::studly($this->modelNameSlug);
         $this->modelNameTranslate = __(Str::snake($this->modelName));
