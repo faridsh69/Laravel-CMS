@@ -25,13 +25,13 @@ class BaseMigration extends Migration
 
     public function __construct()
     {
-        if ($this->modelSlugs === []){
-            $this->modelSlugs = [$this->modelSlug];
-            if ($this->modelSlug === null){
-                $this->modelSlugs = config('cms.migration');
+        if ($this->modelNameSlugs === []){
+            $this->modelNameSlugs = [$this->modelNameSlug];
+            if ($this->modelNameSlug === null){
+                $this->modelNameSlugs = config('cms.migration');
             }
         }
-        foreach($this->modelSlugs as $modelNameSlug){
+        foreach($this->modelNameSlugs as $modelNameSlug){
             $modelName = Str::studly($modelNameSlug);
             $modelNamespace = config('cms.config.models_namespace') . $modelName;
             $modelRepository = new $modelNamespace();

@@ -32,9 +32,9 @@ class BaseTest extends TestCase
 
     public function adminTest()
     {
-        $this->modelSlugs = config('cms.admin_tests');
+        $this->modelNameSlugs = config('cms.admin_tests');
 
-        foreach($this->modelSlugs as $modelNameSlug)
+        foreach($this->modelNameSlugs as $modelNameSlug)
         {
             echo "\nResource Testing " . $modelNameSlug . '...';
             $modelName = Str::studly($modelNameSlug);
@@ -100,9 +100,9 @@ class BaseTest extends TestCase
 
     public function frontTest()
     {
-        $this->modelSlugs = config('cms.front_tests');
+        $this->modelNameSlugs = config('cms.front_tests');
 
-        foreach($this->modelSlugs as $modelNameSlug)
+        foreach($this->modelNameSlugs as $modelNameSlug)
         {
             echo "\nFront Testing " . $modelNameSlug . '...';
             $modelName = Str::studly($modelNameSlug);

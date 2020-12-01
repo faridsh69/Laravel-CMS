@@ -19,7 +19,7 @@ class BaseAuthPolicy
 
     public function view(User $user, $list)
     {
-    	if($user->can($this->modelSlug . '_view')){
+    	if($user->can($this->modelNameSlug . '_view')){
     		return true;
     	}
 
@@ -33,7 +33,7 @@ class BaseAuthPolicy
 
     public function update(User $user, $list)
     {
-    	if($user->can($this->modelSlug . '_update')){
+    	if($user->can($this->modelNameSlug . '_update')){
     		return true;
     	}
 
@@ -42,7 +42,7 @@ class BaseAuthPolicy
 
     public function delete(User $user, $list)
     {
-    	if($user->can($this->modelSlug . '_delete')){
+    	if($user->can($this->modelNameSlug . '_delete')){
     		return true;
     	}
 

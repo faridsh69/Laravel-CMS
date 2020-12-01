@@ -36,7 +36,7 @@ class ResourceController extends BaseResourceController
 
         $this->request->session()->flash('alert-success', $this->modelName . ' Sent Successfully!');
 
-        return redirect()->route('admin.' . $this->modelSlug . '.list.index');
+        return redirect()->route('admin.' . $this->modelNameSlug . '.list.index');
     }
 
     public function edit($id){

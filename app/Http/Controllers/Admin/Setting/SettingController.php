@@ -15,7 +15,7 @@ class SettingController extends BaseResourceController
 
     public function index()
     {
-    	$section = explode('-', $this->modelSlug)[1];
+    	$section = explode('-', $this->modelNameSlug)[1];
     	$this->meta['title'] = __($section . '_manager');
     	$this->authorize('manage', 'setting_' . $section);
         $model = $this->modelRepository->first();
@@ -32,7 +32,7 @@ class SettingController extends BaseResourceController
 
     public function putUpdate()
     {
-    	$section = explode('-', $this->modelSlug)[1];
+    	$section = explode('-', $this->modelNameSlug)[1];
     	$this->authorize('manage', 'setting_' . $section);
         $model = $this->modelRepository->first();
         $form = $this->formBuilder->create($this->modelForm, [

@@ -13,7 +13,7 @@ class ResourceController extends BaseResourceController
     public function index()
     {
         $this->authorize('index', $this->modelNamespace);
-        $this->meta['link_route'] = route('admin.' . $this->modelSlug . '.list.create');
+        $this->meta['link_route'] = route('admin.' . $this->modelNameSlug . '.list.create');
         $this->meta['link_name'] = __('create_new') . $this->modelNameTranslate;
         $this->meta['title'] = $this->modelNameTranslate . __('manager');
         $this->meta['search'] = 1;
@@ -41,7 +41,7 @@ class ResourceController extends BaseResourceController
     	$this->_saveSort($block_sort);
     	$this->request->session()->flash('alert-success', $this->modelName . ' Order Updated Successfully!');
 
-        return redirect()->route('admin.' . $this->modelSlug . '.list.index');
+        return redirect()->route('admin.' . $this->modelNameSlug . '.list.index');
     }
 
     private function _saveSort($block_ids)

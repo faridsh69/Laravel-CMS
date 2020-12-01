@@ -38,10 +38,10 @@ class BaseFrontController extends Controller
     public function __construct(Request $request)
     {
         $this->request = $request;
-        if(! $this->modelSlug){
-            $this->modelSlug = $this->request->segment(1) ?: 'user';
+        if(! $this->modelNameSlug){
+            $this->modelNameSlug = $this->request->segment(1) ?: 'user';
         }
-        $this->modelName = Str::studly($this->modelSlug);
+        $this->modelName = Str::studly($this->modelNameSlug);
         $this->modelNameTranslate = __(Str::snake($this->modelName));
         $this->modelNamespace = config('cms.config.models_namespace') . $this->modelName;
         $this->modelRepository = new $this->modelNamespace();
@@ -77,13 +77,13 @@ class BaseFrontController extends Controller
 
     private function getCategoryAndTags()
     {
-        $categories = Cache::remember('category.'. $this->modelSlug, 10, function () {
+        $categories = Cache::remember('category.'. $this->modelNameSlug, 10, function () {
             return Category::ofType($this->modelName)->active()->language()
             ->orderBy('updated_at', 'desc')
             ->get();
         });
 
-        $tags = Cache::remember('tag.'. $this->modelSlug, 10, function () {
+        $tags = Cache::remember('tag.'. $this->modelNameSlug, 10, function () {
             return Tag::ofType($this->modelName)->active()->language()
             ->orderBy('updated_at', 'desc')
             ->get();
@@ -152,7 +152,7 @@ class BaseFrontController extends Controller
             ->paginate(config('setting-general.pagination_number'));
 
         $this->meta['title'] = $this->modelNameTranslate . ' | Category';
-        $this->meta['canonical_url'] = route('front.' . $this->modelSlug . '.index');
+        $this->meta['canonical_url'] = route('front.' . $this->modelNameSlug . '.index');
 
         return view('front.list.index', ['meta' => $this->meta, 'list' => $list, 'categories' => $categories]);
     }
@@ -186,7 +186,7 @@ class BaseFrontController extends Controller
             ->paginate(config('setting-general.pagination_number'));
 
         $this->meta['title'] = $this->modelNameTranslate . ' | Tag';
-        $this->meta['canonical_url'] = route('front.' . $this->modelSlug . '.index');
+        $this->meta['canonical_url'] = route('front.' . $this->modelNameSlug . '.index');
 
         return view('front.list.index', ['meta' => $this->meta, 'list' => $list, 'tags' => $tags]);
     }
