@@ -14,7 +14,7 @@ class ResourceController extends BaseResourceController
     public function store()
     {
         $this->authorize('create', $this->modelNamespace);
-        $form = $this->formBuilder->create($this->modelForm);
+        $form = $this->laravelFormBuilder->create($this->modelForm);
 
         if (! $form->isValid()) {
             return redirect()->back()->withErrors($form->getErrors())->withInput();

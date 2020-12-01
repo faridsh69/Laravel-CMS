@@ -19,7 +19,7 @@ class SettingController extends BaseResourceController
     	$this->meta['title'] = __($section . '_manager');
     	$this->authorize('manage', 'setting_' . $section);
         $model = $this->modelRepository->first();
-        $form = $this->formBuilder->create($this->modelForm, [
+        $form = $this->laravelFormBuilder->create($this->modelForm, [
             'method' => 'PUT',
             'url' => route('admin.setting.' . $section),
             'class' => 'm-form m-form--state',
@@ -35,7 +35,7 @@ class SettingController extends BaseResourceController
     	$section = explode('-', $this->modelNameSlug)[1];
     	$this->authorize('manage', 'setting_' . $section);
         $model = $this->modelRepository->first();
-        $form = $this->formBuilder->create($this->modelForm, [
+        $form = $this->laravelFormBuilder->create($this->modelForm, [
             'model' => $model,
         ]);
         if (! $form->isValid()) {

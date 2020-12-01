@@ -48,7 +48,8 @@ trait BaseCmsTrait
     public function __construct(Request $httpRequest, FormBuilder $laravelFormBuilder)
     {
         $this->httpRequest = $httpRequest;
-        $this->modelNameSlug = $this->httpRequest->segment(2);
+        if (!$this->modelNameSlug)
+            $this->modelNameSlug = $this->httpRequest->segment(2);
         $this->modelName = Str::studly($this->modelNameSlug);
         $this->modelNamespace = config('cms.config.models_namespace') . $this->modelName;
         $this->modelRepository = new $this->modelNamespace();
@@ -58,10 +59,10 @@ trait BaseCmsTrait
         if (! file_exists(__DIR__ . '/../../app/Forms/' . $this->modelName . 'Form.php'))
             $this->modelForm = 'App\Forms\Form';
         $this->laravelFormBuilder = $laravelFormBuilder;
-        // if(Route::has('admin.' . $this->modelNameSlug . '.list.index')){
-        //     $this->meta['link_route'] = route('admin.' . $this->modelNameSlug . '.list.index');
-        //     $this->meta['link_name'] = $this->modelNameTranslate . __('manager');
-        // }
+        if(Route::has('admin.' . $this->modelNameSlug . '.list.index')){
+            $this->meta['link_route'] = route('admin.' . $this->modelNameSlug . '.list.index');
+            $this->meta['link_name'] = $this->modelNameTranslate . __('manager');
+        }
         $this->authUser = Auth::user();
     }
 }

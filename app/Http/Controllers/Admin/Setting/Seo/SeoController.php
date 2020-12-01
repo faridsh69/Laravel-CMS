@@ -6,7 +6,9 @@ use App\Models\Blog;
 use App\Services\BaseAdminController;
 
 class SeoController extends BaseAdminController
-{
+{	
+	public $modelNameSlug = 'setting-general';
+
 	public function redirectToCrowl()
 	{
 		return redirect()->route('admin.setting.seo.crowl');

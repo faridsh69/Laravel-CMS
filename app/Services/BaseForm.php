@@ -10,6 +10,15 @@ class BaseForm extends Form
 
     public $id;
 
+    public function __construct()
+    {
+        if (!$this->modelName)
+            $this->modelName = 'User';
+        $modelNamespace = config('cms.config.models_namespace') . $this->modelName;
+        $modelRepository = new $modelNamespace();
+        $this->modelColumns = $modelRepository->getColumns();
+    }
+
     public function buildForm()
     {
         if(isset($this->model->id)){

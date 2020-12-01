@@ -42,7 +42,7 @@ class DashboardController extends BaseResourceController
         $this->meta['link_name'] = __('dashboard');
         $this->meta['link_route'] = route('admin.dashboard.index');
 
-    	$form = $this->formBuilder->create($this->modelForm, [
+        $form = $this->laravelFormBuilder->create($this->modelForm, [
             'method' => 'PUT',
             'url' => route('admin.dashboard.update-profile'),
             'class' => 'm-form m-form--state',
@@ -58,7 +58,7 @@ class DashboardController extends BaseResourceController
     {
         $model = Auth::user();
 
-        $form = $this->formBuilder->create($this->modelForm, [
+        $form = $this->laravelFormBuilder->create($this->modelForm, [
             'model' => $model,
         ]);
 

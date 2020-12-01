@@ -7,7 +7,9 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 
 class BaseExport implements FromCollection, WithHeadings
 {
-    use BaseCmsTrait;
+    public $model_columns;
+
+    public $model_repository;
 
     public function collection()
     {
@@ -21,6 +23,8 @@ class BaseExport implements FromCollection, WithHeadings
 
     public function setModelName($modelName)
     {
+        $modelNamespace = config('cms.config.models_namespace') . $modelName;
+        $this->modelRepository = new $modelNamespace();
         $this->modelColumns = collect($this->modelRepository->getColumns())
             ->where('database', '!=', 'none')
             ->pluck('name')

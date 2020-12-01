@@ -6,6 +6,8 @@ use App\Services\BaseAdminController;
 
 class MediaController extends BaseAdminController
 {
+    public function __construct() {}
+
     public function index()
     {
     	$this->authorize('manage', 'media');

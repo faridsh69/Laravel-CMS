@@ -219,7 +219,7 @@ class BaseModel extends Model
 					'name' => 'url',
 					'type' => 'string',
 					'database' => 'nullable',
-					// 'rule' => 'required|unique:'. $constructor['table_name']. ',url,',
+					'rule' => 'required|unique:'. $constructor['table_name']. ',url,',
 					'rule' => 'nullable|max:' . config('setting-developer.seo_url_max'),
 					'help' => 'Url should be unique, contain [a-z, 0-9, -], required for seo',
 					'form_type' => '',

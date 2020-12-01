@@ -116,7 +116,7 @@ class BaseTest extends TestCase
             $fake_model = $modelRepository->orderBy('id', 'desc')->first();
 
             // show fake model
-            if($fake_model) {
+            if($fake_model && isset($fake_model->url)) {
                 $this
                     ->get(route('front.' . $modelNameSlug . '.show', $fake_model->url))
                     ->assertOk();

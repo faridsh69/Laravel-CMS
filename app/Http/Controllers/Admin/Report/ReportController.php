@@ -7,6 +7,8 @@ use App\Services\BaseAdminController;
 
 class ReportController extends BaseAdminController
 {
+    public function __construct() {}
+
     public function index()
     {
         $this->authorize('manage', 'report');
