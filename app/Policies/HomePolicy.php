@@ -6,5 +6,5 @@ use App\Services\BasePolicy;
 
 class HomePolicy extends BasePolicy
 {
-	public $model_slug = 'home';
+	public $modelNameSlug = 'home';
 }

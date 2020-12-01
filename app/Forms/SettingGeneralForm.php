@@ -6,5 +6,5 @@ use App\Services\BaseForm;
 
 class SettingGeneralForm extends BaseForm
 {
-    public $model_name = 'SettingGeneral';
+    public $modelName = 'SettingGeneral';
 }

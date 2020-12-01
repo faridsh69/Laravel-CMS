@@ -1,14 +1,14 @@
 <?php
 
-$model_slugs = Config::get('cms.admin_routes');
+$modelNameSlugs = Config::get('cms.admin_routes');
 
-foreach($model_slugs as $model_slug)
+foreach($modelNameSlugs as $modelNameSlug)
 {
-	$controller_name = \Str::studly($model_slug) . '\ResourceController';
-	if (! file_exists(__DIR__ . '/../app/Http/Controllers/Admin/' . \Str::studly($model_slug) . '/ResourceController.php')) {
+	$controller_name = \Str::studly($modelNameSlug) . '\ResourceController';
+	if (! file_exists(__DIR__ . '/../app/Http/Controllers/Admin/' . \Str::studly($modelNameSlug) . '/ResourceController.php')) {
 		$controller_name = 'AdminController';
 	}
-	Route::group(['prefix' => $model_slug, 'as' => $model_slug . '.'], function () use ($controller_name) {
+	Route::group(['prefix' => $modelNameSlug, 'as' => $modelNameSlug . '.'], function () use ($controller_name) {
 		Route::get('datatable', $controller_name . '@datatable')->name('datatable');
 		Route::get('export', $controller_name . '@export')->name('export');
 		Route::get('import', $controller_name . '@import')->name('import');

@@ -1,13 +1,13 @@
 <?php
 
-$model_slugs = Config::get('cms.api_routes');
-foreach($model_slugs as $model_slug)
+$modelNameSlugs = Config::get('cms.api_routes');
+foreach($modelNameSlugs as $modelNameSlug)
 {
-	$controller_name = \Str::studly($model_slug) . '\ResourceController';
+	$controller_name = \Str::studly($modelNameSlug) . '\ResourceController';
 	if (! file_exists(__DIR__ . '\..\app\Http\Controllers\Api\\' . $controller_name . '.php')) {
 		$controller_name = 'ApiController';
 	}
-	Route::group(['prefix' => $model_slug, 'as' => $model_slug . '.'], function () use ($controller_name) {
+	Route::group(['prefix' => $modelNameSlug, 'as' => $modelNameSlug . '.'], function () use ($controller_name) {
 		Route::resource('list', $controller_name);
 	});
 }

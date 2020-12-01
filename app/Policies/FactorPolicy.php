@@ -6,5 +6,5 @@ use App\Services\BaseAuthPolicy;
 
 class FactorPolicy extends BaseAuthPolicy
 {
-	public $model_slug = 'factor';
+	public $modelNameSlug = 'factor';
 }

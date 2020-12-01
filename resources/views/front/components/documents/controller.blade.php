@@ -26,20 +26,20 @@ public $model_sm;
 // public $model_trans = 'Blog';
 public $model_trans;
 
-// public $model_form = '\App\Forms\BlogForm';
-public $model_form;
+// public $modelForm = '\App\Forms\BlogForm';
+public $modelForm;
 
 // App\Models\Blog
 public $model_class;
 
 // App\Models\Blog
-public $model_columns;
+public $modelColumns;
 
 public $repository;
 
 public $request;
 
-public $form_builder;
+public $formBuilder;
 
 public $meta = [
     'title' => '',
@@ -52,16 +52,16 @@ public $meta = [
     'search' => 0,
 ];
 
-public function __construct(Request $request, FormBuilder $form_builder)
+public function __construct(Request $request, FormBuilder $formBuilder)
 {
     $this->model_trans = __(strtolower($this->model));
     $this->model_class = 'App\\Models\\' . $this->model;
     $this->model_sm = lcfirst($this->model);
-    $this->model_form = 'App\\Forms\\' . $this->model . 'Form';
+    $this->modelForm = 'App\\Forms\\' . $this->model . 'Form';
     $this->repository = new $this->model_class();
     $this->request = $request;
-    $this->form_builder = $form_builder;
-    $this->model_columns = $this->repository->getColumns();
+    $this->formBuilder = $formBuilder;
+    $this->modelColumns = $this->repository->getColumns();
     if(Route::has('admin.' . $this->model_sm . '.list.index')){
         $this->meta['link_route'] = route('admin.' . $this->model_sm . '.list.index');
     }

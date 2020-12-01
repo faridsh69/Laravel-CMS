@@ -16,19 +16,19 @@ use Cache;
 class BaseFrontController extends Controller
 {
     // FoodProgram
-    public $model_name;
+    public $modelName;
 
     // food-program
-    public $model_slug;
+    public $modelNameSlug;
 
     // Food Program
-    public $model_translated;
+    public $modelNameTranslate;
 
     // App\Models\FoodProgram
-    public $model_namespace;
+    public $modelNamespace;
 
     // A new instance of this model
-    public $model_repository;
+    public $modelRepository;
 
     public $request;
 
@@ -38,16 +38,16 @@ class BaseFrontController extends Controller
     public function __construct(Request $request)
     {
         $this->request = $request;
-        if(! $this->model_slug){
-            $this->model_slug = $this->request->segment(1) ?: 'user';
+        if(! $this->modelSlug){
+            $this->modelSlug = $this->request->segment(1) ?: 'user';
         }
-        $this->model_name = Str::studly($this->model_slug);
-        $this->model_translated = __(Str::snake($this->model_name));
-        $this->model_namespace = config('cms.config.models_namespace') . $this->model_name;
-        $this->model_repository = new $this->model_namespace();
+        $this->modelName = Str::studly($this->modelSlug);
+        $this->modelNameTranslate = __(Str::snake($this->modelName));
+        $this->modelNamespace = config('cms.config.models_namespace') . $this->modelName;
+        $this->modelRepository = new $this->modelNamespace();
         $this->meta = [
-            'title' => config('setting-general.default_meta_title') . ' | ' . $this->model_translated,
-            'description' => __('List of all ' . $this->model_translated . ' in this site is ready for you that is paginated and you can search between them.'),
+            'title' => config('setting-general.default_meta_title') . ' | ' . $this->modelNameTranslate,
+            'description' => __('List of all ' . $this->modelNameTranslate . ' in this site is ready for you that is paginated and you can search between them.'),
             'keywords' => '',
             'image' => config('setting-general.default_meta_image'),
             'google_index' => config('setting-general.google_index'),
@@ -62,7 +62,7 @@ class BaseFrontController extends Controller
      */
     public function index()
     {
-        $list = $this->model_repository->active()->language()
+        $list = $this->modelRepository->active()->language()
             ->orderBy('updated_at', 'desc')
             ->paginate(config('setting-general.pagination_number'));
 
@@ -77,14 +77,14 @@ class BaseFrontController extends Controller
 
     private function getCategoryAndTags()
     {
-        $categories = Cache::remember('category.'. $this->model_slug, 10, function () {
-            return Category::ofType($this->model_name)->active()->language()
+        $categories = Cache::remember('category.'. $this->modelSlug, 10, function () {
+            return Category::ofType($this->modelName)->active()->language()
             ->orderBy('updated_at', 'desc')
             ->get();
         });
 
-        $tags = Cache::remember('tag.'. $this->model_slug, 10, function () {
-            return Tag::ofType($this->model_name)->active()->language()
+        $tags = Cache::remember('tag.'. $this->modelSlug, 10, function () {
+            return Tag::ofType($this->modelName)->active()->language()
             ->orderBy('updated_at', 'desc')
             ->get();
         });
@@ -103,14 +103,14 @@ class BaseFrontController extends Controller
      */
     public function show($url)
     {
-        $item = $this->model_repository->where('url', $url)->firstOrFail();
+        $item = $this->modelRepository->where('url', $url)->firstOrFail();
 
         if(env('APP_ENV') !== 'testing'){
-            activity($this->model_name)->performedOn($item)->causedBy(Auth::user())
-                ->log($this->model_name . ' View');
+            activity($this->modelName)->performedOn($item)->causedBy(Auth::user())
+                ->log($this->modelName . ' View');
         }
 
-        $this->meta['title'] = $this->model_translated . ' | ' . $item->title;
+        $this->meta['title'] = $this->modelNameTranslate . ' | ' . $item->title;
         $this->meta['description'] = $item->description;
         $this->meta['google_index'] = $item->google_index;
         $this->meta['image'] = $item->image;
@@ -127,7 +127,7 @@ class BaseFrontController extends Controller
             activity('Category')->performedOn($category)->causedBy(Auth::user())
                 ->log('Category View');
         }
-        $this->meta['title'] = $this->model_translated . ' | Category | ' . $category->title;
+        $this->meta['title'] = $this->modelNameTranslate . ' | Category | ' . $category->title;
         $this->meta['description'] = $category->description;
 
         $list = $category->models()->active()->language()
@@ -143,16 +143,16 @@ class BaseFrontController extends Controller
 
     public function getCategories ()
     {
-        $categories = Category::ofType($this->model_name)->active()->language()
+        $categories = Category::ofType($this->modelName)->active()->language()
             ->orderBy('updated_at', 'desc')
             ->get();
 
-        $list = $this->model_repository->active()->language()
+        $list = $this->modelRepository->active()->language()
             ->orderBy('updated_at', 'desc')
             ->paginate(config('setting-general.pagination_number'));
 
-        $this->meta['title'] = $this->model_translated . ' | Category';
-        $this->meta['canonical_url'] = route('front.' . $this->model_slug . '.index');
+        $this->meta['title'] = $this->modelNameTranslate . ' | Category';
+        $this->meta['canonical_url'] = route('front.' . $this->modelSlug . '.index');
 
         return view('front.list.index', ['meta' => $this->meta, 'list' => $list, 'categories' => $categories]);
     }
@@ -165,7 +165,7 @@ class BaseFrontController extends Controller
                 ->log('Tag View');
         }
 
-        $this->meta['title'] = $this->model_translated . ' | Tag | ' . $tag->title;
+        $this->meta['title'] = $this->modelNameTranslate . ' | Tag | ' . $tag->title;
         $this->meta['description'] = $tag->description;
 
         $list = $tag->models()->active()->language()
@@ -177,16 +177,16 @@ class BaseFrontController extends Controller
 
     public function getTags ()
     {
-        $tags = Tag::ofType($this->model_name)->active()->language()
+        $tags = Tag::ofType($this->modelName)->active()->language()
             ->orderBy('updated_at', 'desc')
             ->get();
 
-        $list = $this->model_repository->active()->language()
+        $list = $this->modelRepository->active()->language()
             ->orderBy('updated_at', 'desc')
             ->paginate(config('setting-general.pagination_number'));
 
-        $this->meta['title'] = $this->model_translated . ' | Tag';
-        $this->meta['canonical_url'] = route('front.' . $this->model_slug . '.index');
+        $this->meta['title'] = $this->modelNameTranslate . ' | Tag';
+        $this->meta['canonical_url'] = route('front.' . $this->modelSlug . '.index');
 
         return view('front.list.index', ['meta' => $this->meta, 'list' => $list, 'tags' => $tags]);
     }

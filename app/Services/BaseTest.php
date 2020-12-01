@@ -11,10 +11,10 @@ use Tests\TestCase;
 class BaseTest extends TestCase
 {
     // an aray of models that want to test
-    public $model_slugs;
+    public $modelNameSlugs;
 
     // single model to test
-    public $model_slug;
+    public $modelNameSlug;
 
     public $resource_methods = [
         'print',
@@ -32,58 +32,58 @@ class BaseTest extends TestCase
 
     public function adminTest()
     {
-        $this->model_slugs = config('cms.admin_tests');
+        $this->modelSlugs = config('cms.admin_tests');
 
-        foreach($this->model_slugs as $model_slug)
+        foreach($this->modelSlugs as $modelNameSlug)
         {
-            echo "\nResource Testing " . $model_slug . '...';
-            $model_name = Str::studly($model_slug);
-            $model_namespace = config('cms.config.models_namespace') . $model_name;
-            $model_repository = new $model_namespace();
+            echo "\nResource Testing " . $modelNameSlug . '...';
+            $modelName = Str::studly($modelNameSlug);
+            $modelNamespace = config('cms.config.models_namespace') . $modelName;
+            $modelRepository = new $modelNamespace();
 
             $user = User::first();
             $this->actingAs($user);
 
             // redirect
             $this
-                ->get(route('admin.' . $model_slug . '.redirect'))
-                ->assertRedirect(route('admin.' . $model_slug . '.list.index'));
+                ->get(route('admin.' . $modelNameSlug . '.redirect'))
+                ->assertRedirect(route('admin.' . $modelNameSlug . '.list.index'));
 
             // create fake data for store in database
-            $fake_data = factory($model_namespace)->raw();
+            $fake_data = factory($modelNamespace)->raw();
 
             // store fake model
             $this
-                ->post(route('admin.' . $model_slug . '.list.store', $fake_data))
-                ->assertRedirect(route('admin.' . $model_slug . '.list.index'));
+                ->post(route('admin.' . $modelNameSlug . '.list.store', $fake_data))
+                ->assertRedirect(route('admin.' . $modelNameSlug . '.list.index'));
 
             // get fake model that created at this test
-            $fake_model = $model_repository->orderBy('id', 'desc')->first();
+            $fake_model = $modelRepository->orderBy('id', 'desc')->first();
 
             // show fake model
             $this
-                ->get(route('admin.' . $model_slug . '.list.show', $fake_model))
+                ->get(route('admin.' . $modelNameSlug . '.list.show', $fake_model))
                 ->assertOk();
 
             // edit fake model
             $this
-                ->get(route('admin.' . $model_slug . '.list.edit', $fake_model))
+                ->get(route('admin.' . $modelNameSlug . '.list.edit', $fake_model))
                 ->assertOk();
 
             // update fake model
             $this
-                ->put(route('admin.' . $model_slug . '.list.update', $fake_model), $fake_data)
-                ->assertRedirect(route('admin.' . $model_slug . '.list.index'));
+                ->put(route('admin.' . $modelNameSlug . '.list.update', $fake_model), $fake_data)
+                ->assertRedirect(route('admin.' . $modelNameSlug . '.list.index'));
 
             // delete fake model
             $this
-                ->delete(route('admin.' . $model_slug . '.list.destroy', $fake_model))
-                ->assertRedirect(route('admin.' . $model_slug . '.list.index'));
+                ->delete(route('admin.' . $modelNameSlug . '.list.destroy', $fake_model))
+                ->assertRedirect(route('admin.' . $modelNameSlug . '.list.index'));
 
             // restore fake model
             $this
-                ->get(route('admin.' . $model_slug . '.list.restore', $fake_model))
-                ->assertRedirect(route('admin.' . $model_slug . '.list.index'));
+                ->get(route('admin.' . $modelNameSlug . '.list.restore', $fake_model))
+                ->assertRedirect(route('admin.' . $modelNameSlug . '.list.index'));
 
             // force delete fake model
             $fake_model->forceDelete();
@@ -91,7 +91,7 @@ class BaseTest extends TestCase
             foreach($this->resource_methods as $method)
             {
                 $this
-                    ->get(route('admin.' . $model_slug . '.' . $method))
+                    ->get(route('admin.' . $modelNameSlug . '.' . $method))
                     ->assertOk();
             }
             echo 'Done!';
@@ -100,45 +100,45 @@ class BaseTest extends TestCase
 
     public function frontTest()
     {
-        $this->model_slugs = config('cms.front_tests');
+        $this->modelSlugs = config('cms.front_tests');
 
-        foreach($this->model_slugs as $model_slug)
+        foreach($this->modelSlugs as $modelNameSlug)
         {
-            echo "\nFront Testing " . $model_slug . '...';
-            $model_name = Str::studly($model_slug);
-            $model_namespace = config('cms.config.models_namespace') . $model_name;
-            $model_repository = new $model_namespace();
+            echo "\nFront Testing " . $modelNameSlug . '...';
+            $modelName = Str::studly($modelNameSlug);
+            $modelNamespace = config('cms.config.models_namespace') . $modelName;
+            $modelRepository = new $modelNamespace();
 
             $user = User::first();
             $this->actingAs($user);
 
             // get fake model that created at this test
-            $fake_model = $model_repository->orderBy('id', 'desc')->first();
+            $fake_model = $modelRepository->orderBy('id', 'desc')->first();
 
             // show fake model
             if($fake_model) {
                 $this
-                    ->get(route('front.' . $model_slug . '.show', $fake_model->url))
+                    ->get(route('front.' . $modelNameSlug . '.show', $fake_model->url))
                     ->assertOk();
             }
 
             // get model category
-            $category_model = Category::ofType($model_name)->first();
+            $category_model = Category::ofType($modelName)->first();
             // show category of model
             if($category_model){
                 $this
-                    ->get(route('front.' . $model_slug . '.category.show', $category_model->url))
+                    ->get(route('front.' . $modelNameSlug . '.category.show', $category_model->url))
                     ->assertOk();
                 echo 'With Category...';
             }
 
             // get model tag
-            $tag_model = Tag::ofType($model_name)->first();
+            $tag_model = Tag::ofType($modelName)->first();
 
             // show tag of model
             if($tag_model){
                 $this
-                    ->get(route('front.' . $model_slug . '.tag.show', $tag_model->url))
+                    ->get(route('front.' . $modelNameSlug . '.tag.show', $tag_model->url))
                     ->assertOk();
                 echo 'With Tag...';
             }
@@ -146,7 +146,7 @@ class BaseTest extends TestCase
             foreach($this->front_methods as $method)
             {
                 $this
-                    ->get(route('front.' . $model_slug . '.' . $method))
+                    ->get(route('front.' . $modelNameSlug . '.' . $method))
                     ->assertOk();
             }
             echo 'Done!';

@@ -6,5 +6,5 @@ use App\Services\BasePolicy;
 
 class TourPolicy extends BasePolicy
 {
-	public $model_slug = 'tour';
+	public $modelNameSlug = 'tour';
 }

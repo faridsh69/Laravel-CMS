@@ -6,5 +6,5 @@ use App\Services\BaseForm;
 
 class SettingDeveloperForm extends BaseForm
 {
-    public $model_name = 'SettingDeveloper';
+    public $modelName = 'SettingDeveloper';
 }

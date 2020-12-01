@@ -11,15 +11,15 @@ use Symfony\Component\Console\Output\BufferedOutput;
 
 class SettingController extends BaseResourceController
 {
-	public $model_slug = 'setting-general';
+	public $modelNameSlug = 'setting-general';
 
     public function index()
     {
-    	$section = explode('-', $this->model_slug)[1];
+    	$section = explode('-', $this->modelSlug)[1];
     	$this->meta['title'] = __($section . '_manager');
     	$this->authorize('manage', 'setting_' . $section);
-        $model = $this->model_repository->first();
-        $form = $this->form_builder->create($this->model_form, [
+        $model = $this->modelRepository->first();
+        $form = $this->formBuilder->create($this->modelForm, [
             'method' => 'PUT',
             'url' => route('admin.setting.' . $section),
             'class' => 'm-form m-form--state',
@@ -32,17 +32,17 @@ class SettingController extends BaseResourceController
 
     public function putUpdate()
     {
-    	$section = explode('-', $this->model_slug)[1];
+    	$section = explode('-', $this->modelSlug)[1];
     	$this->authorize('manage', 'setting_' . $section);
-        $model = $this->model_repository->first();
-        $form = $this->form_builder->create($this->model_form, [
+        $model = $this->modelRepository->first();
+        $form = $this->formBuilder->create($this->modelForm, [
             'model' => $model,
         ]);
         if (! $form->isValid()) {
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
 
-        $this->model_repository->saveWithRelations($form->getFieldValues(), $model);
+        $this->modelRepository->saveWithRelations($form->getFieldValues(), $model);
 
         foreach(['developer', 'general', 'contact'] as $cache_section){
 	        Cache::forget('setting.' . $cache_section);
@@ -50,9 +50,9 @@ class SettingController extends BaseResourceController
         activity('Update')
             ->performedOn($model)
             ->causedBy(Auth::user())
-            ->log($this->model_name . ' Updated');
+            ->log($this->modelName . ' Updated');
 
-        $this->request->session()->flash('alert-success', $this->model_translated . ' Updated Successfully!');
+        $this->request->session()->flash('alert-success', $this->modelNameTranslate . ' Updated Successfully!');
         sleep(1);
 
         return redirect()->route('admin.setting.' . $section);

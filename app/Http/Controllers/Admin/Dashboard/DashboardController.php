@@ -14,7 +14,7 @@ use Route;
 
 class DashboardController extends BaseResourceController
 {
-    public $model_slug = 'user';
+    public $modelNameSlug = 'user';
 
     public function index()
     {
@@ -42,7 +42,7 @@ class DashboardController extends BaseResourceController
         $this->meta['link_name'] = __('dashboard');
         $this->meta['link_route'] = route('admin.dashboard.index');
 
-    	$form = $this->form_builder->create($this->model_form, [
+    	$form = $this->formBuilder->create($this->modelForm, [
             'method' => 'PUT',
             'url' => route('admin.dashboard.update-profile'),
             'class' => 'm-form m-form--state',
@@ -58,7 +58,7 @@ class DashboardController extends BaseResourceController
     {
         $model = Auth::user();
 
-        $form = $this->form_builder->create($this->model_form, [
+        $form = $this->formBuilder->create($this->modelForm, [
             'model' => $model,
         ]);
 
@@ -183,7 +183,7 @@ class DashboardController extends BaseResourceController
 
         $profile_updated = new ProfileUpdated();
         $profile_updated->setCode($auth_user->id);
-        $admin_users = $this->model_repository->getAdminUsers();
+        $admin_users = $this->modelRepository->getAdminUsers();
         foreach($admin_users as $admin){
             $admin->notify($profile_updated);
         }

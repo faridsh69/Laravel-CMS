@@ -9,12 +9,12 @@ use Auth;
 
 class ResourceController extends BaseResourceController
 {
-    public $model_slug = 'notification';
+    public $modelNameSlug = 'notification';
 
     public function store()
     {
-        $this->authorize('create', $this->model_namespace);
-        $form = $this->form_builder->create($this->model_form);
+        $this->authorize('create', $this->modelNamespace);
+        $form = $this->formBuilder->create($this->modelForm);
 
         if (! $form->isValid()) {
             return redirect()->back()->withErrors($form->getErrors())->withInput();
@@ -28,25 +28,25 @@ class ResourceController extends BaseResourceController
             $user->notify($site_notification);
         }
 
-    	$model = $this->model_repository->orderBy('id', 'desc')->first();
-        activity($this->model_name)
+    	$model = $this->modelRepository->orderBy('id', 'desc')->first();
+        activity($this->modelName)
             ->performedOn($model)
             ->causedBy(Auth::user())
-            ->log($this->model_name . ' Sended');
+            ->log($this->modelName . ' Sended');
 
-        $this->request->session()->flash('alert-success', $this->model_name . ' Sent Successfully!');
+        $this->request->session()->flash('alert-success', $this->modelName . ' Sent Successfully!');
 
-        return redirect()->route('admin.' . $this->model_slug . '.list.index');
+        return redirect()->route('admin.' . $this->modelSlug . '.list.index');
     }
 
     public function edit($id){
-        $this->request->session()->flash('alert-danger', $this->model_translated . __(' edit does not exist!'));
+        $this->request->session()->flash('alert-danger', $this->modelNameTranslate . __(' edit does not exist!'));
 
         return $this->redirect();
     }
 
     public function update($id){
-        $this->request->session()->flash('alert-danger', $this->model_translated . __(' update does not exist!'));
+        $this->request->session()->flash('alert-danger', $this->modelNameTranslate . __(' update does not exist!'));
 
         return $this->redirect();
     }

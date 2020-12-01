@@ -21,10 +21,10 @@ class BaseFileService extends BaseService
             $gallery = [$file];
         }
         foreach($gallery as $file){
-            $model_name = class_basename($model);
-            $model_namespance = config('cms.config.models_namespace') . $model_name;
-            $model_slug = Str::kebab($model_name);
-            $fileable_type = $model_namespance;
+            $modelName = class_basename($model);
+            $modelNamespance = config('cms.config.models_namespace') . $modelName;
+            $modelNameSlug = Str::kebab($modelName);
+            $fileable_type = $modelNamespance;
             $fileable_id = $model->id;
             $size = $file->getSize();
             $mime_type = $file->getMimeType();
@@ -32,8 +32,8 @@ class BaseFileService extends BaseService
             $random_code = rand(1000000, 9999999);
             $file_name = $title . '-' . $random_code . '.' . $extension;
             // save file
-            $upload_path = $this->upload_path_prefix . $model_slug . '/' . $fileable_id . '/';
-            $src_path = $this->src_path_prefix . $model_slug . '/' . $fileable_id;
+            $upload_path = $this->upload_path_prefix . $modelNameSlug . '/' . $fileable_id . '/';
+            $src_path = $this->src_path_prefix . $modelNameSlug . '/' . $fileable_id;
             $src = asset($src_path . '/' . $file_name);
             Storage::putFileAs($upload_path, $file, $file_name);
             // save thumbnail if its image

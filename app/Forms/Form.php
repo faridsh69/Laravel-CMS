@@ -10,9 +10,9 @@ class Form extends BaseForm
 {
 	public function __construct()
     {
-        $this->model_name = Str::studly(Request::segment(2));
-        $model_namespace = config('cms.config.models_namespace') . $this->model_name;
-        $model_repository = new $model_namespace();
-        $this->model_columns = $model_repository->getColumns();
+        $this->modelName = Str::studly(Request::segment(2));
+        $modelNamespace = config('cms.config.models_namespace') . $this->modelName;
+        $modelRepository = new $modelNamespace();
+        $this->modelColumns = $modelRepository->getColumns();
     }
 }

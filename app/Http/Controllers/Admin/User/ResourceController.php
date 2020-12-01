@@ -9,7 +9,7 @@ class ResourceController extends BaseResourceController
 {
     public function login($id)
 	{
-        $this->authorize('index', $this->model_namespace);
+        $this->authorize('index', $this->modelNamespace);
         if (\Auth::loginUsingId($id)){
             return redirect('/');
         }
@@ -19,16 +19,16 @@ class ResourceController extends BaseResourceController
 
 	public function identify($id)
 	{
-		$model = $this->model_repository->findOrFail($id);
+		$model = $this->modelRepository->findOrFail($id);
         $this->authorize('view', $model);
-        $this->meta['title'] = $this->model_translated . __('identify');
+        $this->meta['title'] = $this->modelNameTranslate . __('identify');
 
 		return view('admin.page.user.identify', ['meta' => $this->meta, 'user' => $model]);
 	}
 
 	public function identifyDocument($id, $document_title)
 	{
-		$model = $this->model_repository->findOrFail($id);
+		$model = $this->modelRepository->findOrFail($id);
         $this->authorize('view', $model);
 
         $document_title_verified_at = $document_title . '_verified_at';

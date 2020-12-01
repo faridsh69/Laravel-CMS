@@ -8,7 +8,7 @@ use Str;
 
 class FrontController extends BaseFrontController
 {
-    public $model_slug = 'user';
+    public $modelNameSlug = 'user';
 
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class FrontController extends BaseFrontController
      */
     public function index()
     {
-        $list = $this->model_repository->active()
+        $list = $this->modelRepository->active()
             ->orderBy('updated_at', 'desc')
             ->paginate(config('setting-general.pagination_number'));
 

@@ -6,5 +6,5 @@ use App\Services\BasePolicy;
 
 class PermissionPolicy extends BasePolicy
 {
-	public $model_slug = 'permission';
+	public $modelNameSlug = 'permission';
 }

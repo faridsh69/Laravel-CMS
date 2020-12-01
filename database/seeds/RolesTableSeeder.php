@@ -21,19 +21,19 @@ class RolesTableSeeder extends Seeder
             'media',
             'report',
         ];
-        $model_slugs = config('cms.policies');
+        $modelNameSlugs = config('cms.policies');
         $roles = [];
         $permissions = [];
-        foreach($model_slugs as $model_slug)
+        foreach($modelNameSlugs as $modelNameSlug)
         {
             $model_permissions = [];
-            $model_permissions[] = Permission::updateOrCreate(['name' => $model_slug . '_index']);
-            $model_permissions[] = Permission::updateOrCreate(['name' => $model_slug . '_view']);
-            $model_permissions[] = Permission::updateOrCreate(['name' => $model_slug . '_create']);
-            $model_permissions[] = Permission::updateOrCreate(['name' => $model_slug . '_update']);
-            $model_permissions[] = Permission::updateOrCreate(['name' => $model_slug . '_delete']);
+            $model_permissions[] = Permission::updateOrCreate(['name' => $modelNameSlug . '_index']);
+            $model_permissions[] = Permission::updateOrCreate(['name' => $modelNameSlug . '_view']);
+            $model_permissions[] = Permission::updateOrCreate(['name' => $modelNameSlug . '_create']);
+            $model_permissions[] = Permission::updateOrCreate(['name' => $modelNameSlug . '_update']);
+            $model_permissions[] = Permission::updateOrCreate(['name' => $modelNameSlug . '_delete']);
 
-            $model_role = Role::updateOrCreate(['name' => $model_slug . '_manager']);
+            $model_role = Role::updateOrCreate(['name' => $modelNameSlug . '_manager']);
             $model_role->syncPermissions($model_permissions);
             $roles[] = $model_role->name;
 

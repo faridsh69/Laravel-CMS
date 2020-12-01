@@ -1,14 +1,14 @@
 <?php
 
-$model_slugs = Config::get('cms.front_routes');
+$modelNameSlugs = Config::get('cms.front_routes');
 
-foreach($model_slugs as $model_slug)
+foreach($modelNameSlugs as $modelNameSlug)
 {
-	$controller_name = \Str::studly($model_slug) . '\FrontController';
+	$controller_name = \Str::studly($modelNameSlug) . '\FrontController';
 	if (! file_exists(__DIR__ . '\..\app\Http\Controllers\Front\\' . $controller_name . '.php')) {
 		$controller_name = 'FrontController';
 	}
-	Route::group(['prefix' => $model_slug, 'as' => $model_slug . '.'], function () use ($controller_name) {
+	Route::group(['prefix' => $modelNameSlug, 'as' => $modelNameSlug . '.'], function () use ($controller_name) {
 		Route::get('', $controller_name . '@index')->name('index');
 		Route::get('category', $controller_name . '@getCategories')->name('category.index');
 		Route::get('category/{url}', $controller_name . '@getCategory')->name('category.show');

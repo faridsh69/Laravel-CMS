@@ -21,14 +21,14 @@ class AuthServiceProvider extends ServiceProvider
     {
         $seconds = 1;
         $this->policies = Cache::remember('policies', $seconds, function () {
-            $model_slugs = config('cms.policies');
+            $modelNameSlugs = config('cms.policies');
             $models_namespace = config('cms.config.models_namespace');
             $policies = [];
-            foreach($model_slugs as $model_slug){
-                $model_name = Str::studly($model_slug);
-                $model_namespace = $models_namespace . $model_name;
-                $model_policy = 'App\Policies\\' . $model_name . 'Policy';
-                $policies[$model_namespace] = $model_policy;
+            foreach($modelNameSlugs as $modelNameSlug){
+                $modelName = Str::studly($modelNameSlug);
+                $modelNamespace = $models_namespace . $modelName;
+                $model_policy = 'App\Policies\\' . $modelName . 'Policy';
+                $policies[$modelNamespace] = $model_policy;
             }
 
             return $policies;

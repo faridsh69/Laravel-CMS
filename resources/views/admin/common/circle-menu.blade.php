@@ -12,20 +12,20 @@
 						<ul class="m-nav">
 							<li class="m-nav__section m-nav__section--first m--hide">
 								<span class="m-nav__section-text">
-									Quick Actions {{ $model_name = Request::segment(2) }}
+									Quick Actions {{ $modelName = Request::segment(2) }}
 								</span>
 							</li>
-							@if (Route::has('admin.'.$model_name.'.list.create'))
+							@if (Route::has('admin.'.$modelName.'.list.create'))
 							<li class="m-nav__item">
-								<a href="{{ route('admin.'.$model_name.'.list.create') }}" class="m-nav__link">
+								<a href="{{ route('admin.'.$modelName.'.list.create') }}" class="m-nav__link">
 									<i class="m-nav__link-icon flaticon-share"></i>
 									<span class="m-nav__link-text">
-										Create {{ ucfirst($model_name) }}
+										Create {{ ucfirst($modelName) }}
 									</span>
 								</a>
 							</li>
 							<li class="m-nav__item">
-								<a href="{{ route('admin.'.$model_name.'.export') }}" class="m-nav__link">
+								<a href="{{ route('admin.'.$modelName.'.export') }}" class="m-nav__link">
 									<i class="m-nav__link-icon flaticon-download"></i>
 									<span class="m-nav__link-text">
 										Export Excel
@@ -33,7 +33,7 @@
 								</a>
 							</li>
 							<li class="m-nav__item">
-								<a href="{{ route('admin.'.$model_name.'.import') }}" class="m-nav__link">
+								<a href="{{ route('admin.'.$modelName.'.import') }}" class="m-nav__link">
 									<i class="m-nav__link-icon flaticon-up-arrow"></i>
 									<span class="m-nav__link-text">
 										Import Excel
@@ -41,7 +41,7 @@
 								</a>
 							</li>
 							<li class="m-nav__item">
-								<a href="{{ route('admin.'.$model_name.'.print') }}" class="m-nav__link">
+								<a href="{{ route('admin.'.$modelName.'.print') }}" class="m-nav__link">
 									<i class="m-nav__link-icon flaticon-clipboard"></i>
 									<span class="m-nav__link-text">
 										Print

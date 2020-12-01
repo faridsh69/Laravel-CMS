@@ -10,14 +10,7 @@ class BaseAuthPolicy
 {
     use HandlesAuthorization;
 
-    public $model_slug;
-
-    // public function __construct()
-    // {
-    //     if(!$this->model_slug){
-    //         $this->model_slug = Request::segment(2);
-    //     }
-    // }
+    public $modelNameSlug;
 
     public function index(User $user)
     {
@@ -26,7 +19,7 @@ class BaseAuthPolicy
 
     public function view(User $user, $list)
     {
-    	if($user->can($this->model_slug . '_view')){
+    	if($user->can($this->modelSlug . '_view')){
     		return true;
     	}
 
@@ -40,7 +33,7 @@ class BaseAuthPolicy
 
     public function update(User $user, $list)
     {
-    	if($user->can($this->model_slug . '_update')){
+    	if($user->can($this->modelSlug . '_update')){
     		return true;
     	}
 
@@ -49,7 +42,7 @@ class BaseAuthPolicy
 
     public function delete(User $user, $list)
     {
-    	if($user->can($this->model_slug . '_delete')){
+    	if($user->can($this->modelSlug . '_delete')){
     		return true;
     	}
 

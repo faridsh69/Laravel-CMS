@@ -9,30 +9,30 @@ class BasePolicy
 {
     use HandlesAuthorization;
 
-    public $model_slug;
+    public $modelNameSlug;
 
     public function index(User $user)
     {
-        return $user->can($this->model_slug . '_index');
+        return $user->can($this->modelSlug . '_index');
     }
 
     public function view(User $user, $list)
     {
-        return $user->can($this->model_slug . '_view');
+        return $user->can($this->modelSlug . '_view');
     }
 
     public function create(User $user)
     {
-        return $user->can($this->model_slug . '_create');
+        return $user->can($this->modelSlug . '_create');
     }
 
     public function update(User $user, $list)
     {
-        return $user->can($this->model_slug . '_update');
+        return $user->can($this->modelSlug . '_update');
     }
 
     public function delete(User $user, $list)
     {
-        return $user->can($this->model_slug . '_delete');
+        return $user->can($this->modelSlug . '_delete');
     }
 }

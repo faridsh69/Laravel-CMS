@@ -6,5 +6,5 @@ use App\Services\BasePolicy;
 
 class ActivityPolicy extends BasePolicy
 {
-	public $model_slug = 'activity';
+	public $modelNameSlug = 'activity';
 }

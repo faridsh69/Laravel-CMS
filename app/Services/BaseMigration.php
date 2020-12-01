@@ -10,10 +10,10 @@ use Str;
 class BaseMigration extends Migration
 {
     // models of migration tables
-    public $model_slugs = [];
+    public $modelNameSlugs = [];
 
     // model of migration table
-    public $model_slug;
+    public $modelNameSlug;
 
     // if table exist it will update or rebuild
     public $update = true;
@@ -25,24 +25,24 @@ class BaseMigration extends Migration
 
     public function __construct()
     {
-        if ($this->model_slugs === []){
-            $this->model_slugs = [$this->model_slug];
-            if ($this->model_slug === null){
-                $this->model_slugs = config('cms.migration');
+        if ($this->modelSlugs === []){
+            $this->modelSlugs = [$this->modelSlug];
+            if ($this->modelSlug === null){
+                $this->modelSlugs = config('cms.migration');
             }
         }
-        foreach($this->model_slugs as $model_slug){
-            $model_name = Str::studly($model_slug);
-            $model_namespace = config('cms.config.models_namespace') . $model_name;
-            $model_repository = new $model_namespace();
-            $model_columns = $model_repository->getColumns();
-            $model_table = $model_repository->getTable();
+        foreach($this->modelSlugs as $modelNameSlug){
+            $modelName = Str::studly($modelNameSlug);
+            $modelNamespace = config('cms.config.models_namespace') . $modelName;
+            $modelRepository = new $modelNamespace();
+            $modelColumns = $modelRepository->getColumns();
+            $model_table = $modelRepository->getTable();
             $this->_migrations[] = (object) [
-                'model_slug' => $model_slug,
-                'model_name' => $model_name,
-                'model_namespace' => $model_namespace,
-                'model_repository' => $model_repository,
-                'model_columns' => $model_columns,
+                'model_slug' => $modelNameSlug,
+                'model_name' => $modelName,
+                'model_namespace' => $modelNamespace,
+                'model_repository' => $modelRepository,
+                'model_columns' => $modelColumns,
                 'model_table' => $model_table,
             ];
         }
@@ -88,11 +88,11 @@ class BaseMigration extends Migration
         Schema::dropIfExists($model_table);
     }
 
-    private function _createMigration($model_table, $model_columns)
+    private function _createMigration($model_table, $modelColumns)
     {
-        Schema::create($model_table, function (Blueprint $table) use ($model_columns) {
+        Schema::create($model_table, function (Blueprint $table) use ($modelColumns) {
             $table->bigIncrements('id');
-            foreach($model_columns as $column){
+            foreach($modelColumns as $column){
                 $name = $column['name'];
                 $type = isset($column['type']) ? $column['type'] : '';
                 $database = isset($column['database']) ? $column['database'] : '';
@@ -110,14 +110,14 @@ class BaseMigration extends Migration
         });
     }
 
-    private function _updateMigration($model_table, $model_columns)
+    private function _updateMigration($model_table, $modelColumns)
     {
         $old_database_columns = Schema::getColumnListing($model_table);
         $extra_columns = ['id', 'created_at', 'updated_at', 'deleted_at'];
         $drop_columns = $old_database_columns;
-        $add_columns = collect($model_columns)->where('database', '!=', 'none')->toArray();
+        $add_columns = collect($modelColumns)->where('database', '!=', 'none')->toArray();
         foreach($old_database_columns as $column_key => $old_database_column){
-            $array_index = array_search($old_database_column, collect($model_columns)->pluck('name')->toArray(), true);
+            $array_index = array_search($old_database_column, collect($modelColumns)->pluck('name')->toArray(), true);
             if($array_index !== false){
                 unset($drop_columns[$column_key]);
                 unset($add_columns[$array_index]);
@@ -151,9 +151,9 @@ class BaseMigration extends Migration
         });
     }
 
-    private function _createBackupTable($model_table, $model_repository)
+    private function _createBackupTable($model_table, $modelRepository)
     {
-        $model_repository_list = $model_repository->withTrashed()
+        $modelRepository_list = $modelRepository->withTrashed()
             ->get()
             ->makeVisible('deleted_at')
             ->toArray();
@@ -164,13 +164,13 @@ class BaseMigration extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
-        foreach($model_repository_list as $model_repository_item){
+        foreach($modelRepository_list as $modelRepository_item){
             \DB::table($backup_table_name)->insert([
-                'id' => $model_repository_item['id'],
-                'created_at' => $model_repository_item['created_at'],
-                'updated_at' => $model_repository_item['updated_at'],
-                'deleted_at' => $model_repository_item['deleted_at'],
-                'row_data' => serialize($model_repository_item),
+                'id' => $modelRepository_item['id'],
+                'created_at' => $modelRepository_item['created_at'],
+                'updated_at' => $modelRepository_item['updated_at'],
+                'deleted_at' => $modelRepository_item['deleted_at'],
+                'row_data' => serialize($modelRepository_item),
             ]);
         }
     }

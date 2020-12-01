@@ -6,5 +6,5 @@ use App\Services\BasePolicy;
 
 class FormPolicy extends BasePolicy
 {
-	public $model_slug = 'form';
+	public $modelNameSlug = 'form';
 }

@@ -6,5 +6,5 @@ use App\Services\BaseForm;
 
 class UserForm extends BaseForm
 {
-    public $model_name = 'User';
+    public $modelName = 'User';
 }

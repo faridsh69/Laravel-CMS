@@ -6,5 +6,5 @@ use App\Services\BasePolicy;
 
 class TagendPolicy extends BasePolicy
 {
-	public $model_slug = 'tagend';
+	public $modelNameSlug = 'tagend';
 }

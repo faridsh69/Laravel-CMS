@@ -1,4 +1,4 @@
-<?php
+T<?php
 
 namespace App\Services;
 
@@ -10,19 +10,19 @@ class BaseFactory
 {
     public function index($factory)
     {
-        $model_slugs = config('cms.factory');
+        $modelNameSlugs = config('cms.factory');
 
-        foreach($model_slugs as $model_slug)
+        foreach($modelNameSlugs as $modelNameSlug)
         {
-            $model_name = Str::studly($model_slug);
-            $models_namespace = config('cms.config.models_namespace') . $model_name;
-            $model_repository = new $models_namespace();
-            $model_columns = $model_repository->getColumns();
+            $modelName = Str::studly($modelNameSlug);
+            $models_namespace = config('cms.config.models_namespace') . $modelName;
+            $modelRepository = new $models_namespace();
+            $modelColumns = $modelRepository->getColumns();
 
-            $factory->define($models_namespace, function (Faker $faker) use ($model_columns, $model_name, $model_slug) {
+            $factory->define($models_namespace, function (Faker $faker) use ($modelColumns, $modelName, $modelNameSlug) {
                 $output = [];
                 $random_int = rand(1000, 9999);
-                foreach($model_columns as $column){
+                foreach($modelColumns as $column){
                     $fake_data = null;
                     $name = $column['name'];
                     $type = $column['type'];
@@ -30,10 +30,10 @@ class BaseFactory
                     $database = isset($column['database']) ? $column['database'] : null;
 
                     if($name === 'url'){
-                        $fake_data = $model_slug . '-url-' . $random_int;
+                        $fake_data = $modelNameSlug . '-url-' . $random_int;
                     }
                     elseif($name === 'title'){
-                        $fake_data = $model_name . ' title ' . $random_int;
+                        $fake_data = $modelName . ' title ' . $random_int;
                     }
                     elseif($name === 'description'){
                         $fake_data = $faker->realText(100);
