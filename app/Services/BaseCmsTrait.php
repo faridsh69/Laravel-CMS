@@ -2,8 +2,6 @@
 
 namespace App\Services;
 
-// use App\Http\Controllers\Controller;
-// use App\Models\Activity;
 use Auth;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;

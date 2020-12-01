@@ -6,16 +6,9 @@ use Kris\LaravelFormBuilder\Form;
 
 class BaseForm extends Form
 {
-    public $modelColumns;
+    use BaseCmsTrait;
 
     public $id;
-
-    public function __construct()
-    {
-        $modelNamespace = config('cms.config.models_namespace') . $this->modelName;
-        $modelRepository = new $modelNamespace();
-        $this->modelColumns = $modelRepository->getColumns();
-    }
 
     public function buildForm()
     {

@@ -25,8 +25,8 @@ class BaseExport implements FromCollection, WithHeadings
             ->where('database', '!=', 'none')
             ->pluck('name')
             ->toArray();
-            $this->modelColumns[] = 'created_at';
-            $this->modelColumns[] = 'updated_at';
-            $this->modelColumns[] = 'deleted_at';
+        $this->modelColumns[] = 'created_at';
+        $this->modelColumns[] = 'updated_at';
+        $this->modelColumns[] = 'deleted_at';
     }
 }

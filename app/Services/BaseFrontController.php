@@ -15,25 +15,7 @@ use Cache;
 
 class BaseFrontController extends Controller
 {
-    // FoodProgram
-    public $modelName;
-
-    // food-program
-    public $modelNameSlug;
-
-    // Food Program
-    public $modelNameTranslate;
-
-    // App\Models\FoodProgram
-    public $modelNamespace;
-
-    // A new instance of this model
-    public $modelRepository;
-
-    public $request;
-
-    // meta title, description and other used in header
-    public $meta;
+    use BaseCmsTrait;
 
     public function __construct(Request $request)
     {

@@ -11,33 +11,7 @@ use Str;
 
 class BaseApiController extends Controller
 {
-    // FoodProgram
-    public $modelName;
-
-    // food-program
-    public $modelNameSlug;
-
-    // Food Program
-    public $modelNameTranslate;
-
-    // '\App\Forms\FoodProgramForm'
-    public $modelForm;
-
-    // App\Models\FoodProgram
-    public $modelNamespace;
-
-    // Columns of this model
-    public $modelColumns;
-
-    // A new instance of this model
-    public $modelRepository;
-
-    public $request;
-
-    public $formBuilder;
-
-    public $model_rules;
-
+    use BaseCmsTrait;
 
     public function index()
     {

@@ -6,9 +6,9 @@ class BaseEnum
 {
 	public static function getInstance($value)
 	{
-        $called_class = static::class;
-        $enum_class = new $called_class();
+        $enumClass = static::class;
+        $enumRepository = new $enumClass();
 
-		return $enum_class::data[$value];
+		return $enumRepository::data[$value];
 	}
 }

@@ -15,32 +15,32 @@ class BaseNotification extends Notification
 {
 	use Queueable;
 
-	public $model_snake_class_name; // user_logined
+	public $modelSnakeClassName; // user_logined
 
-    public $heading_title; // dear customer
+    public $headingTitle; // dear customer
 
-    public $sms_message; // dear customer /n message /n app url
+    public $smsMessage; // dear customer /n message /n app url
 
-    public $message_template; // __(user_logined_message)
+    public $messageTemplate; // __(user_logined_message)
 
     public $message;
 
-    public $app_url;
+    public $appUrl;
 
-    public $app_title;
+    public $appTitle;
 
-    public $mail_subject;
+    public $mailSubject;
 
     public function __construct()
     {
-        $this->app_url = URL::to('/');
-        $this->app_title = __(config('app.name'));
-        $this->model_snake_class_name = Str::snake(class_basename($this));
-        $this->mail_subject = __($this->model_snake_class_name . '_subject');
-        $this->message_template = __($this->model_snake_class_name . '_message');
-        $this->heading_title = __('dear_user');
-        $this->message = sprintf($this->message_template, $this->app_title);
-        $this->sms_message = sprintf(" %s \n %s \n %s", $this->heading_title, $this->message, $this->app_title);
+        $this->appUrl = URL::to('/');
+        $this->appTitle = __(config('app.name'));
+        $this->modelSnakeClassName = Str::snake(class_basename($this));
+        $this->mailSubject = __($this->modelSnakeClassName . '_subject');
+        $this->messageTemplate = __($this->modelSnakeClassName . '_message');
+        $this->headingTitle = __('dear_user');
+        $this->message = sprintf($this->messageTemplate, $this->appTitle);
+        $this->smsMessage = sprintf(" %s \n %s \n %s", $this->headingTitle, $this->message, $this->appTitle);
         $this->editContent();
     }
 
@@ -50,51 +50,51 @@ class BaseNotification extends Notification
             return [];
         }
 
-        $channel_list = [
+        $channelList = [
             DatabaseChannel::class,
         ];
-        // if($notifiable->phone && array_search($this->model_snake_class_name. '_sms', config('setting-developer.notification_events')) !== false){
-        //     $channel_list[] = SmsChannel::class;
-        // }
-        // if($notifiable->email && array_search($this->model_snake_class_name. '_mail', config('setting-developer.notification_events')) !== false){
-        //     $channel_list[] = 'mail';
-        // }
+        if ($notifiable->phone && array_search($this->modelSnakeClassName. '_sms', config('setting-developer.notification_events')) !== false){
+            $channelList[] = SmsChannel::class;
+        }
+        if($notifiable->email && array_search($this->modelSnakeClassName. '_mail', config('setting-developer.notification_events')) !== false){
+            $channelList[] = 'mail';
+        }
 
-        return $channel_list;
+        return $channelList;
     }
 
     public function setMessage($message)
     {
     	$this->message = $message;
-        $this->sms_message = sprintf(" %s \n %s \n %s", $this->heading_title, $this->message, $this->app_title);
+        $this->smsMessage = sprintf(" %s \n %s \n %s", $this->headingTitle, $this->message, $this->appTitle);
     }
 
     public function setCode($code)
     {
-        $this->message = sprintf($this->message_template, $code);
-        $this->sms_message = sprintf(" %s \n %s \n %s", $this->heading_title, $this->message, $this->app_title);
+        $this->message = sprintf($this->messageTemplate, $code);
+        $this->smsMessage = sprintf(" %s \n %s \n %s", $this->headingTitle, $this->message, $this->appTitle);
     }
 
     public function toArray($notifiable)
     {
         return [
-            'data' => $this->sms_message,
+            'data' => $this->smsMessage,
         ];
     }
 
     public function toMail($notifiable)
     {
         return (new MailMessage())
-            ->subject($this->mail_subject)
-            ->greeting($this->heading_title)
+            ->subject($this->mailSubject)
+            ->greeting($this->headingTitle)
             ->line($this->message)
-            ->action($this->app_title, $this->app_url);
+            ->action($this->appTitle, $this->appUrl);
     }
 
     public function toSlack($notifiable)
 	{
 	    return (new SlackMessage())
-	        ->content('user_id: ' . $notifiable->id . ' - ' . $this->sms_message);
+	        ->content('user_id: ' . $notifiable->id . ' - ' . $this->smsMessage);
 	}
 
     public function editContent()
