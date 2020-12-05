@@ -8,6 +8,10 @@ use File;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\morphMany;
+use Illuminate\Database\Eloquent\Relations\belongsToMany;
+use Illuminate\Database\Eloquent\Relations\morphToMany;
 
 class BaseModel extends Model
 {
@@ -39,52 +43,52 @@ class BaseModel extends Model
 		return $query->where('type', $type);
 	}
 
-	public function user() : Builder
+	public function user() : BelongsTo
 	{
 		return $this->belongsTo('App\Models\User', 'user_id', 'id');
 	}
 
-	public function category()
+	public function category() : BelongsTo
 	{
 		return $this->belongsTo('App\Models\Category', 'category_id', 'id');
 	}
 
-	public function tags()
+	public function tags() : morphToMany
 	{
 		return $this->morphToMany('App\Models\Tag', 'taggable');
 	}
 
-	public function comments()
+	public function comments() : morphMany
 	{
 		return $this->morphMany('App\Models\Comment', 'commentable');
 	}
 
-	public function likes()
+	public function likes() : morphMany
 	{
 		return $this->morphMany('App\Models\Like', 'likeable');
 	}
 
-	public function rates()
+	public function rates() : morphMany
 	{
 		return $this->morphMany('App\Models\Rate', 'rateable');
 	}
 
-	public function follows()
+	public function follows() : morphMany
 	{
 		return $this->morphMany('App\Models\Rate', 'rateable');
 	}
 
-	public function activities()
+	public function activities() : morphMany
 	{
 		return $this->morphMany('App\Models\Activity', 'activitiable');
 	}
 
-	public function relateds()
+	public function relateds() : belongsToMany
 	{
 		return $this->belongsToMany(config('cms.config.models_namespace') . class_basename($this), 'model_related', 'model_id', 'related_id');
 	}
 
-	public function files() : object
+	public function files() : morphMany
 	{
 		return $this->morphMany('App\Models\File', 'fileable');
 	}
@@ -111,7 +115,7 @@ class BaseModel extends Model
 			->toArray();
 	}
 
-	public function src(string $fileColumnName)
+	public function src(string $fileColumnName) : string
 	{
 		$srcs = $this->srcs($fileColumnName);
 		if (count($srcs) > 0)
