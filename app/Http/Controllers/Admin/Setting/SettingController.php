@@ -6,6 +6,7 @@ use App\Services\BaseResourceController;
 use Artisan;
 use Auth;
 use Cache;
+use Illuminate\View\View;
 use Rap2hpoutre\LaravelLogViewer\LogViewerController;
 use Symfony\Component\Console\Output\BufferedOutput;
 
@@ -13,7 +14,7 @@ class SettingController extends BaseResourceController
 {
 	public string $modelNameSlug = 'setting-general';
 
-    public function index()
+    public function index() : View
     {
     	$section = explode('-', $this->modelNameSlug)[1];
     	$this->meta['title'] = __($section . '_manager');
@@ -63,7 +64,7 @@ class SettingController extends BaseResourceController
 		return redirect()->route('admin.setting.general');
 	}
 
-	public function log()
+	public function log() : View
 	{
         $this->authorize('manage', 'log');
         $this->meta['title'] = __('log_manager');
@@ -77,7 +78,7 @@ class SettingController extends BaseResourceController
 		return $LogViewerController->index();
 	}
 
-	public function api()
+	public function api() : View
 	{
 		$this->authorize('manage', 'api');
         $this->meta['title'] = __('api_manager');
@@ -101,7 +102,7 @@ class SettingController extends BaseResourceController
         echo '<br><br><a href="/admin/setting/advance">Go back</a>';
 	}
 
-	public function advance()
+	public function advance() : View
 	{
 		$this->authorize('manage', 'setting_advance');
 		$commands = [

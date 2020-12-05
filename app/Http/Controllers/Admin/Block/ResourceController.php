@@ -4,13 +4,14 @@ namespace App\Http\Controllers\Admin\Block;
 
 use App\Models\Block;
 use App\Services\BaseResourceController;
+use Illuminate\View\View;
 use Str;
 
 class ResourceController extends BaseResourceController
 {
     public string $modelNameSlug = 'block';
 
-    public function index()
+    public function index() : View
     {
         $this->authorize('index', $this->modelNamespace);
         $this->meta['link_route'] = route('admin.' . $this->modelNameSlug . '.list.create');
@@ -44,7 +45,7 @@ class ResourceController extends BaseResourceController
         return redirect()->route('admin.' . $this->modelNameSlug . '.list.index');
     }
 
-    private function _saveSort($block_ids)
+    private function _saveSort(array $block_ids) : void
     {
     	foreach($block_ids as $block_order => $block_id)
     	{

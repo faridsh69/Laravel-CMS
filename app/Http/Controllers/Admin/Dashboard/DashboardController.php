@@ -10,13 +10,14 @@ use App\Notifications\ProfileUpdated;
 use App\Services\BaseResourceController;
 use Auth;
 use Carbon\Carbon;
+use Illuminate\View\View;
 use Route;
 
 class DashboardController extends BaseResourceController
 {
     public string $modelNameSlug = 'user';
 
-    public function index()
+    public function index() : view
     {
         $this->meta['title'] = __('dashboard');
         return view('admin.page.dashboard.index', ['meta' => $this->meta]);
@@ -36,7 +37,7 @@ class DashboardController extends BaseResourceController
         return redirect()->back();
     }
 
-    public function profile()
+    public function profile() : view
     {
         $this->meta['title'] = __('profile');
         $this->meta['link_name'] = __('dashboard');
@@ -78,7 +79,7 @@ class DashboardController extends BaseResourceController
         return redirect()->route('admin.dashboard.profile');
     }
 
-    public function activity()
+    public function activity() : view
     {
         $this->meta['title'] = __('activity');
         $this->meta['alert'] = '';
@@ -89,7 +90,7 @@ class DashboardController extends BaseResourceController
     	return view('admin.page.dashboard.activity', ['activities' => $activities, 'meta' => $this->meta]);
     }
 
-    public function identify()
+    public function identify() : view
     {
         $this->meta['title'] = __('identify');
 
@@ -136,7 +137,7 @@ class DashboardController extends BaseResourceController
 
     }
 
-    public function identifyPhone()
+    public function identifyPhone() : view
     {
         $auth_user = Auth::user();
         if($auth_user->phone_verified_at){
@@ -192,7 +193,7 @@ class DashboardController extends BaseResourceController
         return redirect()->back();
     }
 
-    public function iconsList()
+    public function iconsList() : view
     {
         $this->meta['title'] = __('icons');
 

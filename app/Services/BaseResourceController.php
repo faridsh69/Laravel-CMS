@@ -3,10 +3,11 @@
 namespace App\Services;
 
 use Str;
+use Illuminate\View\View;
 
 class BaseResourceController extends BaseAdminController
 {
-    public function index()
+    public function index() : View
     {
         $this->authorize('index', $this->modelNamespace);
         $this->meta['link_route'] = route('admin.' . $this->modelNameSlug . '.list.create');
@@ -25,7 +26,7 @@ class BaseResourceController extends BaseAdminController
         return view('admin.list.index', ['meta' => $this->meta, 'columns' => $columns]);
     }
 
-    public function create()
+    public function create() : View
     {
         $this->authorize('create', $this->modelNamespace);
         $this->meta['title'] = __('create_new') . $this->modelNameTranslate;
@@ -61,7 +62,7 @@ class BaseResourceController extends BaseAdminController
         return redirect()->route('admin.' . $this->modelNameSlug . '.list.index');
     }
 
-    public function show($id)
+    public function show($id) : View
     {
         $model = $this->modelRepository->findOrFail($id);
         $this->authorize('view', $model);
@@ -77,7 +78,7 @@ class BaseResourceController extends BaseAdminController
         return view('admin.list.show', ['data' => $data, 'meta' => $this->meta, 'activities' => $activities]);
     }
 
-    public function edit($id)
+    public function edit($id) : View
     {
         $model = $this->modelRepository->findOrFail($id);
         $this->authorize('update', $model);
@@ -155,7 +156,7 @@ class BaseResourceController extends BaseAdminController
         return redirect()->route('admin.' . $this->modelNameSlug . '.list.index');
     }
 
-    public function print()
+    public function print() : View
     {
         $this->authorize('index', $this->modelNamespace);
         $list = $this->modelRepository->all();
