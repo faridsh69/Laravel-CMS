@@ -72,7 +72,14 @@ class SettingsTableSeeder extends Seeder
 			'sms_driver' => 'raygansms',
 			'sms_sender' => '9830006859000705',
 			'sms_api_key' => 'muhammadc22:1234567891',
-			'notification_events' => ["password_changed_sms", "user_registered_mail","user_logined_mail","document_rejected_sms","factor_created_sms","factor_created_mail","form_submitted_sms"],
+			'notification_events' => [
+				'password_changed_sms',
+				'user_registered_mail',
+				'document_rejected_sms',
+				'factor_created_sms',
+				'factor_created_mail',
+				'form_submitted_sms',
+			],
         ];
         SettingGeneral::updateOrCreate(['id' => 1], $general_settings);
         SettingDeveloper::updateOrCreate(['id' => 1], $developer_settings);

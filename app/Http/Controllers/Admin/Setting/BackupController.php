@@ -16,7 +16,7 @@ class BackupController extends BaseAdminController
 
     public function __construct(Request $request)
     {
-        $this->request = $request;
+        $this->httpRequest = $request;
         $this->disk_name = config('backup.backup.destination.disks')[0];
         $this->backup_name = config('backup.backup.name');
         $this->meta['title'] = __('backup_manager');
@@ -57,7 +57,7 @@ class BackupController extends BaseAdminController
             ->causedBy(Auth::user())
             ->log('Backup Created');
 
-        $this->request->session()->flash('alert-success', 'Backup Created');
+        $this->httpRequest->session()->flash('alert-success', 'Backup Created');
 
         return redirect()->route('admin.setting.backup.index');
     }
@@ -92,7 +92,7 @@ class BackupController extends BaseAdminController
             $disk->delete($file);
         }
 
-        $this->request->session()->flash('alert-success', 'Backup Deleted');
+        $this->httpRequest->session()->flash('alert-success', 'Backup Deleted');
 
         return redirect()->route('admin.setting.backup.index');
     }

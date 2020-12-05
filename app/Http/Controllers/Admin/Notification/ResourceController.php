@@ -34,19 +34,19 @@ class ResourceController extends BaseResourceController
             ->causedBy(Auth::user())
             ->log($this->modelName . ' Sended');
 
-        $this->request->session()->flash('alert-success', $this->modelName . ' Sent Successfully!');
+        $this->httpRequest->session()->flash('alert-success', $this->modelName . ' Sent Successfully!');
 
         return redirect()->route('admin.' . $this->modelNameSlug . '.list.index');
     }
 
     public function edit($id){
-        $this->request->session()->flash('alert-danger', $this->modelNameTranslate . __(' edit does not exist!'));
+        $this->httpRequest->session()->flash('alert-danger', $this->modelNameTranslate . __(' edit does not exist!'));
 
         return $this->redirect();
     }
 
     public function update($id){
-        $this->request->session()->flash('alert-danger', $this->modelNameTranslate . __(' update does not exist!'));
+        $this->httpRequest->session()->flash('alert-danger', $this->modelNameTranslate . __(' update does not exist!'));
 
         return $this->redirect();
     }

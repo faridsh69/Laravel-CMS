@@ -9,14 +9,17 @@ class BaseAuthPolicy
 {
     use HandlesAuthorization;
 
-    public $modelNameSlug;
+    /*
+    * Define in each policies to find model slug.
+    */
+    public string $modelNameSlug;
 
-    public function index(User $user)
+    public function index(User $user) : bool
     {
     	return true;
     }
 
-    public function view(User $user, $list)
+    public function view(User $user, $list) : bool
     {
     	if($user->can($this->modelNameSlug . '_view')){
     		return true;
@@ -25,12 +28,12 @@ class BaseAuthPolicy
         return $user->id === $list->user_id;
     }
 
-    public function create(User $user)
+    public function create(User $user) : bool
     {
         return true;
     }
 
-    public function update(User $user, $list)
+    public function update(User $user, $list) : bool
     {
     	if($user->can($this->modelNameSlug . '_update')){
     		return true;
@@ -39,7 +42,7 @@ class BaseAuthPolicy
         return $user->id === $list->user_id;
     }
 
-    public function delete(User $user, $list)
+    public function delete(User $user, $list) : bool
     {
     	if($user->can($this->modelNameSlug . '_delete')){
     		return true;

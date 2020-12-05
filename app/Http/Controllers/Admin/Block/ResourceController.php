@@ -36,10 +36,10 @@ class ResourceController extends BaseResourceController
     public function postSort()
     {
         $this->authorize('index', $this->modelNamespace);
-    	$block_sort_json = $this->request->blockSort;
+    	$block_sort_json = $this->httpRequest->blockSort;
     	$block_sort = json_decode($block_sort_json);
     	$this->_saveSort($block_sort);
-    	$this->request->session()->flash('alert-success', $this->modelName . ' Order Updated Successfully!');
+    	$this->httpRequest->session()->flash('alert-success', $this->modelName . ' Order Updated Successfully!');
 
         return redirect()->route('admin.' . $this->modelNameSlug . '.list.index');
     }

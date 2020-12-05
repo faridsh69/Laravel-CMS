@@ -12,14 +12,8 @@ class Product extends BaseModel
         ['name' => 'description'],
         ['name' => 'category_id'],
         ['name' => 'content'],
-        [
-            'name' => 'image',
-            'same_column_name' => 'admin_filemanager_image',
-        ],
-        [
-            'name' => 'video',
-            'same_column_name' => 'admin_filemanager_video',
-        ],
+        ['name' => 'image'],
+        ['name' => 'video'],
         ['name' => 'activated'],
         ['name' => 'price'],
         ['name' => 'discount_price'],

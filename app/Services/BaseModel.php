@@ -367,18 +367,6 @@ class BaseModel extends Model
 					'file_multiple' => true,
 					'table' => true,
 				],
-				'admin_filemanager_image' => [
-					'name' => 'admin_filemanager_image',
-					'type' => 'text',
-					'database' => 'nullable',
-					'rule' => 'nullable',
-					'help' => 'Upload and select image from file manager',
-					'form_type' => 'file',
-					'file_manager' => true,
-					'file_accept' => 'image',
-					'file_multiple' => true,
-					'table' => true,
-				],
 				'video' => [
 					'name' => 'video',
 					'type' => 'text',
@@ -391,20 +379,8 @@ class BaseModel extends Model
 					'file_multiple' => true,
 					'table' => false,
 				],
-				'admin_filemanager_video' => [
-					'name' => 'admin_filemanager_video',
-					'type' => 'text',
-					'database' => 'nullable',
-					'rule' => 'nullable',
-					'help' => 'Upload and select video from file manager',
-					'form_type' => 'file',
-					'file_manager' => true,
-					'file_accept' => 'video',
-					'file_multiple' => true,
-					'table' => false,
-				],
-				'admin_filemanager_audio' => [
-					'name' => 'admin_filemanager_audio',
+				'audio' => [
+					'name' => 'audio',
 					'type' => 'text',
 					'database' => 'nullable',
 					'rule' => 'nullable',
@@ -415,8 +391,8 @@ class BaseModel extends Model
 					'file_multiple' => true,
 					'table' => false,
 				],
-				'admin_filemanager_file' => [
-					'name' => 'admin_filemanager_file',
+				'file' => [
+					'name' => 'file',
 					'type' => 'text',
 					'database' => 'nullable',
 					'rule' => 'nullable',
@@ -428,8 +404,8 @@ class BaseModel extends Model
 					'table' => false,
 				],
 				// Images that is using file upload for end user.
-				'user_upload_image' => [
-					'name' => 'user_upload_image',
+				'user_image' => [
+					'name' => 'user_image',
 					'type' => 'file',
 					'database' => 'none',
 					'rule' => 'nullable',
@@ -440,8 +416,8 @@ class BaseModel extends Model
 					'file_multiple' => true,
 					'table' => false,
 				],
-				'user_upload_video' => [
-					'name' => 'user_upload_video',
+				'user_video' => [
+					'name' => 'user_video',
 					'type' => 'file',
 					'database' => 'none',
 					'rule' => 'nullable',
@@ -452,8 +428,8 @@ class BaseModel extends Model
 					'file_multiple' => true,
 					'table' => false,
 				],
-				'user_upload_audio' => [
-					'name' => 'user_upload_audio',
+				'user_audio' => [
+					'name' => 'user_audio',
 					'type' => 'file',
 					'database' => 'none',
 					'rule' => 'nullable',
@@ -464,8 +440,8 @@ class BaseModel extends Model
 					'file_multiple' => true,
 					'table' => false,
 				],
-				'user_upload_file' => [
-					'name' => 'user_upload_file',
+				'user_file' => [
+					'name' => 'user_file',
 					'type' => 'file',
 					'database' => 'none',
 					'rule' => 'nullable',
@@ -734,6 +710,7 @@ class BaseModel extends Model
 					$columns[$key] = $default_columns[$column['name']];
 				} else if (!isset($columns[$key]['type'])) {
 					$columns[$key]['type'] = 'text';
+					$columns[$key]['database'] = 'nullable';
 					$columns[$key]['form_type'] = '';
 				}
 			}

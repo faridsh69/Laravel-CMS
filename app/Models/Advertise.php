@@ -18,27 +18,27 @@ class Advertise extends BaseModel
         ['name' => 'content'],
         [
             'name' => 'factory_images',
-            'same_column_name' => 'admin_filemanager_image',
+            'same_column_name' => 'image',
         ],
         [
             'name' => 'buyer_images',
-            'same_column_name' => 'user_upload_image',
+            'same_column_name' => 'user_image',
         ],
         [
             'name' => 'factory_videos',
-            'same_column_name' => 'admin_filemanager_video',
+            'same_column_name' => 'video',
         ],
         [
             'name' => 'buyer_videos',
-            'same_column_name' => 'user_upload_video',
+            'same_column_name' => 'user_video',
         ],
         [
             'name' => 'factory_audios',
-            'same_column_name' => 'admin_filemanager_audio',
+            'same_column_name' => 'audio',
         ],
         [
             'name' => 'buyer_audios',
-            'same_column_name' => 'user_upload_audio',
+            'same_column_name' => 'user_audio',
         ],
         ['name' => 'activated'],
         ['name' => 'category_id'],

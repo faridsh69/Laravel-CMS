@@ -8,7 +8,10 @@ class BaseAdminController extends Controller
 {
     use BaseCmsTrait;
 
-    public $meta = [
+    /*
+    * Meta to use in page header.
+    */
+    public array $meta = [
         'title' => 'Manager',
         'description' => 'Admin Panel Page For Full Features, Best UI-UX Cms.',
         'keywords' => '',

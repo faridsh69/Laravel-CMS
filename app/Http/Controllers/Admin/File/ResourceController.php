@@ -10,7 +10,7 @@ class ResourceController extends BaseResourceController
 
     public function removeBySrc()
     {
-		$src = $this->request->input('src');
+		$src = $this->httpRequest->input('src');
 		$file = $this->modelRepository->where('src', $src)->first();
 		$file_model_namespace = $file->fileable_type;
 		$this->authorize('index', $file_model_namespace);

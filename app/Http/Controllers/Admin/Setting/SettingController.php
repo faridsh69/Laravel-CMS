@@ -52,7 +52,7 @@ class SettingController extends BaseResourceController
             ->causedBy(Auth::user())
             ->log($this->modelName . ' Updated');
 
-        $this->request->session()->flash('alert-success', $this->modelNameTranslate . ' Updated Successfully!');
+        $this->httpRequest->session()->flash('alert-success', $this->modelNameTranslate . ' Updated Successfully!');
         sleep(1);
 
         return redirect()->route('admin.setting.' . $section);

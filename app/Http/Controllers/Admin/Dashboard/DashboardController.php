@@ -29,7 +29,7 @@ class DashboardController extends BaseResourceController
 
     public function postAddress()
     {
-        $data = $this->request->all();
+        $data = $this->httpRequest->all();
         $data['user_id'] = Auth::id();
         Address::create($data);
 
@@ -73,7 +73,7 @@ class DashboardController extends BaseResourceController
             ->performedOn($model)
             ->causedBy(Auth::user())
             ->log('User Profile Updated');
-        $this->request->session()->flash('alert-success', 'Profile Updated Successfully!');
+        $this->httpRequest->session()->flash('alert-success', 'Profile Updated Successfully!');
 
         return redirect()->route('admin.dashboard.profile');
     }
@@ -121,17 +121,17 @@ class DashboardController extends BaseResourceController
         if($auth_user->email_verified_at){
             return redirect()->back();
         }
-        $activation_code = $this->request->input('activation_code');
+        $activation_code = $this->httpRequest->input('activation_code');
         if($auth_user->activation_code === $activation_code)
         {
             $auth_user->email_verified_at = Carbon::now();
             $auth_user->activation_code = null;
             $auth_user->update();
 
-            $this->request->session()->flash('alert-success', __('email_verified'));
+            $this->httpRequest->session()->flash('alert-success', __('email_verified'));
             return redirect()->route('admin.dashboard.identify');
         }
-        $this->request->session()->flash('alert-danger', __('wrong_activation_code'));
+        $this->httpRequest->session()->flash('alert-danger', __('wrong_activation_code'));
         return redirect()->back();
 
     }
@@ -161,17 +161,17 @@ class DashboardController extends BaseResourceController
         if($auth_user->phone_verified_at){
             return redirect()->back();
         }
-        $activation_code = $this->request->input('activation_code');
+        $activation_code = $this->httpRequest->input('activation_code');
         if($auth_user->activation_code === $activation_code)
         {
             $auth_user->phone_verified_at = Carbon::now();
             $auth_user->activation_code = null;
             $auth_user->update();
 
-            $this->request->session()->flash('alert-success', __('phone_verified'));
+            $this->httpRequest->session()->flash('alert-success', __('phone_verified'));
             return redirect()->route('admin.dashboard.identify');
         }
-        $this->request->session()->flash('alert-danger', __('wrong_activation_code'));
+        $this->httpRequest->session()->flash('alert-danger', __('wrong_activation_code'));
         return redirect()->back();
     }
 
@@ -179,7 +179,7 @@ class DashboardController extends BaseResourceController
     {
         $auth_user = Auth::user();
         $file_service = new \App\Services\BaseFileService();
-        $file_service->save($this->request->file($document_title), $auth_user, $document_title);
+        $file_service->save($this->httpRequest->file($document_title), $auth_user, $document_title);
 
         $profile_updated = new ProfileUpdated();
         $profile_updated->setCode($auth_user->id);
@@ -188,7 +188,7 @@ class DashboardController extends BaseResourceController
             $admin->notify($profile_updated);
         }
 
-        $this->request->session()->flash('alert-success', __($document_title) . __('uploaded'));
+        $this->httpRequest->session()->flash('alert-success', __($document_title) . __('uploaded'));
         return redirect()->back();
     }
 

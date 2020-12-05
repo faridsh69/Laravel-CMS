@@ -12,7 +12,6 @@ class Blog extends BaseModel
         ['name' => 'description'],
         ['name' => 'content'],
         ['name' => 'image'],
-        ['name' => 'image_gallery'],
         ['name' => 'activated'],
         ['name' => 'google_index'],
         ['name' => 'canonical_url'],
