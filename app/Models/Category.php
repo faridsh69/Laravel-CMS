@@ -49,11 +49,6 @@ class Category extends BaseModel
         ['name' => 'language'],
     ];
 
-    public function scopeOfType($query, $type)
-    {
-        return $query->where('type', $type);
-    }
-
     public function models()
     {
         return $this->hasMany(config('cms.config.models_namespace') . $this->type, 'category_id', 'id');

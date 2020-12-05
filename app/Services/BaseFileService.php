@@ -9,9 +9,9 @@ use Str;
 
 class BaseFileService extends BaseService
 {
-    public $upload_path_prefix = 'public/upload/';
+    const UPLOAD_PATH_PREFIX = 'public/upload/';
 
-    public $src_path_prefix = 'storage/upload/';
+    const DATABASE_SRC_PREFIX = 'storage/upload/';
 
     public function save($file, $model, $title = 'file')
     {
@@ -22,9 +22,9 @@ class BaseFileService extends BaseService
         }
         foreach($gallery as $file){
             $modelName = class_basename($model);
-            $modelNamespance = config('cms.config.models_namespace') . $modelName;
+            $modelNamespance = 
             $modelNameSlug = Str::kebab($modelName);
-            $fileable_type = $modelNamespance;
+            $fileable_type = config('cms.config.models_namespace') . $modelName;
             $fileable_id = $model->id;
             $size = $file->getSize();
             $mime_type = $file->getMimeType();
@@ -32,8 +32,8 @@ class BaseFileService extends BaseService
             $random_code = rand(1000000, 9999999);
             $file_name = $title . '-' . $random_code . '.' . $extension;
             // save file
-            $upload_path = $this->upload_path_prefix . $modelNameSlug . '/' . $fileable_id . '/';
-            $src_path = $this->src_path_prefix . $modelNameSlug . '/' . $fileable_id;
+            $upload_path = self::UPLOAD_PATH_PREFIX . $modelNameSlug . '/' . $fileable_id . '/';
+            $src_path = self::DATABASE_SRC_PREFIX . $modelNameSlug . '/' . $fileable_id;
             $src = asset($src_path . '/' . $file_name);
             Storage::putFileAs($upload_path, $file, $file_name);
             // save thumbnail if its image

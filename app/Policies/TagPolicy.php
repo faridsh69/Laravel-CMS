@@ -6,5 +6,5 @@ use App\Services\BasePolicy;
 
 class TagPolicy extends BasePolicy
 {
-	public $modelNameSlug = 'tag';
+	public string $modelNameSlug = 'tag';
 }

@@ -6,5 +6,5 @@ use App\Services\BasePolicy;
 
 class ModulePolicy extends BasePolicy
 {
-	public $modelNameSlug = 'module';
+	public string $modelNameSlug = 'module';
 }

@@ -7,7 +7,7 @@ use App\Services\BaseAdminController;
 
 class SeoController extends BaseAdminController
 {	
-	public $modelNameSlug = 'setting-general';
+	public string $modelNameSlug = 'setting-general';
 
 	public function redirectToCrowl()
 	{

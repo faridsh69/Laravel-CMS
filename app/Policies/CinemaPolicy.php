@@ -6,5 +6,5 @@ use App\Services\BasePolicy;
 
 class CinemaPolicy extends BasePolicy
 {
-	public $modelNameSlug = 'cinema';
+	public string $modelNameSlug = 'cinema';
 }

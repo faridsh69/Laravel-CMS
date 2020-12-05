@@ -6,5 +6,5 @@ use App\Services\BaseAuthPolicy;
 
 class AdvertisePolicy extends BaseAuthPolicy
 {
-	public $modelNameSlug = 'advertise';
+	public string $modelNameSlug = 'advertise';
 }

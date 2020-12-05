@@ -7,6 +7,7 @@ use Cache;
 use File;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Builder;
 
 class BaseModel extends Model
 {
@@ -18,27 +19,27 @@ class BaseModel extends Model
 		'deleted_at',
 	];
 
-	public function scopeActive($query)
+	public function scopeActive($query) : Builder
 	{
 		return $query->where('activated', 1);
 	}
 
-	public function scopeAuthUser($query)
+	public function scopeAuthUser($query) : Builder
 	{
 		return $query->where('user_id', Auth::id());
 	}
 
-	public function scopeLanguage($query)
+	public function scopeLanguage($query) : Builder
 	{
 		return $query->where('language', config('app.locale'));
 	}
 
-	public function scopeOfType($query, $type)
+	public function scopeOfType($query, $type) : Builder
 	{
 		return $query->where('type', $type);
 	}
 
-	public function user()
+	public function user() : Builder
 	{
 		return $this->belongsTo('App\Models\User', 'user_id', 'id');
 	}

@@ -132,7 +132,7 @@ class User extends Authenticatable
     // get default file src
     private function defaultFileSrc(string $fileColumnName) : string
     {
-        return config('setting-general.default_user_image');
+        return asset('images\front\general\default\user.png');
     }
 
     public function saveWithRelations($data, $model = null)

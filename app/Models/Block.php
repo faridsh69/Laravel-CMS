@@ -44,11 +44,6 @@ class Block extends BaseModel
         ],
     ];
 
-    public function scopeOfType($query, $type)
-    {
-        return $query->where('type', $type);
-    }
-
     public function pages()
     {
         return $this->belongsToMany(Page::class, 'block_page', 'block_id', 'page_id');

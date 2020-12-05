@@ -9,7 +9,7 @@ class BasePolicy
 {
     use HandlesAuthorization;
 
-    public $modelNameSlug;
+    public string $modelNameSlug = 'user';
 
     public function index(User $user)
     {

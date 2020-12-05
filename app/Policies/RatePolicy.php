@@ -6,5 +6,5 @@ use App\Services\BaseAuthPolicy;
 
 class RatePolicy extends BaseAuthPolicy
 {
-	public $modelNameSlug = 'rate';
+	public string $modelNameSlug = 'rate';
 }

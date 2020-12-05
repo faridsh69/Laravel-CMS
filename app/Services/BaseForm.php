@@ -8,7 +8,7 @@ class BaseForm extends Form
 {
     use BaseCmsTrait;
 
-    public $id;
+    public int $id = 0;
 
     public function __construct()
     {

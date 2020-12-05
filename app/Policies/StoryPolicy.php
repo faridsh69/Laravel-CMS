@@ -6,5 +6,5 @@ use App\Services\BaseAuthPolicy;
 
 class StoryPolicy extends BaseAuthPolicy
 {
-	public $modelNameSlug = 'story';
+	public string $modelNameSlug = 'story';
 }

@@ -8,9 +8,10 @@ use App\Models\Category;
 use App\Models\Tag;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\View\View;
 use Route;
 use Str;
-use View;
 use Cache;
 
 class BaseFrontController extends Controller
@@ -37,12 +38,7 @@ class BaseFrontController extends Controller
         ];
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index() : View
     {
         $list = $this->modelRepository->active()->language()
             ->orderBy('updated_at', 'desc')
@@ -57,7 +53,7 @@ class BaseFrontController extends Controller
         ]);
     }
 
-    private function getCategoryAndTags()
+    private function getCategoryAndTags() : array
     {
         $categories = Cache::remember('category.'. $this->modelNameSlug, 10, function () {
             return Category::ofType($this->modelName)->active()->language()
@@ -77,13 +73,7 @@ class BaseFrontController extends Controller
         ];
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  string  $url
-     * @return \Illuminate\Http\Response
-     */
-    public function show($url)
+    public function show(string $url) : View
     {
         $item = $this->modelRepository->where('url', $url)->firstOrFail();
 

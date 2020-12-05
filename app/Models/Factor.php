@@ -35,7 +35,7 @@ class Factor extends BaseModel
             'rule' => 'required',
             'help' => '',
             'form_type' => 'enum',
-            'form_enum_class' => 'FactorType',
+            'form_enum_class' => 'FactorStatus',
             'table' => true,
         ],
         [
@@ -191,11 +191,6 @@ class Factor extends BaseModel
 	public function address()
     {
         return $this->belongsTo(Address::class, 'address_id', 'id');
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function tagends()

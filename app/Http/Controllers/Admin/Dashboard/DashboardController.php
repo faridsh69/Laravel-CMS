@@ -14,7 +14,7 @@ use Route;
 
 class DashboardController extends BaseResourceController
 {
-    public $modelNameSlug = 'user';
+    public string $modelNameSlug = 'user';
 
     public function index()
     {

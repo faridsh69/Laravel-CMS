@@ -11,22 +11,22 @@ use Str;
 trait BaseCmsTrait
 {
     // GymProgram
-    public $modelName;
+    public string $modelName = '';
 
     // gym-program
-    public $modelNameSlug;
+    public string $modelNameSlug = '';
 
     // App\Models\GymProgram
-    public $modelNamespace;
+    public string $modelNamespace = 'App\Models\Model';
 
     // Columns of this model
-    public $modelColumns;
+    public array $modelColumns = [];
 
     // Gym Program
-    public $modelNameTranslate;
+    public string $modelNameTranslate = '';
 
     // App\Forms\GymProgramForm
-    public $modelForm;
+    public string $modelForm = '';
 
     // A new instance of this model
     public $modelRepository;
@@ -49,7 +49,7 @@ trait BaseCmsTrait
     {
         $this->httpRequest = $httpRequest;
         if (!$this->modelNameSlug)
-            $this->modelNameSlug = $this->httpRequest->segment(2);
+            $this->modelNameSlug = $this->httpRequest->segment(2) ? $this->httpRequest->segment(2) : 'user';
         $this->modelName = Str::studly($this->modelNameSlug);
         $this->modelNamespace = config('cms.config.models_namespace') . $this->modelName;
         $this->modelRepository = new $this->modelNamespace();

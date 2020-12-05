@@ -10,16 +10,16 @@ use Str;
 class BaseMigration extends Migration
 {
     // models of migration tables
-    public $modelNameSlugs = [];
+    public array $modelNameSlugs = [];
 
     // model of migration table
-    public $modelNameSlug;
+    public string $modelNameSlug = '';
 
     // if table exist it will update or rebuild
-    public $update = true;
+    public bool $update = true;
 
     // create backup before update or rebuild
-    public $backup = false;
+    public bool $backup = false;
 
     private $_migrations = [];
 
@@ -27,7 +27,7 @@ class BaseMigration extends Migration
     {
         if ($this->modelNameSlugs === []){
             $this->modelNameSlugs = [$this->modelNameSlug];
-            if ($this->modelNameSlug === null){
+            if (!$this->modelNameSlug){
                 $this->modelNameSlugs = config('cms.migration');
             }
         }

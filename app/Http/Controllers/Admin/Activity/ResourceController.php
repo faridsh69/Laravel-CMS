@@ -6,7 +6,7 @@ use App\Services\BaseResourceController;
 
 class ResourceController extends BaseResourceController
 {
-    public $modelNameSlug = 'activity';
+    public string $modelNameSlug = 'activity';
 
     public function create(){
     	$this->httpRequest->session()->flash('alert-danger', $this->modelNameTranslate . __(' create does not exist!'));

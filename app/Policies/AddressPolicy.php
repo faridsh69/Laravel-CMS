@@ -6,5 +6,5 @@ use App\Services\BasePolicy;
 
 class AddressPolicy extends BasePolicy
 {
-	public $modelNameSlug = 'address';
+	public string $modelNameSlug = 'address';
 }

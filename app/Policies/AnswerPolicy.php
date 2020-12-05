@@ -6,5 +6,5 @@ use App\Services\BasePolicy;
 
 class AnswerPolicy extends BasePolicy
 {
-	public $modelNameSlug = 'answer';
+	public string $modelNameSlug = 'answer';
 }

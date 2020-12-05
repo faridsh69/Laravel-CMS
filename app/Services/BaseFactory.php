@@ -10,9 +10,7 @@ class BaseFactory
 {
     public function index($factory)
     {
-        $modelNameSlugs = config('cms.factory');
-
-        foreach($modelNameSlugs as $modelNameSlug)
+        foreach(config('cms.factory') as $modelNameSlug)
         {
             $modelName = Str::studly($modelNameSlug);
             $models_namespace = config('cms.config.models_namespace') . $modelName;

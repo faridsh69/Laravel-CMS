@@ -6,5 +6,5 @@ use App\Services\BasePolicy;
 
 class GymActionPolicy extends BasePolicy
 {
-	public $modelNameSlug = 'gym-action';
+	public string $modelNameSlug = 'gym-action';
 }

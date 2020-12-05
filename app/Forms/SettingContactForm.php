@@ -6,5 +6,5 @@ use App\Services\BaseForm;
 
 class SettingContactForm extends BaseForm
 {
-    public $modelName = 'SettingContact';
+    public string $modelName = 'SettingContact';
 }

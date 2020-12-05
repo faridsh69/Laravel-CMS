@@ -6,5 +6,5 @@ use App\Services\BaseAuthPolicy;
 
 class LikePolicy extends BaseAuthPolicy
 {
-	public $modelNameSlug = 'like';
+	public string $modelNameSlug = 'like';
 }

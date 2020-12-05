@@ -57,11 +57,6 @@ class Module extends BaseModel
         ['name' => 'language'],
     ];
 
-    public function scopeOfType($query, $type)
-    {
-        return $query->where('type', $type);
-    }
-
     public function parent()
     {
         return $this->belongsTo(static::class, 'parent_id', 'id');

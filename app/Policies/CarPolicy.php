@@ -6,5 +6,5 @@ use App\Services\BasePolicy;
 
 class CarPolicy extends BasePolicy
 {
-	public $modelNameSlug = 'car';
+	public string $modelNameSlug = 'car';
 }

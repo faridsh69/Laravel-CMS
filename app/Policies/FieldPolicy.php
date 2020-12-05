@@ -6,5 +6,5 @@ use App\Services\BasePolicy;
 
 class FieldPolicy extends BasePolicy
 {
-	public $modelNameSlug = 'field';
+	public string $modelNameSlug = 'field';
 }

@@ -9,7 +9,7 @@ use Auth;
 
 class ResourceController extends BaseResourceController
 {
-    public $modelNameSlug = 'notification';
+    public string $modelNameSlug = 'notification';
 
     public function store()
     {

@@ -6,5 +6,5 @@ use App\Services\BasePolicy;
 
 class UserPolicy extends BasePolicy
 {
-	public $modelNameSlug = 'user';
+	public string $modelNameSlug = 'user';
 }

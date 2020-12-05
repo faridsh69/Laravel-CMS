@@ -6,5 +6,5 @@ use App\Services\BasePolicy;
 
 class BlockPolicy extends BasePolicy
 {
-	public $modelNameSlug = 'block';
+	public string $modelNameSlug = 'block';
 }

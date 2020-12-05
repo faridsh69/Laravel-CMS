@@ -6,5 +6,5 @@ use App\Services\BasePolicy;
 
 class CommentPolicy extends BasePolicy
 {
-	public $modelNameSlug = 'comment';
+	public string $modelNameSlug = 'comment';
 }

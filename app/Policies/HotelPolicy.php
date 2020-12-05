@@ -6,5 +6,5 @@ use App\Services\BasePolicy;
 
 class HotelPolicy extends BasePolicy
 {
-	public $modelNameSlug = 'hotel';
+	public string $modelNameSlug = 'hotel';
 }

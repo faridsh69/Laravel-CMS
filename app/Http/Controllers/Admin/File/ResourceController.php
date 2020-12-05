@@ -6,7 +6,7 @@ use App\Services\BaseResourceController;
 
 class ResourceController extends BaseResourceController
 {
-    public $modelNameSlug = 'file';
+    public string $modelNameSlug = 'file';
 
     public function removeBySrc()
     {

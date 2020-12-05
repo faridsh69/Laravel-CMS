@@ -6,5 +6,5 @@ use App\Services\BasePolicy;
 
 class NotificationPolicy extends BasePolicy
 {
-	public $modelNameSlug = 'notification';
+	public string $modelNameSlug = 'notification';
 }

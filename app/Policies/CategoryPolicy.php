@@ -6,5 +6,5 @@ use App\Services\BasePolicy;
 
 class CategoryPolicy extends BasePolicy
 {
-	public $modelNameSlug = 'category';
+	public string $modelNameSlug = 'category';
 }

@@ -8,7 +8,7 @@ use Str;
 
 class FrontController extends BaseFrontController
 {
-    public $modelNameSlug = 'user';
+    public string $modelNameSlug = 'user';
 
     /**
      * Display a listing of the resource.

@@ -6,5 +6,5 @@ use App\Services\BasePolicy;
 
 class ProductPolicy extends BasePolicy
 {
-	public $modelNameSlug = 'product';
+	public string $modelNameSlug = 'product';
 }

@@ -8,7 +8,7 @@ use Str;
 
 class ResourceController extends BaseResourceController
 {
-    public $modelNameSlug = 'block';
+    public string $modelNameSlug = 'block';
 
     public function index()
     {

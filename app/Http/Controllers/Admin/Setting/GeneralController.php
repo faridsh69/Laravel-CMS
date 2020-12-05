@@ -4,5 +4,5 @@ namespace App\Http\Controllers\Admin\Setting;
 
 class GeneralController extends SettingController
 {
-	public $modelNameSlug = 'setting-general';
+	public string $modelNameSlug = 'setting-general';
 }

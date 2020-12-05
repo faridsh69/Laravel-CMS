@@ -6,5 +6,5 @@ use App\Services\BasePolicy;
 
 class PagePolicy extends BasePolicy
 {
-	public $modelNameSlug = 'page';
+	public string $modelNameSlug = 'page';
 }

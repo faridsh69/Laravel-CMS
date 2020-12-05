@@ -6,5 +6,5 @@ use App\Services\BasePolicy;
 
 class MusicPolicy extends BasePolicy
 {
-	public $modelNameSlug = 'music';
+	public string $modelNameSlug = 'music';
 }

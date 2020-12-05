@@ -6,5 +6,5 @@ use App\Services\BasePolicy;
 
 class FilePolicy extends BasePolicy
 {
-	public $modelNameSlug = 'file';
+	public string $modelNameSlug = 'file';
 }

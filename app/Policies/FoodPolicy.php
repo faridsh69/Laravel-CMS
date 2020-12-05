@@ -6,5 +6,5 @@ use App\Services\BasePolicy;
 
 class FoodPolicy extends BasePolicy
 {
-	public $modelNameSlug = 'food';
+	public string $modelNameSlug = 'food';
 }

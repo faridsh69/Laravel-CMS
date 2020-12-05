@@ -11,10 +11,10 @@ use Tests\TestCase;
 class BaseTest extends TestCase
 {
     // an aray of models that want to test
-    public $modelNameSlugs;
+    public array $modelNameSlugs;
 
     // single model to test
-    public $modelNameSlug;
+    public string $modelNameSlug;
 
     public $resource_methods = [
         'print',
