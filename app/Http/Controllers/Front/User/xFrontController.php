@@ -1,21 +1,17 @@
 <?php
-
+/*
 namespace App\Http\Controllers\Front\User;
 
 use App\Models\Block;
 use App\Services\BaseFrontController;
 use Str;
+use Illuminate\View\View;
 
 class FrontController extends BaseFrontController
 {
     public string $modelNameSlug = 'user';
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index() : View
     {
         $list = $this->modelRepository->active()
             ->orderBy('updated_at', 'desc')

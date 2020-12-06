@@ -2,19 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use App\Services\BaseModelTrait;
+use Illuminate\Database\Eloquent\Relations\hasMany;
+use Illuminate\Database\Eloquent\Relations\morphMany;
 
 class User extends Authenticatable
 {
     use HasApiTokens;
     use HasRoles;
     use Notifiable;
-    use SoftDeletes;
-
+    use BaseModelTrait;
 
     protected $guarded = [];
 
@@ -29,126 +30,42 @@ class User extends Authenticatable
         return 'https://hooks.slack.com/services/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';
     }
 
-    public function getTitleAttribute()
-    {
-        return $this->first_name . ' ' . $this->last_name;
-    }
-
-    public function getColumns()
-    {
-        return $this->columns;
-    }
-
-    public function scopeActive($query)
-    {
-        return $query->where('activated', 1);
-    }
-
-    public function getNameAttribute()
-    {
-        return $this->first_name . ' ' . $this->last_name;
-    }
-
-    public static function getAdminUsers()
-    {
-        return self::whereIn('id', [1, 2])->get();
-    }
-
-    public function addresses()
+    public function addresses() : hasMany
     {
         return $this->hasMany(Address::class, 'user_id', 'id');
     }
 
-    public function activities()
+    public function activities() : hasMany
     {
         return $this->hasMany(Activity::class, 'user_id', 'id');
     }
 
-    public function likes()
+    public function likes() : hasMany
     {
         return $this->hasMany(Like::class, 'user_id', 'id');
     }
 
-    public function comments()
+    public function comments() : hasMany
     {
         return $this->hasMany(Comment::class, 'user_id', 'id');
     }
 
-    public function rates()
+    public function rates() : hasMany
     {
         return $this->hasMany(Rate::class, 'user_id', 'id');
     }
 
-    public function followings()
+    public function followings() : hasMany
     {
         return $this->hasMany(Follow::class, 'user_id', 'id');
     }
 
-    public function followers()
+    public function followers() : morphMany
     {
         return $this->morphMany(Follow::class, 'followable');
     }
 
-    public function tags()
-    {
-        return $this->morphToMany('App\Models\Tag', 'taggable');
-    }
-
-    public function relateds()
-    {
-        return $this->belongsToMany(config('cms.config.models_namespace') . class_basename($this), 'model_related', 'model_id', 'related_id');
-    }
-
-    public function files()
-    {
-        return $this->morphMany('App\Models\File', 'fileable');
-    }
-
-    // Get file srcs from that column
-    public function srcs(string $fileColumnName) : array
-    {
-        $fileColumn = collect($this->getColumns())->where('name', $fileColumnName)->first();
-        if (! $fileColumn)
-            return [];
-
-        if (isset($fileColumn['file_manager']) && $fileColumn['file_manager'])
-            return explode('|', $this->{$fileColumnName});
-
-        return $this->files()
-            ->where('title', $fileColumnName)
-            ->get()
-            ->pluck('src')
-            ->toArray();
-    }
-
-    // Get first file src from that column
-    public function src(string $fileColumnName) : string
-    {
-        $srcs = $this->srcs($fileColumnName);
-
-        return count($srcs) > 0 ? $srcs[0] : $this->defaultFileSrc($fileColumnName);
-    }
-
-    // get default file src
-    private function defaultFileSrc(string $fileColumnName) : string
-    {
-        return asset('images\front\general\default\user.png');
-    }
-
-    public function saveWithRelations($data, $model = null)
-    {
-        $data_without_file_and_array = $this->clearFilesAndArrays($data, $model);
-        if($model){
-            $this->update($data_without_file_and_array);
-        }else{
-            $model = $this->create($data_without_file_and_array);
-        }
-        $this->saveRelatedDataAfterCreate($data, $model);
-
-        return $model;
-    }
-
-    private function clearFilesAndArrays($data, $model)
+    private function clearFilesAndArrays(array $data, $model)
     {
         foreach(collect($this->getColumns())->where('type', 'boolean')->pluck('name') as $boolean_column)
         {
@@ -187,19 +104,21 @@ class User extends Authenticatable
         return $data;
     }
 
-    private function saveRelatedDataAfterCreate($data, $model)
+    public function getTitleAttribute()
     {
-        foreach(collect($this->getColumns())->where('type', 'file')->pluck('name') as $file_column) {
-            if(isset($data[$file_column]) && $data[$file_column]){
-                $file = $data[$file_column];
-                $file_service = new \App\Services\BaseFileService();
-                $file_service->save($file, $model, $file_column);
-            }
-        }
-        foreach(collect($this->getColumns())->where('type', 'array')->pluck('name') as $array_column) {
-            $model->{$array_column}()->sync($data[$array_column], true);
-        }
+        return $this->first_name . ' ' . $this->last_name;
     }
+
+    public function getNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
+    public static function getAdminUsers()
+    {
+        return self::whereIn('id', [1, 2])->get();
+    }
+
     public $columns = [
         [
             'name' => 'first_name',
@@ -219,33 +138,9 @@ class User extends Authenticatable
             'form_type' => '',
             'table' => true,
         ],
-        [
-            'name' => 'email',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => 'required|unique:users,email,',
-            'help' => '',
-            'form_type' => 'email',
-            'table' => true,
-        ],
-        [
-            'name' => 'phone',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => 'nullable|numeric',
-            'help' => 'International format +4917...',
-            'form_type' => 'phone',
-            'table' => true,
-        ],
-        [
-            'name' => 'telephone',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => 'nullable|numeric',
-            'help' => 'Home Number',
-            'form_type' => '',
-            'table' => false,
-        ],
+        ['name' => 'email'],
+        ['name' => 'phone'],
+        ['name' => 'telephone'],
         [
             'name' => 'national_code',
             'type' => 'string',
@@ -282,15 +177,7 @@ class User extends Authenticatable
             'form_type' => 'none',
             'table' => false,
         ],
-        [
-            'name' => 'url',
-            'type' => 'string',
-            'database' => 'nullable',
-            'rule' => 'nullable',
-            'help' => 'It is used as Username.',
-            'form_type' => '',
-            'table' => false,
-        ],
+        ['name' => 'url'],
         [
             'name' => 'website',
             'type' => 'string',
@@ -300,38 +187,14 @@ class User extends Authenticatable
             'form_type' => 'none',
             'table' => false,
         ],
-        [
-            'name' => 'description',
-            'type' => 'text',
-            'database' => 'nullable',
-            'rule' => 'nullable',
-            'help' => '',
-            'form_type' => 'none',
-            'table' => false,
-        ],
+        ['name' => 'description'],
         [
             'name' => 'profile_picture',
-            'type' => 'file',
-            'database' => 'none',
-            'rule' => 'nullable|file|image|mimetypes:image/*|max:2000|dimensions:min_width=100,min_height=100',
-            'help' => 'Upload profile picture, minimum acceptable width and heigth is 100px.',
-            'form_type' => 'file',
-            'file_manager' => false,
-            'file_accept' => 'image',
-            'file_multiple' => false,
-            'table' => false,
+            'same_column_name' => 'user_image',
         ],
         [
             'name' => 'cover_photo',
-            'type' => 'file',
-            'database' => 'none',
-            'rule' => 'nullable|file|image|mimetypes:image/*|max:4000',
-            'help' => 'Upload cover photo',
-            'form_type' => 'file',
-            'file_manager' => false,
-            'file_accept' => 'image',
-            'file_multiple' => false,
-            'table' => false,
+            'same_column_name' => 'user_image',
         ],
         [
             'name' => 'activation_code',
@@ -421,15 +284,6 @@ class User extends Authenticatable
             'rule' => '',
             'help' => '',
             'form_type' => 'none',
-            'table' => false,
-        ],
-        [
-            'name' => 'activated',
-            'type' => 'boolean',
-            'database' => 'default',
-            'rule' => 'boolean',
-            'help' => '',
-            'form_type' => 'checkbox-m',
             'table' => false,
         ],
         [
