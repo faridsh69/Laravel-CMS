@@ -23,165 +23,18 @@ class BaseModel extends Model
 		'deleted_at',
 	];
 
-	public function scopeActive($query) : Builder
-	{
-		return $query->where('activated', 1);
-	}
-
-	public function scopeAuthUser($query) : Builder
-	{
-		return $query->where('user_id', Auth::id());
-	}
-
-	public function scopeLanguage($query) : Builder
-	{
-		return $query->where('language', config('app.locale'));
-	}
-
-	public function scopeOfType($query, $type) : Builder
-	{
-		return $query->where('type', $type);
-	}
-
-	public function user() : BelongsTo
-	{
-		return $this->belongsTo('App\Models\User', 'user_id', 'id');
-	}
-
-	public function category() : BelongsTo
-	{
-		return $this->belongsTo('App\Models\Category', 'category_id', 'id');
-	}
-
-	public function tags() : morphToMany
-	{
-		return $this->morphToMany('App\Models\Tag', 'taggable');
-	}
-
-	public function comments() : morphMany
-	{
-		return $this->morphMany('App\Models\Comment', 'commentable');
-	}
-
-	public function likes() : morphMany
-	{
-		return $this->morphMany('App\Models\Like', 'likeable');
-	}
-
-	public function rates() : morphMany
-	{
-		return $this->morphMany('App\Models\Rate', 'rateable');
-	}
-
-	public function follows() : morphMany
-	{
-		return $this->morphMany('App\Models\Rate', 'rateable');
-	}
-
-	public function activities() : morphMany
-	{
-		return $this->morphMany('App\Models\Activity', 'activitiable');
-	}
-
-	public function relateds() : belongsToMany
-	{
-		return $this->belongsToMany(config('cms.config.models_namespace') . class_basename($this), 'model_related', 'model_id', 'related_id');
-	}
-
-	public function files() : morphMany
-	{
-		return $this->morphMany('App\Models\File', 'fileable');
-	}
-
-	// Get file srcs from that column
-	public function srcs(string $fileColumnName) : array
-	{
-		$fileColumn = collect($this->getColumns())->where('name', $fileColumnName)->first();
-		if (! $fileColumn)
-			return [];
-
-		if (isset($fileColumn['file_manager']) && $fileColumn['file_manager'])
-		{
-			if (!$this->{$fileColumnName})
-				return [];
-
-			return explode('|||', $this->{$fileColumnName});
-		}
-
-		return $this->files()
-			->where('title', $fileColumnName)
-			->get()
-			->pluck('src')
-			->toArray();
-	}
-
-	public function src(string $fileColumnName) : string
-	{
-		$srcs = $this->srcs($fileColumnName);
-		if (count($srcs) > 0)
-			return $srcs[0];
-
-		$defaultModelImage = asset('/images/front/general/default/' . class_basename($this) . '.png');
-		if (File::exists(public_path() . $defaultModelImage))
-			return $defaultModelImage;
-
-		return asset('/images/front/general/default/model.png');
-	}
-
-	public function saveWithRelations($data, $model = null)
-	{
-		$data_without_file_and_array = $this->clearFilesAndArrays($data);
-		if($model){
-			$model->update($data_without_file_and_array);
-		}else{
-			$model = $this->create($data_without_file_and_array);
-		}
-		$this->saveRelatedDataAfterCreate($data, $model);
-
-		return $model;
-	}
-
-	// Before save a form data we need to write 0 for unchecked checkboxes
-	// All relational data that are array should eliminate from form data.
-	private function clearFilesAndArrays(array $data) : array
-	{
-		// convert boolean input values: null and false => 0, true => 1
-		foreach(collect($this->getColumns())->where('type', 'boolean')->pluck('name') as $boolean_column)
-		{
-			if(! isset($data[$boolean_column]))
-			{
-				$data[$boolean_column] = 0;
-			}
-		}
-		// unset file and array attributes before saving
-		foreach(collect($this->getColumns())->whereIn('type', ['file', 'array', 'captcha'])->pluck('name') as $file_or_array_column)
-		{
-			unset($data[$file_or_array_column]);
-		}
-
-		return $data;
-	}
-
-	// Save all relational data.
-	private function saveRelatedDataAfterCreate(array $data, $model) : bool
-	{
-		// Upload all columns with type file.
-		foreach(collect($this->getColumns())->where('type', 'file')->pluck('name') as $file_column) {
-			if(isset($data[$file_column]) && $data[$file_column]){
-				$file = $data[$file_column];
-				$file_service = new \App\Services\BaseFileService();
-				$file_service->save($file, $model, $file_column);
-			}
-		}
-		// save relations with array type column like tags, related_models, etc.
-		foreach(collect($this->getColumns())->where('type', 'array')->pluck('name') as $array_column) {
-			$model->{$array_column}()->sync($data[$array_column], true);
-		}
-
-		return true;
-	}
-
-	public function getColumns()
+	/*
+	* This is the main method in this cms, we are defining all models columns here, 
+	* Other models will extend this columns and we have same properties for one type of column.
+	* name: Define name of the column in database and forms and everywhere
+	* type: string, text, boolean, integer, decimal, array (for tags), file (image uploader) 
+	* database: nullable, default(1), none (Dont create that column)
+	* rule: required, min, max, nullable, unique
+	* help: A hint in forms under the input
+	* form_type: textarea, ckeditor, switch-m, checkbox-m, switch-bootstrap-m, entity, enum, file, number, time, date, , color. Defines the type of form input.
+	* table: true or false, shows that this column in showing in table or not.
+	*/
+	public function getColumns() : array
 	{
 		$constructor = [
 			'model_name' => class_basename($this),
@@ -245,7 +98,7 @@ class BaseModel extends Model
 					'database' => 'default',
 					'rule' => 'boolean',
 					'help' => '',
-					'form_type' => 'switch-m', // switch-m, checkbox, switch-bootstrap-m
+					'form_type' => 'switch-m', // switch-m, checkbox-m, switch-bootstrap-m
 					'table' => false,
 				],
 				'google_index' => [
@@ -722,5 +575,164 @@ class BaseModel extends Model
 
 			return $columns;
 		});
+	}
+
+
+	public function scopeActive($query) : Builder
+	{
+		return $query->where('activated', 1);
+	}
+
+	public function scopeAuthUser($query) : Builder
+	{
+		return $query->where('user_id', Auth::id());
+	}
+
+	public function scopeLanguage($query) : Builder
+	{
+		return $query->where('language', config('app.locale'));
+	}
+
+	public function scopeOfType($query, $type) : Builder
+	{
+		return $query->where('type', $type);
+	}
+
+	public function user() : BelongsTo
+	{
+		return $this->belongsTo('App\Models\User', 'user_id', 'id');
+	}
+
+	public function category() : BelongsTo
+	{
+		return $this->belongsTo('App\Models\Category', 'category_id', 'id');
+	}
+
+	public function tags() : morphToMany
+	{
+		return $this->morphToMany('App\Models\Tag', 'taggable');
+	}
+
+	public function comments() : morphMany
+	{
+		return $this->morphMany('App\Models\Comment', 'commentable');
+	}
+
+	public function likes() : morphMany
+	{
+		return $this->morphMany('App\Models\Like', 'likeable');
+	}
+
+	public function rates() : morphMany
+	{
+		return $this->morphMany('App\Models\Rate', 'rateable');
+	}
+
+	public function follows() : morphMany
+	{
+		return $this->morphMany('App\Models\Rate', 'rateable');
+	}
+
+	public function activities() : morphMany
+	{
+		return $this->morphMany('App\Models\Activity', 'activitiable');
+	}
+
+	public function relateds() : belongsToMany
+	{
+		return $this->belongsToMany(config('cms.config.models_namespace') . class_basename($this), 'model_related', 'model_id', 'related_id');
+	}
+
+	public function files() : morphMany
+	{
+		return $this->morphMany('App\Models\File', 'fileable');
+	}
+
+	// Get file srcs from that column
+	public function srcs(string $fileColumnName) : array
+	{
+		$fileColumn = collect($this->getColumns())->where('name', $fileColumnName)->first();
+		if (! $fileColumn)
+			return [];
+
+		if (isset($fileColumn['file_manager']) && $fileColumn['file_manager'])
+		{
+			if (!$this->{$fileColumnName})
+				return [];
+
+			return explode('|||', $this->{$fileColumnName});
+		}
+
+		return $this->files()
+			->where('title', $fileColumnName)
+			->get()
+			->pluck('src')
+			->toArray();
+	}
+
+	public function src(string $fileColumnName) : string
+	{
+		$srcs = $this->srcs($fileColumnName);
+		if (count($srcs) > 0)
+			return $srcs[0];
+
+		$defaultModelImage = asset('/images/front/general/default/' . class_basename($this) . '.png');
+		if (File::exists(public_path() . $defaultModelImage))
+			return $defaultModelImage;
+
+		return asset('/images/front/general/default/model.png');
+	}
+
+	public function saveWithRelations(array $data, Model $model = null) : Model
+	{
+		$formDataWitoutUploadFilesAndArrays = $this->clearFilesAndArrays($data);
+		if ($model) {
+			$model->update($formDataWitoutUploadFilesAndArrays);
+		} else {
+			$model = $this->create($formDataWitoutUploadFilesAndArrays);
+		}
+		$this->saveRelatedDataAfterCreate($data, $model);
+
+		return $model;
+	}
+
+	// Before save a form data we need to write 0 for unchecked checkboxes
+	// All relational data that are array should eliminate from form data.
+	private function clearFilesAndArrays(array $data) : array
+	{
+		// convert boolean input values: null and false => 0, true => 1
+		foreach(collect($this->getColumns())->where('type', 'boolean')->pluck('name') as $boolean_column)
+		{
+			if(! isset($data[$boolean_column]))
+			{
+				$data[$boolean_column] = 0;
+			}
+		}
+		// unset file and array attributes before saving
+		foreach(collect($this->getColumns())->whereIn('type', ['file', 'array', 'captcha'])->pluck('name') as $file_or_array_column)
+		{
+			unset($data[$file_or_array_column]);
+		}
+
+		return $data;
+	}
+
+	// Save all relational data.
+	private function saveRelatedDataAfterCreate(array $data, $model) : bool
+	{
+		// Upload all columns with type file.
+		foreach(collect($this->getColumns())->where('type', 'file')->pluck('name') as $file_column) {
+			if(isset($data[$file_column]) && $data[$file_column]){
+				$file = $data[$file_column];
+				$file_service = new \App\Services\BaseFileService();
+				$file_service->save($file, $model, $file_column);
+			}
+		}
+		// save relations with array type column like tags, related_models, etc.
+		foreach(collect($this->getColumns())->where('type', 'array')->pluck('name') as $array_column) {
+			$model->{$array_column}()->sync($data[$array_column], true);
+		}
+
+		return true;
 	}
 }
