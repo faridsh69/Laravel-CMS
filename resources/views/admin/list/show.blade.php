@@ -97,7 +97,13 @@
 					@endif
 				@endif
 			@else
-				@each('admin.common.show-related-table', [$data[$column['name']]], 'items')
+				@php
+					$relateItems = $data[$column['name']];
+					if(get_class($data[$column['name']]) != 'Illuminate\Database\Eloquent\Collection') {
+						$relateItems = collect([$relateItems]);
+					}
+				@endphp
+				@each('admin.common.show-related-table', [$relateItems], 'items')
 			@endif
 			</div>
 		@endforeach

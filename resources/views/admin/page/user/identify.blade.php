@@ -29,8 +29,11 @@
 <div class="m-section">
 	<h3 class="m-section__heading">
 	{{ __($document_title) }}:
+	@if(!$user->srcs($document_title))
+		<small class="ml-3">{{ __('no_file_existed') }}</small>
+	@endif
 	<div class="show-file">
-		@foreach(json_decode($user->files_src($document_title)) as $src)
+		@foreach($user->srcs($document_title) as $src)
 			<img src="{{ $src }}" alt="{{ $document_title }} image">
 			<div class="file-tools mt-2">
 				<a download href="{{ $src }}" class="btn btn-outline-info m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air"><span>

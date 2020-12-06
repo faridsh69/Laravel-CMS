@@ -29,19 +29,9 @@ class FileService extends BaseService
 </pre>
 <p> For images also saved a thumbnail of that image, Also a record on files table will created.<br> There are relations on BaseModel that is used for getting file address:</p>
 <pre>
-public function files_relation()
+public function srcs($title)
 {
-    return $this->morphMany('App\Models\File', 'fileable');
-}
-
-public function files($title)
-{
-    return $this->files_relation()->where('title', $title)->get();
-}
-
-public function files_src($title)
-{
-    return json_encode($this->files($title)->pluck('src'));
+    return files selected in file manager, or uploaded files, based on file_manager on its column.
 }
 </pre>
 <p>So dont worry about multiple file upload or save thumbnail and the address that file is saved in, every thing is ready and you need to read them all and use them.</p>

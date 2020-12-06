@@ -87,13 +87,15 @@ trait BaseModelTrait
 		return $this->morphMany('App\Models\File', 'fileable');
 	}
 
-	// Get file srcs from that column
+	// Get file srcs from that column, array can be empty
 	public function srcs(string $fileColumnName) : array
 	{
 		$fileColumn = collect($this->getColumns())->where('name', $fileColumnName)->first();
 		if (! $fileColumn)
 			return [];
 
+		// We have two type of file saving, from file manager, and upload directly
+		// This is first type that all selected files in file manager will seperate by |||
 		if (isset($fileColumn['file_manager']) && $fileColumn['file_manager'])
 		{
 			if (!$this->{$fileColumnName})
@@ -102,6 +104,7 @@ trait BaseModelTrait
 			return explode('|||', $this->{$fileColumnName});
 		}
 
+		// Files will upload using BaseFileService and saving to files table.
 		return $this->files()
 			->where('title', $fileColumnName)
 			->get()
@@ -109,16 +112,19 @@ trait BaseModelTrait
 			->toArray();
 	}
 
+	// Get the first file or return default image for this model.
 	public function src(string $fileColumnName) : string
 	{
 		$srcs = $this->srcs($fileColumnName);
 		if (count($srcs) > 0)
 			return $srcs[0];
 
+		// If there is no file, we need to return default image for each model.
 		$defaultModelImage = asset('/images/front/general/default/' . class_basename($this) . '.png');
 		if (File::exists(public_path() . $defaultModelImage))
 			return $defaultModelImage;
 
+		// If there is no image for that model we will return default image for all models.
 		return asset('/images/front/general/default/model.png');
 	}
 

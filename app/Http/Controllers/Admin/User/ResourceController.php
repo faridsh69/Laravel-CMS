@@ -7,7 +7,7 @@ use Carbon\Carbon;
 
 class ResourceController extends BaseResourceController
 {
-    public function login($id)
+    public function login(int $id)
 	{
         $this->authorize('index', $this->modelNamespace);
         if (\Auth::loginUsingId($id)){
@@ -17,25 +17,25 @@ class ResourceController extends BaseResourceController
         return back()->withError('Error occurred.');
 	}
 
-	public function identify($id)
+	public function identify(int $id)
 	{
-		$model = $this->modelRepository->findOrFail($id);
-        $this->authorize('view', $model);
-        $this->meta['title'] = $this->modelNameTranslate . __('identify');
+		$user = $this->modelRepository->findOrFail($id);
+        $this->authorize('view', $user);
+        $this->meta['title'] = $this->modelNameTranslate . ' ' . __('identify');
 
-		return view('admin.page.user.identify', ['meta' => $this->meta, 'user' => $model]);
+		return view('admin.page.user.identify', ['meta' => $this->meta, 'user' => $user]);
 	}
 
-	public function identifyDocument($id, $document_title)
+	public function identifyDocument(int $id, string $documentTitle = 'national_card')
 	{
-		$model = $this->modelRepository->findOrFail($id);
-        $this->authorize('view', $model);
+		$user = $this->modelRepository->findOrFail($id);
+        $this->authorize('view', $user);
 
-        $document_title_verified_at = $document_title . '_verified_at';
-        $model->{$document_title_verified_at} = Carbon::now();
-        $model->update();
+        $document_title_verified_at = $documentTitle . '_verified_at';
+        $user->{$document_title_verified_at} = Carbon::now();
+        $user->update();
 
-        $this->httpRequest->session()->flash('alert-success', $this->document_title . __('verified_successfully'));
+        $this->httpRequest->session()->flash('alert-success', __($documentTitle) . __('verified_successfully'));
 
         return redirect()->back();
 	}

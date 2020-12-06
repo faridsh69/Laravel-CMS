@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Services\BaseModel;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Notification extends BaseModel
 {
@@ -76,7 +77,7 @@ class Notification extends BaseModel
         ],
     ];
 
-    public function user()
+    public function user() : BelongsTo
     {
         return $this->belongsTo(User::class, 'notifiable_id', 'id');
     }

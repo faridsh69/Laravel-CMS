@@ -7,6 +7,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use App\Services\BaseModelTrait;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\hasMany;
 use Illuminate\Database\Eloquent\Relations\morphMany;
 
@@ -63,6 +64,11 @@ class User extends Authenticatable
     public function followers() : morphMany
     {
         return $this->morphMany(Follow::class, 'followable');
+    }
+
+    public function scopeLanguage($query) : Builder
+    {
+        return $query;
     }
 
     private function clearFilesAndArrays(array $data, $model)

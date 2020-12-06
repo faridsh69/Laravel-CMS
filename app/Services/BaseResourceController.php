@@ -62,7 +62,7 @@ class BaseResourceController extends BaseAdminController
         return redirect()->route('admin.' . $this->modelNameSlug . '.list.index');
     }
 
-    public function show($id) : View
+    public function show(int $id) : View
     {
         $model = $this->modelRepository->findOrFail($id);
         $this->authorize('view', $model);
@@ -78,7 +78,7 @@ class BaseResourceController extends BaseAdminController
         return view('admin.list.show', ['data' => $data, 'meta' => $this->meta, 'activities' => $activities]);
     }
 
-    public function edit($id) : View
+    public function edit(int $id) : View
     {
         $model = $this->modelRepository->findOrFail($id);
         $this->authorize('update', $model);
@@ -95,7 +95,7 @@ class BaseResourceController extends BaseAdminController
         return view('admin.list.form', ['form' => $form, 'meta' => $this->meta]);
     }
 
-    public function update($id)
+    public function update(int $id)
     {
         $model = $this->modelRepository->findOrFail($id);
         $this->authorize('update', $model);
@@ -124,7 +124,7 @@ class BaseResourceController extends BaseAdminController
         return redirect()->route('admin.' . $this->modelNameSlug . '.list.index');
     }
 
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $model = $this->modelRepository->findOrFail($id);
         $this->authorize('delete', $model);
@@ -140,7 +140,7 @@ class BaseResourceController extends BaseAdminController
         return redirect()->route('admin.' . $this->modelNameSlug . '.list.index');
     }
 
-    public function restore($id)
+    public function restore(int $id)
     {
         $model = $this->modelRepository->withTrashed()->findOrFail($id);
         $this->authorize('delete', $model);
@@ -196,7 +196,7 @@ class BaseResourceController extends BaseAdminController
         return redirect()->route('admin.' . $this->modelNameSlug . '.list.index');
     }
 
-    public function toggleActivated($id)
+    public function toggleActivated(int $id)
     {
         $model = $this->modelRepository->findOrFail($id);
         $this->authorize('update', $model);

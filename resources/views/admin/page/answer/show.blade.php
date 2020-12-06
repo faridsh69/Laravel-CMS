@@ -11,7 +11,7 @@
 <ul>
 	@foreach($file_columns as $file_column)
 		{{ $file_column->title }}:
-		@foreach(json_decode($data->files_src($file_column->title)) as $src)
+		@foreach(json_decode($data->srcs($file_column->title)) as $src)
 			<div class="show-file">
 			@if($file_column->type === 'upload_image')
 				<img alt="image" src="{{ $src }}">

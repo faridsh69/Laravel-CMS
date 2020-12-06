@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Notifications\SiteNotification;
 use App\Services\BaseResourceController;
 use Auth;
+use Illuminate\View\View;
 
 class ResourceController extends BaseResourceController
 {
@@ -39,13 +40,15 @@ class ResourceController extends BaseResourceController
         return redirect()->route('admin.' . $this->modelNameSlug . '.list.index');
     }
 
-    public function edit($id){
+    public function edit(int $id) : View
+    {
         $this->httpRequest->session()->flash('alert-danger', $this->modelNameTranslate . __(' edit does not exist!'));
 
         return $this->redirect();
     }
 
-    public function update($id){
+    public function update(int $id)
+    {
         $this->httpRequest->session()->flash('alert-danger', $this->modelNameTranslate . __(' update does not exist!'));
 
         return $this->redirect();

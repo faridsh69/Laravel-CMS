@@ -43,9 +43,9 @@
 			</div>
 		</form>
 	@endif
-	<div class="show-file">
+	<div class="show-file mt-4">
 		@if( count(Auth::user()->srcs($document_title)) === 0)
-			{{ __('no_file_existed') }}
+			<small>{{ __('no_file_existed') }}</small>
 		@endif
 		@foreach(Auth::user()->srcs($document_title) as $src)
 			<img src="{{ $src }}" alt="{{ $document_title }} image">
