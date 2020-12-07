@@ -19,9 +19,8 @@ class CmsMigration extends Command
 
     public function handle()
     {
-        Artisan::call('migrate');
-
         // Remove create_cms_tables record from migrations table.
         DB::table('migrations')->where('migration', 'like', '%create_cms_tables%')->delete();
+        Artisan::call('migrate');
     }
 }

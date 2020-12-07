@@ -16,6 +16,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected $namespace = 'App\Http\Controllers';
 
+    public const HOME = '/';
+
     /**
      * Define your route model bindings, pattern filters, etc.
      */
@@ -56,7 +58,7 @@ class RouteServiceProvider extends ServiceProvider
 
     protected function mapAuthRoutes()
     {
-        Route::namespace($this->namespace)
+        Route::namespace($this->namespace . '\Auth')
             ->as('auth.')
             ->prefix('auth')
             ->middleware('web')

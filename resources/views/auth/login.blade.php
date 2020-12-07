@@ -14,7 +14,7 @@
 					{{ __('Sign In To Dashboard') }}
 				</h3>
 			</div>
-			<form class="m-login__form m-form" method="POST" action="{{ route('auth.login') }}">
+			<form class="m-login__form m-form" method="POST" action="{{ route('auth.post-login') }}">
 				@csrf
 				<div class="form-group m-form__group rtl-text-right">
 					<input class="form-control m-input" type="email" placeholder="{{ __('email') }}" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -36,7 +36,7 @@
 						</label>
 					</div>
 					<div class="col m--align-right">
-						<a href="{{ route('auth.password.request') }}" id="m_login_forget_password" class="m-link">
+						<a href="route('auth.password.request')" id="m_login_forget_password" class="m-link">
 							{{ __('Forgot Your Password?') }}
 						</a>
 					</div>
