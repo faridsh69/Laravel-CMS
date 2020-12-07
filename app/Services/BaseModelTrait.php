@@ -12,9 +12,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\belongsToMany;
 use Illuminate\Database\Eloquent\Relations\morphMany;
 use Illuminate\Database\Eloquent\Relations\morphToMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 trait BaseModelTrait
-{    
+{
+	use HasFactory;
 	use SoftDeletes;
 
 	public function scopeActive($query) : Builder
@@ -588,7 +590,7 @@ trait BaseModelTrait
 		            'name' => 'email',
 		            'type' => 'string',
 		            'database' => 'nullable',
-		            'rule' => 'required|unique:'. $constructor['table_name']. ',email,',
+		            'rule' => 'nullable|unique:'. $constructor['table_name']. ',email,',
 					'help' => 'Wrtie valid email address',
 		            'form_type' => 'email',
 		            'table' => false,

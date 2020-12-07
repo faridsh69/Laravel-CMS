@@ -7,6 +7,7 @@ use App\Models\Tag;
 use App\Models\User;
 use Str;
 use Tests\TestCase;
+use App\Services\BaseFactory;
 
 class BaseTest extends TestCase
 {
@@ -50,11 +51,14 @@ class BaseTest extends TestCase
                 ->assertRedirect(route('admin.' . $modelNameSlug . '.list.index'));
 
             // create fake data for store in database
-            $fake_data = factory($modelNamespace)->raw();
+            $factory = new BaseFactory();
+            $factory->setModelNameSlug($modelNameSlug);
+            $fakeModel = $factory->make();
+            $fakeData = $fakeModel->getAttributes();
 
             // store fake model
             $this
-                ->post(route('admin.' . $modelNameSlug . '.list.store', $fake_data))
+                ->post(route('admin.' . $modelNameSlug . '.list.store', $fakeData))
                 ->assertRedirect(route('admin.' . $modelNameSlug . '.list.index'));
 
             // get fake model that created at this test
@@ -72,7 +76,7 @@ class BaseTest extends TestCase
 
             // update fake model
             $this
-                ->put(route('admin.' . $modelNameSlug . '.list.update', $fake_model), $fake_data)
+                ->put(route('admin.' . $modelNameSlug . '.list.update', $fake_model), $fakeData)
                 ->assertRedirect(route('admin.' . $modelNameSlug . '.list.index'));
 
             // delete fake model
