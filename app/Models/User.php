@@ -146,6 +146,7 @@ class User extends Authenticatable
         ],
         ['name' => 'email'],
         ['name' => 'phone'],
+        ['name' => 'activated'],
         ['name' => 'telephone'],
         [
             'name' => 'national_code',
