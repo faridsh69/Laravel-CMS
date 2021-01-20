@@ -38,8 +38,7 @@
             "App\\": "app/"
         },
         "classmap": [
-            "database/seeds",
-            "database/factories"
+            "database/seeds"
         ],
         "files": [
             "app/Services/CmsServiceProvider.php"

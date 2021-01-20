@@ -64,5 +64,6 @@ trait BaseCmsTrait
             $this->meta['link_name'] = $this->modelNameTranslate . __('manager');
         }
         $this->authUser = Auth::user();
+        $this->notFoundMessage =$this->modelNameTranslate. ' '. __('not_found');
     }
 }

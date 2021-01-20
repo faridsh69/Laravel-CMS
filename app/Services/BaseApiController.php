@@ -15,10 +15,11 @@ class BaseApiController extends Controller
 
     public function index()
     {
-        $this->authorize('index', $this->modelNamespace);
+        // dd(Auth::user());
+        // $this->authorize('index', $this->modelNamespace);
         $list = $this->modelRepository->orderBy('updated_at', 'desc')->get(); // orderBy
 
-        $this->response['message'] = __('list_successfully');
+        $this->response['message'] = $this->modelNameTranslate . __('list_successfully');
         $this->response['data'] = $list;
 
         return response()->json($this->response);
@@ -57,10 +58,10 @@ class BaseApiController extends Controller
         $model_view = $this->modelRepository->where('id', $id)->first();
         if(! $model_view){
             $this->response['status'] = 404;
-            $this->response['message'] = $this->message_not_found;
+            $this->response['message'] = $this->notFoundMessage;
             return response()->json($this->response);
         }
-        $this->authorize('view', $model_view);
+        // $this->authorize('view', $model_view);
 
         $main_data = $model_view->getAttributes();
 
@@ -78,14 +79,14 @@ class BaseApiController extends Controller
 
         if(! $model_edit){
             $this->response['status'] = 404;
-            $this->response['message'] = $this->message_not_found;
+            $this->response['message'] = $this->notFoundMessage;
             return response()->json($this->response);
         }
-        $this->authorize('update', $model_edit);
+        // $this->authorize('update', $model_edit);
 
         $main_data = $model_edit->getAttributes();
 
-        $this->response['message'] = $this->message_show;
+        $this->response['message'] = __('show_successfully');
         $this->response['data'] = $main_data;
 
         return response()->json($this->response);
@@ -96,10 +97,10 @@ class BaseApiController extends Controller
         $model_update = $this->modelRepository->where('id', $id)->first();
         if(! $model_update){
             $this->response['status'] = 404;
-            $this->response['message'] = $this->message_not_found;
+            $this->response['message'] = $this->notFoundMessage;
             return response()->json($this->response);
         }
-        $this->authorize('update', $model_update);
+        // $this->authorize('update', $model_update);
 
         $main_data = $this->httpRequest->all();
         $validator = \Validator::make($main_data, $this->model_rules);
@@ -127,7 +128,7 @@ class BaseApiController extends Controller
         $model_delete = $this->modelRepository->where('id', $id)->first();
         if(! $model_delete){
             $this->response['status'] = 404;
-            $this->response['message'] = $this->message_not_found;
+            $this->response['message'] = $this->notFoundMessage;
             return response()->json($this->response);
         }
         $this->authorize('delete', $model_delete);

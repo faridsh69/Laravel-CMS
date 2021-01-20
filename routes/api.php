@@ -12,8 +12,8 @@ foreach($modelNameSlugs as $modelNameSlug)
 	});
 }
 
-// Route::get('v', 'GeneralController@getVersion')->name('version');
 // Route::get('user', 'GeneralController@getUser')->name('user')->middleware('auth:api');
+// Route::get('v', 'GeneralController@getVersion')->name('version');
 
 // Route::group([], function () {
 // 	Route::group(['prefix' => 'general', 'as' => 'general.'], function () {
