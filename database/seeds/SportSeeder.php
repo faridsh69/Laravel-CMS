@@ -190,8 +190,6 @@ class SportSeeder extends Seeder
             'logo' => asset($image_folder_name . 'setting-logo.png'),
             'favicon' => asset($image_folder_name . 'setting-favicon.png'),
             'default_meta_image' => asset($image_folder_name . 'setting-logo.png'),
-            'default_user_image' => asset($image_folder_name . 'setting-default-user.png'),
-            'default_product_image' => asset($image_folder_name . 'setting-default-product.png'),
             'android_application_url' => 'https://play.google.com/store/apps',
             'ios_application_url' => 'https://sibapp.com/applications',
             'google_map_code' => 'AIzaSyAwuyLRa1uKNtbgx6xAJVmWy-zADgegA2s',

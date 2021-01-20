@@ -17,8 +17,6 @@ class SettingsTableSeeder extends Seeder
 			'logo' => asset($image_folder_name . 'setting-logo.png'),
 			'favicon' => asset($image_folder_name . 'setting-favicon.png'),
 			'default_meta_image' => asset($image_folder_name . 'setting-logo.png'),
-			'default_user_image' => asset($image_folder_name . 'setting-default-user.png'),
-			'default_product_image' => asset($image_folder_name . 'setting-default-product.png'),
 			'google_index' => '1',
 			'pagination_number' => '6',
 			'android_application_url' => 'https://play.google.com/store/apps',
