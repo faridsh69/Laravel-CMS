@@ -18,8 +18,13 @@ class BaseSeeder extends Seeder
             $modelNamespace = config('cms.config.models_namespace') . $modelName;
             $modelRepository = new $modelNamespace();
     		for($i = 0; $i < 4; $i ++){
-	    		$fake_data = factory($modelNamespace)->raw();
-        		$modelRepository->saveWithRelations($fake_data);
+                // create fake data for store in database
+                $factory = new BaseFactory();
+                $factory->setModelNameSlug($modelNameSlug);
+                $fakeModel = $factory->make();
+                $fakeData = $fakeModel->getAttributes();
+
+        		$modelRepository->saveWithRelations($fakeData);
         	}
 	        echo "Done!\n";
 	    }
