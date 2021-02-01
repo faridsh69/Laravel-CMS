@@ -51,6 +51,7 @@
 			</div>
 			@endif
 		@endforeach
+		@include('front.components.comment')
 	</div>
 	<div class="col-sm-3">
 		<div class="mb-3">
@@ -93,7 +94,6 @@
 		<br>
 		@endif
 		<a href="whatsapp://send?text={{ route('front.'. $modelNameSlug .'.show', $item->url) }}" data-action="share/whatsapp/share"><i class="fa fa-share"></i> Share via Whatsapp</a>
-		@include('front.components.comment')
 	</div>
 </div>
 @endsection
