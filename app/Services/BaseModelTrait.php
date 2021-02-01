@@ -84,6 +84,11 @@ trait BaseModelTrait
 		return $this->belongsToMany(config('cms.config.models_namespace') . class_basename($this), 'model_related', 'model_id', 'related_id');
 	}
 
+	public function getComments()
+	{
+		return $this->comments()->get();
+	}
+
 	public function files() : morphMany
 	{
 		return $this->morphMany('App\Models\File', 'fileable');

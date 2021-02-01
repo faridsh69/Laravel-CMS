@@ -50,12 +50,12 @@ class LoginController extends Controller
 
     public function redirectTo()
     {
-        $auth_user = Auth::user();
-        activity('User')->performedOn($auth_user)
-            ->causedBy($auth_user)
+        $authUser = Auth::user();
+        activity('User')->performedOn($authUser)
+            ->causedBy($authUser)
             ->log('User Logined');
         $user_logined = new UserLogined();
-        $auth_user->notify($user_logined);
+        $authUser->notify($user_logined);
 
         return route('admin.dashboard.index');
     }

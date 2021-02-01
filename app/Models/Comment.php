@@ -36,4 +36,15 @@ class Comment extends BaseModel
     {
         return $this->morphTo();
     }
+
+    public function getAuthorAttribute()
+    {
+        $user = $this->user()->first();
+
+        if ($user) {
+            return $user->name;
+        }
+
+        return 'User';
+    }
 }

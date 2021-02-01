@@ -57,17 +57,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $auth_user = User::create([
+        $authUser = User::create([
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
 
-        activity('User Registered')->performedOn($auth_user)
-            ->causedBy($auth_user)
+        activity('User Registered')->performedOn($authUser)
+            ->causedBy($authUser)
             ->log('User Registered');
         $user_registered = new UserRegistered();
-        $auth_user->notify($user_registered);
+        $authUser->notify($user_registered);
 
-        return $auth_user;
+        return $authUser;
     }
 }

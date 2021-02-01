@@ -162,4 +162,26 @@ class BaseFrontController extends Controller
 
         return view('front.list.index', ['meta' => $this->meta, 'list' => $list, 'tags' => $tags]);
     }
+
+    public function comment(string $url, \App\Models\Comment $commentModel)
+    {
+        $item = $this->modelRepository->where('url', $url)->firstOrFail();
+
+        $commentModel->user_id = Auth::id();
+        $commentModel->commentable_type = $this->modelNamespace;
+        $commentModel->commentable_id = $item->id;
+        $commentModel->activated = 1; // This line should change and get config
+        $commentModel->content = $this->httpRequest->input('comment');
+
+        $commentModel->save();
+
+        if(env('APP_ENV') !== 'testing'){
+            activity($this->modelName)->performedOn($item)->causedBy(Auth::user())
+                ->log($this->modelName . ' Comment');
+        }
+
+        $this->httpRequest->session()->flash('alert-success', __('commented_successfully'));
+
+        return redirect()->route('front.' . $this->modelNameSlug . '.show', $item->url);
+    }
 }

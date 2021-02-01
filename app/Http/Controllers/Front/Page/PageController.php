@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front\Page;
 use App\Http\Controllers\Controller;
 use App\Models\Form;
 use App\Models\Page;
+use Auth;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -42,7 +43,7 @@ class PageController extends Controller
             }
         }
         $answer->activated = 1;
-        $answer->user_id = \Auth::id();
+        $answer->user_id = Auth::id();
         $answer->form_id = $form_model->id;
         $answer->answers = serialize($data);
         $answer->save();

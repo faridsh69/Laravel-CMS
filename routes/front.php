@@ -15,6 +15,7 @@ foreach($modelNameSlugs as $modelNameSlug)
 		Route::get('tag', $controller_name . '@getTags')->name('tag.index');
 		Route::get('tag/{url}', $controller_name . '@getTag')->name('tag.show');
 		Route::get('{url}', $controller_name . '@show')->name('show');
+		Route::post('{url}/comment', $controller_name . '@comment')->name('comment');
 	});
 }
 

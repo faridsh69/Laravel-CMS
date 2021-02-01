@@ -12,7 +12,7 @@
     "blogs" : "Blogs",
     "tags" : "Tags",
     "related_blogs" : "Related Blogs",
-    "comment created" : "Your comment added to blog successfully!",
+    "commented_successfully" : "Your comment added successfully!",
     "categories" : "Categories",
     "copy_right" : "Copyright ©2019. Designed by https://github.com/faridsh69",
     "notification events" : "Notification Events",

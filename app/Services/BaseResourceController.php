@@ -54,7 +54,7 @@ class BaseResourceController extends BaseAdminController
         $model = $this->modelRepository->saveWithRelations($form->getFieldValues());
 
         if(env('APP_ENV') !== 'testing'){
-            activity('Created')->performedOn($model)->causedBy($this->authUser)
+            activity('Created')->performedOn($model)->causedBy(Auth::user())
                 ->log($this->modelName . ' Created');
         }
         $this->httpRequest->session()->flash('alert-success', $this->modelNameTranslate . __('created_successfully'));
@@ -116,7 +116,7 @@ class BaseResourceController extends BaseAdminController
         $this->modelRepository->saveWithRelations($form->getFieldValues(), $model);
 
         if(env('APP_ENV') !== 'testing'){
-            activity('Updated')->performedOn($model)->causedBy($this->authUser)
+            activity('Updated')->performedOn($model)->causedBy(Auth::user())
                 ->log($this->modelName . ' Updated');
         }
         $this->httpRequest->session()->flash('alert-success', $this->modelNameTranslate . __('updated_successfully'));
@@ -132,7 +132,7 @@ class BaseResourceController extends BaseAdminController
         $model->delete();
 
         if(env('APP_ENV') !== 'testing'){
-            activity('Deleted')->performedOn($model)->causedBy($this->authUser)
+            activity('Deleted')->performedOn($model)->causedBy(Auth::user())
                 ->log($this->modelName . ' Deleted');
         }
         $this->httpRequest->session()->flash('alert-success', $this->modelNameTranslate . __('deleted_successfully'));
@@ -148,7 +148,7 @@ class BaseResourceController extends BaseAdminController
         $model->restore();
 
         if(env('APP_ENV') !== 'testing'){
-            activity('Restored')->performedOn($model)->causedBy($this->authUser)
+            activity('Restored')->performedOn($model)->causedBy(Auth::user())
                 ->log($this->modelName . ' Restored');
         }
         $this->httpRequest->session()->flash('alert-success', $this->modelNameTranslate . __('restored_successfully'));

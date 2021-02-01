@@ -99,17 +99,17 @@ class DashboardController extends BaseResourceController
 
     public function identifyEmail()
     {
-        $auth_user = Auth::user();
-        if($auth_user->email_verified_at){
+        $authUser = Auth::user();
+        if($authUser->email_verified_at){
             return redirect()->back();
         }
-        if(! $auth_user->activation_code){
+        if(! $authUser->activation_code){
             $code = rand(1000, 9999);
-            $auth_user->activation_code = $code;
+            $authUser->activation_code = $code;
             $email_verified =  new EmailVerified();
             $email_verified->setCode($code);
-            $auth_user->notify($email_verified);
-            $auth_user->update();
+            $authUser->notify($email_verified);
+            $authUser->update();
         }
         $this->meta['title'] = __('identify email');
 
@@ -118,16 +118,16 @@ class DashboardController extends BaseResourceController
 
     public function postIdentifyEmail()
     {
-        $auth_user = Auth::user();
-        if($auth_user->email_verified_at){
+        $authUser = Auth::user();
+        if($authUser->email_verified_at){
             return redirect()->back();
         }
         $activation_code = $this->httpRequest->input('activation_code');
-        if($auth_user->activation_code === $activation_code)
+        if($authUser->activation_code === $activation_code)
         {
-            $auth_user->email_verified_at = Carbon::now();
-            $auth_user->activation_code = null;
-            $auth_user->update();
+            $authUser->email_verified_at = Carbon::now();
+            $authUser->activation_code = null;
+            $authUser->update();
 
             $this->httpRequest->session()->flash('alert-success', __('email_verified'));
             return redirect()->route('admin.dashboard.identify');
@@ -139,17 +139,17 @@ class DashboardController extends BaseResourceController
 
     public function identifyPhone() : view
     {
-        $auth_user = Auth::user();
-        if($auth_user->phone_verified_at){
+        $authUser = Auth::user();
+        if($authUser->phone_verified_at){
             return redirect()->back();
         }
-        if(! $auth_user->activation_code){
+        if(! $authUser->activation_code){
             $code = rand(1000, 9999);
-            $auth_user->activation_code = $code;
+            $authUser->activation_code = $code;
             $phone_verified =  new PhoneVerified();
             $phone_verified->setCode($code);
-            $auth_user->notify($phone_verified);
-            $auth_user->update();
+            $authUser->notify($phone_verified);
+            $authUser->update();
         }
         $this->meta['title'] = __('identify phone');
 
@@ -158,16 +158,16 @@ class DashboardController extends BaseResourceController
 
     public function postIdentifyPhone()
     {
-        $auth_user = Auth::user();
-        if($auth_user->phone_verified_at){
+        $authUser = Auth::user();
+        if($authUser->phone_verified_at){
             return redirect()->back();
         }
         $activation_code = $this->httpRequest->input('activation_code');
-        if($auth_user->activation_code === $activation_code)
+        if($authUser->activation_code === $activation_code)
         {
-            $auth_user->phone_verified_at = Carbon::now();
-            $auth_user->activation_code = null;
-            $auth_user->update();
+            $authUser->phone_verified_at = Carbon::now();
+            $authUser->activation_code = null;
+            $authUser->update();
 
             $this->httpRequest->session()->flash('alert-success', __('phone_verified'));
             return redirect()->route('admin.dashboard.identify');
@@ -178,12 +178,12 @@ class DashboardController extends BaseResourceController
 
     public function postIdentifyDocument($document_title = 'national_card')
     {
-        $auth_user = Auth::user();
+        $authUser = Auth::user();
         $file_service = new \App\Services\BaseFileService();
-        $file_service->save($this->httpRequest->file($document_title), $auth_user, $document_title);
+        $file_service->save($this->httpRequest->file($document_title), $authUser, $document_title);
 
         $profile_updated = new ProfileUpdated();
-        $profile_updated->setCode($auth_user->id);
+        $profile_updated->setCode($authUser->id);
         $admin_users = $this->modelRepository->getAdminUsers();
         foreach($admin_users as $admin){
             $admin->notify($profile_updated);
