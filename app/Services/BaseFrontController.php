@@ -184,4 +184,34 @@ class BaseFrontController extends Controller
 
         return redirect()->route('front.' . $this->modelNameSlug . '.show', $item->url);
     }
+
+    public function likeCount(string $url, \App\Models\Like $likeModel)
+    {
+        $item = $this->modelRepository->where('url', $url)->firstOrFail();
+
+        $this->response['userLiked'] = $item->likes()->authUser()->first() ? 1 : 0;
+        $this->response['likesCount'] = $item->likes()->count();
+
+        return response()->json($this->response);
+    }
+
+    public function like(string $url, \App\Models\Like $likeModel)
+    {
+        $item = $this->modelRepository->where('url', $url)->firstOrFail();
+
+        if ($item->likes()->authUser()->first())
+        {
+            $item->likes()->authUser()->delete();
+        }
+        else
+        {
+            $likeModel->user_id = Auth::id();
+            $likeModel->likeable_type = $this->modelNamespace;
+            $likeModel->likeable_id = $item->id;
+
+            $likeModel->save();
+        }
+
+        return response()->json();
+    }
 }

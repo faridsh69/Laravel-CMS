@@ -55,9 +55,7 @@
 	</div>
 	<div class="col-sm-3">
 		<div class="mb-3">
-			<like></like>
-			<img src="{{ asset('images/front/general/unlike.png') }}" alt="like" id="like" style="height: 40px; cursor: pointer;">
-			<span class="ml-3">0</span>
+			<like url="{{ route('front.'. $modelNameSlug .'.like', $item->url) }}"></like>
 		</div>
 		<small>
 			{{ __('created at') }}:
@@ -98,22 +96,3 @@
 	</div>
 </div>
 @endsection
-@push('scripts')
-<script>
-	var unlikeSrc = "http:{{ asset('/images/front/general/unlike.png') }}";
-	var likeSrc = "http:{{ asset('/images/front/general/like.png') }}";
-	document.getElementById('like').addEventListener('click', function(event){
-		if(event.target.src == likeSrc){
-			event.target.src = unlikeSrc;
-		}else{
-			event.target.src = likeSrc;
-		}
-		sendLikeAjax();
-	});
-
-	var sendLikeAjax = function ()
-	{
-		// $http.get('/basket/product/init').then(function (response) {}
-	}
-</script>
-@endpush

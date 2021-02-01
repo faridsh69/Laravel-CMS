@@ -17,7 +17,9 @@
 	});
 @endphp
 @section('content')
+	<div id="vue_id">
 	@foreach($blocks as $block)
 		@include('front.theme.' . config('setting-developer.theme') . '.' . $block->type)
 	@endforeach
+	</div>
 @endsection

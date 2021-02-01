@@ -1,70 +1,61 @@
 Vue.component('like', {
     template: `
   	<div>
-    <div v-if="loading" class="seperate"></div>
-    <div v-if="loading" class="seperate"></div>
-    <div v-if="loading" class="half-seperate"></div>
-    <div v-if="loading" class="one-third-seperate"></div>
-	<div v-if="!loading">
-        <span v-on:click="like(1)" class="like-color">
-            <i class="fa fa-thumbs-up"></i>
-            {{ likesCount }}
-        </span> 
-        <span v-on:click="like(0)" class="dislike-color">
-            <i class="fa fa-thumbs-down"></i>
-            {{ dislikesCount }}
-        </span> 
-    </div>
+        <img :src="likeImageSrc" alt="like" id="like" 
+            style="height: 40px; cursor: pointer;" v-on:click="like()">
+            <span class="ml-3">{{ likesCount }}</span>
 	</div>`,
     props: {
-        product_id: {
+        url: {
             required: true,
-            type: Number
-        }
+            type: String,
+        },
     },
     data: function () {
         return {
-            loading: true,
             likesCount: 0,
-            dislikesCount: 0,
-            status: 0,
+            likeImageSrc: '',
+            likeImageSrcLiked: '/cdn/images/front/general/like.png',
+            likeImageSrcUnliked: '/cdn/images/front/general/unlike.png',
         }
     },
     methods: {
         fetchData: function () {
-            this.$http.get('/product/like/' + this.product_id).then(function (response) {
+            this.$http.get(this.url + '/count').then(function (response) {
                 if (response.status == 200) {
-                    this.likesCount = response.data.totalLike;
-                    this.dislikesCount = response.data.totalDislike;
-                    this.loading = false;
+                    this.likesCount = response.data.likesCount;
+                    if (response.data.userLiked)
+                    {
+                        this.likeImageSrc = this.likeImageSrcLiked;
+                    }
                 } else {
-                    alert('خطایی در سیستم رخ داده است.')
+                    alert('Error.');
                 }
             });
         },
-        like: function (like_type) {
-            if(like_type == 1){
-                this.likesCount ++;
-            }else{
-                this.dislikesCount ++;
+        like: function () {
+            this.likeImageSrc = this.likeImageSrc == this.likeImageSrcUnliked ? this.likeImageSrcLiked : this.likeImageSrcUnliked;
+            this.likesCount ++;
+            if (this.likeImageSrc === this.likeImageSrcUnliked)
+            {
+                this.likesCount -= 2;
             }
-            this.$http.post('/product/like', {product_id: this.product_id, type: like_type}, {
+            this.$http.post(this.url, {}, {
                 headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
                 }
             }).then(function (response) {
                 if (response.status == 200) {
-                    if (!response.data.error) {
-                        this.fetchData();
-                    }
+                    this.fetchData();
                 } else {
-                    alert('خطایی در سیستم رخ داده است.')
+                    alert('error.');
                 }
             });
         },
     },
     mounted: function () {
-        setTimeout(this.fetchData, 100);
+        this.likeImageSrc = this.likeImageSrcUnliked;
+        this.fetchData();
     },
     computed: {},
 });
