@@ -1,9 +1,3 @@
-// Vue.use(VueLazyload, {
-//   preLoad: 1.3,
-//   error: 'dist/error.png',
-//   loading: 'dist/loading.gif',
-//   attempt: 1
-// });
 Vue.filter('persian_digits', function (value) {
     var i;
     var english_numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];

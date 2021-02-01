@@ -55,6 +55,7 @@
 	</div>
 	<div class="col-sm-3">
 		<div class="mb-3">
+			<like></like>
 			<img src="{{ asset('images/front/general/unlike.png') }}" alt="like" id="like" style="height: 40px; cursor: pointer;">
 			<span class="ml-3">0</span>
 		</div>
@@ -107,6 +108,12 @@
 		}else{
 			event.target.src = likeSrc;
 		}
+		sendLikeAjax();
 	});
+
+	var sendLikeAjax = function ()
+	{
+		// $http.get('/basket/product/init').then(function (response) {}
+	}
 </script>
 @endpush
