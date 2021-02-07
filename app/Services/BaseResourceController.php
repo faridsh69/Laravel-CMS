@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Auth;
 use Str;
 use Illuminate\View\View;
 

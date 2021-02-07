@@ -49,7 +49,7 @@ return [
 
     'folder_categories'        => [
         'file'  => [
-            'folder_name'  => 'files',
+            'folder_name'  => '',
             'startup_view' => 'list',
             'max_size'     => 90000, // size in KB
             'valid_mime'   => [
