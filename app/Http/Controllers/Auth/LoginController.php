@@ -46,9 +46,16 @@ class LoginController extends Controller
             return redirect()->route('admin.dashboard.profile');
         }
 
+        if (! User::where('email', $request->input('email'))->first())
+        {
+            $request->session()->flash('alert-danger', __('user not found'));
+        } 
+        else
+        {
+            $request->session()->flash('alert-danger', __('user_logined_message_failed'));
+        }
+
         return redirect()->route('auth.login');
-            ->withErrors($validator)
-            ->withInput(Input::except('password'));
 
     }
 

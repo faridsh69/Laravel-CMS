@@ -19,6 +19,7 @@
     "site_notification_subject" : "Notification",
     "user_registered_message" : "Registration on %s completed.",
     "user_registered_subject" : "Registration",
+    "user_logined_message_failed" : "Email or Password does not match.",
     "user_logined_message" : "You logined on %s successfully.",
     "user_logined_subject" : "Login",
     "profile_updated_message" : "Your profile updated on %s successfully.",

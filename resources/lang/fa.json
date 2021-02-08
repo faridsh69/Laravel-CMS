@@ -106,6 +106,7 @@
     "site_notification_subject" : "اطلاعیه",
     "user_registered_message" : "ثبت نام شما در سامانه %s تکمیل شد.",
     "user_registered_subject" : "ثبت نام",
+    "user_logined_message_failed" : "رمز عبور اشتباه است",
     "user_logined_message" : "ورود شما به سامانه %s با موفقیت انجام شد",
     "user_logined_subject" : "ورود",
     "profile_updated_message" : "پروفایل کاربر با آیدی %s به روز رسانی شد.",
