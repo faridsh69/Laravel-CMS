@@ -8,7 +8,15 @@ class Page extends BaseModel
 {
     public $columns = [
         ['name' => 'title'],
-        ['name' => 'url'],
+        [
+            'name' => 'url',
+            'type' => 'string',
+            'database' => 'nullable',
+            'rule' => 'unique:pages,url,',
+            'help' => 'Url should be unique, contain [a-z, 0-9, -], required for seo',
+            'form_type' => '',
+            'table' => true,
+        ],
         ['name' => 'description'],
         ['name' => 'content'],
         ['name' => 'keywords'],

@@ -19,7 +19,7 @@ not used
                 <input type="hidden" name="token" value="{{ $token }}">
 
                 <div class="form-group m-form__group">
-                    <input class="form-control m-input" type="email" placeholder="{{ __('E-Mail Address') }}" name="email" value="{{ old('email') }}" required autocomplete="email">
+                    <input class="form-control m-input ltr" type="email" placeholder="{{ __('E-Mail Address') }}" name="email" value="{{ old('email') }}" required autocomplete="email" style="direction: ltr">
                     @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -27,7 +27,7 @@ not used
                     @enderror
                 </div>
                 <div class="form-group m-form__group">
-                    <input class="form-control m-input" type="password" placeholder="{{ __('Password') }}" name="password" required autocomplete="new-password">
+                    <input class="form-control m-input ltr" type="password" placeholder="{{ __('Password') }}" name="password" required autocomplete="new-password">
                     @error('password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -35,7 +35,7 @@ not used
                     @enderror
                 </div>
                 <div class="form-group m-form__group">
-                    <input class="form-control m-input m-login__form-input--last" type="password" placeholder="{{ __('Confirm Password') }}" id="password-confirm" name="password_confirmation" required autocomplete="new-password">
+                    <input class="form-control m-input m-login__form-input--last ltr" type="password" placeholder="{{ __('Confirm Password') }}" id="password-confirm" name="password_confirmation" required autocomplete="new-password">
                 </div>
                 <div class="m-login__form-action">
                     <button id="m_login_signup_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">

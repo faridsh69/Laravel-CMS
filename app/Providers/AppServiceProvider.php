@@ -70,7 +70,7 @@ class AppServiceProvider extends ServiceProvider
 
         $modules = Cache::remember('modules', $seconds, function () {
             return \App\Models\Module::active()
-                ->language()
+                // ->language()
                 ->with('children')
                 ->orderBy('order', 'asc')
                 ->orderBy('id', 'desc')

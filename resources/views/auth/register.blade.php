@@ -17,7 +17,7 @@
 			<form class="m-login__form m-form margin-top-20" method="POST" action="{{ route('auth.register') }}">
 				@csrf
 				<div class="form-group m-form__group rtl-text-right">
-					<input class="form-control m-input" type="text" placeholder="{{ __('email') }}" name="email" value="{{ isset($email) ? $email : old('email') }}" required>
+					<input class="form-control m-input ltr" type="text" placeholder="{{ __('email') }}" name="email" value="{{ isset($email) ? $email : old('email') }}" required>
 					@error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ __($message) }}</strong>
@@ -25,7 +25,7 @@
                     @enderror
 				</div>
 				<div class="form-group m-form__group rtl-text-right">
-					<input class="form-control m-input" type="password" placeholder="{{ __('password') }}" name="password" required autocomplete="off">
+					<input class="form-control m-input ltr" type="password" placeholder="{{ __('password') }}" name="password" required autocomplete="off">
 					@error('password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ __($message) }}</strong>
@@ -33,7 +33,7 @@
                     @enderror
 				</div>
 				<div class="form-group m-form__group rtl-text-right">
-					<input class="form-control m-input m-login__form-input--last" type="password" placeholder="{{ __('password confirmation') }}" id="password-confirm" name="password_confirmation" required autocomplete="off">
+					<input class="form-control m-input m-login__form-input--last ltr" type="password" placeholder="{{ __('password confirmation') }}" id="password-confirm" name="password_confirmation" required autocomplete="off">
 				</div>
 				<div class="form-group m-form__group rtl-text-right">
 					<div class="g-recaptcha" data-sitekey="{{ env('NOCAPTCHA_SITEKEY') }}"></div>
