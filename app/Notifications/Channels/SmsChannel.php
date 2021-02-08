@@ -11,7 +11,7 @@ class SmsChannel extends BaseChannel
 	public function send($notifiable, $notification)
 	{
         $phone = $notifiable->phone;
-        $message = $notification->sms_message;
+        $message = $notification->smsMessage;
         $sender = config('sms.sender');
         $api_key = config('sms.api_key');
         $driver = config('sms.driver');

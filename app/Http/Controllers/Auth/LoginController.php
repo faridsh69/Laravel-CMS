@@ -25,9 +25,7 @@ class LoginController extends Controller
     public function logout(Request $request) : RedirectResponse
     {
         Auth::logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
         return redirect('/');
@@ -38,33 +36,22 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            // Authentication passed...
-            return redirect()->intended('admin');
+            $authUser = Auth::user();
+            activity('User')->performedOn($authUser)
+                ->causedBy($authUser)
+                ->log('User Logined');
+            $user_logined = new UserLogined();
+            $authUser->notify($user_logined);
+
+            return redirect()->route('admin.dashboard.profile');
         }
+
+        return redirect()->route('auth.login');
+            ->withErrors($validator)
+            ->withInput(Input::except('password'));
+
     }
 
-    public function username()
-    {
-        return 'email';
-    }
-
-    public function redirectTo()
-    {
-        $authUser = Auth::user();
-        activity('User')->performedOn($authUser)
-            ->causedBy($authUser)
-            ->log('User Logined');
-        $user_logined = new UserLogined();
-        $authUser->notify($user_logined);
-
-        return route('admin.dashboard.index');
-    }
-
-    /**
-     * Redirect the user to the GitHub authentication page.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function redirectToProvider($social_company)
     {
         $social_companies = ['google', 'github', 'gitlab', 'linkedin', 'twitter', 'facebook', 'bitbucket'];
@@ -76,11 +63,6 @@ class LoginController extends Controller
         return abort(404);
     }
 
-    /**
-     * Obtain the user information from GitHub.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function handleProviderCallback()
     {
         $userSocial = Socialite::driver('google')->user();

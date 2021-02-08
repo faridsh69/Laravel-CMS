@@ -13,7 +13,7 @@
                             /
                             <a href="{{ route('auth.login') }}">{{ __('login') }}</a>
                             @else
-                            <a href="{{ route('admin.dashboard.index') }}">{{ \Auth::user()->name }}</a>                          
+                            <a href="{{ route('admin.dashboard.index') }}">{{ \Auth::user()->first_name ? \Auth::user()->name : __('dashboard') }}</a>
                             @endif
                         </div>
                     </div>

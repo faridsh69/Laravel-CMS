@@ -266,4 +266,15 @@ return [
         'post_alias' => 'آدرس',
         'meta_desc' => 'توضیحات ',
     ],
+
+    'custom' => [
+        'attribute-name' => [
+            'rule-name' => 'custom-message',
+        ],
+        'g-recaptcha-response' => [
+            'required' => 'لطفا تیک را بزنید',
+            'captcha' => 'خطا رخ داده',
+        ],
+    ],
+
 ];

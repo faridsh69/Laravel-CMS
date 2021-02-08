@@ -16,7 +16,7 @@
                 <div class="m-login__desc">
                 </div>
             </div>
-            <form class="m-login__form m-form" method="POST" action="{{ route('auth.password.email') }}">
+            <form class="m-login__form m-form" method="POST" action="{{ route('auth.reset-link') }}">
                 @csrf
                 <div class="form-group m-form__group rtl-text-right">
                     <input class="form-control m-input" type="text" placeholder="{{ __('email') }}" name="email" id="email"  value="{{ old('email') }}" required autofocus>

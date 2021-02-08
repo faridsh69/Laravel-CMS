@@ -5,22 +5,16 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Notifications\UserRegistered;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
-    protected $redirectTo = '/admin/dashboard';
-
     public function __construct()
     {
         $this->middleware('guest');
-    }
-
-    public function redirectTo()
-    {
-        return route('admin.dashboard.index');
     }
 
     public function getRegister()
@@ -44,7 +38,6 @@ class RegisterController extends Controller
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
-        dd($authUser);
 
         activity('User Registered')->performedOn($authUser)
             ->causedBy($authUser)
@@ -52,6 +45,8 @@ class RegisterController extends Controller
         $user_registered = new UserRegistered();
         $authUser->notify($user_registered);
 
-        return $authUser;
+        Auth::loginUsingId($authUser->id);
+
+        return redirect()->route('admin.dashboard.profile');
     }
 }

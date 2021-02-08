@@ -36,7 +36,7 @@
 						</label>
 					</div>
 					<div class="col m--align-right">
-						<a href="route('auth.password.request')" id="m_login_forget_password" class="m-link">
+						<a href="{{ route('auth.forget-password') }}" id="m_login_forget_password" class="m-link">
 							{{ __('Forgot Your Password?') }}
 						</a>
 					</div>
