@@ -53,6 +53,10 @@ class BaseNotification extends Notification
         $channelList = [
             DatabaseChannel::class,
         ];
+
+        if(! config('setting-developer.notification_events'))
+            return $channelList;
+
         if ($notifiable->phone && array_search($this->modelSnakeClassName. '_sms', config('setting-developer.notification_events')) !== false){
             $channelList[] = SmsChannel::class;
         }
