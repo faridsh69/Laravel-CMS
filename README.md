@@ -1,7 +1,6 @@
 # Laravel CMS - Every thing is ready!
 
-## I really love to develop laravel, so I developed everything that needs to be in laravel in this project, Also feel free to contact me on farid.sh69@gmail.com I am ready to work for you as laravel developer for 15$ per hour because I love to develop laravel just because of my love. Thanks.
-
+## I really love to develop laravel, so I developed everything that needs to be in laravel in this project, Also feel free to contact me on farid.sh69@gmail.com
 ### Why every time change models you have to write new migration file?
 When you change your models based on the old model and new model your table will edit automatically! and if your table is not exist laravel cms will create it for you.
 ``` bash
