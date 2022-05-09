@@ -1,7 +1,7 @@
-# Laravel CMS - Every thing is ready!
+# Laravel CMS
 
-## I really love to develop laravel, so I developed everything that needs to be in laravel in this project, Also feel free to contact me on farid.sh69@gmail.com
-### Why every time change models you have to write new migration file?
+### Why every time you change your models you have to write new migration file, change forms, tables, seeders, test ... why?
+
 When you change your models based on the old model and new model your table will edit automatically! and if your table is not exist laravel cms will create it for you.
 ``` bash
 php artisan cms:migration
@@ -380,22 +380,3 @@ Run the tests with:
 ./vendor/bin/phpunit
 ```
 
-### Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-## Credits
-
-- [Farid Shahidi](http://cms-laravel.com)
-
-## Support us
-
-Faridsh69 is a full stack developer who is trying to prepare usefull codes for developers.
-
-## License
-
-The MIT License (MIT). Please see [License File]() for more information.
