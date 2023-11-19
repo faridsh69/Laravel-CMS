@@ -28,7 +28,7 @@
                         <p>{{ $product->description }}</p>
                         <a href="{{ route('front.product.show', $product->id)}}" class="btn academy-btn btn-sm">{{ __('See More') }}</a>
                     </div>
-                    <div class="popular-course-thumb bg-img" style="background-image: url({{ $product->src('gallery') }});"></div>
+                    <div class="popular-course-thumb bg-img" style="background-image: url({{ $product->avatar }});"></div>
                 </div>
             </div>
             @endforeach

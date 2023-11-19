@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Forms;
 
-use App\Services\BaseForm;
+use App\Cms\Services\FormService;
 
-class SettingContactForm extends BaseForm
+final class SettingContactForm extends FormService
 {
-    public string $modelName = 'SettingContact';
+	public string $modelName = 'SettingContact';
 }

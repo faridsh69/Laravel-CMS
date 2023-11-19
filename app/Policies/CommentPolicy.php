@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Policies;
 
-use App\Services\BasePolicy;
+use App\Cms\Policies\CmsPolicy;
 
-class CommentPolicy extends BasePolicy
+final class CommentPolicy extends CmsPolicy
 {
 	public string $modelNameSlug = 'comment';
 }

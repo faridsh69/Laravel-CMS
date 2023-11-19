@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Front;
 
-use App\Services\BaseFrontController;
+use App\Cms\Controllers\Front\FrontController as CmsFrontController;
 
-class FrontController extends BaseFrontController
-{}
+final class FrontController extends CmsFrontController
+{
+}

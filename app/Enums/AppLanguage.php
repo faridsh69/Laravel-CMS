@@ -1,12 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
-use App\Services\BaseEnum;
-
-final class AppLanguage extends BaseEnum
+final class AppLanguage
 {
-    const data = [
+	public const data = [
 		'en' => 'English',
 		'fa' => 'Persian',
 		'ar' => 'Arabic',

@@ -1,12 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
-use App\Services\BaseEnum;
-
-final class ModelType extends BaseEnum
+final class ModelType
 {
-    const data = [
+	public const data = [
+		'Advertise' => 'Advertise',
+		'Blog' => 'Blog',
+		'Car' => 'Car',
 		'Food' => 'Food',
 		'FoodProgram' => 'Food Program',
 		'Gym' => 'Gym',
@@ -14,9 +17,6 @@ final class ModelType extends BaseEnum
 		'GymProgram' => 'Gym Program',
 		'Music' => 'Music',
 		'Movie' => 'Movie',
-		'Advertise' => 'Advertise',
-		'Blog' => 'Blog',
-		'Car' => 'Car',
 		'Page' => 'Page',
 		'Product' => 'Product',
 		'Restaurant' => 'Restaurant',

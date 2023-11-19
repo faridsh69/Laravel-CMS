@@ -1,12 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
-use App\Services\BaseEnum;
-
-final class BlockType extends BaseEnum
+final class BlockType
 {
-    const data = [
+	public const data = [
 		'menu' => 'Menu',
 		'header' => 'Header',
 		'breadcrumb' => 'Breadcrumb',

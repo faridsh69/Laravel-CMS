@@ -1,5 +1,5 @@
 <div class="row">
-	@foreach($item->getComments() as $comment)
+	@foreach($item->comments as $comment)
 		<div class="col-12" style="border: 1px solid #eee; border-radius: 20px; margin-bottom: 10px; padding: 10px;">
 			<b>{{ $comment->author }}:</b> <br>
 			{{ $comment->content }}

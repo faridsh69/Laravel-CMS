@@ -1,13 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Unit;
 
-use App\Services\BaseTest;
+use App\Cms\Services\TestService;
 
-class AdminTest extends BaseTest
+final class AdminTest extends TestService
 {
-    public function test()
-    {
-        $this->adminTest();
-    }
+	public function test(): void
+	{
+		$this->adminTest();
+	}
 }

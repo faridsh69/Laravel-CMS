@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Policies;
 
-use App\Services\BasePolicy;
+use App\Cms\Policies\CmsPolicy;
 
-class ShowtimePolicy extends BasePolicy
+final class ShowtimePolicy extends CmsPolicy
 {
 	public string $modelNameSlug = 'showtime';
 }

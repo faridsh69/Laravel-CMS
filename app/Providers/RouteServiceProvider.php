@@ -1,82 +1,87 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Providers;
 
+use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\{RateLimiter, Route};
 
-class RouteServiceProvider extends ServiceProvider
+final class RouteServiceProvider extends ServiceProvider
 {
-    /**
-     * This namespace is applied to your controller routes.
-     *
-     * In addition, it is set as the URL generator's root namespace.
-     *
-     * @var string
-     */
-    protected $namespace = 'App\Http\Controllers';
+	/**
+	 * The path to the "home" route for your application.
+	 *
+	 * This is used by Laravel authentication to redirect users after login.
+	 *
+	 * @var string
+	 */
+	public const HOME = '/';
 
-    public const HOME = '/';
+	/**
+	 * The controller namespace for the application.
+	 *
+	 * When present, controller route declarations will automatically be prefixed with this namespace.
+	 *
+	 * @var null|string
+	 */
+	protected $namespace = 'App\\Http\\Controllers';
 
-    /**
-     * Define your route model bindings, pattern filters, etc.
-     */
-    public function boot()
-    {
-        parent::boot();
-    }
+	/**
+	 * Define your route model bindings, pattern filters, etc.
+	 */
+	public function boot(): void
+	{
+		$this->configureRateLimiting();
 
-    /**
-     * Define the routes for the application.
-     */
-    public function map()
-    {
-        $this->mapAdminRoutes();
-        $this->mapApiRoutes();
-        $this->mapAuthRoutes();
-        $this->mapFilemanagerRoutes();
-        $this->mapFrontRoutes();
-    }
+		$this->bootAdminRoutes();
+		$this->bootAuthRoutes();
+		$this->bootFrontRoutes();
+		$this->bootApiRoutes();
+	}
 
-    protected function mapAdminRoutes()
-    {
-        Route::namespace($this->namespace . '\Admin')
-            ->as('admin.')
-            ->prefix('admin')
-            ->middleware(['web', 'auth'])
-            ->group(base_path('routes/admin.php'));
-    }
+	protected function configureRateLimiting(): void
+	{
+		RateLimiter::for(
+			'api',
+			fn (Request $request) => Limit::perMinute(360)->by(optional($request->user())->id ?: $request->ip())
+		);
+	}
 
-    protected function mapApiRoutes()
-    {
-        Route::namespace($this->namespace . '\Api')
-            ->as('api.')
-            ->prefix('api')
-            ->middleware(['api', 'throttle:' . config('setting-developer.throttle')])
-            ->group(base_path('routes/api.php'));
-    }
+	protected function bootAdminRoutes(): void
+	{
+		Route::namespace($this->namespace . '\Admin')
+			->as('admin.')
+			->prefix('admin')
+			->middleware(['web', 'auth'])
+			->group(base_path('routes/admin.php'));
+	}
 
-    protected function mapAuthRoutes()
-    {
-        Route::namespace($this->namespace . '\Auth')
-            ->as('auth.')
-            ->prefix('auth')
-            ->middleware('web')
-            ->group(base_path('routes/auth.php'));
-    }
+	protected function bootAuthRoutes(): void
+	{
+		Route::namespace($this->namespace . '\Auth')
+			->as('auth.')
+			->prefix('auth')
+			->middleware('web')
+			->group(base_path('routes/auth.php'));
+	}
 
-    protected function mapFrontRoutes()
-    {
-        Route::namespace($this->namespace . '\Front')
-            ->as('front.')
-            ->middleware('web')
-            ->group(base_path('routes/front.php'));
-    }
+	protected function bootFrontRoutes(): void
+	{
+		Route::namespace($this->namespace . '\Front')
+			->as('front.')
+			->middleware('web')
+			->group(base_path('routes/front.php'));
+	}
 
-    protected function mapFilemanagerRoutes()
-    {
-        Route::group(['prefix' => 'admin/filemanager', 'middleware' => ['web', 'auth', 'can:index,App\Models\File']], function () {
-            \UniSharp\LaravelFilemanager\Lfm::routes();
-        });
-    }
+	protected function bootApiRoutes(): void
+	{
+		Route::namespace($this->namespace . '\Api')
+			->as('api.')
+			->prefix('api')
+			->middleware(['auth:api'])
+			->group(base_path('routes/api.php'));
+	}
 }

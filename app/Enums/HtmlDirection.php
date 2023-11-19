@@ -1,12 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
-use App\Services\BaseEnum;
-
-final class HtmlDirection extends BaseEnum
+final class HtmlDirection
 {
-    const data = [
+	public const data = [
 		'rtl' => 'Right to left',
 		'ltr' => 'Left to right',
 	];

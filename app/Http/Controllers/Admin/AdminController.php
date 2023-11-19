@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Admin;
 
-use App\Services\BaseResourceController;
+use App\Cms\Controllers\Admin\AdminResourceController;
 
-class AdminController extends BaseResourceController
-{}
+final class AdminController extends AdminResourceController
+{
+}

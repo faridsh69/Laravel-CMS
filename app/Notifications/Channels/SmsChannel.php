@@ -1,74 +1,72 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Notifications\Channels;
 
-use App\Services\BaseChannel;
 use Log;
 use SoapClient;
 
-class SmsChannel extends BaseChannel
+final class SmsChannel
 {
-	public function send($notifiable, $notification)
+	public function send($notifiable, $notification): void
 	{
-        $phone = $notifiable->phone;
-        $message = $notification->smsMessage;
-        $sender = config('sms.sender');
-        $api_key = config('sms.api_key');
-        $driver = config('sms.driver');
+		$phone = $notifiable->phone;
+		$message = $notification->smsMessage;
+		$sender = config('sms.sender');
+		$api_key = config('sms.api_key');
+		$driver = config('sms.driver');
 
-        if($driver === 'kavenegar'){
-            try{
-                $kavenegar_api = new \Kavenegar\KavenegarApi($api_key);
-                $kavenegar_api->Send($sender, $phone, $message);
-            }catch(\Kavenegar\Exceptions\ApiException $e){
-                Log::error([
-                    'error' => $e->errorMessage(),
-                    'phone' => $phone,
-                    'message' => $message,
-                    'sender' => $sender,
-                    'api_key' => $api_key,
-                    'driver' => $driver,
-                ]);
-            }
-            catch(\Kavenegar\Exceptions\HttpException $e){
-                Log::error([
-                    'error' => $e->errorMessage(),
-                    'info' => 'در زمانی که مشکلی در برقرای ارتباط با وب سرویس وجود داشته باشد این خطا رخ می دهد',
-                    'phone' => $phone,
-                    'message' => $message,
-                    'sender' => $sender,
-                    'api_key' => $api_key,
-                    'driver' => $driver,
-                ]);
-            }
-        }
-        elseif($driver === 'raygansms')
-        {
-            $url = 'http://smspanel.trez.ir/api/smsAPI/SendMessage';
-            $post_data = json_encode([
-                'PhoneNumber' => $sender,
-                'Message' => $message,
-                'Mobiles' => [$phone],
-                'UserGroupID' => uniqid(),
-                'SendDateInTimeStamp' => time(),
-            ]);
+		if ($driver === 'kavenegar') {
+			try {
+				$kavenegar_api = new \Kavenegar\KavenegarApi($api_key);
+				$kavenegar_api->Send($sender, $phone, $message);
+			} catch (\Kavenegar\Exceptions\ApiException $e) {
+				Log::error([
+					'error' => $e->errorMessage(),
+					'phone' => $phone,
+					'message' => $message,
+					'sender' => $sender,
+					'api_key' => $api_key,
+					'driver' => $driver,
+				]);
+			} catch (\Kavenegar\Exceptions\HttpException $e) {
+				Log::error([
+					'error' => $e->errorMessage(),
+					'info' => 'در زمانی که مشکلی در برقرای ارتباط با وب سرویس وجود داشته باشد این خطا رخ می دهد',
+					'phone' => $phone,
+					'message' => $message,
+					'sender' => $sender,
+					'api_key' => $api_key,
+					'driver' => $driver,
+				]);
+			}
+		} elseif ($driver === 'raygansms') {
+			$url = 'http://smspanel.trez.ir/api/smsAPI/SendMessage';
+			$post_data = json_encode([
+				'PhoneNumber' => $sender,
+				'Message' => $message,
+				'Mobiles' => [$phone],
+				'UserGroupID' => uniqid(),
+				'SendDateInTimeStamp' => time(),
+			]);
 
-            $curl_service = new \App\Services\BaseCurlService();
-            $raygansms_api = $curl_service->call_curl($url, 'POST', $post_data, null, $api_key);
-            $result = json_decode($raygansms_api, true);
-            if($result === null || $result['Code'] !== 0){
-                Log::error([
-                    'error' => $raygansms_api,
-                    'info' => 'نام کاربری یا کلمه عبور صحیح نمی باشد',
-                    'phone' => $phone,
-                    'message' => $message,
-                    'sender' => $sender,
-                    'api_key' => $api_key,
-                    'driver' => $driver,
-                ]);
-            }
-        }
-    }
+			$curl_service = new \App\Services\BaseCurlService();
+			$raygansms_api = $curl_service->call_curl($url, 'POST', $post_data, null, $api_key);
+			$result = json_decode($raygansms_api, true);
+			if ($result === null || $result['Code'] !== 0) {
+				Log::error([
+					'error' => $raygansms_api,
+					'info' => 'نام کاربری یا کلمه عبور صحیح نمی باشد',
+					'phone' => $phone,
+					'message' => $message,
+					'sender' => $sender,
+					'api_key' => $api_key,
+					'driver' => $driver,
+				]);
+			}
+		}
+	}
 }
 // ini_set("soap.wsdl_cache_enabled", "0");
 // $sms_client = new SoapClient('http://payamak-service.ir/SendService.svc?wsdl', array('encoding'=>'UTF-8'));

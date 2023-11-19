@@ -1,4 +1,4 @@
-<div class="testimonials-area section-padding-100 bg-img bg-overlay" style="background-image: url({{ asset('images/front/themes/classic/img/bg-img/bg-2.jpg') }});" id="testimonial">
+<div class="testimonials-area section-padding-100 bg-img bg-overlay" style="background-image: url({{ asset('css/front/themes/classic/background.jpg') }});" id="testimonial">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -12,7 +12,7 @@
             <div class="col-12 col-md-6">
                 <div class="single-testimonial-area mb-100 d-flex wow fadeInUp" data-wow-delay="400ms">
                     <div class="testimonial-thumb">
-                        <img src="{{ $testimonial_item->image }}" alt="testimonial image">
+                        <img src="{{ $testimonial_item->avatar }}" alt="testimonial image">
                     </div>
                     <div class="testimonial-content">
                         <h5>{{ $testimonial_item->title }}</h5>

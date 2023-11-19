@@ -8,7 +8,7 @@
 	<li><a href="#refrences">Refrences</a></li>
 </ul>
 <p></p><br>
-<img src="{{ $page->image }}">
+<img src="{{ $page->avatar }}">
 <h2 id="benefits">Benefits</h2>
 <p>Routes seperated in admin, auth, api and front part and take a look they are easy to read and understand.</p>
 <h2 id="how-to-use">How to use</h2>

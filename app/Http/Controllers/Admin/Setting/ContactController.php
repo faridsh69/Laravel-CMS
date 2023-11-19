@@ -1,8 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Admin\Setting;
 
-class ContactController extends SettingController
+use App\Cms\Controllers\Admin\AdminSettingsController;
+
+final class ContactController extends AdminSettingsController
 {
 	public string $modelNameSlug = 'setting-contact';
 }

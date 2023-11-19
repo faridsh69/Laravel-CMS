@@ -1,18 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
-use App\Services\BaseEnum;
-
-final class FactorStatus extends BaseEnum
+final class FactorStatus
 {
-    const data = [
-		1 => 'Initial',
-		2 => 'Payment',
-		3 => 'Proccessing',
-		4 => 'Preparing',
-		5 => 'Delivaering',
-		6 => 'Canceled',
-		7 => 'Succeed',
+	public const data = [
+		'Initial' => 'Initial',
+		'Payment' => 'Payment',
+		'Proccessing' => 'Proccessing',
+		'Preparing' => 'Preparing',
+		'Delivaering' => 'Delivaering',
+		'Canceled' => 'Canceled',
+		'Succeed' => 'Succeed',
 	];
 }

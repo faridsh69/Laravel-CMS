@@ -12,11 +12,9 @@
             @foreach($modules->where('type', 'team')->take(4) as $team)
             <div class="col-12 col-sm-6 col-lg-3">
                 <div class="single-teachers-area text-center mb-100 wow fadeInUp" data-wow-delay="400ms">
-                    <!-- Thumbnail -->
                     <div class="teachers-thumbnail">
-                        <img src="{{ $team->image }}" alt="team member">
+                        <img src="{{ $team->avatar() }}" alt="team member">
                     </div>
-                    <!-- Meta Info -->
                     <div class="teachers-info mt-30">
                         <h5>{{ $team->full_name }}</h5>
                         <span>{{ $team->title }}</span>

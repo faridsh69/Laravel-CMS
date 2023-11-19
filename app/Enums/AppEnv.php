@@ -1,12 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
-use App\Services\BaseEnum;
-
-final class AppEnv extends BaseEnum
+final class AppEnv
 {
-    const data = [
+	public const data = [
 		'production' => 'Production',
 		'development' => 'Development',
 		'testing' => 'Testing',

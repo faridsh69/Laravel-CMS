@@ -1,26 +1,58 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
-use App\Services\BaseModel;
+use App\Cms\Models\CmsModel;
 
-class GymProgram extends BaseModel
+final class GymProgram extends CmsModel
 {
-    public $columns = [
-        ['name' => 'title'],
-        ['name' => 'url'],
-        ['name' => 'description'],
-        ['name' => 'price'],
-        ['name' => 'discount_price'],
-        ['name' => 'calorie'],
-        ['name' => 'properties'],
-        ['name' => 'content'],
-        ['name' => 'image'],
-        ['name' => 'video'],
-        ['name' => 'activated'],
-        ['name' => 'category_id'],
-        ['name' => 'tags'],
-        ['name' => 'relateds'],
-        ['name' => 'language'],
-    ];
+	public $columns = [
+		[
+			'name' => 'title',
+		],
+		[
+			'name' => 'url',
+		],
+		[
+			'name' => 'description',
+		],
+		[
+			'name' => 'price',
+		],
+		[
+			'name' => 'discount_price',
+		],
+		[
+			'name' => 'calorie',
+		],
+		[
+			'name' => 'properties',
+		],
+		[
+			'name' => 'content',
+		],
+		[
+			'name' => 'image',
+		],
+		[
+			'name' => 'video',
+		],
+		[
+			'name' => 'activated',
+		],
+		[
+			'name' => 'category_id',
+		],
+		[
+			'name' => 'tags',
+		],
+		[
+			'name' => 'relateds',
+		],
+		[
+			'name' => 'language',
+		],
+	];
 }

@@ -8,7 +8,7 @@
 	<li><a href="#refrences">Refrences</a></li>
 </ul>
 <p></p><br>
-<img src="{{ $page->image }}">
+<img src="{{ $page->avatar }}">
 <h2 id="benefits">Benefits</h2>
 <p>Admin panel contains three urls to import, export and print all the data in that table.</p>
 <h2 id="how-to-use">How to use</h2>

@@ -7,7 +7,7 @@
 	<li><a href="#used-packages">Used Packages</a></li>
 	<li><a href="#refrences">Refrences</a></li>
 </ul>
-<img src="{{ $page->image }}">
+<img src="{{ $page->avatar }}">
 <h2 id="benefits">Benefits</h2>
 <p>Get familiar with all forms types and use them, all type of form inputs craeted and is ready to develop by laravel-form-builder.</p>
 <p>In every project you need to write form and save, edit, show and delete records so we need to have a lot of field types ready to can use them in project, here you go, all type of field defined and just you need to choose which one is suitable for your project.</p>

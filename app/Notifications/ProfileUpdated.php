@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Notifications;
 
-use App\Services\BaseNotification;
+use App\Cms\Notification;
 
-class ProfileUpdated extends BaseNotification
-{}
+final class ProfileUpdated extends Notification
+{
+}

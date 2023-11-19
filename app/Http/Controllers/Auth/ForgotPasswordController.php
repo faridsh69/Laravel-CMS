@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -8,37 +10,37 @@ use App\Notifications\PasswordChanged;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class ForgotPasswordController extends Controller
+final class ForgotPasswordController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
+	public function __construct()
+	{
+		$this->middleware('guest');
+	}
 
-    public function index()
-    {
-        return view('auth.forget-password');
-    }
+	public function index()
+	{
+		return view('auth.forget-password');
+	}
 
-    public function sendResetLinkEmail(Request $request)
-    {
-        $email = $request->input('email');
-        $user = User::where('email', $email)->first();
-        if(! $user)
-        {
-            $request->session()->flash('alert-danger', __('user not found'));
-            return redirect()->back();
-        }
-        $new_password = rand(100000, 999999);
-        $user->password = Hash::make($new_password);
-        $user->save();
+	public function sendResetLinkEmail(Request $request)
+	{
+		$email = $request->input('email');
+		$user = User::where('email', $email)->first();
+		if (!$user) {
+			$request->session()->flash('alert-danger', __('user not found'));
 
-        $password_changed =  new PasswordChanged();
-        $password_changed->setCode($new_password);
-        $user->notify($password_changed);
+			return redirect()->back();
+		}
+		$new_password = mt_rand(100000, 999999);
+		$user->password = Hash::make($new_password);
+		$user->save();
 
-        $request->session()->flash('alert-danger', __('password sent to your email'));
+		$password_changed = new PasswordChanged();
+		$password_changed->setCode($new_password);
+		$user->notify($password_changed);
 
-        return redirect()->route('auth.login');
-    }
+		$request->session()->flash('alert-danger', __('password sent to your email'));
+
+		return redirect()->route('auth.login');
+	}
 }

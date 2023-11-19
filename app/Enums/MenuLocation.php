@@ -1,14 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
-use App\Services\BaseEnum;
-
-final class MenuLocation extends BaseEnum
+final class MenuLocation
 {
-    const data = [
-		'1' => 'top-menu',
-		'2' => 'footer-menu',
-		'3' => 'side-menu',
+	public const data = [
+		'top-menu' => 'top-menu',
+		'footer-menu' => 'footer-menu',
+		'side-menu' => 'side-menu',
 	];
 }

@@ -41,7 +41,6 @@
                                 <a href="{{ route('front.'. Str::kebab($category->type). '.category.show', $category->url) }}" class="post-title">
                                     <h6>{{ $category->title }}</h6>
                                 </a>
-                                <a href="#" class="post-date">19 actions</a>
                                 <br>
                                 {{ __('description') }}: {{ $category->description }}
                                 <br>
@@ -65,8 +64,6 @@
                                 <a href="{{ route('front.'. Str::kebab($tag->type). '.tag.show', $tag->url) }}" class="post-title">
                                     <h6>{{ $tag->title }}</h6>
                                 </a>
-                                <a href="#" class="post-date">19 actions</a>
-                                <br>
                                 {{ __('description') }}: {{ $tag->description }}
                                 <br>
                                 {{ __('created at') }}:
@@ -84,14 +81,12 @@
                         @foreach($categories as $category)
                         <div class="single-latest-blog-post d-flex mb-30">
                             <div class="latest-blog-post-thumb">
-                                <!-- <img src="{{ $category->image }}" alt=""> -->
                                 <i class="fa {{ $category->icon }}" style="font-size: 30px"></i>
                             </div>
                             <div class="latest-blog-post-content">
                                 <a href="{{ route('front.'. Str::kebab($category->type). '.category.show', $category->url) }}" class="post-title">
                                     <h6>{{ $category->title }}</h6>
                                 </a>
-                                <a href="#" class="post-date">19 actions</a>
                             </div>
                         </div>
                         @endforeach
@@ -110,7 +105,6 @@
                                 <a href="{{ route('front.'. Str::kebab($tag->type). '.tag.show', $tag->url) }}" class="post-title">
                                     <h6>{{ $tag->title }}</h6>
                                 </a>
-                                <a href="#" class="post-date">19 actions</a>
                             </div>
                         </div>
                         @endforeach

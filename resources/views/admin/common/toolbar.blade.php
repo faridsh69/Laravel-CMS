@@ -12,7 +12,7 @@
 					<span class="m-dropdown__arrow m-dropdown__arrow--center"></span>
 					<div class="m-dropdown__inner">
 						<div class="m-dropdown__header m--align-center" style="background: url(
-							{{ asset('images/admin/notification_bg.jpg') }}) ; background-size: cover;">
+							{{ asset('css/admin/images/notification.jpg') }}) ; background-size: cover;">
 							<span class="m-dropdown__header-title">
 								3 New
 							</span>
@@ -130,7 +130,9 @@
 			<li class="m-nav__item m-topbar__user-profile m-topbar__user-profile--img  m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--header-bg-fill m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" data-dropdown-toggle="click">
 				<a href="#" class="m-nav__link m-dropdown__toggle">
 					<span class="m-topbar__userpic">
-						<img class="m--img-rounded m--marginless m--img-centered" src="{{ Auth::user()->src('profile_picture') }}"
+						<img class="m--img-rounded m--marginless m--img-centered"
+							src="{{ Auth::user()->avatar('profile_picture') }}"
+							style="height: 41px !important; width: 41px !important" 
 						/>
 					</span>
 					<span class="m-topbar__username m--hide">
@@ -141,10 +143,12 @@
 					<span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
 					<div class="m-dropdown__inner">
 						<div class="m-dropdown__header m--align-center" 
-							style= "background: url( {{ asset('images/admin/user_profile_bg.jpg') }}); background-size: cover;">
+							style= "background: url( {{ asset('css/admin/images/user_profile.jpg') }}); background-size: cover;">
 							<div class="m-card-user m-card-user--skin-dark">
 								<div class="m-card-user__pic">
-									<img class="m--img-rounded m--marginless" src="{{ Auth::user()->src('profile_picture') }}"/>
+									<img class="m--img-rounded m--marginless"
+										alt="user profile picture"
+										src="{{ Auth::user()->avatar('profile_picture') }}"/>
 								</div>
 								<div class="m-card-user__details">
 									<span class="m-card-user__name m--font-weight-500">

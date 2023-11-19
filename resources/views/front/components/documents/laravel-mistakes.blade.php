@@ -8,7 +8,7 @@
 	<li><a href="#">Standard restfull api</a></li>
 	<li><a href="#">Use yield for script and style</a></li>
 </ul>
-<img src="{{ $page->image }}">
+<img src="{{ $page->avatar }}">
 <h2 id="">Use relation in foreach array</h2>
 <p>
 	When you are using foreach($user->orders as $order) in every time this loop runs it will calculate $user->orders but you need to define it then use it $orders = $user->orders; foreach($orders as $order)

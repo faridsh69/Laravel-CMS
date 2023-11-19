@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Policies;
 
-use App\Services\BaseAuthPolicy;
+use App\Cms\Policies\AuthPolicy;
 
-class RatePolicy extends BaseAuthPolicy
+final class RatePolicy extends AuthPolicy
 {
 	public string $modelNameSlug = 'rate';
 }

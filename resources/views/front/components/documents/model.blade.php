@@ -7,7 +7,7 @@
 	<li><a href="#used-packages">Used Packages</a></li>
 	<li><a href="#refrences">Refrences</a></li>
 </ul>
-<img src="{{ $page->image }}">
+<img src="{{ $page->avatar }}">
 <h2 id="benefits">Benefits</h2>
 <p>How to write your models in cms-laravel, how project will run with just one <b>array</b> in your model, Try to find out why this cms can help to develop more <b>easier</b> and <b>faster</b>.
 You want to define columns in model, then develop them in your migrations file, and your forms and all part of your project.<br> When you want to change any column you should search through all your codes and its disgusting,<br> So just define an array about what columns you want in database, forms and table then change it just one time in your model ;)</p>

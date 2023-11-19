@@ -7,7 +7,7 @@
 	<li><a href="#used-packages">Used Packages</a></li>
 	<li><a href="#refrences">Refrences</a></li>
 </ul>
-<img src="{{ $page->image }}">
+<img src="{{ $page->avatar }}">
 <h2 id="benefits">Benefits</h2>
 <p>Everything is configured in settings at laravel CMS. Feel free to check settings section.</p>
 <p>This is list of configures that can be change by admin panel setting section:</p>

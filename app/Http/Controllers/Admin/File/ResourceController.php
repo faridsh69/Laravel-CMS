@@ -1,15 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Admin\File;
 
-use App\Services\BaseResourceController;
+use App\Cms\Controllers\Admin\AdminResourceController;
 
-class ResourceController extends BaseResourceController
+final class ResourceController extends AdminResourceController
 {
-    public string $modelNameSlug = 'file';
+	public string $modelNameSlug = 'file';
 
-    public function removeBySrc()
-    {
+	public function removeBySrc()
+	{
 		$src = $this->httpRequest->input('src');
 		$file = $this->modelRepository->where('src', $src)->first();
 		$file_model_namespace = $file->fileable_type;
@@ -17,7 +19,9 @@ class ResourceController extends BaseResourceController
 		$this->destroy($file->id);
 
 		return response()->json([
-            'data' => ['message' => __('File deleted successfully!')],
-        ]);
-    }
+			'data' => [
+				'message' => __('File deleted successfully!'),
+			],
+		]);
+	}
 }

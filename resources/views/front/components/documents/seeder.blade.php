@@ -8,7 +8,7 @@
 	<li><a href="#refrences">Refrences</a></li>
 </ul>
 <p></p><br>
-<img src="{{ $page->image }}">
+<img src="{{ $page->avatar }}">
 <h2 id="benefits">Benefits</h2>
 <p>Seeder is for testing some structure and see that if user wants to if he add some data and show them in system, then every thing is working or not. here autogerenated seeders are existed to use.</p>
 <h2 id="how-to-use">How to use</h2>

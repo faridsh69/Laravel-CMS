@@ -28,11 +28,11 @@
     "document_rejected_subject" : "Documents",
     "password_changed_message" : "Your new password is: %s",
     "password_changed_subject" : "Change Password",
-    "form_submitted_message" : "Form submitted on %s successfully.", 
+    "form_submitted_message" : "Form submitted on %s successfully.",
     "form_submitted_subject" : "Form Submitted",
     "menew" : "MeneW",
     "dear_customer" : "Dear Customer",
-    "dear_user" : "Dear User", 
+    "dear_user" : "Dear User",
     "regards" : "Regards",
     "all" : "All",
     "watch" : "Watch",
@@ -158,9 +158,9 @@
     "profile_updated_subject" : "Profile Updated",
     "document_rejected_message" : "Documents sended for %s was rejected.",
     "document_rejected_subject" : "Documents Rejected",
-    "email_verified_message" : "Your Activation Code: %s", 
+    "email_verified_message" : "Your Activation Code: %s",
     "email_verified_subject" : "Activation Code",
-    "phone_verified_message" : "Your Activation Code: %s", 
+    "phone_verified_message" : "Your Activation Code: %s",
     "phone_verified_subject" : "Activation Code",
     "menew" : "Menew",
     "dear customer" : "Dear Customer",
@@ -201,7 +201,7 @@
     "tagend" : "Tagend",
     "tagend_manager" : "Tagend Manager",
     "tagend_create" : "Create new tagend",
-    
+
     "role" : "Role",
     "role_manager" : "Role manager",
     "role_create" : "Create new role",
@@ -313,7 +313,7 @@
     "facebook" : "Facebook",
     "skype" : "Skype",
     "instagram" : "Instagram",
-    "telegram" : "Telegram",    
+    "telegram" : "Telegram",
     "gender" : "Gender",
     "birth date" : "Birth Date",
     "salary" : "Salary",
@@ -520,6 +520,7 @@
     "no_file_existed" : "No file uploaded.",
     "not_found" : "Not Found.",
     "list_is_empty" : "This list is empty.",
-    "list_successfully" : "List Found Successfully.",
-    "show_successfully" : "Item Found Successfully."
+    "list_successfully" : " List is ready.",
+    "show_successfully" : "Item loaded Successfully.",
+    "validation_failed" : "Validation failed."
 }

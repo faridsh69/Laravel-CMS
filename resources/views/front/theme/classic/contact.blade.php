@@ -58,7 +58,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-lg-7">
-                            <div class="contact-form-area wow fadeInUp" data-wow-delay="500ms">
+                            <div class="contact-form-area wow fadeInUp" data-wow-delay="100ms">
                                 <form action="{{ route('front.page.submit-form', 1) }}" method="post">
                                     @csrf
                                     <input type="text" class="form-control" id="name" placeholder="Name">

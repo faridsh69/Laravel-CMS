@@ -5,7 +5,7 @@
             'title' => config('setting-general.default_meta_title') . ' | ' . $page->title,
             'description' => $page->description ?: config('setting-general.default_meta_description'),
             'keywords' => $page->keywords,
-            'image' => $page->asset_image ?: config('setting-general.default_meta_image'),
+            'image' => $page->mainImage() ?: config('setting-general.default_meta_image'),
             'google_index' => config('setting-general.google_index') ?: $page->google_index,
             'canonical_url' => $page->canonical_url ?: url()->current(),
         ];

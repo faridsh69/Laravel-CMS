@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Notifications;
 
-use App\Services\BaseNotification;
+use App\Cms\Services\NotificationService;
 
-class DocumentRejected extends BaseNotification
-{}
+final class DocumentRejected extends NotificationService
+{
+}

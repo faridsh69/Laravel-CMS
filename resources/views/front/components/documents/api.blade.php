@@ -8,7 +8,7 @@
 	<li><a href="#refrences">Refrences</a></li>
 </ul>
 <br>
-<img src="{{ $page->image }}">
+<img src="{{ $page->avatar }}">
 <h2 id="benefits">Benefits</h2>
 <p>All apis is ready! There is a powefull baseApiController that needed to be extended and your api is fully ready.</p>
 <h2 id="how-to-use">How to use</h2>

@@ -11,16 +11,21 @@
 				<h3 class="m-portlet__head-text">
 					ID: {{ $data['id'] }}
 					@if(isset($data['password']))
-						<a href="{{ route('admin.user.login', $data['id']) }}" class="btn btn-success btn-sm m-btn m-btn--custom m-btn--air m-btn--pill">
-							{{ __('Login with this user') }}
-						</a>
-						<a href="{{ route('admin.user.identify', $data['id']) }}" class="btn btn-primary btn-sm m-btn m-btn--custom m-btn--air m-btn--pill">
-							{{ __('Check user identify') }}
-						</a>
+					<a href="{{ route('admin.user.login', $data['id']) }}" class="btn btn-success btn-sm m-btn m-btn--custom m-btn--air m-btn--pill">
+						{{ __('Login with this user') }}
+					</a>
+					<a href="{{ route('admin.user.identify', $data['id']) }}" class="btn btn-primary btn-sm m-btn m-btn--custom m-btn--air m-btn--pill">
+						{{ __('Check user identify') }}
+					</a>
 					@endif
-					@if(false)
+					@if(in_array(Str::kebab(class_basename($data)), config('cms.front_routes')) && isset($data['url'])))
 					<a href="{{ route('front.'. Str::kebab(class_basename($data)) .'.show', $data['url']) }}" target="_blank" class="btn btn-danger btn-sm m-btn m-btn--custom m-btn--air m-btn--pill">
 						{{ __('Show at website') }}
+					</a>
+					@endif
+					@if(in_array(Str::kebab(class_basename($data)), config('cms.api_routes')) && isset($data['url'])))
+					<a href="{{ route('api.'. Str::kebab(class_basename($data)) .'.show', $data['url']) }}" target="_blank" class="btn btn-info btn-sm m-btn m-btn--custom m-btn--air m-btn--pill">
+						{{ __('Show API') }}
 					</a>
 					@endif
 				</h3>
@@ -32,80 +37,75 @@
 				{{ $data->created_at }}
 				<br>
 				{{ ('updated at') }}:
-				{{ $data->updated_at }}	
-			</small>	
+				{{ $data->updated_at }}
+			</small>
 		</div>
 	</div>
 
 	<div class="m-portlet__body">
 		@if(isset($data['answers']))
-			@include('admin.page.answer.show')
+		@include('admin.page.answer.show')
 		@endif
 
 		@foreach($data->getColumns() as $column)
+		<h6 class="m--font-boldest m--font-brand">{{ __($column['name']) }}</h6>
+		<div class="mb-4 show-file">
+			@if($column['form_type'] === 'file')
 			@php
-				$file_accept = '';
-				if($column['form_type'] === 'file')
-				{
-					$file_accept = $column['file_accept'];
-					$srcs = $data->srcs($column['name']); 
-				}
+			$file_accept = $column['file_accept'];
 			@endphp
-			<h6 class="m--font-boldest m--font-brand">{{ __($column['name']) }}</h6>
-			<div class="mb-4 show-file">
-			@if($file_accept)
-				@foreach($srcs as $src)
-				<div class="show-file">
-					@if($file_accept === 'image')
-				    	<img alt="image" src="{{ $src }}">
-					@elseif($file_accept === 'video')
-						<video controls>
-							<source src="{{ $src }}">
-						</video>
-					@elseif($file_accept === 'audio')
-						<audio controls>
-							<source src="{{ $src }}">
-						</audio>
-					@else
-						{{ $src }}
-					@endif
-					<div class="file-tools mt-2">
-						<a download href="{{ $src }}" class="btn btn-outline-info m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air"><span>
-						    <i class="la la-download"></i></span>
-						</a>
-						<a target="blank" href="{{ $src }}" class="btn btn-outline-success m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air"><span>
-						    <i class="la la-eye"></i></span>
-						</a>
-					</div>
-				</div>
-				@endforeach
-				@if(count($srcs) === 0)
-					<span style="color: red">Null</span>
-				@endif
-			@elseif(!is_object($data[$column['name']]) )
-				@if($data[$column['name']] === null)
-					<span style="color: red">Null</span>
+			@foreach($data->srcs($column['name']) as $src)
+			<div class="show-file">
+				@if($file_accept === 'image/*')
+				<img alt="image" src="{{ $src }}">
+				@elseif($file_accept === 'video/*')
+				<video controls>
+					<source src="{{ $src }}">
+				</video>
+				@elseif($file_accept === 'audio/*')
+				<audio controls>
+					<source src="{{ $src }}">
+				</audio>
 				@else
-					@if($column['form_type'] === 'entity')
-						@php
-							$related_model = (new $column['class'])->find($data[$column['name']]);
-						@endphp
-
-						@each('admin.common.show-related-table', [ [$related_model] ], 'items')
-					@else
-						{{ $data[$column['name']] }}
-					@endif
+				{{ $src }}
 				@endif
-			@else
-				@php
-					$relateItems = $data[$column['name']];
-					if(get_class($data[$column['name']]) != 'Illuminate\Database\Eloquent\Collection') {
-						$relateItems = collect([$relateItems]);
-					}
-				@endphp
-				@each('admin.common.show-related-table', [$relateItems], 'items')
-			@endif
+				<div class="file-tools mt-2">
+					<a download href="{{ $src }}" class="btn btn-outline-info m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air"><span>
+							<i class="la la-download"></i></span>
+					</a>
+					<a target="blank" href="{{ $src }}" class="btn btn-outline-success m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air"><span>
+							<i class="la la-eye"></i></span>
+					</a>
+				</div>
 			</div>
+			@endforeach
+			@if(count($data->srcs($column['name'])) === 0)
+			<span style="color: red">No Files Uploaded</span>
+			@endif
+			@elseif(!is_object($data[$column['name']]) )
+			@if($data[$column['name']] === null)
+			<span style="color: red">Null</span>
+			@else
+			@if($column['form_type'] === 'entity')
+			@php
+			$related_model = (new $column['class'])->find($data[$column['name']]);
+			@endphp
+
+			@each('admin.common.show-related-table', [ [$related_model] ], 'items')
+			@else
+			{{ $data[$column['name']] }}
+			@endif
+			@endif
+			@else
+			@php
+			$relateItems = $data[$column['name']];
+			if(get_class($data[$column['name']]) != 'Illuminate\Database\Eloquent\Collection') {
+			$relateItems = collect([$relateItems]);
+			}
+			@endphp
+			@each('admin.common.show-related-table', [$relateItems], 'items')
+			@endif
+		</div>
 		@endforeach
 	</div>
 </div>
@@ -135,9 +135,11 @@
 						<span class="m-list-timeline__badge m-list-timeline__badge--brand"></span>
 						<span class="m-list-timeline__icon flaticon-exclamation-1"></span>
 						<span class="m-list-timeline__text">
-							{{ $activity->description }}
-							By 
-							{{ $activity->causer->fullName }}
+							{{ $activity->title }} -
+							{{ $activity->properties }}
+							<br />
+							By
+							{{ $activity->user->name }}
 							At
 							{{ $activity->created_at }}
 						</span>

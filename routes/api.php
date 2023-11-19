@@ -1,28 +1,24 @@
 <?php
 
+declare(strict_types=1);
+
+use Illuminate\Support\Facades\Route;
+
 $modelNameSlugs = Config::get('cms.api_routes');
-foreach($modelNameSlugs as $modelNameSlug)
-{
-	$controller_name = \Str::studly($modelNameSlug) . '\ResourceController';
-	if (! file_exists(__DIR__ . '\..\app\Http\Controllers\Api\\' . $controller_name . '.php')) {
-		$controller_name = 'ApiController';
+
+foreach ($modelNameSlugs as $modelNameSlug) {
+	$controllerName = \Str::studly($modelNameSlug) . '\ApiController';
+	if (!file_exists(__DIR__ . '\..\app\Http\Controllers\Api\\' . $controllerName . '.php')) {
+		$controllerName = 'ApiController';
 	}
-	Route::group(['prefix' => $modelNameSlug, 'as' => $modelNameSlug . '.'], function () use ($controller_name) {
-		Route::resource('list', $controller_name);
+	Route::resource($modelNameSlug, $controllerName);
+
+	Route::group([
+		'prefix' => $modelNameSlug,
+		'as' => $modelNameSlug . '.',
+	], function () use ($controllerName): void {
+		Route::get('id/{id}', $controllerName . '@getById')->name('get-by-id');
+		Route::put('id/{id}', $controllerName . '@updateById')->name('update-by-id');
+		Route::delete('id/{id}', $controllerName . '@destroyById')->name('destroy-by-id');
 	});
 }
-
-// Route::get('user', 'GeneralController@getUser')->name('user')->middleware('auth:api');
-// Route::get('v', 'GeneralController@getVersion')->name('version');
-
-// Route::group([], function () {
-// 	Route::group(['prefix' => 'general', 'as' => 'general.'], function () {
-// 		Route::get('countries', 'GeneralController@getCountries')->name('countries');
-// 		Route::get('cities/{country_name}', 'GeneralController@getCities')->name('cities');
-// 	});
-// });
-
-// Route::group(['prefix' => 'v1', 'as' => 'v1.', 'namespace' => 'V1'], function () {
-// 	Route::resource('category', 'CategoryController');
-// 	Route::resource('product', 'ProductController');
-// });

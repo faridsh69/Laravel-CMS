@@ -18,7 +18,7 @@
                         <a href="{{ $service->url }}" class="btn academy-btn btn-sm">{{ __('See More') }}</a>
                         @endif
                     </div>
-                    <div class="popular-course-thumb bg-img" style="background-image: url({{ $service->image }});"></div>
+                    <div class="popular-course-thumb bg-img" style="background-image: url({{ $service->avatar }});"></div>
                 </div>
             </div>
             @endforeach

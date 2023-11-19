@@ -33,9 +33,9 @@
                     @enderror
 				</div>
 				<div class="form-group m-form__group rtl-text-right">
-					<input class="form-control m-input m-login__form-input--last ltr" type="password" placeholder="{{ __('password confirmation') }}" id="password-confirm" name="password_confirmation" required autocomplete="off">
+					<input class="form-control m-input ltr" type="password" placeholder="{{ __('password confirmation') }}" id="password-confirm" name="password_confirmation" required autocomplete="off">
 				</div>
-				<div class="form-group m-form__group rtl-text-right">
+				<div class="form-group m-form__group rtl-text-right mt-3">
 					@include('vendor/laravel-form-builder/captcha')
 				</div>
 				<div class="row form-group m-form__group m-login__form-sub">

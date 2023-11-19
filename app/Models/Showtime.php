@@ -1,26 +1,58 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
-use App\Services\BaseModel;
+use App\Cms\Models\CmsModel;
 
-class Showtime extends BaseModel
+final class Showtime extends CmsModel
 {
-    public $columns = [
-        ['name' => 'title'],
-        ['name' => 'url'],
-        ['name' => 'description'],
-        ['name' => 'opening_hours'],
-        ['name' => 'price'],
-        ['name' => 'discount_price'],
-        ['name' => 'properties'],
-        ['name' => 'content'],
-        ['name' => 'image'],
-        ['name' => 'video'],
-        ['name' => 'activated'],
-        ['name' => 'category_id'],
-        ['name' => 'tags'],
-        ['name' => 'relateds'],
-        ['name' => 'language'],
-    ];
+	public $columns = [
+		[
+			'name' => 'title',
+		],
+		[
+			'name' => 'url',
+		],
+		[
+			'name' => 'description',
+		],
+		[
+			'name' => 'opening_hours',
+		],
+		[
+			'name' => 'price',
+		],
+		[
+			'name' => 'discount_price',
+		],
+		[
+			'name' => 'properties',
+		],
+		[
+			'name' => 'content',
+		],
+		[
+			'name' => 'image',
+		],
+		[
+			'name' => 'video',
+		],
+		[
+			'name' => 'activated',
+		],
+		[
+			'name' => 'category_id',
+		],
+		[
+			'name' => 'tags',
+		],
+		[
+			'name' => 'relateds',
+		],
+		[
+			'name' => 'language',
+		],
+	];
 }

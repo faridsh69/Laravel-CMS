@@ -8,7 +8,7 @@
 	<li><a href="#refrences">Refrences</a></li>
 </ul>
 <p></p><br>
-<img src="{{ $page->image }}">
+<img src="{{ $page->avatar }}">
 <h2 id="benefits">Benefits</h2>
 <p>Uploading video, multiple files, validation on it, create thumbnail for images is ready now.</p>
 <h2 id="how-to-use">How to use</h2>

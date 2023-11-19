@@ -1,10 +1,10 @@
 @extends('admin.common.layout')
 
 @section('content')
-		<div class="row">
-			@include('admin.page.report.cms-summary')
-		</div>
-	</div>
+<div class="row">
+	@include('admin.page.report.cms-summary')
+</div>
+</div>
 </div>
 <div class="row">
 	@include('admin.page.report.cms-information')

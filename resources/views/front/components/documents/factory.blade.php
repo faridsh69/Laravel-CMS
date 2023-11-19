@@ -7,7 +7,7 @@
 	<li><a href="#used-packages">Used Packages</a></li>
 	<li><a href="#refrences">Refrences</a></li>
 </ul>
-<img src="{{ $page->image }}">
+<img src="{{ $page->avatar }}">
 <h2 id="benefits">Benefits</h2>
 <p>Factory is used for seed fake data in database and also it used in tests. factory will generate automatically based on your model columns.</p>
 <p>We need to define factory for every models that we have, but in this cms you dont have to do it, because all factories are already created by name and type of your model items.</p>

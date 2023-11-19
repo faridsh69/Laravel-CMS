@@ -4,7 +4,7 @@
             <div class="col-12">
                 <div class="partners-logo d-flex align-items-center justify-content-between flex-wrap">
                     @foreach($modules->where('type', 'partner')->take(5) as $partner)
-                    <a href="{{ $partner->url }}"><img src="{{ $partner->image }}" alt="partner"></a>
+                    <a href="{{ $partner->url }}"><img src="{{ $partner->avatar }}" alt="partner"></a>
                     @endforeach
                 </div>
             </div>

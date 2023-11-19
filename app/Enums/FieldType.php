@@ -1,12 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
-use App\Services\BaseEnum;
-
-final class FieldType extends BaseEnum
+final class FieldType
 {
-    const data = [
+	public const data = [
 		'text' => 'Text',
 		'textarea' => 'Textarea',
 		'number' => 'Number',

@@ -1,49 +1,61 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
-use App\Services\BaseModel;
+use App\Cms\Models\CmsModel;
 
-class Advertise extends BaseModel
+final class Advertise extends CmsModel
 {
-    public $columns = [
-        ['name' => 'title'],
-        ['name' => 'url'],
-        ['name' => 'description'],
-        ['name' => 'price'],
-        ['name' => 'discount_price'],
-        ['name' => 'color'],
-        ['name' => 'year'],
-        ['name' => 'properties'],
-        ['name' => 'content'],
-        [
-            'name' => 'factory_images',
-            'same_column_name' => 'image',
-        ],
-        [
-            'name' => 'buyer_images',
-            'same_column_name' => 'user_image',
-        ],
-        [
-            'name' => 'factory_videos',
-            'same_column_name' => 'video',
-        ],
-        [
-            'name' => 'buyer_videos',
-            'same_column_name' => 'user_video',
-        ],
-        [
-            'name' => 'factory_audios',
-            'same_column_name' => 'audio',
-        ],
-        [
-            'name' => 'buyer_audios',
-            'same_column_name' => 'user_audio',
-        ],
-        ['name' => 'activated'],
-        ['name' => 'category_id'],
-        ['name' => 'tags'],
-        ['name' => 'relateds'],
-        ['name' => 'language'],
-    ];
+	public $columns = [
+		[
+			'name' => 'title',
+		],
+		[
+			'name' => 'url',
+		],
+		[
+			'name' => 'description',
+		],
+		[
+			'name' => 'price',
+		],
+		[
+			'name' => 'discount_price',
+		],
+		[
+			'name' => 'color',
+		],
+		[
+			'name' => 'year',
+		],
+		[
+			'name' => 'properties',
+		],
+		[
+			'name' => 'content',
+		],
+		[
+			'name' => 'image',
+		],
+		[
+			'name' => 'video',
+		],
+		[
+			'name' => 'activated',
+		],
+		[
+			'name' => 'category_id',
+		],
+		[
+			'name' => 'tags',
+		],
+		[
+			'name' => 'relateds',
+		],
+		[
+			'name' => 'language',
+		],
+	];
 }

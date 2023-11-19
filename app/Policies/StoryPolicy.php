@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Policies;
 
-use App\Services\BaseAuthPolicy;
+use App\Cms\Policies\AuthPolicy;
 
-class StoryPolicy extends BaseAuthPolicy
+final class StoryPolicy extends AuthPolicy
 {
 	public string $modelNameSlug = 'story';
 }

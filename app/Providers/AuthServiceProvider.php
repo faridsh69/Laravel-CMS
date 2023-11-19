@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Providers;
 
 use Cache;
@@ -8,37 +10,29 @@ use Illuminate\Support\Facades\Gate;
 use Laravel\Passport\Passport;
 use Str;
 
-class AuthServiceProvider extends ServiceProvider
+final class AuthServiceProvider extends ServiceProvider
 {
-    public $policies = [
-        // 'App\Models\User' => UserPolicy::class,
-    ];
+	protected $policies = [];
 
-    /**
-     * Register any authentication / authorization services.
-     */
-    public function boot()
-    {
-        $seconds = 1;
-        $this->policies = Cache::remember('policies', $seconds, function () {
-            $modelNameSlugs = config('cms.policies');
-            $models_namespace = config('cms.config.models_namespace');
-            $policies = [];
-            foreach($modelNameSlugs as $modelNameSlug){
-                $modelName = Str::studly($modelNameSlug);
-                $modelNamespace = $models_namespace . $modelName;
-                $model_policy = 'App\Policies\\' . $modelName . 'Policy';
-                $policies[$modelNamespace] = $model_policy;
-            }
+	public function boot(): void
+	{
+		$this->policies = Cache::remember('policies', config('cms.config.cache_time'), function () {
+			$modelNameSlugs = config('cms.policies');
+			$models_namespace = config('cms.config.models_namespace');
+			$policies = [];
+			foreach ($modelNameSlugs as $modelNameSlug) {
+				$modelName = Str::studly($modelNameSlug);
+				$modelNamespace = $models_namespace . $modelName;
+				$model_policy = 'App\Policies\\' . $modelName . 'Policy';
+				$policies[$modelNamespace] = $model_policy;
+			}
 
-            return $policies;
-        });
-        $this->registerPolicies();
+			return $policies;
+		});
+		$this->registerPolicies();
 
-        Gate::define('manage', function ($user, $page) {
-            return $user->can($page . '_manager');
-        });
+		Gate::define('manage', fn ($user, $page) => $user->can($page . '_manager'));
 
-        Passport::routes();
-    }
+		Passport::routes();
+	}
 }

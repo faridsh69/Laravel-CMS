@@ -1,11 +1,11 @@
 <script src="{{ asset('js/front/themes/' . config('setting-developer.theme') . '/app.js') }}"></script>
 
-<script src="{{ asset('js/front/components/vue/vue.min.js') }}"></script>
+<!-- <script src="{{ asset('js/front/components/vue/vue.min.js') }}"></script>
 <script src="{{ asset('js/front/components/vue/vue-2.js') }}"></script>
 <script src="{{ asset('js/front/components/vue/axios.js') }}"></script>
 <script src="{{ asset('js/front/components/vue/like.js') }}"></script>
 <script src="{{ asset('js/front/components/vue/vue-runner.js') }}"></script>
-
+ -->
 @includeIf('front.theme.' . config('setting-developer.theme') . '.scripts')
 @stack('scripts')
 {!! config('setting-developer.scripts') !!}

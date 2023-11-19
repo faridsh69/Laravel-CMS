@@ -7,7 +7,7 @@
 	<li><a href="#used-packages">Used Packages</a></li>
 	<li><a href="#refrences">Refrences</a></li>
 </ul>
-<img src="{{ $page->image }}">
+<img src="{{ $page->avatar }}">
 <h2 id="benefits">Benefits</h2>
 <p>How to use migration service to create or modify tables based on model changes. </p>
 <p>You need to change migration every time to want to change your model but here base on the model columns migration file will run automatically, because of some special columns like latitude and longitude you can add some extra codes to BaseMigration to run migration by your thoughts.</p>

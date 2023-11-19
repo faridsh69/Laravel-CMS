@@ -1,18 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Notifications;
 
-use App\Notifications\Channels\DatabaseChannel;
-use App\Notifications\Channels\SmsChannel;
-use App\Services\BaseNotification;
+use App\Cms\Services\NotificationService;
+use App\Notifications\Channels\{DatabaseChannel, SmsChannel};
 
-class PhoneVerified extends BaseNotification
+final class PhoneVerified extends NotificationService
 {
 	public function via($notifiable)
-    {
-        return [
-            DatabaseChannel::class,
-            SmsChannel::class,
-        ];
-    }
+	{
+		return [DatabaseChannel::class, SmsChannel::class];
+	}
 }
