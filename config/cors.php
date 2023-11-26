@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 return [
-	'paths' => ['api/*', 'oauth/*', 'sanctum/csrf-cookie'],
+	'paths' => ['api/*', 'general-api/*', 'oauth/*', 'sanctum/csrf-cookie'],
 
 	'allowed_methods' => ['*'],
 
