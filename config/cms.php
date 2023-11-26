@@ -167,20 +167,8 @@ $cms = [
 		'tagend',
 		'user',
 	],
-	'front_routes' => [
-		'blog',
-		'category',
-		'food',
-		'tag',
-		'user',
-	],
-	'front_tests' => [
-		'blog',
-		'category',
-		'food',
-		'tag',
-		'user',
-	],
+	'front_routes' => ['blog', 'category', 'food', 'tag', 'user'],
+	'front_tests' => ['blog', 'category', 'food', 'tag', 'user'],
 	'api_routes' => [
 		'blog',
 		'category',
@@ -209,13 +197,7 @@ $cms = [
 		// 'tour',
 		// 'travel',
 	],
-	'api_tests' => [
-		'blog',
-		'category',
-		'food',
-		'tag',
-		'user',
-	],
+	'api_tests' => ['blog', 'category', 'food', 'tag', 'user'],
 	'default_columns' => [
 		'title' => [
 			'name' => 'title',
@@ -668,7 +650,7 @@ $cms = [
 			'form_type' => '',
 			'table' => true,
 		],
-	]
+	],
 ];
 
 $cms['social_companies'] = ['GOOGLE', 'TWITTER', 'FACEBOOK', 'LINKEDIN', 'GITHUB', 'GITLAB', 'BITBUCKET'];

@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Cms\Services;
 
-use App\Cms\Services\FileService;
+use Cache;
 use Hash;
 use Str;
-use Cache;
 
 final class DataService extends Service
 {
@@ -23,7 +22,7 @@ final class DataService extends Service
 	*/
 	public function getColumns(string $modelName, array $brifColumns): array
 	{
-		$finalColumns = Cache::remember(
+		return Cache::remember(
 			'model_' . $modelName,
 			config('cms.config.cache_time'),
 			function () use ($brifColumns) {
@@ -47,8 +46,6 @@ final class DataService extends Service
 				return $columns;
 			}
 		);
-
-		return $finalColumns;
 	}
 
 	public function saveWithRelations($data, $isUpdating, $model)

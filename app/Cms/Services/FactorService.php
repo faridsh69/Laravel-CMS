@@ -209,7 +209,5 @@ final class FactorService extends Service
 		if ($basket) {
 			return $basket;
 		}
-
-		return null;
 	}
 }

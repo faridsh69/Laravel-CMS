@@ -6,7 +6,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Notifications\UserLogined;
 use Auth;
 use Illuminate\Http\{RedirectResponse, Request};
 use Socialite;
@@ -69,6 +68,7 @@ final class LoginController extends Controller
 
 		if ($user) {
 			Auth::login($user);
+
 			return redirect()->route('admin.dashboard.index');
 		}
 

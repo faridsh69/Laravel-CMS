@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Cms\Controllers\Api;
 
-use App\Cms\Traits\ApiTrait;
-use App\Cms\Traits\CmsMainTrait;
+use App\Cms\Traits\{ApiTrait, CmsMainTrait};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Validator;

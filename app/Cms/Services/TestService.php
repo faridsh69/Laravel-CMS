@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace App\Cms\Services;
 
 use App\Models\{Category, Tag, User};
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Laravel\Passport\Passport;
 use Str;
 use Tests\TestCase;
-use App\Cms\Services\FactoryService;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 abstract class TestService extends TestCase
 {
 	use WithoutMiddleware;
+
 	private array $apiMethods = ['index'];
 
 	private array $modelNameSlugs = [];

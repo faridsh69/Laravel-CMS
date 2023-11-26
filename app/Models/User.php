@@ -14,9 +14,9 @@ use Spatie\Permission\Traits\HasRoles;
 
 final class User extends Authenticatable
 {
+	use CmsModelTrait;
 	use HasApiTokens;
 	use HasRoles;
-	use CmsModelTrait;
 	use Notifiable;
 
 	public $columns = [

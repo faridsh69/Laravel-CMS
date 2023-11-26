@@ -80,7 +80,7 @@ final class Seeder004Settings extends Seeder
 				'factor_created_sms',
 				'factor_created_mail',
 				'form_submitted_sms',
-				'site_notification_mail'
+				'site_notification_mail',
 			],
 		];
 		SettingDeveloper::updateOrCreate([

@@ -6,13 +6,13 @@ namespace App\Cms\Controllers\Front;
 
 use App\Cms\Traits\CmsMainTrait;
 use App\Http\Controllers\Controller;
+use App\Models\Like;
 use App\Models\{Category, Tag};
 use Auth;
 use Cache;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Str;
-use App\Models\Like;
 
 abstract class FrontController extends Controller
 {

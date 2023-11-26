@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Cms\Controllers\Admin;
 
 use App\Models\Activity;
-use Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;

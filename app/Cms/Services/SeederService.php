@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Cms\Services;
 
 use Illuminate\Database\Seeder as LaravelSeeder;
-use App\Cms\Services\FactoryService;
 use Str;
 
 final class SeederService extends LaravelSeeder

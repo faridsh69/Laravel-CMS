@@ -7,7 +7,6 @@ namespace App\Http\Controllers\Admin\Notification;
 use App\Cms\Controllers\Admin\AdminResourceController;
 use App\Models\User;
 use App\Notifications\SiteNotification;
-use Auth;
 use Illuminate\Http\RedirectResponse;
 
 final class ResourceController extends AdminResourceController

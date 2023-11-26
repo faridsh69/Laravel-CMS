@@ -34,9 +34,8 @@ trait CmsModelTrait
 		$modelName = class_basename($this);
 		$brifColumns = $this->columns;
 		$dataService = new DataService();
-		$columns = $dataService->getColumns($modelName, $brifColumns);
 
-		return $columns;
+		return $dataService->getColumns($modelName, $brifColumns);
 	}
 
 	public function scopeActive($query): Builder
@@ -121,7 +120,7 @@ trait CmsModelTrait
 	public function avatar($fileColumnName = 'image'): string
 	{
 		$srcs = $this->srcs($fileColumnName);
-		if (count($srcs)) {
+		if (\count($srcs)) {
 			return preg_replace('/(\.[^.]+)$/', sprintf('%s$1', '-thumbnail'), $srcs[0]);
 		}
 
@@ -131,7 +130,7 @@ trait CmsModelTrait
 	public function mainImage($fileColumnName = 'image'): string
 	{
 		$srcs = $this->srcs($fileColumnName);
-		if (count($srcs)) {
+		if (\count($srcs)) {
 			return $srcs[0];
 		}
 
@@ -157,9 +156,8 @@ trait CmsModelTrait
 	{
 		$isUpdating = $this->id ?? 0;
 		$dataService = new DataService();
-		$model = $dataService->saveWithRelations($data, $isUpdating, $this);
 
-		return $model;
+		return $dataService->saveWithRelations($data, $isUpdating, $this);
 	}
 
 	final public function getRules(): array
@@ -169,13 +167,13 @@ trait CmsModelTrait
 			->map(fn ($rule) => mb_strpos($rule, 'unique') !== false ? $rule . $this->id : $rule)->toArray();
 	}
 
-	public static function boot()
+	public static function boot(): void
 	{
 		parent::boot();
 
-		self::created(function ($model) {
+		self::created(function ($model): void {
 			if (!$model->price) {
-				return null;
+				return;
 			}
 
 			$data = [
@@ -187,26 +185,28 @@ trait CmsModelTrait
 				$model->activities()->forceCreate([
 					'title' => 'Created...',
 					'user_id' => Auth::id(),
-					'properties' => json_encode($data)
+					'properties' => json_encode($data),
 				]);
 			}
 		});
 
-		self::updating(function ($model) {
+		self::updating(function ($model): void {
 			$prevModel = $model->find($model->id);
-			if (!$model || !$prevModel) return;
+			if (!$model || !$prevModel) {
+				return;
+			}
 			$diff = array_diff_assoc($model->getAttributes(), $prevModel->getAttributes());
 
 			if (env('APP_ENV') !== 'testing') {
 				$model->activities()->forceCreate([
 					'title' => 'Updating...',
 					'user_id' => Auth::id(),
-					'properties' => json_encode($diff)
+					'properties' => json_encode($diff),
 				]);
 			}
 		});
 
-		self::deleted(function ($model) {
+		self::deleted(function ($model): void {
 			if (env('APP_ENV') !== 'testing') {
 				$model->activities()->forceCreate([
 					'title' => 'Deleted',
