@@ -45,7 +45,7 @@ final class Food extends CmsModel
 		[
 			'name' => 'Bold',
 			'type' => 'boolean',
-			'database' => '',
+			'database' => 'default',
 			'rule' => 'boolean',
 			'help' => 'When food is bold it will show in big box in menu.',
 			'form_type' => 'checkbox-m',
