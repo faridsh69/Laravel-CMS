@@ -2,5 +2,7 @@
 !faker/
 !faker/*
 !laravel-cms-website/
+!laravel-cms-website/*
 !default-model-images/
+!default-model-images/*
 !.gitignore
