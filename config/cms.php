@@ -65,7 +65,7 @@ $cms = [
 		'category',
 		'factor',
 		'field',
-		// 'food',
+		'food',
 		'form',
 		'restaurant',
 		'tag',

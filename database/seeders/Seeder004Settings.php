@@ -15,8 +15,8 @@ final class Seeder004Settings extends Seeder
 		$laravelCmsFolder = storage_path() . config('cms.config.cms_files');
 
 		$generalSettings = [
-			'app_title' => 'App Title',
-			'default_meta_title' => 'App Title',
+			'app_title' => 'Laravel general app title',
+			'default_meta_title' => 'Laravel general app title',
 			'default_meta_description' => 'App desciption about this website that will be show on social networks.',
 			'logo' => 'logo.png',
 			'favicon' => 'favicon.png',

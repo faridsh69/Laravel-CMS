@@ -64,6 +64,12 @@ final class Category extends CmsModel
 		return $this->hasMany(config('cms.config.models_namespace') . $this->type, 'category_id', 'id');
 	}
 
+	public function foods()
+	{
+		return $this->hasMany(config('cms.config.models_namespace') . 'Food', 'category_id', 'id');
+	}
+
+
 	public function parent()
 	{
 		return $this->belongsTo(self::class, 'parent_id', 'id');

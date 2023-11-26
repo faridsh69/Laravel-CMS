@@ -40,6 +40,7 @@ final class RouteServiceProvider extends ServiceProvider
 		$this->bootAuthRoutes();
 		$this->bootFrontRoutes();
 		$this->bootApiRoutes();
+		$this->bootGeneralApiRoutes();
 	}
 
 	protected function configureRateLimiting(): void
@@ -83,5 +84,14 @@ final class RouteServiceProvider extends ServiceProvider
 			->prefix('api')
 			->middleware(['auth:api'])
 			->group(base_path('routes/api.php'));
+	}
+
+	protected function bootGeneralApiRoutes(): void
+	{
+		Route::namespace($this->namespace . '\GeneralApi')
+			->as('generalapi.')
+			->prefix('general-api')
+			// ->middleware(['auth:api'])
+			->group(base_path('routes/generalApi.php'));
 	}
 }
