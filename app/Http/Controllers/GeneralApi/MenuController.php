@@ -15,7 +15,7 @@ final class MenuController
 
 	public function getData(Category $category)
 	{
-		$list = $category->OfType('food')->orderBy('updated_at', 'desc')->with('foods')->get();
+		$list = $category->OfType('food')->orderBy('order', 'asc')->with('foods')->get();
 
 		return $this->setSuccessStatus()
 			->setMessage(('List found'))
